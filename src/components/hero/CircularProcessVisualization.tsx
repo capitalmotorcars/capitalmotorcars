@@ -76,7 +76,7 @@ export function CircularProcessVisualization({ className }: CircularProcessVisua
             className="absolute inset-0 w-full h-full"
             viewBox="0 0 100 100"
           >
-            {/* Outermost orbit ring */}
+            {/* Outermost orbit ring - neutral */}
             <circle
               cx="50"
               cy="50"
@@ -86,13 +86,13 @@ export function CircularProcessVisualization({ className }: CircularProcessVisua
               strokeWidth="0.15"
               strokeDasharray="1 1.5"
               className={cn(
-                'text-accent/30',
+                'text-white/20',
                 !prefersReducedMotion && 'animate-spin-slower'
               )}
               style={{ transformOrigin: 'center' }}
             />
 
-            {/* Main orbit ring */}
+            {/* Main orbit ring - neutral */}
             <circle
               cx="50"
               cy="50"
@@ -102,13 +102,13 @@ export function CircularProcessVisualization({ className }: CircularProcessVisua
               strokeWidth="0.2"
               strokeDasharray="2 1.5"
               className={cn(
-                'text-accent/50',
+                'text-white/30',
                 !prefersReducedMotion && 'animate-spin-slow'
               )}
               style={{ transformOrigin: 'center' }}
             />
 
-            {/* Inner ring - reverse */}
+            {/* Inner ring - neutral */}
             <circle
               cx="50"
               cy="50"
@@ -118,13 +118,13 @@ export function CircularProcessVisualization({ className }: CircularProcessVisua
               strokeWidth="0.15"
               strokeDasharray="2 2"
               className={cn(
-                'text-white/20',
+                'text-white/15',
                 !prefersReducedMotion && 'animate-spin-reverse'
               )}
               style={{ transformOrigin: 'center' }}
             />
 
-            {/* Center ring */}
+            {/* Center ring - neutral */}
             <circle
               cx="50"
               cy="50"
@@ -133,10 +133,10 @@ export function CircularProcessVisualization({ className }: CircularProcessVisua
               stroke="currentColor"
               strokeWidth="0.1"
               strokeDasharray="1 1"
-              className="text-white/15"
+              className="text-white/10"
             />
 
-            {/* Connecting lines */}
+            {/* Connecting lines - neutral, active gets slight opacity boost */}
             {processSteps.map((_, index) => {
               const pos = getStepPosition(index, processSteps.length);
               const isActive = activeStep === index;
@@ -148,24 +148,24 @@ export function CircularProcessVisualization({ className }: CircularProcessVisua
                   x2="50"
                   y2="50"
                   stroke="currentColor"
-                  strokeWidth={isActive ? "0.2" : "0.08"}
+                  strokeWidth={isActive ? "0.15" : "0.08"}
                   strokeDasharray="1 1"
                   className={cn(
                     'transition-all duration-500',
-                    isActive ? 'text-accent/70' : 'text-white/10'
+                    isActive ? 'text-white/40' : 'text-white/10'
                   )}
                 />
               );
             })}
 
-            {/* Active arc */}
+            {/* Active arc - blue accent ONLY element */}
             <circle
               cx="50"
               cy="50"
               r="38"
               fill="none"
               stroke="currentColor"
-              strokeWidth="0.5"
+              strokeWidth="0.4"
               strokeDasharray="14 86"
               strokeLinecap="round"
               className={cn(
@@ -179,18 +179,10 @@ export function CircularProcessVisualization({ className }: CircularProcessVisua
             />
           </svg>
 
-          {/* Center icon */}
+          {/* Center icon - neutral with subtle accent border */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="relative">
-              <div 
-                className={cn(
-                  'absolute -inset-3 rounded-full bg-accent/25 blur-xl',
-                  !prefersReducedMotion && 'animate-pulse-slow'
-                )}
-              />
-              <div className="relative w-20 h-20 xl:w-24 xl:h-24 rounded-full bg-primary border-2 border-accent/40 flex items-center justify-center">
-                <Car className="w-8 h-8 xl:w-10 xl:h-10 text-accent" strokeWidth={1.2} />
-              </div>
+            <div className="relative w-20 h-20 xl:w-24 xl:h-24 rounded-full bg-primary border border-white/30 flex items-center justify-center">
+              <Car className="w-8 h-8 xl:w-10 xl:h-10 text-white/80" strokeWidth={1.2} />
             </div>
           </div>
 
@@ -217,17 +209,17 @@ export function CircularProcessVisualization({ className }: CircularProcessVisua
                 <div className="flex flex-col items-center gap-1">
                   <div
                     className={cn(
-                      'relative w-11 h-11 xl:w-14 xl:h-14 rounded-full flex items-center justify-center border-2',
+                      'relative w-11 h-11 xl:w-14 xl:h-14 rounded-full flex items-center justify-center border',
                       !prefersReducedMotion && 'transition-all duration-300',
                       isActive
-                        ? 'bg-accent border-accent text-white scale-110 shadow-lg shadow-accent/50'
-                        : 'bg-primary/90 border-white/30 text-white/70 group-hover:border-accent/60 group-hover:scale-105'
+                        ? 'bg-accent border-accent text-white scale-110'
+                        : 'bg-primary/80 border-white/20 text-white/60 group-hover:border-white/40 group-hover:text-white/80 group-hover:scale-105'
                     )}
                   >
                     <Icon className="w-5 h-5 xl:w-6 xl:h-6" strokeWidth={1.5} />
                     <span className={cn(
                       'absolute -top-1 -right-1 w-4 h-4 xl:w-5 xl:h-5 rounded-full text-[9px] xl:text-[10px] font-bold flex items-center justify-center',
-                      isActive ? 'bg-white text-accent' : 'bg-accent text-white'
+                      isActive ? 'bg-white text-accent' : 'bg-white/20 text-white'
                     )}>
                       {index + 1}
                     </span>
@@ -236,7 +228,7 @@ export function CircularProcessVisualization({ className }: CircularProcessVisua
                     className={cn(
                       'text-[10px] xl:text-xs font-medium whitespace-nowrap',
                       !prefersReducedMotion && 'transition-colors duration-300',
-                      isActive ? 'text-accent' : 'text-white/50 group-hover:text-white/70'
+                      isActive ? 'text-white' : 'text-white/50 group-hover:text-white/70'
                     )}
                   >
                     {step.title}
@@ -289,7 +281,7 @@ export function CircularProcessVisualization({ className }: CircularProcessVisua
 
       {/* Mobile: Vertical steps */}
       <div className="md:hidden flex flex-col gap-3">
-        <div className="text-accent text-sm font-semibold uppercase tracking-wider mb-2">
+        <div className="text-white/60 text-sm font-semibold uppercase tracking-wider mb-2">
           How It Works
         </div>
         {processSteps.map((step, index) => (
@@ -299,7 +291,7 @@ export function CircularProcessVisualization({ className }: CircularProcessVisua
             className={cn(
               'flex items-start gap-4 p-4 rounded-xl text-left transition-all duration-200',
               activeStep === index
-                ? 'bg-accent/15 border border-accent/40'
+                ? 'bg-white/10 border border-accent/50'
                 : 'bg-white/5 border border-white/10'
             )}
           >
@@ -308,7 +300,7 @@ export function CircularProcessVisualization({ className }: CircularProcessVisua
                 'w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0',
                 activeStep === index
                   ? 'bg-accent text-white'
-                  : 'bg-white/10 text-white/60'
+                  : 'bg-white/10 text-white/50'
               )}
             >
               <step.icon className="w-5 h-5" strokeWidth={1.5} />
@@ -324,7 +316,7 @@ export function CircularProcessVisualization({ className }: CircularProcessVisua
               </div>
               <h4 className={cn(
                 'font-medium mb-1',
-                activeStep === index ? 'text-white' : 'text-white/80'
+                activeStep === index ? 'text-white' : 'text-white/70'
               )}>
                 {step.title}
               </h4>

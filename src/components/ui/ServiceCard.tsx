@@ -16,8 +16,8 @@ export function ServiceCard({ title, description, href, icon: Icon }: ServiceCar
       className="group block bg-card border border-border rounded-lg p-6 card-hover"
     >
       <div className="flex items-start gap-4">
-        <div className="flex-shrink-0 w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
-          <Icon className="w-6 h-6 text-accent" />
+        <div className="flex-shrink-0 w-12 h-12 bg-muted rounded-lg flex items-center justify-center">
+          <Icon className="w-6 h-6 text-primary" />
         </div>
         <div className="flex-1 min-w-0">
           <h3 className="text-lg font-semibold text-primary mb-2 group-hover:text-accent transition-colors">

@@ -121,8 +121,8 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-8">
             {whyChooseUs.map((item) => (
               <div key={item.title} className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-accent/10 rounded-full mb-6">
-                  <item.icon className="w-8 h-8 text-accent" />
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-muted rounded-full mb-6">
+                  <item.icon className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="text-xl font-semibold text-primary mb-3">{item.title}</h3>
                 <p className="text-muted-foreground leading-relaxed">{item.description}</p>
