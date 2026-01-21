@@ -6,7 +6,7 @@ import { StatCard } from '@/components/ui/StatCard';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { HeroSection } from '@/components/hero/HeroSection';
 import { PeopleSection } from '@/components/home/PeopleSection';
-import { VehiclesSection } from '@/components/home/VehiclesSection';
+import { VehicleTypesCarousel } from '@/components/home/VehicleTypesCarousel';
 import { BrandsCarousel } from '@/components/home/BrandsCarousel';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { 
@@ -88,9 +88,9 @@ export default function HomePage() {
     <Layout>
       <HeroSection />
 
-      <BrandsCarousel />
+      <VehicleTypesCarousel />
 
-      <VehiclesSection />
+      <BrandsCarousel />
 
       <PeopleSection />
 
