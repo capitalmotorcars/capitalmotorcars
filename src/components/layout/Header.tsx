@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import logo from '@/assets/logo-main.svg';
+import logo from '@/assets/logo-main.png';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -40,7 +40,11 @@ export function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src={logo} alt="Capital Motor Cars" className="h-10 w-auto" />
+            <img 
+              src={logo} 
+              alt="Capital Motor Cars" 
+              className="h-12 md:h-14 w-auto transition-all duration-300" 
+            />
           </Link>
 
           {/* Desktop Navigation */}
