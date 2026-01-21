@@ -1,7 +1,15 @@
 import { Layout } from '@/components/layout/Layout';
 import { ContactForm } from '@/components/forms/ContactForm';
+import { useSearchParams } from 'react-router-dom';
 
 export default function ContactPage() {
+  const [searchParams] = useSearchParams();
+
+  const fullName = searchParams.get('fullName') ?? undefined;
+  const phone = searchParams.get('phone') ?? undefined;
+  const service = searchParams.get('service') ?? undefined;
+  const message = searchParams.get('message') ?? undefined;
+
   return (
     <Layout>
       <section className="bg-primary py-20 md:py-28">
@@ -17,7 +25,7 @@ export default function ContactPage() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-xl mx-auto">
             <div className="bg-muted p-6 md:p-8 rounded-lg">
-              <ContactForm />
+              <ContactForm initialValues={{ fullName, phone, service, message }} />
             </div>
           </div>
         </div>

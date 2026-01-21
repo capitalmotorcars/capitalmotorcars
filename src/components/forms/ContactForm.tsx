@@ -37,9 +37,10 @@ const services = [
 
 interface ContactFormProps {
   compact?: boolean;
+  initialValues?: Partial<ContactFormData>;
 }
 
-export function ContactForm({ compact = false }: ContactFormProps) {
+export function ContactForm({ compact = false, initialValues }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -47,19 +48,28 @@ export function ContactForm({ compact = false }: ContactFormProps) {
     register,
     handleSubmit,
     setValue,
+    watch,
     formState: { errors },
     reset,
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
+    defaultValues: {
+      fullName: initialValues?.fullName ?? "",
+      email: initialValues?.email ?? "",
+      phone: initialValues?.phone ?? "",
+      service: initialValues?.service ?? undefined,
+      message: initialValues?.message ?? "",
+    },
   });
+
+  const selectedService = watch('service');
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     
     // Simulate API call - replace with actual webhook
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    
-    console.log('Form submitted:', data);
+
     setIsSuccess(true);
     reset();
     
@@ -126,7 +136,7 @@ export function ContactForm({ compact = false }: ContactFormProps) {
 
         <div className="space-y-2">
           <Label htmlFor="service">Service of Interest</Label>
-          <Select onValueChange={(value) => setValue('service', value)}>
+          <Select value={selectedService} onValueChange={(value) => setValue('service', value)}>
             <SelectTrigger>
               <SelectValue placeholder="Select a service" />
             </SelectTrigger>
