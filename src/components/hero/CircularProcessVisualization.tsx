@@ -59,45 +59,77 @@ export function CircularProcessVisualization({ className }: CircularProcessVisua
   const getStepPosition = (index: number, total: number) => {
     // Start from top (-90 degrees) and go clockwise
     const angle = ((index / total) * 360 - 90) * (Math.PI / 180);
-    const radius = 42; // percentage from center
+    const radius = 38; // percentage from center
     const x = 50 + radius * Math.cos(angle);
     const y = 50 + radius * Math.sin(angle);
     return { x, y, angle: (index / total) * 360 - 90 };
   };
 
   return (
-    <div className={cn('flex flex-col items-center', className)}>
-      {/* Circular Visualization - Desktop */}
-      <div className="hidden lg:block relative w-[320px] h-[320px]">
-        {/* Rotating dashed circle */}
+    <div className={cn('flex flex-col', className)}>
+      {/* Circular Visualization - Desktop - Much larger */}
+      <div className="hidden lg:block relative w-[520px] h-[520px]">
+        {/* Multiple rotating dashed circles for depth */}
         <svg
           className="absolute inset-0 w-full h-full"
           viewBox="0 0 100 100"
         >
+          {/* Outermost rotating circle - slowest */}
+          <circle
+            cx="50"
+            cy="50"
+            r="48"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="0.15"
+            strokeDasharray="1 2"
+            className={cn(
+              'text-accent/20',
+              !prefersReducedMotion && 'animate-spin-slower'
+            )}
+            style={{ transformOrigin: 'center' }}
+          />
+
           {/* Outer rotating dashed circle */}
           <circle
             cx="50"
             cy="50"
-            r="42"
+            r="38"
             fill="none"
             stroke="currentColor"
-            strokeWidth="0.3"
+            strokeWidth="0.25"
             strokeDasharray="2 2"
             className={cn(
-              'text-accent/30',
+              'text-accent/40',
               !prefersReducedMotion && 'animate-spin-slow'
             )}
             style={{ transformOrigin: 'center' }}
           />
           
+          {/* Middle rotating circle - opposite direction */}
+          <circle
+            cx="50"
+            cy="50"
+            r="28"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="0.2"
+            strokeDasharray="3 3"
+            className={cn(
+              'text-white/15',
+              !prefersReducedMotion && 'animate-spin-reverse'
+            )}
+            style={{ transformOrigin: 'center' }}
+          />
+
           {/* Inner static circle */}
           <circle
             cx="50"
             cy="50"
-            r="25"
+            r="18"
             fill="none"
             stroke="currentColor"
-            strokeWidth="0.2"
+            strokeWidth="0.15"
             strokeDasharray="1.5 1.5"
             className="text-white/10"
           />
@@ -113,26 +145,26 @@ export function CircularProcessVisualization({ className }: CircularProcessVisua
                 x2={pos.x}
                 y2={pos.y}
                 stroke="currentColor"
-                strokeWidth="0.2"
+                strokeWidth="0.15"
                 strokeDasharray="1 1"
                 className={cn(
-                  'transition-all duration-300',
-                  activeStep === index ? 'text-accent/50' : 'text-white/10'
+                  'transition-all duration-500',
+                  activeStep === index ? 'text-accent/60' : 'text-white/10'
                 )}
               />
             );
           })}
         </svg>
 
-        {/* Center content - active step info */}
+        {/* Center content - active step icon */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div
             className={cn(
-              'w-20 h-20 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center',
-              !prefersReducedMotion && 'transition-all duration-300'
+              'w-24 h-24 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center backdrop-blur-sm',
+              !prefersReducedMotion && 'transition-all duration-500'
             )}
           >
-            <currentStep.icon className="w-8 h-8 text-accent" strokeWidth={1.5} />
+            <currentStep.icon className="w-10 h-10 text-accent" strokeWidth={1.5} />
           </div>
         </div>
 
@@ -151,13 +183,13 @@ export function CircularProcessVisualization({ className }: CircularProcessVisua
                 setActiveStep(index);
               }}
               className={cn(
-                'absolute w-12 h-12 -translate-x-1/2 -translate-y-1/2',
+                'absolute w-14 h-14 -translate-x-1/2 -translate-y-1/2',
                 'rounded-full flex items-center justify-center',
                 'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent',
                 !prefersReducedMotion && 'transition-all duration-300',
                 isActive
-                  ? 'bg-accent text-accent-foreground scale-110 shadow-lg shadow-accent/30'
-                  : 'bg-white/10 text-primary-foreground/60 hover:bg-white/20 hover:scale-105'
+                  ? 'bg-accent text-accent-foreground scale-110 shadow-lg shadow-accent/40'
+                  : 'bg-white/10 text-primary-foreground/60 hover:bg-white/20 hover:scale-105 border border-white/10'
               )}
               style={{
                 left: `${pos.x}%`,
@@ -166,7 +198,7 @@ export function CircularProcessVisualization({ className }: CircularProcessVisua
               aria-label={step.title}
               aria-current={isActive ? 'step' : undefined}
             >
-              <Icon className="w-5 h-5" strokeWidth={1.5} />
+              <Icon className="w-6 h-6" strokeWidth={1.5} />
             </button>
           );
         })}
@@ -179,15 +211,15 @@ export function CircularProcessVisualization({ className }: CircularProcessVisua
           <circle
             cx="50"
             cy="50"
-            r="42"
+            r="38"
             fill="none"
             stroke="currentColor"
-            strokeWidth="0.5"
-            strokeDasharray="20 80"
+            strokeWidth="0.6"
+            strokeDasharray="15 85"
             strokeLinecap="round"
             className={cn(
               'text-accent',
-              !prefersReducedMotion && 'transition-transform duration-500'
+              !prefersReducedMotion && 'transition-transform duration-700'
             )}
             style={{
               transform: `rotate(${(activeStep / processSteps.length) * 360 - 90}deg)`,
@@ -232,42 +264,6 @@ export function CircularProcessVisualization({ className }: CircularProcessVisua
               {step.title}
             </span>
           </button>
-        ))}
-      </div>
-
-      {/* Description Panel */}
-      <div className="mt-6 w-full max-w-sm">
-        <div
-          key={activeStep}
-          className={cn(
-            'p-4 rounded-lg bg-white/5 border border-white/10 text-center',
-            !prefersReducedMotion && 'animate-step-description'
-          )}
-        >
-          <h4 className="text-primary-foreground font-medium mb-2 text-sm">
-            {currentStep.title}
-          </h4>
-          <p className="text-primary-foreground/70 text-sm leading-relaxed">
-            {currentStep.description}
-          </p>
-        </div>
-      </div>
-
-      {/* Progress dots */}
-      <div className="flex items-center gap-2 mt-4">
-        {processSteps.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setActiveStep(index)}
-            aria-label={`Go to step ${index + 1}`}
-            className={cn(
-              'rounded-full',
-              !prefersReducedMotion && 'transition-all duration-300',
-              activeStep === index
-                ? 'w-6 h-1.5 bg-accent'
-                : 'w-1.5 h-1.5 bg-white/20 hover:bg-white/40'
-            )}
-          />
         ))}
       </div>
     </div>
