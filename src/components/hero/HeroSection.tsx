@@ -9,16 +9,16 @@ export function HeroSection() {
   const heroAnimated = useHeroAnimation();
 
   return (
-    <section className="relative bg-primary py-16 lg:py-24 min-h-[600px] lg:min-h-[700px]">
-      {/* Background Image */}
+    <section className="relative py-16 lg:py-24 min-h-[600px] lg:min-h-[700px]" style={{ backgroundColor: 'hsl(216 27% 6%)' }}>
+      {/* Background Image - subtle */}
       <img
         src={heroBg}
         alt=""
-        className="absolute inset-0 w-full h-full object-cover opacity-40"
+        className="absolute inset-0 w-full h-full object-cover opacity-20"
       />
       
-      {/* Dark gradient overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/85 to-primary/70" />
+      {/* Dark overlay for CDK-style contrast */}
+      <div className="absolute inset-0" style={{ backgroundColor: 'hsl(216 27% 6% / 0.85)' }} />
 
       <div className="relative container mx-auto px-4 lg:px-8">
         <div className="flex flex-col lg:flex-row lg:items-start lg:gap-12 xl:gap-20">
@@ -33,9 +33,10 @@ export function HeroSection() {
             </h1>
             
             <p
-              className={`text-lg md:text-xl text-white/70 mb-8 leading-relaxed max-w-lg hero-animate delay-1 ${
+              className={`text-lg md:text-xl mb-8 leading-relaxed max-w-lg hero-animate delay-1 ${
                 heroAnimated ? 'animate-in' : ''
               }`}
+              style={{ color: 'hsl(213 27% 84%)' }}
             >
               Capital Motor Cars helps you lease, finance and maintain your vehicle with a clear process and personalized support.
             </p>
@@ -58,7 +59,8 @@ export function HeroSection() {
               
               <Link
                 to="/services"
-                className="text-white/70 hover:text-white font-medium underline-offset-4 hover:underline transition-colors"
+                className="font-medium underline-offset-4 hover:underline transition-colors"
+                style={{ color: 'hsl(213 27% 84%)' }}
               >
                 View Services
               </Link>

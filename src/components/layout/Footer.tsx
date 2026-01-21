@@ -23,7 +23,7 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <footer style={{ backgroundColor: 'hsl(216 27% 6%)' }} className="text-white">
       <div className="container mx-auto px-4 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
@@ -35,7 +35,7 @@ export function Footer() {
                 className="h-10 w-auto brightness-0 invert" 
               />
             </Link>
-            <p className="text-sm text-primary-foreground/70 leading-relaxed">
+            <p className="text-sm leading-relaxed" style={{ color: 'hsl(213 27% 84%)' }}>
               Simple, stress-free automotive solutions.
             </p>
           </div>
@@ -50,7 +50,8 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                    className="text-sm hover:text-white transition-colors"
+                    style={{ color: 'hsl(213 27% 70%)' }}
                   >
                     {link.label}
                   </Link>
@@ -69,7 +70,8 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                    className="text-sm hover:text-white transition-colors"
+                    style={{ color: 'hsl(213 27% 70%)' }}
                   >
                     {link.label}
                   </Link>
@@ -88,7 +90,8 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                    className="text-sm hover:text-white transition-colors"
+                    style={{ color: 'hsl(213 27% 70%)' }}
                   >
                     {link.label}
                   </Link>
@@ -99,8 +102,8 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-12 pt-8 border-t border-primary-foreground/10">
-          <p className="text-sm text-primary-foreground/50 text-center">
+        <div className="mt-12 pt-8" style={{ borderTop: '1px solid hsl(213 27% 20%)' }}>
+          <p className="text-sm text-center" style={{ color: 'hsl(213 27% 50%)' }}>
             © {new Date().getFullYear()} Capital Motor Cars. All rights reserved.
           </p>
         </div>

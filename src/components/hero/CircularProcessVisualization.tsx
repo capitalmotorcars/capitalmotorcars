@@ -239,14 +239,15 @@ export function CircularProcessVisualization({ className }: CircularProcessVisua
           })}
         </div>
 
-        {/* Description panel */}
+        {/* Description panel - CDK neutral style */}
         <div className="w-full max-w-sm mt-6">
           <div
             key={activeStep}
             className={cn(
-              'p-4 rounded-xl bg-white/5 border border-white/10 text-center',
+              'p-4 rounded-xl text-center',
               !prefersReducedMotion && 'animate-step-description'
             )}
+            style={{ backgroundColor: 'hsl(216 27% 10%)', border: '1px solid hsl(216 27% 18%)' }}
           >
             <div className="flex items-center justify-center gap-2 mb-2">
               <span className="w-5 h-5 rounded-full bg-accent text-white text-xs font-bold flex items-center justify-center">
@@ -256,7 +257,7 @@ export function CircularProcessVisualization({ className }: CircularProcessVisua
                 {currentStep.title}
               </span>
             </div>
-            <p className="text-white/60 text-xs leading-relaxed">
+            <p className="text-xs leading-relaxed" style={{ color: 'hsl(213 27% 70%)' }}>
               {currentStep.description}
             </p>
           </div>
@@ -279,49 +280,49 @@ export function CircularProcessVisualization({ className }: CircularProcessVisua
         </div>
       </div>
 
-      {/* Mobile: Vertical steps */}
+      {/* Mobile: Vertical steps - CDK style */}
       <div className="md:hidden flex flex-col gap-3">
-        <div className="text-white/60 text-sm font-semibold uppercase tracking-wider mb-2">
+        <div className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: 'hsl(213 27% 70%)' }}>
           How It Works
         </div>
         {processSteps.map((step, index) => (
           <button
             key={step.title}
             onClick={() => setActiveStep(index)}
-            className={cn(
-              'flex items-start gap-4 p-4 rounded-xl text-left transition-all duration-200',
-              activeStep === index
-                ? 'bg-white/10 border border-accent/50'
-                : 'bg-white/5 border border-white/10'
-            )}
+            className="flex items-start gap-4 p-4 rounded-xl text-left transition-all duration-200"
+            style={{ 
+              backgroundColor: activeStep === index ? 'hsl(216 27% 12%)' : 'hsl(216 27% 9%)',
+              border: activeStep === index ? '1px solid hsl(214 77% 50%)' : '1px solid hsl(216 27% 18%)'
+            }}
           >
             <div
               className={cn(
                 'w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0',
                 activeStep === index
                   ? 'bg-accent text-white'
-                  : 'bg-white/10 text-white/50'
+                  : 'text-white/50'
               )}
+              style={activeStep !== index ? { backgroundColor: 'hsl(216 27% 15%)' } : undefined}
             >
               <step.icon className="w-5 h-5" strokeWidth={1.5} />
             </div>
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-1">
-                <span className={cn(
-                  'text-xs font-semibold',
-                  activeStep === index ? 'text-accent' : 'text-white/40'
-                )}>
+                <span 
+                  className="text-xs font-semibold"
+                  style={{ color: activeStep === index ? 'hsl(214 77% 50%)' : 'hsl(213 27% 50%)' }}
+                >
                   Step {index + 1}
                 </span>
               </div>
-              <h4 className={cn(
-                'font-medium mb-1',
-                activeStep === index ? 'text-white' : 'text-white/70'
-              )}>
+              <h4 
+                className="font-medium mb-1"
+                style={{ color: activeStep === index ? '#FFFFFF' : 'hsl(213 27% 70%)' }}
+              >
                 {step.title}
               </h4>
               {activeStep === index && (
-                <p className="text-sm text-white/60 leading-relaxed">
+                <p className="text-sm leading-relaxed" style={{ color: 'hsl(213 27% 70%)' }}>
                   {step.description}
                 </p>
               )}
