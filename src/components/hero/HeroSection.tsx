@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { HeroProcessVisualization } from './HeroProcessVisualization';
+import { CircularProcessVisualization } from './CircularProcessVisualization';
 import { useHeroAnimation } from '@/hooks/useHeroAnimation';
 import { ArrowRight } from 'lucide-react';
 
@@ -76,7 +76,7 @@ export function HeroSection() {
                   How It Works
                 </span>
               </div>
-              <HeroProcessVisualization />
+              <CircularProcessVisualization />
             </div>
           </div>
         </div>
