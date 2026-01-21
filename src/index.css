@@ -6,43 +6,43 @@
 
 @layer base {
   :root {
-    /* Capital Motor Cars - CDK-Style Color System
-       Blue accent used ONLY for: CTAs, active states, links, small highlights
-       Everything else: neutral whites, grays, dark navy */
+    /* Capital Motor Cars - CDK Global Color Match
+       1:1 translation: CDK green → Capital blue
+       Everything else identical to CDK */
     
-    /* Backgrounds - Pure White */
+    /* Main Background - Pure White */
     --background: 0 0% 100%;
-    --foreground: 210 29% 12%;
+    --foreground: 210 40% 11%;
 
-    /* Cards - White with subtle contrast */
+    /* Cards - White */
     --card: 0 0% 100%;
-    --card-foreground: 210 29% 12%;
+    --card-foreground: 210 40% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 29% 12%;
+    --popover-foreground: 210 40% 11%;
 
-    /* Primary - Dark Navy #0B1F33 (for text, headers, dark sections) */
-    --primary: 210 67% 12%;
+    /* Primary - Near Black #0B1F33 (text, headers) */
+    --primary: 210 40% 11%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary - Steel Gray #4A5568 (for secondary text, borders) */
-    --secondary: 218 17% 35%;
+    /* Secondary - Neutral Gray #4A5568 */
+    --secondary: 215 14% 34%;
     --secondary-foreground: 0 0% 100%;
 
-    /* Muted - Light Gray #F5F7FA (for section backgrounds) */
+    /* Muted - Light Gray #F5F7FA (section backgrounds) */
     --muted: 216 33% 97%;
-    --muted-foreground: 218 17% 35%;
+    --muted-foreground: 215 14% 34%;
 
-    /* Accent Blue #1F6AE1 - USE SPARINGLY
-       Only for: Primary CTAs, active states, text links, small icon highlights */
+    /* Accent Blue #1F6AE1 - CDK green replacement
+       ONLY: CTAs, active states, links, small highlights */
     --accent: 214 77% 50%;
     --accent-foreground: 0 0% 100%;
-    --accent-hover: 214 77% 45%;
+    --accent-hover: 214 77% 46%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Borders - Neutral gray, not blue-tinted */
+    /* Borders - Neutral */
     --border: 220 13% 91%;
     --input: 220 13% 91%;
     --ring: 214 77% 50%;
@@ -52,13 +52,12 @@
     /* Section backgrounds */
     --section-light: 216 33% 97%;
     
-    /* Neutral grays for inactive states */
-    --neutral-100: 220 14% 96%;
-    --neutral-200: 220 13% 91%;
-    --neutral-300: 216 12% 84%;
-    --neutral-400: 218 11% 65%;
-    --neutral-500: 220 9% 46%;
-    --neutral-600: 215 14% 34%;
+    /* Hero background - Near Black #0B0F14 */
+    --hero-bg: 216 27% 6%;
+    
+    /* Text on dark backgrounds */
+    --hero-text: 0 0% 100%;
+    --hero-text-muted: 213 27% 84%;
   }
 
   .dark {
