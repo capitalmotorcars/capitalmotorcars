@@ -4,8 +4,8 @@ import { Button } from '@/components/ui/button';
 import { ServiceCard } from '@/components/ui/ServiceCard';
 import { StatCard } from '@/components/ui/StatCard';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { HeroSection } from '@/components/hero/HeroSection';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import { useHeroAnimation } from '@/hooks/useHeroAnimation';
 import { 
   Car, 
   CreditCard, 
@@ -76,7 +76,6 @@ const whyChooseUs = [
 ];
 
 export default function HomePage() {
-  const heroAnimated = useHeroAnimation();
   const { ref: servicesRef, isRevealed: servicesRevealed } = useScrollReveal();
   const { ref: whyRef, isRevealed: whyRevealed } = useScrollReveal();
   const { ref: statsRef, isRevealed: statsRevealed } = useScrollReveal();
@@ -84,49 +83,7 @@ export default function HomePage() {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="relative bg-primary overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1920&q=80)',
-          }}
-        />
-        <div className="relative container mx-auto px-4 lg:px-8 py-24 md:py-32 lg:py-40">
-          <div className="max-w-3xl">
-            <h1 
-              className={`text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 hero-animate ${heroAnimated ? 'animate-in' : ''}`}
-            >
-              Straightforward car solutions, without the stress.
-            </h1>
-            <p 
-              className={`text-lg md:text-xl text-primary-foreground/80 mb-8 max-w-2xl hero-animate delay-1 ${heroAnimated ? 'animate-in' : ''}`}
-            >
-              Capital Motor Cars helps you lease, finance, and take care of your vehicle 
-              with a clear process and personal support.
-            </p>
-            <div 
-              className={`flex flex-col sm:flex-row gap-4 hero-animate delay-2 ${heroAnimated ? 'animate-in' : ''}`}
-            >
-              <Button 
-                asChild 
-                size="lg" 
-                className="bg-accent hover:bg-accent/90 text-accent-foreground"
-              >
-                <Link to="/contact">Schedule a Call</Link>
-              </Button>
-              <Button 
-                asChild 
-                size="lg" 
-                variant="outline" 
-                className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
-              >
-                <Link to="/services">View Services</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection />
 
       {/* Services Section */}
       <section className="py-20 md:py-28 bg-background">
