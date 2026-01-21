@@ -6,43 +6,54 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 const vehicleTypes = [
   {
     name: 'Luxury',
-    image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400&h=250&fit=crop&auto=format',
+    // Real car photos (not illustrated/graphic)
+    image:
+      'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=900&h=520&fit=crop&auto=format',
   },
   {
     name: 'Electric',
-    image: 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=400&h=250&fit=crop&auto=format',
+    image:
+      'https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=900&h=520&fit=crop&auto=format',
   },
   {
     name: 'SUV',
-    image: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=400&h=250&fit=crop&auto=format',
+    image:
+      'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=900&h=520&fit=crop&auto=format',
   },
   {
     name: 'Sedan',
-    image: 'https://images.unsplash.com/photo-1590362891991-f776e747a588?w=400&h=250&fit=crop&auto=format',
+    image:
+      'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=900&h=520&fit=crop&auto=format',
   },
   {
     name: 'Sports',
-    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400&h=250&fit=crop&auto=format',
+    image:
+      'https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=900&h=520&fit=crop&auto=format',
   },
   {
     name: 'Coupe',
-    image: 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=400&h=250&fit=crop&auto=format',
+    image:
+      'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=900&h=520&fit=crop&auto=format',
   },
   {
     name: 'Crossover',
-    image: 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=400&h=250&fit=crop&auto=format',
+    image:
+      'https://images.unsplash.com/photo-1605559424843-9e7712e66b52?w=900&h=520&fit=crop&auto=format',
   },
   {
     name: 'Truck',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=250&fit=crop&auto=format',
+    image:
+      'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=900&h=520&fit=crop&auto=format',
   },
   {
     name: 'Minivan',
-    image: 'https://images.unsplash.com/photo-1559416523-140ddc3d238c?w=400&h=250&fit=crop&auto=format',
+    image:
+      'https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?w=900&h=520&fit=crop&auto=format',
   },
   {
     name: 'Convertible',
-    image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400&h=250&fit=crop&auto=format',
+    image:
+      'https://images.unsplash.com/photo-1502877338535-766e1452684a?w=900&h=520&fit=crop&auto=format',
   },
 ];
 
@@ -152,11 +163,12 @@ export function VehicleTypesCarousel() {
                 key={`${type.name}-${index}`}
                 className="flex-shrink-0 flex flex-col items-center group cursor-pointer"
               >
-                <div className="w-40 h-28 md:w-52 md:h-36 flex items-center justify-center overflow-hidden rounded-lg">
+                <div className="w-44 h-28 md:w-60 md:h-36 flex items-center justify-center overflow-hidden rounded-lg bg-background shadow-sm border border-border px-3">
                   <img
                     src={type.image}
                     alt={type.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                    className="w-full h-full object-contain group-hover:scale-[1.03] transition-transform duration-300"
                   />
                 </div>
                 <span className="mt-4 text-sm md:text-base font-semibold text-primary group-hover:text-accent transition-colors">
