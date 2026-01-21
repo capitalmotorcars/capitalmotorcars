@@ -199,3 +199,27 @@
     opacity: 1;
   }
 }
+
+/* Process step description animation */
+@keyframes stepDescription {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-step-description {
+  animation: stepDescription 300ms ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-step-description {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
