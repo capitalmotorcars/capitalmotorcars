@@ -9,17 +9,16 @@ export function HeroSection() {
   const heroAnimated = useHeroAnimation();
 
   return (
-    <section className="relative bg-primary py-12 lg:py-20">
-      {/* Background Image with Overlay */}
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-20"
-        style={{
-          backgroundImage: `url(${heroBg})`,
-        }}
+    <section className="relative bg-primary py-16 lg:py-24 min-h-[600px] lg:min-h-[700px]">
+      {/* Background Image */}
+      <img
+        src={heroBg}
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover opacity-40"
       />
       
-      {/* Dark gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary to-primary/95" />
+      {/* Dark gradient overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/85 to-primary/70" />
 
       <div className="relative container mx-auto px-4 lg:px-8">
         <div className="flex flex-col lg:flex-row lg:items-start lg:gap-12 xl:gap-20">
