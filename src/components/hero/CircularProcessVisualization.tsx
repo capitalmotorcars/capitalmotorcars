@@ -1,4 +1,4 @@
-import { User, Search, CheckCircle, Wrench, Truck, Car } from 'lucide-react';
+import { Headphones, Search, ShieldCheck, SlidersHorizontal, MapPin, Car } from 'lucide-react';
 import { useProcessAnimation } from '@/hooks/useProcessAnimation';
 import { cn } from '@/lib/utils';
 import { LucideIcon } from 'lucide-react';
@@ -11,29 +11,29 @@ interface ProcessStep {
 
 const processSteps: ProcessStep[] = [
   {
-    title: 'Consult',
-    icon: User,
-    description: "You'll work with one dedicated advisor who understands your needs from day one.",
+    title: 'Auto Consultant',
+    icon: Headphones,
+    description: 'A dedicated consultant manages the entire process as your single point of contact.',
   },
   {
-    title: 'Search',
+    title: 'Lease Search',
     icon: Search,
-    description: 'We search our network of partners to find the right vehicle at the right price.',
+    description: 'We search hundreds of dealerships to find the exact vehicle you want at the best price.',
   },
   {
-    title: 'Approve',
-    icon: CheckCircle,
-    description: 'Fast credit approval process with multiple lending options available.',
+    title: 'Get Approved',
+    icon: ShieldCheck,
+    description: 'We handle your credit application and compare options to secure the best terms.',
   },
   {
-    title: 'Service',
-    icon: Wrench,
-    description: 'Trade-in, detailing, repairs — we handle everything in one place.',
+    title: 'Add-Ons',
+    icon: SlidersHorizontal,
+    description: 'Optional upgrades like window tints or exterior enhancements, completed before delivery.',
   },
   {
-    title: 'Deliver',
-    icon: Truck,
-    description: 'Your vehicle arrives ready to drive, with all paperwork complete.',
+    title: 'Delivered',
+    icon: MapPin,
+    description: 'Your vehicle is delivered directly to your home or office. We handle lease returns too.',
   },
 ];
 
