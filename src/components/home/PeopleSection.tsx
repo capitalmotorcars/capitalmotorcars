@@ -8,11 +8,19 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { cn } from '@/lib/utils';
 
 import founderCeoImage from '@/assets/founder-ceo.jpg';
+import teamSprite from '@/assets/team-sprite.png';
 
 type Person = {
   name: string;
   role: string;
-  image: string;
+  image?: string;
+  sprite?: {
+    col: 0 | 1 | 2;
+    row: 0 | 1;
+    // Fine tuning offsets (percent)
+    xOffset?: number;
+    yOffset?: number;
+  };
 };
 
 const founder: Person = {
@@ -28,40 +36,50 @@ const team: Person[] = [
   {
     name: 'Henry Liu',
     role: 'Vice President',
-    image:
-      'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&h=800&fit=crop&crop=face',
+    sprite: { col: 0, row: 0, xOffset: 2, yOffset: 6 },
   },
   {
     name: 'Mark Onbashian',
     role: 'Vice President',
-    image:
-      'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&h=800&fit=crop&crop=face',
+    sprite: { col: 1, row: 0, xOffset: 0, yOffset: 6 },
   },
   {
     name: 'Michael Zeitoune',
     role: 'Director of Finance',
-    image:
-      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&h=800&fit=crop&crop=face',
+    sprite: { col: 2, row: 0, xOffset: -2, yOffset: 6 },
   },
   {
     name: 'Vicky Azrak',
     role: 'Sales Manager',
-    image:
-      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&h=800&fit=crop&crop=face',
+    sprite: { col: 0, row: 1, xOffset: 2, yOffset: -2 },
   },
   {
     name: 'Michael Minerva',
     role: 'Sales Manager',
-    image:
-      'https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800&h=800&fit=crop&crop=face',
+    sprite: { col: 1, row: 1, xOffset: 0, yOffset: -2 },
   },
   {
     name: 'Derek Anton',
     role: 'Business Development Director',
-    image:
-      'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=800&h=800&fit=crop&crop=face',
+    sprite: { col: 2, row: 1, xOffset: -2, yOffset: -2 },
   },
 ];
+
+function spriteStyle(sprite: NonNullable<Person['sprite']>) {
+  // Base mapping for a 3x2 grid sprite
+  const baseX = sprite.col === 0 ? 0 : sprite.col === 1 ? 50 : 100;
+  const baseY = sprite.row === 0 ? 0 : 100;
+  const x = baseX + (sprite.xOffset ?? 0);
+  const y = baseY + (sprite.yOffset ?? 0);
+
+  return {
+    backgroundImage: `url(${teamSprite})`,
+    backgroundRepeat: 'no-repeat' as const,
+    // Make each tile fill the avatar area; we zoom a bit to focus on the photo inside the card
+    backgroundSize: '340% 240%',
+    backgroundPosition: `${x}% ${y}%`,
+  };
+}
 
 function usePrefersReducedMotion() {
   const [reduced, setReduced] = React.useState(false);
@@ -254,17 +272,30 @@ export function PeopleSection() {
                   aria-label={`${person.name}, ${person.role}`}
                 >
                   <div className="relative mx-auto w-[104px] h-[104px] md:w-[112px] md:h-[112px]">
-                    <img
-                      src={person.image}
-                      alt={person.name}
-                      loading="lazy"
-                      className={cn(
-                        'h-full w-full rounded-full object-cover',
-                        'shadow-sm ring-1 ring-border',
-                        'transition-shadow duration-300 ease-out motion-reduce:transition-none',
-                        'group-hover:shadow-md',
-                      )}
-                    />
+                    {person.sprite ? (
+                      <div
+                        aria-hidden="true"
+                        className={cn(
+                          'h-full w-full rounded-full',
+                          'shadow-sm ring-1 ring-border',
+                          'transition-shadow duration-300 ease-out motion-reduce:transition-none',
+                          'group-hover:shadow-md',
+                        )}
+                        style={spriteStyle(person.sprite)}
+                      />
+                    ) : (
+                      <img
+                        src={person.image}
+                        alt={person.name}
+                        loading="lazy"
+                        className={cn(
+                          'h-full w-full rounded-full object-cover',
+                          'shadow-sm ring-1 ring-border',
+                          'transition-shadow duration-300 ease-out motion-reduce:transition-none',
+                          'group-hover:shadow-md',
+                        )}
+                      />
+                    )}
                   </div>
                   <div className="mt-4">
                     <div className="text-sm md:text-base font-semibold text-foreground">{person.name}</div>
