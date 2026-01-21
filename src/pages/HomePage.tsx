@@ -5,6 +5,8 @@ import { ServiceCard } from '@/components/ui/ServiceCard';
 import { StatCard } from '@/components/ui/StatCard';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { HeroSection } from '@/components/hero/HeroSection';
+import { PeopleSection } from '@/components/home/PeopleSection';
+import { VehiclesSection } from '@/components/home/VehiclesSection';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { 
   Car, 
@@ -84,6 +86,10 @@ export default function HomePage() {
   return (
     <Layout>
       <HeroSection />
+
+      <PeopleSection />
+
+      <VehiclesSection />
 
       {/* What We Do Section */}
       <section className="py-20 md:py-28 bg-background">
