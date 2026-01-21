@@ -30,7 +30,7 @@ export function HeroSection() {
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
-              Straightforward car solutions, without the stress.
+              Simple, stress-free automotive solutions.
             </h1>
             
             <p
@@ -38,7 +38,7 @@ export function HeroSection() {
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
-              A clear, guided process from your first conversation to delivery at your door.
+              Capital Motor Cars helps you lease, finance and maintain your vehicle with a clear process and personalized support.
             </p>
 
             <div
@@ -52,7 +52,7 @@ export function HeroSection() {
                 className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 h-12"
               >
                 <Link to="/contact">
-                  Get Started
+                  Schedule a Call
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
               </Button>

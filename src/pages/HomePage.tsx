@@ -20,38 +20,38 @@ import {
 
 const services = [
   {
-    title: 'Car Leasing',
-    description: 'Flexible lease terms on a wide selection of vehicles. Get behind the wheel without the long-term commitment.',
+    title: 'Vehicle Leasing',
+    description: 'Find the right lease for your budget and needs without spending hours negotiating at dealerships.',
     href: '/services/car-leasing',
     icon: Car,
   },
   {
     title: 'Financing & Credit',
-    description: 'Competitive financing options tailored to your situation. We work with multiple lenders to find the right fit.',
+    description: 'A simple credit application to review financing options without unnecessary paperwork.',
     href: '/services/financing',
     icon: CreditCard,
   },
   {
-    title: 'Trade-In',
-    description: 'Get a fair value for your current vehicle. Simple appraisal process with no obligation.',
+    title: 'Trade-In Services',
+    description: 'We evaluate your current vehicle and manage the trade-in process to prevent undervaluation.',
     href: '/services/trade-in',
     icon: RefreshCw,
   },
   {
     title: 'Wear & Tear Repair',
-    description: 'Address lease-end concerns before they become costly. Professional repairs at reasonable prices.',
+    description: 'End-of-lease repairs focused on reducing penalties and unexpected charges.',
     href: '/services/wear-and-tear',
     icon: Wrench,
   },
   {
-    title: 'Wheel & Tire Repair',
-    description: 'Rim refinishing, tire replacement, and wheel alignment. Keep your vehicle looking and running great.',
+    title: 'Rim, Wheel & Tire',
+    description: 'Repair and restoration of wheels and tires, both cosmetic and functional.',
     href: '/services/wheel-repair',
     icon: CircleDot,
   },
   {
-    title: 'Car Detailing',
-    description: 'Professional interior and exterior detailing. Restore your vehicle to showroom condition.',
+    title: 'Professional Detailing',
+    description: 'Interior and exterior detailing for vehicles being returned, sold or simply cleaned properly.',
     href: '/services/detailing',
     icon: Sparkles,
   },
@@ -60,18 +60,18 @@ const services = [
 const whyChooseUs = [
   {
     icon: User,
-    title: 'One Point of Contact',
-    description: 'No runaround. You work directly with someone who knows your situation and can actually help.',
+    title: 'Single Point of Contact',
+    description: 'No need to switch between dealerships, lenders or service garages.',
   },
   {
     icon: Award,
     title: 'Real Industry Experience',
-    description: 'Decades of combined experience in automotive sales, leasing, and service. We know the business inside and out.',
+    description: 'We know how the system works and how to navigate it effectively.',
   },
   {
     icon: CheckCircle,
     title: 'Clear, Practical Process',
-    description: 'No hidden fees, no pressure tactics. We explain everything upfront and let you make informed decisions.',
+    description: 'You know what is happening, how much it costs and what happens next.',
   },
 ];
 
@@ -85,15 +85,15 @@ export default function HomePage() {
     <Layout>
       <HeroSection />
 
-      {/* Services Section */}
+      {/* What We Do Section */}
       <section className="py-20 md:py-28 bg-background">
         <div 
           ref={servicesRef}
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${servicesRevealed ? 'revealed' : ''}`}
         >
           <SectionHeading
-            title="Our Services"
-            subtitle="From leasing to repairs, we provide comprehensive automotive solutions with transparency at every step."
+            title="What We Do"
+            subtitle="We support customers at every stage of the automotive process."
           />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service) => (
@@ -103,15 +103,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
+      {/* Why Work With Us Section */}
       <section className="py-20 md:py-28 bg-muted">
         <div 
           ref={whyRef}
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${whyRevealed ? 'revealed' : ''}`}
         >
           <SectionHeading
-            title="Why Capital Motor Cars"
-            subtitle="We're not a typical dealership. Here's what makes working with us different."
+            title="Why Work with Capital Motor Cars"
           />
           <div className="grid md:grid-cols-3 gap-8">
             {whyChooseUs.map((item) => (
@@ -127,20 +126,19 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Experience You Can Trust Section */}
       <section className="py-20 md:py-28 bg-background">
         <div 
           ref={statsRef}
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${statsRevealed ? 'revealed' : ''}`}
         >
           <SectionHeading
-            title="Trusted Experience"
-            subtitle="Numbers that reflect our commitment to customer satisfaction."
+            title="Experience You Can Trust"
           />
           <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             <StatCard value={30} suffix="+" label="Years Combined Experience" />
-            <StatCard value={500} suffix="+" label="Customers Served" />
-            <StatCard value={15} suffix="+" label="Brand Partners" />
+            <StatCard value={100} suffix="s" label="Completed Transactions" />
+            <StatCard value={15} suffix="+" label="Trusted Brand Partners" />
           </div>
         </div>
       </section>
@@ -152,10 +150,10 @@ export default function HomePage() {
           className={`container mx-auto px-4 lg:px-8 text-center scroll-reveal ${ctaRevealed ? 'revealed' : ''}`}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-6 max-w-2xl mx-auto">
-            Want a simpler way to handle your next vehicle?
+            Looking for a simpler way to handle your next vehicle?
           </h2>
           <p className="text-lg text-primary-foreground/80 mb-8 max-w-xl mx-auto">
-            Schedule a call and we'll walk you through it. No pressure, no obligation.
+            Schedule a call and we will walk you through it.
           </p>
           <Button 
             asChild 
