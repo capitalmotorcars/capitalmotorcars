@@ -8,6 +8,7 @@ import { HeroSection } from '@/components/hero/HeroSection';
 import { PeopleSection } from '@/components/home/PeopleSection';
 import { VehicleTypesCarousel } from '@/components/home/VehicleTypesCarousel';
 import { BrandsCarousel } from '@/components/home/BrandsCarousel';
+import { QuickLeadCapture } from '@/components/home/QuickLeadCapture';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { 
   Car, 
@@ -88,9 +89,9 @@ export default function HomePage() {
     <Layout>
       <HeroSection />
 
-      <VehicleTypesCarousel />
-
       <BrandsCarousel />
+
+      <QuickLeadCapture />
 
       <PeopleSection />
 
@@ -151,6 +152,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <VehicleTypesCarousel />
 
       {/* Final CTA Section - CDK dark style */}
       <section className="py-20 md:py-28" style={{ backgroundColor: 'hsl(216 27% 6%)' }}>
