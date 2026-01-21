@@ -32,8 +32,8 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 bg-background transition-all duration-300 ${
-        isScrolled ? 'py-3 shadow-md' : 'py-5'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-background py-3 shadow-md' : 'bg-transparent py-5'
       }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
@@ -53,10 +53,10 @@ export function Header() {
               <Link
                 key={link.href}
                 to={link.href}
-                className={`text-sm font-medium transition-colors hover:text-accent ${
-                  location.pathname === link.href
-                    ? 'text-accent'
-                    : 'text-primary'
+                className={`text-sm font-medium transition-colors ${
+                  isScrolled
+                    ? (location.pathname === link.href ? 'text-accent' : 'text-primary hover:text-accent')
+                    : (location.pathname === link.href ? 'text-accent' : 'text-white/90 hover:text-white')
                 }`}
               >
                 {link.label}
@@ -73,7 +73,7 @@ export function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 text-primary"
+            className={`lg:hidden p-2 transition-colors ${isScrolled ? 'text-primary' : 'text-white'}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -83,16 +83,16 @@ export function Header() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden mt-4 pb-4 border-t border-border">
+          <div className={`lg:hidden mt-4 pb-4 border-t ${isScrolled ? 'border-border bg-background' : 'border-white/20 bg-[hsl(216_27%_6%)]'}`}>
             <nav className="flex flex-col gap-2 pt-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   to={link.href}
                   className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
-                    location.pathname === link.href
-                      ? 'bg-muted text-accent'
-                      : 'text-primary hover:bg-muted'
+                    isScrolled
+                      ? (location.pathname === link.href ? 'bg-muted text-accent' : 'text-primary hover:bg-muted')
+                      : (location.pathname === link.href ? 'bg-white/10 text-accent' : 'text-white/90 hover:bg-white/10')
                   }`}
                 >
                   {link.label}
