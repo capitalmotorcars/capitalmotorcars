@@ -87,9 +87,9 @@ export default function HomePage() {
     <Layout>
       <HeroSection />
 
-      <PeopleSection />
-
       <VehiclesSection />
+
+      <PeopleSection />
 
       {/* What We Do Section */}
       <section className="py-20 md:py-28 bg-background">
