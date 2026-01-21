@@ -7,6 +7,8 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { cn } from '@/lib/utils';
 
+import founderCeoImage from '@/assets/founder-ceo.jpg';
+
 type Person = {
   name: string;
   role: string;
@@ -16,8 +18,7 @@ type Person = {
 const founder: Person = {
   name: 'Christopher Amico',
   role: 'President & CEO',
-  image:
-    'https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800&h=800&fit=crop&crop=face',
+  image: founderCeoImage,
 };
 
 const founderNote =
