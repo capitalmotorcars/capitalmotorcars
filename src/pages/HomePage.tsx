@@ -7,6 +7,7 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { HeroSection } from '@/components/hero/HeroSection';
 import { PeopleSection } from '@/components/home/PeopleSection';
 import { VehiclesSection } from '@/components/home/VehiclesSection';
+import { BrandsCarousel } from '@/components/home/BrandsCarousel';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { 
   Car, 
@@ -86,6 +87,8 @@ export default function HomePage() {
   return (
     <Layout>
       <HeroSection />
+
+      <BrandsCarousel />
 
       <VehiclesSection />
 
