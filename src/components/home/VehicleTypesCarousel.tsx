@@ -89,16 +89,39 @@ export function VehicleTypesCarousel() {
 
     animationRef.current = requestAnimationFrame(animate);
 
-    const handleMouseEnter = () => { isPausedRef.current = true; };
-    const handleMouseLeave = () => { isPausedRef.current = false; };
+    const handleMouseEnter = () => {
+      isPausedRef.current = true;
+    };
+    const handleMouseLeave = () => {
+      isPausedRef.current = false;
+    };
+
+    // Pause while the user is dragging / touching (mobile + desktop)
+    const handlePointerDown = () => {
+      isPausedRef.current = true;
+    };
+    const handlePointerUp = () => {
+      isPausedRef.current = false;
+    };
+    const handlePointerCancel = () => {
+      isPausedRef.current = false;
+    };
 
     scrollContainer.addEventListener('mouseenter', handleMouseEnter);
     scrollContainer.addEventListener('mouseleave', handleMouseLeave);
+    scrollContainer.addEventListener('pointerdown', handlePointerDown);
+    scrollContainer.addEventListener('pointerup', handlePointerUp);
+    scrollContainer.addEventListener('pointercancel', handlePointerCancel);
+    scrollContainer.addEventListener('pointerleave', handlePointerUp);
 
     return () => {
       if (animationRef.current) cancelAnimationFrame(animationRef.current);
       scrollContainer.removeEventListener('mouseenter', handleMouseEnter);
       scrollContainer.removeEventListener('mouseleave', handleMouseLeave);
+      scrollContainer.removeEventListener('pointerdown', handlePointerDown);
+      scrollContainer.removeEventListener('pointerup', handlePointerUp);
+      scrollContainer.removeEventListener('pointercancel', handlePointerCancel);
+      scrollContainer.removeEventListener('pointerleave', handlePointerUp);
     };
   }, []);
 
@@ -107,12 +130,15 @@ export function VehicleTypesCarousel() {
     if (!scrollContainer) return;
     
     const scrollAmount = 300;
-    const newPosition = direction === 'left' 
-      ? scrollPositionRef.current - scrollAmount 
+    const halfWidth = scrollContainer.scrollWidth / 2;
+    const rawPosition = direction === 'left'
+      ? scrollPositionRef.current - scrollAmount
       : scrollPositionRef.current + scrollAmount;
-    
-    scrollPositionRef.current = Math.max(0, newPosition);
-    scrollContainer.scrollTo({ left: scrollPositionRef.current, behavior: 'smooth' });
+
+    // Keep position within the looping range
+    const nextPosition = ((rawPosition % halfWidth) + halfWidth) % halfWidth;
+    scrollPositionRef.current = nextPosition;
+    scrollContainer.scrollTo({ left: nextPosition, behavior: 'smooth' });
   };
 
   const duplicatedTypes = [...vehicleTypes, ...vehicleTypes];
