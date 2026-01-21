@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { CircularProcessVisualization } from './CircularProcessVisualization';
 import { useHeroAnimation } from '@/hooks/useHeroAnimation';
 import { ArrowRight } from 'lucide-react';
+import heroBg from '@/assets/hero-bg.jpg';
 
 export function HeroSection() {
   const heroAnimated = useHeroAnimation();
@@ -11,10 +12,9 @@ export function HeroSection() {
     <section className="relative bg-primary py-12 lg:py-20">
       {/* Background Image with Overlay */}
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-10"
+        className="absolute inset-0 bg-cover bg-center opacity-20"
         style={{
-          backgroundImage:
-            'url(https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1920&q=80)',
+          backgroundImage: `url(${heroBg})`,
         }}
       />
       
