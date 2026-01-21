@@ -111,7 +111,7 @@ export function ServiceTemplate({
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${issuesRevealed ? 'revealed' : ''}`}
         >
           <SectionHeading 
-            title="Common Issues We Handle" 
+            title="Common Issues We Address" 
             align="left" 
           />
           <ul className="space-y-3 max-w-2xl">
@@ -131,7 +131,7 @@ export function ServiceTemplate({
           ref={howRef}
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${howRevealed ? 'revealed' : ''}`}
         >
-          <SectionHeading title="How It Works" />
+          <SectionHeading title="How the Process Works" />
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
             {howItWorks.map((step, index) => (
               <div key={index} className="text-center">
@@ -196,8 +196,8 @@ export function ServiceTemplate({
         >
           <div className="max-w-xl mx-auto">
             <SectionHeading
-              title="Get Started"
-              subtitle="Have questions or ready to move forward? Fill out the form below and we'll be in touch."
+              title="Interested in this service?"
+              subtitle="Leave your details and we will get back to you."
             />
             <div className="bg-background p-6 md:p-8 rounded-lg border border-border">
               <ContactForm compact />

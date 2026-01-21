@@ -11,10 +11,9 @@ const footerLinks = {
     { href: '/services/detailing', label: 'Car Detailing' },
   ],
   company: [
-    { href: '/about', label: 'About Us' },
-    { href: '/brands', label: 'Brands' },
+    { href: '/services', label: 'Services' },
+    { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
-    { href: '/credit-application', label: 'Credit Application' },
   ],
   legal: [
     { href: '/privacy-policy', label: 'Privacy Policy' },
@@ -37,8 +36,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-sm text-primary-foreground/70 leading-relaxed">
-              Straightforward car solutions, without the stress. Serving customers with 
-              integrity and expertise since day one.
+              Simple, stress-free automotive solutions.
             </p>
           </div>
 

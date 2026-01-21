@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { ServiceCard } from '@/components/ui/ServiceCard';
-import { SectionHeading } from '@/components/ui/SectionHeading';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { 
   Car, 
@@ -24,42 +23,42 @@ const categories = [
 const services = [
   {
     title: 'Car Leasing',
-    description: 'Flexible lease terms on a wide selection of vehicles from multiple brands. Get behind the wheel with predictable monthly payments and comprehensive support.',
+    description: 'Find the right lease for your budget and needs without spending hours negotiating at dealerships.',
     href: '/services/car-leasing',
     icon: Car,
     category: 'leasing',
   },
   {
-    title: 'Financing & Credit Application',
-    description: 'Competitive financing options tailored to your unique situation. We work with multiple lenders to find the best rates and terms for you.',
+    title: 'Financing & Credit',
+    description: 'A simple credit application to review financing options without unnecessary paperwork.',
     href: '/services/financing',
     icon: CreditCard,
     category: 'financing',
   },
   {
     title: 'Trade-In',
-    description: 'Get a fair, honest value for your current vehicle. Our simple appraisal process gives you a clear picture with no obligation to proceed.',
+    description: 'We evaluate your current vehicle and manage the trade-in process to prevent undervaluation.',
     href: '/services/trade-in',
     icon: RefreshCw,
     category: 'trade-in',
   },
   {
     title: 'Wear & Tear Repair',
-    description: 'Address lease-end concerns before return. We handle scratches, dents, interior damage, and more at prices that make sense.',
+    description: 'End-of-lease repairs focused on reducing penalties and unexpected charges.',
     href: '/services/wear-and-tear',
     icon: Wrench,
     category: 'vehicle-services',
   },
   {
     title: 'Rim, Wheel & Tire Repair',
-    description: 'Professional rim refinishing, curb rash repair, tire replacement, and wheel alignment to keep your vehicle safe and looking great.',
+    description: 'Repair and restoration of wheels and tires, both cosmetic and functional.',
     href: '/services/wheel-repair',
     icon: CircleDot,
     category: 'vehicle-services',
   },
   {
-    title: 'Professional Car Detailing',
-    description: 'Comprehensive interior and exterior detailing services. From basic washes to full paint correction, restore your vehicle to showroom condition.',
+    title: 'Professional Detailing',
+    description: 'Interior and exterior detailing for vehicles being returned, sold or simply cleaned properly.',
     href: '/services/detailing',
     icon: Sparkles,
     category: 'vehicle-services',
@@ -84,8 +83,7 @@ export default function ServicesPage() {
               Our Services
             </h1>
             <p className="text-lg text-primary-foreground/80">
-              From finding your next vehicle to keeping it in top condition, we offer 
-              comprehensive automotive services with the personal attention you deserve.
+              We offer practical automotive solutions for customers who want things done right and without unnecessary hassle.
             </p>
           </div>
         </div>
@@ -124,13 +122,13 @@ export default function ServicesPage() {
           {/* Additional CTA */}
           <div className="mt-16 text-center">
             <p className="text-muted-foreground mb-4">
-              Not sure which service you need?
+              Select a service to see how it works.
             </p>
             <Link 
               to="/contact" 
               className="text-accent font-medium hover:underline"
             >
-              Contact us and we'll help you figure it out →
+              Or contact us directly →
             </Link>
           </div>
         </div>
