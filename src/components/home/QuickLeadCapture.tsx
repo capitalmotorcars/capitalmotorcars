@@ -87,7 +87,7 @@ export function QuickLeadCapture() {
             <div>
               <h2 className="text-2xl md:text-3xl font-semibold text-foreground">Get a call back</h2>
               <p className="mt-2 text-muted-foreground">
-                Leave your details and we will reach out with next steps—no dealership runaround.
+                Leave your details and we will reach out with next steps. No dealership runaround.
               </p>
             </div>
 

@@ -22,7 +22,7 @@ const processSteps = [
   {
     title: 'Additional Services',
     icon: Wrench,
-    description: 'Trade-in, detailing, repairs — we handle everything in one place.',
+    description: 'Trade-in, detailing, repairs. We handle everything in one place.',
   },
   {
     title: 'Delivered to Your Door',
