@@ -89,9 +89,9 @@ export default function HomePage() {
     <Layout>
       <HeroSection />
 
-      <BrandsCarousel />
+      <VehicleTypesCarousel />
 
-      <QuickLeadCapture />
+      <BrandsCarousel />
 
       <PeopleSection />
 
@@ -153,7 +153,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <VehicleTypesCarousel />
+      <QuickLeadCapture />
 
       {/* Final CTA Section - CDK dark style */}
       <section className="py-20 md:py-28" style={{ backgroundColor: 'hsl(216 27% 6%)' }}>
