@@ -14,9 +14,12 @@ import {
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 
+const phoneRegex = /^[\d\s\-\+\(\)]{10,20}$/;
+
 const quickLeadSchema = z.object({
   fullName: z.string().trim().min(2, "Name must be at least 2 characters").max(100),
-  phone: z.string().trim().min(10, "Please enter a valid phone number").max(20),
+  email: z.string().trim().email("Please enter a valid email address").max(255),
+  phone: z.string().trim().regex(phoneRegex, "Please enter a valid phone number"),
   service: z.string().optional(),
 });
 
@@ -34,7 +37,7 @@ const services = [
 
 export function QuickLeadCapture() {
   const navigate = useNavigate();
-  const [data, setData] = useState<QuickLeadData>({ fullName: "", phone: "", service: undefined });
+  const [data, setData] = useState<QuickLeadData>({ fullName: "", email: "", phone: "", service: undefined });
   const [errors, setErrors] = useState<Partial<Record<keyof QuickLeadData, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -63,6 +66,7 @@ export function QuickLeadCapture() {
 
     const params = new URLSearchParams();
     params.set("fullName", parsed.data.fullName);
+    params.set("email", parsed.data.email);
     params.set("phone", parsed.data.phone);
     if (parsed.data.service) params.set("service", parsed.data.service);
     // Help the contact form user by prefilling a short message skeleton.
@@ -94,7 +98,7 @@ export function QuickLeadCapture() {
                 "grid gap-4"
               )}
             >
-              <div className="grid gap-4 md:grid-cols-2">
+              <div className="grid gap-4 md:grid-cols-3">
                 <div className="space-y-2">
                   <Label htmlFor="quickLeadFullName">Full Name *</Label>
                   <Input
@@ -106,6 +110,21 @@ export function QuickLeadCapture() {
                     autoComplete="name"
                   />
                   {errors.fullName ? <p className="text-sm text-destructive">{errors.fullName}</p> : null}
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="quickLeadEmail">Email *</Label>
+                  <Input
+                    id="quickLeadEmail"
+                    type="email"
+                    value={data.email}
+                    onChange={(e) => setData((s) => ({ ...s, email: e.target.value }))}
+                    placeholder="john@example.com"
+                    className={errors.email ? "border-destructive" : ""}
+                    autoComplete="email"
+                    inputMode="email"
+                  />
+                  {errors.email ? <p className="text-sm text-destructive">{errors.email}</p> : null}
                 </div>
 
                 <div className="space-y-2">
