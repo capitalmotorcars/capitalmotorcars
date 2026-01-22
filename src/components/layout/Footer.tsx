@@ -115,7 +115,7 @@ export function Footer() {
 
             {/* Locations */}
             <div className="lg:col-span-1">
-              <h3 className="text-sm font-semibold uppercase tracking-wider mb-4">
+              <h3 className="text-sm font-semibold uppercase tracking-wider mb-4 text-white">
                 Locations
               </h3>
               <div className="space-y-6">
@@ -156,7 +156,7 @@ export function Footer() {
 
             {/* Services */}
             <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider mb-4">
+              <h3 className="text-sm font-semibold uppercase tracking-wider mb-4 text-white">
                 Services
               </h3>
               <ul className="space-y-3">
@@ -176,7 +176,7 @@ export function Footer() {
 
             {/* Company */}
             <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider mb-4">
+              <h3 className="text-sm font-semibold uppercase tracking-wider mb-4 text-white">
                 Company
               </h3>
               <ul className="space-y-3">
