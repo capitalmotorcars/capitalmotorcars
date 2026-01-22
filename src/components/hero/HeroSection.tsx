@@ -38,7 +38,7 @@ export function HeroSection() {
               }`}
               style={{ color: 'hsl(213 27% 84%)' }}
             >
-              Work with a personal auto consultant who manages the entire process — from search and approval to delivery at your door.
+              Work with a personal auto consultant who manages the entire process, from search and approval to delivery at your door.
             </p>
 
             <div
