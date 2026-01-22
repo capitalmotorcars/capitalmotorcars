@@ -77,7 +77,7 @@ export function Footer() {
           <h3 className="text-2xl md:text-3xl font-semibold text-white mb-3">
             Ready to Get Started?
           </h3>
-          <p className="text-base mb-6" style={{ color: 'hsl(213 27% 70%)' }}>
+          <p className="text-base mb-6" style={{ color: 'hsl(213 20% 80%)' }}>
             Book a call today and let us handle the details.
           </p>
           <Button asChild size="lg">
@@ -99,7 +99,7 @@ export function Footer() {
                   className="h-10 w-auto brightness-0 invert"
                 />
               </Link>
-              <p className="text-sm leading-relaxed mb-6" style={{ color: 'hsl(213 27% 84%)' }}>
+              <p className="text-sm leading-relaxed mb-6" style={{ color: 'hsl(213 20% 85%)' }}>
                 Simple, stress-free automotive solutions.
               </p>
               <div className="flex items-center gap-4">
@@ -110,7 +110,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="transition-colors hover:text-white"
-                    style={{ color: 'hsl(213 27% 70%)' }}
+                    style={{ color: 'hsl(213 20% 80%)' }}
                     aria-label={social.label}
                   >
                     <social.icon className="h-5 w-5" />
@@ -121,7 +121,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="transition-colors hover:text-white"
-                  style={{ color: 'hsl(213 27% 70%)' }}
+                  style={{ color: 'hsl(213 20% 80%)' }}
                   aria-label="Yelp"
                 >
                   <YelpIcon className="h-5 w-5" />
@@ -136,16 +136,16 @@ export function Footer() {
               </h3>
               <div className="space-y-5">
                 {locations.map((loc) => (
-                  <div key={loc.name} className="text-sm" style={{ color: 'hsl(213 27% 70%)' }}>
+                  <div key={loc.name} className="text-sm" style={{ color: 'hsl(213 20% 80%)' }}>
                     <p className="font-medium text-white mb-1">
                       {loc.name} – {loc.city}
                     </p>
                     <div className="flex items-start gap-2 mb-1">
-                      <MapPin className="h-4 w-4 mt-0.5 shrink-0" style={{ color: 'hsl(213 27% 50%)' }} />
+                      <MapPin className="h-4 w-4 mt-0.5 shrink-0" style={{ color: 'hsl(213 25% 65%)' }} />
                       <span>{loc.address}</span>
                     </div>
                     <div className="flex items-center gap-2 mb-1">
-                      <Phone className="h-4 w-4 shrink-0" style={{ color: 'hsl(213 27% 50%)' }} />
+                      <Phone className="h-4 w-4 shrink-0" style={{ color: 'hsl(213 25% 65%)' }} />
                       <a
                         href={`tel:${loc.phone.replace(/\D/g, '')}`}
                         className="hover:text-white transition-colors"
@@ -154,7 +154,7 @@ export function Footer() {
                       </a>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Building className="h-4 w-4 shrink-0" style={{ color: 'hsl(213 27% 50%)' }} />
+                      <Building className="h-4 w-4 shrink-0" style={{ color: 'hsl(213 25% 65%)' }} />
                       <span>Fax: {loc.fax}</span>
                     </div>
                   </div>
@@ -173,7 +173,7 @@ export function Footer() {
                     <Link
                       to={link.href}
                       className="text-sm hover:text-white transition-colors"
-                      style={{ color: 'hsl(213 27% 70%)' }}
+                      style={{ color: 'hsl(213 20% 80%)' }}
                     >
                       {link.label}
                     </Link>
@@ -193,7 +193,7 @@ export function Footer() {
                     <Link
                       to={link.href}
                       className="text-sm hover:text-white transition-colors"
-                      style={{ color: 'hsl(213 27% 70%)' }}
+                      style={{ color: 'hsl(213 20% 80%)' }}
                     >
                       {link.label}
                     </Link>
@@ -205,10 +205,10 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div style={{ borderTop: '1px solid hsl(213 27% 20%)' }}>
+        <div style={{ borderTop: '1px solid hsl(213 20% 30%)' }}>
           <div className="container mx-auto px-4 lg:px-8 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-sm" style={{ color: 'hsl(213 27% 50%)' }}>
+              <p className="text-sm" style={{ color: 'hsl(213 20% 70%)' }}>
                 © {new Date().getFullYear()} Capital Motor Cars. All rights reserved.
               </p>
               <div className="flex items-center gap-4">
@@ -217,12 +217,12 @@ export function Footer() {
                     <Link
                       to={link.href}
                       className="text-sm hover:text-white transition-colors"
-                      style={{ color: 'hsl(213 27% 50%)' }}
+                      style={{ color: 'hsl(213 20% 70%)' }}
                     >
                       {link.label}
                     </Link>
                     {idx < footerLinks.legal.length - 1 && (
-                      <span style={{ color: 'hsl(213 27% 30%)' }}>|</span>
+                      <span style={{ color: 'hsl(213 20% 50%)' }}>|</span>
                     )}
                   </span>
                 ))}
