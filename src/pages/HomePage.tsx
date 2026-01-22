@@ -25,57 +25,60 @@ import {
 const services = [
   {
     title: 'Vehicle Leasing',
-    description: 'Find the right lease for your budget and needs without spending hours negotiating at dealerships.',
+    description: 'We help you secure the right lease without spending hours negotiating at dealerships.',
     href: '/services/car-leasing',
     icon: Car,
   },
   {
     title: 'Financing & Credit',
-    description: 'A simple credit application to review financing options without unnecessary paperwork.',
+    description: 'A straightforward credit application, so we can review financing options with you.',
     href: '/services/financing',
     icon: CreditCard,
   },
   {
     title: 'Trade-In Services',
-    description: 'We evaluate your current vehicle and manage the trade-in process to prevent undervaluation.',
+    description: 'We evaluate your current vehicle and manage the trade-in process from start to finish.',
     href: '/services/trade-in',
     icon: RefreshCw,
   },
   {
     title: 'Wear & Tear Repair',
-    description: 'End-of-lease repairs focused on reducing penalties and unexpected charges.',
+    description: 'End-of-lease repairs to reduce wear charges and avoid surprises at return.',
     href: '/services/wear-and-tear',
     icon: Wrench,
   },
   {
     title: 'Rim, Wheel & Tire',
-    description: 'Repair and restoration of wheels and tires, both cosmetic and functional.',
+    description: 'Wheel and tire repairs, cosmetic or functional, depending on what is needed.',
     href: '/services/wheel-repair',
     icon: CircleDot,
   },
   {
     title: 'Professional Detailing',
-    description: 'Interior and exterior detailing for vehicles being returned, sold or simply cleaned properly.',
+    description: 'Interior and exterior detailing for return, resale, or a proper clean.',
     href: '/services/detailing',
     icon: Sparkles,
   },
 ];
 
+const coreServices = services.slice(0, 3);
+const supportingServices = services.slice(3);
+
 const whyChooseUs = [
   {
     icon: User,
     title: 'Single Point of Contact',
-    description: 'No need to switch between dealerships, lenders or service garages.',
+    description: 'One dedicated consultant manages everything for you.',
   },
   {
     icon: Award,
     title: 'Real Industry Experience',
-    description: 'We know how the system works and how to navigate it effectively.',
+    description: 'We understand how dealerships and lenders actually work.',
   },
   {
     icon: CheckCircle,
     title: 'Clear, Practical Process',
-    description: 'You know what is happening, how much it costs and what happens next.',
+    description: 'You always know what’s happening and what comes next.',
   },
 ];
 
@@ -105,10 +108,27 @@ export default function HomePage() {
             title="What We Do"
             subtitle="We support customers at every stage of the automotive process."
           />
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service) => (
-              <ServiceCard key={service.href} {...service} />
-            ))}
+
+          <div className="max-w-6xl mx-auto">
+            <div className="text-xs uppercase tracking-wider text-muted-foreground mb-4">
+              Core services
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              {coreServices.map((service) => (
+                <ServiceCard key={service.href} {...service} variant="core" />
+              ))}
+            </div>
+
+            <div className="mt-10">
+              <div className="text-xs uppercase tracking-wider text-muted-foreground mb-4">
+                Supporting services
+              </div>
+              <div className="grid md:grid-cols-3 gap-6">
+                {supportingServices.map((service) => (
+                  <ServiceCard key={service.href} {...service} variant="supporting" />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -122,14 +142,14 @@ export default function HomePage() {
           <SectionHeading
             title="Why Work with Capital Motor Cars"
           />
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-10 lg:gap-12 max-w-6xl mx-auto">
             {whyChooseUs.map((item) => (
               <div key={item.title} className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-muted rounded-full mb-6">
-                  <item.icon className="w-8 h-8 text-primary" />
+                <div className="inline-flex items-center justify-center w-10 h-10 border border-border rounded-full mb-6">
+                  <item.icon className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold text-primary mb-3">{item.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+                <h3 className="text-2xl font-semibold text-primary mb-2">{item.title}</h3>
+                <p className="text-base text-muted-foreground leading-snug">{item.description}</p>
               </div>
             ))}
           </div>
