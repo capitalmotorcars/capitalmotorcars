@@ -144,7 +144,7 @@ export function VehicleTypesCarousel() {
   const duplicatedTypes = [...vehicleTypes, ...vehicleTypes];
 
   return (
-    <section className="py-16 md:py-24 bg-background">
+    <section className="py-16 md:py-24 bg-muted">
       <div
         ref={ref}
         className={`scroll-reveal ${isRevealed ? 'revealed' : ''}`}
@@ -161,23 +161,27 @@ export function VehicleTypesCarousel() {
           {/* Navigation arrows */}
           <button
             onClick={() => scroll('left')}
-            className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-20 p-2 text-muted-foreground hover:text-foreground transition-colors"
+            className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 z-20 inline-flex items-center justify-center rounded-full border border-border bg-background/70 backdrop-blur-sm shadow-sm p-2 text-foreground hover:bg-background transition-colors"
             aria-label="Scroll left"
           >
-            <ChevronsLeft className="w-7 h-7 md:w-8 md:h-8" />
+            <ChevronsLeft className="w-7 h-7 md:w-9 md:h-9" />
           </button>
           <button
             onClick={() => scroll('right')}
-            className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-20 p-2 text-muted-foreground hover:text-foreground transition-colors"
+            className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 z-20 inline-flex items-center justify-center rounded-full border border-border bg-background/70 backdrop-blur-sm shadow-sm p-2 text-foreground hover:bg-background transition-colors"
             aria-label="Scroll right"
           >
-            <ChevronsRight className="w-7 h-7 md:w-8 md:h-8" />
+            <ChevronsRight className="w-7 h-7 md:w-9 md:h-9" />
           </button>
+
+          {/* Edge fade masks (keeps the row looking like the reference) */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-muted to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-muted to-transparent z-10" />
           
           {/* Scrolling content */}
           <div
             ref={scrollRef}
-            className="flex gap-14 md:gap-24 overflow-x-hidden py-6 px-14 md:px-24"
+            className="flex gap-12 md:gap-16 lg:gap-20 overflow-x-hidden py-10 md:py-12 px-20 md:px-28"
             style={{ scrollBehavior: 'auto' }}
           >
             {duplicatedTypes.map((type, index) => (
@@ -185,15 +189,16 @@ export function VehicleTypesCarousel() {
                 key={`${type.name}-${index}`}
                 className="flex-shrink-0 flex flex-col items-center group cursor-pointer"
               >
-                <div className="w-60 h-28 md:w-80 md:h-36 flex items-center justify-center overflow-visible">
+                <div className="w-[240px] h-[130px] sm:w-[260px] sm:h-[140px] md:w-[300px] md:h-[160px] flex items-center justify-center overflow-visible">
                   <img
                     src={type.image}
                     alt={type.name}
                     loading="lazy"
-                    className="w-full h-full object-contain drop-shadow-md group-hover:scale-[1.02] transition-transform duration-300"
+                    decoding="async"
+                    className="w-full h-full object-contain drop-shadow-lg group-hover:scale-[1.02] transition-transform duration-300"
                   />
                 </div>
-                <span className="mt-6 text-sm md:text-base font-semibold text-muted-foreground group-hover:text-foreground transition-colors">
+                <span className="mt-7 md:mt-8 text-sm md:text-base font-semibold text-foreground/80 group-hover:text-foreground transition-colors">
                   {type.name}
                 </span>
               </div>
