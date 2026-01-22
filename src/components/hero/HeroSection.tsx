@@ -29,7 +29,7 @@ export function HeroSection() {
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
-              Simple, stress-free automotive solutions.
+              A clear, guided approach to car leasing.
             </h1>
             
             <p
@@ -38,7 +38,7 @@ export function HeroSection() {
               }`}
               style={{ color: 'hsl(213 27% 84%)' }}
             >
-              Capital Motor Cars helps you lease, finance and maintain your vehicle with a clear process and personalized support.
+              Work with a personal auto consultant who manages the entire process — from search and approval to delivery at your door.
             </p>
 
             <div
@@ -65,6 +65,13 @@ export function HeroSection() {
                 View Services
               </Link>
             </div>
+
+            <p
+              className={`mt-4 text-sm hero-animate delay-2 ${heroAnimated ? 'animate-in' : ''}`}
+              style={{ color: 'hsl(213 27% 84%)' }}
+            >
+              One conversation. No pressure.
+            </p>
           </div>
 
           {/* Right Column - Process Visualization */}
