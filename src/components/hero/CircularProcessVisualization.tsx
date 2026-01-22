@@ -11,29 +11,29 @@ interface ProcessStep {
 
 const processSteps: ProcessStep[] = [
   {
-    title: 'Auto Consultant',
+    title: 'Personal Auto Consultant',
     icon: Headphones,
-    description: 'A dedicated consultant manages the entire process as your single point of contact.',
+    description: 'A dedicated consultant manages the entire process and stays with you from start to finish.',
   },
   {
     title: 'Lease Search',
     icon: Search,
-    description: 'We search hundreds of dealerships to find the exact vehicle you want at the best price.',
+    description: 'We search hundreds of dealerships to find the exact vehicle you want, at the right terms.',
   },
   {
     title: 'Get Approved',
     icon: ShieldCheck,
-    description: 'We handle your credit application and compare options to secure the best terms.',
+    description: 'We handle the credit process and compare options to secure the most suitable approval.',
   },
   {
-    title: 'Add-Ons',
+    title: 'Add-Ons & Preparation',
     icon: SlidersHorizontal,
-    description: 'Optional upgrades like window tints or exterior enhancements, completed before delivery.',
+    description: 'Any requested upgrades or adjustments are handled before delivery.',
   },
   {
-    title: 'Delivered',
+    title: 'Delivered to You',
     icon: MapPin,
-    description: 'Your vehicle is delivered directly to your home or office. We handle lease returns too.',
+    description: 'Your vehicle is delivered to your home or office. We handle the rest.',
   },
 ];
 
