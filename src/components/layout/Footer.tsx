@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Building, Facebook, Instagram, Twitter } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import logo from '@/assets/logo-main.svg';
 
 const locations = [
@@ -71,21 +70,6 @@ function YelpIcon({ className }: { className?: string }) {
 export function Footer() {
   return (
     <footer>
-      {/* Pre-Footer CTA */}
-      <div style={{ backgroundColor: 'hsl(216 27% 10%)' }} className="py-12">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h3 className="text-2xl md:text-3xl font-semibold text-white mb-3">
-            Ready to Get Started?
-          </h3>
-          <p className="text-base mb-6" style={{ color: 'hsl(213 20% 80%)' }}>
-            Book a call today and let us handle the details.
-          </p>
-          <Button asChild size="lg">
-            <Link to="/contact">Schedule a Call</Link>
-          </Button>
-        </div>
-      </div>
-
       {/* Main Footer */}
       <div style={{ backgroundColor: 'hsl(216 27% 6%)' }} className="text-white">
         <div className="container mx-auto px-4 lg:px-8 py-12 lg:py-16">

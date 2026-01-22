@@ -8,7 +8,6 @@ import { HeroSection } from '@/components/hero/HeroSection';
 import { PeopleSection } from '@/components/home/PeopleSection';
 import { VehicleTypesCarousel } from '@/components/home/VehicleTypesCarousel';
 import { BrandsCarousel } from '@/components/home/BrandsCarousel';
-import { QuickLeadCapture } from '@/components/home/QuickLeadCapture';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { 
   Car, 
@@ -85,7 +84,6 @@ const whyChooseUs = [
 export default function HomePage() {
   const { ref: servicesRef, isRevealed: servicesRevealed } = useScrollReveal();
   const { ref: whyRef, isRevealed: whyRevealed } = useScrollReveal();
-  const { ref: statsRef, isRevealed: statsRevealed } = useScrollReveal();
   const { ref: ctaRef, isRevealed: ctaRevealed } = useScrollReveal();
 
   return (
@@ -158,22 +156,17 @@ export default function HomePage() {
 
       {/* Experience You Can Trust Section */}
       <section className="py-20 md:py-28 bg-background">
-        <div 
-          ref={statsRef}
-          className={`container mx-auto px-4 lg:px-8 scroll-reveal ${statsRevealed ? 'revealed' : ''}`}
-        >
+        <div className="container mx-auto px-4 lg:px-8">
           <SectionHeading
             title="Experience You Can Trust"
           />
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <StatCard value={30} suffix="+" label="Years Combined Experience" />
-            <StatCard value={100} suffix="s" label="Completed Transactions" />
-            <StatCard value={15} suffix="+" label="Trusted Brand Partners" />
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <StatCard value="30+" label="Years of Industry Experience" />
+            <StatCard value="Hundreds" label="of Vehicles Managed End-to-End" />
+            <StatCard value="Direct Access" label="to Major Automotive Brands" />
           </div>
         </div>
       </section>
-
-      <QuickLeadCapture />
 
       {/* Final CTA Section - CDK dark style */}
       <section className="py-20 md:py-28" style={{ backgroundColor: 'hsl(216 27% 6%)' }}>
@@ -185,7 +178,7 @@ export default function HomePage() {
             Looking for a simpler way to handle your next vehicle?
           </h2>
           <p className="text-lg mb-8 max-w-xl mx-auto" style={{ color: 'hsl(213 27% 84%)' }}>
-            Schedule a call and we will walk you through it.
+            Schedule a call and we’ll walk you through the process.
           </p>
           <Button 
             asChild 
