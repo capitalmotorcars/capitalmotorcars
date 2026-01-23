@@ -36,12 +36,12 @@ const services = [
   { value: 'other', label: 'Other' },
 ];
 
-const messagePrompts = [
-  "I'm looking to lease a new car and want to understand my options.",
-  "I'd like a price quote for a specific vehicle.",
-  "I have a monthly budget and need help choosing the right car.",
-  "I want to trade in my current vehicle and see how it affects a lease.",
-  "I'm not sure where to start and would like some guidance.",
+const messageSuggestions = [
+  { value: 'lease', label: 'Lease a new car', fullText: "I'm looking to lease a new car and want to understand my options." },
+  { value: 'quote', label: 'Get a price quote', fullText: "I'd like a price quote for a specific vehicle." },
+  { value: 'budget', label: 'Budget-based recommendations', fullText: "I have a monthly budget and need help choosing the right car." },
+  { value: 'trade-in', label: 'Trade-in value', fullText: "I want to trade in my current vehicle and see how it affects a lease." },
+  { value: 'guidance', label: 'General guidance', fullText: "I'm not sure where to start and would like some guidance." },
 ];
 
 interface ContactFormProps {
@@ -75,17 +75,18 @@ export function ContactForm({ compact = false, initialValues }: ContactFormProps
   const selectedService = watch('service');
   const { ref: messageRef, ...messageRegister } = register('message');
 
-  const handlePromptClick = (prompt: string) => {
-    setValue('message', prompt, { shouldValidate: false });
-    // Focus the textarea after inserting text
-    setTimeout(() => {
-      textareaRef.current?.focus();
-      // Move cursor to end
-      if (textareaRef.current) {
-        const len = prompt.length;
-        textareaRef.current.setSelectionRange(len, len);
-      }
-    }, 0);
+  const handleSuggestionSelect = (value: string) => {
+    const suggestion = messageSuggestions.find(s => s.value === value);
+    if (suggestion) {
+      setValue('message', suggestion.fullText, { shouldValidate: false });
+      setTimeout(() => {
+        textareaRef.current?.focus();
+        if (textareaRef.current) {
+          const len = suggestion.fullText.length;
+          textareaRef.current.setSelectionRange(len, len);
+        }
+      }, 0);
+    }
   };
 
   const onSubmit = async (data: ContactFormData) => {
@@ -175,33 +176,21 @@ export function ContactForm({ compact = false, initialValues }: ContactFormProps
         </div>
       </div>
 
-      <div className="space-y-3">
-        <Label htmlFor="message">Message *</Label>
-        
-        {/* Helper text */}
-        <p className="text-xs text-muted-foreground">
-          Not sure what to write? Start with one of these — you can edit it anytime.
-        </p>
-        
-        {/* Prompt chips */}
-        <div className="flex flex-wrap gap-2">
-          {messagePrompts.map((prompt, index) => (
-            <button
-              key={index}
-              type="button"
-              onClick={() => handlePromptClick(prompt)}
-              className={cn(
-                "px-3 py-1.5 text-xs text-left rounded-md",
-                "bg-muted text-muted-foreground",
-                "border border-border",
-                "hover:bg-muted/80 hover:text-foreground",
-                "transition-colors duration-150",
-                "focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
-              )}
-            >
-              {prompt}
-            </button>
-          ))}
+      <div className="space-y-2">
+        <div className="flex items-center justify-between">
+          <Label htmlFor="message">Message *</Label>
+          <Select onValueChange={handleSuggestionSelect}>
+            <SelectTrigger className="w-auto h-8 text-xs text-muted-foreground border-dashed">
+              <SelectValue placeholder="Need help getting started?" />
+            </SelectTrigger>
+            <SelectContent>
+              {messageSuggestions.map((suggestion) => (
+                <SelectItem key={suggestion.value} value={suggestion.value}>
+                  {suggestion.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
         
         <Textarea
