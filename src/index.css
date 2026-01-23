@@ -106,11 +106,21 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold tracking-tight text-primary;
+    @apply font-semibold tracking-tight text-primary;
+    font-weight: 600;
+  }
+
+  h1, h2 {
+    font-weight: 700;
   }
 
   p {
     @apply leading-relaxed;
+    font-weight: 400;
+  }
+
+  button, [role="button"] {
+    font-weight: 500;
   }
 }
 

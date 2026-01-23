@@ -282,7 +282,7 @@ export function CircularProcessVisualization({ className }: CircularProcessVisua
 
       {/* Mobile: Vertical steps - CDK style */}
       <div className="md:hidden flex flex-col gap-3">
-        <div className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: 'hsl(213 27% 70%)' }}>
+        <div className="text-sm font-semibold tracking-wide mb-2" style={{ color: 'hsl(213 27% 70%)' }}>
           How It Works
         </div>
         {processSteps.map((step, index) => (

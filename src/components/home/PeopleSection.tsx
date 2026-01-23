@@ -199,10 +199,10 @@ export function PeopleSection() {
                         {founderNote}
                       </p>
                       <div className="mt-6">
-                        <div className="text-xs font-semibold tracking-wide text-foreground">
-                          {founder.name.toUpperCase()}
+                        <div className="text-sm font-semibold text-foreground">
+                          {founder.name}
                         </div>
-                        <div className="mt-1 text-xs text-muted-foreground">{founder.role.toUpperCase()}</div>
+                        <div className="mt-1 text-xs text-muted-foreground">{founder.role}</div>
                       </div>
                     </div>
 
