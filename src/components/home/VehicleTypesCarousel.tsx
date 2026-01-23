@@ -38,7 +38,7 @@ const vehicleTypes = [
   },
   {
     name: 'Minivan',
-    image: 'https://pngimg.com/uploads/honda/honda_PNG10322.png',
+    image: 'https://pngimg.com/uploads/toyota/toyota_PNG12209.png',
   },
   {
     name: 'Crossover',
