@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -14,6 +14,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { CheckCircle, Loader2 } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const contactSchema = z.object({
   fullName: z.string().min(2, 'Name must be at least 2 characters').max(100),
@@ -35,6 +36,14 @@ const services = [
   { value: 'other', label: 'Other' },
 ];
 
+const messagePrompts = [
+  "I'm looking to lease a new car and want to understand my options.",
+  "I'd like a price quote for a specific vehicle.",
+  "I have a monthly budget and need help choosing the right car.",
+  "I want to trade in my current vehicle and see how it affects a lease.",
+  "I'm not sure where to start and would like some guidance.",
+];
+
 interface ContactFormProps {
   compact?: boolean;
   initialValues?: Partial<ContactFormData>;
@@ -43,6 +52,7 @@ interface ContactFormProps {
 export function ContactForm({ compact = false, initialValues }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const {
     register,
@@ -63,6 +73,20 @@ export function ContactForm({ compact = false, initialValues }: ContactFormProps
   });
 
   const selectedService = watch('service');
+  const { ref: messageRef, ...messageRegister } = register('message');
+
+  const handlePromptClick = (prompt: string) => {
+    setValue('message', prompt, { shouldValidate: false });
+    // Focus the textarea after inserting text
+    setTimeout(() => {
+      textareaRef.current?.focus();
+      // Move cursor to end
+      if (textareaRef.current) {
+        const len = prompt.length;
+        textareaRef.current.setSelectionRange(len, len);
+      }
+    }, 0);
+  };
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
@@ -81,7 +105,7 @@ export function ContactForm({ compact = false, initialValues }: ContactFormProps
   if (isSuccess) {
     return (
       <div className="flex flex-col items-center justify-center py-12 text-center">
-        <CheckCircle className="w-16 h-16 text-green-500 mb-4" />
+        <CheckCircle className="w-16 h-16 text-accent mb-4" />
         <h3 className="text-xl font-semibold text-primary mb-2">Thank you!</h3>
         <p className="text-muted-foreground">
           We've received your message and will get back to you shortly.
@@ -151,12 +175,43 @@ export function ContactForm({ compact = false, initialValues }: ContactFormProps
         </div>
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-3">
         <Label htmlFor="message">Message *</Label>
+        
+        {/* Helper text */}
+        <p className="text-xs text-muted-foreground">
+          Not sure what to write? Start with one of these — you can edit it anytime.
+        </p>
+        
+        {/* Prompt chips */}
+        <div className="flex flex-wrap gap-2">
+          {messagePrompts.map((prompt, index) => (
+            <button
+              key={index}
+              type="button"
+              onClick={() => handlePromptClick(prompt)}
+              className={cn(
+                "px-3 py-1.5 text-xs text-left rounded-md",
+                "bg-muted text-muted-foreground",
+                "border border-border",
+                "hover:bg-muted/80 hover:text-foreground",
+                "transition-colors duration-150",
+                "focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
+              )}
+            >
+              {prompt}
+            </button>
+          ))}
+        </div>
+        
         <Textarea
           id="message"
-          {...register('message')}
-          placeholder="Tell us how we can help you..."
+          {...messageRegister}
+          ref={(e) => {
+            messageRef(e);
+            (textareaRef as React.MutableRefObject<HTMLTextAreaElement | null>).current = e;
+          }}
+          placeholder="You can edit the message or write your own…"
           rows={compact ? 3 : 5}
           className={errors.message ? 'border-destructive' : ''}
         />
@@ -176,7 +231,7 @@ export function ContactForm({ compact = false, initialValues }: ContactFormProps
             Sending...
           </>
         ) : (
-          'Send Message'
+          'Continue'
         )}
       </Button>
     </form>
