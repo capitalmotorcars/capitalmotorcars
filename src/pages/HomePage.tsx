@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
+import { JsonLd, organizationSchema } from '@/components/JsonLd';
 import { Button } from '@/components/ui/button';
 import { ServiceCard } from '@/components/ui/ServiceCard';
 import { StatCard } from '@/components/ui/StatCard';
@@ -93,6 +94,7 @@ export default function HomePage() {
         title="Capital Motor Cars | Car Leasing & Automotive Services"
         description="Simple, stress-free car leasing and automotive services in New Jersey. We handle negotiations, financing, and end-of-lease repairs so you don't have to."
       />
+      <JsonLd data={organizationSchema} />
       <HeroSection />
 
       <VehicleTypesCarousel />
