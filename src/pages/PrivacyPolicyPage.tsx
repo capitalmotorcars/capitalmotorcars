@@ -1,8 +1,13 @@
 import { Layout } from '@/components/layout/Layout';
+import { SEO } from '@/components/SEO';
 
 export default function PrivacyPolicyPage() {
   return (
     <Layout>
+      <SEO 
+        title="Privacy Policy | Capital Motor Cars"
+        description="Learn how Capital Motor Cars collects, uses, and protects your personal information. Your privacy matters to us."
+      />
       <section className="bg-primary py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <h1 className="text-3xl md:text-4xl font-bold text-primary-foreground">Privacy Policy</h1>

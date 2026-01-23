@@ -1,9 +1,14 @@
 import { Layout } from '@/components/layout/Layout';
+import { SEO } from '@/components/SEO';
 import { CreditApplicationForm } from '@/components/forms/CreditApplicationForm';
 
 export default function CreditApplicationPage() {
   return (
     <Layout>
+      <SEO 
+        title="Credit Application | Capital Motor Cars"
+        description="Start your financing journey with a quick credit application. Get clear answers about your options without unnecessary paperwork."
+      />
       <section className="bg-primary py-20 md:py-28">
         <div className="container mx-auto px-4 lg:px-8">
           <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">Credit Application</h1>

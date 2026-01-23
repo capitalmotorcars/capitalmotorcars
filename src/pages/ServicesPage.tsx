@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
+import { SEO } from '@/components/SEO';
 import { ServiceCard } from '@/components/ui/ServiceCard';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { 
@@ -75,6 +76,10 @@ export default function ServicesPage() {
 
   return (
     <Layout>
+      <SEO 
+        title="Our Services | Capital Motor Cars"
+        description="Leasing, financing, trade-in, detailing, and end-of-lease repairs. Practical automotive services handled by professionals in New Jersey."
+      />
       {/* Hero */}
       <section className="bg-primary py-20 md:py-28">
         <div className="container mx-auto px-4 lg:px-8">

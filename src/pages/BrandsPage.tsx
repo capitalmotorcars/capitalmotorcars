@@ -1,4 +1,5 @@
 import { Layout } from '@/components/layout/Layout';
+import { SEO } from '@/components/SEO';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -24,6 +25,10 @@ export default function BrandsPage() {
 
   return (
     <Layout>
+      <SEO 
+        title="Brands We Work With | Capital Motor Cars"
+        description="We work with BMW, Mercedes, Audi, Lexus, Toyota, and more. Contact us to find out what vehicles are currently available."
+      />
       <section className="bg-primary py-20 md:py-28">
         <div className="container mx-auto px-4 lg:px-8">
           <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">Brands We Work With</h1>
