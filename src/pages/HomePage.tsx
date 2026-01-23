@@ -151,7 +151,7 @@ export default function HomePage() {
                 <div className="inline-flex items-center justify-center w-10 h-10 border border-border rounded-full mb-6">
                   <item.icon className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="text-2xl font-semibold text-primary mb-2">{item.title}</h3>
+                <h4 className="text-2xl font-semibold text-primary mb-2">{item.title}</h4>
                 <p className="text-base text-muted-foreground leading-snug">{item.description}</p>
               </div>
             ))}

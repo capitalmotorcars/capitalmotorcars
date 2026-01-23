@@ -29,6 +29,7 @@ export default function ContactPage() {
       <section className="py-20 md:py-28 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-xl mx-auto">
+            <h2 className="sr-only">Contact Form</h2>
             <div className="bg-muted p-6 md:p-8 rounded-lg">
               <ContactForm initialValues={{ fullName, phone, service, message }} />
             </div>
