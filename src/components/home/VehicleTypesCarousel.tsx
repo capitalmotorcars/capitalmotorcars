@@ -6,43 +6,43 @@ import { ChevronsLeft, ChevronsRight } from 'lucide-react';
 const vehicleTypes = [
   {
     name: 'Luxury',
-    image: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=75',
+    image: 'https://pngimg.com/uploads/mercedes/mercedes_PNG80134.png',
   },
   {
     name: 'Electric',
-    image: 'https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=600&q=75',
+    image: 'https://pngimg.com/uploads/tesla_car/tesla_car_PNG51.png',
   },
   {
     name: 'Hatchback',
-    image: 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=600&q=75',
+    image: 'https://pngimg.com/uploads/volkswagen/volkswagen_PNG1818.png',
   },
   {
     name: 'Sedan',
-    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=75',
+    image: 'https://pngimg.com/uploads/audi/audi_PNG1736.png',
   },
   {
     name: 'Truck',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=75',
+    image: 'https://pngimg.com/uploads/ford/ford_PNG12251.png',
   },
   {
     name: 'Sports',
-    image: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=600&q=75',
+    image: 'https://pngimg.com/uploads/porsche/porsche_PNG10620.png',
   },
   {
     name: 'SUV',
-    image: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=600&q=75',
+    image: 'https://pngimg.com/uploads/jeep/jeep_PNG98.png',
   },
   {
     name: 'Coupe',
-    image: 'https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=600&q=75',
+    image: 'https://pngimg.com/uploads/bmw/bmw_PNG1703.png',
   },
   {
     name: 'Minivan',
-    image: 'https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&w=600&q=75',
+    image: 'https://pngimg.com/uploads/honda/honda_PNG10322.png',
   },
   {
     name: 'Crossover',
-    image: 'https://images.unsplash.com/photo-1605559424843-9e7712e66b52?auto=format&fit=crop&w=600&q=75',
+    image: 'https://pngimg.com/uploads/lexus/lexus_PNG10.png',
   },
 ];
 
