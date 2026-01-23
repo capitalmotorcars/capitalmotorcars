@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
+import { JsonLd } from '@/components/JsonLd';
 import { ServiceCard } from '@/components/ui/ServiceCard';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { 
@@ -74,12 +75,30 @@ export default function ServicesPage() {
     ? services 
     : services.filter(s => s.category === activeCategory);
 
+  const servicesListSchema = useMemo(() => ({
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Capital Motor Cars Services',
+    description: 'Automotive services including leasing, financing, trade-in, and vehicle maintenance.',
+    itemListElement: services.map((service, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'Service',
+        name: service.title,
+        description: service.description,
+        url: `https://capitalmotorcars.com${service.href}`,
+      },
+    })),
+  }), []);
+
   return (
     <Layout>
       <SEO 
         title="Our Services | Capital Motor Cars"
         description="Leasing, financing, trade-in, detailing, and end-of-lease repairs. Practical automotive services handled by professionals in New Jersey."
       />
+      <JsonLd data={servicesListSchema} />
       {/* Hero */}
       <section className="bg-primary py-20 md:py-28">
         <div className="container mx-auto px-4 lg:px-8">

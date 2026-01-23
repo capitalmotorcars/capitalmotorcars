@@ -1,5 +1,6 @@
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
+import { JsonLd, organizationSchema } from '@/components/JsonLd';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { UserCheck, MessageSquare, Settings, MapPin } from 'lucide-react';
 
@@ -54,6 +55,7 @@ export default function AboutPage() {
         title="About Us | Capital Motor Cars"
         description="Capital Motor Cars brings clarity to automotive decisions. We guide clients through leasing and financing with transparency and accountability."
       />
+      <JsonLd data={organizationSchema} />
       {/* Hero */}
       <section className="bg-primary py-20 md:py-28">
         <div className="container mx-auto px-4 lg:px-8">

@@ -1,7 +1,8 @@
-import { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { ReactNode, useMemo } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
+import { JsonLd, createServiceSchema, createFaqSchema } from '@/components/JsonLd';
 import { Button } from '@/components/ui/button';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { SectionHeading } from '@/components/ui/SectionHeading';
@@ -46,6 +47,7 @@ export function ServiceTemplate({
   faqs,
   icon: Icon,
 }: ServiceTemplateProps) {
+  const location = useLocation();
   const { ref: whoRef, isRevealed: whoRevealed } = useScrollReveal();
   const { ref: issuesRef, isRevealed: issuesRevealed } = useScrollReveal();
   const { ref: howRef, isRevealed: howRevealed } = useScrollReveal();
@@ -53,12 +55,24 @@ export function ServiceTemplate({
   const { ref: faqRef, isRevealed: faqRevealed } = useScrollReveal();
   const { ref: formRef, isRevealed: formRevealed } = useScrollReveal();
 
+  const schemas = useMemo(() => {
+    const baseUrl = 'https://capitalmotorcars.com';
+    const serviceSchema = createServiceSchema({
+      name: title,
+      description: metaDescription || description,
+      url: `${baseUrl}${location.pathname}`,
+    });
+    const faqSchema = createFaqSchema(faqs);
+    return [serviceSchema, faqSchema];
+  }, [title, description, metaDescription, location.pathname, faqs]);
+
   return (
     <Layout>
       <SEO 
         title={metaTitle || `${title} | Capital Motor Cars`}
         description={metaDescription || description.slice(0, 157) + (description.length > 157 ? '...' : '')}
       />
+      <JsonLd data={schemas} />
       {/* Hero */}
       <section className="relative bg-primary overflow-hidden">
         <div 
