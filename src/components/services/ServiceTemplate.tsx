@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
 import { JsonLd, createServiceSchema, createFaqSchema } from '@/components/JsonLd';
+import { RelatedLinks } from '@/components/ui/RelatedLinks';
 import { Button } from '@/components/ui/button';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { SectionHeading } from '@/components/ui/SectionHeading';
@@ -20,6 +21,12 @@ interface FAQ {
   answer: string;
 }
 
+interface RelatedLink {
+  href: string;
+  title: string;
+  description?: string;
+}
+
 interface ServiceTemplateProps {
   title: string;
   description: string;
@@ -32,6 +39,7 @@ interface ServiceTemplateProps {
   whatToExpect: string[];
   faqs: FAQ[];
   icon: LucideIcon;
+  relatedLinks?: RelatedLink[];
 }
 
 export function ServiceTemplate({
@@ -46,6 +54,7 @@ export function ServiceTemplate({
   whatToExpect,
   faqs,
   icon: Icon,
+  relatedLinks = [],
 }: ServiceTemplateProps) {
   const location = useLocation();
   const { ref: whoRef, isRevealed: whoRevealed } = useScrollReveal();
@@ -228,6 +237,15 @@ export function ServiceTemplate({
           </div>
         </div>
       </section>
+
+      {/* Related Links */}
+      {relatedLinks.length > 0 && (
+        <RelatedLinks 
+          title="Related Services" 
+          links={relatedLinks} 
+          className="bg-background border-t border-border"
+        />
+      )}
     </Layout>
   );
 }

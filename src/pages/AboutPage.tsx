@@ -1,6 +1,7 @@
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
 import { JsonLd, organizationSchema } from '@/components/JsonLd';
+import { RelatedLinks, aboutPageLinks } from '@/components/ui/RelatedLinks';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { UserCheck, MessageSquare, Settings, MapPin } from 'lucide-react';
 
@@ -159,6 +160,12 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <RelatedLinks 
+        title="Explore More" 
+        links={aboutPageLinks} 
+        className="bg-background border-t border-border"
+      />
     </Layout>
   );
 }

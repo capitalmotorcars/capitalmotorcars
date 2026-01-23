@@ -1,4 +1,5 @@
 import { ServiceTemplate } from '@/components/services/ServiceTemplate';
+import { serviceLinks } from '@/components/ui/RelatedLinks';
 import { Car } from 'lucide-react';
 
 export default function CarLeasingPage() {
@@ -39,6 +40,7 @@ export default function CarLeasingPage() {
         { question: "Do I need to deal with dealerships myself?", answer: "In most cases, no. We handle the coordination." },
         { question: "Is there a commitment to move forward?", answer: "No. It starts with a conversation." },
       ]}
+      relatedLinks={serviceLinks.leasing}
     />
   );
 }

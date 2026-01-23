@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
 import { JsonLd } from '@/components/JsonLd';
+import { RelatedLinks, servicesPageLinks } from '@/components/ui/RelatedLinks';
 import { ServiceCard } from '@/components/ui/ServiceCard';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { 
@@ -160,6 +161,12 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+
+      <RelatedLinks 
+        title="Next Steps" 
+        links={servicesPageLinks} 
+        className="bg-muted border-t border-border"
+      />
     </Layout>
   );
 }

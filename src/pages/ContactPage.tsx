@@ -1,6 +1,7 @@
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
 import { JsonLd, organizationSchema } from '@/components/JsonLd';
+import { RelatedLinks, contactPageLinks } from '@/components/ui/RelatedLinks';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { useSearchParams } from 'react-router-dom';
 
@@ -38,6 +39,12 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      <RelatedLinks 
+        title="More Ways to Connect" 
+        links={contactPageLinks} 
+        className="bg-muted border-t border-border"
+      />
     </Layout>
   );
 }
