@@ -108,7 +108,7 @@ export default function HomePage() {
           />
 
           <div className="max-w-6xl mx-auto">
-            <div className="text-xs uppercase tracking-wider text-muted-foreground mb-4">
+            <div className="text-xs font-medium tracking-wide text-muted-foreground mb-4">
               Core services
             </div>
             <div className="grid md:grid-cols-3 gap-6">
@@ -118,7 +118,7 @@ export default function HomePage() {
             </div>
 
             <div className="mt-10">
-              <div className="text-xs uppercase tracking-wider text-muted-foreground mb-4">
+              <div className="text-xs font-medium tracking-wide text-muted-foreground mb-4">
                 Supporting services
               </div>
               <div className="grid md:grid-cols-3 gap-6">
