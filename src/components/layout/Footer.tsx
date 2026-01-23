@@ -80,6 +80,8 @@ export function Footer() {
                 <img
                   src={logo}
                   alt="Capital Motor Cars"
+                  loading="lazy"
+                  decoding="async"
                   className="h-10 w-auto brightness-0 invert"
                 />
               </Link>

@@ -43,6 +43,9 @@ export function Header() {
             <img 
               src={logo} 
               alt="Capital Motor Cars" 
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
               className="h-12 md:h-14 w-auto transition-all duration-300" 
             />
           </Link>

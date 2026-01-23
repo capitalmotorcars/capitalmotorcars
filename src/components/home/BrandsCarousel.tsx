@@ -103,6 +103,8 @@ export function BrandsCarousel() {
                   <img
                     src={brand.logo}
                     alt={brand.name}
+                    loading="lazy"
+                    decoding="async"
                     className="h-12 md:h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
                   />
                 </div>
