@@ -1,90 +1,58 @@
 
-# החלפת Prompt Chips ב-Dropdown
+# תוכנית: החלפת תמונות קרוסלת הרכבים לתמונות PNG נקיות
 
-## סיכום
-נחליף את כפתורי ההצעות (chips) ב-dropdown קומפקטי שמציע נושאים להתחלת השיחה. הבחירה תכניס את הטקסט לשדה ההודעה, והמשתמש יוכל לערוך אותו.
+## סקירה
+החלפת תמונות ה-Unsplash הנוכחיות (שמכילות רקעים) בתמונות PNG שקופות של רכבים מתאימים לכל קטגוריה.
 
-## שינויים
+## שינויים נדרשים
 
-### 1. עדכון מבנה שדה ההודעה
+### קובץ יחיד לעריכה
+**`src/components/home/VehicleTypesCarousel.tsx`**
 
-**לפני:**
-- טקסט עזרה
-- 5 כפתורי chips שתופסים הרבה מקום
-- שדה Textarea
+### פרטים טכניים
 
-**אחרי:**
-- Label + dropdown קטן באותה שורה
-- שדה Textarea מתחת
+1. **החלפת מערך התמונות** (שורות 6-47)
+   - החלפת כל ה-URLs מ-Unsplash ל-URLs של PNG שקופים
+   - שימוש במקורות כמו pngimg.com או אתרים דומים שמספקים PNG שקופים של רכבים
+   - וידוא שכל סוג רכב מקבל תמונה מתאימה:
 
-### 2. עיצוב ה-Dropdown
+| קטגוריה | תמונה נדרשת |
+|---------|-------------|
+| Sports | מכונית ספורט (כמו Porsche Taycan) |
+| SUV | רכב שטח (כמו Jeep Cherokee) |
+| Coupe | קופה (כמו Mercedes Coupe) |
+| Minivan | מיניוואן (כמו Mercedes Metris) |
+| Crossover | קרוסאובר (כמו Cadillac XT4) |
+| Luxury | רכב יוקרה (כמו Mercedes S-Class) |
+| Electric | רכב חשמלי (כמו Audi e-tron) |
+| Hatchback | האצ'בק (כמו Mini Cooper) |
+| Sedan | סדאן (כמו Audi A3) |
+| Truck | טנדר (כמו Dodge RAM) |
 
-- **Placeholder**: "Need help getting started?"
-- **אפשרויות** (מקוצרות לתצוגה ידידותית):
-  1. "Lease a new car"
-  2. "Get a price quote"
-  3. "Budget-based recommendations"
-  4. "Trade-in value"
-  5. "General guidance"
+2. **התאמת סגנון התמונה** (שורה 187)
+   - הוספת `bg-transparent` לוודא שהרקע השקוף נשמר
+   - שמירה על `object-contain` לתצוגה נכונה
 
-- בבחירה, הטקסט המלא יוכנס ל-textarea
-- ה-dropdown יתאפס אחרי הבחירה (כדי שאפשר לבחור שוב)
-
-### 3. קוד טכני
+## מבנה קוד לאחר השינוי
 
 ```typescript
-// מיפוי בין תוויות קצרות לטקסט מלא
-const messageSuggestions = [
-  { 
-    value: 'lease', 
-    label: 'Lease a new car',
-    fullText: "I'm looking to lease a new car and want to understand my options."
+const vehicleTypes = [
+  {
+    name: 'Sports',
+    image: 'https://[PNG-source]/sports-car.png',
   },
-  { 
-    value: 'quote', 
-    label: 'Get a price quote',
-    fullText: "I'd like a price quote for a specific vehicle."
+  {
+    name: 'SUV',
+    image: 'https://[PNG-source]/suv.png',
   },
-  // ...
+  // ... שאר הרכבים
 ];
-
-// Handler לבחירה מה-dropdown
-const handleSuggestionSelect = (value: string) => {
-  const suggestion = messageSuggestions.find(s => s.value === value);
-  if (suggestion) {
-    setValue('message', suggestion.fullText, { shouldValidate: false });
-    setTimeout(() => {
-      textareaRef.current?.focus();
-      // Move cursor to end
-    }, 0);
-  }
-};
 ```
 
-### 4. פריסה חדשה
+## מקורות PNG אפשריים
+- pngimg.com - תמונות PNG חינמיות ללא רקע
+- cleanpng.com - PNG שקופים באיכות גבוהה
+- freepnglogos.com - תמונות רכבים ללא רקע
 
-```
-┌─────────────────────────────────────────────────┐
-│ Message *          [Need help getting started?▾]│
-├─────────────────────────────────────────────────┤
-│                                                 │
-│  You can edit the message or write your own…   │
-│                                                 │
-│                                                 │
-└─────────────────────────────────────────────────┘
-```
-
-- ה-Label וה-dropdown יהיו באותה שורה עם `flex justify-between`
-- ה-dropdown יהיה קטן וסגנון secondary
-
-## קבצים לעדכון
-
-| קובץ | שינוי |
-|------|-------|
-| `src/components/forms/ContactForm.tsx` | החלפת chips ב-dropdown, הוספת מיפוי suggestions, עדכון handler |
-
-## יתרונות
-
-- **פחות עומס ויזואלי**: dropdown קומפקטי במקום 5 כפתורים
-- **חוויה נקייה יותר**: הטופס נראה סטנדרטי ומקצועי
-- **אותה פונקציונליות**: המשתמש עדיין יכול לבחור הצעה ולערוך אותה
+## תוצאה צפויה
+הקרוסלה תציג רכבים נקיים ללא רקע, בדיוק כמו בתמונות הדוגמה שסיפקת - עם הרכב בלבד על רקע אפור בהיר של האתר.
