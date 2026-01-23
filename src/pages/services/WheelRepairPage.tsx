@@ -8,7 +8,7 @@ export default function WheelRepairPage() {
       metaTitle="Wheel & Tire Repair Services | Capital Motor Cars"
       metaDescription="Wheel and tire repair, from curb rash to full restoration. Cosmetic and functional fixes coordinated by our team."
       description="Repair and restoration of wheels and tires, both cosmetic and functional."
-      heroImage="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1920&q=80"
+      heroImage="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1200&q=60"
       icon={CircleDot}
       whoIsThisFor={[
         "Customers with curb rash or wheel damage",

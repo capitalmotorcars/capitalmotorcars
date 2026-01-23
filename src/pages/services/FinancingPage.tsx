@@ -8,7 +8,7 @@ export default function FinancingPage() {
       metaTitle="Auto Financing & Credit | Capital Motor Cars"
       metaDescription="Simple auto financing with a quick credit application. Get clear answers about your options without unnecessary paperwork."
       description="A simple online credit application to review financing options without unnecessary paperwork. This is for customers who want a clear answer about financing, quickly."
-      heroImage="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=1920&q=80"
+      heroImage="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=1200&q=60"
       icon={CreditCard}
       whoIsThisFor={[
         "Customers who prefer a guided process",

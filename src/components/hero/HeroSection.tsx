@@ -14,6 +14,9 @@ export function HeroSection() {
       <img
         src={heroBg}
         alt=""
+        loading="eager"
+        decoding="async"
+        fetchPriority="high"
         className="absolute inset-0 w-full h-full object-cover opacity-20"
       />
       

@@ -8,7 +8,7 @@ export default function WearAndTearPage() {
       metaTitle="End-of-Lease Wear & Tear Repair | Capital Motor Cars"
       metaDescription="Reduce lease return penalties with pre-inspection repairs. We coordinate fixes to avoid unexpected charges at turn-in."
       description="End-of-lease repairs focused on reducing penalties and unexpected charges. Ideal for lease returns that require minor repairs before inspection."
-      heroImage="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1920&q=80"
+      heroImage="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1200&q=60"
       icon={Wrench}
       whoIsThisFor={[
         "Customers returning a leased vehicle",

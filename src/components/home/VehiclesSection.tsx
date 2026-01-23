@@ -17,37 +17,37 @@ const vehicles: Vehicle[] = [
   {
     brand: 'BMW',
     model: 'X5 xDrive40i',
-    image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=600&q=75',
     tag: 'Lease Available',
   },
   {
     brand: 'Mercedes-Benz',
     model: 'GLE 350',
-    image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=600&q=75',
     tag: 'Customer Favorite',
   },
   {
     brand: 'Audi',
     model: 'Q7 Premium',
-    image: 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=600&q=75',
     tag: 'Lease Available',
   },
   {
     brand: 'Lexus',
     model: 'RX 350',
-    image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=75',
     tag: 'Recent Delivery',
   },
   {
     brand: 'Porsche',
     model: 'Cayenne',
-    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=75',
     tag: 'Customer Favorite',
   },
   {
     brand: 'Tesla',
     model: 'Model Y',
-    image: 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=600&q=75',
     tag: 'Lease Available',
   },
 ];
@@ -82,6 +82,8 @@ export function VehiclesSection() {
                 <img
                   src={vehicle.image}
                   alt={`${vehicle.brand} ${vehicle.model}`}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
