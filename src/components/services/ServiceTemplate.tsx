@@ -147,7 +147,7 @@ export function ServiceTemplate({
                 <div className="w-12 h-12 bg-accent text-accent-foreground rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
                   {index + 1}
                 </div>
-                <h3 className="font-semibold text-primary mb-2">{step.title}</h3>
+                <h4 className="font-semibold text-primary mb-2">{step.title}</h4>
                 <p className="text-sm text-muted-foreground">{step.description}</p>
               </div>
             ))}

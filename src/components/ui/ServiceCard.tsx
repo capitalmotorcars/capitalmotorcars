@@ -38,14 +38,14 @@ export function ServiceCard({
           <Icon className={cn('text-primary', isCore ? 'w-7 h-7' : 'w-6 h-6')} />
         </div>
         <div className="flex-1 min-w-0">
-          <h3
+          <h4
             className={cn(
               'text-primary mb-2',
               isCore ? 'text-lg font-semibold' : 'text-[15px] font-semibold'
             )}
           >
             {title}
-          </h3>
+          </h4>
           <p className="text-sm text-muted-foreground leading-relaxed">
             {description}
           </p>

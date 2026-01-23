@@ -100,12 +100,15 @@ export default function ServicesPage() {
           ref={ref}
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${isRevealed ? 'revealed' : ''}`}
         >
+          <h2 className="sr-only">Browse Our Services</h2>
+          
           {/* Category Tabs */}
-          <div className="flex flex-wrap gap-2 mb-12 justify-center">
+          <nav aria-label="Service categories" className="flex flex-wrap gap-2 mb-12 justify-center">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
+                aria-pressed={activeCategory === cat.id}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                   activeCategory === cat.id
                     ? 'bg-accent text-accent-foreground'
@@ -115,7 +118,7 @@ export default function ServicesPage() {
                 {cat.label}
               </button>
             ))}
-          </div>
+          </nav>
 
           {/* Services Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 tab-content-enter">

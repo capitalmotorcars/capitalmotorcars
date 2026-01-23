@@ -7,6 +7,8 @@ interface SectionHeadingProps {
   children?: ReactNode;
   align?: 'left' | 'center';
   className?: string;
+  /** Use 'h2' for main sections, 'h3' for subsections */
+  as?: 'h2' | 'h3';
 }
 
 export function SectionHeading({ 
@@ -14,7 +16,8 @@ export function SectionHeading({
   subtitle, 
   children, 
   align = 'center',
-  className 
+  className,
+  as: Component = 'h2',
 }: SectionHeadingProps) {
   return (
     <div className={cn(
@@ -22,9 +25,13 @@ export function SectionHeading({
       align === 'center' && 'text-center max-w-2xl mx-auto',
       className
     )}>
-      <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+      <Component className={cn(
+        'font-bold text-primary mb-4',
+        Component === 'h2' && 'text-3xl md:text-4xl',
+        Component === 'h3' && 'text-2xl md:text-3xl',
+      )}>
         {title}
-      </h2>
+      </Component>
       {subtitle && (
         <p className="text-lg text-muted-foreground leading-relaxed">
           {subtitle}
