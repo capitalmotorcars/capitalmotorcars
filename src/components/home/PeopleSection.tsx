@@ -7,26 +7,24 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { cn } from '@/lib/utils';
 
-import founderCeoImage from '@/assets/founder-ceo.jpg';
-import teamSprite from '@/assets/team-sprite.png';
+import founderImage from '@/assets/team-chris.jpg';
+import henryImage from '@/assets/team-henry.jpg';
+import markImage from '@/assets/team-mark.jpg';
+import mikeZImage from '@/assets/team-mike-z.jpg';
+import vickyImage from '@/assets/team-vicky.jpg';
+import michaelMImage from '@/assets/team-michael-m.jpg';
+import derekImage from '@/assets/team-derek.jpg';
 
 type Person = {
   name: string;
   role: string;
-  image?: string;
-  sprite?: {
-    col: 0 | 1 | 2;
-    row: 0 | 1;
-    // Fine tuning offsets (percent)
-    xOffset?: number;
-    yOffset?: number;
-  };
+  image: string;
 };
 
 const founder: Person = {
   name: 'Christopher Amico',
   role: 'President & CEO',
-  image: founderCeoImage,
+  image: founderImage,
 };
 
 const founderNote =
@@ -36,50 +34,34 @@ const team: Person[] = [
   {
     name: 'Henry Liu',
     role: 'Vice President',
-    sprite: { col: 0, row: 0, xOffset: 2, yOffset: 6 },
+    image: henryImage,
   },
   {
     name: 'Mark Onbashian',
     role: 'Vice President',
-    sprite: { col: 1, row: 0, xOffset: 0, yOffset: 6 },
+    image: markImage,
   },
   {
     name: 'Michael Zeitoune',
     role: 'Director of Finance',
-    sprite: { col: 2, row: 0, xOffset: -2, yOffset: 6 },
+    image: mikeZImage,
   },
   {
     name: 'Vicky Azrak',
     role: 'Sales Manager',
-    sprite: { col: 0, row: 1, xOffset: 2, yOffset: -2 },
+    image: vickyImage,
   },
   {
     name: 'Michael Minerva',
     role: 'Sales Manager',
-    sprite: { col: 1, row: 1, xOffset: 0, yOffset: -2 },
+    image: michaelMImage,
   },
   {
     name: 'Derek Anton',
     role: 'Business Development Director',
-    sprite: { col: 2, row: 1, xOffset: -2, yOffset: -2 },
+    image: derekImage,
   },
 ];
-
-function spriteStyle(sprite: NonNullable<Person['sprite']>) {
-  // Base mapping for a 3x2 grid sprite
-  const baseX = sprite.col === 0 ? 0 : sprite.col === 1 ? 50 : 100;
-  const baseY = sprite.row === 0 ? 0 : 100;
-  const x = baseX + (sprite.xOffset ?? 0);
-  const y = baseY + (sprite.yOffset ?? 0);
-
-  return {
-    backgroundImage: `url(${teamSprite})`,
-    backgroundRepeat: 'no-repeat' as const,
-    // Make each tile fill the avatar area; we zoom a bit to focus on the photo inside the card
-    backgroundSize: '340% 240%',
-    backgroundPosition: `${x}% ${y}%`,
-  };
-}
 
 function usePrefersReducedMotion() {
   const [reduced, setReduced] = React.useState(false);
@@ -149,7 +131,7 @@ export function PeopleSection() {
                       alt={founder.name}
                       loading="lazy"
                       className={cn(
-                        'h-full w-full rounded-full object-cover',
+                        'h-full w-full rounded-full object-cover object-top',
                         'shadow-sm ring-1 ring-border',
                         'transition-transform duration-300 ease-out motion-reduce:transition-none',
                         'group-hover:scale-[1.01]',
@@ -256,12 +238,10 @@ export function PeopleSection() {
             {team.map((person, index) => {
               const delay = 120 + index * 70;
               return (
-                <button
+                <div
                   key={person.name}
-                  type="button"
                   className={cn(
-                    'group text-center focus:outline-none',
-                    'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+                    'group text-center',
                     showEntrance && !revealed && 'opacity-0 translate-y-3',
                     showEntrance && revealed && 'opacity-100 translate-y-0',
                     showEntrance &&
@@ -269,43 +249,27 @@ export function PeopleSection() {
                     'hover:-translate-y-0.5 md:hover:-translate-y-1',
                   )}
                   style={showEntrance ? { transitionDelay: `${delay}ms` } : undefined}
-                  aria-label={`${person.name}, ${person.role}`}
                 >
                   <div className="relative mx-auto w-[104px] h-[104px] md:w-[112px] md:h-[112px]">
-                    {person.sprite ? (
-                      <div
-                        aria-hidden="true"
-                        className={cn(
-                          'h-full w-full rounded-full',
-                          'shadow-sm ring-1 ring-border',
-                          'transition-shadow duration-300 ease-out motion-reduce:transition-none',
-                          'group-hover:shadow-md',
-                        )}
-                        style={spriteStyle(person.sprite)}
-                      />
-                    ) : (
-                      <img
-                        src={person.image}
-                        alt={person.name}
-                        loading="lazy"
-                        className={cn(
-                          'h-full w-full rounded-full object-cover',
-                          'shadow-sm ring-1 ring-border',
-                          'transition-shadow duration-300 ease-out motion-reduce:transition-none',
-                          'group-hover:shadow-md',
-                        )}
-                      />
-                    )}
+                    <img
+                      src={person.image}
+                      alt={person.name}
+                      loading="lazy"
+                      className={cn(
+                        'h-full w-full rounded-full object-cover object-top',
+                        'shadow-sm ring-1 ring-border',
+                        'transition-shadow duration-300 ease-out motion-reduce:transition-none',
+                        'group-hover:shadow-md',
+                      )}
+                    />
                   </div>
                   <div className="mt-4">
                     <div className="text-sm md:text-base font-semibold text-foreground">{person.name}</div>
                     <div className="mt-0.5 text-xs md:text-sm text-muted-foreground">
-                      <span className="group-hover:underline decoration-primary underline-offset-4">
-                        {person.role}
-                      </span>
+                      {person.role}
                     </div>
                   </div>
-                </button>
+                </div>
               );
             })}
           </div>
