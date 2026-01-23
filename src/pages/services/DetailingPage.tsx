@@ -1,4 +1,5 @@
 import { ServiceTemplate } from '@/components/services/ServiceTemplate';
+import { serviceLinks } from '@/components/ui/RelatedLinks';
 import { Sparkles } from 'lucide-react';
 
 export default function DetailingPage() {
@@ -38,6 +39,7 @@ export default function DetailingPage() {
         { question: "Do I need to deal with detailing shops myself?", answer: "In most cases, no. We handle the coordination." },
         { question: "Is there a commitment to move forward?", answer: "No. It starts with a conversation." },
       ]}
+      relatedLinks={serviceLinks.detailing}
     />
   );
 }

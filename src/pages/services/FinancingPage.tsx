@@ -1,4 +1,5 @@
 import { ServiceTemplate } from '@/components/services/ServiceTemplate';
+import { serviceLinks } from '@/components/ui/RelatedLinks';
 import { CreditCard } from 'lucide-react';
 
 export default function FinancingPage() {
@@ -38,6 +39,7 @@ export default function FinancingPage() {
         { question: "Do I need to deal with lenders myself?", answer: "In most cases, no. We handle the coordination." },
         { question: "Is there a commitment to move forward?", answer: "No. It starts with a conversation." },
       ]}
+      relatedLinks={serviceLinks.financing}
     />
   );
 }

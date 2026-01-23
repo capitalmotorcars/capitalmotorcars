@@ -1,4 +1,5 @@
 import { ServiceTemplate } from '@/components/services/ServiceTemplate';
+import { serviceLinks } from '@/components/ui/RelatedLinks';
 import { CircleDot } from 'lucide-react';
 
 export default function WheelRepairPage() {
@@ -38,6 +39,7 @@ export default function WheelRepairPage() {
         { question: "Do I need to deal with repair shops myself?", answer: "In most cases, no. We handle the coordination." },
         { question: "Is there a commitment to move forward?", answer: "No. It starts with a conversation." },
       ]}
+      relatedLinks={serviceLinks.wheelRepair}
     />
   );
 }
