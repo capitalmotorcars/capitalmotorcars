@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
+import { SEO } from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { SectionHeading } from '@/components/ui/SectionHeading';
@@ -21,6 +22,8 @@ interface FAQ {
 interface ServiceTemplateProps {
   title: string;
   description: string;
+  metaTitle?: string;
+  metaDescription?: string;
   heroImage: string;
   whoIsThisFor: string[];
   commonIssues: string[];
@@ -33,6 +36,8 @@ interface ServiceTemplateProps {
 export function ServiceTemplate({
   title,
   description,
+  metaTitle,
+  metaDescription,
   heroImage,
   whoIsThisFor,
   commonIssues,
@@ -50,6 +55,10 @@ export function ServiceTemplate({
 
   return (
     <Layout>
+      <SEO 
+        title={metaTitle || `${title} | Capital Motor Cars`}
+        description={metaDescription || description.slice(0, 157) + (description.length > 157 ? '...' : '')}
+      />
       {/* Hero */}
       <section className="relative bg-primary overflow-hidden">
         <div 

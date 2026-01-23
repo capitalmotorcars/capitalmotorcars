@@ -5,6 +5,8 @@ export default function TradeInPage() {
   return (
     <ServiceTemplate
       title="Trade-In"
+      metaTitle="Vehicle Trade-In Services | Capital Motor Cars"
+      metaDescription="Get a fair evaluation for your trade-in. We manage the entire process to prevent undervaluation and save you time."
       description="We help evaluate your current vehicle and manage the trade-in process when you trade in a vehicle. This helps prevent undervaluation and wasted time."
       heroImage="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1920&q=80"
       icon={RefreshCw}
