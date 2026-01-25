@@ -10,6 +10,7 @@ export default function FinancingPage() {
       metaDescription="Simple auto financing with a quick credit application. Get clear answers about your options without unnecessary paperwork."
       description="A simple online credit application to review financing options without unnecessary paperwork. This is for customers who want a clear answer about financing, quickly."
       heroImage="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=1200&q=60"
+      serviceValue="financing"
       icon={CreditCard}
       whoIsThisFor={[
         "Customers who prefer a guided process",

@@ -40,6 +40,7 @@ interface ServiceTemplateProps {
   faqs: FAQ[];
   icon: LucideIcon;
   relatedLinks?: RelatedLink[];
+  serviceValue?: string;
 }
 
 export function ServiceTemplate({
@@ -55,6 +56,7 @@ export function ServiceTemplate({
   faqs,
   icon: Icon,
   relatedLinks = [],
+  serviceValue,
 }: ServiceTemplateProps) {
   const location = useLocation();
   const { ref: whoRef, isRevealed: whoRevealed } = useScrollReveal();
@@ -232,7 +234,11 @@ export function ServiceTemplate({
               subtitle="Leave your details and we will get back to you."
             />
             <div className="bg-background p-6 md:p-8 rounded-lg border border-border">
-              <ContactForm compact />
+              <ContactForm 
+                compact 
+                initialValues={serviceValue ? { service: serviceValue } : undefined}
+                hideServiceField={!!serviceValue}
+              />
             </div>
           </div>
         </div>
