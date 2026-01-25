@@ -47,9 +47,10 @@ const messageSuggestions = [
 interface ContactFormProps {
   compact?: boolean;
   initialValues?: Partial<ContactFormData>;
+  hideServiceField?: boolean;
 }
 
-export function ContactForm({ compact = false, initialValues }: ContactFormProps) {
+export function ContactForm({ compact = false, initialValues, hideServiceField = false }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -159,21 +160,23 @@ export function ContactForm({ compact = false, initialValues }: ContactFormProps
           )}
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="service">Service of Interest</Label>
-          <Select value={selectedService} onValueChange={(value) => setValue('service', value)}>
-            <SelectTrigger>
-              <SelectValue placeholder="Select a service" />
-            </SelectTrigger>
-            <SelectContent>
-              {services.map((service) => (
-                <SelectItem key={service.value} value={service.value}>
-                  {service.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
+        {!hideServiceField && (
+          <div className="space-y-2">
+            <Label htmlFor="service">Service of Interest</Label>
+            <Select value={selectedService} onValueChange={(value) => setValue('service', value)}>
+              <SelectTrigger>
+                <SelectValue placeholder="Select a service" />
+              </SelectTrigger>
+              <SelectContent>
+                {services.map((service) => (
+                  <SelectItem key={service.value} value={service.value}>
+                    {service.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+        )}
       </div>
 
       <div className="space-y-2">

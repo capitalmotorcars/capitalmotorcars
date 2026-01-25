@@ -10,6 +10,7 @@ export default function WheelRepairPage() {
       metaDescription="Wheel and tire repair, from curb rash to full restoration. Cosmetic and functional fixes coordinated by our team."
       description="Repair and restoration of wheels and tires, both cosmetic and functional."
       heroImage="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1200&q=60"
+      serviceValue="wheel-repair"
       icon={CircleDot}
       whoIsThisFor={[
         "Customers with curb rash or wheel damage",

@@ -10,6 +10,7 @@ export default function DetailingPage() {
       metaDescription="Interior and exterior car detailing for lease returns, resale, or a proper clean. Professional results, coordinated for you."
       description="Interior and exterior detailing for vehicles that are being returned, sold or simply cleaned properly."
       heroImage="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&w=1200&q=60"
+      serviceValue="detailing"
       icon={Sparkles}
       whoIsThisFor={[
         "Customers returning a leased vehicle",
