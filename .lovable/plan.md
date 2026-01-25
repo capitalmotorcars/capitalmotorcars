@@ -1,58 +1,98 @@
 
-# תוכנית: החלפת תמונות קרוסלת הרכבים לתמונות PNG נקיות
+# מילוי אוטומטי של סוג השירות בדפי שירות ספציפיים
 
 ## סקירה
-החלפת תמונות ה-Unsplash הנוכחיות (שמכילות רקעים) בתמונות PNG שקופות של רכבים מתאימים לכל קטגוריה.
+הוספת לוגיקה שממלאה אוטומטית את שדה "סוג השירות" בטופס יצירת קשר כאשר המשתמש נמצא בדף שירות ספציפי, והסתרת השדה כדי לפשט את חוויית המשתמש.
 
 ## שינויים נדרשים
 
-### קובץ יחיד לעריכה
-**`src/components/home/VehicleTypesCarousel.tsx`**
+### 1. עדכון ServiceTemplate.tsx
+**מיקום:** `src/components/services/ServiceTemplate.tsx`
 
-### פרטים טכניים
-
-1. **החלפת מערך התמונות** (שורות 6-47)
-   - החלפת כל ה-URLs מ-Unsplash ל-URLs של PNG שקופים
-   - שימוש במקורות כמו pngimg.com או אתרים דומים שמספקים PNG שקופים של רכבים
-   - וידוא שכל סוג רכב מקבל תמונה מתאימה:
-
-| קטגוריה | תמונה נדרשת |
-|---------|-------------|
-| Sports | מכונית ספורט (כמו Porsche Taycan) |
-| SUV | רכב שטח (כמו Jeep Cherokee) |
-| Coupe | קופה (כמו Mercedes Coupe) |
-| Minivan | מיניוואן (כמו Mercedes Metris) |
-| Crossover | קרוסאובר (כמו Cadillac XT4) |
-| Luxury | רכב יוקרה (כמו Mercedes S-Class) |
-| Electric | רכב חשמלי (כמו Audi e-tron) |
-| Hatchback | האצ'בק (כמו Mini Cooper) |
-| Sedan | סדאן (כמו Audi A3) |
-| Truck | טנדר (כמו Dodge RAM) |
-
-2. **התאמת סגנון התמונה** (שורה 187)
-   - הוספת `bg-transparent` לוודא שהרקע השקוף נשמר
-   - שמירה על `object-contain` לתצוגה נכונה
-
-## מבנה קוד לאחר השינוי
+**שינויים:**
+- הוספת prop חדש `serviceValue` ל-interface
+- העברת ה-`serviceValue` ל-`ContactForm`
 
 ```typescript
-const vehicleTypes = [
-  {
-    name: 'Sports',
-    image: 'https://[PNG-source]/sports-car.png',
-  },
-  {
-    name: 'SUV',
-    image: 'https://[PNG-source]/suv.png',
-  },
-  // ... שאר הרכבים
-];
+// הוספה ל-interface
+interface ServiceTemplateProps {
+  // ... props קיימים
+  serviceValue?: string;  // ערך השירות למילוי אוטומטי
+}
+
+// שינוי בקריאה ל-ContactForm (שורה 235)
+<ContactForm 
+  compact 
+  initialValues={{ service: serviceValue }}
+  hideServiceField={!!serviceValue}
+/>
 ```
 
-## מקורות PNG אפשריים
-- pngimg.com - תמונות PNG חינמיות ללא רקע
-- cleanpng.com - PNG שקופים באיכות גבוהה
-- freepnglogos.com - תמונות רכבים ללא רקע
+### 2. עדכון ContactForm.tsx
+**מיקום:** `src/components/forms/ContactForm.tsx`
+
+**שינויים:**
+- הוספת prop חדש `hideServiceField` ל-interface
+- הסתרת שדה השירות כאשר `hideServiceField={true}`
+
+```typescript
+// עדכון interface
+interface ContactFormProps {
+  compact?: boolean;
+  initialValues?: Partial<ContactFormData>;
+  hideServiceField?: boolean;  // חדש
+}
+
+// עדכון הקומפוננטה
+export function ContactForm({ 
+  compact = false, 
+  initialValues, 
+  hideServiceField = false 
+}: ContactFormProps) {
+  // ...
+}
+
+// הסתרת השדה (שורות 162-176)
+{!hideServiceField && (
+  <div className="space-y-2">
+    <Label htmlFor="service">Service of Interest</Label>
+    {/* ... Select component ... */}
+  </div>
+)}
+```
+
+### 3. עדכון כל דפי השירות
+עדכון 6 קבצים להוספת `serviceValue`:
+
+| קובץ | serviceValue |
+|------|-------------|
+| `CarLeasingPage.tsx` | `"leasing"` |
+| `FinancingPage.tsx` | `"financing"` |
+| `TradeInPage.tsx` | `"trade-in"` |
+| `WearAndTearPage.tsx` | `"wear-tear"` |
+| `WheelRepairPage.tsx` | `"wheel-repair"` |
+| `DetailingPage.tsx` | `"detailing"` |
+
+**דוגמה לשינוי ב-WearAndTearPage.tsx:**
+```typescript
+<ServiceTemplate
+  title="Wear & Tear Repair"
+  serviceValue="wear-tear"  // הוספה
+  // ... שאר ה-props
+/>
+```
 
 ## תוצאה צפויה
-הקרוסלה תציג רכבים נקיים ללא רקע, בדיוק כמו בתמונות הדוגמה שסיפקת - עם הרכב בלבד על רקע אפור בהיר של האתר.
+- בדפי שירות ספציפיים: השדה מוסתר והערך נשלח אוטומטית
+- בדף Contact הראשי: השדה נשאר גלוי ואופציונלי
+- בדף הבית (QuickLeadCapture): ללא שינוי - השדה נשאר
+
+## סיכום קבצים לעריכה
+1. `src/components/forms/ContactForm.tsx` - הוספת `hideServiceField` prop
+2. `src/components/services/ServiceTemplate.tsx` - הוספת `serviceValue` prop והעברתו לטופס
+3. `src/pages/services/CarLeasingPage.tsx` - הוספת `serviceValue="leasing"`
+4. `src/pages/services/FinancingPage.tsx` - הוספת `serviceValue="financing"`
+5. `src/pages/services/TradeInPage.tsx` - הוספת `serviceValue="trade-in"`
+6. `src/pages/services/WearAndTearPage.tsx` - הוספת `serviceValue="wear-tear"`
+7. `src/pages/services/WheelRepairPage.tsx` - הוספת `serviceValue="wheel-repair"`
+8. `src/pages/services/DetailingPage.tsx` - הוספת `serviceValue="detailing"`
