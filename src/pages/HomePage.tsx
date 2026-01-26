@@ -104,7 +104,7 @@ export default function HomePage() {
       <PeopleSection />
 
       {/* What We Do Section */}
-      <section className="py-20 md:py-28 bg-background">
+      <section className="pt-10 md:pt-14 pb-20 md:pb-28 bg-background">
         <div 
           ref={servicesRef}
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${servicesRevealed ? 'revealed' : ''}`}
