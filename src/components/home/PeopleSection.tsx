@@ -93,7 +93,7 @@ export function PeopleSection() {
   const revealed = reducedMotion ? true : isRevealed;
 
   return (
-    <section aria-label="People / Team" className="py-20 md:py-28 bg-background">
+    <section aria-label="People / Team" className="pt-20 md:pt-28 pb-10 md:pb-14 bg-background">
       <div
         ref={ref}
         className={cn(
