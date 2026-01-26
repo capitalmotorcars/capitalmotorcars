@@ -1,98 +1,102 @@
 
-# מילוי אוטומטי של סוג השירות בדפי שירות ספציפיים
+# Fix Scroll Behavior Across the Site
 
-## סקירה
-הוספת לוגיקה שממלאה אוטומטית את שדה "סוג השירות" בטופס יצירת קשר כאשר המשתמש נמצא בדף שירות ספציפי, והסתרת השדה כדי לפשט את חוויית המשתמש.
+## Overview
+Implement consistent scroll-to-top behavior for all page navigations and proper anchor scrolling for same-page sections.
 
-## שינויים נדרשים
+## Current State
+- No `ScrollToTop` component exists
+- Global `scroll-behavior: smooth` is set in `index.css`
+- All pages use React Router's `Link` component for navigation
+- Layout component wraps all pages but has no scroll management
 
-### 1. עדכון ServiceTemplate.tsx
-**מיקום:** `src/components/services/ServiceTemplate.tsx`
+## Solution
 
-**שינויים:**
-- הוספת prop חדש `serviceValue` ל-interface
-- העברת ה-`serviceValue` ל-`ContactForm`
+### 1. Create ScrollToTop Component
+**New file:** `src/components/ScrollToTop.tsx`
 
-```typescript
-// הוספה ל-interface
-interface ServiceTemplateProps {
-  // ... props קיימים
-  serviceValue?: string;  // ערך השירות למילוי אוטומטי
-}
+This component will:
+- Listen to route changes using `useLocation` from react-router-dom
+- Scroll to top (position 0) on every pathname change using `behavior: "instant"` for immediate positioning
+- Handle anchor links by scrolling to the target element when the hash changes
 
-// שינוי בקריאה ל-ContactForm (שורה 235)
-<ContactForm 
-  compact 
-  initialValues={{ service: serviceValue }}
-  hideServiceField={!!serviceValue}
-/>
+```text
++---------------------------+
+|     ScrollToTop.tsx       |
++---------------------------+
+|  useLocation()            |
+|    ├─ pathname changed?   |
+|    │    → scrollTo(0,0)   |
+|    └─ hash present?       |
+|         → scrollIntoView  |
++---------------------------+
 ```
 
-### 2. עדכון ContactForm.tsx
-**מיקום:** `src/components/forms/ContactForm.tsx`
+### 2. Integrate in App.tsx
+**File:** `src/App.tsx`
 
-**שינויים:**
-- הוספת prop חדש `hideServiceField` ל-interface
-- הסתרת שדה השירות כאשר `hideServiceField={true}`
+Add the `ScrollToTop` component inside `BrowserRouter` so it has access to the router context:
 
-```typescript
-// עדכון interface
-interface ContactFormProps {
-  compact?: boolean;
-  initialValues?: Partial<ContactFormData>;
-  hideServiceField?: boolean;  // חדש
-}
-
-// עדכון הקומפוננטה
-export function ContactForm({ 
-  compact = false, 
-  initialValues, 
-  hideServiceField = false 
-}: ContactFormProps) {
-  // ...
-}
-
-// הסתרת השדה (שורות 162-176)
-{!hideServiceField && (
-  <div className="space-y-2">
-    <Label htmlFor="service">Service of Interest</Label>
-    {/* ... Select component ... */}
-  </div>
-)}
+```text
+BrowserRouter
+  ├─ ScrollToTop  ← NEW
+  └─ Routes
+       ├─ HomePage
+       ├─ ServicesPage
+       └─ ...
 ```
 
-### 3. עדכון כל דפי השירות
-עדכון 6 קבצים להוספת `serviceValue`:
+## Technical Details
 
-| קובץ | serviceValue |
-|------|-------------|
-| `CarLeasingPage.tsx` | `"leasing"` |
-| `FinancingPage.tsx` | `"financing"` |
-| `TradeInPage.tsx` | `"trade-in"` |
-| `WearAndTearPage.tsx` | `"wear-tear"` |
-| `WheelRepairPage.tsx` | `"wheel-repair"` |
-| `DetailingPage.tsx` | `"detailing"` |
+### ScrollToTop Component Logic:
 
-**דוגמה לשינוי ב-WearAndTearPage.tsx:**
 ```typescript
-<ServiceTemplate
-  title="Wear & Tear Repair"
-  serviceValue="wear-tear"  // הוספה
-  // ... שאר ה-props
-/>
+// Pseudocode structure
+const { pathname, hash } = useLocation();
+
+useEffect(() => {
+  if (hash) {
+    // Anchor navigation - scroll to element
+    const element = document.getElementById(hash.slice(1));
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  } else {
+    // Page navigation - instant scroll to top
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }
+}, [pathname, hash]);
 ```
 
-## תוצאה צפויה
-- בדפי שירות ספציפיים: השדה מוסתר והערך נשלח אוטומטית
-- בדף Contact הראשי: השדה נשאר גלוי ואופציונלי
-- בדף הבית (QuickLeadCapture): ללא שינוי - השדה נשאר
+### Why `behavior: 'instant'`?
+- Prevents the page from visibly scrolling from a previous position
+- User immediately sees the top of the new page
+- More professional UX for page transitions
 
-## סיכום קבצים לעריכה
-1. `src/components/forms/ContactForm.tsx` - הוספת `hideServiceField` prop
-2. `src/components/services/ServiceTemplate.tsx` - הוספת `serviceValue` prop והעברתו לטופס
-3. `src/pages/services/CarLeasingPage.tsx` - הוספת `serviceValue="leasing"`
-4. `src/pages/services/FinancingPage.tsx` - הוספת `serviceValue="financing"`
-5. `src/pages/services/TradeInPage.tsx` - הוספת `serviceValue="trade-in"`
-6. `src/pages/services/WearAndTearPage.tsx` - הוספת `serviceValue="wear-tear"`
-7. `src/pages/services/WheelRepairPage.tsx` - הוספת `serviceValue="wheel-repair"`
-8. `src/pages/services/DetailingPage.tsx` - הוספת `serviceValue="detailing"`
+### Anchor Handling:
+- Detects `#section-id` in URL
+- Uses `scrollIntoView` with `behavior: 'smooth'` for a polished experience
+- Uses `block: 'start'` to snap section to viewport top
+
+## Files to Modify
+
+| File | Action |
+|------|--------|
+| `src/components/ScrollToTop.tsx` | Create new component |
+| `src/App.tsx` | Import and add ScrollToTop inside BrowserRouter |
+
+## Expected Behavior After Implementation
+
+| User Action | Result |
+|-------------|--------|
+| Click header nav link | New page loads at top |
+| Click footer link | New page loads at top |
+| Click CTA button | Destination page at top |
+| Click anchor link (e.g., `#contact`) | Smooth scroll to section, snapped to top |
+| Back/Forward browser buttons | Page loads at top (no position restoration) |
+
+## Edge Cases Handled
+- Mobile menu links (already using standard `Link` components)
+- External links (unchanged - open in new tab)
+- Same-page anchor links with hash
+- Browser history navigation
