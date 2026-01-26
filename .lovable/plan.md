@@ -1,102 +1,98 @@
 
-# Fix Scroll Behavior Across the Site
+# Add Social Proof to Hero Section
 
 ## Overview
-Implement consistent scroll-to-top behavior for all page navigations and proper anchor scrolling for same-page sections.
+Integrate a subtle social proof row above the main hero headline, maintaining the clean, enterprise-grade aesthetic while adding credibility signals.
 
-## Current State
-- No `ScrollToTop` component exists
-- Global `scroll-behavior: smooth` is set in `index.css`
-- All pages use React Router's `Link` component for navigation
-- Layout component wraps all pages but has no scroll management
+## Current Structure
+The left column content currently flows:
+1. `<h1>` - Main headline
+2. `<p>` - Subtext
+3. CTAs - Buttons
+4. `<p>` - Tagline
 
-## Solution
+## Proposed Addition
+Insert a social proof row **before** the `<h1>`:
 
-### 1. Create ScrollToTop Component
-**New file:** `src/components/ScrollToTop.tsx`
+```
+Social Proof Badges (NEW)
+    ↓
+<h1> Main headline
+    ↓
+<p> Subtext
+    ↓
+CTAs
+```
 
-This component will:
-- Listen to route changes using `useLocation` from react-router-dom
-- Scroll to top (position 0) on every pathname change using `behavior: "instant"` for immediate positioning
-- Handle anchor links by scrolling to the target element when the hash changes
+## Design Specifications
 
+### Badge Structure
+Two pill-style badges displayed inline:
+
+| Badge | Content |
+|-------|---------|
+| Badge 1 | "15k+ Customers" |
+| Badge 2 | Google icon + "★★★★★ 5/5 on Google" |
+
+### Styling
+- **Container**: `flex gap-3` for horizontal layout with tight spacing
+- **Pills**: Semi-transparent dark background (`hsl(0 0% 100% / 0.08)`)
+- **Border**: Subtle white border at 10% opacity
+- **Text**: White, small (`text-xs`)
+- **Stars**: Accent blue color for the rating stars
+- **Google Icon**: Small inline SVG, white colored
+- **Spacing**: Small margin-bottom (`mb-4`) before headline
+- **Animation**: Uses existing `hero-animate` class for consistency (appears with headline)
+
+### Visual Mock
 ```text
-+---------------------------+
-|     ScrollToTop.tsx       |
-+---------------------------+
-|  useLocation()            |
-|    ├─ pathname changed?   |
-|    │    → scrollTo(0,0)   |
-|    └─ hash present?       |
-|         → scrollIntoView  |
-+---------------------------+
+┌─────────────────┐  ┌──────────────────────────────┐
+│  15k+ Customers │  │  [G] ★★★★★ 5/5 on Google    │
+└─────────────────┘  └──────────────────────────────┘
+
+A clear, guided approach to car leasing.
 ```
 
-### 2. Integrate in App.tsx
-**File:** `src/App.tsx`
+## Technical Implementation
 
-Add the `ScrollToTop` component inside `BrowserRouter` so it has access to the router context:
+### File Changes
+**`src/components/hero/HeroSection.tsx`**
 
-```text
-BrowserRouter
-  ├─ ScrollToTop  ← NEW
-  └─ Routes
-       ├─ HomePage
-       ├─ ServicesPage
-       └─ ...
+1. Add a new `div` with flex layout before the `<h1>` element
+2. Include two badge spans with pill styling
+3. Add inline Google "G" icon (simple SVG)
+4. Apply existing animation classes
+
+### Code Structure
+```tsx
+{/* Social Proof - NEW */}
+<div className="flex flex-wrap items-center gap-3 mb-4 hero-animate ...">
+  <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs ...">
+    15k+ Customers
+  </span>
+  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs ...">
+    {/* Google icon SVG */}
+    <span className="text-accent">★★★★★</span>
+    5/5 on Google
+  </span>
+</div>
 ```
 
-## Technical Details
+## What Will NOT Change
+- Headline text and styling
+- Subtext content
+- CTA buttons
+- Circular process visualization position or size
+- Animation timing/behavior
+- Overall layout structure
 
-### ScrollToTop Component Logic:
+## Responsive Behavior
+- Badges wrap naturally on smaller screens via `flex-wrap`
+- Maintains left-alignment across all breakpoints
+- Consistent spacing on mobile and desktop
 
-```typescript
-// Pseudocode structure
-const { pathname, hash } = useLocation();
-
-useEffect(() => {
-  if (hash) {
-    // Anchor navigation - scroll to element
-    const element = document.getElementById(hash.slice(1));
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  } else {
-    // Page navigation - instant scroll to top
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-  }
-}, [pathname, hash]);
-```
-
-### Why `behavior: 'instant'`?
-- Prevents the page from visibly scrolling from a previous position
-- User immediately sees the top of the new page
-- More professional UX for page transitions
-
-### Anchor Handling:
-- Detects `#section-id` in URL
-- Uses `scrollIntoView` with `behavior: 'smooth'` for a polished experience
-- Uses `block: 'start'` to snap section to viewport top
-
-## Files to Modify
-
-| File | Action |
-|------|--------|
-| `src/components/ScrollToTop.tsx` | Create new component |
-| `src/App.tsx` | Import and add ScrollToTop inside BrowserRouter |
-
-## Expected Behavior After Implementation
-
-| User Action | Result |
-|-------------|--------|
-| Click header nav link | New page loads at top |
-| Click footer link | New page loads at top |
-| Click CTA button | Destination page at top |
-| Click anchor link (e.g., `#contact`) | Smooth scroll to section, snapped to top |
-| Back/Forward browser buttons | Page loads at top (no position restoration) |
-
-## Edge Cases Handled
-- Mobile menu links (already using standard `Link` components)
-- External links (unchanged - open in new tab)
-- Same-page anchor links with hash
-- Browser history navigation
+## Success Criteria
+- Social proof visible immediately above headline
+- Premium, understated appearance
+- Does not compete with the process animation
+- Matches CDK-style enterprise aesthetic
