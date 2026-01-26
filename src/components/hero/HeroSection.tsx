@@ -66,7 +66,7 @@ export function HeroSection() {
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
-              A clear, guided approach to car leasing.
+              Find Your Perfect Vehicle with <span className="text-accent">Zero Dealership Hassle</span>
             </h1>
             
             <p
@@ -75,7 +75,7 @@ export function HeroSection() {
               }`}
               style={{ color: 'hsl(213 27% 84%)' }}
             >
-              Work with a personal auto consultant who manages the entire process, from search and approval to delivery at your door.
+              Capital Motor Cars is your trusted automotive partner. From leasing and financing to maintenance and repairs, we handle everything so you can enjoy the ride.
             </p>
 
             <div
