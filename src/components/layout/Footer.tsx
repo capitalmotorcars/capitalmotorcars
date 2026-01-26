@@ -82,7 +82,7 @@ export function Footer() {
                   alt="Capital Motor Cars"
                   loading="lazy"
                   decoding="async"
-                  className="h-10 w-auto brightness-0 invert"
+                  className="h-14 w-auto brightness-0 invert"
                 />
               </Link>
               <p className="text-sm font-medium leading-relaxed mb-7" style={{ color: 'hsl(213 20% 85%)' }}>
