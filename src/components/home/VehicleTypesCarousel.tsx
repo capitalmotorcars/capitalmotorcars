@@ -30,7 +30,7 @@ const vehicleTypes = [
   },
   {
     name: 'SUV',
-    image: 'https://pngimg.com/uploads/jeep/jeep_PNG98.png',
+    image: 'https://pngimg.com/uploads/land_rover/land_rover_PNG55.png',
   },
   {
     name: 'Coupe',
