@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { ChevronsLeft, ChevronsRight } from 'lucide-react';
+import minivanImage from '@/assets/minivan-staria.png';
 
 const vehicleTypes = [
   {
@@ -38,7 +39,7 @@ const vehicleTypes = [
   },
   {
     name: 'Minivan',
-    image: 'https://pngimg.com/uploads/toyota/toyota_PNG12209.png',
+    image: minivanImage,
   },
   {
     name: 'Crossover',
