@@ -1,153 +1,181 @@
 
 
-# תוכנית: עיצוב מחדש של סקשן "What We Do" - מראה חדשני ופרימיום
+# תוכנית: סקשן "What We Do" עתידני ומרשים
 
-## מצב קיים
+## הבעיה הנוכחית
 
-הסקשן הנוכחי משתמש ב:
-- גריד פשוט של 3x3 עם ServiceCards
-- חלוקה ל-"Core services" ו-"Supporting services" עם תוויות טקסט
-- כרטיסים לבנים עם אייקון בצד שמאל וטקסט בצד ימין
-- אפקט hover בסיסי (העלאה של 3px)
-
-**בעיה**: מראה גנרי מדי, "שטוח", נראה כמו תבנית סטנדרטית
+הסקשן הקיים משתמש בגריד בסיסי עם כרטיסים לבנים - נראה כמו תבנית Bootstrap/Tailwind סטנדרטית. חסרים אלמנטים ויזואליים ייחודיים.
 
 ---
 
-## עיצוב חדש: "Bento Grid" Premium
+## קונספט חדש: "Glowing Hexagon Hub"
 
-קונספט בהשראת עיצוב Apple/Vercel - גריד אסימטרי עם כרטיסים בגדלים שונים, דגש ויזואלי על שירותים עיקריים.
+עיצוב בהשראת dashboard עתידני עם:
+- **רקע כהה** (כמו Hero) עם גרדיאנט עדין
+- **קווים זוהרים** שמחברים בין השירותים
+- **אייקונים עם אפקט glow** פעיל
+- **כרטיסים זכוכית** (glassmorphism עדין)
+- **אנימציית hover** עם ripple effect
 
 ```text
 Desktop Layout:
-┌────────────────────────────────────────────────────────────┐
-│                      What We Do                            │
-│    We support customers at every stage...                  │
-├──────────────────────────────┬─────────────────────────────┤
-│                              │                             │
-│   ┌──────────────────────┐   │   ┌───────────────────────┐ │
-│   │  🚗 Vehicle Leasing  │   │   │  💳 Financing         │ │
-│   │  (FEATURED - large)  │   │   │  (medium card)        │ │
-│   │                      │   │   ├───────────────────────┤ │
-│   │  Gradient border     │   │   │  🔄 Trade-In          │ │
-│   │  Animated icon       │   │   │  (medium card)        │ │
-│   └──────────────────────┘   │   └───────────────────────┘ │
-├──────────────────────────────┴─────────────────────────────┤
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐ │
-│  │ 🔧 Wear     │  │ ⚙️ Wheel    │  │ ✨ Detailing       │ │
-│  │ & Tear     │  │ Repair      │  │                     │ │
-│  └─────────────┘  └─────────────┘  └─────────────────────┘ │
-└────────────────────────────────────────────────────────────┘
-
-Mobile Layout:
-┌─────────────────────┐
-│  🚗 Vehicle Leasing │ ← Featured, full-width
-│  (larger card)      │
-├─────────────────────┤
-│  💳 Financing       │
-├─────────────────────┤
-│  🔄 Trade-In        │
-├─────────────────────┤
-│  🔧 │ ⚙️ │ ✨      │ ← 3 compact cards in row
-└─────────────────────┘
+┌────────────────────────────────────────────────────────────────────┐
+│  ▓▓▓▓▓▓▓▓▓▓ רקע כהה עם gradient עדין ▓▓▓▓▓▓▓▓▓▓▓                 │
+│                                                                    │
+│                      ╔═══════════════╗                             │
+│                      ║  What We Do   ║                             │
+│                      ╚═══════════════╝                             │
+│                                                                    │
+│      ┌─────────┐          ┌─────────┐          ┌─────────┐        │
+│      │ ◉ glow  │──────────│ ◉ glow  │──────────│ ◉ glow  │        │
+│      │ Leasing │          │ Finance │          │Trade-In │        │
+│      │  ▪▪▪    │          │  ▪▪▪    │          │  ▪▪▪    │        │
+│      └─────────┘          └─────────┘          └─────────┘        │
+│            │                   │                   │               │
+│            └───────────────────┼───────────────────┘               │
+│                               ╱│╲                                  │
+│      ┌─────────┐          ┌─────────┐          ┌─────────┐        │
+│      │ ◉ glow  │          │ ◉ glow  │          │ ◉ glow  │        │
+│      │ Repair  │          │ Wheels  │          │Detailing│        │
+│      └─────────┘          └─────────┘          └─────────┘        │
+│                                                                    │
+└────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## אלמנטים חדשניים (לא נראים כמו AI)
+## אלמנטים עתידניים
 
-### 1. Featured Card - כרטיס ראשי מודגש
-- גודל גדול יותר (span 2 שורות)
-- Subtle gradient border (לא גרדיאנט בולט)
-- אייקון עם אנימציה עדינה (pulse קל)
-- רקע עם texture עדין
+### 1. רקע כהה דינמי
+- גרדיאנט עדין מכחול כהה לשחור
+- "Noise texture" עדין ברקע
+- נקודות זוהרות קטנות (כמו כוכבים) - CSS only
 
-### 2. Micro-interactions
-- אפקט hover עם "glow" עדין סביב האייקון
-- קו תחתון מונפש ב-accent color
-- Staggered reveal animation (כרטיסים נכנסים בזה אחר זה)
-
-### 3. Visual Hierarchy
-- Core services: גודל גדול יותר, מיקום עליון
-- Supporting services: שורה תחתונה קומפקטית
-- אין תוויות "Core/Supporting" - ההיררכיה ויזואלית בלבד
-
-### 4. Typography עם אופי
-- כותרות שירות ב-font-weight 600
-- תיאורים ב-opacity נמוך יותר שעולה ב-hover
-- מספר שורה ("01", "02"...) עדין בפינה
-
----
-
-## פרטים טכניים
-
-### קובץ חדש: `src/components/home/WhatWeDoSection.tsx`
-
-קומפוננטה ייעודית במקום השימוש ב-ServiceCard הגנרי.
-
-**מבנה:**
-```typescript
-// Featured service card component
-const FeaturedServiceCard = ({ service, index }) => (
-  <Link className="group relative col-span-2 row-span-2 md:col-span-1 ...">
-    {/* Number badge */}
-    <span className="absolute top-4 right-4 text-xs text-muted-foreground/40 font-mono">
-      0{index + 1}
-    </span>
-    
-    {/* Icon with glow effect */}
-    <div className="relative">
-      <div className="absolute inset-0 bg-accent/20 blur-xl group-hover:bg-accent/30 transition-opacity" />
-      <Icon className="relative z-10 w-10 h-10 text-accent" />
-    </div>
-    
-    {/* Content */}
-    <h3>...</h3>
-    <p>...</p>
-    
-    {/* Animated bottom border */}
-    <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-accent group-hover:w-full transition-all duration-300" />
-  </Link>
-);
-
-// Compact service card for supporting services
-const CompactServiceCard = ({ service, index }) => (
-  <Link className="group flex items-center gap-3 p-4 ...">
-    <div className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center">
-      <Icon className="w-4 h-4 text-muted-foreground group-hover:text-accent transition-colors" />
-    </div>
-    <span className="font-medium text-sm">{service.title}</span>
-    <ArrowRight className="ml-auto w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-  </Link>
-);
-```
-
-### Grid Layout (CSS)
+### 2. כרטיסים בסגנון Glass
 ```css
-/* Bento-style asymmetric grid */
-.services-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 1.5rem;
+/* Glassmorphism עדין */
+background: rgba(255, 255, 255, 0.03);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.08);
+```
+
+### 3. קווים מחברים זוהרים
+- קווי SVG עדינים בין הכרטיסים
+- אפקט gradient על הקווים
+- אנימציית "pulse" עדינה שרצה על הקו
+
+### 4. אייקונים עם Glow Effect
+```css
+/* Icon glow */
+box-shadow: 0 0 30px rgba(31, 106, 225, 0.4);
+```
+- ב-hover: הזוהר מתחזק
+- אפקט "breathing" עדין (scale 1 -> 1.05)
+
+### 5. Hover State משודרג
+- Border gradient מסביב לכרטיס
+- טקסט נהיה בהיר יותר
+- אייקון גדל מעט עם glow מוגבר
+
+---
+
+## פרטי המימוש
+
+### קובץ: `src/components/home/WhatWeDoSection.tsx`
+
+**מבנה חדש:**
+
+```typescript
+// Service card with glow effect
+function ServiceCard({ service, index, isActive, onHover }) {
+  return (
+    <Link className="group relative">
+      {/* Glow backdrop */}
+      <div className="absolute inset-0 rounded-2xl bg-accent/20 blur-3xl 
+                      opacity-0 group-hover:opacity-60 transition-opacity" />
+      
+      {/* Glass card */}
+      <div className="relative p-6 rounded-2xl 
+                      bg-white/[0.03] backdrop-blur-md
+                      border border-white/[0.08]
+                      group-hover:border-accent/30">
+        
+        {/* Glowing icon */}
+        <div className="relative w-14 h-14 rounded-xl 
+                        bg-accent/10 flex items-center justify-center
+                        shadow-[0_0_30px_rgba(31,106,225,0.3)]
+                        group-hover:shadow-[0_0_40px_rgba(31,106,225,0.5)]">
+          <Icon className="w-7 h-7 text-accent" />
+        </div>
+        
+        {/* Content */}
+        <h3 className="text-white font-semibold mt-4">{title}</h3>
+        <p className="text-white/60 group-hover:text-white/80">{desc}</p>
+        
+        {/* Arrow indicator */}
+        <ArrowRight className="text-accent opacity-0 group-hover:opacity-100" />
+      </div>
+      
+      {/* Animated border gradient on hover */}
+      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100
+                      bg-gradient-to-r from-accent/50 via-accent to-accent/50
+                      -z-10 blur-sm" />
+    </Link>
+  );
 }
 
-/* Featured card spans full height */
-.featured-card {
-  grid-row: 1 / 3;
+// Connecting lines component (SVG)
+function ConnectingLines() {
+  return (
+    <svg className="absolute inset-0 pointer-events-none">
+      {/* Animated gradient lines between cards */}
+      <line className="stroke-accent/20" />
+      <circle className="animate-pulse fill-accent/40" /> {/* Pulse effect on line */}
+    </svg>
+  );
 }
 ```
 
-### עדכון HomePage.tsx
-החלפת הסקשן הקיים בקומפוננטה החדשה:
-```typescript
-// Before
-<section className="pt-8 md:pt-14 pb-12 md:pb-28 bg-background">
-  ...ServiceCards...
-</section>
+### קובץ: `src/index.css`
 
-// After
-<WhatWeDoSection />
+אנימציות חדשות:
+```css
+/* Glow pulse animation */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 30px rgba(31, 106, 225, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(31, 106, 225, 0.5); }
+}
+
+/* Line flow animation */
+@keyframes line-flow {
+  0% { stroke-dashoffset: 100; }
+  100% { stroke-dashoffset: 0; }
+}
+```
+
+---
+
+## Grid Layout
+
+```text
+Desktop (6 cards in 2 rows):
+┌──────┐  ┌──────┐  ┌──────┐
+│  1   │──│  2   │──│  3   │
+└──────┘  └──────┘  └──────┘
+    │         │         │
+    └─────────┼─────────┘
+              │
+┌──────┐  ┌──────┐  ┌──────┐
+│  4   │──│  5   │──│  6   │
+└──────┘  └──────┘  └──────┘
+
+Mobile (stacked with connecting line on side):
+│ ○ Service 1
+├─┤
+│ ○ Service 2
+├─┤
+│ ○ Service 3
+...
 ```
 
 ---
@@ -156,24 +184,25 @@ const CompactServiceCard = ({ service, index }) => (
 
 | קובץ | פעולה |
 |------|-------|
-| `src/components/home/WhatWeDoSection.tsx` | יצירה - סקשן חדש לגמרי |
-| `src/pages/HomePage.tsx` | עדכון - החלפת הסקשן הקיים |
+| `src/components/home/WhatWeDoSection.tsx` | שכתוב מלא - עיצוב עתידני |
+| `src/index.css` | הוספת אנימציות glow ו-line-flow |
 
 ---
 
 ## מה נשמר
 
-- כל 6 השירותים והקישורים
-- הטקסטים הקיימים (ללא שינוי בקופי)
-- הפונקציונליות (לינקים לדפי שירות)
-- צבעים ותאימות למותג
+- 6 השירותים והקישורים
+- הטקסטים הקיימים
+- תאימות למותג (כחול accent)
+- רספונסיביות מלאה
 
 ---
 
 ## תוצאה צפויה
 
-- **מראה חדשני** - לא עיצוב "תבנית" גנרי
-- **היררכיה ברורה** - שירותים עיקריים בולטים ויזואלית
-- **אינטראקציות עדינות** - תחושה מקצועית ולא "רועשת"
-- **לא נראה כמו AI** - פריסה אסימטרית, פרטים ייחודיים
+- **מראה עתידני** - לא נראה כמו תבנית רגילה
+- **אלמנטים ויזואליים ייחודיים** - קווים זוהרים, glassmorphism
+- **אינטראקטיביות** - hover effects מרשימים
+- **רקע כהה** - בולט מהשאר ויוצר עניין
+- **אנימציות עדינות** - תחושה premium, לא "רועשת"
 
