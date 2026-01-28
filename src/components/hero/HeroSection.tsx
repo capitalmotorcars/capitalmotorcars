@@ -44,8 +44,11 @@ export function HeroSection() {
             </h1>
 
             {/* Social Proof Badges - ALWAYS below headline */}
-            <div
-              className={`flex flex-wrap items-center gap-2 lg:gap-3 mb-5 lg:mb-6 hero-animate ${
+            <a
+              href="https://share.google/uNNUZv8Ot02uvLzbd"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex flex-wrap items-center gap-2 lg:gap-3 mb-5 lg:mb-6 hero-animate cursor-pointer hover:opacity-80 transition-opacity ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
@@ -93,7 +96,7 @@ export function HeroSection() {
                 <span className="text-accent">★★★★★</span>
                 5/5 on Google
               </span>
-            </div>
+            </a>
             
             <p
               className={`text-lg md:text-xl mb-8 leading-relaxed max-w-lg hero-animate delay-1 ${
