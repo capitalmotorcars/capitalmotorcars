@@ -61,7 +61,7 @@ function ServiceCard({ service, index }: ServiceCardProps) {
   return (
     <Link
       to={service.href}
-      className="group relative block"
+      className="group relative block h-full"
       style={{ animationDelay: `${index * 100}ms` }}
     >
       {/* Glow backdrop - appears on hover */}
@@ -69,7 +69,7 @@ function ServiceCard({ service, index }: ServiceCardProps) {
       
       {/* Glass card */}
       <div className={cn(
-        "relative p-6 md:p-8 rounded-2xl overflow-hidden",
+        "relative h-full flex flex-col p-6 md:p-8 rounded-2xl overflow-hidden",
         "bg-white/[0.03] backdrop-blur-md",
         "border border-white/[0.08]",
         "transition-all duration-500 ease-out",
@@ -106,7 +106,7 @@ function ServiceCard({ service, index }: ServiceCardProps) {
         </div>
         
         {/* Content */}
-        <div className="relative z-10">
+        <div className="relative z-10 flex-grow">
           <h3 className="text-lg md:text-xl font-semibold text-white mb-2 group-hover:text-white transition-colors">
             {service.title}
           </h3>
