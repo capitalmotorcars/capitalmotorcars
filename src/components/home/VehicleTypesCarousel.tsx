@@ -2,7 +2,8 @@ import { useEffect, useRef } from 'react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { ChevronsLeft, ChevronsRight } from 'lucide-react';
-import minivanImage from '@/assets/minivan-staria.png';
+import minivanImage from '@/assets/minivan-odyssey.png';
+import coupeImage from '@/assets/coupe-bmw-m8.png';
 
 const vehicleTypes = [
   {
@@ -35,7 +36,7 @@ const vehicleTypes = [
   },
   {
     name: 'Coupe',
-    image: 'https://pngimg.com/uploads/bmw/bmw_PNG1703.png',
+    image: coupeImage,
   },
   {
     name: 'Minivan',
