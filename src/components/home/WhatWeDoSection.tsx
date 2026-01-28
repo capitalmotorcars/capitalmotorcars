@@ -263,7 +263,7 @@ export function WhatWeDoSection() {
         <SectionHeading
           title="What We Do"
           subtitle="We support customers at every stage of the automotive process."
-          className="text-white [&_p]:text-white/60"
+          dark
         />
 
         <div className="relative max-w-6xl mx-auto">
