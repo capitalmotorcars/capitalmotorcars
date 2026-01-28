@@ -8,8 +8,16 @@ import heroBg from '@/assets/hero-bg.jpg';
 export function HeroSection() {
   const heroAnimated = useHeroAnimation();
 
+  // Placeholder avatar URLs - diverse, neutral faces
+  const avatars = [
+    'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face',
+    'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face',
+    'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face',
+    'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face',
+  ];
+
   return (
-    <section className="relative py-16 lg:py-24 min-h-[600px] lg:min-h-[700px]" style={{ backgroundColor: 'hsl(216 27% 6%)' }}>
+    <section className="relative pt-10 pb-16 lg:pt-16 lg:pb-24 min-h-[600px] lg:min-h-[700px]" style={{ backgroundColor: 'hsl(216 27% 6%)' }}>
       {/* Background Image - subtle */}
       <img
         src={heroBg}
@@ -29,28 +37,46 @@ export function HeroSection() {
           <div className="max-w-xl flex-shrink-0 z-10 lg:py-12">
             {/* Social Proof Badges */}
             <div
-              className={`flex flex-wrap items-center gap-3 mb-4 hero-animate ${
+              className={`flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-2 sm:gap-3 mb-5 lg:mb-6 hero-animate ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
+              {/* Avatars + Customer Count */}
+              <div className="flex items-center gap-2">
+                {/* Overlapping Avatars */}
+                <div className="flex -space-x-2">
+                  {avatars.map((src, index) => (
+                    <img
+                      key={index}
+                      src={src}
+                      alt=""
+                      className="w-7 h-7 lg:w-8 lg:h-8 rounded-full border-2 object-cover"
+                      style={{ borderColor: 'hsl(216 27% 6%)' }}
+                      loading="lazy"
+                    />
+                  ))}
+                </div>
+                <span
+                  className="inline-flex items-center px-2.5 py-1 lg:px-3 lg:py-1.5 rounded-full text-[11px] lg:text-xs font-medium text-white"
+                  style={{
+                    backgroundColor: 'hsl(0 0% 100% / 0.08)',
+                    border: '1px solid hsl(0 0% 100% / 0.1)',
+                  }}
+                >
+                  15k+ Customers
+                </span>
+              </div>
+              
+              {/* Google Rating Badge */}
               <span
-                className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium text-white"
-                style={{
-                  backgroundColor: 'hsl(0 0% 100% / 0.08)',
-                  border: '1px solid hsl(0 0% 100% / 0.1)',
-                }}
-              >
-                15k+ Customers
-              </span>
-              <span
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-white"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 lg:px-3 lg:py-1.5 rounded-full text-[11px] lg:text-xs font-medium text-white"
                 style={{
                   backgroundColor: 'hsl(0 0% 100% / 0.08)',
                   border: '1px solid hsl(0 0% 100% / 0.1)',
                 }}
               >
                 {/* Google Icon */}
-                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                <svg className="w-3 h-3 lg:w-3.5 lg:h-3.5" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                   <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
                   <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
