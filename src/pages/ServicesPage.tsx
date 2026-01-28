@@ -6,7 +6,7 @@ import { JsonLd } from '@/components/JsonLd';
 import { RelatedLinks, servicesPageLinks } from '@/components/ui/RelatedLinks';
 import { ServiceCard } from '@/components/ui/ServiceCard';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import bmwM5 from '@/assets/bmw-m5-transparent.png';
+import bmwM5 from '@/assets/bmw-m5-dark.png';
 import { 
   Car, 
   CreditCard, 
