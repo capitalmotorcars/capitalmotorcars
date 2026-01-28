@@ -3,7 +3,6 @@ import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
 import { JsonLd, organizationSchema } from '@/components/JsonLd';
 import { Button } from '@/components/ui/button';
-import { ServiceCard } from '@/components/ui/ServiceCard';
 import { StatCard } from '@/components/ui/StatCard';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { HeroSection } from '@/components/hero/HeroSection';
@@ -11,60 +10,10 @@ import { PeopleSection } from '@/components/home/PeopleSection';
 import { VehicleTypesCarousel } from '@/components/home/VehicleTypesCarousel';
 import { BrandsCarousel } from '@/components/home/BrandsCarousel';
 import { WhyUsPokerCards } from '@/components/home/WhyUsPokerCards';
+import { WhatWeDoSection } from '@/components/home/WhatWeDoSection';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import { 
-  Car, 
-  CreditCard, 
-  RefreshCw, 
-  Wrench, 
-  CircleDot, 
-  Sparkles
-} from 'lucide-react';
-
-const services = [
-  {
-    title: 'Vehicle Leasing',
-    description: 'We help you secure the right lease without spending hours negotiating at dealerships.',
-    href: '/services/car-leasing',
-    icon: Car,
-  },
-  {
-    title: 'Financing & Credit',
-    description: 'A straightforward credit application, so we can review financing options with you.',
-    href: '/services/financing',
-    icon: CreditCard,
-  },
-  {
-    title: 'Trade-In Services',
-    description: 'We evaluate your current vehicle and manage the trade-in process from start to finish.',
-    href: '/services/trade-in',
-    icon: RefreshCw,
-  },
-  {
-    title: 'Wear & Tear Repair',
-    description: 'End-of-lease repairs to reduce wear charges and avoid surprises at return.',
-    href: '/services/wear-and-tear',
-    icon: Wrench,
-  },
-  {
-    title: 'Rim, Wheel & Tire',
-    description: 'Wheel and tire repairs, cosmetic or functional, depending on what is needed.',
-    href: '/services/wheel-repair',
-    icon: CircleDot,
-  },
-  {
-    title: 'Professional Detailing',
-    description: 'Interior and exterior detailing for return, resale, or a proper clean.',
-    href: '/services/detailing',
-    icon: Sparkles,
-  },
-];
-
-const coreServices = services.slice(0, 3);
-const supportingServices = services.slice(3);
 
 export default function HomePage() {
-  const { ref: servicesRef, isRevealed: servicesRevealed } = useScrollReveal();
   const { ref: ctaRef, isRevealed: ctaRevealed } = useScrollReveal();
 
   return (
@@ -82,40 +31,8 @@ export default function HomePage() {
 
       <PeopleSection />
 
-      {/* What We Do Section */}
-      <section className="pt-8 md:pt-14 pb-12 md:pb-28 bg-background">
-        <div 
-          ref={servicesRef}
-          className={`container mx-auto px-4 lg:px-8 scroll-reveal ${servicesRevealed ? 'revealed' : ''}`}
-        >
-          <SectionHeading
-            title="What We Do"
-            subtitle="We support customers at every stage of the automotive process."
-          />
-
-          <div className="max-w-6xl mx-auto">
-            <div className="text-xs font-medium tracking-wide text-muted-foreground mb-4">
-              Core services
-            </div>
-            <div className="grid md:grid-cols-3 gap-6">
-              {coreServices.map((service) => (
-                <ServiceCard key={service.href} {...service} variant="core" />
-              ))}
-            </div>
-
-            <div className="mt-10">
-              <div className="text-xs font-medium tracking-wide text-muted-foreground mb-4">
-                Supporting services
-              </div>
-              <div className="grid md:grid-cols-3 gap-6">
-                {supportingServices.map((service) => (
-                  <ServiceCard key={service.href} {...service} variant="supporting" />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* What We Do Section - Bento Grid */}
+      <WhatWeDoSection />
 
       {/* Why Work With Us Section - Poker Cards */}
       <WhyUsPokerCards />
