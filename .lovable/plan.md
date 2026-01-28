@@ -1,9 +1,9 @@
 
 
-# תוכנית: עדכון תמונות הרכבים עם רקע שקוף
+# תוכנית: עדכון תמונות Coupe ו-Minivan בקרוסלת הרכבים
 
 ## סקירה
-החלפת תמונות הרכבים הקיימות בתמונות החדשות שהעלית עם רקע שקוף (transparent).
+החלפת תמונות הקטגוריות Coupe ו-Minivan בקרוסלת סוגי הרכבים בתמונות החדשות שהעלית עם רקע שקוף.
 
 ---
 
@@ -11,27 +11,34 @@
 
 | תמונה שהועלתה | יעד |
 |---------------|-----|
-| `user-uploads://porsche-cayenne-BX2hfWZC-removebg-preview.png` | `src/assets/porsche-cayenne.png` |
-| `user-uploads://mercedes-sclass-BU_Z0CrH-removebg-preview.png` | `src/assets/mercedes-sclass.png` |
+| `user-uploads://258F_300.png` (BMW M8 Coupe לבן) | `src/assets/coupe-bmw-m8.png` |
+| `user-uploads://1-ca762e28-removebg-preview.png` (Honda Odyssey שחור) | `src/assets/minivan-odyssey.png` |
 
 ---
 
-## שלב 2: עדכון אוטומטי
+## שלב 2: עדכון VehicleTypesCarousel.tsx
 
-**לא נדרשים שינויים בקוד** - הדפים כבר מייבאים את התמונות מאותם נתיבים:
+### שינויים ב-imports:
+```typescript
+// הוספת imports חדשים
+import coupeImage from '@/assets/coupe-bmw-m8.png';
+import minivanImage from '@/assets/minivan-odyssey.png';
 
-- **AboutPage.tsx**: `import porscheCayenne from '@/assets/porsche-cayenne.png'`
-- **BrandsPage.tsx**: `import mercedesSClass from '@/assets/mercedes-sclass.png'`
+// הסרת import הישן של minivan-staria.png
+```
 
-החלפת קבצי התמונות תעדכן אוטומטית את שני הדפים.
-
----
-
-## תוצאה צפויה
-
-- **דף About**: תמונת Porsche Cayenne GTS עם רקע שקוף שמשתלב מושלם עם הרקע הכהה
-- **דף Brands**: תמונת Mercedes S-Class עם רקע שקוף שמשתלב מושלם עם הרקע הכהה
-- אנימציית ה-drive-in תמשיך לעבוד כרגיל
+### שינויים במערך vehicleTypes:
+```typescript
+// שורות 36-43
+{
+  name: 'Coupe',
+  image: coupeImage,  // במקום URL חיצוני
+},
+{
+  name: 'Minivan',
+  image: minivanImage,  // עדכון לתמונה החדשה
+},
+```
 
 ---
 
@@ -39,6 +46,15 @@
 
 | קובץ | פעולה |
 |------|-------|
-| `src/assets/porsche-cayenne.png` | החלפה בתמונה השקופה |
-| `src/assets/mercedes-sclass.png` | החלפה בתמונה השקופה |
+| `src/assets/coupe-bmw-m8.png` | יצירה - העתקה מהתמונה שהועלתה |
+| `src/assets/minivan-odyssey.png` | יצירה - העתקה מהתמונה שהועלתה |
+| `src/components/home/VehicleTypesCarousel.tsx` | עדכון - imports ומערך התמונות |
+
+---
+
+## תוצאה צפויה
+
+- **Coupe**: תמונת BMW M8 לבנה עם רקע שקוף
+- **Minivan**: תמונת Honda Odyssey שחורה עם רקע שקוף
+- שתי התמונות ישתלבו בצורה נקייה ואחידה עם שאר התמונות בקרוסלה
 
