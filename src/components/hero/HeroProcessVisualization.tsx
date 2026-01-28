@@ -70,43 +70,46 @@ export function HeroProcessVisualization({ className }: HeroProcessVisualization
         ))}
       </div>
 
-      {/* Mobile: Simplified vertical steps */}
-      <div className="lg:hidden flex flex-col gap-2">
+      {/* Mobile: Simplified vertical steps - lighter, smoother UX */}
+      <div className="lg:hidden flex flex-col gap-1.5">
         {processSteps.map((step, index) => (
           <button
             key={step.title}
             onClick={() => setActiveStep(index)}
             className={cn(
-              'flex items-center gap-3 p-3 rounded-lg text-left',
+              'flex items-center gap-2.5 px-2.5 py-2 rounded-md text-left',
               'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent',
+              'transition-all duration-200 ease-out',
+              'active:scale-[0.98] active:bg-white/8',
               activeStep === index
-                ? 'bg-accent/15 border border-accent/40'
-                : 'bg-white/5 border border-transparent'
+                ? 'bg-accent/10 border border-accent/30'
+                : 'bg-white/[0.03] border border-white/[0.06]'
             )}
           >
             <div
               className={cn(
-                'w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold',
+                'w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-medium',
+                'transition-colors duration-200',
                 activeStep === index
                   ? 'bg-accent text-accent-foreground'
-                  : 'bg-white/10 text-primary-foreground/60'
+                  : 'bg-white/8 text-primary-foreground/50'
               )}
             >
               {index + 1}
             </div>
             <step.icon
               className={cn(
-                'w-4 h-4',
-                activeStep === index ? 'text-accent' : 'text-primary-foreground/60'
+                'w-3.5 h-3.5 transition-colors duration-200',
+                activeStep === index ? 'text-accent' : 'text-primary-foreground/50'
               )}
               strokeWidth={1.5}
             />
             <span
               className={cn(
-                'text-sm',
+                'text-[13px] transition-colors duration-200',
                 activeStep === index
                   ? 'text-primary-foreground font-medium'
-                  : 'text-primary-foreground/70'
+                  : 'text-primary-foreground/60'
               )}
             >
               {step.title}
@@ -116,15 +119,16 @@ export function HeroProcessVisualization({ className }: HeroProcessVisualization
       </div>
 
       {/* Description Panel */}
-      <div className="mt-6 min-h-[80px]">
+      <div className="mt-4 lg:mt-6 min-h-[70px] lg:min-h-[80px]">
         <div
           key={activeStep}
           className={cn(
-            'p-4 rounded-lg bg-white/5 border border-white/10',
+            'p-3 lg:p-4 rounded-md lg:rounded-lg',
+            'bg-white/[0.03] lg:bg-white/5 border border-white/[0.06] lg:border-white/10',
             !prefersReducedMotion && 'animate-step-description'
           )}
         >
-          <p className="text-primary-foreground/80 text-sm leading-relaxed">
+          <p className="text-primary-foreground/75 lg:text-primary-foreground/80 text-[13px] lg:text-sm leading-relaxed lg:leading-relaxed">
             {currentStep.description}
           </p>
         </div>
