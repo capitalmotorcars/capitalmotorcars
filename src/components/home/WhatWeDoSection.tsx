@@ -50,150 +50,195 @@ const services: Service[] = [
   },
 ];
 
-const featuredService = services[0];
-const primaryServices = services.slice(1, 3);
-const supportingServices = services.slice(3);
-
-interface FeaturedCardProps {
-  service: Service;
-  className?: string;
-}
-
-function FeaturedCard({ service, className }: FeaturedCardProps) {
-  const Icon = service.icon;
-  
-  return (
-    <Link
-      to={service.href}
-      className={cn(
-        "group relative flex flex-col justify-between p-8 md:p-10 rounded-2xl overflow-hidden",
-        "bg-card border border-border",
-        "transition-all duration-300 ease-out",
-        "hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5",
-        className
-      )}
-    >
-      {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-accent/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      
-      {/* Number badge */}
-      <span className="absolute top-6 right-6 text-[11px] font-mono text-muted-foreground/30 tracking-wider">
-        01
-      </span>
-      
-      {/* Icon with glow */}
-      <div className="relative mb-8">
-        <div className="absolute -inset-4 bg-accent/10 rounded-full blur-2xl opacity-0 group-hover:opacity-60 transition-opacity duration-500" />
-        <div className="relative w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center">
-          <Icon className="w-7 h-7 text-accent" />
-        </div>
-      </div>
-      
-      {/* Content */}
-      <div className="relative z-10">
-        <h3 className="text-xl md:text-2xl font-semibold text-primary mb-3">
-          {service.title}
-        </h3>
-        <p className="text-muted-foreground leading-relaxed mb-6 group-hover:text-foreground/70 transition-colors duration-300">
-          {service.description}
-        </p>
-        <div className="inline-flex items-center gap-2 text-accent font-medium">
-          <span>Learn more</span>
-          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
-        </div>
-      </div>
-      
-      {/* Animated bottom border */}
-      <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-accent to-accent/50 group-hover:w-full transition-all duration-500 ease-out" />
-    </Link>
-  );
-}
-
-interface PrimaryCardProps {
+interface ServiceCardProps {
   service: Service;
   index: number;
-  className?: string;
 }
 
-function PrimaryCard({ service, index, className }: PrimaryCardProps) {
+function ServiceCard({ service, index }: ServiceCardProps) {
   const Icon = service.icon;
   
   return (
     <Link
       to={service.href}
-      className={cn(
-        "group relative flex flex-col p-6 md:p-7 rounded-xl overflow-hidden",
-        "bg-card border border-border",
-        "transition-all duration-300 ease-out",
-        "hover:border-accent/20 hover:shadow-md",
-        className
-      )}
+      className="group relative block"
+      style={{ animationDelay: `${index * 100}ms` }}
     >
-      {/* Number badge */}
-      <span className="absolute top-5 right-5 text-[10px] font-mono text-muted-foreground/25 tracking-wider">
-        0{index + 2}
-      </span>
+      {/* Glow backdrop - appears on hover */}
+      <div className="absolute -inset-2 rounded-3xl bg-accent/20 blur-2xl opacity-0 group-hover:opacity-70 transition-opacity duration-500" />
       
-      {/* Icon */}
-      <div className="relative mb-5">
-        <div className="w-11 h-11 rounded-lg bg-muted flex items-center justify-center group-hover:bg-accent/10 transition-colors duration-300">
-          <Icon className="w-5 h-5 text-muted-foreground group-hover:text-accent transition-colors duration-300" />
+      {/* Glass card */}
+      <div className={cn(
+        "relative p-6 md:p-8 rounded-2xl overflow-hidden",
+        "bg-white/[0.03] backdrop-blur-md",
+        "border border-white/[0.08]",
+        "transition-all duration-500 ease-out",
+        "group-hover:border-accent/40 group-hover:bg-white/[0.06]"
+      )}>
+        {/* Animated gradient border overlay */}
+        <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <div className="absolute inset-[1px] rounded-2xl bg-gradient-to-br from-accent/20 via-transparent to-accent/10" />
         </div>
-      </div>
-      
-      {/* Content */}
-      <h3 className="text-lg font-semibold text-primary mb-2">
-        {service.title}
-      </h3>
-      <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
-        {service.description}
-      </p>
-      <div className="inline-flex items-center gap-1.5 text-accent text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-        <span>Learn more</span>
-        <ArrowRight className="w-3.5 h-3.5" />
+        
+        {/* Number indicator */}
+        <span className="absolute top-4 right-4 text-[10px] font-mono text-white/20 tracking-wider">
+          0{index + 1}
+        </span>
+        
+        {/* Glowing icon container */}
+        <div className="relative mb-6">
+          <div className={cn(
+            "relative w-14 h-14 rounded-xl flex items-center justify-center",
+            "bg-accent/10",
+            "shadow-[0_0_25px_rgba(31,106,225,0.25)]",
+            "group-hover:shadow-[0_0_40px_rgba(31,106,225,0.45)]",
+            "transition-all duration-500",
+            "group-hover:scale-110"
+          )}>
+            {/* Inner glow ring */}
+            <div className="absolute inset-0 rounded-xl bg-accent/5 animate-glow-pulse" />
+            <Icon className="relative z-10 w-7 h-7 text-accent" />
+          </div>
+          
+          {/* Floating particles effect */}
+          <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-accent/40 animate-float-1" />
+          <div className="absolute -bottom-1 -left-1 w-1.5 h-1.5 rounded-full bg-accent/30 animate-float-2" />
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10">
+          <h3 className="text-lg md:text-xl font-semibold text-white mb-2 group-hover:text-white transition-colors">
+            {service.title}
+          </h3>
+          <p className="text-white/50 text-sm md:text-base leading-relaxed group-hover:text-white/70 transition-colors duration-300">
+            {service.description}
+          </p>
+        </div>
+        
+        {/* Arrow indicator */}
+        <div className="mt-6 flex items-center gap-2 text-accent">
+          <span className="text-sm font-medium opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+            Learn more
+          </span>
+          <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
+        </div>
+        
+        {/* Bottom accent line */}
+        <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-accent via-accent/80 to-transparent group-hover:w-full transition-all duration-700 ease-out" />
       </div>
     </Link>
   );
 }
 
-interface CompactCardProps {
-  service: Service;
-  index: number;
-  className?: string;
+function ConnectingLines() {
+  return (
+    <svg 
+      className="absolute inset-0 w-full h-full pointer-events-none hidden md:block"
+      style={{ zIndex: 0 }}
+    >
+      <defs>
+        <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="hsl(214 77% 50% / 0.1)" />
+          <stop offset="50%" stopColor="hsl(214 77% 50% / 0.3)" />
+          <stop offset="100%" stopColor="hsl(214 77% 50% / 0.1)" />
+        </linearGradient>
+        <linearGradient id="lineGradientV" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="hsl(214 77% 50% / 0.1)" />
+          <stop offset="50%" stopColor="hsl(214 77% 50% / 0.3)" />
+          <stop offset="100%" stopColor="hsl(214 77% 50% / 0.1)" />
+        </linearGradient>
+      </defs>
+      
+      {/* Horizontal connecting lines - Row 1 */}
+      <line 
+        x1="22%" y1="25%" x2="38%" y2="25%" 
+        stroke="url(#lineGradient)" 
+        strokeWidth="1"
+        className="animate-line-flow"
+      />
+      <line 
+        x1="62%" y1="25%" x2="78%" y2="25%" 
+        stroke="url(#lineGradient)" 
+        strokeWidth="1"
+        className="animate-line-flow"
+        style={{ animationDelay: '0.5s' }}
+      />
+      
+      {/* Horizontal connecting lines - Row 2 */}
+      <line 
+        x1="22%" y1="75%" x2="38%" y2="75%" 
+        stroke="url(#lineGradient)" 
+        strokeWidth="1"
+        className="animate-line-flow"
+        style={{ animationDelay: '1s' }}
+      />
+      <line 
+        x1="62%" y1="75%" x2="78%" y2="75%" 
+        stroke="url(#lineGradient)" 
+        strokeWidth="1"
+        className="animate-line-flow"
+        style={{ animationDelay: '1.5s' }}
+      />
+      
+      {/* Vertical connecting lines */}
+      <line 
+        x1="17%" y1="35%" x2="17%" y2="65%" 
+        stroke="url(#lineGradientV)" 
+        strokeWidth="1"
+        className="animate-line-flow-v"
+      />
+      <line 
+        x1="50%" y1="35%" x2="50%" y2="65%" 
+        stroke="url(#lineGradientV)" 
+        strokeWidth="1"
+        className="animate-line-flow-v"
+        style={{ animationDelay: '0.7s' }}
+      />
+      <line 
+        x1="83%" y1="35%" x2="83%" y2="65%" 
+        stroke="url(#lineGradientV)" 
+        strokeWidth="1"
+        className="animate-line-flow-v"
+        style={{ animationDelay: '1.4s' }}
+      />
+      
+      {/* Glowing nodes at intersections */}
+      <circle cx="17%" cy="25%" r="3" className="fill-accent/30 animate-node-pulse" />
+      <circle cx="50%" cy="25%" r="3" className="fill-accent/30 animate-node-pulse" style={{ animationDelay: '0.3s' }} />
+      <circle cx="83%" cy="25%" r="3" className="fill-accent/30 animate-node-pulse" style={{ animationDelay: '0.6s' }} />
+      <circle cx="17%" cy="75%" r="3" className="fill-accent/30 animate-node-pulse" style={{ animationDelay: '0.9s' }} />
+      <circle cx="50%" cy="75%" r="3" className="fill-accent/30 animate-node-pulse" style={{ animationDelay: '1.2s' }} />
+      <circle cx="83%" cy="75%" r="3" className="fill-accent/30 animate-node-pulse" style={{ animationDelay: '1.5s' }} />
+    </svg>
+  );
 }
 
-function CompactCard({ service, index, className }: CompactCardProps) {
-  const Icon = service.icon;
-  
+function BackgroundEffects() {
   return (
-    <Link
-      to={service.href}
-      className={cn(
-        "group flex items-center gap-4 p-4 md:p-5 rounded-xl",
-        "bg-card border border-border",
-        "transition-all duration-200 ease-out",
-        "hover:border-accent/20 hover:bg-accent/[0.02]",
-        className
-      )}
-    >
-      {/* Icon */}
-      <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center flex-shrink-0 group-hover:bg-accent/10 transition-colors duration-200">
-        <Icon className="w-5 h-5 text-muted-foreground group-hover:text-accent transition-colors duration-200" />
-      </div>
+    <>
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/[0.02] to-transparent" />
       
-      {/* Content */}
-      <div className="flex-1 min-w-0">
-        <h4 className="font-semibold text-primary text-sm md:text-base">
-          {service.title}
-        </h4>
-        <p className="text-xs md:text-sm text-muted-foreground mt-0.5 hidden md:block">
-          {service.description.slice(0, 60)}...
-        </p>
-      </div>
+      {/* Noise texture */}
+      <div 
+        className="absolute inset-0 opacity-[0.015]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+        }}
+      />
       
-      {/* Arrow */}
-      <ArrowRight className="w-4 h-4 text-muted-foreground/50 group-hover:text-accent group-hover:translate-x-0.5 transition-all duration-200 flex-shrink-0" />
-    </Link>
+      {/* Floating orbs */}
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-accent/5 blur-3xl animate-float-orb" />
+      <div className="absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full bg-accent/5 blur-3xl animate-float-orb-delayed" />
+      
+      {/* Star-like dots */}
+      <div className="absolute top-[15%] left-[10%] w-1 h-1 rounded-full bg-white/20 animate-twinkle" />
+      <div className="absolute top-[25%] right-[15%] w-1.5 h-1.5 rounded-full bg-white/15 animate-twinkle" style={{ animationDelay: '1s' }} />
+      <div className="absolute bottom-[30%] left-[20%] w-1 h-1 rounded-full bg-white/20 animate-twinkle" style={{ animationDelay: '2s' }} />
+      <div className="absolute bottom-[20%] right-[25%] w-1 h-1 rounded-full bg-white/25 animate-twinkle" style={{ animationDelay: '0.5s' }} />
+      <div className="absolute top-[40%] left-[5%] w-0.5 h-0.5 rounded-full bg-white/30 animate-twinkle" style={{ animationDelay: '1.5s' }} />
+      <div className="absolute top-[60%] right-[8%] w-1 h-1 rounded-full bg-white/20 animate-twinkle" style={{ animationDelay: '2.5s' }} />
+    </>
   );
 }
 
@@ -201,11 +246,16 @@ export function WhatWeDoSection() {
   const { ref, isRevealed } = useScrollReveal();
   
   return (
-    <section className="pt-8 md:pt-14 pb-12 md:pb-28 bg-background">
+    <section 
+      className="relative py-16 md:py-28 overflow-hidden"
+      style={{ backgroundColor: 'hsl(216 27% 6%)' }}
+    >
+      <BackgroundEffects />
+      
       <div 
         ref={ref}
         className={cn(
-          "container mx-auto px-4 lg:px-8",
+          "container relative mx-auto px-4 lg:px-8",
           "scroll-reveal",
           isRevealed && "revealed"
         )}
@@ -213,64 +263,26 @@ export function WhatWeDoSection() {
         <SectionHeading
           title="What We Do"
           subtitle="We support customers at every stage of the automotive process."
+          className="text-white [&_p]:text-white/60"
         />
 
-        <div className="max-w-6xl mx-auto">
-          {/* Desktop Bento Grid */}
-          <div className="hidden md:grid grid-cols-[1.3fr_1fr] gap-5">
-            {/* Left: Featured card spanning 2 rows */}
-            <div className="row-span-2">
-              <FeaturedCard service={featuredService} className="h-full" />
-            </div>
-            
-            {/* Right: Two primary cards stacked */}
-            <div className="space-y-5">
-              {primaryServices.map((service, idx) => (
-                <PrimaryCard 
-                  key={service.href} 
-                  service={service} 
-                  index={idx}
-                />
-              ))}
-            </div>
-          </div>
+        <div className="relative max-w-6xl mx-auto">
+          {/* Connecting lines SVG - Desktop only */}
+          <ConnectingLines />
           
-          {/* Desktop: Supporting services row */}
-          <div className="hidden md:grid grid-cols-3 gap-4 mt-5">
-            {supportingServices.map((service, idx) => (
-              <CompactCard 
+          {/* Services Grid */}
+          <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+            {services.map((service, index) => (
+              <ServiceCard 
                 key={service.href} 
                 service={service} 
-                index={idx}
+                index={index}
               />
             ))}
           </div>
           
-          {/* Mobile Layout */}
-          <div className="md:hidden space-y-4">
-            {/* Featured card */}
-            <FeaturedCard service={featuredService} />
-            
-            {/* Primary services */}
-            {primaryServices.map((service, idx) => (
-              <PrimaryCard 
-                key={service.href} 
-                service={service} 
-                index={idx}
-              />
-            ))}
-            
-            {/* Supporting services - 3 in a row on larger mobile, stacked on small */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-              {supportingServices.map((service, idx) => (
-                <CompactCard 
-                  key={service.href} 
-                  service={service} 
-                  index={idx}
-                />
-              ))}
-            </div>
-          </div>
+          {/* Mobile connecting line */}
+          <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-accent/20 to-transparent md:hidden" />
         </div>
       </div>
     </section>
