@@ -1,44 +1,105 @@
 
 
-# תוכנית: עדכון תמונות Coupe ו-Minivan בקרוסלת הרכבים
+# תוכנית: גרסה ממורכזת של Hero Section
 
 ## סקירה
-החלפת תמונות הקטגוריות Coupe ו-Minivan בקרוסלת סוגי הרכבים בתמונות החדשות שהעלית עם רקע שקוף.
+יצירת גרסה חדשה של ה-Hero עם תוכן ממורכז ופריסה לרוחב מלא, תוך שמירה על כל האלמנטים הקיימים.
 
 ---
 
-## שלב 1: העתקת התמונות לפרויקט
+## עיצוב מוצע
 
-| תמונה שהועלתה | יעד |
-|---------------|-----|
-| `user-uploads://258F_300.png` (BMW M8 Coupe לבן) | `src/assets/coupe-bmw-m8.png` |
-| `user-uploads://1-ca762e28-removebg-preview.png` (Honda Odyssey שחור) | `src/assets/minivan-odyssey.png` |
+```text
+┌─────────────────────────────────────────────────────────────────┐
+│                         [Background Image]                       │
+│                                                                   │
+│              Find Your Perfect Vehicle with                       │
+│              Zero Dealership Hassle                               │
+│                                                                   │
+│           [👤👤👤👤 15k+ Customers] [⭐⭐⭐⭐⭐ 5/5 on Google]       │
+│                                                                   │
+│     Capital Motor Cars is your trusted automotive partner...      │
+│                                                                   │
+│              [Schedule a Call]    View Services                   │
+│                One conversation. No pressure.                      │
+│                                                                   │
+│  ┌──────┐  ┌──────┐  ┌──────┐  ┌──────┐  ┌──────┐               │
+│  │  1   │  │  2   │  │  3   │  │  4   │  │  5   │               │
+│  │ 🎧  │→│ 🔍  │→│ ✓   │→│ ⚙️  │→│ 📍  │               │
+│  │Consul│  │Search│  │Approv│  │AddOns│  │Deliv │               │
+│  └──────┘  └──────┘  └──────┘  └──────┘  └──────┘               │
+│                                                                   │
+│              [Active Step Description Panel]                      │
+└─────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
-## שלב 2: עדכון VehicleTypesCarousel.tsx
+## שינויים עיקריים
 
-### שינויים ב-imports:
+### 1. HeroSection.tsx - פריסה ממורכזת
+
+| אלמנט | לפני | אחרי |
+|-------|------|------|
+| Container | `flex-col lg:flex-row` | `flex-col items-center text-center` |
+| כותרת | `max-w-xl text-left` | `max-w-3xl text-center` |
+| Social Proof | `flex-wrap items-center` | `flex justify-center` |
+| תיאור | `max-w-lg text-left` | `max-w-2xl text-center mx-auto` |
+| CTAs | `items-start sm:items-center` | `justify-center` |
+| Process Viz | בצד ימין | מתחת לתוכן, רוחב מלא |
+
+### 2. CircularProcessVisualization - גרסה אופקית
+
+יצירת מצב תצוגה חדש **HorizontalProcessVisualization** עבור Desktop:
+- 5 שלבים בשורה אופקית
+- חיצים או קווים מחברים בין השלבים
+- Active step מודגש עם accent
+- Description panel מתחת
+
+---
+
+## פרטים טכניים
+
+### שינויים ב-HeroSection.tsx
+
 ```typescript
-// הוספת imports חדשים
-import coupeImage from '@/assets/coupe-bmw-m8.png';
-import minivanImage from '@/assets/minivan-odyssey.png';
-
-// הסרת import הישן של minivan-staria.png
+// מבנה חדש
+<div className="relative container mx-auto px-4 lg:px-8">
+  <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
+    {/* Centered Content */}
+    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-[1.1]">
+      ...
+    </h1>
+    
+    {/* Social Proof - centered */}
+    <div className="flex flex-wrap justify-center gap-2 lg:gap-3 mb-5">
+      ...
+    </div>
+    
+    {/* Description - centered */}
+    <p className="text-lg md:text-xl mb-8 max-w-2xl">
+      ...
+    </p>
+    
+    {/* CTAs - centered */}
+    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+      ...
+    </div>
+  </div>
+  
+  {/* Process Steps - horizontal below content */}
+  <div className="mt-12 lg:mt-16 w-full max-w-5xl mx-auto">
+    <HorizontalProcessVisualization />
+  </div>
+</div>
 ```
 
-### שינויים במערך vehicleTypes:
-```typescript
-// שורות 36-43
-{
-  name: 'Coupe',
-  image: coupeImage,  // במקום URL חיצוני
-},
-{
-  name: 'Minivan',
-  image: minivanImage,  // עדכון לתמונה החדשה
-},
-```
+### קומפוננטה חדשה: HorizontalProcessVisualization.tsx
+
+- שורה של 5 כרטיסים אופקיים
+- קווים מחברים בין השלבים
+- Active state עם border accent
+- מתחת: תיאור השלב הפעיל
 
 ---
 
@@ -46,15 +107,15 @@ import minivanImage from '@/assets/minivan-odyssey.png';
 
 | קובץ | פעולה |
 |------|-------|
-| `src/assets/coupe-bmw-m8.png` | יצירה - העתקה מהתמונה שהועלתה |
-| `src/assets/minivan-odyssey.png` | יצירה - העתקה מהתמונה שהועלתה |
-| `src/components/home/VehicleTypesCarousel.tsx` | עדכון - imports ומערך התמונות |
+| `src/components/hero/HeroSection.tsx` | עדכון מבנה לפריסה ממורכזת |
+| `src/components/hero/HorizontalProcessVisualization.tsx` | יצירה - תצוגת שלבים אופקית |
 
 ---
 
-## תוצאה צפויה
+## יתרונות הגרסה הממורכזת
 
-- **Coupe**: תמונת BMW M8 לבנה עם רקע שקוף
-- **Minivan**: תמונת Honda Odyssey שחורה עם רקע שקוף
-- שתי התמונות ישתלבו בצורה נקייה ואחידה עם שאר התמונות בקרוסלה
+- **מראה מודרני ואימפקטי יותר** - המסר המרכזי בולט
+- **זרימה טבעית** - תוכן → CTA → How It Works
+- **רספונסיביות טובה יותר** - המבנה מתאים לכל גודל מסך
+- **פחות עומס ויזואלי** - ללא פיצול לשני עמודים
 
