@@ -1,46 +1,44 @@
 
 
-# תוכנית: הסרת רקע מתמונות הרכבים
+# תוכנית: עדכון תמונות הרכבים עם רקע שקוף
 
-## הבעיה
-תמונות הרכבים שנוצרו לדפי About ו-Brands (Porsche Cayenne GTS ו-Mercedes S-Class) מכילות רקע שלא משתלב טוב עם הרקע הכהה של כותרות ההירו.
-
-## הפתרון
-יצירת גרסאות חדשות של התמונות עם רקע שחור טהור או שקוף, בדומה לתמונת ה-BMW בדף Services.
+## סקירה
+החלפת תמונות הרכבים הקיימות בתמונות החדשות שהעלית עם רקע שקוף (transparent).
 
 ---
 
-## שלב 1: יצירת תמונת Porsche Cayenne GTS חדשה
+## שלב 1: העתקת התמונות לפרויקט
 
-### פרטים:
-- יצירת תמונה של Porsche Cayenne GTS 2024 בצבע כסוף/לבן
-- רקע שחור טהור (#0a0a0a) שזהה לצבע ה-primary של האתר
-- זווית צד-קדמית דינמית
-- שמירה והחלפה ב: `src/assets/porsche-cayenne.png`
-
----
-
-## שלב 2: יצירת תמונת Mercedes S-Class חדשה
-
-### פרטים:
-- יצירת תמונה של Mercedes S-Class 2024 בצבע לבן/כסוף
-- רקע שחור טהור שזהה לרקע ההירו
-- זווית צד-קדמית
-- שמירה והחלפה ב: `src/assets/mercedes-sclass.png`
+| תמונה שהועלתה | יעד |
+|---------------|-----|
+| `user-uploads://porsche-cayenne-BX2hfWZC-removebg-preview.png` | `src/assets/porsche-cayenne.png` |
+| `user-uploads://mercedes-sclass-BU_Z0CrH-removebg-preview.png` | `src/assets/mercedes-sclass.png` |
 
 ---
 
-## שינויים בקבצים
+## שלב 2: עדכון אוטומטי
+
+**לא נדרשים שינויים בקוד** - הדפים כבר מייבאים את התמונות מאותם נתיבים:
+
+- **AboutPage.tsx**: `import porscheCayenne from '@/assets/porsche-cayenne.png'`
+- **BrandsPage.tsx**: `import mercedesSClass from '@/assets/mercedes-sclass.png'`
+
+החלפת קבצי התמונות תעדכן אוטומטית את שני הדפים.
+
+---
+
+## תוצאה צפויה
+
+- **דף About**: תמונת Porsche Cayenne GTS עם רקע שקוף שמשתלב מושלם עם הרקע הכהה
+- **דף Brands**: תמונת Mercedes S-Class עם רקע שקוף שמשתלב מושלם עם הרקע הכהה
+- אנימציית ה-drive-in תמשיך לעבוד כרגיל
+
+---
+
+## קבצים שישתנו
 
 | קובץ | פעולה |
 |------|-------|
-| `src/assets/porsche-cayenne.png` | החלפה - תמונה חדשה עם רקע שחור |
-| `src/assets/mercedes-sclass.png` | החלפה - תמונה חדשה עם רקע שחור |
-
-**הערה**: קבצי ה-TSX לא דורשים שינוי - רק החלפת התמונות עצמן.
-
----
-
-## חלופה מומלצת
-אם הרקע השחור לא ישתלב מושלם, אפשרות נוספת היא להעלות תמונות PNG עם רקע שקוף אמיתי (כמו שעשינו עם ה-BMW) - זה מבטיח התאמה מושלמת לכל רקע.
+| `src/assets/porsche-cayenne.png` | החלפה בתמונה השקופה |
+| `src/assets/mercedes-sclass.png` | החלפה בתמונה השקופה |
 
