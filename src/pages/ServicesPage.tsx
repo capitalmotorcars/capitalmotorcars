@@ -6,7 +6,7 @@ import { JsonLd } from '@/components/JsonLd';
 import { RelatedLinks, servicesPageLinks } from '@/components/ui/RelatedLinks';
 import { ServiceCard } from '@/components/ui/ServiceCard';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import bmwM5 from '@/assets/bmw-m5.png';
+import bmwM5 from '@/assets/bmw-m5-transparent.png';
 import { 
   Car, 
   CreditCard, 
@@ -114,12 +114,12 @@ export default function ServicesPage() {
                 We offer practical automotive solutions for customers who want things done right and without unnecessary hassle.
               </p>
             </div>
-            {/* BMW M5 Image */}
+            {/* BMW M5 Image - drives in from right */}
             <div className="hidden lg:block flex-shrink-0">
               <img 
                 src={bmwM5} 
                 alt="BMW M5" 
-                className="w-[400px] xl:w-[480px] h-auto object-contain drop-shadow-2xl"
+                className="w-[400px] xl:w-[480px] h-auto object-contain drop-shadow-2xl animate-car-drive-in"
               />
             </div>
           </div>
