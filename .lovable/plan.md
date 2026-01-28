@@ -1,181 +1,179 @@
 
 
-# Implementation Plan: Hero CTA, Poker Cards Section, and Form Upgrade
+# תוכנית: עיצוב מחדש של סקשן "What We Do" - מראה חדשני ופרימיום
 
-## Overview
-This plan covers three targeted updates: (1) Hero CTA text change, (2) "Why Work with Capital Motor Cars" section redesign with poker card concept, and (3) Form visual and performance improvements.
+## מצב קיים
 
----
+הסקשן הנוכחי משתמש ב:
+- גריד פשוט של 3x3 עם ServiceCards
+- חלוקה ל-"Core services" ו-"Supporting services" עם תוויות טקסט
+- כרטיסים לבנים עם אייקון בצד שמאל וטקסט בצד ימין
+- אפקט hover בסיסי (העלאה של 3px)
 
-## 1. Hero CTA Text Update
-
-**File:** `src/components/hero/HeroSection.tsx`
-
-### Changes
-| Element | Before | After |
-|---------|--------|-------|
-| CTA Button Text | "Schedule a Call" | "Start the process" |
-| Link Destination | `/contact` | `/contact` (unchanged) |
-
-**Technical Details:**
-- Line 121: Change button text from "Schedule a Call" to "Start the process"
-- Keep ArrowRight icon
-- All other hero elements (layout, animation, colors, copy) remain unchanged
+**בעיה**: מראה גנרי מדי, "שטוח", נראה כמו תבנית סטנדרטית
 
 ---
 
-## 2. "Why Work with Capital Motor Cars" - Poker Card Redesign
+## עיצוב חדש: "Bento Grid" Premium
 
-**File:** `src/pages/HomePage.tsx` (section refactor) + New Component
-
-### Current State
-- 3 simple cards with icon circles, centered text
-- No interaction beyond scroll reveal
-- Light gray (`bg-muted`) background
-
-### New Design: Interactive Poker Cards
-
-**Content (using existing concepts, no new claims):**
-
-| Card | Title | Description |
-|------|-------|-------------|
-| 1 | Single Point of Contact | One dedicated consultant manages your entire process, from initial conversation through delivery. |
-| 2 | Real Industry Experience | Our team has worked inside dealerships and understands how pricing, financing, and negotiations actually work. |
-| 3 | Clear, Practical Process | We explain each step before it happens. You always know where you are and what comes next. |
-
-**Desktop Behavior:**
-- Cards appear stacked with slight overlap (transform + z-index)
-- Hover: hovered card lifts forward (translateY(-8px), increased z-index)
-- Click: locks active state, reveals full description
-- Only one card active at a time
-
-**Mobile Behavior:**
-- No overlap, vertical stack
-- Tap expands/collapses description (accordion-style)
-- Smooth height transition
-
-**Visual Style:**
-- Dark background (`hsl(216 27% 6%)`) to match Hero/CTA sections
-- Premium card feel: subtle border (`hsl(0 0% 100% / 0.08)`), rounded corners (`rounded-xl`)
-- Soft inner glow/shadow
-- Accent blue for active state border and icon highlight
-- White text on dark cards
-- No casino aesthetics, clean and minimal
-
-**New Component:** `src/components/home/WhyUsPokerCards.tsx`
+קונספט בהשראת עיצוב Apple/Vercel - גריד אסימטרי עם כרטיסים בגדלים שונים, דגש ויזואלי על שירותים עיקריים.
 
 ```text
-┌──────────────────────────────────────────────────────────────┐
-│                                                              │
-│            Why Work with Capital Motor Cars                  │
-│                                                              │
-│    ┌─────────────┐                                           │
-│    │  Card 1     │┐                                          │
-│    │  (active)   ││  ← Cards slightly overlapped             │
-│    │  ━━━━━━━━━  ││┐                                         │
-│    │  [icon]     │││                                         │
-│    │  Title      ││┘                                         │
-│    │  Desc...    │┘                                          │
-│    └─────────────┘                                           │
-│                                                              │
-└──────────────────────────────────────────────────────────────┘
-```
+Desktop Layout:
+┌────────────────────────────────────────────────────────────┐
+│                      What We Do                            │
+│    We support customers at every stage...                  │
+├──────────────────────────────┬─────────────────────────────┤
+│                              │                             │
+│   ┌──────────────────────┐   │   ┌───────────────────────┐ │
+│   │  🚗 Vehicle Leasing  │   │   │  💳 Financing         │ │
+│   │  (FEATURED - large)  │   │   │  (medium card)        │ │
+│   │                      │   │   ├───────────────────────┤ │
+│   │  Gradient border     │   │   │  🔄 Trade-In          │ │
+│   │  Animated icon       │   │   │  (medium card)        │ │
+│   └──────────────────────┘   │   └───────────────────────┘ │
+├──────────────────────────────┴─────────────────────────────┤
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐ │
+│  │ 🔧 Wear     │  │ ⚙️ Wheel    │  │ ✨ Detailing       │ │
+│  │ & Tear     │  │ Repair      │  │                     │ │
+│  └─────────────┘  └─────────────┘  └─────────────────────┘ │
+└────────────────────────────────────────────────────────────┘
 
-**Mobile View:**
-```text
+Mobile Layout:
 ┌─────────────────────┐
-│ Why Work with CMC   │
-│                     │
-│ ┌─────────────────┐ │
-│ │ Card 1  [▼]     │ │
-│ │ Description...  │ │
-│ └─────────────────┘ │
-│                     │
-│ ┌─────────────────┐ │
-│ │ Card 2  [▶]     │ │
-│ └─────────────────┘ │
-│                     │
-│ ┌─────────────────┐ │
-│ │ Card 3  [▶]     │ │
-│ └─────────────────┘ │
+│  🚗 Vehicle Leasing │ ← Featured, full-width
+│  (larger card)      │
+├─────────────────────┤
+│  💳 Financing       │
+├─────────────────────┤
+│  🔄 Trade-In        │
+├─────────────────────┤
+│  🔧 │ ⚙️ │ ✨      │ ← 3 compact cards in row
 └─────────────────────┘
 ```
 
 ---
 
-## 3. Form Visual and Performance Upgrade
+## אלמנטים חדשניים (לא נראים כמו AI)
 
-**Files:** `src/components/forms/ContactForm.tsx`, `src/components/forms/CreditApplicationForm.tsx`
+### 1. Featured Card - כרטיס ראשי מודגש
+- גודל גדול יותר (span 2 שורות)
+- Subtle gradient border (לא גרדיאנט בולט)
+- אייקון עם אנימציה עדינה (pulse קל)
+- רקע עם texture עדין
 
-### Visual Improvements
+### 2. Micro-interactions
+- אפקט hover עם "glow" עדין סביב האייקון
+- קו תחתון מונפש ב-accent color
+- Staggered reveal animation (כרטיסים נכנסים בזה אחר זה)
 
-| Element | Before | After |
-|---------|--------|-------|
-| Input spacing | `space-y-2` between label/input | `space-y-1.5` tighter hierarchy |
-| Input style | Default border, basic focus | Lighter border, prominent focus ring, subtle background on focus |
-| Label style | Basic `text-sm` | Slightly bolder, clearer hierarchy |
-| Error state | Red border only | Red border + subtle background tint |
-| Button | Full width accent | Same but with subtle hover scale feedback |
-| Overall padding | Standard `space-y-6` | Refined `space-y-5` for better density |
+### 3. Visual Hierarchy
+- Core services: גודל גדול יותר, מיקום עליון
+- Supporting services: שורה תחתונה קומפקטית
+- אין תוויות "Core/Supporting" - ההיררכיה ויזואלית בלבד
 
-### Focus State Improvements
-```css
-/* New input focus behavior */
-focus:border-accent focus:ring-2 focus:ring-accent/20 focus:bg-accent/5
-```
+### 4. Typography עם אופי
+- כותרות שירות ב-font-weight 600
+- תיאורים ב-opacity נמוך יותר שעולה ב-hover
+- מספר שורה ("01", "02"...) עדין בפינה
 
-### Performance/UX Improvements
-- Remove any transition on Input that causes perceived lag
-- Simpler transitions: `transition-colors duration-150` instead of complex transitions
-- Mobile: ensure inputs don't cause viewport jumps on focus
-- Disable form animations for reduced motion preference
+---
 
-### Updated Input Component Pattern
+## פרטים טכניים
+
+### קובץ חדש: `src/components/home/WhatWeDoSection.tsx`
+
+קומפוננטה ייעודית במקום השימוש ב-ServiceCard הגנרי.
+
+**מבנה:**
 ```typescript
-// Clean, fast focus state
-className={cn(
-  "h-11 bg-background border-input/60 rounded-lg",
-  "placeholder:text-muted-foreground/60",
-  "focus:border-accent focus:ring-2 focus:ring-accent/20",
-  "transition-colors duration-150",
-  errors.fieldName ? "border-destructive bg-destructive/5" : ""
-)}
+// Featured service card component
+const FeaturedServiceCard = ({ service, index }) => (
+  <Link className="group relative col-span-2 row-span-2 md:col-span-1 ...">
+    {/* Number badge */}
+    <span className="absolute top-4 right-4 text-xs text-muted-foreground/40 font-mono">
+      0{index + 1}
+    </span>
+    
+    {/* Icon with glow effect */}
+    <div className="relative">
+      <div className="absolute inset-0 bg-accent/20 blur-xl group-hover:bg-accent/30 transition-opacity" />
+      <Icon className="relative z-10 w-10 h-10 text-accent" />
+    </div>
+    
+    {/* Content */}
+    <h3>...</h3>
+    <p>...</p>
+    
+    {/* Animated bottom border */}
+    <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-accent group-hover:w-full transition-all duration-300" />
+  </Link>
+);
+
+// Compact service card for supporting services
+const CompactServiceCard = ({ service, index }) => (
+  <Link className="group flex items-center gap-3 p-4 ...">
+    <div className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center">
+      <Icon className="w-4 h-4 text-muted-foreground group-hover:text-accent transition-colors" />
+    </div>
+    <span className="font-medium text-sm">{service.title}</span>
+    <ArrowRight className="ml-auto w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+  </Link>
+);
 ```
 
-### Button Submit State
-- Keep "Continue" text for ContactForm
-- Keep "Submit Application" for CreditApplicationForm
-- Add subtle transform on hover: `hover:scale-[1.01]` (desktop only)
+### Grid Layout (CSS)
+```css
+/* Bento-style asymmetric grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* Featured card spans full height */
+.featured-card {
+  grid-row: 1 / 3;
+}
+```
+
+### עדכון HomePage.tsx
+החלפת הסקשן הקיים בקומפוננטה החדשה:
+```typescript
+// Before
+<section className="pt-8 md:pt-14 pb-12 md:pb-28 bg-background">
+  ...ServiceCards...
+</section>
+
+// After
+<WhatWeDoSection />
+```
 
 ---
 
-## Files to be Changed
+## קבצים שישתנו
 
-| File | Action |
-|------|--------|
-| `src/components/hero/HeroSection.tsx` | Update CTA button text |
-| `src/components/home/WhyUsPokerCards.tsx` | Create - new poker cards component |
-| `src/pages/HomePage.tsx` | Replace "Why Work With Us" section with new component |
-| `src/components/forms/ContactForm.tsx` | Visual and UX improvements |
-| `src/components/forms/CreditApplicationForm.tsx` | Visual and UX improvements |
-| `src/components/ui/input.tsx` | Update default input styling |
-| `src/components/ui/textarea.tsx` | Update default textarea styling |
+| קובץ | פעולה |
+|------|-------|
+| `src/components/home/WhatWeDoSection.tsx` | יצירה - סקשן חדש לגמרי |
+| `src/pages/HomePage.tsx` | עדכון - החלפת הסקשן הקיים |
 
 ---
 
-## Responsiveness Checklist
+## מה נשמר
 
-- Desktop: Poker cards with hover/click interaction, horizontal overlap
-- Mobile: Accordion behavior, no overlap, full-width cards
-- Forms: Proper touch targets (44px min), no scroll jumps on focus
-- All elements render correctly without horizontal scroll
+- כל 6 השירותים והקישורים
+- הטקסטים הקיימים (ללא שינוי בקופי)
+- הפונקציונליות (לינקים לדפי שירות)
+- צבעים ותאימות למותג
 
 ---
 
-## What Remains Unchanged
+## תוצאה צפויה
 
-- Hero layout, animation, colors, headline, subtext, social proof
-- Services section, Stats section, Final CTA section
-- Form field meanings and submission logic
-- Overall site structure and navigation
+- **מראה חדשני** - לא עיצוב "תבנית" גנרי
+- **היררכיה ברורה** - שירותים עיקריים בולטים ויזואלית
+- **אינטראקציות עדינות** - תחושה מקצועית ולא "רועשת"
+- **לא נראה כמו AI** - פריסה אסימטרית, פרטים ייחודיים
 
