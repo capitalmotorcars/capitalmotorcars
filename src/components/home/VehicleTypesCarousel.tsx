@@ -135,12 +135,12 @@ export function VehicleTypesCarousel() {
   const duplicatedTypes = [...vehicleTypes, ...vehicleTypes];
 
   return (
-    <section className="py-16 md:py-24 bg-muted">
+    <section className="py-10 md:py-24 bg-muted">
       <div
         ref={ref}
         className={`scroll-reveal ${isRevealed ? 'revealed' : ''}`}
       >
-        <div className="container mx-auto px-4 lg:px-8 mb-10">
+        <div className="container mx-auto px-4 lg:px-8 mb-6 md:mb-10">
           <SectionHeading
             title="Discover The Car Of Your Dreams"
             subtitle="Find the perfect vehicle type for your lifestyle"
@@ -172,7 +172,7 @@ export function VehicleTypesCarousel() {
           {/* Scrolling content */}
           <div
             ref={scrollRef}
-            className="flex gap-12 md:gap-16 lg:gap-20 overflow-x-hidden py-10 md:py-12 px-20 md:px-28"
+            className="flex gap-6 md:gap-16 lg:gap-20 overflow-x-hidden py-6 md:py-12 px-12 md:px-28"
             style={{ scrollBehavior: 'auto' }}
           >
             {duplicatedTypes.map((type, index) => (
@@ -180,7 +180,7 @@ export function VehicleTypesCarousel() {
                 key={`${type.name}-${index}`}
                 className="flex-shrink-0 flex flex-col items-center group cursor-pointer"
               >
-                <div className="w-[240px] h-[130px] sm:w-[260px] sm:h-[140px] md:w-[300px] md:h-[160px] flex items-center justify-center overflow-visible">
+                <div className="w-[180px] h-[100px] sm:w-[240px] sm:h-[130px] md:w-[300px] md:h-[160px] flex items-center justify-center overflow-visible">
                   <img
                     src={type.image}
                     alt={type.name}
@@ -189,7 +189,7 @@ export function VehicleTypesCarousel() {
                     className="w-full h-full object-contain drop-shadow-lg group-hover:scale-[1.02] transition-transform duration-300"
                   />
                 </div>
-                <span className="mt-7 md:mt-8 text-sm md:text-base font-semibold text-foreground/80 group-hover:text-foreground transition-colors">
+                <span className="mt-4 md:mt-8 text-xs md:text-base font-semibold text-foreground/80 group-hover:text-foreground transition-colors">
                   {type.name}
                 </span>
               </div>

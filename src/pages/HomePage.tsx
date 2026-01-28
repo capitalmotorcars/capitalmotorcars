@@ -104,7 +104,7 @@ export default function HomePage() {
       <PeopleSection />
 
       {/* What We Do Section */}
-      <section className="pt-10 md:pt-14 pb-20 md:pb-28 bg-background">
+      <section className="pt-8 md:pt-14 pb-12 md:pb-28 bg-background">
         <div 
           ref={servicesRef}
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${servicesRevealed ? 'revealed' : ''}`}
@@ -139,7 +139,7 @@ export default function HomePage() {
       </section>
 
       {/* Why Work With Us Section */}
-      <section className="py-20 md:py-28 bg-muted">
+      <section className="py-12 md:py-28 bg-muted">
         <div 
           ref={whyRef}
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${whyRevealed ? 'revealed' : ''}`}
@@ -162,7 +162,7 @@ export default function HomePage() {
       </section>
 
       {/* Experience You Can Trust Section */}
-      <section className="py-20 md:py-28 bg-background">
+      <section className="py-12 md:py-28 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
           <SectionHeading
             title="Experience You Can Trust"
@@ -176,7 +176,7 @@ export default function HomePage() {
       </section>
 
       {/* Final CTA Section - CDK dark style */}
-      <section className="py-20 md:py-28" style={{ backgroundColor: 'hsl(216 27% 6%)' }}>
+      <section className="py-12 md:py-28" style={{ backgroundColor: 'hsl(216 27% 6%)' }}>
         <div 
           ref={ctaRef}
           className={`container mx-auto px-4 lg:px-8 text-center scroll-reveal ${ctaRevealed ? 'revealed' : ''}`}

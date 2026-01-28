@@ -93,7 +93,7 @@ export function PeopleSection() {
   const revealed = reducedMotion ? true : isRevealed;
 
   return (
-    <section aria-label="People / Team" className="pt-20 md:pt-28 pb-10 md:pb-14 bg-background">
+    <section aria-label="People / Team" className="pt-12 md:pt-28 pb-8 md:pb-14 bg-background">
       <div
         ref={ref}
         className={cn(
@@ -125,7 +125,7 @@ export function PeopleSection() {
                   )}
                   style={showEntrance ? { transitionDelay: '60ms' } : undefined}
                 >
-                  <div className="relative mx-auto w-[132px] h-[132px] md:w-[156px] md:h-[156px]">
+                  <div className="relative mx-auto w-[100px] h-[100px] md:w-[156px] md:h-[156px]">
                     <img
                       src={founder.image}
                       alt={founder.name}
@@ -230,8 +230,8 @@ export function PeopleSection() {
           {/* Team */}
           <div
             className={cn(
-              'mt-12 md:mt-14',
-              'grid grid-cols-2 md:grid-cols-3 gap-x-10 gap-y-12 md:gap-y-14',
+              'mt-8 md:mt-14',
+              'grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-8 md:gap-x-10 md:gap-y-14',
               'justify-items-center',
             )}
           >
@@ -250,7 +250,7 @@ export function PeopleSection() {
                   )}
                   style={showEntrance ? { transitionDelay: `${delay}ms` } : undefined}
                 >
-                  <div className="relative mx-auto w-[104px] h-[104px] md:w-[112px] md:h-[112px]">
+                  <div className="relative mx-auto w-20 h-20 md:w-[112px] md:h-[112px]">
                     <img
                       src={person.image}
                       alt={person.name}
