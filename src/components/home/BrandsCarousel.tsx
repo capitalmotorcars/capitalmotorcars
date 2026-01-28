@@ -70,12 +70,12 @@ export function BrandsCarousel() {
   const duplicatedBrands = [...brands, ...brands];
 
   return (
-    <section className="py-16 md:py-20 bg-muted">
+    <section className="py-10 md:py-20 bg-muted">
       <div
         ref={ref}
         className={`scroll-reveal ${isRevealed ? 'revealed' : ''}`}
       >
-        <div className="container mx-auto px-4 lg:px-8 mb-10">
+        <div className="container mx-auto px-4 lg:px-8 mb-6 md:mb-10">
           <SectionHeading
             title="Brands We Work With"
             subtitle="Access to vehicles from all major manufacturers"
@@ -91,24 +91,24 @@ export function BrandsCarousel() {
           {/* Scrolling content */}
           <div
             ref={scrollRef}
-            className="flex gap-8 md:gap-12 overflow-x-hidden py-4"
+            className="flex gap-4 md:gap-12 overflow-x-hidden py-4"
             style={{ scrollBehavior: 'auto' }}
           >
             {duplicatedBrands.map((brand, index) => (
               <div
                 key={`${brand.name}-${index}`}
-                className="flex-shrink-0 flex flex-col items-center justify-center px-4 md:px-6"
+                className="flex-shrink-0 flex flex-col items-center justify-center px-2 md:px-6"
               >
-                <div className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center bg-card rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                <div className="w-16 h-16 md:w-24 md:h-24 flex items-center justify-center bg-card rounded-lg shadow-sm hover:shadow-md transition-shadow">
                   <img
                     src={brand.logo}
                     alt={brand.name}
                     loading="lazy"
                     decoding="async"
-                    className="h-12 md:h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                    className="h-10 md:h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
                   />
                 </div>
-                <span className="mt-3 text-xs md:text-sm font-medium text-muted-foreground">
+                <span className="mt-2 md:mt-3 text-[10px] md:text-sm font-medium text-muted-foreground">
                   {brand.name}
                 </span>
               </div>

@@ -17,7 +17,7 @@ export function HeroSection() {
   ];
 
   return (
-    <section className="relative pt-10 pb-16 lg:pt-16 lg:pb-24 min-h-[600px] lg:min-h-[700px]" style={{ backgroundColor: 'hsl(216 27% 6%)' }}>
+    <section className="relative pt-8 pb-10 lg:pt-16 lg:pb-24 min-h-[auto] lg:min-h-[700px]" style={{ backgroundColor: 'hsl(216 27% 6%)' }}>
       {/* Background Image - subtle */}
       <img
         src={heroBg}
@@ -36,7 +36,7 @@ export function HeroSection() {
           {/* Left Column - Content */}
           <div className="max-w-xl flex-shrink-0 z-10 lg:py-12">
             <h1
-              className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 lg:mb-5 leading-[1.1] hero-animate ${
+              className={`text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-3 lg:mb-5 leading-[1.1] hero-animate ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
@@ -48,7 +48,7 @@ export function HeroSection() {
               href="https://share.google/uNNUZv8Ot02uvLzbd"
               target="_blank"
               rel="noopener noreferrer"
-              className={`flex flex-wrap items-center gap-2 lg:gap-3 mb-5 lg:mb-6 hero-animate cursor-pointer hover:opacity-80 transition-opacity ${
+              className={`flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-2 lg:gap-3 mb-4 lg:mb-6 hero-animate cursor-pointer hover:opacity-80 transition-opacity ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
@@ -61,14 +61,14 @@ export function HeroSection() {
                       key={index}
                       src={src}
                       alt=""
-                      className="w-7 h-7 lg:w-8 lg:h-8 rounded-full border-2 object-cover"
+                      className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 rounded-full border-2 object-cover"
                       style={{ borderColor: 'hsl(216 27% 6%)' }}
                       loading="lazy"
                     />
                   ))}
                 </div>
                 <span
-                  className="inline-flex items-center px-2.5 py-1 lg:px-3 lg:py-1.5 rounded-full text-[11px] lg:text-xs font-medium text-white"
+                  className="inline-flex items-center px-2 py-0.5 sm:px-2.5 sm:py-1 lg:px-3 lg:py-1.5 rounded-full text-[10px] sm:text-[11px] lg:text-xs font-medium text-white"
                   style={{
                     backgroundColor: 'hsl(0 0% 100% / 0.08)',
                     border: '1px solid hsl(0 0% 100% / 0.1)',
@@ -80,7 +80,7 @@ export function HeroSection() {
               
               {/* Google Rating Badge */}
               <span
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 lg:px-3 lg:py-1.5 rounded-full text-[11px] lg:text-xs font-medium text-white"
+                className="inline-flex items-center gap-1.5 px-2 py-0.5 sm:px-2.5 sm:py-1 lg:px-3 lg:py-1.5 rounded-full text-[10px] sm:text-[11px] lg:text-xs font-medium text-white"
                 style={{
                   backgroundColor: 'hsl(0 0% 100% / 0.08)',
                   border: '1px solid hsl(0 0% 100% / 0.1)',
@@ -99,7 +99,7 @@ export function HeroSection() {
             </a>
             
             <p
-              className={`text-lg md:text-xl mb-8 leading-relaxed max-w-lg hero-animate delay-1 ${
+              className={`text-base md:text-lg lg:text-xl mb-6 lg:mb-8 leading-relaxed max-w-lg hero-animate delay-1 ${
                 heroAnimated ? 'animate-in' : ''
               }`}
               style={{ color: 'hsl(213 27% 84%)' }}
@@ -108,14 +108,14 @@ export function HeroSection() {
             </p>
 
             <div
-              className={`flex flex-col sm:flex-row items-start sm:items-center gap-4 hero-animate delay-2 ${
+              className={`flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 hero-animate delay-2 ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
               <Button
                 asChild
                 size="lg"
-                className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 h-12"
+                className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 h-12"
               >
                 <Link to="/contact">
                   Schedule a Call
@@ -125,7 +125,7 @@ export function HeroSection() {
               
               <Link
                 to="/services"
-                className="font-medium underline-offset-4 hover:underline transition-colors"
+                className="text-center sm:text-left font-medium underline-offset-4 hover:underline transition-colors py-3 sm:py-0"
                 style={{ color: 'hsl(213 27% 84%)' }}
               >
                 View Services
@@ -133,7 +133,7 @@ export function HeroSection() {
             </div>
 
             <p
-              className={`mt-4 text-sm hero-animate delay-2 ${heroAnimated ? 'animate-in' : ''}`}
+              className={`mt-3 lg:mt-4 text-sm hero-animate delay-2 ${heroAnimated ? 'animate-in' : ''}`}
               style={{ color: 'hsl(213 27% 84%)' }}
             >
               One conversation. No pressure.
