@@ -1,148 +1,46 @@
 
 
-# תוכנית: הוספת תמונות רכב לדפי About ו-Brands
+# תוכנית: הסרת רקע מתמונות הרכבים
 
-## סקירה
-הוספת תמונות רכב יוקרתיות עם אנימציית כניסה (drive-in) לכותרות ההירו בשני דפים:
-- **About Page** - Porsche Cayenne GTS
-- **Brands Page** - Mercedes S-Class
+## הבעיה
+תמונות הרכבים שנוצרו לדפי About ו-Brands (Porsche Cayenne GTS ו-Mercedes S-Class) מכילות רקע שלא משתלב טוב עם הרקע הכהה של כותרות ההירו.
+
+## הפתרון
+יצירת גרסאות חדשות של התמונות עם רקע שחור טהור או שקוף, בדומה לתמונת ה-BMW בדף Services.
 
 ---
 
-## שלב 1: יצירת תמונות הרכבים
+## שלב 1: יצירת תמונת Porsche Cayenne GTS חדשה
 
-### 1.1 Porsche Cayenne GTS
-- יצירת תמונה איכותית של Porsche Cayenne GTS עדכני (2024)
-- רקע שקוף או כהה שמשתלב עם הרקע הכהה של ההירו
-- זווית צד-קדמית דינמית שמתאימה לאנימציית הכניסה מימין
-- שמירה כ: `src/assets/porsche-cayenne.png`
+### פרטים:
+- יצירת תמונה של Porsche Cayenne GTS 2024 בצבע כסוף/לבן
+- רקע שחור טהור (#0a0a0a) שזהה לצבע ה-primary של האתר
+- זווית צד-קדמית דינמית
+- שמירה והחלפה ב: `src/assets/porsche-cayenne.png`
 
-### 1.2 Mercedes S-Class
-- יצירת תמונה איכותית של Mercedes S-Class עדכני (2024)
-- אותו סגנון - רקע שקוף/כהה
+---
+
+## שלב 2: יצירת תמונת Mercedes S-Class חדשה
+
+### פרטים:
+- יצירת תמונה של Mercedes S-Class 2024 בצבע לבן/כסוף
+- רקע שחור טהור שזהה לרקע ההירו
 - זווית צד-קדמית
-- שמירה כ: `src/assets/mercedes-sclass.png`
+- שמירה והחלפה ב: `src/assets/mercedes-sclass.png`
 
 ---
 
-## שלב 2: עדכון דף About
-
-### שינויים ב-`src/pages/AboutPage.tsx`:
-
-```text
-לפני:
-<section className="bg-primary py-20 md:py-28">
-  <div className="container mx-auto px-4 lg:px-8">
-    <h1>...</h1>
-    <p>...</p>
-  </div>
-</section>
-
-אחרי:
-<section className="bg-primary py-16 md:py-20 overflow-hidden">
-  <div className="container mx-auto px-4 lg:px-8">
-    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
-      {/* Text Content */}
-      <div className="max-w-xl lg:max-w-2xl flex-shrink-0">
-        <h1>...</h1>
-        <p>...</p>
-      </div>
-      {/* Porsche Cayenne GTS Image */}
-      <div className="hidden lg:block flex-shrink-0">
-        <img 
-          src={porscheCayenne} 
-          alt="Porsche Cayenne GTS" 
-          className="w-[400px] xl:w-[480px] h-auto object-contain drop-shadow-2xl animate-car-drive-in"
-        />
-      </div>
-    </div>
-  </div>
-</section>
-```
-
-- הוספת import לתמונה
-- שינוי layout ל-flexbox עם טקסט משמאל ותמונה מימין
-- הוספת `overflow-hidden` למניעת גלילה אופקית באנימציה
-- התמונה מוצגת רק בדסקטופ (`hidden lg:block`)
-- אנימציית `animate-car-drive-in` שכבר קיימת ב-CSS
-
----
-
-## שלב 3: עדכון דף Brands
-
-### שינויים ב-`src/pages/BrandsPage.tsx`:
-
-אותו פורמט בדיוק כמו דף About:
-
-```text
-לפני:
-<section className="bg-primary py-20 md:py-28">
-  <div className="container mx-auto px-4 lg:px-8">
-    <h1>Brands We Work With</h1>
-    <p>...</p>
-  </div>
-</section>
-
-אחרי:
-<section className="bg-primary py-16 md:py-20 overflow-hidden">
-  <div className="container mx-auto px-4 lg:px-8">
-    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
-      {/* Text Content */}
-      <div className="max-w-xl lg:max-w-2xl flex-shrink-0">
-        <h1>Brands We Work With</h1>
-        <p>...</p>
-      </div>
-      {/* Mercedes S-Class Image */}
-      <div className="hidden lg:block flex-shrink-0">
-        <img 
-          src={mercedesSClass} 
-          alt="Mercedes S-Class" 
-          className="w-[400px] xl:w-[480px] h-auto object-contain drop-shadow-2xl animate-car-drive-in"
-        />
-      </div>
-    </div>
-  </div>
-</section>
-```
-
----
-
-## פרטים טכניים
-
-### אנימציה (כבר קיימת ב-index.css)
-```css
-@keyframes carDriveIn {
-  from {
-    opacity: 0;
-    transform: translateX(100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.animate-car-drive-in {
-  animation: carDriveIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-```
-
-### תאימות נגישות
-- תגיות alt מתאימות לכל תמונה
-- `prefers-reduced-motion` כבר מטופל ב-CSS הקיים
-
-### רספונסיביות
-- במובייל: התמונות מוסתרות (`hidden lg:block`) לשמירה על חוויה נקייה
-- בדסקטופ: התמונות מופיעות בצד ימין עם האנימציה
-
----
-
-## קבצים שיווצרו/ישתנו
+## שינויים בקבצים
 
 | קובץ | פעולה |
 |------|-------|
-| `src/assets/porsche-cayenne.png` | יצירה - תמונת Porsche Cayenne GTS |
-| `src/assets/mercedes-sclass.png` | יצירה - תמונת Mercedes S-Class |
-| `src/pages/AboutPage.tsx` | עדכון - הוספת תמונה להירו |
-| `src/pages/BrandsPage.tsx` | עדכון - הוספת תמונה להירו |
+| `src/assets/porsche-cayenne.png` | החלפה - תמונה חדשה עם רקע שחור |
+| `src/assets/mercedes-sclass.png` | החלפה - תמונה חדשה עם רקע שחור |
+
+**הערה**: קבצי ה-TSX לא דורשים שינוי - רק החלפת התמונות עצמן.
+
+---
+
+## חלופה מומלצת
+אם הרקע השחור לא ישתלב מושלם, אפשרות נוספת היא להעלות תמונות PNG עם רקע שקוף אמיתי (כמו שעשינו עם ה-BMW) - זה מבטיח התאמה מושלמת לכל רקע.
 
