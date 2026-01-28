@@ -117,54 +117,60 @@ export function ContactForm({ compact = false, initialValues, hideServiceField =
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      <div className={compact ? 'space-y-4' : 'grid md:grid-cols-2 gap-6'}>
-        <div className="space-y-2">
-          <Label htmlFor="fullName">Full Name *</Label>
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+      <div className={compact ? 'space-y-4' : 'grid md:grid-cols-2 gap-5'}>
+        <div className="space-y-1.5">
+          <Label htmlFor="fullName" className="text-sm font-medium">Full Name *</Label>
           <Input
             id="fullName"
             {...register('fullName')}
             placeholder="John Smith"
-            className={errors.fullName ? 'border-destructive' : ''}
+            className={cn(
+              errors.fullName && 'border-destructive bg-destructive/5'
+            )}
           />
           {errors.fullName && (
-            <p className="text-sm text-destructive">{errors.fullName.message}</p>
+            <p className="text-xs text-destructive mt-1">{errors.fullName.message}</p>
           )}
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="email">Email *</Label>
+        <div className="space-y-1.5">
+          <Label htmlFor="email" className="text-sm font-medium">Email *</Label>
           <Input
             id="email"
             type="email"
             {...register('email')}
             placeholder="john@example.com"
-            className={errors.email ? 'border-destructive' : ''}
+            className={cn(
+              errors.email && 'border-destructive bg-destructive/5'
+            )}
           />
           {errors.email && (
-            <p className="text-sm text-destructive">{errors.email.message}</p>
+            <p className="text-xs text-destructive mt-1">{errors.email.message}</p>
           )}
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="phone">Phone *</Label>
+        <div className="space-y-1.5">
+          <Label htmlFor="phone" className="text-sm font-medium">Phone *</Label>
           <Input
             id="phone"
             type="tel"
             {...register('phone')}
             placeholder="(555) 123-4567"
-            className={errors.phone ? 'border-destructive' : ''}
+            className={cn(
+              errors.phone && 'border-destructive bg-destructive/5'
+            )}
           />
           {errors.phone && (
-            <p className="text-sm text-destructive">{errors.phone.message}</p>
+            <p className="text-xs text-destructive mt-1">{errors.phone.message}</p>
           )}
         </div>
 
         {!hideServiceField && (
-          <div className="space-y-2">
-            <Label htmlFor="service">Service of Interest</Label>
+          <div className="space-y-1.5">
+            <Label htmlFor="service" className="text-sm font-medium">Service of Interest</Label>
             <Select value={selectedService} onValueChange={(value) => setValue('service', value)}>
-              <SelectTrigger>
+              <SelectTrigger className="h-11 border-input/60 focus:border-accent focus:ring-2 focus:ring-accent/20">
                 <SelectValue placeholder="Select a service" />
               </SelectTrigger>
               <SelectContent>
@@ -179,11 +185,11 @@ export function ContactForm({ compact = false, initialValues, hideServiceField =
         )}
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-1.5">
         <div className="flex items-center justify-between">
-          <Label htmlFor="message">Message *</Label>
+          <Label htmlFor="message" className="text-sm font-medium">Message *</Label>
           <Select onValueChange={handleSuggestionSelect}>
-            <SelectTrigger className="w-auto h-8 text-xs text-muted-foreground border-dashed">
+            <SelectTrigger className="w-auto h-7 text-xs text-muted-foreground border-dashed border-input/60">
               <SelectValue placeholder="Need help getting started?" />
             </SelectTrigger>
             <SelectContent>
@@ -205,17 +211,19 @@ export function ContactForm({ compact = false, initialValues, hideServiceField =
           }}
           placeholder="You can edit the message or write your own…"
           rows={compact ? 3 : 5}
-          className={errors.message ? 'border-destructive' : ''}
+          className={cn(
+            errors.message && 'border-destructive bg-destructive/5'
+          )}
         />
         {errors.message && (
-          <p className="text-sm text-destructive">{errors.message.message}</p>
+          <p className="text-xs text-destructive mt-1">{errors.message.message}</p>
         )}
       </div>
 
       <Button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-accent hover:bg-accent/90 text-accent-foreground"
+        className="w-full h-11 bg-accent hover:bg-accent/90 text-accent-foreground font-medium md:hover:scale-[1.01] transition-all duration-150"
       >
         {isSubmitting ? (
           <>

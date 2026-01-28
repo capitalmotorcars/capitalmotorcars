@@ -118,7 +118,7 @@ export function HeroSection() {
                 className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 h-12"
               >
                 <Link to="/contact">
-                  Schedule a Call
+                  Start the process
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
               </Button>

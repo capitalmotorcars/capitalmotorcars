@@ -10,6 +10,7 @@ import { HeroSection } from '@/components/hero/HeroSection';
 import { PeopleSection } from '@/components/home/PeopleSection';
 import { VehicleTypesCarousel } from '@/components/home/VehicleTypesCarousel';
 import { BrandsCarousel } from '@/components/home/BrandsCarousel';
+import { WhyUsPokerCards } from '@/components/home/WhyUsPokerCards';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { 
   Car, 
@@ -17,10 +18,7 @@ import {
   RefreshCw, 
   Wrench, 
   CircleDot, 
-  Sparkles,
-  User,
-  Award,
-  CheckCircle
+  Sparkles
 } from 'lucide-react';
 
 const services = [
@@ -65,27 +63,8 @@ const services = [
 const coreServices = services.slice(0, 3);
 const supportingServices = services.slice(3);
 
-const whyChooseUs = [
-  {
-    icon: User,
-    title: 'Single Point of Contact',
-    description: 'One dedicated consultant manages everything for you.',
-  },
-  {
-    icon: Award,
-    title: 'Real Industry Experience',
-    description: 'We understand how dealerships and lenders actually work.',
-  },
-  {
-    icon: CheckCircle,
-    title: 'Clear, Practical Process',
-    description: 'You always know what’s happening and what comes next.',
-  },
-];
-
 export default function HomePage() {
   const { ref: servicesRef, isRevealed: servicesRevealed } = useScrollReveal();
-  const { ref: whyRef, isRevealed: whyRevealed } = useScrollReveal();
   const { ref: ctaRef, isRevealed: ctaRevealed } = useScrollReveal();
 
   return (
@@ -138,28 +117,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Why Work With Us Section */}
-      <section className="py-12 md:py-28 bg-muted">
-        <div 
-          ref={whyRef}
-          className={`container mx-auto px-4 lg:px-8 scroll-reveal ${whyRevealed ? 'revealed' : ''}`}
-        >
-          <SectionHeading
-            title="Why Work with Capital Motor Cars"
-          />
-          <div className="grid md:grid-cols-3 gap-10 lg:gap-12 max-w-6xl mx-auto">
-            {whyChooseUs.map((item) => (
-              <div key={item.title} className="text-center">
-                <div className="inline-flex items-center justify-center w-10 h-10 border border-border rounded-full mb-6">
-                  <item.icon className="w-5 h-5 text-primary" />
-                </div>
-                <h4 className="text-2xl font-semibold text-primary mb-2">{item.title}</h4>
-                <p className="text-base text-muted-foreground leading-snug">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Why Work With Us Section - Poker Cards */}
+      <WhyUsPokerCards />
 
       {/* Experience You Can Trust Section */}
       <section className="py-12 md:py-28 bg-background">

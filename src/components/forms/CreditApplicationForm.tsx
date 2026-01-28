@@ -74,7 +74,7 @@ export function CreditApplicationForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       {/* Security Notice */}
       <div className="flex items-start gap-3 p-4 bg-muted rounded-lg">
         <Shield className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
@@ -85,52 +85,52 @@ export function CreditApplicationForm() {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
-        <div className="space-y-2">
-          <Label htmlFor="fullName">Full Legal Name *</Label>
+      <div className="grid md:grid-cols-2 gap-5">
+        <div className="space-y-1.5">
+          <Label htmlFor="fullName" className="text-sm font-medium">Full Legal Name *</Label>
           <Input
             id="fullName"
             {...register('fullName')}
             placeholder="John Smith"
-            className={errors.fullName ? 'border-destructive' : ''}
+            className={errors.fullName ? 'border-destructive bg-destructive/5' : ''}
           />
           {errors.fullName && (
-            <p className="text-sm text-destructive">{errors.fullName.message}</p>
+            <p className="text-xs text-destructive mt-1">{errors.fullName.message}</p>
           )}
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="email">Email *</Label>
+        <div className="space-y-1.5">
+          <Label htmlFor="email" className="text-sm font-medium">Email *</Label>
           <Input
             id="email"
             type="email"
             {...register('email')}
             placeholder="john@example.com"
-            className={errors.email ? 'border-destructive' : ''}
+            className={errors.email ? 'border-destructive bg-destructive/5' : ''}
           />
           {errors.email && (
-            <p className="text-sm text-destructive">{errors.email.message}</p>
+            <p className="text-xs text-destructive mt-1">{errors.email.message}</p>
           )}
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="phone">Phone *</Label>
+        <div className="space-y-1.5">
+          <Label htmlFor="phone" className="text-sm font-medium">Phone *</Label>
           <Input
             id="phone"
             type="tel"
             {...register('phone')}
             placeholder="(555) 123-4567"
-            className={errors.phone ? 'border-destructive' : ''}
+            className={errors.phone ? 'border-destructive bg-destructive/5' : ''}
           />
           {errors.phone && (
-            <p className="text-sm text-destructive">{errors.phone.message}</p>
+            <p className="text-xs text-destructive mt-1">{errors.phone.message}</p>
           )}
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="employmentStatus">Employment Status</Label>
+        <div className="space-y-1.5">
+          <Label htmlFor="employmentStatus" className="text-sm font-medium">Employment Status</Label>
           <Select onValueChange={(value) => setValue('employmentStatus', value)}>
-            <SelectTrigger>
+            <SelectTrigger className="h-11 border-input/60 focus:border-accent focus:ring-2 focus:ring-accent/20">
               <SelectValue placeholder="Select status" />
             </SelectTrigger>
             <SelectContent>
@@ -143,8 +143,8 @@ export function CreditApplicationForm() {
           </Select>
         </div>
 
-        <div className="space-y-2 md:col-span-2">
-          <Label htmlFor="address">Address (Optional)</Label>
+        <div className="space-y-1.5 md:col-span-2">
+          <Label htmlFor="address" className="text-sm font-medium">Address (Optional)</Label>
           <Input
             id="address"
             {...register('address')}
@@ -152,8 +152,8 @@ export function CreditApplicationForm() {
           />
         </div>
 
-        <div className="space-y-2 md:col-span-2">
-          <Label htmlFor="notes">Additional Notes</Label>
+        <div className="space-y-1.5 md:col-span-2">
+          <Label htmlFor="notes" className="text-sm font-medium">Additional Notes</Label>
           <Textarea
             id="notes"
             {...register('notes')}
@@ -164,7 +164,7 @@ export function CreditApplicationForm() {
       </div>
 
       {/* Disclaimer */}
-      <div className="text-xs text-muted-foreground border-t border-border pt-6">
+      <div className="text-xs text-muted-foreground border-t border-border pt-5">
         <p>
           By submitting this form, you authorize Capital Motor Cars to contact you regarding 
           your application. This is a preliminary application and does not constitute a 
@@ -177,7 +177,7 @@ export function CreditApplicationForm() {
         type="submit"
         disabled={isSubmitting}
         size="lg"
-        className="w-full bg-accent hover:bg-accent/90 text-accent-foreground"
+        className="w-full h-12 bg-accent hover:bg-accent/90 text-accent-foreground font-medium md:hover:scale-[1.01] transition-all duration-150"
       >
         {isSubmitting ? (
           <>
