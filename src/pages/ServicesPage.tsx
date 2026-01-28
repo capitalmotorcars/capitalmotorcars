@@ -6,6 +6,7 @@ import { JsonLd } from '@/components/JsonLd';
 import { RelatedLinks, servicesPageLinks } from '@/components/ui/RelatedLinks';
 import { ServiceCard } from '@/components/ui/ServiceCard';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import bmwM5 from '@/assets/bmw-m5.png';
 import { 
   Car, 
   CreditCard, 
@@ -101,15 +102,26 @@ export default function ServicesPage() {
       />
       <JsonLd data={servicesListSchema} />
       {/* Hero */}
-      <section className="bg-primary py-20 md:py-28">
+      <section className="bg-primary py-16 md:py-20 overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
-              Our Services
-            </h1>
-            <p className="text-lg text-primary-foreground/80">
-              We offer practical automotive solutions for customers who want things done right and without unnecessary hassle.
-            </p>
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+            {/* Text Content */}
+            <div className="max-w-xl lg:max-w-2xl flex-shrink-0">
+              <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
+                Our Services
+              </h1>
+              <p className="text-lg text-primary-foreground/80">
+                We offer practical automotive solutions for customers who want things done right and without unnecessary hassle.
+              </p>
+            </div>
+            {/* BMW M5 Image */}
+            <div className="hidden lg:block flex-shrink-0">
+              <img 
+                src={bmwM5} 
+                alt="BMW M5" 
+                className="w-[400px] xl:w-[480px] h-auto object-contain drop-shadow-2xl"
+              />
+            </div>
           </div>
         </div>
       </section>
