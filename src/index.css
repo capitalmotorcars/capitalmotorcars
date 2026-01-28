@@ -352,7 +352,126 @@
   }
 }
 
-/* Futuristic What We Do Section Animations */
+/* Premium Section Animations */
+
+/* Card reveal animation - staggered entrance */
+@keyframes card-reveal {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px) scale(0.97); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+  }
+}
+
+.animate-card-reveal {
+  animation: card-reveal 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Breathing glow for cards */
+@keyframes breathe-glow {
+  0%, 100% { 
+    opacity: 0.6; 
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1.02);
+  }
+}
+
+.animate-breathe-glow {
+  animation: breathe-glow 3s ease-in-out infinite;
+}
+
+/* Border flow animation */
+@keyframes border-flow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.animate-border-flow {
+  animation: border-flow 2s linear infinite;
+}
+
+/* Icon ring pulse */
+@keyframes icon-ring-pulse {
+  0%, 100% { 
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% { 
+    transform: scale(1.15);
+    opacity: 0.8;
+  }
+}
+
+.animate-icon-ring-pulse {
+  animation: icon-ring-pulse 2s ease-in-out infinite;
+}
+
+/* Particle drift for hover effects */
+@keyframes particle-drift {
+  0% { 
+    transform: translate(0, 0);
+    opacity: 0.5;
+  }
+  50% { 
+    transform: translate(8px, -8px);
+    opacity: 1;
+  }
+  100% { 
+    transform: translate(16px, 0);
+    opacity: 0;
+  }
+}
+
+.animate-particle-drift {
+  animation: particle-drift 2s ease-out infinite;
+}
+
+/* Floating particles for Why Us section */
+@keyframes particle-float {
+  0%, 100% { 
+    transform: translateY(0) scale(1);
+    opacity: 0.3;
+  }
+  50% { 
+    transform: translateY(-20px) scale(1.5);
+    opacity: 0.8;
+  }
+}
+
+.animate-particle-float {
+  animation: particle-float 4s ease-in-out infinite;
+}
+
+/* Energy pulse for connecting lines */
+@keyframes energy-pulse {
+  0% { 
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% { 
+    opacity: 1;
+  }
+  100% { 
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.animate-energy-pulse {
+  animation: energy-pulse 2s ease-in-out infinite;
+}
+
+/* Shimmer effect for backgrounds */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
 
 /* Glow pulse for icons */
 @keyframes glow-pulse {
@@ -482,6 +601,13 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .animate-card-reveal,
+  .animate-breathe-glow,
+  .animate-border-flow,
+  .animate-icon-ring-pulse,
+  .animate-particle-drift,
+  .animate-particle-float,
+  .animate-energy-pulse,
   .animate-glow-pulse,
   .animate-float-1,
   .animate-float-2,
@@ -492,5 +618,10 @@
   .animate-line-flow-v,
   .animate-node-pulse {
     animation: none;
+  }
+  
+  .animate-card-reveal {
+    opacity: 1;
+    transform: none;
   }
 }
