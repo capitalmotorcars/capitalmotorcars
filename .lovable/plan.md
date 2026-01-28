@@ -1,98 +1,148 @@
 
-# Add Social Proof to Hero Section
 
-## Overview
-Integrate a subtle social proof row above the main hero headline, maintaining the clean, enterprise-grade aesthetic while adding credibility signals.
+# תוכנית: הוספת תמונות רכב לדפי About ו-Brands
 
-## Current Structure
-The left column content currently flows:
-1. `<h1>` - Main headline
-2. `<p>` - Subtext
-3. CTAs - Buttons
-4. `<p>` - Tagline
+## סקירה
+הוספת תמונות רכב יוקרתיות עם אנימציית כניסה (drive-in) לכותרות ההירו בשני דפים:
+- **About Page** - Porsche Cayenne GTS
+- **Brands Page** - Mercedes S-Class
 
-## Proposed Addition
-Insert a social proof row **before** the `<h1>`:
+---
 
-```
-Social Proof Badges (NEW)
-    ↓
-<h1> Main headline
-    ↓
-<p> Subtext
-    ↓
-CTAs
-```
+## שלב 1: יצירת תמונות הרכבים
 
-## Design Specifications
+### 1.1 Porsche Cayenne GTS
+- יצירת תמונה איכותית של Porsche Cayenne GTS עדכני (2024)
+- רקע שקוף או כהה שמשתלב עם הרקע הכהה של ההירו
+- זווית צד-קדמית דינמית שמתאימה לאנימציית הכניסה מימין
+- שמירה כ: `src/assets/porsche-cayenne.png`
 
-### Badge Structure
-Two pill-style badges displayed inline:
+### 1.2 Mercedes S-Class
+- יצירת תמונה איכותית של Mercedes S-Class עדכני (2024)
+- אותו סגנון - רקע שקוף/כהה
+- זווית צד-קדמית
+- שמירה כ: `src/assets/mercedes-sclass.png`
 
-| Badge | Content |
-|-------|---------|
-| Badge 1 | "15k+ Customers" |
-| Badge 2 | Google icon + "★★★★★ 5/5 on Google" |
+---
 
-### Styling
-- **Container**: `flex gap-3` for horizontal layout with tight spacing
-- **Pills**: Semi-transparent dark background (`hsl(0 0% 100% / 0.08)`)
-- **Border**: Subtle white border at 10% opacity
-- **Text**: White, small (`text-xs`)
-- **Stars**: Accent blue color for the rating stars
-- **Google Icon**: Small inline SVG, white colored
-- **Spacing**: Small margin-bottom (`mb-4`) before headline
-- **Animation**: Uses existing `hero-animate` class for consistency (appears with headline)
+## שלב 2: עדכון דף About
 
-### Visual Mock
+### שינויים ב-`src/pages/AboutPage.tsx`:
+
 ```text
-┌─────────────────┐  ┌──────────────────────────────┐
-│  15k+ Customers │  │  [G] ★★★★★ 5/5 on Google    │
-└─────────────────┘  └──────────────────────────────┘
+לפני:
+<section className="bg-primary py-20 md:py-28">
+  <div className="container mx-auto px-4 lg:px-8">
+    <h1>...</h1>
+    <p>...</p>
+  </div>
+</section>
 
-A clear, guided approach to car leasing.
+אחרי:
+<section className="bg-primary py-16 md:py-20 overflow-hidden">
+  <div className="container mx-auto px-4 lg:px-8">
+    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+      {/* Text Content */}
+      <div className="max-w-xl lg:max-w-2xl flex-shrink-0">
+        <h1>...</h1>
+        <p>...</p>
+      </div>
+      {/* Porsche Cayenne GTS Image */}
+      <div className="hidden lg:block flex-shrink-0">
+        <img 
+          src={porscheCayenne} 
+          alt="Porsche Cayenne GTS" 
+          className="w-[400px] xl:w-[480px] h-auto object-contain drop-shadow-2xl animate-car-drive-in"
+        />
+      </div>
+    </div>
+  </div>
+</section>
 ```
 
-## Technical Implementation
+- הוספת import לתמונה
+- שינוי layout ל-flexbox עם טקסט משמאל ותמונה מימין
+- הוספת `overflow-hidden` למניעת גלילה אופקית באנימציה
+- התמונה מוצגת רק בדסקטופ (`hidden lg:block`)
+- אנימציית `animate-car-drive-in` שכבר קיימת ב-CSS
 
-### File Changes
-**`src/components/hero/HeroSection.tsx`**
+---
 
-1. Add a new `div` with flex layout before the `<h1>` element
-2. Include two badge spans with pill styling
-3. Add inline Google "G" icon (simple SVG)
-4. Apply existing animation classes
+## שלב 3: עדכון דף Brands
 
-### Code Structure
-```tsx
-{/* Social Proof - NEW */}
-<div className="flex flex-wrap items-center gap-3 mb-4 hero-animate ...">
-  <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs ...">
-    15k+ Customers
-  </span>
-  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs ...">
-    {/* Google icon SVG */}
-    <span className="text-accent">★★★★★</span>
-    5/5 on Google
-  </span>
-</div>
+### שינויים ב-`src/pages/BrandsPage.tsx`:
+
+אותו פורמט בדיוק כמו דף About:
+
+```text
+לפני:
+<section className="bg-primary py-20 md:py-28">
+  <div className="container mx-auto px-4 lg:px-8">
+    <h1>Brands We Work With</h1>
+    <p>...</p>
+  </div>
+</section>
+
+אחרי:
+<section className="bg-primary py-16 md:py-20 overflow-hidden">
+  <div className="container mx-auto px-4 lg:px-8">
+    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+      {/* Text Content */}
+      <div className="max-w-xl lg:max-w-2xl flex-shrink-0">
+        <h1>Brands We Work With</h1>
+        <p>...</p>
+      </div>
+      {/* Mercedes S-Class Image */}
+      <div className="hidden lg:block flex-shrink-0">
+        <img 
+          src={mercedesSClass} 
+          alt="Mercedes S-Class" 
+          className="w-[400px] xl:w-[480px] h-auto object-contain drop-shadow-2xl animate-car-drive-in"
+        />
+      </div>
+    </div>
+  </div>
+</section>
 ```
 
-## What Will NOT Change
-- Headline text and styling
-- Subtext content
-- CTA buttons
-- Circular process visualization position or size
-- Animation timing/behavior
-- Overall layout structure
+---
 
-## Responsive Behavior
-- Badges wrap naturally on smaller screens via `flex-wrap`
-- Maintains left-alignment across all breakpoints
-- Consistent spacing on mobile and desktop
+## פרטים טכניים
 
-## Success Criteria
-- Social proof visible immediately above headline
-- Premium, understated appearance
-- Does not compete with the process animation
-- Matches CDK-style enterprise aesthetic
+### אנימציה (כבר קיימת ב-index.css)
+```css
+@keyframes carDriveIn {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-car-drive-in {
+  animation: carDriveIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+```
+
+### תאימות נגישות
+- תגיות alt מתאימות לכל תמונה
+- `prefers-reduced-motion` כבר מטופל ב-CSS הקיים
+
+### רספונסיביות
+- במובייל: התמונות מוסתרות (`hidden lg:block`) לשמירה על חוויה נקייה
+- בדסקטופ: התמונות מופיעות בצד ימין עם האנימציה
+
+---
+
+## קבצים שיווצרו/ישתנו
+
+| קובץ | פעולה |
+|------|-------|
+| `src/assets/porsche-cayenne.png` | יצירה - תמונת Porsche Cayenne GTS |
+| `src/assets/mercedes-sclass.png` | יצירה - תמונת Mercedes S-Class |
+| `src/pages/AboutPage.tsx` | עדכון - הוספת תמונה להירו |
+| `src/pages/BrandsPage.tsx` | עדכון - הוספת תמונה להירו |
+
