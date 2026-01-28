@@ -92,6 +92,10 @@ export default {
         "fade-in": "fade-in 0.4s ease-out",
         "fade-out": "fade-out 0.4s ease-out",
       },
+      transitionTimingFunction: {
+        'premium': 'cubic-bezier(0.4, 0, 0.2, 1)',
+        'bounce-soft': 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

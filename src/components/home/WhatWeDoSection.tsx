@@ -3,6 +3,7 @@ import { ArrowRight, Car, CreditCard, RefreshCw, Wrench, CircleDot, Sparkles, Lu
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { cn } from '@/lib/utils';
+import { useEffect, useState } from 'react';
 
 interface Service {
   title: string;
@@ -53,78 +54,165 @@ const services: Service[] = [
 interface ServiceCardProps {
   service: Service;
   index: number;
+  isRevealed: boolean;
 }
 
-function ServiceCard({ service, index }: ServiceCardProps) {
+function ServiceCard({ service, index, isRevealed }: ServiceCardProps) {
   const Icon = service.icon;
+  const [hasAnimated, setHasAnimated] = useState(false);
+  
+  useEffect(() => {
+    if (isRevealed && !hasAnimated) {
+      const timer = setTimeout(() => setHasAnimated(true), index * 120);
+      return () => clearTimeout(timer);
+    }
+  }, [isRevealed, index, hasAnimated]);
   
   return (
     <Link
       to={service.href}
-      className="group relative block h-full"
-      style={{ animationDelay: `${index * 100}ms` }}
+      className={cn(
+        "group relative block h-full",
+        // Staggered reveal animation
+        "opacity-0 translate-y-8 scale-[0.97]",
+        hasAnimated && "animate-card-reveal"
+      )}
+      style={{ 
+        animationDelay: `${index * 120}ms`,
+        animationFillMode: 'forwards'
+      }}
     >
-      {/* Glow backdrop - appears on hover */}
-      <div className="absolute -inset-2 rounded-3xl bg-accent/20 blur-2xl opacity-0 group-hover:opacity-70 transition-opacity duration-500" />
+      {/* Breathing glow backdrop - appears on hover */}
+      <div className={cn(
+        "absolute -inset-3 rounded-3xl blur-2xl transition-opacity duration-700",
+        "bg-gradient-to-br from-accent/25 via-accent/15 to-accent/25",
+        "opacity-0 group-hover:opacity-100",
+        "group-hover:animate-breathe-glow"
+      )} />
       
-      {/* Glass card */}
+      {/* Glass card with 3D perspective */}
       <div className={cn(
         "relative h-full flex flex-col p-6 md:p-8 rounded-2xl overflow-hidden",
         "bg-white/[0.03] backdrop-blur-md",
         "border border-white/[0.08]",
-        "transition-all duration-500 ease-out",
-        "group-hover:border-accent/40 group-hover:bg-white/[0.06]"
-      )}>
-        {/* Animated gradient border overlay */}
-        <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-          <div className="absolute inset-[1px] rounded-2xl bg-gradient-to-br from-accent/20 via-transparent to-accent/10" />
+        "transition-all duration-500",
+        // 3D tilt on hover
+        "group-hover:border-accent/50 group-hover:bg-white/[0.07]",
+        "group-hover:-translate-y-2",
+        "md:group-hover:[transform:perspective(1000px)_rotateX(-2deg)_translateY(-8px)]"
+      )}
+      style={{
+        transformStyle: 'preserve-3d',
+      }}>
+        {/* Animated border gradient overlay */}
+        <div className={cn(
+          "absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+          "overflow-hidden"
+        )}>
+          <div className={cn(
+            "absolute inset-0 rounded-2xl",
+            "bg-[length:200%_100%]",
+            "bg-gradient-to-r from-transparent via-accent/30 to-transparent",
+            "group-hover:animate-border-flow"
+          )} />
+          <div className="absolute inset-[1px] rounded-2xl bg-[hsl(216_27%_6%)]" />
         </div>
         
-        {/* Number indicator */}
-        <span className="absolute top-4 right-4 text-[10px] font-mono text-white/20 tracking-wider">
+        {/* Number indicator with glow */}
+        <span className={cn(
+          "absolute top-4 right-4 text-[10px] font-mono tracking-wider",
+          "text-white/20 group-hover:text-accent/60",
+          "transition-all duration-500"
+        )}>
           0{index + 1}
         </span>
         
-        {/* Glowing icon container */}
+        {/* Glowing icon container with morphing */}
         <div className="relative mb-6">
           <div className={cn(
             "relative w-14 h-14 rounded-xl flex items-center justify-center",
             "bg-accent/10",
             "shadow-[0_0_25px_rgba(31,106,225,0.25)]",
-            "group-hover:shadow-[0_0_40px_rgba(31,106,225,0.45)]",
+            "group-hover:shadow-[0_0_50px_rgba(31,106,225,0.5)]",
             "transition-all duration-500",
-            "group-hover:scale-110"
+            // Icon morphing on hover
+            "group-hover:scale-110 group-hover:rotate-3"
           )}>
-            {/* Inner glow ring */}
-            <div className="absolute inset-0 rounded-xl bg-accent/5 animate-glow-pulse" />
-            <Icon className="relative z-10 w-7 h-7 text-accent" />
+            {/* Pulsing ring */}
+            <div className={cn(
+              "absolute inset-0 rounded-xl",
+              "bg-accent/5",
+              "group-hover:animate-icon-ring-pulse"
+            )} />
+            {/* Secondary ring */}
+            <div className={cn(
+              "absolute -inset-1 rounded-xl",
+              "border border-accent/0 group-hover:border-accent/20",
+              "transition-all duration-700",
+              "group-hover:scale-110 group-hover:opacity-0"
+            )} />
+            <Icon className={cn(
+              "relative z-10 w-7 h-7 text-accent",
+              "transition-transform duration-500",
+              "group-hover:scale-110"
+            )} />
           </div>
           
-          {/* Floating particles effect */}
+          {/* Enhanced floating particles */}
           <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-accent/40 animate-float-1" />
           <div className="absolute -bottom-1 -left-1 w-1.5 h-1.5 rounded-full bg-accent/30 animate-float-2" />
+          <div className={cn(
+            "absolute top-1/2 -right-3 w-1 h-1 rounded-full",
+            "bg-accent/0 group-hover:bg-accent/50",
+            "transition-all duration-500 delay-100",
+            "group-hover:animate-particle-drift"
+          )} />
         </div>
         
         {/* Content */}
         <div className="relative z-10 flex-grow">
-          <h3 className="text-lg md:text-xl font-semibold text-white mb-2 group-hover:text-white transition-colors">
+          <h3 className={cn(
+            "text-lg md:text-xl font-semibold text-white mb-2",
+            "transition-all duration-300",
+            "group-hover:text-white group-hover:tracking-wide"
+          )}>
             {service.title}
           </h3>
-          <p className="text-white/50 text-sm md:text-base leading-relaxed group-hover:text-white/70 transition-colors duration-300">
+          <p className={cn(
+            "text-white/50 text-sm md:text-base leading-relaxed",
+            "transition-all duration-500",
+            "group-hover:text-white/75"
+          )}>
             {service.description}
           </p>
         </div>
         
-        {/* Arrow indicator */}
+        {/* Arrow indicator with enhanced animation */}
         <div className="mt-6 flex items-center gap-2 text-accent">
-          <span className="text-sm font-medium opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+          <span className={cn(
+            "text-sm font-medium",
+            "opacity-0 -translate-x-3",
+            "group-hover:opacity-100 group-hover:translate-x-0",
+            "transition-all duration-400 ease-out"
+          )}>
             Learn more
           </span>
-          <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
+          <ArrowRight className={cn(
+            "w-4 h-4",
+            "opacity-0 -translate-x-2",
+            "group-hover:opacity-100 group-hover:translate-x-1",
+            "transition-all duration-400 delay-75 ease-out"
+          )} />
         </div>
         
-        {/* Bottom accent line */}
-        <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-accent via-accent/80 to-transparent group-hover:w-full transition-all duration-700 ease-out" />
+        {/* Enhanced bottom accent line with glow */}
+        <div className={cn(
+          "absolute bottom-0 left-0 h-[2px] w-0",
+          "bg-gradient-to-r from-accent via-accent/80 to-transparent",
+          "group-hover:w-full",
+          "transition-all duration-700 ease-out",
+          "shadow-[0_0_10px_rgba(31,106,225,0.5)]"
+        )} />
       </div>
     </Link>
   );
@@ -138,15 +226,22 @@ function ConnectingLines() {
     >
       <defs>
         <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="hsl(214 77% 50% / 0.1)" />
-          <stop offset="50%" stopColor="hsl(214 77% 50% / 0.3)" />
-          <stop offset="100%" stopColor="hsl(214 77% 50% / 0.1)" />
+          <stop offset="0%" stopColor="hsl(214 77% 50% / 0.05)" />
+          <stop offset="50%" stopColor="hsl(214 77% 50% / 0.25)" />
+          <stop offset="100%" stopColor="hsl(214 77% 50% / 0.05)" />
         </linearGradient>
         <linearGradient id="lineGradientV" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="hsl(214 77% 50% / 0.1)" />
-          <stop offset="50%" stopColor="hsl(214 77% 50% / 0.3)" />
-          <stop offset="100%" stopColor="hsl(214 77% 50% / 0.1)" />
+          <stop offset="0%" stopColor="hsl(214 77% 50% / 0.05)" />
+          <stop offset="50%" stopColor="hsl(214 77% 50% / 0.25)" />
+          <stop offset="100%" stopColor="hsl(214 77% 50% / 0.05)" />
         </linearGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
       </defs>
       
       {/* Horizontal connecting lines - Row 1 */}
@@ -155,6 +250,7 @@ function ConnectingLines() {
         stroke="url(#lineGradient)" 
         strokeWidth="1"
         className="animate-line-flow"
+        filter="url(#glow)"
       />
       <line 
         x1="62%" y1="25%" x2="78%" y2="25%" 
@@ -162,6 +258,7 @@ function ConnectingLines() {
         strokeWidth="1"
         className="animate-line-flow"
         style={{ animationDelay: '0.5s' }}
+        filter="url(#glow)"
       />
       
       {/* Horizontal connecting lines - Row 2 */}
@@ -171,6 +268,7 @@ function ConnectingLines() {
         strokeWidth="1"
         className="animate-line-flow"
         style={{ animationDelay: '1s' }}
+        filter="url(#glow)"
       />
       <line 
         x1="62%" y1="75%" x2="78%" y2="75%" 
@@ -178,6 +276,7 @@ function ConnectingLines() {
         strokeWidth="1"
         className="animate-line-flow"
         style={{ animationDelay: '1.5s' }}
+        filter="url(#glow)"
       />
       
       {/* Vertical connecting lines */}
@@ -186,6 +285,7 @@ function ConnectingLines() {
         stroke="url(#lineGradientV)" 
         strokeWidth="1"
         className="animate-line-flow-v"
+        filter="url(#glow)"
       />
       <line 
         x1="50%" y1="35%" x2="50%" y2="65%" 
@@ -193,6 +293,7 @@ function ConnectingLines() {
         strokeWidth="1"
         className="animate-line-flow-v"
         style={{ animationDelay: '0.7s' }}
+        filter="url(#glow)"
       />
       <line 
         x1="83%" y1="35%" x2="83%" y2="65%" 
@@ -200,15 +301,22 @@ function ConnectingLines() {
         strokeWidth="1"
         className="animate-line-flow-v"
         style={{ animationDelay: '1.4s' }}
+        filter="url(#glow)"
       />
       
-      {/* Glowing nodes at intersections */}
-      <circle cx="17%" cy="25%" r="3" className="fill-accent/30 animate-node-pulse" />
-      <circle cx="50%" cy="25%" r="3" className="fill-accent/30 animate-node-pulse" style={{ animationDelay: '0.3s' }} />
-      <circle cx="83%" cy="25%" r="3" className="fill-accent/30 animate-node-pulse" style={{ animationDelay: '0.6s' }} />
-      <circle cx="17%" cy="75%" r="3" className="fill-accent/30 animate-node-pulse" style={{ animationDelay: '0.9s' }} />
-      <circle cx="50%" cy="75%" r="3" className="fill-accent/30 animate-node-pulse" style={{ animationDelay: '1.2s' }} />
-      <circle cx="83%" cy="75%" r="3" className="fill-accent/30 animate-node-pulse" style={{ animationDelay: '1.5s' }} />
+      {/* Enhanced glowing nodes */}
+      <circle cx="17%" cy="25%" r="4" className="fill-accent/20 animate-node-pulse" filter="url(#glow)" />
+      <circle cx="17%" cy="25%" r="2" className="fill-accent/60" />
+      <circle cx="50%" cy="25%" r="4" className="fill-accent/20 animate-node-pulse" style={{ animationDelay: '0.3s' }} filter="url(#glow)" />
+      <circle cx="50%" cy="25%" r="2" className="fill-accent/60" />
+      <circle cx="83%" cy="25%" r="4" className="fill-accent/20 animate-node-pulse" style={{ animationDelay: '0.6s' }} filter="url(#glow)" />
+      <circle cx="83%" cy="25%" r="2" className="fill-accent/60" />
+      <circle cx="17%" cy="75%" r="4" className="fill-accent/20 animate-node-pulse" style={{ animationDelay: '0.9s' }} filter="url(#glow)" />
+      <circle cx="17%" cy="75%" r="2" className="fill-accent/60" />
+      <circle cx="50%" cy="75%" r="4" className="fill-accent/20 animate-node-pulse" style={{ animationDelay: '1.2s' }} filter="url(#glow)" />
+      <circle cx="50%" cy="75%" r="2" className="fill-accent/60" />
+      <circle cx="83%" cy="75%" r="4" className="fill-accent/20 animate-node-pulse" style={{ animationDelay: '1.5s' }} filter="url(#glow)" />
+      <circle cx="83%" cy="75%" r="2" className="fill-accent/60" />
     </svg>
   );
 }
@@ -216,20 +324,31 @@ function ConnectingLines() {
 function BackgroundEffects() {
   return (
     <>
-      {/* Gradient overlay */}
+      {/* Premium gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/[0.02] to-transparent" />
+      
+      {/* Subtle shimmer effect */}
+      <div 
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          background: 'linear-gradient(90deg, transparent 0%, hsl(214 77% 50% / 0.1) 50%, transparent 100%)',
+          backgroundSize: '200% 100%',
+          animation: 'shimmer 8s ease-in-out infinite',
+        }}
+      />
       
       {/* Noise texture */}
       <div 
-        className="absolute inset-0 opacity-[0.015]"
+        className="absolute inset-0 opacity-[0.012]"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
         }}
       />
       
-      {/* Floating orbs */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-accent/5 blur-3xl animate-float-orb" />
-      <div className="absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full bg-accent/5 blur-3xl animate-float-orb-delayed" />
+      {/* Floating orbs with enhanced animation */}
+      <div className="absolute top-1/4 left-1/4 w-72 h-72 rounded-full bg-accent/5 blur-[100px] animate-float-orb" />
+      <div className="absolute bottom-1/4 right-1/4 w-56 h-56 rounded-full bg-accent/5 blur-[80px] animate-float-orb-delayed" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-accent/[0.02] blur-[120px] animate-pulse-slow" />
       
       {/* Star-like dots */}
       <div className="absolute top-[15%] left-[10%] w-1 h-1 rounded-full bg-white/20 animate-twinkle" />
@@ -277,6 +396,7 @@ export function WhatWeDoSection() {
                 key={service.href} 
                 service={service} 
                 index={index}
+                isRevealed={isRevealed}
               />
             ))}
           </div>
