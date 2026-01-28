@@ -4,6 +4,7 @@ import { JsonLd, organizationSchema } from '@/components/JsonLd';
 import { RelatedLinks, aboutPageLinks } from '@/components/ui/RelatedLinks';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { UserCheck, MessageSquare, Settings, MapPin } from 'lucide-react';
+import porscheCayenne from '@/assets/porsche-cayenne.png';
 
 const approachItems = [
   {
@@ -58,14 +59,27 @@ export default function AboutPage() {
       />
       <JsonLd data={organizationSchema} />
       {/* Hero */}
-      <section className="bg-primary py-20 md:py-28">
+      <section className="bg-primary py-16 md:py-20 overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
-            About Capital Motor Cars
-          </h1>
-          <p className="text-lg text-primary-foreground/80 max-w-2xl">
-            Clarity and structure for an automotive process that is often complex and time-consuming.
-          </p>
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+            {/* Text Content */}
+            <div className="max-w-xl lg:max-w-2xl flex-shrink-0">
+              <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
+                About Capital Motor Cars
+              </h1>
+              <p className="text-lg text-primary-foreground/80">
+                Clarity and structure for an automotive process that is often complex and time-consuming.
+              </p>
+            </div>
+            {/* Porsche Cayenne GTS Image */}
+            <div className="hidden lg:block flex-shrink-0">
+              <img 
+                src={porscheCayenne} 
+                alt="Porsche Cayenne GTS" 
+                className="w-[400px] xl:w-[480px] h-auto object-contain drop-shadow-2xl animate-car-drive-in"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
