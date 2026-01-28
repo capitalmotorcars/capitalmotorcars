@@ -4,6 +4,7 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import mercedesSClass from '@/assets/mercedes-sclass.png';
 
 const brands = [
   { name: 'BMW', logo: 'https://www.carlogos.org/car-logos/bmw-logo.png' },
@@ -29,12 +30,25 @@ export default function BrandsPage() {
         title="Brands We Work With | Capital Motor Cars"
         description="We work with BMW, Mercedes, Audi, Lexus, Toyota, and more. Contact us to find out what vehicles are currently available."
       />
-      <section className="bg-primary py-20 md:py-28">
+      <section className="bg-primary py-16 md:py-20 overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">Brands We Work With</h1>
-          <p className="text-lg text-primary-foreground/80 max-w-2xl">
-            We work with a wide range of automotive brands and dealerships.
-          </p>
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+            {/* Text Content */}
+            <div className="max-w-xl lg:max-w-2xl flex-shrink-0">
+              <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">Brands We Work With</h1>
+              <p className="text-lg text-primary-foreground/80">
+                We work with a wide range of automotive brands and dealerships.
+              </p>
+            </div>
+            {/* Mercedes S-Class Image */}
+            <div className="hidden lg:block flex-shrink-0">
+              <img 
+                src={mercedesSClass} 
+                alt="Mercedes S-Class" 
+                className="w-[400px] xl:w-[480px] h-auto object-contain drop-shadow-2xl animate-car-drive-in"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
