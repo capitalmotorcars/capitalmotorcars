@@ -13,7 +13,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { CheckCircle, Loader2, Shield } from 'lucide-react';
+import { Loader2, Shield } from 'lucide-react';
+import { FormSuccessMessage } from './FormSuccessMessage';
 
 const creditSchema = z.object({
   fullName: z.string().min(2, 'Name must be at least 2 characters').max(100),
@@ -62,14 +63,11 @@ export function CreditApplicationForm() {
 
   if (isSuccess) {
     return (
-      <div className="flex flex-col items-center justify-center py-16 text-center">
-        <CheckCircle className="w-20 h-20 text-green-500 mb-6" />
-        <h3 className="text-2xl font-semibold text-primary mb-3">Application Received</h3>
-        <p className="text-muted-foreground max-w-md">
-          Thank you for your credit application. Our team will review your information 
-          and contact you within 1-2 business days.
-        </p>
-      </div>
+      <FormSuccessMessage 
+        title="Application received!"
+        subtitle="Our finance team will review your information and contact you."
+        timing="Within 1-2 business days"
+      />
     );
   }
 
