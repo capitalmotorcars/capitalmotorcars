@@ -20,7 +20,7 @@ export function HeroSection() {
   ];
 
   return (
-    <section className="relative pt-6 pb-8 sm:pt-8 sm:pb-10 lg:pt-16 lg:pb-16 min-h-[auto] lg:min-h-[700px] overflow-hidden" style={{ backgroundColor: 'hsl(216 27% 6%)' }}>
+    <section className="relative pt-4 pb-8 sm:pt-6 sm:pb-10 lg:pt-6 lg:pb-12 min-h-[auto] overflow-hidden" style={{ backgroundColor: 'hsl(216 27% 6%)' }}>
       {/* Background Image - parallax */}
       <div ref={parallaxRef} className="absolute inset-0 overflow-hidden">
         <img
@@ -45,11 +45,11 @@ export function HeroSection() {
       />
 
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 z-10 max-w-full">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12 xl:gap-20">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-center lg:gap-8 xl:gap-12 max-w-6xl lg:mx-auto">
           {/* Left Column - Content */}
-          <div className="max-w-xl flex-shrink-0 z-10 lg:pt-12 lg:pb-4 text-center lg:text-left order-1">
+          <div className="max-w-xl lg:max-w-2xl flex-shrink-0 z-10 lg:pt-0 lg:pb-0 text-center lg:text-left order-1">
             <h1
-              className={`text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-3 lg:mb-5 leading-[1.1] hero-animate ${
+              className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 lg:mb-5 leading-[1.1] hero-animate ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
@@ -151,12 +151,11 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column - Process Visualization: below text on mobile, right on desktop; hidden on very small screens */}
+          {/* Right Column - Process Visualization: below text on mobile, right on desktop */}
           <div
-            className={`flex-1 flex items-center justify-center min-h-0 mt-6 sm:mt-8 lg:mt-0 order-2 hero-animate delay-3 ${heroAnimated ? 'animate-in' : ''} hidden sm:flex max-w-full`}
-            style={{ minHeight: 0 }}
+            className="flex-1 flex items-center justify-center min-h-0 mt-6 sm:mt-8 lg:mt-0 order-2 max-w-full min-h-[260px] sm:min-h-[300px] lg:min-h-0"
           >
-            <div className="w-full max-w-[280px] sm:max-w-[320px] lg:max-w-none aspect-square flex items-center justify-center">
+            <div className="w-full max-w-[240px] sm:max-w-[320px] lg:max-w-[420px] xl:max-w-[440px] aspect-square flex items-center justify-center flex-shrink-0 mx-auto">
               <CircularProcessVisualization />
             </div>
           </div>
