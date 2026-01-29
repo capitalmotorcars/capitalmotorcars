@@ -1,15 +1,37 @@
 interface StatCardProps {
   value: string;
   label: string;
+  /** Use on dark section backgrounds */
+  dark?: boolean;
 }
 
-export function StatCard({ value, label }: StatCardProps) {
+export function StatCard({ value, label, dark }: StatCardProps) {
   return (
-    <div className="text-center p-7 md:p-8 bg-card border border-border rounded-lg">
-      <div className="text-2xl md:text-3xl font-semibold text-muted-foreground mb-3">
+    <div
+      className={
+        dark
+          ? 'text-center p-7 md:p-8 rounded-lg border border-white/10 bg-white/[0.06] backdrop-blur-sm shadow-[0_0_20px_hsl(214_77%_50%_/_0.04)]'
+          : 'text-center p-7 md:p-8 bg-card border border-border rounded-lg'
+      }
+    >
+      <div
+        className={
+          dark
+            ? 'text-2xl md:text-3xl font-semibold text-white mb-3'
+            : 'text-2xl md:text-3xl font-semibold text-muted-foreground mb-3'
+        }
+      >
         {value}
       </div>
-      <p className="text-base md:text-lg font-semibold text-primary leading-snug">{label}</p>
+      <p
+        className={
+          dark
+            ? 'text-base md:text-lg font-semibold text-white/85 leading-snug'
+            : 'text-base md:text-lg font-semibold text-primary leading-snug'
+        }
+      >
+        {label}
+      </p>
     </div>
   );
 }

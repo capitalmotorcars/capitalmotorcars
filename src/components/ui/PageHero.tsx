@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight, CheckCircle2, BarChart3 } from 'lucide-react';
+import { useParallax } from '@/hooks/useParallax';
 
 interface Breadcrumb {
   label: string;
@@ -35,8 +36,10 @@ export function PageHero({
   keyPoints,
   stats,
 }: PageHeroProps) {
+  const { ref: parallaxRef, offset: parallaxOffset } = useParallax({ speed: 0.08 });
+
   return (
-    <section className="relative bg-primary py-16 md:py-20 overflow-hidden">
+    <section className="relative bg-primary py-12 md:py-16 lg:py-20 overflow-hidden">
       {/* Mesh gradient background for depth */}
       <div 
         className="absolute inset-0 pointer-events-none"
@@ -102,13 +105,13 @@ export function PageHero({
             )}
 
             {/* Title */}
-            <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6 opacity-0 animate-hero-title">
+            <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-4 md:mb-6 opacity-0 animate-hero-title">
               {title}
             </h1>
 
             {/* Subtitle */}
             {subtitle && (
-              <p className="text-lg text-primary-foreground/80 max-w-2xl opacity-0 animate-hero-subtitle">
+              <p className="text-base md:text-lg text-primary-foreground/80 max-w-2xl opacity-0 animate-hero-subtitle">
                 {subtitle}
               </p>
             )}
@@ -159,13 +162,14 @@ export function PageHero({
             )}
           </div>
 
-          {/* Hero Image */}
+          {/* Hero Image - parallax on scroll */}
           {heroImage && (
-            <div className="hidden lg:block flex-shrink-0">
+            <div ref={parallaxRef} className="hidden lg:block flex-shrink-0">
               <img
                 src={heroImage}
                 alt={heroImageAlt}
-                className="w-[400px] xl:w-[480px] h-auto object-contain drop-shadow-2xl animate-car-drive-in"
+                className="w-[400px] xl:w-[480px] h-auto object-contain drop-shadow-2xl animate-car-drive-in transition-transform duration-100"
+                style={{ transform: `translateY(${parallaxOffset}px)` }}
               />
             </div>
           )}

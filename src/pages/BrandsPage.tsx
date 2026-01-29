@@ -1,6 +1,8 @@
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
 import { PageHero } from '@/components/ui/PageHero';
+import { SectionDivider } from '@/components/ui/SectionDivider';
+import { MagneticButton } from '@/components/ui/MagneticButton';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
@@ -51,27 +53,31 @@ export default function BrandsPage() {
         ]}
       />
 
-      <section className="py-20 md:py-28 bg-background">
+      <SectionDivider variant="curved" nextSectionDark />
+
+      <section className="py-12 md:py-20 lg:py-28 bg-[hsl(216_27%_8%)]">
         <div ref={ref} className={`container mx-auto px-4 lg:px-8 scroll-reveal ${isRevealed ? 'revealed' : ''}`}>
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <p className="text-lg text-muted-foreground">
+          <div className="max-w-3xl mx-auto text-center mb-8 md:mb-12">
+            <p className="text-base md:text-lg text-white">
               Availability varies, so the best way to find out what is currently available is to talk to us directly.
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 mb-8 md:mb-12">
             {brands.map((brand) => (
-              <div key={brand.name} className="flex flex-col items-center justify-center p-8 bg-muted rounded-lg card-hover">
+              <div key={brand.name} className="flex flex-col items-center justify-center p-8 rounded-xl border border-white/10 bg-white/[0.06] backdrop-blur-sm hover:border-accent/30 hover:bg-white/[0.08] transition-all card-hover">
                 <img src={brand.logo} alt={brand.name} loading="lazy" decoding="async" className="h-16 w-auto object-contain mb-4 grayscale hover:grayscale-0 transition-all" />
-                <span className="text-sm font-medium text-muted-foreground">{brand.name}</span>
+                <span className="text-sm font-medium text-white">{brand.name}</span>
               </div>
             ))}
           </div>
 
           <div className="text-center">
-            <Button asChild size="lg" className="bg-accent hover:bg-accent/90">
-              <Link to="/contact">Contact Us</Link>
-            </Button>
+            <MagneticButton strength={0.35}>
+              <Button asChild size="lg" className="bg-accent hover:bg-accent/90 glow-blue">
+                <Link to="/contact">Contact Us</Link>
+              </Button>
+            </MagneticButton>
           </div>
         </div>
       </section>

@@ -1,12 +1,15 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { MagneticButton } from '@/components/ui/MagneticButton';
 import { CircularProcessVisualization } from './CircularProcessVisualization';
 import { useHeroAnimation } from '@/hooks/useHeroAnimation';
-import { ArrowRight } from 'lucide-react';
+import { useParallax } from '@/hooks/useParallax';
+import { ArrowRight, ChevronDown } from 'lucide-react';
 import heroBg from '@/assets/hero-bg.jpg';
 
 export function HeroSection() {
   const heroAnimated = useHeroAnimation();
+  const { ref: parallaxRef, offset: parallaxOffset } = useParallax({ speed: 0.12 });
 
   // Placeholder avatar URLs - diverse, neutral faces
   const avatars = [
@@ -17,30 +20,41 @@ export function HeroSection() {
   ];
 
   return (
-    <section className="relative pt-8 pb-14 lg:pt-16 lg:pb-28 min-h-[auto] lg:min-h-[700px]" style={{ backgroundColor: 'hsl(216 27% 6%)' }}>
-      {/* Background Image - subtle */}
-      <img
-        src={heroBg}
-        alt=""
-        loading="eager"
-        decoding="async"
-        fetchPriority="high"
-        className="absolute inset-0 w-full h-full object-cover opacity-20"
-      />
+    <section className="relative pt-6 pb-8 sm:pt-8 sm:pb-10 lg:pt-16 lg:pb-16 min-h-[auto] lg:min-h-[700px] overflow-hidden" style={{ backgroundColor: 'hsl(216 27% 6%)' }}>
+      {/* Background Image - parallax */}
+      <div ref={parallaxRef} className="absolute inset-0 overflow-hidden">
+        <img
+          src={heroBg}
+          alt=""
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
+          className="absolute inset-0 w-full h-full object-cover opacity-20 transition-transform duration-100"
+          style={{ transform: `translateY(${parallaxOffset}px)` }}
+        />
+      </div>
       
       {/* Dark overlay for CDK-style contrast */}
       <div className="absolute inset-0" style={{ backgroundColor: 'hsl(216 27% 6% / 0.85)' }} />
 
-      <div className="relative container mx-auto px-4 lg:px-8">
-        <div className="flex flex-col lg:flex-row lg:items-start lg:gap-12 xl:gap-20">
+      {/* Gradient fade to next section (dark) - smooth transition */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-32 md:h-40 pointer-events-none z-[1]"
+        style={{ background: 'linear-gradient(to bottom, transparent 0%, hsl(216 27% 8%) 100%)' }}
+        aria-hidden
+      />
+
+      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 z-10 max-w-full">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12 xl:gap-20">
           {/* Left Column - Content */}
-          <div className="max-w-xl flex-shrink-0 z-10 lg:pt-12 lg:pb-4 text-center md:text-left">
+          <div className="max-w-xl flex-shrink-0 z-10 lg:pt-12 lg:pb-4 text-center lg:text-left order-1">
             <h1
-              className={`text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-3 lg:mb-5 leading-[1.1] hero-animate ${
+              className={`text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-3 lg:mb-5 leading-[1.1] hero-animate ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
-              Find Your Perfect Vehicle with <span className="text-accent">Zero Dealership Hassle</span>
+              <span className="text-gradient-heading-dark">Find Your Perfect Vehicle with </span>
+              <span className="text-accent">Zero Dealership Hassle</span>
             </h1>
 
             {/* Social Proof Badges - ALWAYS below headline */}
@@ -48,7 +62,7 @@ export function HeroSection() {
               href="https://share.google/uNNUZv8Ot02uvLzbd"
               target="_blank"
               rel="noopener noreferrer"
-              className={`flex flex-col sm:flex-row flex-wrap items-center justify-center md:justify-start gap-2 lg:gap-3 mb-4 lg:mb-6 hero-animate cursor-pointer hover:opacity-80 transition-opacity ${
+              className={`flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-2 lg:gap-3 mb-4 lg:mb-6 hero-animate cursor-pointer hover:opacity-80 transition-opacity ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
@@ -108,37 +122,56 @@ export function HeroSection() {
             </p>
 
             <div
-              className={`flex flex-col sm:flex-row items-stretch sm:items-center justify-center md:justify-start gap-3 hero-animate delay-2 ${
+              className={`flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 hero-animate delay-2 ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
-              <Button
-                asChild
-                size="lg"
-                className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 h-12 shrink-0"
-              >
-                <Link to="/contact">
-                  Start the process
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="w-full sm:w-auto h-12 border-white/40 bg-transparent text-white hover:bg-white/10 hover:text-white hover:border-white/60 font-medium px-6 shrink-0"
-              >
-                <Link to="/services">View Services</Link>
-              </Button>
+              <MagneticButton strength={0.4} className="w-full sm:w-auto">
+                <Button
+                  asChild
+                  size="lg"
+                  className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 h-12 shrink-0 glow-blue"
+                >
+                  <Link to="/contact">
+                    Start the process
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Link>
+                </Button>
+              </MagneticButton>
+              <MagneticButton strength={0.35} className="w-full sm:w-auto">
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="w-full sm:w-auto h-12 border-white/40 bg-transparent text-white hover:bg-white/10 hover:text-white hover:border-white/60 font-medium px-6 shrink-0"
+                >
+                  <Link to="/services">View Services</Link>
+                </Button>
+              </MagneticButton>
             </div>
           </div>
 
-          {/* Right Column - Process Visualization */}
+          {/* Right Column - Process Visualization: below text on mobile, right on desktop; hidden on very small screens */}
           <div
-            className={`flex-1 mt-8 lg:mt-0 hero-animate delay-3 ${heroAnimated ? 'animate-in' : ''}`}
+            className={`flex-1 flex items-center justify-center min-h-0 mt-6 sm:mt-8 lg:mt-0 order-2 hero-animate delay-3 ${heroAnimated ? 'animate-in' : ''} hidden sm:flex max-w-full`}
+            style={{ minHeight: 0 }}
           >
-            <CircularProcessVisualization />
+            <div className="w-full max-w-[280px] sm:max-w-[320px] lg:max-w-none aspect-square flex items-center justify-center">
+              <CircularProcessVisualization />
+            </div>
           </div>
+        </div>
+
+        {/* Scroll down affordance */}
+        <div className="flex justify-center pb-6 pt-2">
+          <button
+            type="button"
+            onClick={() => document.getElementById('discover')?.scrollIntoView({ behavior: 'smooth' })}
+            className="text-white/70 hover:text-white/95 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(216_27%_6%)] rounded-full p-1"
+            aria-label="Scroll to next section"
+          >
+            <ChevronDown className="w-8 h-8 hero-scroll-arrow" />
+          </button>
         </div>
       </div>
     </section>

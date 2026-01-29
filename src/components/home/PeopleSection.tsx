@@ -105,7 +105,7 @@ export function PeopleSection() {
   const revealed = reducedMotion ? true : isRevealed;
 
   return (
-    <section aria-label="People / Team" className="pt-12 md:pt-28 pb-8 md:pb-14 bg-background">
+    <section aria-label="People / Team" className="pt-10 md:pt-20 lg:pt-28 pb-8 md:pb-14 bg-[hsl(216_27%_8%)]">
       <div
         ref={ref}
         className={cn(
@@ -117,6 +117,7 @@ export function PeopleSection() {
         <SectionHeading
           title="Your Car Leasing Journey, Backed by a Dedicated Team"
           subtitle="A small team with one goal: make the process clear, fast, and stress-free."
+          dark
         />
 
         <div className="max-w-5xl mx-auto">
@@ -167,17 +168,17 @@ export function PeopleSection() {
                           'text-center px-2',
                         )}
                       >
-                        <span className="text-xs md:text-sm font-semibold text-foreground">
+                        <span className="text-xs md:text-sm font-semibold text-white">
                           A Note from Our Founder
                         </span>
-                        <div className="mx-auto mt-1 h-px w-10 bg-primary" />
+                        <div className="mx-auto mt-1 h-px w-10 bg-white/30" />
                       </div>
                     </div>
                   </div>
 
                   <div className="mt-4">
-                    <div className="text-base font-semibold text-foreground">{founder.name}</div>
-                    <div className="text-sm text-muted-foreground">{founder.role}</div>
+                    <div className="text-base font-semibold text-white">{founder.name}</div>
+                    <div className="text-sm text-white/85">{founder.role}</div>
                   </div>
                 </button>
               </DialogPrimitive.Trigger>
@@ -295,16 +296,16 @@ export function PeopleSection() {
                           'transition-opacity duration-300 ease-out motion-reduce:transition-none',
                         )}
                       >
-                        <span className="text-xs md:text-sm font-semibold text-foreground">
+                        <span className="text-xs md:text-sm font-semibold text-white">
                           View Profile
                         </span>
-                        <div className="mx-auto mt-1 h-px w-8 bg-primary" />
+                        <div className="mx-auto mt-1 h-px w-8 bg-white/30" />
                       </div>
                     </div>
                   </div>
                   <div className="mt-4">
-                    <div className="text-sm md:text-base font-semibold text-foreground">{person.name}</div>
-                    <div className="mt-0.5 text-xs md:text-sm text-muted-foreground">
+                    <div className="text-sm md:text-base font-semibold text-white">{person.name}</div>
+                    <div className="mt-0.5 text-xs md:text-sm text-white/85">
                       {person.role}
                     </div>
                   </div>

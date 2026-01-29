@@ -74,11 +74,12 @@ export function Header() {
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - 44px min touch target for accessibility */}
           <button
-            className={`lg:hidden p-2 transition-colors ${isScrolled ? 'text-primary' : 'text-white'}`}
+            className={`lg:hidden min-w-[44px] min-h-[44px] flex items-center justify-center p-2 -m-2 transition-colors ${isScrolled ? 'text-primary' : 'text-white'}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>

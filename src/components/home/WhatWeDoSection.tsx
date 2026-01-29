@@ -82,40 +82,28 @@ function ServiceCard({ service, index, isRevealed }: ServiceCardProps) {
         animationFillMode: 'forwards'
       }}
     >
-      {/* Breathing glow backdrop - appears on hover */}
+      {/* Subtle glow backdrop on hover */}
       <div className={cn(
-        "absolute -inset-3 rounded-3xl blur-2xl transition-opacity duration-700",
-        "bg-gradient-to-br from-accent/25 via-accent/15 to-accent/25",
-        "opacity-0 group-hover:opacity-100",
-        "group-hover:animate-breathe-glow"
+        "absolute -inset-3 rounded-3xl blur-2xl transition-opacity duration-500",
+        "bg-gradient-to-br from-accent/12 via-accent/10 to-accent/12",
+        "opacity-0 group-hover:opacity-100"
       )} />
       
-      {/* Glass card with 3D perspective */}
+      {/* Glass card */}
       <div className={cn(
         "relative h-full flex flex-col p-6 md:p-8 rounded-2xl overflow-hidden",
         "bg-white/[0.03] backdrop-blur-md",
         "border border-white/[0.08]",
-        "transition-all duration-500",
-        // 3D tilt on hover
-        "group-hover:border-accent/50 group-hover:bg-white/[0.07]",
-        "group-hover:-translate-y-2",
-        "md:group-hover:[transform:perspective(1000px)_rotateX(-2deg)_translateY(-8px)]"
-      )}
-      style={{
-        transformStyle: 'preserve-3d',
-      }}>
-        {/* Animated border gradient overlay */}
+        "transition-all duration-300",
+        "group-hover:border-accent/40 group-hover:bg-white/[0.06]",
+        "group-hover:-translate-y-1"
+      )}>
+        {/* Subtle border highlight on hover (static) */}
         <div className={cn(
-          "absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500",
-          "overflow-hidden"
+          "absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300",
+          "pointer-events-none"
         )}>
-          <div className={cn(
-            "absolute inset-0 rounded-2xl",
-            "bg-[length:200%_100%]",
-            "bg-gradient-to-r from-transparent via-accent/30 to-transparent",
-            "group-hover:animate-border-flow"
-          )} />
-          <div className="absolute inset-[1px] rounded-2xl bg-[hsl(216_27%_6%)]" />
+          <div className="absolute inset-0 rounded-2xl border border-accent/20" />
         </div>
         
         {/* Number indicator with glow */}
@@ -127,46 +115,22 @@ function ServiceCard({ service, index, isRevealed }: ServiceCardProps) {
           0{index + 1}
         </span>
         
-        {/* Glowing icon container with morphing */}
+        {/* Icon container */}
         <div className="relative mb-6">
           <div className={cn(
             "relative w-14 h-14 rounded-xl flex items-center justify-center",
             "bg-accent/10",
-            "shadow-[0_0_25px_rgba(31,106,225,0.25)]",
-            "group-hover:shadow-[0_0_50px_rgba(31,106,225,0.5)]",
-            "transition-all duration-500",
-            // Icon morphing on hover
-            "group-hover:scale-110 group-hover:rotate-3"
+            "shadow-[0_0_12px_rgba(31,106,225,0.15)]",
+            "group-hover:shadow-[0_0_20px_rgba(31,106,225,0.25)]",
+            "transition-all duration-300",
+            "group-hover:scale-105"
           )}>
-            {/* Pulsing ring */}
-            <div className={cn(
-              "absolute inset-0 rounded-xl",
-              "bg-accent/5",
-              "group-hover:animate-icon-ring-pulse"
-            )} />
-            {/* Secondary ring */}
-            <div className={cn(
-              "absolute -inset-1 rounded-xl",
-              "border border-accent/0 group-hover:border-accent/20",
-              "transition-all duration-700",
-              "group-hover:scale-110 group-hover:opacity-0"
-            )} />
             <Icon className={cn(
               "relative z-10 w-7 h-7 text-accent",
-              "transition-transform duration-500",
-              "group-hover:scale-110"
+              "transition-transform duration-300",
+              "group-hover:scale-105"
             )} />
           </div>
-          
-          {/* Enhanced floating particles */}
-          <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-accent/40 animate-float-1" />
-          <div className="absolute -bottom-1 -left-1 w-1.5 h-1.5 rounded-full bg-accent/30 animate-float-2" />
-          <div className={cn(
-            "absolute top-1/2 -right-3 w-1 h-1 rounded-full",
-            "bg-accent/0 group-hover:bg-accent/50",
-            "transition-all duration-500 delay-100",
-            "group-hover:animate-particle-drift"
-          )} />
         </div>
         
         {/* Content */}
@@ -179,9 +143,9 @@ function ServiceCard({ service, index, isRevealed }: ServiceCardProps) {
             {service.title}
           </h3>
           <p className={cn(
-            "text-white/50 text-sm md:text-base leading-relaxed",
-            "transition-all duration-500",
-            "group-hover:text-white/75"
+            "text-white/75 text-sm md:text-base leading-relaxed",
+            "transition-all duration-300",
+            "group-hover:text-white/90"
           )}>
             {service.description}
           </p>
@@ -366,7 +330,7 @@ export function WhatWeDoSection() {
   
   return (
     <section 
-      className="relative py-16 md:py-28 overflow-hidden"
+      className="relative py-12 md:py-20 lg:py-28 overflow-hidden"
       style={{ backgroundColor: 'hsl(216 27% 6%)' }}
     >
       <BackgroundEffects />

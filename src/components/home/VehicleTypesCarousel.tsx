@@ -149,7 +149,7 @@ export function VehicleTypesCarousel() {
   const duplicatedTypes = [...vehicleTypes, ...vehicleTypes];
 
   return (
-    <section className="py-10 md:py-24 bg-muted">
+    <section id="discover" className="pt-10 pb-10 md:pt-20 md:pb-24 bg-[hsl(216_27%_8%)]">
       <div
         ref={ref}
         className={`scroll-reveal ${isRevealed ? 'revealed' : ''}`}
@@ -158,6 +158,7 @@ export function VehicleTypesCarousel() {
           <SectionHeading
             title="Discover The Car Of Your Dreams"
             subtitle="Find the perfect vehicle type for your lifestyle"
+            dark
           />
         </div>
 
@@ -180,13 +181,13 @@ export function VehicleTypesCarousel() {
           </button>
 
           {/* Edge fade masks (keeps the row looking like the reference) */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-muted to-transparent z-10" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-muted to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-12 md:w-24 bg-gradient-to-r from-[hsl(216_27%_8%)] to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-12 md:w-24 bg-gradient-to-l from-[hsl(216_27%_8%)] to-transparent z-10" />
           
           {/* Scrolling content */}
           <div
             ref={scrollRef}
-            className="flex gap-6 md:gap-16 lg:gap-20 overflow-x-hidden py-6 md:py-12 px-12 md:px-28"
+            className="flex gap-6 md:gap-16 lg:gap-20 overflow-x-hidden py-6 md:py-12 px-4 md:px-12 lg:px-28"
             style={{ scrollBehavior: 'auto' }}
           >
             {duplicatedTypes.map((type, index) => (
@@ -204,7 +205,7 @@ export function VehicleTypesCarousel() {
                     className="max-w-full max-h-full w-auto h-auto object-contain drop-shadow-lg group-hover:scale-[1.02] transition-transform duration-300"
                   />
                 </div>
-                <span className="mt-4 md:mt-8 text-xs md:text-base font-semibold text-foreground/80 group-hover:text-foreground transition-colors">
+                <span className="mt-4 md:mt-8 text-xs md:text-base font-semibold text-white/90 group-hover:text-white transition-colors">
                   {type.name}
                 </span>
               </Link>
