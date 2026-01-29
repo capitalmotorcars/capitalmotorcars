@@ -123,7 +123,7 @@ export default function ServicesPage() {
       <SectionDivider variant="curved" nextSectionDark />
 
       {/* Services */}
-      <section className="py-8 md:py-14 lg:py-20 bg-[hsl(216_27%_8%)]">
+      <section className="py-8 md:py-14 lg:py-20 bg-[hsl(220_14%_5%)]">
         <div 
           ref={ref}
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${isRevealed ? 'revealed' : ''}`}

@@ -123,7 +123,7 @@ export function ServiceTemplate({
       <SectionDivider variant="curved" nextSectionDark />
 
       {/* Who This Is For */}
-      <section className="py-12 md:py-16 bg-[hsl(216_27%_8%)]">
+      <section className="py-12 md:py-16 bg-[hsl(220_14%_5%)]">
         <div 
           ref={whoRef}
           className={cn('container mx-auto px-4 lg:px-8 scroll-reveal', whoRevealed && 'revealed')}
@@ -144,7 +144,7 @@ export function ServiceTemplate({
       </section>
 
       {/* Common Issues */}
-      <section className="py-12 md:py-16 bg-[hsl(216_27%_6%)]">
+      <section className="py-12 md:py-16 bg-[hsl(220_14%_4%)]">
         <div 
           ref={issuesRef}
           className={cn('container mx-auto px-4 lg:px-8 scroll-reveal', issuesRevealed && 'revealed')}
@@ -165,7 +165,7 @@ export function ServiceTemplate({
       </section>
 
       {/* How It Works */}
-      <section className="py-12 md:py-16 bg-[hsl(216_27%_8%)]">
+      <section className="py-12 md:py-16 bg-[hsl(220_14%_5%)]">
         <div 
           ref={howRef}
           className={cn('container mx-auto px-4 lg:px-8 scroll-reveal', howRevealed && 'revealed')}
@@ -189,7 +189,7 @@ export function ServiceTemplate({
       </section>
 
       {/* What to Expect */}
-      <section className="py-12 md:py-16 bg-[hsl(216_27%_6%)]">
+      <section className="py-12 md:py-16 bg-[hsl(220_14%_4%)]">
         <div 
           ref={expectRef}
           className={cn('container mx-auto px-4 lg:px-8 scroll-reveal', expectRevealed && 'revealed')}
@@ -210,7 +210,7 @@ export function ServiceTemplate({
       </section>
 
       {/* FAQ */}
-      <section className="py-12 md:py-16 bg-[hsl(216_27%_8%)]">
+      <section className="py-12 md:py-16 bg-[hsl(220_14%_5%)]">
         <div 
           ref={faqRef}
           className={cn('container mx-auto px-4 lg:px-8 scroll-reveal', faqRevealed && 'revealed')}
@@ -234,7 +234,7 @@ export function ServiceTemplate({
       </section>
 
       {/* Contact Form */}
-      <section className="py-12 md:py-16 bg-[hsl(216_27%_6%)]">
+      <section className="py-12 md:py-16 bg-[hsl(220_14%_4%)]">
         <div 
           ref={formRef}
           className={cn('container mx-auto px-4 lg:px-8 scroll-reveal', formRevealed && 'revealed')}

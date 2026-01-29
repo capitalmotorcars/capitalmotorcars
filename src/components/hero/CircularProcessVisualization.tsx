@@ -272,7 +272,7 @@ export function CircularProcessVisualization({ className }: CircularProcessVisua
               'p-4 rounded-xl text-center',
               !prefersReducedMotion && 'animate-step-description'
             )}
-            style={{ backgroundColor: 'hsl(216 27% 10%)', border: '1px solid hsl(216 27% 18%)' }}
+            style={{ backgroundColor: 'hsl(220 14% 7%)', border: '1px solid hsl(220 14% 16%)' }}
           >
             <div className="flex items-center justify-center gap-2 mb-2">
               <span className="w-5 h-5 rounded-full bg-accent text-white text-xs font-bold flex items-center justify-center">
@@ -321,7 +321,7 @@ export function CircularProcessVisualization({ className }: CircularProcessVisua
               'px-3 py-2.5 rounded-lg text-center',
               !prefersReducedMotion && 'animate-step-description'
             )}
-            style={{ backgroundColor: 'hsl(216 27% 10%)', border: '1px solid hsl(216 27% 18%)' }}
+            style={{ backgroundColor: 'hsl(220 14% 7%)', border: '1px solid hsl(220 14% 16%)' }}
           >
             <div className="flex items-center justify-center gap-1.5 mb-1">
               <span className="w-4 h-4 rounded-full bg-accent text-white text-[10px] font-bold flex items-center justify-center">
