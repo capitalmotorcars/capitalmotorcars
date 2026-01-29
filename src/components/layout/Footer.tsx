@@ -72,8 +72,8 @@ export function Footer() {
     <footer>
       {/* Main Footer */}
       <div style={{ backgroundColor: 'hsl(216 27% 6%)' }} className="text-white">
-        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-18">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-14">
+        <div className="container mx-auto px-4 lg:px-8 py-10 md:py-14 lg:py-18">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 lg:gap-14">
             {/* Brand & Social */}
             <div>
               <Link to="/" className="inline-block mb-4">
@@ -85,8 +85,8 @@ export function Footer() {
                   className="h-14 w-auto brightness-0 invert"
                 />
               </Link>
-              <p className="text-sm font-medium leading-relaxed mb-7" style={{ color: 'hsl(213 20% 85%)' }}>
-                Simple, stress-free automotive solutions.
+              <p className="text-sm font-medium leading-relaxed mb-7 tracking-tight" style={{ color: 'hsl(213 20% 85%)' }}>
+                Car leasing made easy.
               </p>
               <div className="flex items-center gap-3">
                 {socialLinks.map((social) => (

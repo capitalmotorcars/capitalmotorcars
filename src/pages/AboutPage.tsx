@@ -2,6 +2,7 @@ import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
 import { JsonLd, organizationSchema } from '@/components/JsonLd';
 import { PageHero } from '@/components/ui/PageHero';
+import { SectionDivider } from '@/components/ui/SectionDivider';
 import { RelatedLinks, aboutPageLinks } from '@/components/ui/RelatedLinks';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { UserCheck, MessageSquare, Settings, MapPin } from 'lucide-react';
@@ -71,89 +72,97 @@ export default function AboutPage() {
         heroImageAlt="Porsche Cayenne GTS"
       />
 
+      <SectionDivider variant="curved" nextSectionDark />
+
       {/* Introduction */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-20 lg:py-24 bg-[hsl(216_27%_8%)]">
         <div 
           ref={introRef} 
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${introRevealed ? 'revealed' : ''}`}
         >
           <div className="max-w-3xl">
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+            <p className="text-base md:text-lg text-white/85 leading-relaxed mb-6">
               Capital Motor Cars was created to bring clarity and structure to an automotive process that is often complex and time-consuming. Our focus is on guiding clients through decisions with transparency, accountability, and a clearly defined process.
             </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-base md:text-lg text-white/85 leading-relaxed">
               We work with individuals and businesses who value straightforward communication and long-term thinking. Every engagement is handled with attention to detail, realistic expectations, and consistent follow-through.
             </p>
           </div>
         </div>
       </section>
 
+      <SectionDivider variant="wave" nextSectionDark />
+
       {/* Our Approach */}
-      <section className="py-16 md:py-24 bg-muted/50">
+      <section className="py-12 md:py-20 lg:py-24 bg-[hsl(216_27%_6%)]">
         <div 
           ref={approachRef} 
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${approachRevealed ? 'revealed' : ''}`}
         >
-          <h2 className="text-3xl font-semibold text-foreground mb-12">Our Approach</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <h2 className="text-2xl md:text-3xl font-semibold text-white mb-8 md:mb-12">Our Approach</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {approachItems.map((item) => (
               <div key={item.title} className="space-y-4">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <item.icon className="w-5 h-5 text-primary" />
+                <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center">
+                  <item.icon className="w-5 h-5 text-accent" />
                 </div>
-                <h3 className="text-xl font-semibold text-foreground">{item.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+                <h3 className="text-xl font-semibold text-white">{item.title}</h3>
+                <p className="text-white/85 leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      <SectionDivider variant="diagonal" nextSectionDark />
+
       {/* How We Support */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-20 lg:py-24 bg-[hsl(216_27%_8%)]">
         <div 
           ref={supportRef} 
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${supportRevealed ? 'revealed' : ''}`}
         >
           <div className="max-w-3xl">
-            <h2 className="text-3xl font-semibold text-foreground mb-6">How We Support Our Clients</h2>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+            <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4 md:mb-6">How We Support Our Clients</h2>
+            <p className="text-base md:text-lg text-white/85 leading-relaxed mb-6">
               Our role is to simplify decision-making and execution. We help clients evaluate options, manage details, and move forward with confidence, whether they are leasing, financing, or managing end-of-lease requirements.
             </p>
-            <p className="text-lg font-medium text-foreground">
+            <p className="text-lg font-medium text-white">
               The goal is not speed at any cost, but clarity at every step.
             </p>
           </div>
         </div>
       </section>
 
+      <SectionDivider variant="wave" nextSectionDark />
+
       {/* Locations */}
-      <section className="py-16 md:py-24 bg-muted/50">
+      <section className="py-12 md:py-20 lg:py-24 bg-[hsl(216_27%_6%)]">
         <div 
           ref={locationsRef} 
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${locationsRevealed ? 'revealed' : ''}`}
         >
-          <h2 className="text-3xl font-semibold text-foreground mb-4">Locations</h2>
-          <p className="text-muted-foreground mb-12 max-w-2xl">
+          <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4">Locations</h2>
+          <p className="text-white/85 mb-8 md:mb-12 max-w-2xl text-base md:text-lg">
             Capital Motor Cars operates across multiple locations to support clients efficiently and locally.
           </p>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {locations.map((location) => (
               <div 
                 key={location.name} 
-                className="bg-card border border-border rounded-lg p-6 space-y-3"
+                className="border border-white/10 bg-white/[0.06] backdrop-blur-sm rounded-xl p-6 space-y-3"
               >
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-primary mt-0.5 shrink-0" />
+                  <MapPin className="w-5 h-5 text-accent mt-0.5 shrink-0" />
                   <div>
-                    <h3 className="font-semibold text-foreground">{location.name}</h3>
-                    <p className="text-sm text-muted-foreground">{location.city}</p>
+                    <h3 className="font-semibold text-white">{location.name}</h3>
+                    <p className="text-sm text-white/85">{location.city}</p>
                   </div>
                 </div>
-                <p className="text-sm text-muted-foreground pl-8">{location.address}</p>
+                <p className="text-sm text-white/85 pl-8">{location.address}</p>
                 <a 
                   href={`tel:${location.phone.replace(/\D/g, '')}`}
-                  className="text-sm text-primary hover:underline underline-offset-4 pl-8 block"
+                  className="text-sm text-accent hover:underline underline-offset-4 pl-8 block"
                 >
                   {location.phone}
                 </a>
@@ -166,7 +175,7 @@ export default function AboutPage() {
       <RelatedLinks 
         title="Explore More" 
         links={aboutPageLinks} 
-        className="bg-background border-t border-border"
+        dark
       />
     </Layout>
   );

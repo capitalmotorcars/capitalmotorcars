@@ -4,6 +4,7 @@ import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
 import { JsonLd } from '@/components/JsonLd';
 import { PageHero } from '@/components/ui/PageHero';
+import { SectionDivider } from '@/components/ui/SectionDivider';
 import { RelatedLinks, servicesPageLinks } from '@/components/ui/RelatedLinks';
 import { ServiceCard } from '@/components/ui/ServiceCard';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
@@ -119,8 +120,10 @@ export default function ServicesPage() {
         ]}
       />
 
+      <SectionDivider variant="curved" nextSectionDark />
+
       {/* Services */}
-      <section className="py-20 md:py-28 bg-background">
+      <section className="py-12 md:py-20 lg:py-28 bg-[hsl(216_27%_8%)]">
         <div 
           ref={ref}
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${isRevealed ? 'revealed' : ''}`}
@@ -128,7 +131,7 @@ export default function ServicesPage() {
           <h2 className="sr-only">Browse Our Services</h2>
           
           {/* Category Tabs */}
-          <nav aria-label="Service categories" className="flex flex-wrap gap-2 mb-12 justify-center">
+          <nav aria-label="Service categories" className="flex flex-wrap gap-2 mb-8 md:mb-12 justify-center">
             {categories.map((cat) => (
               <button
                 key={cat.id}
@@ -137,7 +140,7 @@ export default function ServicesPage() {
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                   activeCategory === cat.id
                     ? 'bg-accent text-accent-foreground'
-                    : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                    : 'text-white/85 hover:text-white hover:bg-white/10 border border-white/20'
                 }`}
               >
                 {cat.label}
@@ -146,15 +149,15 @@ export default function ServicesPage() {
           </nav>
 
           {/* Services Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 tab-content-enter">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 tab-content-enter">
             {filteredServices.map((service) => (
-              <ServiceCard key={service.href} {...service} />
+              <ServiceCard key={service.href} {...service} dark />
             ))}
           </div>
 
           {/* Additional CTA */}
-          <div className="mt-16 text-center">
-            <p className="text-muted-foreground mb-4">
+          <div className="mt-10 md:mt-16 text-center">
+            <p className="text-white/85 mb-4">
               Select a service to see how it works.
             </p>
             <Link 
@@ -170,7 +173,7 @@ export default function ServicesPage() {
       <RelatedLinks 
         title="Next Steps" 
         links={servicesPageLinks} 
-        className="bg-muted border-t border-border"
+        dark
       />
     </Layout>
   );

@@ -33,15 +33,15 @@ export function SectionHeading({
       <Component className={cn(
         'font-bold mb-4',
         dark ? 'text-white' : 'text-primary',
-        Component === 'h2' && 'text-3xl md:text-4xl',
-        Component === 'h3' && 'text-2xl md:text-3xl',
+        Component === 'h2' && 'text-2xl md:text-3xl lg:text-4xl',
+        Component === 'h3' && 'text-xl md:text-2xl lg:text-3xl',
       )}>
         {title}
       </Component>
       {subtitle && (
         <p className={cn(
-          'text-lg leading-relaxed',
-          dark ? 'text-white/70' : 'text-muted-foreground'
+          'text-base md:text-lg leading-relaxed',
+          dark ? 'text-white/85' : 'text-muted-foreground'
         )}>
           {subtitle}
         </p>

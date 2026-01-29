@@ -9,6 +9,8 @@ interface ServiceCardProps {
   href: string;
   icon: LucideIcon;
   variant?: 'core' | 'supporting';
+  /** Use on dark section backgrounds */
+  dark?: boolean;
 }
 
 export function ServiceCard({
@@ -17,6 +19,7 @@ export function ServiceCard({
   href,
   icon: Icon,
   variant = 'supporting',
+  dark = false,
 }: ServiceCardProps) {
   const isCore = variant === 'core';
 
@@ -24,32 +27,34 @@ export function ServiceCard({
     <Link
       to={href}
       className={cn(
-        'group block bg-card border border-border rounded-lg service-card-hover',
+        'group block glass-card border border-white/10 rounded-xl service-card-hover service-card-glow-track transition-all duration-300',
         isCore ? 'p-7' : 'p-6'
       )}
     >
       <div className="flex items-start gap-4">
         <div
           className={cn(
-            'flex-shrink-0 bg-muted rounded-lg flex items-center justify-center',
+            'flex-shrink-0 rounded-lg flex items-center justify-center',
+            dark ? 'bg-white/10' : 'bg-muted',
             isCore ? 'w-14 h-14' : 'w-12 h-12'
           )}
         >
-          <Icon className={cn('text-primary', isCore ? 'w-7 h-7' : 'w-6 h-6')} />
+          <Icon className={cn(dark ? 'text-white' : 'text-primary', isCore ? 'w-7 h-7' : 'w-6 h-6')} />
         </div>
         <div className="flex-1 min-w-0">
           <h4
             className={cn(
-              'text-primary mb-2',
+              'mb-2',
+              dark ? 'text-white' : 'text-primary',
               isCore ? 'text-lg font-semibold' : 'text-[15px] font-semibold'
             )}
           >
             {title}
           </h4>
-          <p className="text-sm text-muted-foreground leading-relaxed">
+          <p className={cn('text-sm leading-relaxed', dark ? 'text-white/85' : 'text-muted-foreground')}>
             {description}
           </p>
-          <div className="mt-4 inline-flex items-center gap-1 text-accent text-sm font-medium">
+          <div className={cn('mt-4 inline-flex items-center gap-1 text-sm font-medium', dark ? 'text-accent' : 'text-accent')}>
             <span className="story-link">Learn more</span>
             <ArrowRight className="w-4 h-4" />
           </div>

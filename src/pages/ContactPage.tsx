@@ -2,6 +2,7 @@ import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
 import { JsonLd, organizationSchema } from '@/components/JsonLd';
 import { PageHero } from '@/components/ui/PageHero';
+import { SectionDivider } from '@/components/ui/SectionDivider';
 import { RelatedLinks, contactPageLinks } from '@/components/ui/RelatedLinks';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { useSearchParams } from 'react-router-dom';
@@ -33,14 +34,16 @@ export default function ContactPage() {
         ]}
       />
 
-      <section className="py-20 md:py-28 bg-background">
+      <SectionDivider variant="curved" nextSectionDark />
+
+      <section className="py-12 md:py-20 lg:py-28 bg-[hsl(216_27%_8%)]">
         <div
           ref={ref}
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${isRevealed ? 'revealed' : ''}`}
         >
           <div className="max-w-xl mx-auto">
             <h2 className="sr-only">Contact Form</h2>
-            <div className="bg-muted p-6 md:p-8 rounded-lg">
+            <div className="border border-white/10 bg-white/[0.06] backdrop-blur-sm p-6 md:p-8 rounded-xl shadow-[0_0_20px_hsl(214_77%_50%_/_0.05)] [&_label]:text-white [&_input]:bg-white/10 [&_input]:border-white/25 [&_input]:text-white [&_input]:placeholder:text-white/60 [&_textarea]:bg-white/10 [&_textarea]:border-white/25 [&_textarea]:text-white [&_textarea]:placeholder:text-white/60 [&_.text-muted-foreground]:text-white/90 [&_button:not([type=submit])]:bg-white/10 [&_button:not([type=submit])]:border-white/25 [&_button:not([type=submit])]:text-white [&_button:not([type=submit])_[data-placeholder]]:text-white/60">
               <ContactForm initialValues={{ fullName, phone, service, message }} />
             </div>
           </div>
@@ -50,7 +53,7 @@ export default function ContactPage() {
       <RelatedLinks 
         title="More Ways to Connect" 
         links={contactPageLinks} 
-        className="bg-muted border-t border-border"
+        dark
       />
     </Layout>
   );

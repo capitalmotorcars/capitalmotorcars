@@ -70,7 +70,7 @@ export function BrandsCarousel() {
   const duplicatedBrands = [...brands, ...brands];
 
   return (
-    <section className="py-10 md:py-20 bg-muted">
+    <section className="py-10 md:py-20 bg-[hsl(216_27%_8%)]">
       <div
         ref={ref}
         className={`scroll-reveal ${isRevealed ? 'revealed' : ''}`}
@@ -79,14 +79,15 @@ export function BrandsCarousel() {
           <SectionHeading
             title="Brands We Work With"
             subtitle="Access to vehicles from all major manufacturers"
+            dark
           />
         </div>
 
         {/* Carousel container */}
         <div className="relative overflow-hidden">
           {/* Gradient fade edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-muted to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-muted to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-[hsl(216_27%_8%)] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-[hsl(216_27%_8%)] to-transparent z-10 pointer-events-none" />
           
           {/* Scrolling content */}
           <div
@@ -108,7 +109,7 @@ export function BrandsCarousel() {
                     className="h-10 md:h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
                   />
                 </div>
-                <span className="mt-2 md:mt-3 text-[10px] md:text-sm font-medium text-muted-foreground">
+                <span className="mt-2 md:mt-3 text-[10px] md:text-sm font-medium text-white/85">
                   {brand.name}
                 </span>
               </div>

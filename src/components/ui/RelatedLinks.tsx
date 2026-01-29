@@ -12,6 +12,8 @@ interface RelatedLinksProps {
   title?: string;
   links: RelatedLink[];
   className?: string;
+  /** Use on dark section backgrounds */
+  dark?: boolean;
 }
 
 /**
@@ -21,32 +23,38 @@ interface RelatedLinksProps {
 export function RelatedLinks({ 
   title = "Related Pages", 
   links,
-  className 
+  className,
+  dark = false,
 }: RelatedLinksProps) {
   if (links.length === 0) return null;
 
   return (
-    <nav aria-label="Related pages" className={cn("py-12 md:py-16", className)}>
+    <nav aria-label="Related pages" className={cn("py-10 md:py-12 lg:py-16", dark && "bg-[hsl(216_27%_8%)] border-t border-white/10", className)}>
       <div className="container mx-auto px-4 lg:px-8">
-        <h3 className="text-lg font-semibold text-foreground mb-6">{title}</h3>
+        <h3 className={cn("text-lg font-semibold mb-6", dark ? "text-white" : "text-foreground")}>{title}</h3>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {links.map((link) => (
             <Link
               key={link.href}
               to={link.href}
-              className="group flex items-start gap-3 p-4 rounded-lg border border-border bg-card hover:border-accent/50 hover:bg-muted/50 transition-colors"
+              className={cn(
+                "group flex items-start gap-3 p-4 rounded-lg transition-colors",
+                dark
+                  ? "border border-white/10 bg-white/[0.06] backdrop-blur-sm hover:border-accent/50 hover:bg-white/[0.1]"
+                  : "border border-border bg-card hover:border-accent/50 hover:bg-muted/50"
+              )}
             >
               <div className="flex-1 min-w-0">
-                <span className="font-medium text-foreground group-hover:text-accent transition-colors">
+                <span className={cn("font-medium transition-colors", dark ? "text-white group-hover:text-accent" : "text-foreground group-hover:text-accent")}>
                   {link.title}
                 </span>
                 {link.description && (
-                  <p className="mt-1 text-sm text-muted-foreground line-clamp-2">
+                  <p className={cn("mt-1 text-sm line-clamp-2", dark ? "text-white/85" : "text-muted-foreground")}>
                     {link.description}
                   </p>
                 )}
               </div>
-              <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-accent transition-colors mt-1 shrink-0" />
+              <ArrowRight className={cn("w-4 h-4 transition-colors mt-1 shrink-0", dark ? "text-white/75 group-hover:text-accent" : "text-muted-foreground group-hover:text-accent")} />
             </Link>
           ))}
         </div>
