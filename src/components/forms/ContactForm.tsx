@@ -13,8 +13,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { CheckCircle, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { FormSuccessMessage } from './FormSuccessMessage';
 
 const contactSchema = z.object({
   fullName: z.string().min(2, 'Name must be at least 2 characters').max(100),
@@ -127,13 +128,11 @@ export function ContactForm({
 
   if (isSuccess) {
     return (
-      <div className="flex flex-col items-center justify-center py-12 text-center">
-        <CheckCircle className="w-16 h-16 text-accent mb-4" />
-        <h3 className="text-xl font-semibold text-primary mb-2">Thank you!</h3>
-        <p className="text-muted-foreground">
-          We've received your message and will get back to you shortly.
-        </p>
-      </div>
+      <FormSuccessMessage 
+        title="You're all set!"
+        subtitle="A team member will reach out to you shortly."
+        timing="Usually within a few hours"
+      />
     );
   }
 
