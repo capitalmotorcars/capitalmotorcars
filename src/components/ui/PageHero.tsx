@@ -118,7 +118,7 @@ export function PageHero({
               <ul className="mt-6 grid gap-3 text-sm text-primary-foreground/80 md:grid-cols-2 lg:grid-cols-3">
                 {keyPoints.map((point, index) => (
                   <li
-                    key={point}
+                    key={index}
                     className="flex items-start gap-2 animate-fade-in-up"
                     style={{ animationDelay: `${0.15 + index * 0.05}s` }}
                   >

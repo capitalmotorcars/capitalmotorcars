@@ -17,7 +17,7 @@ export function HeroSection() {
   ];
 
   return (
-    <section className="relative pt-8 pb-10 lg:pt-16 lg:pb-24 min-h-[auto] lg:min-h-[700px]" style={{ backgroundColor: 'hsl(216 27% 6%)' }}>
+    <section className="relative pt-8 pb-14 lg:pt-16 lg:pb-28 min-h-[auto] lg:min-h-[700px]" style={{ backgroundColor: 'hsl(216 27% 6%)' }}>
       {/* Background Image - subtle */}
       <img
         src={heroBg}
@@ -34,7 +34,7 @@ export function HeroSection() {
       <div className="relative container mx-auto px-4 lg:px-8">
         <div className="flex flex-col lg:flex-row lg:items-start lg:gap-12 xl:gap-20">
           {/* Left Column - Content */}
-          <div className="max-w-xl flex-shrink-0 z-10 lg:py-12 text-center md:text-left">
+          <div className="max-w-xl flex-shrink-0 z-10 lg:pt-12 lg:pb-4 text-center md:text-left">
             <h1
               className={`text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-3 lg:mb-5 leading-[1.1] hero-animate ${
                 heroAnimated ? 'animate-in' : ''
@@ -108,41 +108,34 @@ export function HeroSection() {
             </p>
 
             <div
-              className={`flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3 sm:gap-4 hero-animate delay-2 ${
+              className={`flex flex-col sm:flex-row items-stretch sm:items-center justify-center md:justify-start gap-3 hero-animate delay-2 ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
               <Button
                 asChild
                 size="lg"
-                className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 h-12"
+                className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 h-12 shrink-0"
               >
                 <Link to="/contact">
                   Start the process
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
               </Button>
-              
-              <Link
-                to="/services"
-                className="text-center sm:text-left font-medium underline-offset-4 hover:underline transition-colors py-3 sm:py-0"
-                style={{ color: 'hsl(213 27% 84%)' }}
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="w-full sm:w-auto h-12 border-white/40 bg-transparent text-white hover:bg-white/10 hover:text-white hover:border-white/60 font-medium px-6 shrink-0"
               >
-                View Services
-              </Link>
+                <Link to="/services">View Services</Link>
+              </Button>
             </div>
-
-            <p
-              className={`mt-3 lg:mt-4 text-sm hero-animate delay-2 ${heroAnimated ? 'animate-in' : ''}`}
-              style={{ color: 'hsl(213 27% 84%)' }}
-            >
-              One conversation. No pressure.
-            </p>
           </div>
 
           {/* Right Column - Process Visualization */}
           <div
-            className={`flex-1 mt-12 lg:mt-0 hero-animate delay-3 ${heroAnimated ? 'animate-in' : ''}`}
+            className={`flex-1 mt-8 lg:mt-0 hero-animate delay-3 ${heroAnimated ? 'animate-in' : ''}`}
           >
             <CircularProcessVisualization />
           </div>
