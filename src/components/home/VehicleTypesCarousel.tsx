@@ -5,6 +5,7 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { ChevronsLeft, ChevronsRight } from 'lucide-react';
 import minivanImage from '@/assets/minivan-odyssey.png';
 import coupeImage from '@/assets/coupe-bmw-m8.png';
+import hatchbackImage from '@/assets/hatchback-audi-rs5.png';
 
 const vehicleTypes = [
   {
@@ -20,7 +21,7 @@ const vehicleTypes = [
   {
     name: 'Hatchback',
     slug: 'hatchback',
-    image: 'https://pngimg.com/uploads/volkswagen/volkswagen_PNG1818.png',
+    image: hatchbackImage,
   },
   {
     name: 'Sedan',
