@@ -73,7 +73,7 @@ export const vehicleTypes: VehicleTypeData[] = [
   {
     slug: 'hatchback',
     name: 'Hatchback',
-    image: 'https://pngimg.com/uploads/volkswagen/volkswagen_PNG1818.png',
+    image: '/src/assets/hatchback-audi-rs5.png',
     description: 'Compact yet versatile, hatchbacks offer the perfect balance of city maneuverability and practical cargo space.',
     highlights: [
       'Easy parking and city navigation',
