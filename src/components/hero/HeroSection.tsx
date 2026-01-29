@@ -34,7 +34,7 @@ export function HeroSection() {
       <div className="relative container mx-auto px-4 lg:px-8">
         <div className="flex flex-col lg:flex-row lg:items-start lg:gap-12 xl:gap-20">
           {/* Left Column - Content */}
-          <div className="max-w-xl flex-shrink-0 z-10 lg:py-12">
+          <div className="max-w-xl flex-shrink-0 z-10 lg:py-12 text-center md:text-left">
             <h1
               className={`text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-3 lg:mb-5 leading-[1.1] hero-animate ${
                 heroAnimated ? 'animate-in' : ''
@@ -48,7 +48,7 @@ export function HeroSection() {
               href="https://share.google/uNNUZv8Ot02uvLzbd"
               target="_blank"
               rel="noopener noreferrer"
-              className={`flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-2 lg:gap-3 mb-4 lg:mb-6 hero-animate cursor-pointer hover:opacity-80 transition-opacity ${
+              className={`flex flex-col sm:flex-row flex-wrap items-center justify-center md:justify-start gap-2 lg:gap-3 mb-4 lg:mb-6 hero-animate cursor-pointer hover:opacity-80 transition-opacity ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
@@ -108,7 +108,7 @@ export function HeroSection() {
             </p>
 
             <div
-              className={`flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 hero-animate delay-2 ${
+              className={`flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3 sm:gap-4 hero-animate delay-2 ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
