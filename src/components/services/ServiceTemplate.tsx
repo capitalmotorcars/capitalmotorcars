@@ -4,11 +4,13 @@ import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
 import { JsonLd, createServiceSchema, createFaqSchema } from '@/components/JsonLd';
 import { PageHero } from '@/components/ui/PageHero';
+import { SectionDivider } from '@/components/ui/SectionDivider';
 import { RelatedLinks } from '@/components/ui/RelatedLinks';
 import { Button } from '@/components/ui/button';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { cn } from '@/lib/utils';
 import {
   Accordion,
   AccordionContent,
@@ -118,18 +120,23 @@ export function ServiceTemplate({
         </Button>
       </PageHero>
 
+      <SectionDivider variant="curved" nextSectionDark />
+
       {/* Who This Is For */}
-      <section className="py-16 md:py-20 bg-background">
+      <section className="py-12 md:py-16 bg-[hsl(216_27%_8%)]">
         <div 
           ref={whoRef}
-          className={`container mx-auto px-4 lg:px-8 scroll-reveal ${whoRevealed ? 'revealed' : ''}`}
+          className={cn('container mx-auto px-4 lg:px-8 scroll-reveal', whoRevealed && 'revealed')}
         >
-          <SectionHeading title="Who This Is For" align="left" />
-          <div className="grid md:grid-cols-2 gap-4 max-w-3xl">
+          <SectionHeading title="Who This Is For" align="left" dark />
+          <div className="grid md:grid-cols-2 gap-4 max-w-3xl border border-white/10 bg-white/[0.06] backdrop-blur-sm rounded-xl p-6">
             {whoIsThisFor.map((item, index) => (
-              <div key={index} className="flex items-start gap-3">
+              <div
+                key={index}
+                className={cn('flex items-start gap-3 stagger-in', `stagger-in-${Math.min(index + 1, 8)}`)}
+              >
                 <CheckCircle className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
-                <span className="text-muted-foreground">{item}</span>
+                <span className="text-white/85">{item}</span>
               </div>
             ))}
           </div>
@@ -137,20 +144,20 @@ export function ServiceTemplate({
       </section>
 
       {/* Common Issues */}
-      <section className="py-16 md:py-20 bg-muted">
+      <section className="py-12 md:py-16 bg-[hsl(216_27%_6%)]">
         <div 
           ref={issuesRef}
-          className={`container mx-auto px-4 lg:px-8 scroll-reveal ${issuesRevealed ? 'revealed' : ''}`}
+          className={cn('container mx-auto px-4 lg:px-8 scroll-reveal', issuesRevealed && 'revealed')}
         >
-          <SectionHeading 
-            title="Common Issues We Address" 
-            align="left" 
-          />
-          <ul className="space-y-3 max-w-2xl">
+          <SectionHeading title="Common Issues We Address" align="left" dark />
+          <ul className="space-y-3 max-w-2xl border border-white/10 bg-white/[0.06] backdrop-blur-sm rounded-xl p-6">
             {commonIssues.map((issue, index) => (
-              <li key={index} className="flex items-start gap-3">
+              <li
+                key={index}
+                className={cn('flex items-start gap-3 stagger-in', `stagger-in-${Math.min(index + 1, 8)}`)}
+              >
                 <ArrowRight className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
-                <span className="text-muted-foreground">{issue}</span>
+                <span className="text-white/85">{issue}</span>
               </li>
             ))}
           </ul>
@@ -158,20 +165,23 @@ export function ServiceTemplate({
       </section>
 
       {/* How It Works */}
-      <section className="py-16 md:py-20 bg-background">
+      <section className="py-12 md:py-16 bg-[hsl(216_27%_8%)]">
         <div 
           ref={howRef}
-          className={`container mx-auto px-4 lg:px-8 scroll-reveal ${howRevealed ? 'revealed' : ''}`}
+          className={cn('container mx-auto px-4 lg:px-8 scroll-reveal', howRevealed && 'revealed')}
         >
-          <SectionHeading title="How the Process Works" />
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+          <SectionHeading title="How the Process Works" dark />
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {howItWorks.map((step, index) => (
-              <div key={index} className="text-center">
+              <div
+                key={index}
+                className={cn('text-center p-5 border border-white/10 bg-white/[0.06] backdrop-blur-sm rounded-xl stagger-in', `stagger-in-${Math.min(index + 1, 8)}`)}
+              >
                 <div className="w-12 h-12 bg-accent text-accent-foreground rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
                   {index + 1}
                 </div>
-                <h4 className="font-semibold text-primary mb-2">{step.title}</h4>
-                <p className="text-sm text-muted-foreground">{step.description}</p>
+                <h4 className="font-semibold text-white mb-2">{step.title}</h4>
+                <p className="text-sm text-white/85">{step.description}</p>
               </div>
             ))}
           </div>
@@ -179,17 +189,20 @@ export function ServiceTemplate({
       </section>
 
       {/* What to Expect */}
-      <section className="py-16 md:py-20 bg-muted">
+      <section className="py-12 md:py-16 bg-[hsl(216_27%_6%)]">
         <div 
           ref={expectRef}
-          className={`container mx-auto px-4 lg:px-8 scroll-reveal ${expectRevealed ? 'revealed' : ''}`}
+          className={cn('container mx-auto px-4 lg:px-8 scroll-reveal', expectRevealed && 'revealed')}
         >
-          <SectionHeading title="What You Can Expect" align="left" />
+          <SectionHeading title="What You Can Expect" align="left" dark />
           <div className="grid md:grid-cols-2 gap-4 max-w-3xl">
             {whatToExpect.map((item, index) => (
-              <div key={index} className="flex items-start gap-3 p-4 bg-background rounded-lg">
+              <div
+                key={index}
+                className={cn('flex items-start gap-3 p-4 border border-white/10 bg-white/[0.06] backdrop-blur-sm rounded-xl stagger-in', `stagger-in-${Math.min(index + 1, 8)}`)}
+              >
                 <CheckCircle className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
-                <span className="text-foreground">{item}</span>
+                <span className="text-white">{item}</span>
               </div>
             ))}
           </div>
@@ -197,20 +210,20 @@ export function ServiceTemplate({
       </section>
 
       {/* FAQ */}
-      <section className="py-16 md:py-20 bg-background">
+      <section className="py-12 md:py-16 bg-[hsl(216_27%_8%)]">
         <div 
           ref={faqRef}
-          className={`container mx-auto px-4 lg:px-8 scroll-reveal ${faqRevealed ? 'revealed' : ''}`}
+          className={cn('container mx-auto px-4 lg:px-8 scroll-reveal', faqRevealed && 'revealed')}
         >
-          <SectionHeading title="Frequently Asked Questions" />
-          <div className="max-w-2xl mx-auto">
-            <Accordion type="single" collapsible className="w-full">
+          <SectionHeading title="Frequently Asked Questions" dark />
+          <div className="max-w-2xl mx-auto border border-white/10 bg-white/[0.06] backdrop-blur-sm rounded-xl p-6">
+            <Accordion type="single" collapsible className="w-full [&_[data-state=open]]:text-white [&_button]:text-white [&_button:hover]:text-white/90 [&_.text-muted-foreground]:text-white/85">
               {faqs.map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`}>
+                <AccordionItem key={index} value={`item-${index}`} className={cn('stagger-in', `stagger-in-${Math.min(index + 1, 8)}`)}>
                   <AccordionTrigger className="text-left">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground">
+                  <AccordionContent className="text-white/85">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -221,17 +234,18 @@ export function ServiceTemplate({
       </section>
 
       {/* Contact Form */}
-      <section className="py-16 md:py-20 bg-muted">
+      <section className="py-12 md:py-16 bg-[hsl(216_27%_6%)]">
         <div 
           ref={formRef}
-          className={`container mx-auto px-4 lg:px-8 scroll-reveal ${formRevealed ? 'revealed' : ''}`}
+          className={cn('container mx-auto px-4 lg:px-8 scroll-reveal', formRevealed && 'revealed')}
         >
           <div className="max-w-xl mx-auto">
             <SectionHeading
               title="Interested in this service?"
               subtitle="Leave your details and we will get back to you."
+              dark
             />
-            <div className="bg-background p-6 md:p-8 rounded-lg border border-border">
+            <div className="border border-white/10 bg-white/[0.06] backdrop-blur-sm p-6 md:p-8 rounded-xl stagger-in stagger-in-1 [&_label]:text-white [&_input]:bg-white/10 [&_input]:border-white/25 [&_input]:text-white [&_input]:placeholder:text-white/60 [&_textarea]:bg-white/10 [&_textarea]:border-white/25 [&_textarea]:text-white [&_textarea]:placeholder:text-white/60 [&_.text-muted-foreground]:text-white/90 [&_button:not([type=submit])]:bg-white/10 [&_button:not([type=submit])]:border-white/25 [&_button:not([type=submit])]:text-white">
               <ContactForm 
                 compact 
                 initialValues={serviceValue ? { service: serviceValue } : undefined}
@@ -244,11 +258,7 @@ export function ServiceTemplate({
 
       {/* Related Links */}
       {relatedLinks.length > 0 && (
-        <RelatedLinks 
-          title="Related Services" 
-          links={relatedLinks} 
-          className="bg-background border-t border-border"
-        />
+        <RelatedLinks title="Related Services" links={relatedLinks} dark />
       )}
     </Layout>
   );

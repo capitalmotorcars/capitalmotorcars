@@ -54,7 +54,7 @@ export function HeroSection() {
               }`}
             >
               <span className="text-gradient-heading-dark">Find Your Perfect Vehicle with </span>
-              <span className="text-accent">Zero Dealership Hassle</span>
+              <span className="text-gradient-hero-highlight">Zero Dealership Hassle</span>
             </h1>
 
             {/* Social Proof Badges - ALWAYS below headline */}
@@ -126,7 +126,7 @@ export function HeroSection() {
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
-              <MagneticButton strength={0.4} className="w-full sm:w-auto">
+              <MagneticButton strength={0.45} className="w-full sm:w-auto">
                 <Button
                   asChild
                   size="lg"
@@ -141,9 +141,9 @@ export function HeroSection() {
               <MagneticButton strength={0.35} className="w-full sm:w-auto">
                 <Button
                   asChild
-                  variant="outline"
+                  variant="ghost"
                   size="lg"
-                  className="w-full sm:w-auto h-12 border-white/40 bg-transparent text-white hover:bg-white/10 hover:text-white hover:border-white/60 font-medium px-6 shrink-0"
+                  className="w-full sm:w-auto h-12 border border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white hover:border-white/50 font-medium px-6 shrink-0"
                 >
                   <Link to="/services">View Services</Link>
                 </Button>
@@ -155,7 +155,7 @@ export function HeroSection() {
           <div
             className="flex-none lg:flex-1 flex items-start lg:items-center justify-center min-h-0 mt-6 sm:mt-8 lg:mt-0 order-2 max-w-full lg:min-h-0 shrink-0"
           >
-            <div className="w-full max-w-[240px] sm:max-w-[320px] lg:max-w-[420px] xl:max-w-[440px] aspect-square flex items-center justify-center flex-shrink-0 mx-auto">
+            <div className="w-[90%] max-w-[min(90vw,320px)] sm:max-w-[320px] lg:max-w-[420px] xl:max-w-[440px] aspect-square flex items-center justify-center flex-shrink-0 mx-auto">
               <CircularProcessVisualization />
             </div>
           </div>

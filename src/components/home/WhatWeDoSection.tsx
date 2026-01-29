@@ -330,7 +330,7 @@ export function WhatWeDoSection() {
   
   return (
     <section 
-      className="relative py-12 md:py-20 lg:py-28 overflow-hidden"
+      className="relative py-8 md:py-14 lg:py-20 overflow-hidden"
       style={{ backgroundColor: 'hsl(216 27% 6%)' }}
     >
       <BackgroundEffects />

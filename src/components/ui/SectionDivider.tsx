@@ -19,7 +19,7 @@ export function SectionDivider({
   if (variant === 'diagonal') {
     return (
       <div
-        className={cn('relative h-20 w-full shrink-0', className)}
+        className={cn('relative h-16 w-full shrink-0', className)}
         aria-hidden
       >
         <div
@@ -34,7 +34,7 @@ export function SectionDivider({
 
   if (variant === 'wave') {
     return (
-      <div className={cn('relative h-16 w-full shrink-0 overflow-hidden', className)} aria-hidden>
+      <div className={cn('relative h-12 w-full shrink-0 overflow-hidden', className)} aria-hidden>
         <svg
           className="absolute bottom-0 w-full"
           viewBox="0 0 1440 60"
@@ -49,7 +49,7 @@ export function SectionDivider({
 
   /* curved */
   return (
-    <div className={cn('relative h-14 w-full shrink-0 overflow-hidden', className)} aria-hidden>
+    <div className={cn('relative h-10 w-full shrink-0 overflow-hidden', className)} aria-hidden>
       <svg
         className="absolute bottom-0 w-full"
         viewBox="0 0 1440 60"

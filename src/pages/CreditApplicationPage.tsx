@@ -34,7 +34,7 @@ function AnimatedCreditSection() {
   const { ref, isRevealed } = useScrollReveal();
 
   return (
-    <section className="py-12 md:py-20 lg:py-28 bg-[hsl(216_27%_8%)]">
+    <section className="py-8 md:py-14 lg:py-20 bg-[hsl(216_27%_8%)]">
       <div
         ref={ref}
         className={`container mx-auto px-4 lg:px-8 max-w-2xl scroll-reveal ${isRevealed ? 'revealed' : ''}`}

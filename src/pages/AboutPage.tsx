@@ -75,7 +75,7 @@ export default function AboutPage() {
       <SectionDivider variant="curved" nextSectionDark />
 
       {/* Introduction */}
-      <section className="py-12 md:py-20 lg:py-24 bg-[hsl(216_27%_8%)]">
+      <section className="py-8 md:py-14 lg:py-20 bg-[hsl(216_27%_8%)]">
         <div 
           ref={introRef} 
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${introRevealed ? 'revealed' : ''}`}
@@ -94,7 +94,7 @@ export default function AboutPage() {
       <SectionDivider variant="wave" nextSectionDark />
 
       {/* Our Approach */}
-      <section className="py-12 md:py-20 lg:py-24 bg-[hsl(216_27%_6%)]">
+      <section className="py-8 md:py-14 lg:py-20 bg-[hsl(216_27%_6%)]">
         <div 
           ref={approachRef} 
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${approachRevealed ? 'revealed' : ''}`}
@@ -117,7 +117,7 @@ export default function AboutPage() {
       <SectionDivider variant="diagonal" nextSectionDark />
 
       {/* How We Support */}
-      <section className="py-12 md:py-20 lg:py-24 bg-[hsl(216_27%_8%)]">
+      <section className="py-8 md:py-14 lg:py-20 bg-[hsl(216_27%_8%)]">
         <div 
           ref={supportRef} 
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${supportRevealed ? 'revealed' : ''}`}
@@ -137,7 +137,7 @@ export default function AboutPage() {
       <SectionDivider variant="wave" nextSectionDark />
 
       {/* Locations */}
-      <section className="py-12 md:py-20 lg:py-24 bg-[hsl(216_27%_6%)]">
+      <section className="py-8 md:py-14 lg:py-20 bg-[hsl(216_27%_6%)]">
         <div 
           ref={locationsRef} 
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${locationsRevealed ? 'revealed' : ''}`}

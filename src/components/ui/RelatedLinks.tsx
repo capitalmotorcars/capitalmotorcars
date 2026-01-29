@@ -29,7 +29,7 @@ export function RelatedLinks({
   if (links.length === 0) return null;
 
   return (
-    <nav aria-label="Related pages" className={cn("py-10 md:py-12 lg:py-16", dark && "bg-[hsl(216_27%_8%)] border-t border-white/10", className)}>
+    <nav aria-label="Related pages" className={cn("py-8 md:py-10 lg:py-14", dark && "bg-[hsl(216_27%_8%)] border-t border-white/10", className)}>
       <div className="container mx-auto px-4 lg:px-8">
         <h3 className={cn("text-lg font-semibold mb-6", dark ? "text-white" : "text-foreground")}>{title}</h3>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
