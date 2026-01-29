@@ -66,7 +66,9 @@ export default function BrandsPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 mb-8 md:mb-12">
             {brands.map((brand) => (
               <div key={brand.name} className="flex flex-col items-center justify-center p-8 rounded-xl border border-white/10 bg-white/[0.06] backdrop-blur-sm hover:border-accent/30 hover:bg-white/[0.08] transition-all card-hover">
-                <img src={brand.logo} alt={brand.name} loading="lazy" decoding="async" className="h-16 w-auto object-contain mb-4 grayscale hover:grayscale-0 transition-all" />
+                <div className="flex items-center justify-center p-4 mb-4 rounded-lg bg-white w-full max-w-[140px] min-h-[80px]">
+                  <img src={brand.logo} alt={brand.name} loading="lazy" decoding="async" className="h-16 w-auto object-contain transition-all" />
+                </div>
                 <span className="text-sm font-medium text-white">{brand.name}</span>
               </div>
             ))}

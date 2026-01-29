@@ -100,13 +100,13 @@ export function BrandsCarousel() {
                 key={`${brand.name}-${index}`}
                 className="flex-shrink-0 flex flex-col items-center justify-center px-2 md:px-6"
               >
-                <div className="w-16 h-16 md:w-24 md:h-24 flex items-center justify-center bg-card rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                <div className="w-16 h-16 md:w-24 md:h-24 flex items-center justify-center bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
                   <img
                     src={brand.logo}
                     alt={brand.name}
                     loading="lazy"
                     decoding="async"
-                    className="h-10 md:h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                    className="h-10 md:h-14 w-auto object-contain transition-all duration-300"
                   />
                 </div>
                 <span className="mt-2 md:mt-3 text-[10px] md:text-sm font-medium text-white/85">
