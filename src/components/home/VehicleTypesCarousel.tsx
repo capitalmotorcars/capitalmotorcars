@@ -6,6 +6,8 @@ import { ChevronsLeft, ChevronsRight } from 'lucide-react';
 import minivanImage from '@/assets/minivan-odyssey.png';
 import coupeImage from '@/assets/coupe-bmw-m8.png';
 import hatchbackImage from '@/assets/hatchback-audi-rs5.png';
+import electricImage from '@/assets/electric-mercedes-eqc.png';
+import truckImage from '@/assets/truck-ford-raptor.png';
 
 const vehicleTypes = [
   {
@@ -16,7 +18,7 @@ const vehicleTypes = [
   {
     name: 'Electric',
     slug: 'electric',
-    image: 'https://pngimg.com/uploads/tesla_car/tesla_car_PNG51.png',
+    image: electricImage,
   },
   {
     name: 'Hatchback',
@@ -31,7 +33,7 @@ const vehicleTypes = [
   {
     name: 'Truck',
     slug: 'truck',
-    image: 'https://pngimg.com/uploads/ford/ford_PNG12251.png',
+    image: truckImage,
   },
   {
     name: 'Sports',
@@ -199,7 +201,7 @@ export function VehicleTypesCarousel() {
                     alt={type.name}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-contain drop-shadow-lg group-hover:scale-[1.02] transition-transform duration-300"
+                    className="max-w-full max-h-full w-auto h-auto object-contain drop-shadow-lg group-hover:scale-[1.02] transition-transform duration-300"
                   />
                 </div>
                 <span className="mt-4 md:mt-8 text-xs md:text-base font-semibold text-foreground/80 group-hover:text-foreground transition-colors">
