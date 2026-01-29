@@ -44,7 +44,7 @@ export const vehicleTypes: VehicleTypeData[] = [
   {
     slug: 'electric',
     name: 'Electric',
-    image: 'https://pngimg.com/uploads/tesla_car/tesla_car_PNG51.png',
+    image: '/src/assets/electric-mercedes-eqc.png',
     description: 'Drive into the future with zero emissions and instant torque. Our electric vehicle selection offers the latest in sustainable mobility.',
     highlights: [
       'Zero emissions and lower running costs',
@@ -131,7 +131,7 @@ export const vehicleTypes: VehicleTypeData[] = [
   {
     slug: 'truck',
     name: 'Truck',
-    image: 'https://pngimg.com/uploads/ford/ford_PNG12251.png',
+    image: '/src/assets/truck-ford-raptor.png',
     description: 'Built for work and adventure. Our truck selection offers capability, durability, and the power to handle any job.',
     highlights: [
       'Exceptional towing and payload capacity',
