@@ -151,9 +151,9 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column - Process Visualization: below text on mobile, right on desktop */}
+          {/* Right Column - Process Visualization: below text on mobile (no flex-1 = no overlap), right on desktop */}
           <div
-            className="flex-1 flex items-center justify-center min-h-0 mt-6 sm:mt-8 lg:mt-0 order-2 max-w-full min-h-[260px] sm:min-h-[300px] lg:min-h-0"
+            className="flex-none lg:flex-1 flex items-center justify-center min-h-0 mt-8 sm:mt-10 lg:mt-0 order-2 max-w-full lg:min-h-0"
           >
             <div className="w-full max-w-[240px] sm:max-w-[320px] lg:max-w-[420px] xl:max-w-[440px] aspect-square flex items-center justify-center flex-shrink-0 mx-auto">
               <CircularProcessVisualization />
