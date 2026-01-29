@@ -70,7 +70,7 @@ export function BrandsCarousel() {
   const duplicatedBrands = [...brands, ...brands];
 
   return (
-    <section className="py-10 md:py-20 bg-[hsl(216_27%_8%)]">
+    <section className="py-8 md:py-14 bg-[hsl(220_14%_5%)]">
       <div
         ref={ref}
         className={`scroll-reveal ${isRevealed ? 'revealed' : ''}`}
@@ -86,8 +86,8 @@ export function BrandsCarousel() {
         {/* Carousel container */}
         <div className="relative overflow-hidden">
           {/* Gradient fade edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-[hsl(216_27%_8%)] to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-[hsl(216_27%_8%)] to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-[hsl(220_14%_5%)] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-[hsl(220_14%_5%)] to-transparent z-10 pointer-events-none" />
           
           {/* Scrolling content */}
           <div

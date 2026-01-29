@@ -33,7 +33,7 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-background py-3 shadow-md' : 'bg-[hsl(216_27%_6%)] py-3'
+        isScrolled ? 'bg-background py-3 shadow-md' : 'bg-[hsl(220_14%_4%)] py-3'
       }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
@@ -87,7 +87,7 @@ export function Header() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className={`lg:hidden mt-4 pb-4 border-t ${isScrolled ? 'border-border bg-background' : 'border-white/20 bg-[hsl(216_27%_6%)]'}`}>
+          <div className={`lg:hidden mt-4 pb-4 border-t ${isScrolled ? 'border-border bg-background' : 'border-white/20 bg-[hsl(220_14%_4%)]'}`}>
             <nav className="flex flex-col gap-2 pt-4">
               {navLinks.map((link) => (
                 <Link

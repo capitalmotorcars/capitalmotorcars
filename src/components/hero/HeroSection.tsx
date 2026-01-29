@@ -20,7 +20,7 @@ export function HeroSection() {
   ];
 
   return (
-    <section className="relative pt-4 pb-8 sm:pt-6 sm:pb-10 lg:pt-6 lg:pb-12 min-h-[auto] overflow-hidden" style={{ backgroundColor: 'hsl(216 27% 6%)' }}>
+    <section className="relative pt-4 pb-8 sm:pt-6 sm:pb-10 lg:pt-6 lg:pb-12 min-h-[auto] overflow-hidden" style={{ backgroundColor: 'hsl(220 14% 4%)' }}>
       {/* Background Image - parallax */}
       <div ref={parallaxRef} className="absolute inset-0 overflow-hidden">
         <img
@@ -35,12 +35,12 @@ export function HeroSection() {
       </div>
       
       {/* Dark overlay for CDK-style contrast */}
-      <div className="absolute inset-0" style={{ backgroundColor: 'hsl(216 27% 6% / 0.85)' }} />
+      <div className="absolute inset-0" style={{ backgroundColor: 'hsl(220 14% 4% / 0.85)' }} />
 
       {/* Gradient fade to next section (dark) - smooth transition */}
       <div
         className="absolute bottom-0 left-0 right-0 h-32 md:h-40 pointer-events-none z-[1]"
-        style={{ background: 'linear-gradient(to bottom, transparent 0%, hsl(216 27% 8%) 100%)' }}
+        style={{ background: 'linear-gradient(to bottom, transparent 0%, hsl(220 14% 5%) 100%)' }}
         aria-hidden
       />
 
@@ -54,7 +54,7 @@ export function HeroSection() {
               }`}
             >
               <span className="text-gradient-heading-dark">Find Your Perfect Vehicle with </span>
-              <span className="text-accent">Zero Dealership Hassle</span>
+              <span className="text-gradient-hero-highlight">Zero Dealership Hassle</span>
             </h1>
 
             {/* Social Proof Badges - ALWAYS below headline */}
@@ -76,7 +76,7 @@ export function HeroSection() {
                       src={src}
                       alt=""
                       className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 rounded-full border-2 object-cover"
-                      style={{ borderColor: 'hsl(216 27% 6%)' }}
+                      style={{ borderColor: 'hsl(220 14% 4%)' }}
                       loading="lazy"
                     />
                   ))}
@@ -126,7 +126,7 @@ export function HeroSection() {
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
-              <MagneticButton strength={0.4} className="w-full sm:w-auto">
+              <MagneticButton strength={0.45} className="w-full sm:w-auto">
                 <Button
                   asChild
                   size="lg"
@@ -141,9 +141,9 @@ export function HeroSection() {
               <MagneticButton strength={0.35} className="w-full sm:w-auto">
                 <Button
                   asChild
-                  variant="outline"
+                  variant="ghost"
                   size="lg"
-                  className="w-full sm:w-auto h-12 border-white/40 bg-transparent text-white hover:bg-white/10 hover:text-white hover:border-white/60 font-medium px-6 shrink-0"
+                  className="w-full sm:w-auto h-12 border border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white hover:border-white/50 font-medium px-6 shrink-0"
                 >
                   <Link to="/services">View Services</Link>
                 </Button>
@@ -155,7 +155,7 @@ export function HeroSection() {
           <div
             className="flex-none lg:flex-1 flex items-start lg:items-center justify-center min-h-0 mt-6 sm:mt-8 lg:mt-0 order-2 max-w-full lg:min-h-0 shrink-0"
           >
-            <div className="w-full max-w-[240px] sm:max-w-[320px] lg:max-w-[420px] xl:max-w-[440px] aspect-square flex items-center justify-center flex-shrink-0 mx-auto">
+            <div className="w-[90%] max-w-[min(90vw,320px)] sm:max-w-[320px] lg:max-w-[420px] xl:max-w-[440px] aspect-square flex items-center justify-center flex-shrink-0 mx-auto">
               <CircularProcessVisualization />
             </div>
           </div>

@@ -71,11 +71,11 @@ export function Footer() {
   return (
     <footer>
       {/* Main Footer */}
-      <div style={{ backgroundColor: 'hsl(216 27% 6%)' }} className="text-white">
-        <div className="container mx-auto px-4 lg:px-8 py-10 md:py-14 lg:py-18">
+      <div style={{ backgroundColor: 'hsl(220 14% 4%)' }} className="text-white">
+        <div className="container mx-auto px-4 lg:px-8 py-8 md:py-12 lg:py-14">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 lg:gap-14">
             {/* Brand & Social */}
-            <div>
+            <div className="text-center md:text-left">
               <Link to="/" className="inline-block mb-4">
                 <img
                   src={logo}
@@ -85,7 +85,7 @@ export function Footer() {
                   className="h-14 w-auto brightness-0 invert"
                 />
               </Link>
-              <p className="text-sm font-medium leading-relaxed mb-7 tracking-tight" style={{ color: 'hsl(213 20% 85%)' }}>
+              <p className="text-sm font-medium leading-relaxed mb-7 tracking-[0.15em]" style={{ color: 'hsl(213 12% 62%)' }}>
                 Car leasing made easy.
               </p>
               <div className="flex items-center gap-3">
