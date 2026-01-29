@@ -42,6 +42,9 @@ interface ServiceTemplateProps {
   icon: LucideIcon;
   relatedLinks?: RelatedLink[];
   serviceValue?: string;
+  heroBadge?: string;
+  heroKeyPoints?: string[];
+  heroStats?: { label: string; value: string }[];
 }
 
 export function ServiceTemplate({
@@ -58,6 +61,9 @@ export function ServiceTemplate({
   icon: Icon,
   relatedLinks = [],
   serviceValue,
+  heroBadge,
+  heroKeyPoints,
+  heroStats,
 }: ServiceTemplateProps) {
   const location = useLocation();
   const { ref: whoRef, isRevealed: whoRevealed } = useScrollReveal();
@@ -99,6 +105,9 @@ export function ServiceTemplate({
         breadcrumbs={breadcrumbs}
         heroImage={heroImage}
         heroImageAlt={title}
+        badge={heroBadge}
+        keyPoints={heroKeyPoints}
+        stats={heroStats}
       >
         <Button 
           asChild 

@@ -186,6 +186,39 @@
     animation: tabFadeIn 0.3s ease-out;
   }
 
+  /* Page hero badges, key points and stats */
+  .hero-keypoints-grid {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .hero-keypoints-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-keypoints-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .hero-stat-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .hero-stat-card {
+    min-width: 130px;
+    border-radius: 0.75rem;
+    background-color: hsl(var(--primary) / 0.08);
+    padding: 0.75rem 1rem;
+    box-shadow: 0 16px 40px -24px hsl(var(--primary) / 0.55);
+    backdrop-filter: blur(12px);
+  }
+
   /* Reduced motion support */
   @media (prefers-reduced-motion: reduce) {
     .scroll-reveal,

@@ -8,10 +8,19 @@ export default function CarLeasingPage() {
       title="Car Leasing"
       metaTitle="Car Leasing Services | Capital Motor Cars"
       metaDescription="Find the right car lease without dealership hassle. We negotiate, coordinate, and guide you through every step. Serving New Jersey."
-      description="We help you find a lease that fits your budget and needs, without spending hours negotiating at dealerships."
+      description="We help you find a lease that fits your budget and needs, without spending hours negotiating at dealerships. Our team handles the entire process from search to signing, ensuring you get the best terms available."
       heroImage="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1200&q=60"
       serviceValue="leasing"
       icon={Car}
+      heroBadge="Leasing Made Simple"
+      heroKeyPoints={[
+        'No dealership visits required',
+        'Transparent pricing upfront',
+        '30+ years of industry experience',
+      ]}
+      heroStats={[
+        { label: 'Leases Managed', value: 'Hundreds' },
+      ]}
       whoIsThisFor={[
         "Customers who prefer a guided process",
         "Those who want to avoid dealing with multiple dealerships",

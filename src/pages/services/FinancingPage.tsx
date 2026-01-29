@@ -8,10 +8,16 @@ export default function FinancingPage() {
       title="Financing & Credit Application"
       metaTitle="Auto Financing & Credit | Capital Motor Cars"
       metaDescription="Simple auto financing with a quick credit application. Get clear answers about your options without unnecessary paperwork."
-      description="A simple online credit application to review financing options without unnecessary paperwork. This is for customers who want a clear answer about financing, quickly."
+      description="A simple online credit application to review financing options without unnecessary paperwork. Get clear answers about your financing options quickly, with transparent terms and no hidden fees."
       heroImage="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=1200&q=60"
       serviceValue="financing"
       icon={CreditCard}
+      heroBadge="Quick Credit Application"
+      heroKeyPoints={[
+        'Fast approval process',
+        'Multiple lender options',
+        'No commitment required',
+      ]}
       whoIsThisFor={[
         "Customers who prefer a guided process",
         "Those who want a clear answer about financing quickly",

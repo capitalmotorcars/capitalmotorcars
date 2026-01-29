@@ -5,6 +5,7 @@ import { PageHero } from '@/components/ui/PageHero';
 import { RelatedLinks, contactPageLinks } from '@/components/ui/RelatedLinks';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { useSearchParams } from 'react-router-dom';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 export default function ContactPage() {
   const [searchParams] = useSearchParams();
@@ -13,6 +14,7 @@ export default function ContactPage() {
   const phone = searchParams.get('phone') ?? undefined;
   const service = searchParams.get('service') ?? undefined;
   const message = searchParams.get('message') ?? undefined;
+  const { ref, isRevealed } = useScrollReveal();
 
   return (
     <Layout>
@@ -32,7 +34,10 @@ export default function ContactPage() {
       />
 
       <section className="py-20 md:py-28 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div
+          ref={ref}
+          className={`container mx-auto px-4 lg:px-8 scroll-reveal ${isRevealed ? 'revealed' : ''}`}
+        >
           <div className="max-w-xl mx-auto">
             <h2 className="sr-only">Contact Form</h2>
             <div className="bg-muted p-6 md:p-8 rounded-lg">

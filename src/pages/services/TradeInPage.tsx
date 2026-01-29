@@ -8,10 +8,16 @@ export default function TradeInPage() {
       title="Trade-In"
       metaTitle="Vehicle Trade-In Services | Capital Motor Cars"
       metaDescription="Get a fair evaluation for your trade-in. We manage the entire process to prevent undervaluation and save you time."
-      description="We help evaluate your current vehicle and manage the trade-in process when you trade in a vehicle. This helps prevent undervaluation and wasted time."
+      description="We help evaluate your current vehicle and manage the trade-in process when you trade in a vehicle. This helps prevent undervaluation and wasted time, ensuring you get the best value for your vehicle."
       heroImage="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1200&q=60"
       serviceValue="trade-in"
       icon={RefreshCw}
+      heroBadge="Fair Evaluation"
+      heroKeyPoints={[
+        'Professional vehicle evaluation',
+        'Prevent undervaluation',
+        'Seamless process',
+      ]}
       whoIsThisFor={[
         "Customers who prefer a guided process",
         "Those trading in a vehicle as part of a new lease or purchase",

@@ -105,13 +105,18 @@ export default function ServicesPage() {
       
       <PageHero
         title="Our Services"
-        subtitle="We offer practical automotive solutions for customers who want things done right and without unnecessary hassle."
+        subtitle="We offer practical automotive solutions for customers who want things done right and without unnecessary hassle. From leasing and financing to end-of-lease repairs, our team handles every step with transparency and professionalism."
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Services' },
         ]}
         heroImage={bmwM5}
         heroImageAlt="BMW M5"
+        keyPoints={[
+          '6 core services',
+          'End-to-end support',
+          'New Jersey based',
+        ]}
       />
 
       {/* Services */}

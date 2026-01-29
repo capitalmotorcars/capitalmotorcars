@@ -32,13 +32,23 @@ export default function BrandsPage() {
       />
       <PageHero
         title="Brands We Work With"
-        subtitle="We work with a wide range of automotive brands and dealerships."
+        subtitle="We work with a wide range of automotive brands and dealerships across New Jersey and beyond. From luxury brands like BMW and Mercedes-Benz to reliable options like Toyota and Honda, we have access to vehicles that match your preferences and budget."
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Brands' },
         ]}
         heroImage={mercedesSClass}
         heroImageAlt="Mercedes S-Class"
+        badge="Brand Access"
+        keyPoints={[
+          '12+ major brands available',
+          'Direct dealership relationships',
+          'Current inventory access',
+        ]}
+        stats={[
+          { label: 'Brands', value: '12+' },
+          { label: 'Years Experience', value: '30+' },
+        ]}
       />
 
       <section className="py-20 md:py-28 bg-background">
