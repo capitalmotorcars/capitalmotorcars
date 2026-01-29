@@ -21,6 +21,7 @@ const contactSchema = z.object({
   email: z.string().email('Please enter a valid email address').max(255),
   phone: z.string().min(10, 'Please enter a valid phone number').max(20),
   service: z.string().optional(),
+  vehicleType: z.string().optional(),
   message: z.string().min(10, 'Message must be at least 10 characters').max(1000),
 });
 
@@ -36,6 +37,19 @@ const services = [
   { value: 'other', label: 'Other' },
 ];
 
+const vehicleTypeOptions = [
+  { value: 'luxury', label: 'Luxury Vehicle' },
+  { value: 'electric', label: 'Electric Vehicle' },
+  { value: 'hatchback', label: 'Hatchback' },
+  { value: 'sedan', label: 'Sedan' },
+  { value: 'truck', label: 'Truck' },
+  { value: 'sports', label: 'Sports Car' },
+  { value: 'suv', label: 'SUV' },
+  { value: 'coupe', label: 'Coupe' },
+  { value: 'minivan', label: 'Minivan' },
+  { value: 'crossover', label: 'Crossover' },
+];
+
 const messageSuggestions = [
   { value: 'lease', label: 'Lease a new car', fullText: "I'm looking to lease a new car and want to understand my options." },
   { value: 'quote', label: 'Get a price quote', fullText: "I'd like a price quote for a specific vehicle." },
@@ -48,9 +62,15 @@ interface ContactFormProps {
   compact?: boolean;
   initialValues?: Partial<ContactFormData>;
   hideServiceField?: boolean;
+  showVehicleField?: boolean;
 }
 
-export function ContactForm({ compact = false, initialValues, hideServiceField = false }: ContactFormProps) {
+export function ContactForm({ 
+  compact = false, 
+  initialValues, 
+  hideServiceField = false,
+  showVehicleField = true,
+}: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -69,6 +89,7 @@ export function ContactForm({ compact = false, initialValues, hideServiceField =
       email: initialValues?.email ?? "",
       phone: initialValues?.phone ?? "",
       service: initialValues?.service ?? undefined,
+      vehicleType: initialValues?.vehicleType ?? undefined,
       message: initialValues?.message ?? "",
     },
   });
