@@ -4,7 +4,7 @@ import { MagneticButton } from '@/components/ui/MagneticButton';
 import { CircularProcessVisualization } from './CircularProcessVisualization';
 import { useHeroAnimation } from '@/hooks/useHeroAnimation';
 import { useParallax } from '@/hooks/useParallax';
-import { ArrowRight, ChevronDown } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import heroBg from '@/assets/hero-bg.jpg';
 
 export function HeroSection() {
@@ -46,8 +46,8 @@ export function HeroSection() {
 
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 z-10 max-w-full">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-center lg:gap-8 xl:gap-12 max-w-6xl lg:mx-auto">
-          {/* Left Column - Content */}
-          <div className="max-w-xl lg:max-w-2xl flex-shrink-0 z-10 lg:pt-0 lg:pb-0 text-center lg:text-left order-1">
+          {/* Left Column - Content - extra bottom spacing on mobile so it never overlaps diagram */}
+          <div className="max-w-xl lg:max-w-2xl flex-shrink-0 z-10 lg:pt-0 lg:pb-0 pb-10 sm:pb-12 lg:pb-0 text-center lg:text-left order-1">
             <h1
               className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 lg:mb-5 leading-[1.1] hero-animate ${
                 heroAnimated ? 'animate-in' : ''
@@ -151,26 +151,14 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column - Process Visualization: below text on mobile (no flex-1 = no overlap), right on desktop */}
+          {/* Right Column - Process Visualization: below text on mobile (align start = no overlap), right on desktop */}
           <div
-            className="flex-none lg:flex-1 flex items-center justify-center min-h-0 mt-8 sm:mt-10 lg:mt-0 order-2 max-w-full lg:min-h-0"
+            className="flex-none lg:flex-1 flex items-start lg:items-center justify-center min-h-0 mt-6 sm:mt-8 lg:mt-0 order-2 max-w-full lg:min-h-0 shrink-0"
           >
             <div className="w-full max-w-[240px] sm:max-w-[320px] lg:max-w-[420px] xl:max-w-[440px] aspect-square flex items-center justify-center flex-shrink-0 mx-auto">
               <CircularProcessVisualization />
             </div>
           </div>
-        </div>
-
-        {/* Scroll down affordance */}
-        <div className="flex justify-center pb-6 pt-2">
-          <button
-            type="button"
-            onClick={() => document.getElementById('discover')?.scrollIntoView({ behavior: 'smooth' })}
-            className="text-white/70 hover:text-white/95 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(216_27%_6%)] rounded-full p-1"
-            aria-label="Scroll to next section"
-          >
-            <ChevronDown className="w-8 h-8 hero-scroll-arrow" />
-          </button>
         </div>
       </div>
     </section>
