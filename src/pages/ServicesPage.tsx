@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
 import { JsonLd } from '@/components/JsonLd';
+import { PageHero } from '@/components/ui/PageHero';
 import { RelatedLinks, servicesPageLinks } from '@/components/ui/RelatedLinks';
 import { ServiceCard } from '@/components/ui/ServiceCard';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
@@ -101,30 +102,17 @@ export default function ServicesPage() {
         description="Leasing, financing, trade-in, detailing, and end-of-lease repairs. Practical automotive services handled by professionals in New Jersey."
       />
       <JsonLd data={servicesListSchema} />
-      {/* Hero */}
-      <section className="bg-primary py-16 md:py-20 overflow-hidden">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
-            {/* Text Content */}
-            <div className="max-w-xl lg:max-w-2xl flex-shrink-0">
-              <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
-                Our Services
-              </h1>
-              <p className="text-lg text-primary-foreground/80">
-                We offer practical automotive solutions for customers who want things done right and without unnecessary hassle.
-              </p>
-            </div>
-            {/* BMW M5 Image - drives in from right */}
-            <div className="hidden lg:block flex-shrink-0">
-              <img 
-                src={bmwM5} 
-                alt="BMW M5" 
-                className="w-[400px] xl:w-[480px] h-auto object-contain drop-shadow-2xl animate-car-drive-in"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      
+      <PageHero
+        title="Our Services"
+        subtitle="We offer practical automotive solutions for customers who want things done right and without unnecessary hassle."
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Services' },
+        ]}
+        heroImage={bmwM5}
+        heroImageAlt="BMW M5"
+      />
 
       {/* Services */}
       <section className="py-20 md:py-28 bg-background">

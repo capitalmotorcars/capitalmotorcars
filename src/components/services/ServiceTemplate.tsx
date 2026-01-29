@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
 import { JsonLd, createServiceSchema, createFaqSchema } from '@/components/JsonLd';
+import { PageHero } from '@/components/ui/PageHero';
 import { RelatedLinks } from '@/components/ui/RelatedLinks';
 import { Button } from '@/components/ui/button';
 import { ContactForm } from '@/components/forms/ContactForm';
@@ -77,6 +78,13 @@ export function ServiceTemplate({
     return [serviceSchema, faqSchema];
   }, [title, description, metaDescription, location.pathname, faqs]);
 
+  // Build breadcrumbs for the service
+  const breadcrumbs = [
+    { label: 'Home', href: '/' },
+    { label: 'Services', href: '/services' },
+    { label: title },
+  ];
+
   return (
     <Layout>
       <SEO 
@@ -84,41 +92,22 @@ export function ServiceTemplate({
         description={metaDescription || description.slice(0, 157) + (description.length > 157 ? '...' : '')}
       />
       <JsonLd data={schemas} />
-      {/* Hero */}
-      <section className="relative bg-primary overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: `url(${heroImage})` }}
-        />
-        <div className="relative container mx-auto px-4 lg:px-8 py-20 md:py-28">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center">
-                <Icon className="w-6 h-6 text-accent" />
-              </div>
-              <Link 
-                to="/services" 
-                className="text-primary-foreground/60 text-sm hover:text-primary-foreground"
-              >
-                ← Back to Services
-              </Link>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
-              {title}
-            </h1>
-            <p className="text-lg text-primary-foreground/80 mb-8 max-w-2xl">
-              {description}
-            </p>
-            <Button 
-              asChild 
-              size="lg" 
-              className="bg-accent hover:bg-accent/90 text-accent-foreground"
-            >
-              <Link to="/contact">Schedule a Call</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+      
+      <PageHero
+        title={title}
+        subtitle={description}
+        breadcrumbs={breadcrumbs}
+        heroImage={heroImage}
+        heroImageAlt={title}
+      >
+        <Button 
+          asChild 
+          size="lg" 
+          className="bg-accent hover:bg-accent/90 text-accent-foreground"
+        >
+          <Link to="/contact">Schedule a Call</Link>
+        </Button>
+      </PageHero>
 
       {/* Who This Is For */}
       <section className="py-16 md:py-20 bg-background">

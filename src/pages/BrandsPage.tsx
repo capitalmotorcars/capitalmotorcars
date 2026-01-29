@@ -1,6 +1,6 @@
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
-import { SectionHeading } from '@/components/ui/SectionHeading';
+import { PageHero } from '@/components/ui/PageHero';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
@@ -30,27 +30,16 @@ export default function BrandsPage() {
         title="Brands We Work With | Capital Motor Cars"
         description="We work with BMW, Mercedes, Audi, Lexus, Toyota, and more. Contact us to find out what vehicles are currently available."
       />
-      <section className="bg-primary py-16 md:py-20 overflow-hidden">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
-            {/* Text Content */}
-            <div className="max-w-xl lg:max-w-2xl flex-shrink-0">
-              <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">Brands We Work With</h1>
-              <p className="text-lg text-primary-foreground/80">
-                We work with a wide range of automotive brands and dealerships.
-              </p>
-            </div>
-            {/* Mercedes S-Class Image */}
-            <div className="hidden lg:block flex-shrink-0">
-              <img 
-                src={mercedesSClass} 
-                alt="Mercedes S-Class" 
-                className="w-[400px] xl:w-[480px] h-auto object-contain drop-shadow-2xl animate-car-drive-in"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="Brands We Work With"
+        subtitle="We work with a wide range of automotive brands and dealerships."
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Brands' },
+        ]}
+        heroImage={mercedesSClass}
+        heroImageAlt="Mercedes S-Class"
+      />
 
       <section className="py-20 md:py-28 bg-background">
         <div ref={ref} className={`container mx-auto px-4 lg:px-8 scroll-reveal ${isRevealed ? 'revealed' : ''}`}>

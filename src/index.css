@@ -352,6 +352,98 @@
   }
 }
 
+/* Page Hero Animations */
+
+/* Breadcrumb fade in */
+@keyframes hero-breadcrumb-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-breadcrumb {
+  animation: hero-breadcrumb-reveal 0.5s ease-out forwards;
+  animation-delay: 0s;
+}
+
+/* Accent line expand */
+@keyframes accent-line-expand {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 64px;
+    opacity: 1;
+  }
+}
+
+.animate-accent-line {
+  animation: accent-line-expand 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: 0.1s;
+}
+
+/* Title reveal with blur */
+@keyframes hero-title-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.animate-hero-title {
+  animation: hero-title-reveal 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: 0.15s;
+}
+
+/* Subtitle slide up */
+@keyframes hero-subtitle-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-subtitle {
+  animation: hero-subtitle-reveal 0.6s ease-out forwards;
+  animation-delay: 0.35s;
+}
+
+/* Children/buttons fade in */
+.animate-hero-children {
+  animation: hero-subtitle-reveal 0.6s ease-out forwards;
+  animation-delay: 0.45s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-breadcrumb,
+  .animate-accent-line,
+  .animate-hero-title,
+  .animate-hero-subtitle,
+  .animate-hero-children {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+    width: 64px;
+  }
+}
+
 /* Premium Section Animations */
 
 /* Card reveal animation - staggered entrance */
