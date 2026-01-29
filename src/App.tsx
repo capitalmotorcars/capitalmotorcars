@@ -20,6 +20,18 @@ import WheelRepairPage from "./pages/services/WheelRepairPage";
 import DetailingPage from "./pages/services/DetailingPage";
 import NotFound from "./pages/NotFound";
 
+// Vehicle type pages
+import LuxuryPage from "./pages/vehicles/LuxuryPage";
+import ElectricPage from "./pages/vehicles/ElectricPage";
+import HatchbackPage from "./pages/vehicles/HatchbackPage";
+import SedanPage from "./pages/vehicles/SedanPage";
+import TruckPage from "./pages/vehicles/TruckPage";
+import SportsPage from "./pages/vehicles/SportsPage";
+import SUVPage from "./pages/vehicles/SUVPage";
+import CoupePage from "./pages/vehicles/CoupePage";
+import MinivanPage from "./pages/vehicles/MinivanPage";
+import CrossoverPage from "./pages/vehicles/CrossoverPage";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -44,6 +56,19 @@ const App = () => (
           <Route path="/credit-application" element={<CreditApplicationPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+          
+          {/* Vehicle type pages */}
+          <Route path="/vehicles/luxury" element={<LuxuryPage />} />
+          <Route path="/vehicles/electric" element={<ElectricPage />} />
+          <Route path="/vehicles/hatchback" element={<HatchbackPage />} />
+          <Route path="/vehicles/sedan" element={<SedanPage />} />
+          <Route path="/vehicles/truck" element={<TruckPage />} />
+          <Route path="/vehicles/sports" element={<SportsPage />} />
+          <Route path="/vehicles/suv" element={<SUVPage />} />
+          <Route path="/vehicles/coupe" element={<CoupePage />} />
+          <Route path="/vehicles/minivan" element={<MinivanPage />} />
+          <Route path="/vehicles/crossover" element={<CrossoverPage />} />
+          
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

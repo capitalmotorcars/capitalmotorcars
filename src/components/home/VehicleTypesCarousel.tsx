@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { ChevronsLeft, ChevronsRight } from 'lucide-react';
@@ -8,42 +9,52 @@ import coupeImage from '@/assets/coupe-bmw-m8.png';
 const vehicleTypes = [
   {
     name: 'Luxury',
+    slug: 'luxury',
     image: 'https://pngimg.com/uploads/mercedes/mercedes_PNG80134.png',
   },
   {
     name: 'Electric',
+    slug: 'electric',
     image: 'https://pngimg.com/uploads/tesla_car/tesla_car_PNG51.png',
   },
   {
     name: 'Hatchback',
+    slug: 'hatchback',
     image: 'https://pngimg.com/uploads/volkswagen/volkswagen_PNG1818.png',
   },
   {
     name: 'Sedan',
+    slug: 'sedan',
     image: 'https://pngimg.com/uploads/audi/audi_PNG1736.png',
   },
   {
     name: 'Truck',
+    slug: 'truck',
     image: 'https://pngimg.com/uploads/ford/ford_PNG12251.png',
   },
   {
     name: 'Sports',
+    slug: 'sports',
     image: 'https://pngimg.com/uploads/porsche/porsche_PNG10620.png',
   },
   {
     name: 'SUV',
+    slug: 'suv',
     image: 'https://pngimg.com/uploads/land_rover/land_rover_PNG55.png',
   },
   {
     name: 'Coupe',
+    slug: 'coupe',
     image: coupeImage,
   },
   {
     name: 'Minivan',
+    slug: 'minivan',
     image: minivanImage,
   },
   {
     name: 'Crossover',
+    slug: 'crossover',
     image: 'https://pngimg.com/uploads/lexus/lexus_PNG10.png',
   },
 ];
@@ -176,9 +187,10 @@ export function VehicleTypesCarousel() {
             style={{ scrollBehavior: 'auto' }}
           >
             {duplicatedTypes.map((type, index) => (
-              <div
+              <Link
                 key={`${type.name}-${index}`}
-                className="flex-shrink-0 flex flex-col items-center group cursor-pointer"
+                to={`/vehicles/${type.slug}`}
+                className="flex-shrink-0 flex flex-col items-center group"
               >
                 <div className="w-[180px] h-[100px] sm:w-[240px] sm:h-[130px] md:w-[300px] md:h-[160px] flex items-center justify-center overflow-visible">
                   <img
@@ -192,7 +204,7 @@ export function VehicleTypesCarousel() {
                 <span className="mt-4 md:mt-8 text-xs md:text-base font-semibold text-foreground/80 group-hover:text-foreground transition-colors">
                   {type.name}
                 </span>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
