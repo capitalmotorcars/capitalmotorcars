@@ -105,7 +105,7 @@ export function PeopleSection() {
   const revealed = reducedMotion ? true : isRevealed;
 
   return (
-    <section aria-label="People / Team" className="pt-10 md:pt-20 lg:pt-28 pb-8 md:pb-14 bg-[hsl(220_14%_5%)]">
+    <section aria-label="People / Team" className="pt-10 md:pt-20 lg:pt-28 pb-8 md:pb-14 bg-[hsl(0_0%_4%)]">
       <div
         ref={ref}
         className={cn(

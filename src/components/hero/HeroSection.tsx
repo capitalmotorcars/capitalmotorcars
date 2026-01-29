@@ -20,7 +20,7 @@ export function HeroSection() {
   ];
 
   return (
-    <section className="relative pt-4 pb-8 sm:pt-6 sm:pb-10 lg:pt-6 lg:pb-12 min-h-[auto] overflow-hidden" style={{ backgroundColor: 'hsl(220 14% 4%)' }}>
+    <section className="relative pt-4 pb-8 sm:pt-6 sm:pb-10 lg:pt-6 lg:pb-12 min-h-[auto] overflow-hidden" style={{ backgroundColor: 'hsl(0 0% 3%)' }}>
       {/* Background Image - parallax */}
       <div ref={parallaxRef} className="absolute inset-0 overflow-hidden">
         <img
@@ -35,12 +35,12 @@ export function HeroSection() {
       </div>
       
       {/* Dark overlay for CDK-style contrast */}
-      <div className="absolute inset-0" style={{ backgroundColor: 'hsl(220 14% 4% / 0.85)' }} />
+      <div className="absolute inset-0" style={{ backgroundColor: 'hsl(0 0% 3% / 0.85)' }} />
 
       {/* Gradient fade to next section (dark) - smooth transition */}
       <div
         className="absolute bottom-0 left-0 right-0 h-32 md:h-40 pointer-events-none z-[1]"
-        style={{ background: 'linear-gradient(to bottom, transparent 0%, hsl(220 14% 5%) 100%)' }}
+        style={{ background: 'linear-gradient(to bottom, transparent 0%, hsl(0 0% 4%) 100%)' }}
         aria-hidden
       />
 
@@ -76,7 +76,7 @@ export function HeroSection() {
                       src={src}
                       alt=""
                       className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 rounded-full border-2 object-cover"
-                      style={{ borderColor: 'hsl(220 14% 4%)' }}
+                      style={{ borderColor: 'hsl(0 0% 3%)' }}
                       loading="lazy"
                     />
                   ))}

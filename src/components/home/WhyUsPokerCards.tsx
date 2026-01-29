@@ -146,7 +146,7 @@ export function WhyUsPokerCards() {
   };
 
   return (
-    <section className="relative py-8 md:py-14 lg:py-20 overflow-hidden" style={{ backgroundColor: 'hsl(220 14% 4%)' }}>
+    <section className="relative py-8 md:py-14 lg:py-20 overflow-hidden" style={{ backgroundColor: 'hsl(0 0% 3%)' }}>
       <BackgroundShimmer />
       
       <div

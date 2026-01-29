@@ -14,7 +14,7 @@ export function SectionDivider({
   className,
   nextSectionDark = true,
 }: SectionDividerProps) {
-  const fill = nextSectionDark ? 'hsl(220 14% 4%)' : 'hsl(216 33% 97%)';
+  const fill = nextSectionDark ? 'hsl(0 0% 3%)' : 'hsl(216 33% 97%)';
 
   if (variant === 'diagonal') {
     return (
