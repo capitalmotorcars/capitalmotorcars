@@ -1,96 +1,228 @@
 
+# תוכנית: אנימציות ועיצוב מקצועי לכותרות העמודים
 
-# תוכנית: מרכוז כותרת ה-Hero במובייל בלבד
+## סקירת המצב הנוכחי
 
-## המצב הנוכחי
+כל עמודי המשנה (Services, Brands, About, Contact, Credit Application, Service Pages, Vehicle Pages) משתמשים ב-Hero sections פשוטים יחסית עם:
+- כותרת וטקסט סטטיים ללא אנימציות
+- רקע אחיד (`bg-primary`)
+- חלק מהעמודים כוללים תמונות רכב עם אנימציית `drive-in`
 
-הכותרת והתוכן ב-Hero Section מיושרים לשמאל בכל גדלי המסך:
+## הגישה המוצעת
 
-```tsx
-<h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-3 lg:mb-5 leading-[1.1] hero-animate">
-  Find Your Perfect Vehicle with <span className="text-accent">Zero Dealership Hassle</span>
-</h1>
+יצירת **PageHero קומפוננטה** אחידה שתספק חוויה מקצועית ומרשימה יותר:
+
+| אלמנט | לפני | אחרי |
+|-------|------|------|
+| כותרת | סטטית | אנימציית fade-in עם stagger |
+| תת-כותרת | סטטית | אנימציית slide-up מאוחרת |
+| רקע | צבע אחיד | גרדיאנט עדין + אפקט particles/mesh |
+| קו מפריד | ללא | קו אקסנט אנימטיבי |
+| Breadcrumb | ללא | נתיב ניווט עדין |
+
+## עיצוב ה-Hero החדש
+
+```text
+┌─────────────────────────────────────────────────────────────┐
+│  ▓▓▓▓▓▓▓▓▓▓ רקע כהה עם mesh gradient עדין ▓▓▓▓▓▓▓▓▓▓        │
+│                                                             │
+│  Home > Services                    ← Breadcrumb עדין       │
+│                                                             │
+│  ━━━━━━                             ← קו אקסנט אנימטיבי     │
+│  Our Services                       ← כותרת עם fade-in     │
+│                                                             │
+│  We offer practical automotive      ← תת-כותרת slide-up    │
+│  solutions for customers...                                 │
+│                                                             │
+│                          ╭─────╮                            │
+│                          │ 🚗  │   ← תמונת רכב (אם יש)     │
+│                          ╰─────╯                            │
+└─────────────────────────────────────────────────────────────┘
 ```
 
-## השינוי המבוקש
+## אנימציות חדשות
 
-מרכוז הכותרת במובייל בלבד (מתחת ל-768px), תוך שמירה על יישור לשמאל בטאבלט ודסקטופ.
-
-## פתרון טכני
-
-| אלמנט | מובייל | דסקטופ |
-|-------|--------|--------|
-| כותרת (h1) | `text-center` | `md:text-left` |
-| Social Proof | `justify-center` | `sm:justify-start` |
-| תיאור (p) | `text-center` | `md:text-left` |
-| Container | `items-center` | `lg:items-start` |
-
-## קוד לפני ואחרי
-
-**לפני:**
-```tsx
-<div className="max-w-xl flex-shrink-0 z-10 lg:py-12">
-  <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-3 lg:mb-5 leading-[1.1] hero-animate">
+### 1. קו אקסנט מתרחב
+```css
+@keyframes accent-line-expand {
+  from { 
+    width: 0; 
+    opacity: 0;
+  }
+  to { 
+    width: 64px; 
+    opacity: 1;
+  }
+}
 ```
 
-**אחרי:**
-```tsx
-<div className="max-w-xl flex-shrink-0 z-10 lg:py-12 text-center md:text-left">
-  <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-3 lg:mb-5 leading-[1.1] hero-animate">
+### 2. כותרת ראשית - Fade In עם Blur
+```css
+@keyframes hero-title-reveal {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px);
+    filter: blur(8px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
 ```
 
-## שינויים נוספים
+### 3. תת-כותרת - Slide Up עם Delay
+```css
+@keyframes hero-subtitle-reveal {
+  from { 
+    opacity: 0; 
+    transform: translateY(16px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0);
+  }
+}
+```
 
-כדי שהמרכוז יראה טבעי, צריך גם:
+### 4. רקע Mesh Gradient
+אפקט גרדיאנט עדין שמוסיף עומק לרקע ללא להסיח תשומת לב.
 
-1. **Social Proof badges** - מרכוז במובייל:
-   ```tsx
-   // מ:
-   className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center"
-   // ל:
-   className="flex flex-col sm:flex-row flex-wrap items-center justify-center md:justify-start"
-   ```
+## קומפוננטה חדשה: PageHero
 
-2. **תיאור** - מרכוז במובייל:
-   ```tsx
-   // מ:
-   className="text-base md:text-lg lg:text-xl mb-6"
-   // ל:
-   className="text-base md:text-lg lg:text-xl mb-6 mx-auto md:mx-0"
-   ```
+```tsx
+interface PageHeroProps {
+  title: string;
+  subtitle?: string;
+  breadcrumbs?: { label: string; href?: string }[];
+  heroImage?: string;
+  heroImageAlt?: string;
+  children?: ReactNode;
+}
 
-3. **כפתורים** - מרכוז במובייל:
-   ```tsx
-   // מ:
-   className="flex flex-col sm:flex-row items-stretch sm:items-center"
-   // ל:
-   className="flex flex-col sm:flex-row items-center justify-center md:justify-start"
-   ```
+export function PageHero({
+  title,
+  subtitle,
+  breadcrumbs,
+  heroImage,
+  heroImageAlt,
+  children
+}: PageHeroProps) {
+  return (
+    <section className="relative bg-primary py-16 md:py-20 overflow-hidden">
+      {/* Mesh gradient background */}
+      <div className="absolute inset-0 bg-[radial-gradient(...)]" />
+      
+      <div className="container mx-auto px-4 lg:px-8 relative">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+          <div className="max-w-xl lg:max-w-2xl flex-shrink-0">
+            {/* Breadcrumbs */}
+            {breadcrumbs && (
+              <nav className="animate-hero-breadcrumb mb-4">
+                ...
+              </nav>
+            )}
+            
+            {/* Accent line */}
+            <div className="w-16 h-1 bg-accent mb-6 animate-accent-line" />
+            
+            {/* Title */}
+            <h1 className="animate-hero-title ...">
+              {title}
+            </h1>
+            
+            {/* Subtitle */}
+            {subtitle && (
+              <p className="animate-hero-subtitle ...">
+                {subtitle}
+              </p>
+            )}
+            
+            {children}
+          </div>
+          
+          {/* Hero Image */}
+          {heroImage && (
+            <div className="hidden lg:block">
+              <img 
+                src={heroImage} 
+                alt={heroImageAlt}
+                className="animate-car-drive-in ..."
+              />
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+```
 
-## קובץ שיעודכן
+## קבצים שיושפעו
 
 | קובץ | פעולה |
 |------|-------|
-| `src/components/hero/HeroSection.tsx` | עדכון classes למרכוז רספונסיבי |
+| `src/components/ui/PageHero.tsx` | **חדש** - קומפוננטת Hero אחידה |
+| `src/index.css` | **עדכון** - הוספת keyframes חדשים |
+| `src/pages/BrandsPage.tsx` | **עדכון** - שימוש ב-PageHero |
+| `src/pages/ServicesPage.tsx` | **עדכון** - שימוש ב-PageHero |
+| `src/pages/AboutPage.tsx` | **עדכון** - שימוש ב-PageHero |
+| `src/pages/ContactPage.tsx` | **עדכון** - שימוש ב-PageHero |
+| `src/pages/CreditApplicationPage.tsx` | **עדכון** - שימוש ב-PageHero |
+| `src/components/services/ServiceTemplate.tsx` | **עדכון** - שימוש ב-PageHero |
+
+## פרטים טכניים
+
+### Mesh Gradient רקע
+```css
+bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,hsl(var(--accent)/0.15),transparent)]
+```
+
+### Stagger Delays
+```css
+.animate-hero-breadcrumb { animation-delay: 0s; }
+.animate-accent-line { animation-delay: 0.1s; }
+.animate-hero-title { animation-delay: 0.2s; }
+.animate-hero-subtitle { animation-delay: 0.4s; }
+```
+
+### תמיכה ב-Reduced Motion
+```css
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-title,
+  .animate-hero-subtitle,
+  .animate-accent-line,
+  .animate-hero-breadcrumb {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+```
 
 ## תוצאה צפויה
 
-```text
-מובייל (< 768px):              דסקטופ (≥ 768px):
-┌─────────────────┐             ┌──────────────────────────────┐
-│                 │             │ Find Your Perfect    │       │
-│ Find Your       │             │ Vehicle with Zero    │ [IMG] │
-│ Perfect Vehicle │             │ Dealership Hassle    │       │
-│ with Zero       │             │                      │       │
-│ Dealership      │             │ ★★★★★ 5/5 on Google  │       │
-│ Hassle          │             │                      │       │
-│                 │             │ Capital Motor Cars...│       │
-│ ★★★★★ 5/5       │             │                      │       │
-│                 │             │ [Start the process]  │       │
-│ Capital Motor...│             └──────────────────────────────┘
-│                 │
-│ [Start process] │
-└─────────────────┘
-      ↑ הכל ממורכז               ↑ הכל לשמאל
-```
+- כותרות שנכנסות בצורה חלקה עם blur fade
+- קו אקסנט כחול שמתרחב מימין לשמאל
+- תחושת עומק עם mesh gradient
+- Breadcrumbs עדינים לניווט ברור
+- עקביות בכל עמודי המשנה
+- חוויה מקצועית ומוכרת יותר
 
+## דוגמה לשימוש
+
+```tsx
+// ServicesPage.tsx
+<PageHero
+  title="Our Services"
+  subtitle="We offer practical automotive solutions for customers who want things done right and without unnecessary hassle."
+  breadcrumbs={[
+    { label: 'Home', href: '/' },
+    { label: 'Services' }
+  ]}
+  heroImage={bmwM5}
+  heroImageAlt="BMW M5"
+/>
+```
