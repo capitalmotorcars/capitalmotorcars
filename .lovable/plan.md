@@ -1,212 +1,175 @@
 
-# תוכנית: שדרוג "What We Do" ו-"Why Work With Us" לרמה פרימיום
+# תוכנית: עמודי סוגי רכבים עם טופס יצירת קשר
 
-## הבעיה הנוכחית
+## סקירה
 
-שני הסקשנים עדיין נראים כמו תבניות AI סטנדרטיות:
-- **What We Do**: יש אפקטים אבל הם עדיין "גנריים" - glow פשוט, קווים בסיסיים
-- **Why Us**: כרטיסי poker עם overlap פשוט - חסר עומק ואינטראקטיביות מתוחכמת
+כל רכב בקרוסלה יהפוך ללינק שמפנה לעמוד ייעודי המציג:
+- מידע על סוג הרכב (יתרונות, למי מתאים, דוגמאות למותגים)
+- גלריית תמונות
+- טופס להשארת פרטים עם סוג הרכב מוגדר מראש
 
----
+## מבנה הקבצים החדשים
 
-## קונספט חדש: "Luxury Automotive Dashboard"
-
-בהשראת לוחות מחוונים של רכבי יוקרה עם:
-- **Staggered reveal animations** - כרטיסים נכנסים בזה אחר זה
-- **3D perspective transforms** - תחושת עומק אמיתית
-- **Micro-interactions** - תגובות עדינות לכל פעולה
-- **Ambient motion** - תנועה עדינה ברקע תמידית
-- **Premium typography** - spacing ו-tracking משופרים
-
----
-
-## שינויים בסקשן "What We Do"
-
-### 1. Staggered Reveal Animation
-כרטיסים נכנסים אחד אחרי השני עם delay:
-```
-Card 1: delay 0ms    ╭─────╮
-Card 2: delay 100ms  │ → → │ 
-Card 3: delay 200ms  ╰─────╯
-...
-```
-
-### 2. 3D Tilt Effect on Hover
-כרטיסים "מתרוממים" עם perspective:
-```css
-transform: perspective(1000px) rotateX(-2deg) translateY(-8px);
-```
-
-### 3. Glow שמתחזק בהדרגה
-במקום glow קבוע - אנימציה של "נשימה":
-```css
-@keyframes breathe-glow {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.6; }
-}
-```
-
-### 4. Border Gradient Animation
-גבול שזז לאורך הכרטיס ב-hover:
-```css
-background: linear-gradient(90deg, transparent, accent, transparent);
-animation: border-flow 2s linear infinite;
-```
-
-### 5. Icon Morphing
-אייקון גדל ומסתובב מעט ב-hover:
-```css
-transform: scale(1.15) rotate(5deg);
-```
-
----
-
-## שינויים בסקשן "Why Work With Us"
-
-### 1. קונספט חדש: "Floating Cards"
-במקום overlap פשוט - כרטיסים שצפים בגובה שונה:
 ```text
-    ╭─────╮
-    │  1  │ ← גבוה
- ╭──┴─────┴──╮
- │     2     │ ← אמצע (הגדול ביותר)
- ╰───────────╯
-    ╭─────╮
-    │  3  │ ← נמוך
+src/
+├── pages/
+│   └── vehicles/
+│       ├── LuxuryPage.tsx
+│       ├── ElectricPage.tsx
+│       ├── HatchbackPage.tsx
+│       ├── SedanPage.tsx
+│       ├── TruckPage.tsx
+│       ├── SportsPage.tsx
+│       ├── SUVPage.tsx
+│       ├── CoupePage.tsx
+│       ├── MinivanPage.tsx
+│       └── CrossoverPage.tsx
+├── components/
+│   └── vehicles/
+│       └── VehicleTypeTemplate.tsx
+└── data/
+    └── vehicleTypes.ts
 ```
 
-### 2. Active Card Expansion
-כרטיס פעיל מתרחב ומראה יותר תוכן:
-```css
-transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
-transform: scale(1.05);
-```
+## שלב 1: יצירת קובץ נתונים מרכזי
 
-### 3. Particle System
-חלקיקים קטנים צפים מסביב לכרטיס הפעיל:
-```
-  *  ╭─────╮  ·
- ·   │ ACT │   *
-  *  ╰─────╯  ·
-```
+קובץ `src/data/vehicleTypes.ts` יכיל את כל המידע על סוגי הרכבים:
 
-### 4. Connecting Energy Lines
-קווים "חשמליים" בין הכרטיסים:
-```
-[Card 1] ═══⚡═══ [Card 2] ═══⚡═══ [Card 3]
-```
-
-### 5. Shimmer Effect ברקע
-אפקט "זוהר" שעובר על הסקשן:
-```css
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+```typescript
+export interface VehicleType {
+  slug: string;           // luxury, electric, sedan...
+  name: string;           // Luxury, Electric, Sedan...
+  image: string;          // תמונה ראשית
+  description: string;    // תיאור קצר
+  highlights: string[];   // יתרונות עיקריים
+  idealFor: string[];     // למי מתאים
+  popularBrands: string[];// מותגים פופולריים
+  features: string[];     // תכונות
 }
 ```
 
----
+## שלב 2: יצירת תבנית VehicleTypeTemplate
 
-## אנימציות חדשות ב-CSS
+תבנית דומה ל-ServiceTemplate עם הסקשנים:
 
-```css
-/* Premium staggered reveal */
-@keyframes card-reveal {
-  from { opacity: 0; transform: translateY(30px) scale(0.95); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
+| סקשן | תוכן |
+|------|------|
+| Hero | תמונת רכב גדולה + שם הקטגוריה + תיאור |
+| Highlights | יתרונות עיקריים של סוג הרכב |
+| Ideal For | למי סוג הרכב מתאים |
+| Popular Brands | לוגואים של מותגים רלוונטיים |
+| Key Features | תכונות בולטות |
+| Contact Form | טופס עם סוג הרכב מוגדר מראש |
 
-/* 3D tilt effect */
-@keyframes subtle-tilt {
-  0%, 100% { transform: perspective(1000px) rotateY(-1deg); }
-  50% { transform: perspective(1000px) rotateY(1deg); }
-}
+## שלב 3: עדכון הקרוסלה
 
-/* Breathing glow */
-@keyframes breathe {
-  0%, 100% { box-shadow: 0 0 30px rgba(31,106,225,0.2); }
-  50% { box-shadow: 0 0 50px rgba(31,106,225,0.4); }
-}
+שינוי ב-`VehicleTypesCarousel.tsx`:
 
-/* Border flow animation */
-@keyframes border-flow {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
-}
+**לפני:**
+```tsx
+<div className="flex-shrink-0 flex flex-col items-center group cursor-pointer">
+```
 
-/* Energy pulse between cards */
-@keyframes energy-pulse {
-  0% { opacity: 0.2; transform: scaleX(0.8); }
-  50% { opacity: 0.8; transform: scaleX(1); }
-  100% { opacity: 0.2; transform: scaleX(0.8); }
-}
+**אחרי:**
+```tsx
+<Link 
+  to={`/vehicles/${type.slug}`}
+  className="flex-shrink-0 flex flex-col items-center group"
+>
+```
 
-/* Particle float */
-@keyframes particle-orbit {
-  0% { transform: rotate(0deg) translateX(30px); }
-  100% { transform: rotate(360deg) translateX(30px); }
+## שלב 4: הוספת Routes
+
+עדכון `App.tsx` להוספת הנתיבים החדשים:
+
+```tsx
+import LuxuryPage from "./pages/vehicles/LuxuryPage";
+// ... imports נוספים
+
+<Route path="/vehicles/luxury" element={<LuxuryPage />} />
+<Route path="/vehicles/electric" element={<ElectricPage />} />
+<Route path="/vehicles/hatchback" element={<HatchbackPage />} />
+<Route path="/vehicles/sedan" element={<SedanPage />} />
+<Route path="/vehicles/truck" element={<TruckPage />} />
+<Route path="/vehicles/sports" element={<SportsPage />} />
+<Route path="/vehicles/suv" element={<SUVPage />} />
+<Route path="/vehicles/coupe" element={<CoupePage />} />
+<Route path="/vehicles/minivan" element={<MinivanPage />} />
+<Route path="/vehicles/crossover" element={<CrossoverPage />} />
+```
+
+## שלב 5: עדכון טופס יצירת קשר
+
+הוספת אפשרות לסוגי רכבים ב-`ContactForm.tsx`:
+
+```typescript
+const vehicleTypes = [
+  { value: 'luxury', label: 'Luxury Vehicle' },
+  { value: 'electric', label: 'Electric Vehicle' },
+  { value: 'sedan', label: 'Sedan' },
+  // ...
+];
+
+// הוספת prop חדש
+interface ContactFormProps {
+  vehicleType?: string;  // חדש
+  hideVehicleField?: boolean;  // חדש
 }
 ```
 
----
+## דוגמה לעמוד רכב (LuxuryPage.tsx)
 
-## מבנה טכני מפורט
+```tsx
+import { VehicleTypeTemplate } from '@/components/vehicles/VehicleTypeTemplate';
 
-### קובץ: `src/components/home/WhatWeDoSection.tsx`
-
-שינויים עיקריים:
-1. הוספת state לאנימציות staggered
-2. 3D transform על ה-card container
-3. Border gradient animation component
-4. משופר hover states עם timing functions
-
-### קובץ: `src/components/home/WhyUsPokerCards.tsx`
-
-שכתוב מלא למבנה "Floating Cards":
-1. מבנה חדש עם cards בגובה שונה
-2. קומפוננטת חלקיקים (Particles)
-3. קווי אנרגיה בין הכרטיסים (EnergyLines)
-4. אנימציות פתיחה מתקדמות
-
-### קובץ: `src/index.css`
-
-הוספת כל האנימציות החדשות:
-- `card-reveal`
-- `subtle-tilt`
-- `breathe`
-- `border-flow`
-- `energy-pulse`
-- `particle-orbit`
-- `shimmer`
-
-### קובץ: `tailwind.config.ts`
-
-הוספת timing functions מותאמות:
-```js
-transitionTimingFunction: {
-  'premium': 'cubic-bezier(0.4, 0, 0.2, 1)',
-  'bounce-soft': 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+export default function LuxuryPage() {
+  return (
+    <VehicleTypeTemplate
+      name="Luxury"
+      slug="luxury"
+      metaTitle="Luxury Car Leasing | Capital Motor Cars"
+      metaDescription="Discover premium luxury vehicles from Mercedes, BMW, Audi and more. Expert guidance for your next luxury car lease."
+      heroImage="..."
+      description="Experience the pinnacle of automotive excellence with our curated selection of luxury vehicles."
+      highlights={[
+        "Premium materials and craftsmanship",
+        "Advanced technology and safety features",
+        "Superior comfort and ride quality",
+        "Prestigious brand heritage",
+      ]}
+      idealFor={[
+        "Executive professionals",
+        "Those who appreciate fine craftsmanship",
+        "Drivers seeking ultimate comfort",
+        "Anyone wanting a premium driving experience",
+      ]}
+      popularBrands={['Mercedes-Benz', 'BMW', 'Audi', 'Lexus', 'Porsche']}
+      features={[
+        "Leather interiors",
+        "Premium sound systems",
+        "Advanced driver assistance",
+        "Adaptive suspension",
+      ]}
+    />
+  );
 }
 ```
-
----
-
-## קבצים שישתנו
-
-| קובץ | פעולה |
-|------|-------|
-| `src/components/home/WhatWeDoSection.tsx` | שדרוג אנימציות ו-3D effects |
-| `src/components/home/WhyUsPokerCards.tsx` | שכתוב מלא - floating cards |
-| `src/index.css` | הוספת אנימציות פרימיום |
-| `tailwind.config.ts` | timing functions חדשות |
-
----
 
 ## תוצאה צפויה
 
-- **מראה יוקרתי** - לא עוד "תבנית AI"
-- **תנועה אורגנית** - אנימציות שמרגישות טבעיות
-- **עומק ויזואלי** - 3D transforms ו-shadows מתקדמים
-- **אינטראקטיביות עשירה** - תגובות לכל hover/click
-- **קונסיסטנטיות** - שני הסקשנים באותו שפה ויזואלית
+- 10 עמודים חדשים לסוגי רכבים
+- לחיצה על רכב בקרוסלה מפנה לעמוד הייעודי
+- כל עמוד מכיל מידע מפורט + טופס יצירת קשר
+- סוג הרכב מוגדר אוטומטית בטופס
+- SEO מותאם לכל עמוד
 
+## קבצים שישתנו/יווצרו
+
+| קובץ | פעולה |
+|------|-------|
+| `src/data/vehicleTypes.ts` | חדש - נתוני סוגי רכבים |
+| `src/components/vehicles/VehicleTypeTemplate.tsx` | חדש - תבנית העמוד |
+| `src/pages/vehicles/*.tsx` | חדש - 10 עמודי רכב |
+| `src/components/home/VehicleTypesCarousel.tsx` | עדכון - הוספת לינקים |
+| `src/App.tsx` | עדכון - הוספת routes |
+| `src/components/forms/ContactForm.tsx` | עדכון - תמיכה בסוג רכב |
