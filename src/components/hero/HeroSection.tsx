@@ -49,7 +49,7 @@ export function HeroSection() {
           {/* Left Column - Content - extra bottom spacing on mobile so it never overlaps diagram */}
           <div className="max-w-xl lg:max-w-2xl flex-shrink-0 z-10 lg:pt-0 lg:pb-0 pb-10 sm:pb-12 lg:pb-0 text-center lg:text-left order-1">
             <h1
-              className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 lg:mb-5 leading-[1.1] hero-animate ${
+              className={`text-5xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 lg:mb-5 leading-[1.1] line-clamp-2 hero-animate ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
@@ -62,7 +62,7 @@ export function HeroSection() {
               href="https://share.google/uNNUZv8Ot02uvLzbd"
               target="_blank"
               rel="noopener noreferrer"
-              className={`flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-2 lg:gap-3 mb-4 lg:mb-6 hero-animate cursor-pointer hover:opacity-80 transition-opacity ${
+              className={`flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-2 lg:gap-3 mb-3 sm:mb-4 lg:mb-6 hero-animate cursor-pointer hover:opacity-80 transition-opacity ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
@@ -113,7 +113,7 @@ export function HeroSection() {
             </a>
             
             <p
-              className={`text-base md:text-lg lg:text-xl mb-6 lg:mb-8 leading-relaxed max-w-lg hero-animate delay-1 ${
+              className={`hidden sm:block text-base md:text-lg lg:text-xl mb-6 lg:mb-8 leading-relaxed max-w-lg hero-animate delay-1 ${
                 heroAnimated ? 'animate-in' : ''
               }`}
               style={{ color: 'hsl(213 27% 84%)' }}
@@ -122,7 +122,7 @@ export function HeroSection() {
             </p>
 
             <div
-              className={`flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 hero-animate delay-2 ${
+              className={`flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 mt-2 sm:mt-0 hero-animate delay-2 ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
