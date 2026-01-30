@@ -49,7 +49,7 @@ export function HeroSection() {
           {/* Left Column - Content - extra bottom spacing on mobile so it never overlaps diagram */}
           <div className="max-w-xl lg:max-w-2xl flex-shrink-0 z-10 lg:pt-0 lg:pb-0 pb-10 sm:pb-12 lg:pb-0 text-center lg:text-left order-1">
             <h1
-              className={`text-5xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 lg:mb-5 leading-[1.1] line-clamp-2 lg:max-w-xl xl:max-w-2xl hero-animate ${
+              className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 lg:mb-5 leading-[1.1] line-clamp-2 lg:max-w-xl xl:max-w-2xl hero-animate ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
@@ -153,7 +153,7 @@ export function HeroSection() {
 
           {/* Right Column - Process Visualization: below text on mobile (align start = no overlap), right on desktop */}
           <div
-            className="flex-none lg:flex-1 flex items-start lg:items-center justify-center min-h-0 mt-6 sm:mt-8 lg:mt-0 order-2 max-w-full lg:min-h-0 shrink-0"
+            className="flex-none lg:flex-1 flex items-start lg:items-center justify-center min-h-0 mt-10 sm:mt-12 lg:mt-0 order-2 max-w-full lg:min-h-0 shrink-0 px-6 md:px-0"
           >
             <div className="w-[90%] max-w-[min(90vw,320px)] sm:max-w-[320px] lg:max-w-[420px] xl:max-w-[440px] aspect-square flex items-center justify-center flex-shrink-0 mx-auto">
               <CircularProcessVisualization />
