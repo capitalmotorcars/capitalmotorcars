@@ -39,9 +39,11 @@ const processSteps: ProcessStep[] = [
 
 interface CircularProcessVisualizationProps {
   className?: string;
+  /** Size in px for the mobile diagram (above-the-fold hero). Default 280. */
+  mobileSize?: number;
 }
 
-export function CircularProcessVisualization({ className }: CircularProcessVisualizationProps) {
+export function CircularProcessVisualization({ className, mobileSize = 280 }: CircularProcessVisualizationProps) {
   const {
     activeStep,
     setActiveStep,
@@ -307,14 +309,14 @@ export function CircularProcessVisualization({ className }: CircularProcessVisua
 
       {/* Mobile: Compact Circular Visualization */}
       <div className="md:hidden flex flex-col items-center">
-        <div className="text-xs font-semibold tracking-wide mb-4 text-center" style={{ color: 'hsl(213 27% 70%)' }}>
+        <div className="text-xs font-semibold tracking-wide mb-2 sm:mb-4 text-center" style={{ color: 'hsl(213 27% 70%)' }}>
           How It Works
         </div>
         
-        <CircularDiagram size={280} isMobile />
+        <CircularDiagram size={mobileSize} isMobile />
 
         {/* Description panel for mobile */}
-        <div className="w-full max-w-xs mt-4">
+        <div className={cn('w-full max-w-xs', mobileSize <= 220 ? 'mt-2' : 'mt-4')}>
           <div
             key={activeStep}
             className={cn(

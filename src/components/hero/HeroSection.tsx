@@ -20,7 +20,7 @@ export function HeroSection() {
   ];
 
   return (
-    <section className="relative pt-4 pb-8 sm:pt-6 sm:pb-10 lg:pt-6 lg:pb-12 min-h-[auto] overflow-hidden" style={{ backgroundColor: 'hsl(0 0% 3%)' }}>
+    <section className="relative min-h-[100dvh] lg:min-h-0 flex flex-col pt-4 pb-6 sm:pt-6 sm:pb-8 lg:pt-6 lg:pb-12 overflow-hidden" style={{ backgroundColor: 'hsl(0 0% 3%)' }}>
       {/* Background Image - parallax */}
       <div ref={parallaxRef} className="absolute inset-0 overflow-hidden">
         <img
@@ -44,12 +44,12 @@ export function HeroSection() {
         aria-hidden
       />
 
-      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 z-10 max-w-full">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-center lg:gap-8 xl:gap-12 max-w-6xl lg:mx-auto">
-          {/* Left Column - Content - extra bottom spacing on mobile so it never overlaps diagram */}
-          <div className="max-w-xl lg:max-w-2xl flex-shrink-0 z-10 lg:pt-0 lg:pb-0 pb-10 sm:pb-12 lg:pb-0 text-center lg:text-left order-1">
+      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 z-10 max-w-full flex-1 flex flex-col min-h-0">
+        <div className="flex flex-col flex-1 lg:flex-row lg:items-center lg:justify-center lg:gap-8 xl:gap-12 max-w-6xl lg:mx-auto min-h-0 justify-between lg:justify-center">
+          {/* Left Column - Content: heading, subtext (bridge), buttons */}
+          <div className="max-w-xl lg:max-w-2xl flex-shrink-0 z-10 lg:pt-0 lg:pb-0 pb-4 sm:pb-6 lg:pb-0 text-center lg:text-left order-1">
             <h1
-              className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 lg:mb-5 leading-[1.15] max-w-xl lg:max-w-xl xl:max-w-2xl hero-animate ${
+              className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-extrabold leading-[1.1] line-clamp-2 max-w-xl lg:max-w-xl xl:max-w-2xl mb-2 sm:mb-3 lg:mb-5 hero-animate ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
@@ -57,12 +57,12 @@ export function HeroSection() {
               <span className="text-gradient-hero-highlight">Zero Dealership Hassle</span>
             </h1>
 
-            {/* Social Proof Badges - ALWAYS below headline */}
+            {/* Social Proof Badges - below headline */}
             <a
               href="https://share.google/uNNUZv8Ot02uvLzbd"
               target="_blank"
               rel="noopener noreferrer"
-              className={`flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-2 lg:gap-3 mb-3 sm:mb-4 lg:mb-6 hero-animate cursor-pointer hover:opacity-80 transition-opacity ${
+              className={`flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-2 lg:gap-3 mb-2 sm:mb-3 lg:mb-6 hero-animate cursor-pointer hover:opacity-80 transition-opacity ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
@@ -112,17 +112,18 @@ export function HeroSection() {
               </span>
             </a>
             
+            {/* Subtext: bridge between heading and CTAs - visible on all devices */}
             <p
-              className={`block text-sm sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-6 lg:mb-8 leading-relaxed max-w-lg hero-animate delay-1 ${
+              className={`block text-sm sm:text-base md:text-lg lg:text-xl mb-3 sm:mb-4 lg:mb-8 leading-relaxed max-w-lg hero-animate delay-1 ${
                 heroAnimated ? 'animate-in' : ''
               }`}
-              style={{ color: 'hsl(213 27% 84%)' }}
+              style={{ color: 'hsl(213 27% 88%)' }}
             >
               Your trusted automotive partner. We handle leasing, financing, and more so you can enjoy the ride.
             </p>
 
             <div
-              className={`flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 mt-2 sm:mt-0 hero-animate delay-2 ${
+              className={`flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-2 sm:gap-3 hero-animate delay-2 ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
@@ -130,7 +131,7 @@ export function HeroSection() {
                 <Button
                   asChild
                   size="lg"
-                  className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 h-12 shrink-0 glow-blue"
+                  className="w-full sm:w-auto h-11 sm:h-12 bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-6 sm:px-8 shrink-0 glow-blue text-sm sm:text-base"
                 >
                   <Link to="/contact">
                     Start the process
@@ -143,7 +144,7 @@ export function HeroSection() {
                   asChild
                   variant="ghost"
                   size="lg"
-                  className="w-full sm:w-auto h-12 border border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white hover:border-white/50 font-medium px-6 shrink-0"
+                  className="w-full sm:w-auto h-11 sm:h-12 border border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white hover:border-white/50 font-medium px-5 sm:px-6 shrink-0 text-sm sm:text-base"
                 >
                   <Link to="/services">View Services</Link>
                 </Button>
@@ -151,12 +152,12 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column - Process Visualization: below text on mobile (align start = no overlap), right on desktop */}
+          {/* Right Column - Process Visualization: scaled for above-the-fold on mobile */}
           <div
-            className="flex-none lg:flex-1 flex items-start lg:items-center justify-center min-h-0 mt-10 sm:mt-12 lg:mt-0 order-2 max-w-full lg:min-h-0 shrink-0 px-6 md:px-0"
+            className="flex-none lg:flex-1 flex items-center justify-center min-h-0 mt-4 sm:mt-6 lg:mt-0 order-2 max-w-full lg:min-h-0 shrink-0 px-4 sm:px-6 md:px-0"
           >
-            <div className="w-[90%] max-w-[min(90vw,320px)] sm:max-w-[320px] lg:max-w-[420px] xl:max-w-[440px] aspect-square flex items-center justify-center flex-shrink-0 mx-auto">
-              <CircularProcessVisualization />
+            <div className="w-full max-w-[200px] sm:max-w-[260px] md:max-w-[320px] lg:max-w-[420px] xl:max-w-[440px] aspect-square flex items-center justify-center flex-shrink-0 mx-auto">
+              <CircularProcessVisualization mobileSize={200} />
             </div>
           </div>
         </div>
