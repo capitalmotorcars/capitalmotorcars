@@ -3,17 +3,19 @@ import { Link } from 'react-router-dom';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { ChevronsLeft, ChevronsRight } from 'lucide-react';
+import { cn } from '@/lib/utils';
 import minivanImage from '@/assets/minivan-odyssey.png';
-import coupeImage from '@/assets/coupe-bmw-m8.png';
 import hatchbackImage from '@/assets/hatchback-audi-rs5.png';
 import electricImage from '@/assets/electric-mercedes-eqc.png';
 import truckImage from '@/assets/truck-ford-raptor.png';
+import luxuryImage from '@/assets/luxury-sedan.png';
+import mercedesLuxurySedanImage from '@/assets/mercedes-luxury-sedan.png';
 
 const vehicleTypes = [
   {
     name: 'Luxury',
     slug: 'luxury',
-    image: 'https://pngimg.com/uploads/mercedes/mercedes_PNG80134.png',
+    image: luxuryImage,
   },
   {
     name: 'Electric',
@@ -48,7 +50,7 @@ const vehicleTypes = [
   {
     name: 'Coupe',
     slug: 'coupe',
-    image: coupeImage,
+    image: mercedesLuxurySedanImage,
   },
   {
     name: 'Minivan',
@@ -196,13 +198,16 @@ export function VehicleTypesCarousel() {
                 to={`/vehicles/${type.slug}`}
                 className="flex-shrink-0 flex flex-col items-center group"
               >
-                <div className="w-[180px] h-[100px] sm:w-[240px] sm:h-[130px] md:w-[300px] md:h-[160px] flex items-center justify-center overflow-visible">
+                <div className="w-[220px] h-[140px] sm:w-[280px] sm:h-[175px] md:w-[320px] md:h-[200px] flex items-center justify-center overflow-visible shrink-0">
                   <img
                     src={type.image}
                     alt={type.name}
                     loading="lazy"
                     decoding="async"
-                    className="max-w-full max-h-full w-auto h-auto object-contain drop-shadow-lg group-hover:scale-[1.02] transition-transform duration-300"
+                    className={cn(
+                      'w-full h-full object-contain drop-shadow-lg group-hover:scale-[1.02] transition-transform duration-300',
+                      type.slug === 'luxury' && 'scale-125'
+                    )}
                   />
                 </div>
                 <span className="mt-4 md:mt-8 text-xs md:text-base font-semibold text-white/90 group-hover:text-white transition-colors">

@@ -1,6 +1,7 @@
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { SectionDivider } from '@/components/ui/SectionDivider';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Check, Star, Users, Zap } from 'lucide-react';
@@ -22,9 +23,9 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
     <Layout>
       <SEO title={vehicle.metaTitle} description={vehicle.metaDescription} />
 
-      {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center bg-gradient-to-br from-background via-muted/50 to-background overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,hsl(var(--accent)/0.08),transparent_50%)]" />
+      {/* Hero Section - dark, brand-aligned */}
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden" style={{ backgroundColor: 'hsl(0 0% 3%)' }}>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,hsl(214_77%_50%_/_0.06),transparent_50%)]" aria-hidden />
         
         <div
           ref={heroRef}
@@ -35,16 +36,17 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
         >
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/[0.08] text-accent text-sm font-medium">
                 <Star className="w-4 h-4" />
                 {vehicle.name} Vehicles
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-                {vehicle.name} Car Leasing
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                <span className="text-gradient-heading-dark">Find Your Perfect </span>
+                <span className="text-gradient-hero-highlight">{vehicle.name} Leasing</span>
               </h1>
               
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl">
+              <p className="text-lg md:text-xl text-white/85 leading-relaxed max-w-xl">
                 {vehicle.description}
               </p>
               
@@ -52,7 +54,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
                 {vehicle.popularBrands.slice(0, 5).map((brand) => (
                   <span
                     key={brand}
-                    className="px-3 py-1.5 rounded-full bg-muted text-sm font-medium text-foreground/80"
+                    className="px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.08] text-sm font-medium text-white/90"
                   >
                     {brand}
                   </span>
@@ -60,20 +62,22 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
               </div>
             </div>
             
-            <div className="relative flex items-center justify-center">
-              <div className="absolute inset-0 bg-gradient-to-r from-accent/10 via-transparent to-accent/5 rounded-3xl blur-3xl" />
+            <div className="relative flex items-center justify-center w-full max-w-lg h-[280px] md:h-[340px]">
+              <div className="absolute inset-0 bg-gradient-to-r from-accent/10 via-transparent to-accent/5 rounded-3xl blur-3xl" aria-hidden />
               <img
                 src={vehicle.image}
                 alt={`${vehicle.name} vehicle`}
-                className="relative w-full max-w-lg h-auto object-contain drop-shadow-2xl"
+                className="relative w-full h-full object-contain drop-shadow-2xl animate-float-1"
               />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Highlights Section */}
-      <section className="py-16 md:py-24 bg-muted/30">
+      <SectionDivider variant="curved" nextSectionDark />
+
+      {/* Highlights Section - dark, glass cards, stagger */}
+      <section className="py-8 md:py-14 lg:py-20 bg-[hsl(0_0%_4%)]">
         <div
           ref={highlightsRef}
           className={cn(
@@ -82,29 +86,36 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
           )}
         >
           <SectionHeading
-            title="Why Choose a Luxury Vehicle?"
+            title={`Why Choose a ${vehicle.name} Vehicle?`}
             subtitle={`Key benefits of ${vehicle.name.toLowerCase()} vehicles`}
+            dark
           />
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-8 md:mt-12">
             {vehicle.highlights.map((highlight, index) => (
               <div
                 key={index}
-                className="group p-6 rounded-2xl bg-background border border-border/50 hover:border-accent/30 hover:shadow-lg transition-all duration-300"
-                style={{ animationDelay: `${index * 100}ms` }}
+                className={cn(
+                  'group p-6 rounded-xl border border-white/10 bg-white/[0.06] backdrop-blur-sm hover:border-accent/30 transition-all duration-300 hover:shadow-[0_0_20px_hsl(214_77%_50%_/_0.08)]',
+                  highlightsRevealed && 'stagger-in',
+                  highlightsRevealed && index === 0 && 'stagger-in-1',
+                  highlightsRevealed && index === 1 && 'stagger-in-2',
+                  highlightsRevealed && index === 2 && 'stagger-in-3',
+                  highlightsRevealed && index === 3 && 'stagger-in-4'
+                )}
               >
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
+                <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
                   <Zap className="w-6 h-6 text-accent" />
                 </div>
-                <p className="text-foreground font-medium">{highlight}</p>
+                <p className="text-white font-medium">{highlight}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Ideal For Section */}
-      <section className="py-16 md:py-24">
+      {/* Ideal For Section - dark, glass */}
+      <section className="py-8 md:py-14 lg:py-20 bg-[hsl(0_0%_5%)]">
         <div
           ref={idealRef}
           className={cn(
@@ -114,22 +125,29 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
         >
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/[0.08] text-accent text-sm font-medium mb-6">
                 <Users className="w-4 h-4" />
                 Perfect Match
               </div>
               
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                 Who Is This For?
               </h2>
               
               <ul className="space-y-4">
                 {vehicle.idealFor.map((item, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <li
+                    key={index}
+                    className={cn(
+                      'flex items-start gap-3',
+                      idealRevealed && 'stagger-in',
+                      idealRevealed && `stagger-in-${Math.min(index + 1, 8)}`
+                    )}
+                  >
+                    <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <Check className="w-4 h-4 text-accent" />
                     </div>
-                    <span className="text-muted-foreground">{item}</span>
+                    <span className="text-white/85">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -139,12 +157,16 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
               {vehicle.features.slice(0, 4).map((feature, index) => (
                 <div
                   key={index}
-                  className="p-5 rounded-xl bg-muted/50 border border-border/30"
+                  className={cn(
+                    'p-5 rounded-xl border border-white/10 bg-white/[0.06] backdrop-blur-sm hover:border-accent/30 transition-all duration-300',
+                    idealRevealed && 'stagger-in',
+                    idealRevealed && `stagger-in-${Math.min(index + 1, 8)}`
+                  )}
                 >
-                  <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
+                  <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center mb-3">
                     <Star className="w-5 h-5 text-accent" />
                   </div>
-                  <p className="text-sm font-medium text-foreground">{feature}</p>
+                  <p className="text-sm font-medium text-white">{feature}</p>
                 </div>
               ))}
             </div>
@@ -152,8 +174,8 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-16 md:py-24 bg-muted/30">
+      {/* Features Section - dark, glass */}
+      <section className="py-8 md:py-14 lg:py-20 bg-[hsl(0_0%_4%)]">
         <div
           ref={featuresRef}
           className={cn(
@@ -164,26 +186,31 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
           <SectionHeading
             title="Key Features"
             subtitle={`What makes ${vehicle.name.toLowerCase()} vehicles special`}
+            dark
           />
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-8 md:mt-12">
             {vehicle.features.map((feature, index) => (
               <div
                 key={index}
-                className="flex items-center gap-4 p-4 rounded-xl bg-background border border-border/50"
+                className={cn(
+                  'flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-white/[0.06] backdrop-blur-sm hover:border-accent/30 transition-all duration-300',
+                  featuresRevealed && 'stagger-in',
+                  featuresRevealed && `stagger-in-${Math.min(index + 1, 8)}`
+                )}
               >
-                <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
                   <Check className="w-5 h-5 text-accent" />
                 </div>
-                <span className="text-foreground">{feature}</span>
+                <span className="text-white">{feature}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Form Section */}
-      <section className="py-16 md:py-24">
+      {/* Contact Form Section - dark, glass form */}
+      <section className="py-8 md:py-14 lg:py-20 bg-[hsl(0_0%_5%)]">
         <div
           ref={formRef}
           className={cn(
@@ -193,15 +220,18 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
         >
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-10">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Interested in a {vehicle.name} Vehicle?
               </h2>
-              <p className="text-lg text-muted-foreground">
+              <p className="text-lg text-white/85">
                 Let us help you find the perfect {vehicle.name.toLowerCase()} vehicle. Fill out the form below and our team will get back to you shortly.
               </p>
             </div>
             
-            <div className="bg-background border border-border/50 rounded-2xl p-6 md:p-8 shadow-lg">
+            <div className={cn(
+              'border border-white/10 bg-white/[0.06] backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-[0_0_20px_hsl(214_77%_50%_/_0.05)] [&_label]:text-white [&_input]:bg-white/10 [&_input]:border-white/25 [&_input]:text-white [&_input]:placeholder:text-white/60 [&_textarea]:bg-white/10 [&_textarea]:border-white/25 [&_textarea]:text-white [&_textarea]:placeholder:text-white/60 [&_.text-muted-foreground]:text-white/90 [&_button:not([type=submit])]:bg-white/10 [&_button:not([type=submit])]:border-white/25 [&_button:not([type=submit])]:text-white [&_button:not([type=submit])_[data-placeholder]]:text-white/60',
+              formRevealed && 'stagger-in stagger-in-1'
+            )}>
               <ContactForm
                 initialValues={{ vehicleType: vehicle.slug }}
                 hideServiceField
