@@ -49,7 +49,7 @@ export function HeroSection() {
           {/* Left Column - Content - extra bottom spacing on mobile so it never overlaps diagram */}
           <div className="max-w-xl lg:max-w-2xl flex-shrink-0 z-10 lg:pt-0 lg:pb-0 pb-10 sm:pb-12 lg:pb-0 text-center lg:text-left order-1">
             <h1
-              className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 lg:mb-5 leading-[1.1] line-clamp-2 lg:max-w-xl xl:max-w-2xl hero-animate ${
+              className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 lg:mb-5 leading-[1.15] max-w-xl lg:max-w-xl xl:max-w-2xl hero-animate ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
@@ -113,7 +113,7 @@ export function HeroSection() {
             </a>
             
             <p
-              className={`hidden sm:block text-base md:text-lg lg:text-xl mb-6 lg:mb-8 leading-relaxed max-w-lg hero-animate delay-1 ${
+              className={`block text-sm sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-6 lg:mb-8 leading-relaxed max-w-lg hero-animate delay-1 ${
                 heroAnimated ? 'animate-in' : ''
               }`}
               style={{ color: 'hsl(213 27% 84%)' }}
