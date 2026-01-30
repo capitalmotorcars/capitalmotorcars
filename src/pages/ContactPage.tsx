@@ -36,7 +36,7 @@ export default function ContactPage() {
 
       <SectionDivider variant="curved" nextSectionDark />
 
-      <section className="py-8 md:py-14 lg:py-20 bg-[hsl(220_14%_5%)]">
+      <section className="py-8 md:py-14 lg:py-20 bg-[hsl(0_0%_4%)]">
         <div
           ref={ref}
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${isRevealed ? 'revealed' : ''}`}

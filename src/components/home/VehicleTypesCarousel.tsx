@@ -149,7 +149,7 @@ export function VehicleTypesCarousel() {
   const duplicatedTypes = [...vehicleTypes, ...vehicleTypes];
 
   return (
-    <section id="discover" className="pt-10 pb-10 md:pt-20 md:pb-24 bg-[hsl(220_14%_5%)]">
+    <section id="discover" className="pt-10 pb-10 md:pt-20 md:pb-24 bg-[hsl(0_0%_4%)]">
       <div
         ref={ref}
         className={`scroll-reveal ${isRevealed ? 'revealed' : ''}`}
@@ -181,8 +181,8 @@ export function VehicleTypesCarousel() {
           </button>
 
           {/* Edge fade masks (keeps the row looking like the reference) */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-12 md:w-24 bg-gradient-to-r from-[hsl(220_14%_5%)] to-transparent z-10" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-12 md:w-24 bg-gradient-to-l from-[hsl(220_14%_5%)] to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-12 md:w-24 bg-gradient-to-r from-[hsl(0_0%_4%)] to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-12 md:w-24 bg-gradient-to-l from-[hsl(0_0%_4%)] to-transparent z-10" />
           
           {/* Scrolling content */}
           <div
