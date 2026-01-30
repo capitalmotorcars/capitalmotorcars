@@ -15,7 +15,7 @@ export const vehicleTypes: VehicleTypeData[] = [
   {
     slug: 'luxury',
     name: 'Luxury',
-    image: 'https://pngimg.com/uploads/mercedes/mercedes_PNG80134.png',
+    image: '/src/assets/luxury-sedan.png',
     description: 'Experience the pinnacle of automotive excellence with our curated selection of luxury vehicles. Premium craftsmanship meets cutting-edge technology.',
     highlights: [
       'Premium materials and craftsmanship',
@@ -218,7 +218,7 @@ export const vehicleTypes: VehicleTypeData[] = [
   {
     slug: 'coupe',
     name: 'Coupe',
-    image: '/src/assets/coupe-bmw-m8.png',
+    image: '/src/assets/mercedes-luxury-sedan.png',
     description: 'Sleek, stylish, and sporty. Coupes deliver head-turning design with an engaging driving experience.',
     highlights: [
       'Sleek and aerodynamic styling',

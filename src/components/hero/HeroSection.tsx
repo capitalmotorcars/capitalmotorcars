@@ -49,7 +49,7 @@ export function HeroSection() {
           {/* Left Column - Content - extra bottom spacing on mobile so it never overlaps diagram */}
           <div className="max-w-xl lg:max-w-2xl flex-shrink-0 z-10 lg:pt-0 lg:pb-0 pb-10 sm:pb-12 lg:pb-0 text-center lg:text-left order-1">
             <h1
-              className={`text-5xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 lg:mb-5 leading-[1.1] line-clamp-2 hero-animate ${
+              className={`text-5xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 lg:mb-5 leading-[1.1] line-clamp-2 lg:max-w-xl xl:max-w-2xl hero-animate ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
@@ -118,7 +118,7 @@ export function HeroSection() {
               }`}
               style={{ color: 'hsl(213 27% 84%)' }}
             >
-              Capital Motor Cars is your trusted automotive partner. From leasing and financing to maintenance and repairs, we handle everything so you can enjoy the ride.
+              Your trusted automotive partner. We handle leasing, financing, and more so you can enjoy the ride.
             </p>
 
             <div
