@@ -49,7 +49,7 @@ export function HeroSection() {
           {/* Left Column - Content: heading, subtext (bridge), buttons */}
           <div className="max-w-xl lg:max-w-2xl flex-shrink-0 z-10 lg:pt-0 lg:pb-0 pb-0 sm:pb-2 lg:pb-0 text-center lg:text-left order-1">
             <h1
-              className={`text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-extrabold leading-[1.12] sm:line-clamp-2 max-w-[95vw] sm:max-w-xl lg:max-w-2xl xl:max-w-2xl mb-2 sm:mb-3 lg:mb-5 hero-animate ${
+              className={`text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-extrabold leading-[1.12] sm:line-clamp-2 max-w-full sm:max-w-xl lg:max-w-2xl xl:max-w-2xl mb-2 sm:mb-3 lg:mb-5 hero-animate ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
@@ -179,9 +179,9 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column - Process Visualization: scaled for above-the-fold on mobile */}
+          {/* Right Column - Process Visualization: hidden on mobile, shown in separate section below */}
           <div
-            className="flex-none lg:flex-1 flex items-center justify-center min-h-0 mt-0 lg:mt-0 order-2 max-w-full lg:min-h-0 shrink-0 px-4 sm:px-6 md:px-0"
+            className="hidden md:flex flex-none lg:flex-1 items-center justify-center min-h-0 mt-0 lg:mt-0 order-2 max-w-full lg:min-h-0 shrink-0 px-4 sm:px-6 md:px-0"
           >
             <div className="w-full max-w-[200px] sm:max-w-[260px] md:max-w-[320px] lg:max-w-[420px] xl:max-w-[440px] aspect-square flex items-center justify-center flex-shrink-0 mx-auto">
               <CircularProcessVisualization mobileSize={200} />
