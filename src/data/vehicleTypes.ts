@@ -1,3 +1,11 @@
+import luxurySedanImg from '@/assets/luxury-sedan.png';
+import electricEqcImg from '@/assets/electric-mercedes-eqc.png';
+import hatchbackAudiImg from '@/assets/hatchback-audi-rs5.png';
+import truckRaptorImg from '@/assets/truck-ford-raptor.png';
+import mercedesSedanImg from '@/assets/mercedes-luxury-sedan.png';
+import minivanOdysseyImg from '@/assets/minivan-odyssey.png';
+import crossoverLexusImg from '@/assets/crossover-lexus-ux.png';
+
 export interface VehicleTypeData {
   slug: string;
   name: string;
@@ -15,7 +23,7 @@ export const vehicleTypes: VehicleTypeData[] = [
   {
     slug: 'luxury',
     name: 'Luxury',
-    image: '/src/assets/luxury-sedan.png',
+    image: luxurySedanImg,
     description: 'Experience the pinnacle of automotive excellence with our curated selection of luxury vehicles. Premium craftsmanship meets cutting-edge technology.',
     highlights: [
       'Premium materials and craftsmanship',
@@ -44,7 +52,7 @@ export const vehicleTypes: VehicleTypeData[] = [
   {
     slug: 'electric',
     name: 'Electric',
-    image: '/src/assets/electric-mercedes-eqc.png',
+    image: electricEqcImg,
     description: 'Drive into the future with zero emissions and instant torque. Our electric vehicle selection offers the latest in sustainable mobility.',
     highlights: [
       'Zero emissions and lower running costs',
@@ -73,7 +81,7 @@ export const vehicleTypes: VehicleTypeData[] = [
   {
     slug: 'hatchback',
     name: 'Hatchback',
-    image: '/src/assets/hatchback-audi-rs5.png',
+    image: hatchbackAudiImg,
     description: 'Compact yet versatile, hatchbacks offer the perfect balance of city maneuverability and practical cargo space.',
     highlights: [
       'Easy parking and city navigation',
@@ -131,7 +139,7 @@ export const vehicleTypes: VehicleTypeData[] = [
   {
     slug: 'truck',
     name: 'Truck',
-    image: '/src/assets/truck-ford-raptor.png',
+    image: truckRaptorImg,
     description: 'Built for work and adventure. Our truck selection offers capability, durability, and the power to handle any job.',
     highlights: [
       'Exceptional towing and payload capacity',
@@ -218,7 +226,7 @@ export const vehicleTypes: VehicleTypeData[] = [
   {
     slug: 'coupe',
     name: 'Coupe',
-    image: '/src/assets/mercedes-luxury-sedan.png',
+    image: mercedesSedanImg,
     description: 'Sleek, stylish, and sporty. Coupes deliver head-turning design with an engaging driving experience.',
     highlights: [
       'Sleek and aerodynamic styling',
@@ -247,7 +255,7 @@ export const vehicleTypes: VehicleTypeData[] = [
   {
     slug: 'minivan',
     name: 'Minivan',
-    image: '/src/assets/minivan-odyssey.png',
+    image: minivanOdysseyImg,
     description: 'The ultimate family vehicle. Minivans offer unmatched interior space, convenience features, and passenger comfort.',
     highlights: [
       'Maximum interior space for passengers',
@@ -276,7 +284,7 @@ export const vehicleTypes: VehicleTypeData[] = [
   {
     slug: 'crossover',
     name: 'Crossover',
-    image: '/src/assets/crossover-lexus-ux.png',
+    image: crossoverLexusImg,
     description: 'The best of both worlds. Crossovers combine car-like handling with SUV versatility and elevated styling.',
     highlights: [
       'Car-like fuel efficiency and handling',
