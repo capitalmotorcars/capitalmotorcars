@@ -308,7 +308,7 @@ export function CircularProcessVisualization({ className, mobileSize = 280 }: Ci
       </div>
 
       {/* Mobile: Compact Circular Visualization */}
-      <div className="md:hidden flex flex-col items-center">
+      <div className="md:hidden flex flex-col items-center pb-6">
         <div className="text-xs font-semibold tracking-wide mb-2 sm:mb-4 text-center" style={{ color: 'hsl(213 27% 70%)' }}>
           How It Works
         </div>

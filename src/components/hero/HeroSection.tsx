@@ -20,7 +20,7 @@ export function HeroSection() {
   ];
 
   return (
-    <section className="relative min-h-[100dvh] lg:min-h-0 flex flex-col pt-4 pb-6 sm:pt-6 sm:pb-8 lg:pt-6 lg:pb-12 overflow-hidden" style={{ backgroundColor: 'hsl(0 0% 3%)' }}>
+    <section className="relative min-h-[100dvh] lg:min-h-0 flex flex-col pt-4 pb-10 sm:pt-6 sm:pb-8 lg:pt-6 lg:pb-12 overflow-hidden" style={{ backgroundColor: 'hsl(0 0% 3%)' }}>
       {/* Background Image - parallax */}
       <div ref={parallaxRef} className="absolute inset-0 overflow-hidden">
         <img
@@ -45,11 +45,11 @@ export function HeroSection() {
       />
 
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 z-10 max-w-full flex-1 flex flex-col min-h-0">
-        <div className="flex flex-col flex-1 lg:flex-row lg:items-center lg:justify-center lg:gap-8 xl:gap-12 max-w-6xl lg:mx-auto min-h-0 justify-start gap-6 sm:gap-8 lg:justify-center">
+        <div className="flex flex-col flex-1 lg:flex-row lg:items-center lg:justify-center lg:gap-8 xl:gap-12 max-w-6xl lg:mx-auto min-h-0 justify-start gap-10 sm:gap-8 lg:justify-center">
           {/* Left Column - Content: heading, subtext (bridge), buttons */}
           <div className="max-w-xl lg:max-w-2xl flex-shrink-0 z-10 lg:pt-0 lg:pb-0 pb-0 sm:pb-2 lg:pb-0 text-center lg:text-left order-1">
             <h1
-              className={`text-3xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-extrabold leading-[1.12] line-clamp-2 max-w-[95vw] sm:max-w-xl lg:max-w-2xl xl:max-w-2xl mb-2 sm:mb-3 lg:mb-5 hero-animate ${
+              className={`text-3xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-extrabold leading-[1.12] line-clamp-3 sm:line-clamp-2 max-w-[95vw] sm:max-w-xl lg:max-w-2xl xl:max-w-2xl mb-2 sm:mb-3 lg:mb-5 hero-animate ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
