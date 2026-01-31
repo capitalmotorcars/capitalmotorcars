@@ -15,6 +15,7 @@ import {
 } from '@/components/ui/select';
 import { Loader2, Shield } from 'lucide-react';
 import { FormSuccessMessage } from './FormSuccessMessage';
+import { getSubmitErrorMessage, getSubmitErrorFromException } from './getSubmitErrorMessage';
 
 const creditSchema = z.object({
   fullName: z.string().min(2, 'Name must be at least 2 characters').max(100),
@@ -69,15 +70,15 @@ export function CreditApplicationForm() {
           notes: data.notes,
         }),
       });
-      await res.json().catch(() => ({}));
+      const json = await res.json().catch(() => ({}));
       if (!res.ok) {
-        setSubmitError('Something went wrong. Please try again.');
+        setSubmitError(getSubmitErrorMessage(res, json));
         return;
       }
       setIsSuccess(true);
       reset();
-    } catch {
-      setSubmitError('Something went wrong. Please try again.');
+    } catch (e) {
+      setSubmitError(getSubmitErrorFromException(e));
     } finally {
       setIsSubmitting(false);
     }
