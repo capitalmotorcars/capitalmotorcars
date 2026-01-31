@@ -70,7 +70,7 @@ export function BrandsCarousel() {
   const duplicatedBrands = [...brands, ...brands];
 
   return (
-    <section className="py-8 md:py-14 bg-[hsl(0_0%_4%)]">
+    <section className="pt-6 pb-6 md:pt-20 md:pb-24 bg-[hsl(0_0%_4%)]">
       <div
         ref={ref}
         className={`scroll-reveal ${isRevealed ? 'revealed' : ''}`}

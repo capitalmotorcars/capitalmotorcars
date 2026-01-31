@@ -8,13 +8,13 @@ export default function TermsOfServicePage() {
         title="Terms of Use | Capital Motor Cars"
         description="Read the terms and conditions for using Capital Motor Cars website and services. Understand your rights and responsibilities."
       />
-      <section className="bg-primary py-16">
+      <section className="bg-primary py-10 md:py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <h1 className="text-3xl md:text-4xl font-bold text-primary-foreground">Terms of Use</h1>
         </div>
       </section>
-      <section className="py-16 bg-background">
-        <div className="container mx-auto px-4 lg:px-8 max-w-3xl prose prose-gray">
+      <section className="py-8 md:py-16 bg-background">
+        <div className="container mx-auto px-4 lg:px-8 max-w-3xl prose prose-gray prose-sm sm:prose-base">
           <p className="text-muted-foreground">Last updated: January 2026</p>
 
           <h2 className="text-xl font-semibold text-primary mt-10">TERMS OF USE - CAPITAL MOTOR CARS, LLC</h2>

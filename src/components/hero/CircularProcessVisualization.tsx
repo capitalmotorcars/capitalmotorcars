@@ -316,7 +316,7 @@ export function CircularProcessVisualization({ className, mobileSize = 280 }: Ci
         <CircularDiagram size={mobileSize} isMobile />
 
         {/* Description panel for mobile */}
-        <div className={cn('w-full max-w-xs', mobileSize <= 220 ? 'mt-2' : 'mt-4')}>
+        <div className="w-full max-w-xs mt-2 sm:mt-4">
           <div
             key={activeStep}
             className={cn(

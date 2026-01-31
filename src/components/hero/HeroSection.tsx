@@ -49,7 +49,7 @@ export function HeroSection() {
           {/* Left Column - Content: heading, subtext (bridge), buttons */}
           <div className="max-w-xl lg:max-w-2xl flex-shrink-0 z-10 lg:pt-0 lg:pb-0 pb-4 sm:pb-6 lg:pb-0 text-center lg:text-left order-1">
             <h1
-              className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-extrabold leading-[1.12] max-w-[90vw] sm:max-w-xl lg:max-w-2xl xl:max-w-2xl mb-2 sm:mb-3 lg:mb-5 hero-animate ${
+              className={`text-3xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-extrabold leading-[1.12] line-clamp-2 max-w-[95vw] sm:max-w-xl lg:max-w-2xl xl:max-w-2xl mb-2 sm:mb-3 lg:mb-5 hero-animate ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
@@ -62,7 +62,7 @@ export function HeroSection() {
               href="https://share.google/uNNUZv8Ot02uvLzbd"
               target="_blank"
               rel="noopener noreferrer"
-              className={`flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-2 lg:gap-3 mb-2 sm:mb-3 lg:mb-6 hero-animate cursor-pointer hover:opacity-80 transition-opacity ${
+              className={`flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-2 lg:gap-3 mb-1.5 sm:mb-3 lg:mb-6 hero-animate cursor-pointer hover:opacity-80 transition-opacity ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
@@ -122,29 +122,56 @@ export function HeroSection() {
               Your trusted automotive partner. We handle leasing, financing, and more so you can enjoy the ride.
             </p>
 
+            {/* Mobile: single CTA + secondary link */}
             <div
-              className={`flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-2 sm:gap-3 hero-animate delay-2 ${
+              className={`sm:hidden flex flex-col items-center gap-2 hero-animate delay-2 ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
-              <MagneticButton strength={0.45} className="w-full sm:w-auto">
+              <MagneticButton strength={0.45} className="w-full min-w-0">
                 <Button
                   asChild
                   size="lg"
-                  className="w-full sm:w-auto h-11 sm:h-12 bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-6 sm:px-8 shrink-0 glow-blue text-sm sm:text-base"
+                  className="w-full h-10 min-h-[44px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-4 shrink-0 glow-blue text-sm"
                 >
                   <Link to="/contact">
                     Start the process
-                    <ArrowRight className="ml-2 w-4 h-4" />
+                    <ArrowRight className="ml-1.5 w-3.5 h-3.5" />
                   </Link>
                 </Button>
               </MagneticButton>
-              <MagneticButton strength={0.35} className="w-full sm:w-auto">
+              <Link
+                to="/services"
+                className="text-sm text-accent hover:text-accent/90 hover:underline underline-offset-2 py-2 min-h-[44px] flex items-center justify-center"
+              >
+                Or view our services →
+              </Link>
+            </div>
+
+            {/* Desktop: both buttons (unchanged) */}
+            <div
+              className={`hidden sm:flex flex-row flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 hero-animate delay-2 ${
+                heroAnimated ? 'animate-in' : ''
+              }`}
+            >
+              <MagneticButton strength={0.45} className="w-full sm:w-auto min-w-0">
+                <Button
+                  asChild
+                  size="lg"
+                  className="w-full sm:w-auto h-10 min-h-[44px] sm:h-12 bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-4 sm:px-8 shrink-0 glow-blue text-sm sm:text-base"
+                >
+                  <Link to="/contact">
+                    Start the process
+                    <ArrowRight className="ml-1.5 sm:ml-2 w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                  </Link>
+                </Button>
+              </MagneticButton>
+              <MagneticButton strength={0.35} className="w-full sm:w-auto min-w-0">
                 <Button
                   asChild
                   variant="ghost"
                   size="lg"
-                  className="w-full sm:w-auto h-11 sm:h-12 border border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white hover:border-white/50 font-medium px-5 sm:px-6 shrink-0 text-sm sm:text-base"
+                  className="w-full sm:w-auto h-10 min-h-[44px] sm:h-12 border border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white hover:border-white/50 font-medium px-4 sm:px-6 shrink-0 text-sm sm:text-base"
                 >
                   <Link to="/services">View Services</Link>
                 </Button>

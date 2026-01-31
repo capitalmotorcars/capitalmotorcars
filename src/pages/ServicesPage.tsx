@@ -123,7 +123,7 @@ export default function ServicesPage() {
       <SectionDivider variant="curved" nextSectionDark />
 
       {/* Services */}
-      <section className="py-8 md:py-14 lg:py-20 bg-[hsl(0_0%_4%)]">
+      <section className="py-6 md:py-14 lg:py-20 bg-[hsl(0_0%_4%)]">
         <div 
           ref={ref}
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${isRevealed ? 'revealed' : ''}`}
@@ -131,7 +131,7 @@ export default function ServicesPage() {
           <h2 className="sr-only">Browse Our Services</h2>
           
           {/* Category Tabs */}
-          <nav aria-label="Service categories" className="flex flex-wrap gap-2 mb-8 md:mb-12 justify-center">
+          <nav aria-label="Service categories" className="flex flex-wrap gap-2 mb-6 md:mb-12 justify-center">
             {categories.map((cat) => (
               <button
                 key={cat.id}

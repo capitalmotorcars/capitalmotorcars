@@ -26,15 +26,15 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <div className={cn(
-      'mb-12',
+      'mb-8 md:mb-12',
       align === 'center' && 'text-center max-w-2xl mx-auto',
       className
     )}>
       <Component className={cn(
         'font-bold mb-4',
         dark ? 'text-white' : 'text-primary',
-        Component === 'h2' && 'text-2xl md:text-3xl lg:text-4xl',
-        Component === 'h3' && 'text-xl md:text-2xl lg:text-3xl',
+        Component === 'h2' && 'text-xl sm:text-2xl md:text-3xl lg:text-4xl',
+        Component === 'h3' && 'text-lg sm:text-xl md:text-2xl lg:text-3xl',
       )}>
         {title}
       </Component>

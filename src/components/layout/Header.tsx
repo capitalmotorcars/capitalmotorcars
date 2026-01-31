@@ -46,7 +46,7 @@ export function Header() {
               loading="eager"
               decoding="async"
               fetchPriority="high"
-              className="h-12 md:h-14 w-auto transition-all duration-300" 
+              className="h-10 sm:h-12 md:h-14 w-auto transition-all duration-300" 
             />
           </Link>
 

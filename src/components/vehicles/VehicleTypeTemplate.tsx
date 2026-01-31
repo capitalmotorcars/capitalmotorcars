@@ -30,7 +30,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
         <div
           ref={heroRef}
           className={cn(
-            'container mx-auto px-4 lg:px-8 py-16 md:py-24 scroll-reveal',
+            'container mx-auto px-4 lg:px-8 py-10 md:py-16 lg:py-24 scroll-reveal',
             heroRevealed && 'revealed'
           )}
         >
@@ -41,12 +41,12 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
                 {vehicle.name} Vehicles
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight line-clamp-2">
                 <span className="text-gradient-heading-dark">Find Your Perfect </span>
                 <span className="text-gradient-hero-highlight">{vehicle.name} Leasing</span>
               </h1>
               
-              <p className="text-lg md:text-xl text-white/85 leading-relaxed max-w-xl">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/85 leading-relaxed max-w-xl">
                 {vehicle.description}
               </p>
               
@@ -62,12 +62,12 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
               </div>
             </div>
             
-            <div className="relative flex items-center justify-center w-full max-w-lg h-[280px] md:h-[340px]">
+            <div className="relative flex items-center justify-center w-full max-w-lg h-[280px] md:h-[340px] px-4 md:px-0">
               <div className="absolute inset-0 bg-gradient-to-r from-accent/10 via-transparent to-accent/5 rounded-3xl blur-3xl" aria-hidden />
               <img
                 src={vehicle.image}
                 alt={`${vehicle.name} vehicle`}
-                className="relative w-full h-full object-contain drop-shadow-2xl animate-float-1"
+                className="relative w-full h-full object-contain drop-shadow-2xl"
               />
             </div>
           </div>
@@ -77,7 +77,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
       <SectionDivider variant="curved" nextSectionDark />
 
       {/* Highlights Section - dark, glass cards, stagger */}
-      <section className="py-8 md:py-14 lg:py-20 bg-[hsl(0_0%_4%)]">
+      <section className="py-6 md:py-14 lg:py-20 bg-[hsl(0_0%_4%)]">
         <div
           ref={highlightsRef}
           className={cn(
@@ -96,7 +96,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
               <div
                 key={index}
                 className={cn(
-                  'group p-6 rounded-xl border border-white/10 bg-white/[0.06] backdrop-blur-sm hover:border-accent/30 transition-all duration-300 hover:shadow-[0_0_20px_hsl(214_77%_50%_/_0.08)]',
+                  'group p-4 sm:p-5 md:p-6 rounded-xl border border-white/10 bg-white/[0.06] backdrop-blur-sm hover:border-accent/30 transition-all duration-300 hover:shadow-[0_0_20px_hsl(214_77%_50%_/_0.08)]',
                   highlightsRevealed && 'stagger-in',
                   highlightsRevealed && index === 0 && 'stagger-in-1',
                   highlightsRevealed && index === 1 && 'stagger-in-2',
@@ -115,7 +115,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
       </section>
 
       {/* Ideal For Section - dark, glass */}
-      <section className="py-8 md:py-14 lg:py-20 bg-[hsl(0_0%_5%)]">
+      <section className="py-6 md:py-14 lg:py-20 bg-[hsl(0_0%_5%)]">
         <div
           ref={idealRef}
           className={cn(
@@ -130,7 +130,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
                 Perfect Match
               </div>
               
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-white mb-6">
                 Who Is This For?
               </h2>
               
@@ -158,7 +158,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
                 <div
                   key={index}
                   className={cn(
-                    'p-5 rounded-xl border border-white/10 bg-white/[0.06] backdrop-blur-sm hover:border-accent/30 transition-all duration-300',
+                    'p-4 sm:p-5 rounded-xl border border-white/10 bg-white/[0.06] backdrop-blur-sm hover:border-accent/30 transition-all duration-300',
                     idealRevealed && 'stagger-in',
                     idealRevealed && `stagger-in-${Math.min(index + 1, 8)}`
                   )}
@@ -175,7 +175,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
       </section>
 
       {/* Features Section - dark, glass */}
-      <section className="py-8 md:py-14 lg:py-20 bg-[hsl(0_0%_4%)]">
+      <section className="py-6 md:py-14 lg:py-20 bg-[hsl(0_0%_4%)]">
         <div
           ref={featuresRef}
           className={cn(
@@ -210,7 +210,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
       </section>
 
       {/* Contact Form Section - dark, glass form */}
-      <section className="py-8 md:py-14 lg:py-20 bg-[hsl(0_0%_5%)]">
+      <section className="py-6 md:py-14 lg:py-20 bg-[hsl(0_0%_5%)]">
         <div
           ref={formRef}
           className={cn(
@@ -219,8 +219,8 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
           )}
         >
           <div className="max-w-2xl mx-auto">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <div className="text-center mb-6 md:mb-10">
+              <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-white mb-4">
                 Interested in a {vehicle.name} Vehicle?
               </h2>
               <p className="text-lg text-white/85">
@@ -229,7 +229,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
             </div>
             
             <div className={cn(
-              'border border-white/10 bg-white/[0.06] backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-[0_0_20px_hsl(214_77%_50%_/_0.05)] [&_label]:text-white [&_input]:bg-white/10 [&_input]:border-white/25 [&_input]:text-white [&_input]:placeholder:text-white/60 [&_textarea]:bg-white/10 [&_textarea]:border-white/25 [&_textarea]:text-white [&_textarea]:placeholder:text-white/60 [&_.text-muted-foreground]:text-white/90 [&_button:not([type=submit])]:bg-white/10 [&_button:not([type=submit])]:border-white/25 [&_button:not([type=submit])]:text-white [&_button:not([type=submit])_[data-placeholder]]:text-white/60',
+              'border border-white/10 bg-white/[0.06] backdrop-blur-sm rounded-xl p-4 sm:p-6 md:p-8 shadow-[0_0_20px_hsl(214_77%_50%_/_0.05)] [&_label]:text-white [&_input]:bg-white/10 [&_input]:border-white/25 [&_input]:text-white [&_input]:placeholder:text-white/60 [&_textarea]:bg-white/10 [&_textarea]:border-white/25 [&_textarea]:text-white [&_textarea]:placeholder:text-white/60 [&_.text-muted-foreground]:text-white/90 [&_button:not([type=submit])]:bg-white/10 [&_button:not([type=submit])]:border-white/25 [&_button:not([type=submit])]:text-white [&_button:not([type=submit])_[data-placeholder]]:text-white/60',
               formRevealed && 'stagger-in stagger-in-1'
             )}>
               <ContactForm

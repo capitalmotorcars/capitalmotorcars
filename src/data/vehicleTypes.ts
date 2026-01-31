@@ -276,7 +276,7 @@ export const vehicleTypes: VehicleTypeData[] = [
   {
     slug: 'crossover',
     name: 'Crossover',
-    image: 'https://pngimg.com/uploads/lexus/lexus_PNG10.png',
+    image: '/src/assets/crossover-lexus-ux.png',
     description: 'The best of both worlds. Crossovers combine car-like handling with SUV versatility and elevated styling.',
     highlights: [
       'Car-like fuel efficiency and handling',
