@@ -16,6 +16,7 @@ import {
 import { Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { FormSuccessMessage } from './FormSuccessMessage';
+import { getSubmitErrorMessage, getSubmitErrorFromException } from './getSubmitErrorMessage';
 
 const contactSchema = z.object({
   fullName: z.string().min(2, 'Name must be at least 2 characters').max(100),
@@ -136,16 +137,16 @@ export function ContactForm({
           message: data.message,
         }),
       });
-      await res.json().catch(() => ({}));
+      const json = await res.json().catch(() => ({}));
       if (!res.ok) {
-        setSubmitError('Something went wrong. Please try again.');
+        setSubmitError(getSubmitErrorMessage(res, json));
         return;
       }
       setIsSuccess(true);
       reset();
       setTimeout(() => setIsSuccess(false), 5000);
-    } catch {
-      setSubmitError('Something went wrong. Please try again.');
+    } catch (e) {
+      setSubmitError(getSubmitErrorFromException(e));
     } finally {
       setIsSubmitting(false);
     }
