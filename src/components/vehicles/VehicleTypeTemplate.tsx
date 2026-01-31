@@ -62,7 +62,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
               </div>
             </div>
             
-            <div className="relative flex items-center justify-center w-full max-w-lg h-[280px] md:h-[340px] px-4 md:px-0">
+            <div className="relative flex items-center justify-center w-full max-w-lg min-w-0 h-[260px] sm:h-[280px] md:h-[340px] px-4 md:px-0">
               <div className="absolute inset-0 bg-gradient-to-r from-accent/10 via-transparent to-accent/5 rounded-3xl blur-3xl" aria-hidden />
               <img
                 src={vehicle.image}
@@ -233,6 +233,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
               formRevealed && 'stagger-in stagger-in-1'
             )}>
               <ContactForm
+                source="vehicle"
                 initialValues={{ vehicleType: vehicle.slug }}
                 hideServiceField
                 showVehicleField={false}
