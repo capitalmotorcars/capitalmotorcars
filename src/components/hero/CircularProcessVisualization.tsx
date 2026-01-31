@@ -41,9 +41,11 @@ interface CircularProcessVisualizationProps {
   className?: string;
   /** Size in px for the mobile diagram (above-the-fold hero). Default 280. */
   mobileSize?: number;
+  /** When true, hide the "How It Works" label inside the mobile block (e.g. when parent provides its own heading). */
+  hideMobileTitle?: boolean;
 }
 
-export function CircularProcessVisualization({ className, mobileSize = 280 }: CircularProcessVisualizationProps) {
+export function CircularProcessVisualization({ className, mobileSize = 280, hideMobileTitle = false }: CircularProcessVisualizationProps) {
   const {
     activeStep,
     setActiveStep,
@@ -309,10 +311,11 @@ export function CircularProcessVisualization({ className, mobileSize = 280 }: Ci
 
       {/* Mobile: Compact Circular Visualization */}
       <div className="md:hidden flex flex-col items-center pt-6 pb-6 border-t border-white/10">
-        <div className="text-xs font-semibold tracking-wide mb-2 sm:mb-4 text-center" style={{ color: 'hsl(213 27% 70%)' }}>
-          How It Works
-        </div>
-        
+        {!hideMobileTitle && (
+          <div className="text-xs font-semibold tracking-wide mb-2 sm:mb-4 text-center" style={{ color: 'hsl(213 27% 70%)' }}>
+            How It Works
+          </div>
+        )}
         <CircularDiagram size={mobileSize} isMobile />
 
         {/* Description panel for mobile */}

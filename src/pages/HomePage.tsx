@@ -36,7 +36,7 @@ export default function HomePage() {
             How It Works
           </h2>
           <div className="flex justify-center">
-            <CircularProcessVisualization mobileSize={200} />
+            <CircularProcessVisualization mobileSize={200} hideMobileTitle />
           </div>
         </div>
       </section>
