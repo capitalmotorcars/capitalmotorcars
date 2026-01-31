@@ -12,7 +12,7 @@ export function FormSuccessMessage({
   timing = "Usually within a few hours"
 }: FormSuccessMessageProps) {
   return (
-    <div className="flex flex-col items-center justify-center py-8 sm:py-12 text-center px-2">
+    <div className="flex flex-col items-center justify-center py-8 sm:py-12 text-center px-2 min-h-[50dvh] max-md:min-h-[40dvh] max-md:py-10">
       {/* Animated Success Icon */}
       <div className="relative mb-4 sm:mb-6">
         {/* Outer glow ring */}
@@ -35,7 +35,7 @@ export function FormSuccessMessage({
       </div>
       
       {/* Title */}
-      <h3 className="text-xl sm:text-2xl font-semibold text-primary mb-2 opacity-0 animate-fade-in-up animation-delay-200">
+      <h3 className="text-xl sm:text-2xl max-md:text-2xl font-semibold text-primary mb-2 opacity-0 animate-fade-in-up animation-delay-200">
         {title}
       </h3>
       

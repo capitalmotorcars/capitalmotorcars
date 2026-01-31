@@ -17,6 +17,7 @@ import { Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { FormSuccessMessage } from './FormSuccessMessage';
 import { getSubmitErrorMessage, getSubmitErrorFromException } from './getSubmitErrorMessage';
+import { WEBHOOK_URL } from '@/lib/webhook';
 
 const contactSchema = z.object({
   fullName: z.string().min(2, 'Name must be at least 2 characters').max(100),
@@ -60,8 +61,6 @@ const messageSuggestions = [
   { value: 'guidance', label: 'General guidance', fullText: "I'm not sure where to start and would like some guidance." },
 ];
 
-const API_BASE = (import.meta as unknown as { env: { VITE_API_URL?: string } }).env?.VITE_API_URL ?? '';
-
 interface ContactFormProps {
   compact?: boolean;
   initialValues?: Partial<ContactFormData>;
@@ -69,6 +68,10 @@ interface ContactFormProps {
   showVehicleField?: boolean;
   /** Source of the form for the lead email (contact page, service page, vehicle page). */
   source?: 'contact' | 'service' | 'vehicle';
+  /** Vehicle name when source is "vehicle" (for webhook payload). */
+  vehicleName?: string;
+  /** Service/page title when source is "service" (for webhook payload). */
+  serviceTitle?: string;
 }
 
 export function ContactForm({ 
@@ -77,6 +80,8 @@ export function ContactForm({
   hideServiceField = false,
   showVehicleField = true,
   source = 'contact',
+  vehicleName,
+  serviceTitle,
 }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -123,22 +128,34 @@ export function ContactForm({
     setIsSubmitting(true);
     setSubmitError(null);
     try {
-      const res = await fetch(`${API_BASE}/api/send-email`, {
+      const serviceLabel =
+        source === 'contact'
+          ? (services.find((s) => s.value === data.service)?.label ?? 'Contact')
+          : source === 'service'
+            ? (serviceTitle ?? 'Service inquiry')
+            : 'N/A';
+      const vehicleLabel =
+        source === 'vehicle'
+          ? (vehicleName ?? data.vehicleType ?? 'N/A')
+          : (vehicleTypeOptions.find((v) => v.value === data.vehicleType)?.label ?? (data.vehicleType ? String(data.vehicleType) : 'N/A'));
+
+      const payload = {
+        Name: data.fullName,
+        Phone: data.phone,
+        Email: data.email,
+        Service: serviceLabel,
+        Vehicle: vehicleLabel,
+        Message: data.message,
+        Source: source,
+      };
+
+      const res = await fetch(WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: 'contact',
-          source,
-          fullName: data.fullName,
-          email: data.email,
-          phone: data.phone,
-          service: data.service,
-          vehicleType: data.vehicleType,
-          message: data.message,
-        }),
+        body: JSON.stringify(payload),
       });
       const json = await res.json().catch(() => ({}));
-      if (!res.ok) {
+      if (res.status < 200 || res.status >= 300) {
         setSubmitError(getSubmitErrorMessage(res, json));
         return;
       }

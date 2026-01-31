@@ -10,7 +10,7 @@ export default function PrivacyPolicyPage() {
       />
       <section className="bg-primary py-10 md:py-16">
         <div className="container mx-auto px-4 lg:px-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-primary-foreground">Privacy Policy</h1>
+          <h1 className="text-3xl md:text-4xl font-bold text-primary-foreground line-clamp-2 max-w-[95vw] md:max-w-none">Privacy Policy</h1>
         </div>
       </section>
       <section className="py-8 md:py-16 bg-background">

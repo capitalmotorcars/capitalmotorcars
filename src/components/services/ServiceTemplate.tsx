@@ -248,6 +248,7 @@ export function ServiceTemplate({
             <div className="border border-white/10 bg-white/[0.06] backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-xl stagger-in stagger-in-1 [&_label]:text-white [&_input]:bg-white/10 [&_input]:border-white/25 [&_input]:text-white [&_input]:placeholder:text-white/60 [&_textarea]:bg-white/10 [&_textarea]:border-white/25 [&_textarea]:text-white [&_textarea]:placeholder:text-white/60 [&_.text-muted-foreground]:text-white/90 [&_button:not([type=submit])]:bg-white/10 [&_button:not([type=submit])]:border-white/25 [&_button:not([type=submit])]:text-white">
               <ContactForm 
                 source="service"
+                serviceTitle={title}
                 compact 
                 initialValues={serviceValue ? { service: serviceValue } : undefined}
                 hideServiceField={!!serviceValue}

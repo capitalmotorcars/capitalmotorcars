@@ -16,6 +16,7 @@ import {
 import { Loader2, Shield } from 'lucide-react';
 import { FormSuccessMessage } from './FormSuccessMessage';
 import { getSubmitErrorMessage, getSubmitErrorFromException } from './getSubmitErrorMessage';
+import { WEBHOOK_URL } from '@/lib/webhook';
 
 const creditSchema = z.object({
   fullName: z.string().min(2, 'Name must be at least 2 characters').max(100),
@@ -36,8 +37,6 @@ const employmentOptions = [
   { value: 'other', label: 'Other' },
 ];
 
-const API_BASE = (import.meta as unknown as { env: { VITE_API_URL?: string } }).env?.VITE_API_URL ?? '';
-
 export function CreditApplicationForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -57,21 +56,21 @@ export function CreditApplicationForm() {
     setIsSubmitting(true);
     setSubmitError(null);
     try {
-      const res = await fetch(`${API_BASE}/api/send-email`, {
+      const payload = {
+        Name: data.fullName,
+        Phone: data.phone,
+        Email: data.email,
+        VehicleOrService: 'Credit Application',
+        Notes: data.notes ?? '',
+      };
+
+      const res = await fetch(WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: 'credit',
-          fullName: data.fullName,
-          email: data.email,
-          phone: data.phone,
-          address: data.address,
-          employmentStatus: data.employmentStatus,
-          notes: data.notes,
-        }),
+        body: JSON.stringify(payload),
       });
       const json = await res.json().catch(() => ({}));
-      if (!res.ok) {
+      if (res.status < 200 || res.status >= 300) {
         setSubmitError(getSubmitErrorMessage(res, json));
         return;
       }
