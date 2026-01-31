@@ -20,7 +20,7 @@ export function HeroSection() {
   ];
 
   return (
-    <section className="relative min-h-0 md:min-h-[100dvh] lg:min-h-0 flex flex-col pt-4 pb-10 sm:pt-6 sm:pb-8 lg:pt-6 lg:pb-12 overflow-visible md:overflow-hidden" style={{ backgroundColor: 'hsl(0 0% 3%)' }}>
+    <section className="relative min-h-0 md:min-h-[100dvh] lg:min-h-0 flex flex-col pt-4 pb-8 sm:pt-6 sm:pb-8 lg:pt-6 lg:pb-12 overflow-visible md:overflow-hidden" style={{ backgroundColor: 'hsl(0 0% 3%)' }}>
       {/* Background Image - parallax */}
       <div ref={parallaxRef} className="absolute inset-0 overflow-hidden">
         <img
@@ -49,7 +49,7 @@ export function HeroSection() {
           {/* Left Column - Content: heading, subtext (bridge), buttons */}
           <div className="max-w-xl lg:max-w-2xl flex-shrink-0 z-10 lg:pt-0 lg:pb-0 pb-0 sm:pb-2 lg:pb-0 text-center lg:text-left order-1">
             <h1
-              className={`text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-extrabold leading-[1.12] sm:line-clamp-2 max-w-full sm:max-w-xl lg:max-w-2xl xl:max-w-2xl mb-2 sm:mb-3 lg:mb-5 hero-animate ${
+              className={`text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-extrabold leading-[1.12] sm:line-clamp-2 max-w-full sm:max-w-xl lg:max-w-2xl xl:max-w-2xl mb-3 sm:mb-4 lg:mb-5 hero-animate ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
