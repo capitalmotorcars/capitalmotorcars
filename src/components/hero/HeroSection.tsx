@@ -20,7 +20,7 @@ export function HeroSection() {
   ];
 
   return (
-    <section className="relative min-h-[100dvh] lg:min-h-0 flex flex-col pt-4 pb-10 sm:pt-6 sm:pb-8 lg:pt-6 lg:pb-12 overflow-hidden" style={{ backgroundColor: 'hsl(0 0% 3%)' }}>
+    <section className="relative min-h-0 md:min-h-[100dvh] lg:min-h-0 flex flex-col pt-4 pb-10 sm:pt-6 sm:pb-8 lg:pt-6 lg:pb-12 overflow-visible md:overflow-hidden" style={{ backgroundColor: 'hsl(0 0% 3%)' }}>
       {/* Background Image - parallax */}
       <div ref={parallaxRef} className="absolute inset-0 overflow-hidden">
         <img
