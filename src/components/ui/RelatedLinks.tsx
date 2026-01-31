@@ -38,7 +38,7 @@ export function RelatedLinks({
               key={link.href}
               to={link.href}
               className={cn(
-                "group flex items-start gap-3 p-4 rounded-lg transition-colors",
+                "group flex items-start gap-3 p-4 min-h-[44px] rounded-lg transition-colors active:opacity-90",
                 dark
                   ? "border border-white/10 bg-white/[0.06] backdrop-blur-sm hover:border-accent/50 hover:bg-white/[0.1]"
                   : "border border-border bg-card hover:border-accent/50 hover:bg-muted/50"

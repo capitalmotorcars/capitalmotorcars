@@ -161,7 +161,6 @@ export function ContactForm({
       }
       setIsSuccess(true);
       reset();
-      setTimeout(() => setIsSuccess(false), 5000);
     } catch (e) {
       setSubmitError(getSubmitErrorFromException(e));
     } finally {
@@ -292,7 +291,7 @@ export function ContactForm({
       <Button
         type="submit"
         disabled={isSubmitting}
-        className="w-full h-11 bg-accent hover:bg-accent/90 text-accent-foreground font-medium md:hover:scale-[1.01] transition-all duration-150"
+        className="w-full min-h-[44px] h-11 bg-accent hover:bg-accent/90 text-accent-foreground font-medium md:hover:scale-[1.01] transition-all duration-150"
       >
         {isSubmitting ? (
           <>

@@ -123,13 +123,13 @@ export function ServiceTemplate({
       <SectionDivider variant="curved" nextSectionDark />
 
       {/* Who This Is For */}
-      <section className="py-6 md:py-12 lg:py-16 bg-[hsl(0_0%_4%)]">
+      <section className="py-8 md:py-16 lg:py-20 bg-[hsl(0_0%_4%)]">
         <div 
           ref={whoRef}
           className={cn('container mx-auto px-4 lg:px-8 scroll-reveal', whoRevealed && 'revealed')}
         >
           <SectionHeading title="Who This Is For" align="left" dark />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-3xl border border-white/10 bg-white/[0.06] backdrop-blur-sm rounded-xl p-4 md:p-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-3xl border border-white/10 bg-white/[0.06] backdrop-blur-sm rounded-xl p-4 md:p-6">
             {whoIsThisFor.map((item, index) => (
               <div
                 key={index}
@@ -165,13 +165,13 @@ export function ServiceTemplate({
       </section>
 
       {/* How It Works */}
-      <section className="py-6 md:py-12 lg:py-16 bg-[hsl(0_0%_4%)]">
+      <section className="py-8 md:py-16 lg:py-20 bg-[hsl(0_0%_4%)]">
         <div 
           ref={howRef}
           className={cn('container mx-auto px-4 lg:px-8 scroll-reveal', howRevealed && 'revealed')}
         >
           <SectionHeading title="How the Process Works" dark />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-5xl mx-auto">
             {howItWorks.map((step, index) => (
               <div
                 key={index}
@@ -189,13 +189,13 @@ export function ServiceTemplate({
       </section>
 
       {/* What to Expect */}
-      <section className="py-6 md:py-12 lg:py-16 bg-[hsl(0_0%_3%)]">
+      <section className="py-8 md:py-16 lg:py-20 bg-[hsl(0_0%_3%)]">
         <div 
           ref={expectRef}
           className={cn('container mx-auto px-4 lg:px-8 scroll-reveal', expectRevealed && 'revealed')}
         >
           <SectionHeading title="What You Can Expect" align="left" dark />
-          <div className="grid md:grid-cols-2 gap-4 max-w-3xl">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-3xl">
             {whatToExpect.map((item, index) => (
               <div
                 key={index}
@@ -210,7 +210,7 @@ export function ServiceTemplate({
       </section>
 
       {/* FAQ */}
-      <section className="py-6 md:py-12 lg:py-16 bg-[hsl(0_0%_4%)]">
+      <section className="py-8 md:py-16 lg:py-20 bg-[hsl(0_0%_4%)]">
         <div 
           ref={faqRef}
           className={cn('container mx-auto px-4 lg:px-8 scroll-reveal', faqRevealed && 'revealed')}
@@ -234,7 +234,7 @@ export function ServiceTemplate({
       </section>
 
       {/* Contact Form */}
-      <section className="py-6 md:py-12 lg:py-16 bg-[hsl(0_0%_3%)]">
+      <section className="py-8 md:py-16 lg:py-20 bg-[hsl(0_0%_3%)]">
         <div 
           ref={formRef}
           className={cn('container mx-auto px-4 lg:px-8 scroll-reveal', formRevealed && 'revealed')}

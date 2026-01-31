@@ -123,7 +123,7 @@ export default function ServicesPage() {
       <SectionDivider variant="curved" nextSectionDark />
 
       {/* Services */}
-      <section className="py-6 md:py-14 lg:py-20 bg-[hsl(0_0%_4%)]">
+      <section className="py-8 md:py-16 lg:py-20 bg-[hsl(0_0%_4%)]">
         <div 
           ref={ref}
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${isRevealed ? 'revealed' : ''}`}
@@ -149,7 +149,7 @@ export default function ServicesPage() {
           </nav>
 
           {/* Services Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 tab-content-enter">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 tab-content-enter">
             {filteredServices.map((service) => (
               <ServiceCard key={service.href} {...service} dark />
             ))}

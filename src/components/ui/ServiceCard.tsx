@@ -27,7 +27,7 @@ export function ServiceCard({
     <Link
       to={href}
       className={cn(
-        'group block glass-card border border-white/10 rounded-xl service-card-hover service-card-glow-track transition-all duration-300',
+        'group block glass-card border border-white/10 rounded-xl service-card-hover service-card-glow-track transition-all duration-300 min-h-[44px]',
         isCore ? 'p-7' : 'p-6'
       )}
     >

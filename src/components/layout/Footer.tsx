@@ -161,12 +161,12 @@ export function Footer() {
               <h3 className="text-sm font-semibold tracking-wide mb-4 text-white">
                 Services
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-1">
                 {footerLinks.services.map((link) => (
                   <li key={link.href}>
                     <Link
                       to={link.href}
-                      className="text-sm hover:underline underline-offset-4"
+                      className="inline-flex items-center min-h-[44px] py-2 text-sm hover:underline underline-offset-4"
                       style={{ color: 'hsl(213 20% 80%)' }}
                     >
                       {link.label}
@@ -181,12 +181,12 @@ export function Footer() {
               <h3 className="text-sm font-semibold tracking-wide mb-4 text-white">
                 Company
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-1">
                 {footerLinks.company.map((link) => (
                   <li key={link.href}>
                     <Link
                       to={link.href}
-                      className="text-sm hover:underline underline-offset-4"
+                      className="inline-flex items-center min-h-[44px] py-2 text-sm hover:underline underline-offset-4"
                       style={{ color: 'hsl(213 20% 80%)' }}
                     >
                       {link.label}
@@ -210,7 +210,7 @@ export function Footer() {
                   <span key={link.href} className="flex items-center gap-4">
                     <Link
                       to={link.href}
-                      className="text-sm hover:underline underline-offset-4"
+                      className="inline-flex items-center min-h-[44px] py-2 text-sm hover:underline underline-offset-4"
                       style={{ color: 'hsl(213 20% 70%)' }}
                     >
                       {link.label}

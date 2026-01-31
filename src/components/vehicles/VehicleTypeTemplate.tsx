@@ -62,8 +62,8 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
               </div>
             </div>
             
-            <div className="relative flex items-center justify-center w-full max-w-lg min-w-0 h-[260px] sm:h-[280px] md:h-[340px] px-4 md:px-0">
-              <div className="absolute inset-0 bg-gradient-to-r from-accent/10 via-transparent to-accent/5 rounded-3xl blur-3xl" aria-hidden />
+            <div className="relative flex items-center justify-center w-full max-w-lg min-w-0 h-[260px] sm:h-[280px] md:h-[340px] px-4 md:px-0 rounded-lg ring-1 ring-white/10">
+              <div className="absolute inset-0 bg-gradient-to-r from-accent/10 via-transparent to-accent/5 rounded-xl blur-3xl" aria-hidden />
               <img
                 src={vehicle.image}
                 alt={`${vehicle.name} vehicle`}
@@ -77,7 +77,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
       <SectionDivider variant="curved" nextSectionDark />
 
       {/* Highlights Section - dark, glass cards, stagger */}
-      <section className="py-6 md:py-14 lg:py-20 bg-[hsl(0_0%_4%)]">
+      <section className="py-8 md:py-16 lg:py-20 bg-[hsl(0_0%_4%)]">
         <div
           ref={highlightsRef}
           className={cn(
@@ -91,7 +91,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
             dark
           />
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-8 md:mt-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-8 md:mt-12">
             {vehicle.highlights.map((highlight, index) => (
               <div
                 key={index}
@@ -115,7 +115,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
       </section>
 
       {/* Ideal For Section - dark, glass */}
-      <section className="py-6 md:py-14 lg:py-20 bg-[hsl(0_0%_5%)]">
+      <section className="py-8 md:py-16 lg:py-20 bg-[hsl(0_0%_4%)]">
         <div
           ref={idealRef}
           className={cn(
@@ -175,7 +175,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
       </section>
 
       {/* Features Section - dark, glass */}
-      <section className="py-6 md:py-14 lg:py-20 bg-[hsl(0_0%_4%)]">
+      <section className="py-8 md:py-16 lg:py-20 bg-[hsl(0_0%_4%)]">
         <div
           ref={featuresRef}
           className={cn(
@@ -189,7 +189,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
             dark
           />
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-8 md:mt-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-8 md:mt-12">
             {vehicle.features.map((feature, index) => (
               <div
                 key={index}
@@ -210,7 +210,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
       </section>
 
       {/* Contact Form Section - dark, glass form */}
-      <section className="py-6 md:py-14 lg:py-20 bg-[hsl(0_0%_5%)]">
+      <section className="py-8 md:py-16 lg:py-20 bg-[hsl(0_0%_4%)]">
         <div
           ref={formRef}
           className={cn(

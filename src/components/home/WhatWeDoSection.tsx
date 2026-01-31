@@ -84,14 +84,14 @@ function ServiceCard({ service, index, isRevealed }: ServiceCardProps) {
     >
       {/* Subtle glow backdrop on hover */}
       <div className={cn(
-        "absolute -inset-3 rounded-3xl blur-2xl transition-opacity duration-500",
+        "absolute -inset-3 rounded-xl blur-2xl transition-opacity duration-500",
         "bg-gradient-to-br from-accent/12 via-accent/10 to-accent/12",
         "opacity-0 group-hover:opacity-100"
       )} />
       
       {/* Glass card */}
       <div className={cn(
-        "relative h-full flex flex-col p-4 md:p-6 lg:p-8 rounded-2xl overflow-hidden",
+        "relative h-full flex flex-col p-4 md:p-6 lg:p-8 rounded-xl overflow-hidden",
         "bg-white/[0.03] backdrop-blur-md",
         "border border-white/[0.08]",
         "transition-all duration-300",
@@ -100,10 +100,10 @@ function ServiceCard({ service, index, isRevealed }: ServiceCardProps) {
       )}>
         {/* Subtle border highlight on hover (static) */}
         <div className={cn(
-          "absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300",
+          "absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300",
           "pointer-events-none"
         )}>
-          <div className="absolute inset-0 rounded-2xl border border-accent/20" />
+          <div className="absolute inset-0 rounded-xl border border-accent/20" />
         </div>
         
         {/* Number indicator with glow */}

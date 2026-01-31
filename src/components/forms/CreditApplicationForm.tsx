@@ -203,7 +203,7 @@ export function CreditApplicationForm() {
         type="submit"
         disabled={isSubmitting}
         size="lg"
-        className="w-full h-12 bg-accent hover:bg-accent/90 text-accent-foreground font-medium md:hover:scale-[1.01] transition-all duration-150"
+        className="w-full min-h-[44px] h-12 bg-accent hover:bg-accent/90 text-accent-foreground font-medium md:hover:scale-[1.01] transition-all duration-150"
       >
         {isSubmitting ? (
           <>

@@ -17,7 +17,7 @@ export default function TermsOfServicePage() {
         <div className="container mx-auto px-4 lg:px-8 max-w-3xl prose prose-gray prose-sm sm:prose-base">
           <p className="text-muted-foreground">Last updated: January 2026</p>
 
-          <h2 className="text-xl font-semibold text-primary mt-10">TERMS OF USE - CAPITAL MOTOR CARS, LLC</h2>
+          <h2 className="text-xl font-bold text-primary mt-10">TERMS OF USE - CAPITAL MOTOR CARS, LLC</h2>
 
           <h3 className="text-lg font-semibold text-primary mt-8">GENERAL</h3>
           <p className="text-muted-foreground">

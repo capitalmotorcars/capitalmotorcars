@@ -85,7 +85,7 @@ export function QuickLeadCapture() {
         <div className="mx-auto max-w-4xl">
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div>
-              <h2 className="text-2xl md:text-3xl font-semibold text-foreground">Get a call back</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">Get a call back</h2>
               <p className="mt-2 text-muted-foreground">
                 Leave your details and we will reach out with next steps. No dealership runaround.
               </p>
