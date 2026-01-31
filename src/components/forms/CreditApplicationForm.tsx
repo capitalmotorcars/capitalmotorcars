@@ -35,9 +35,12 @@ const employmentOptions = [
   { value: 'other', label: 'Other' },
 ];
 
+const API_BASE = (import.meta as unknown as { env: { VITE_API_URL?: string } }).env?.VITE_API_URL ?? '';
+
 export function CreditApplicationForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const {
     register,
@@ -51,14 +54,33 @@ export function CreditApplicationForm() {
 
   const onSubmit = async (data: CreditFormData) => {
     setIsSubmitting(true);
-    
-    // Simulate API call - replace with actual webhook
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    
-    console.log('Credit application submitted:', data);
-    setIsSuccess(true);
-    reset();
-    setIsSubmitting(false);
+    setSubmitError(null);
+    try {
+      const res = await fetch(`${API_BASE}/api/send-email`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'credit',
+          fullName: data.fullName,
+          email: data.email,
+          phone: data.phone,
+          address: data.address,
+          employmentStatus: data.employmentStatus,
+          notes: data.notes,
+        }),
+      });
+      await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setSubmitError('Something went wrong. Please try again.');
+        return;
+      }
+      setIsSuccess(true);
+      reset();
+    } catch {
+      setSubmitError('Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSuccess) {
@@ -170,6 +192,12 @@ export function CreditApplicationForm() {
           during the final application process.
         </p>
       </div>
+
+      {submitError && (
+        <p className="text-sm text-destructive" role="alert">
+          {submitError}
+        </p>
+      )}
 
       <Button
         type="submit"

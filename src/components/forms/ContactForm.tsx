@@ -59,11 +59,15 @@ const messageSuggestions = [
   { value: 'guidance', label: 'General guidance', fullText: "I'm not sure where to start and would like some guidance." },
 ];
 
+const API_BASE = (import.meta as unknown as { env: { VITE_API_URL?: string } }).env?.VITE_API_URL ?? '';
+
 interface ContactFormProps {
   compact?: boolean;
   initialValues?: Partial<ContactFormData>;
   hideServiceField?: boolean;
   showVehicleField?: boolean;
+  /** Source of the form for the lead email (contact page, service page, vehicle page). */
+  source?: 'contact' | 'service' | 'vehicle';
 }
 
 export function ContactForm({ 
@@ -71,9 +75,11 @@ export function ContactForm({
   initialValues, 
   hideServiceField = false,
   showVehicleField = true,
+  source = 'contact',
 }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const {
@@ -114,16 +120,35 @@ export function ContactForm({
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
-    
-    // Simulate API call - replace with actual webhook
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    setIsSuccess(true);
-    reset();
-    
-    // Reset success state after 5 seconds
-    setTimeout(() => setIsSuccess(false), 5000);
-    setIsSubmitting(false);
+    setSubmitError(null);
+    try {
+      const res = await fetch(`${API_BASE}/api/send-email`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'contact',
+          source,
+          fullName: data.fullName,
+          email: data.email,
+          phone: data.phone,
+          service: data.service,
+          vehicleType: data.vehicleType,
+          message: data.message,
+        }),
+      });
+      await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setSubmitError('Something went wrong. Please try again.');
+        return;
+      }
+      setIsSuccess(true);
+      reset();
+      setTimeout(() => setIsSuccess(false), 5000);
+    } catch {
+      setSubmitError('Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSuccess) {
@@ -239,6 +264,12 @@ export function ContactForm({
           <p className="text-xs text-destructive mt-1">{errors.message.message}</p>
         )}
       </div>
+
+      {submitError && (
+        <p className="text-sm text-destructive" role="alert">
+          {submitError}
+        </p>
+      )}
 
       <Button
         type="submit"
