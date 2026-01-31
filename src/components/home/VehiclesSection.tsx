@@ -78,13 +78,13 @@ export function VehiclesSection() {
               key={`${vehicle.brand}-${vehicle.model}`}
               className="group bg-card rounded-lg overflow-hidden card-hover"
             >
-              <div className="aspect-[3/2] overflow-hidden">
+              <div className="aspect-[3/2] overflow-hidden rounded-lg ring-1 ring-border/50">
                 <img
                   src={vehicle.image}
                   alt={`${vehicle.brand} ${vehicle.model}`}
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover drop-shadow-lg group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
               <div className="p-5">

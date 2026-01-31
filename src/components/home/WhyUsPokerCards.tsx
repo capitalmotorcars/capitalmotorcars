@@ -37,7 +37,7 @@ const cards = [
 function Particles({ isActive }: { isActive: boolean }) {
   return (
     <div className={cn(
-      "absolute inset-0 pointer-events-none overflow-hidden rounded-2xl",
+      "absolute inset-0 pointer-events-none overflow-hidden rounded-xl",
       "opacity-0 transition-opacity duration-700",
       isActive && "opacity-100"
     )}>
@@ -186,7 +186,7 @@ export function WhyUsPokerCards() {
                 >
                   {/* Glow backdrop for active card */}
                   <div className={cn(
-                    "absolute -inset-4 rounded-3xl blur-2xl transition-all duration-700",
+                    "absolute -inset-4 rounded-xl blur-2xl transition-all duration-700",
                     "bg-gradient-to-b from-accent/20 via-accent/30 to-accent/20",
                     isActive ? "opacity-100 scale-110" : "opacity-0 scale-100"
                   )} />
@@ -197,7 +197,7 @@ export function WhyUsPokerCards() {
                   {/* Card */}
                   <div
                     className={cn(
-                      "relative p-6 rounded-2xl transition-all duration-500",
+                      "relative p-6 rounded-xl transition-all duration-500",
                       "border bg-gradient-to-b from-white/[0.05] to-white/[0.02]",
                       "backdrop-blur-sm",
                       // Active/hover states

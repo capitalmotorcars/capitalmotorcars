@@ -199,14 +199,14 @@ export function VehicleTypesCarousel() {
                 to={`/vehicles/${type.slug}`}
                 className="flex-shrink-0 flex flex-col items-center group"
               >
-                <div className="w-[220px] h-[140px] sm:w-[280px] sm:h-[175px] md:w-[320px] md:h-[200px] flex items-center justify-center overflow-visible shrink-0">
+                <div className="w-[220px] h-[140px] sm:w-[280px] sm:h-[175px] md:w-[320px] md:h-[200px] flex items-center justify-center overflow-visible shrink-0 rounded-lg overflow-hidden ring-1 ring-white/10">
                   <img
                     src={type.image}
                     alt={type.name}
                     loading="lazy"
                     decoding="async"
                     className={cn(
-                      'w-full h-full object-contain drop-shadow-lg group-hover:scale-[1.02] transition-transform duration-300',
+                      'w-full h-full object-contain drop-shadow-xl group-hover:scale-[1.02] transition-transform duration-300',
                       type.slug === 'luxury' && 'scale-125'
                     )}
                   />

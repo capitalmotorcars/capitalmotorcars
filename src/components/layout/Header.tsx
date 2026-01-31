@@ -85,15 +85,19 @@ export function Header() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className={`lg:hidden mt-4 pb-4 border-t ${isScrolled ? 'border-border bg-background' : 'border-white/20 bg-[hsl(0_0%_3%)]'}`}>
-            <nav className="flex flex-col gap-2 pt-4">
+        {/* Mobile Menu - animated open/close */}
+        <div
+          className={`lg:hidden overflow-hidden transition-all duration-300 ease-out ${
+            isMobileMenuOpen ? 'max-h-[320px] opacity-100' : 'max-h-0 opacity-0'
+          }`}
+        >
+          <div className={`mt-4 pb-4 border-t ${isScrolled ? 'border-border bg-background' : 'border-white/20 bg-[hsl(0_0%_3%)]'}`}>
+            <nav className="flex flex-col gap-1 pt-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+                  className={`flex items-center min-h-[44px] px-4 py-3 text-sm font-medium rounded-md transition-colors ${
                     isScrolled
                       ? (location.pathname === link.href ? 'bg-muted text-accent' : 'text-primary hover:bg-muted')
                       : (location.pathname === link.href ? 'bg-white/10 text-accent' : 'text-white/90 hover:bg-white/10')
@@ -103,13 +107,13 @@ export function Header() {
                 </Link>
               ))}
               <div className="px-4 pt-2">
-                <Button asChild className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
+                <Button asChild className="w-full min-h-[44px] bg-accent hover:bg-accent/90 text-accent-foreground">
                   <Link to="/contact">Schedule a Call</Link>
                 </Button>
               </div>
             </nav>
           </div>
-        )}
+        </div>
       </div>
     </header>
   );
