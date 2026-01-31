@@ -30,11 +30,11 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
         <div
           ref={heroRef}
           className={cn(
-            'container mx-auto px-4 lg:px-8 py-10 md:py-16 lg:py-24 scroll-reveal',
+            'container mx-auto px-4 lg:px-8 py-10 md:py-16 lg:py-24 max-md:py-6 scroll-reveal',
             heroRevealed && 'revealed'
           )}
         >
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 max-md:gap-6 items-center">
             <div className="space-y-6">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/[0.08] text-accent text-sm font-medium">
                 <Star className="w-4 h-4" />
@@ -234,6 +234,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
             )}>
               <ContactForm
                 source="vehicle"
+                vehicleName={vehicle.name}
                 initialValues={{ vehicleType: vehicle.slug }}
                 hideServiceField
                 showVehicleField={false}
