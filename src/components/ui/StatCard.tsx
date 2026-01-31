@@ -10,8 +10,8 @@ export function StatCard({ value, label, dark }: StatCardProps) {
     <div
       className={
         dark
-          ? 'text-center p-7 md:p-8 rounded-lg border border-white/10 bg-white/[0.06] backdrop-blur-sm shadow-[0_0_20px_hsl(214_77%_50%_/_0.04)]'
-          : 'text-center p-7 md:p-8 bg-card border border-border rounded-lg'
+          ? 'text-center p-4 md:p-7 lg:p-8 rounded-lg border border-white/10 bg-white/[0.06] backdrop-blur-sm shadow-[0_0_20px_hsl(214_77%_50%_/_0.04)]'
+          : 'text-center p-4 md:p-7 lg:p-8 bg-card border border-border rounded-lg'
       }
     >
       <div

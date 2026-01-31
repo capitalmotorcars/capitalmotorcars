@@ -105,7 +105,7 @@ export function PeopleSection() {
   const revealed = reducedMotion ? true : isRevealed;
 
   return (
-    <section aria-label="People / Team" className="pt-10 md:pt-20 lg:pt-28 pb-8 md:pb-14 bg-[hsl(0_0%_4%)]">
+    <section aria-label="People / Team" className="py-6 md:py-14 lg:py-20 bg-[hsl(0_0%_4%)]">
       <div
         ref={ref}
         className={cn(
@@ -245,7 +245,7 @@ export function PeopleSection() {
           <div
             className={cn(
               'mt-8 md:mt-14',
-              'grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-8 md:gap-x-10 md:gap-y-14',
+              'grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-10',
               'justify-items-center',
             )}
           >

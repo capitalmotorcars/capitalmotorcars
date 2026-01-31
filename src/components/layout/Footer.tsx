@@ -72,8 +72,8 @@ export function Footer() {
     <footer>
       {/* Main Footer */}
       <div style={{ backgroundColor: 'hsl(0 0% 3%)' }} className="text-white">
-        <div className="container mx-auto px-4 lg:px-8 py-8 md:py-12 lg:py-14">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 lg:gap-14">
+        <div className="container mx-auto px-4 lg:px-8 py-6 md:py-8 lg:py-14">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-14">
             {/* Brand & Social */}
             <div className="text-center md:text-left">
               <Link to="/" className="inline-block mb-4">

@@ -146,7 +146,7 @@ export function WhyUsPokerCards() {
   };
 
   return (
-    <section className="relative py-8 md:py-14 lg:py-20 overflow-hidden" style={{ backgroundColor: 'hsl(0 0% 3%)' }}>
+    <section className="relative py-6 md:py-14 lg:py-20 overflow-hidden" style={{ backgroundColor: 'hsl(0 0% 3%)' }}>
       <BackgroundShimmer />
       
       <div
@@ -241,7 +241,7 @@ export function WhyUsPokerCards() {
                     <div className="relative overflow-hidden">
                       <p
                         className={cn(
-                          "text-sm leading-relaxed transition-all duration-500",
+                          "text-sm sm:text-base leading-relaxed transition-all duration-500",
                           isActive ? "text-white/80" : "text-white/50"
                         )}
                       >
@@ -329,7 +329,7 @@ export function WhyUsPokerCards() {
 
                   <CollapsibleContent className="overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
                     <div className="px-4 pb-4 pt-0">
-                      <p className="text-sm text-white/70 leading-relaxed pl-[52px]">
+                      <p className="text-sm sm:text-base text-white/70 leading-relaxed pl-[52px]">
                         {card.fullText}
                       </p>
                     </div>

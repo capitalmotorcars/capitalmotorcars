@@ -123,13 +123,13 @@ export function ServiceTemplate({
       <SectionDivider variant="curved" nextSectionDark />
 
       {/* Who This Is For */}
-      <section className="py-12 md:py-16 bg-[hsl(0_0%_4%)]">
+      <section className="py-6 md:py-12 lg:py-16 bg-[hsl(0_0%_4%)]">
         <div 
           ref={whoRef}
           className={cn('container mx-auto px-4 lg:px-8 scroll-reveal', whoRevealed && 'revealed')}
         >
           <SectionHeading title="Who This Is For" align="left" dark />
-          <div className="grid md:grid-cols-2 gap-4 max-w-3xl border border-white/10 bg-white/[0.06] backdrop-blur-sm rounded-xl p-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-3xl border border-white/10 bg-white/[0.06] backdrop-blur-sm rounded-xl p-4 md:p-6">
             {whoIsThisFor.map((item, index) => (
               <div
                 key={index}
@@ -150,7 +150,7 @@ export function ServiceTemplate({
           className={cn('container mx-auto px-4 lg:px-8 scroll-reveal', issuesRevealed && 'revealed')}
         >
           <SectionHeading title="Common Issues We Address" align="left" dark />
-          <ul className="space-y-3 max-w-2xl border border-white/10 bg-white/[0.06] backdrop-blur-sm rounded-xl p-6">
+          <ul className="space-y-3 max-w-2xl border border-white/10 bg-white/[0.06] backdrop-blur-sm rounded-xl p-4 md:p-6">
             {commonIssues.map((issue, index) => (
               <li
                 key={index}
@@ -165,17 +165,17 @@ export function ServiceTemplate({
       </section>
 
       {/* How It Works */}
-      <section className="py-12 md:py-16 bg-[hsl(0_0%_4%)]">
+      <section className="py-6 md:py-12 lg:py-16 bg-[hsl(0_0%_4%)]">
         <div 
           ref={howRef}
           className={cn('container mx-auto px-4 lg:px-8 scroll-reveal', howRevealed && 'revealed')}
         >
           <SectionHeading title="How the Process Works" dark />
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto">
             {howItWorks.map((step, index) => (
               <div
                 key={index}
-                className={cn('text-center p-5 border border-white/10 bg-white/[0.06] backdrop-blur-sm rounded-xl stagger-in', `stagger-in-${Math.min(index + 1, 8)}`)}
+                className={cn('text-center p-4 md:p-5 border border-white/10 bg-white/[0.06] backdrop-blur-sm rounded-xl stagger-in', `stagger-in-${Math.min(index + 1, 8)}`)}
               >
                 <div className="w-12 h-12 bg-accent text-accent-foreground rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
                   {index + 1}
@@ -189,7 +189,7 @@ export function ServiceTemplate({
       </section>
 
       {/* What to Expect */}
-      <section className="py-12 md:py-16 bg-[hsl(0_0%_3%)]">
+      <section className="py-6 md:py-12 lg:py-16 bg-[hsl(0_0%_3%)]">
         <div 
           ref={expectRef}
           className={cn('container mx-auto px-4 lg:px-8 scroll-reveal', expectRevealed && 'revealed')}
@@ -210,20 +210,20 @@ export function ServiceTemplate({
       </section>
 
       {/* FAQ */}
-      <section className="py-12 md:py-16 bg-[hsl(0_0%_4%)]">
+      <section className="py-6 md:py-12 lg:py-16 bg-[hsl(0_0%_4%)]">
         <div 
           ref={faqRef}
           className={cn('container mx-auto px-4 lg:px-8 scroll-reveal', faqRevealed && 'revealed')}
         >
           <SectionHeading title="Frequently Asked Questions" dark />
-          <div className="max-w-2xl mx-auto border border-white/10 bg-white/[0.06] backdrop-blur-sm rounded-xl p-6">
+          <div className="max-w-2xl mx-auto border border-white/10 bg-white/[0.06] backdrop-blur-sm rounded-xl p-4 md:p-6">
             <Accordion type="single" collapsible className="w-full [&_[data-state=open]]:text-white [&_button]:text-white [&_button:hover]:text-white/90 [&_.text-muted-foreground]:text-white/85">
               {faqs.map((faq, index) => (
                 <AccordionItem key={index} value={`item-${index}`} className={cn('stagger-in', `stagger-in-${Math.min(index + 1, 8)}`)}>
-                  <AccordionTrigger className="text-left">
+                  <AccordionTrigger className="text-left text-sm sm:text-base">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-white/85">
+                  <AccordionContent className="text-white/85 text-sm sm:text-base">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -234,7 +234,7 @@ export function ServiceTemplate({
       </section>
 
       {/* Contact Form */}
-      <section className="py-12 md:py-16 bg-[hsl(0_0%_3%)]">
+      <section className="py-6 md:py-12 lg:py-16 bg-[hsl(0_0%_3%)]">
         <div 
           ref={formRef}
           className={cn('container mx-auto px-4 lg:px-8 scroll-reveal', formRevealed && 'revealed')}
@@ -245,7 +245,7 @@ export function ServiceTemplate({
               subtitle="Leave your details and we will get back to you."
               dark
             />
-            <div className="border border-white/10 bg-white/[0.06] backdrop-blur-sm p-6 md:p-8 rounded-xl stagger-in stagger-in-1 [&_label]:text-white [&_input]:bg-white/10 [&_input]:border-white/25 [&_input]:text-white [&_input]:placeholder:text-white/60 [&_textarea]:bg-white/10 [&_textarea]:border-white/25 [&_textarea]:text-white [&_textarea]:placeholder:text-white/60 [&_.text-muted-foreground]:text-white/90 [&_button:not([type=submit])]:bg-white/10 [&_button:not([type=submit])]:border-white/25 [&_button:not([type=submit])]:text-white">
+            <div className="border border-white/10 bg-white/[0.06] backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-xl stagger-in stagger-in-1 [&_label]:text-white [&_input]:bg-white/10 [&_input]:border-white/25 [&_input]:text-white [&_input]:placeholder:text-white/60 [&_textarea]:bg-white/10 [&_textarea]:border-white/25 [&_textarea]:text-white [&_textarea]:placeholder:text-white/60 [&_.text-muted-foreground]:text-white/90 [&_button:not([type=submit])]:bg-white/10 [&_button:not([type=submit])]:border-white/25 [&_button:not([type=submit])]:text-white">
               <ContactForm 
                 compact 
                 initialValues={serviceValue ? { service: serviceValue } : undefined}

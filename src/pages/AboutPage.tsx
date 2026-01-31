@@ -75,7 +75,7 @@ export default function AboutPage() {
       <SectionDivider variant="curved" nextSectionDark />
 
       {/* Introduction */}
-      <section className="py-8 md:py-14 lg:py-20 bg-[hsl(0_0%_4%)]">
+      <section className="py-6 md:py-14 lg:py-20 bg-[hsl(0_0%_4%)]">
         <div 
           ref={introRef} 
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${introRevealed ? 'revealed' : ''}`}
@@ -94,13 +94,13 @@ export default function AboutPage() {
       <SectionDivider variant="wave" nextSectionDark />
 
       {/* Our Approach */}
-      <section className="py-8 md:py-14 lg:py-20 bg-[hsl(0_0%_3%)]">
+      <section className="py-6 md:py-14 lg:py-20 bg-[hsl(0_0%_3%)]">
         <div 
           ref={approachRef} 
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${approachRevealed ? 'revealed' : ''}`}
         >
-          <h2 className="text-2xl md:text-3xl font-semibold text-white mb-8 md:mb-12">Our Approach</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <h2 className="text-2xl md:text-3xl font-semibold text-white mb-6 md:mb-8">Our Approach</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
             {approachItems.map((item) => (
               <div key={item.title} className="space-y-4">
                 <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center">
@@ -117,13 +117,13 @@ export default function AboutPage() {
       <SectionDivider variant="diagonal" nextSectionDark />
 
       {/* How We Support */}
-      <section className="py-8 md:py-14 lg:py-20 bg-[hsl(0_0%_4%)]">
+      <section className="py-6 md:py-14 lg:py-20 bg-[hsl(0_0%_4%)]">
         <div 
           ref={supportRef} 
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${supportRevealed ? 'revealed' : ''}`}
         >
           <div className="max-w-3xl">
-            <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4 md:mb-6">How We Support Our Clients</h2>
+            <h2 className="text-2xl md:text-3xl font-semibold text-white mb-6 md:mb-8">How We Support Our Clients</h2>
             <p className="text-base md:text-lg text-white/85 leading-relaxed mb-6">
               Our role is to simplify decision-making and execution. We help clients evaluate options, manage details, and move forward with confidence, whether they are leasing, financing, or managing end-of-lease requirements.
             </p>
@@ -137,16 +137,16 @@ export default function AboutPage() {
       <SectionDivider variant="wave" nextSectionDark />
 
       {/* Locations */}
-      <section className="py-8 md:py-14 lg:py-20 bg-[hsl(0_0%_3%)]">
+      <section className="py-6 md:py-14 lg:py-20 bg-[hsl(0_0%_3%)]">
         <div 
           ref={locationsRef} 
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${locationsRevealed ? 'revealed' : ''}`}
         >
-          <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4">Locations</h2>
-          <p className="text-white/85 mb-8 md:mb-12 max-w-2xl text-base md:text-lg">
+          <h2 className="text-2xl md:text-3xl font-semibold text-white mb-6 md:mb-8">Locations</h2>
+          <p className="text-white/85 mb-6 md:mb-8 max-w-2xl text-base md:text-lg">
             Capital Motor Cars operates across multiple locations to support clients efficiently and locally.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
             {locations.map((location) => (
               <div 
                 key={location.name} 

@@ -39,7 +39,7 @@ export function PageHero({
   const { ref: parallaxRef, offset: parallaxOffset } = useParallax({ speed: 0.08 });
 
   return (
-    <section className="relative bg-primary py-12 md:py-16 lg:py-20 overflow-hidden">
+    <section className="relative bg-primary py-10 md:py-16 lg:py-20 overflow-hidden">
       {/* Mesh gradient background for depth */}
       <div 
         className="absolute inset-0 pointer-events-none"
@@ -66,7 +66,7 @@ export function PageHero({
                 aria-label="Breadcrumb" 
                 className="mb-4 opacity-0 animate-hero-breadcrumb"
               >
-                <ol className="flex items-center gap-1.5 text-sm text-primary-foreground/60">
+                <ol className="flex items-center gap-1.5 text-xs sm:text-sm text-primary-foreground/60">
                   {breadcrumbs.map((crumb, index) => (
                     <li key={index} className="flex items-center gap-1.5">
                       {crumb.href ? (
@@ -104,14 +104,14 @@ export function PageHero({
               </div>
             )}
 
-            {/* Title */}
-            <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-4 md:mb-6 opacity-0 animate-hero-title">
+            {/* Title - exactly 2 lines on mobile */}
+            <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-3 md:mb-6 line-clamp-2 opacity-0 animate-hero-title">
               {title}
             </h1>
 
             {/* Subtitle */}
             {subtitle && (
-              <p className="text-base md:text-lg text-primary-foreground/80 max-w-2xl opacity-0 animate-hero-subtitle">
+              <p className="text-base md:text-lg text-primary-foreground/80 max-w-2xl mb-3 md:mb-4 opacity-0 animate-hero-subtitle">
                 {subtitle}
               </p>
             )}

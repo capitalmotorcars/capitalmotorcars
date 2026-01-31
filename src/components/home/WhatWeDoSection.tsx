@@ -91,7 +91,7 @@ function ServiceCard({ service, index, isRevealed }: ServiceCardProps) {
       
       {/* Glass card */}
       <div className={cn(
-        "relative h-full flex flex-col p-6 md:p-8 rounded-2xl overflow-hidden",
+        "relative h-full flex flex-col p-4 md:p-6 lg:p-8 rounded-2xl overflow-hidden",
         "bg-white/[0.03] backdrop-blur-md",
         "border border-white/[0.08]",
         "transition-all duration-300",
@@ -330,7 +330,7 @@ export function WhatWeDoSection() {
   
   return (
     <section 
-      className="relative py-8 md:py-14 lg:py-20 overflow-hidden"
+      className="relative py-6 md:py-14 lg:py-20 overflow-hidden"
       style={{ backgroundColor: 'hsl(0 0% 3%)' }}
     >
       <BackgroundEffects />
@@ -354,7 +354,7 @@ export function WhatWeDoSection() {
           <ConnectingLines />
           
           {/* Services Grid */}
-          <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+          <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {services.map((service, index) => (
               <ServiceCard 
                 key={service.href} 

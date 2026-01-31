@@ -10,6 +10,7 @@ import electricImage from '@/assets/electric-mercedes-eqc.png';
 import truckImage from '@/assets/truck-ford-raptor.png';
 import luxuryImage from '@/assets/luxury-sedan.png';
 import mercedesLuxurySedanImage from '@/assets/mercedes-luxury-sedan.png';
+import crossoverImage from '@/assets/crossover-lexus-ux.png';
 
 const vehicleTypes = [
   {
@@ -60,7 +61,7 @@ const vehicleTypes = [
   {
     name: 'Crossover',
     slug: 'crossover',
-    image: 'https://pngimg.com/uploads/lexus/lexus_PNG10.png',
+    image: crossoverImage,
   },
 ];
 
@@ -151,7 +152,7 @@ export function VehicleTypesCarousel() {
   const duplicatedTypes = [...vehicleTypes, ...vehicleTypes];
 
   return (
-    <section id="discover" className="pt-10 pb-10 md:pt-20 md:pb-24 bg-[hsl(0_0%_4%)]">
+    <section id="discover" className="pt-6 pb-6 md:pt-20 md:pb-24 bg-[hsl(0_0%_4%)]">
       <div
         ref={ref}
         className={`scroll-reveal ${isRevealed ? 'revealed' : ''}`}
