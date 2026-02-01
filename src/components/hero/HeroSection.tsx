@@ -20,7 +20,7 @@ export function HeroSection() {
   ];
 
   return (
-    <section className="relative min-h-0 md:min-h-[100dvh] lg:min-h-0 flex flex-col py-16 lg:py-24 overflow-visible md:overflow-hidden hero-section" style={{ backgroundColor: 'hsl(0 0% 3%)' }}>
+    <section className="relative min-h-0 md:min-h-[100dvh] lg:min-h-0 flex flex-col py-12 pb-4 md:py-16 md:pb-16 lg:py-24 lg:pb-24 overflow-visible md:overflow-hidden hero-section" style={{ backgroundColor: 'hsl(0 0% 3%)' }}>
       {/* Background Image - parallax, more visible for premium feel */}
       <div ref={parallaxRef} className="absolute inset-0 overflow-hidden min-h-[50vh] md:min-h-[100dvh]">
         <img
@@ -65,7 +65,7 @@ export function HeroSection() {
           {/* Content block: heading, subtext, buttons — centered stacked */}
           <div className="max-w-xl lg:max-w-2xl flex-shrink-0 z-10 mx-auto text-center">
             <h1
-              className={`text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-extrabold leading-[1.12] sm:line-clamp-2 max-w-full sm:max-w-xl lg:max-w-2xl xl:max-w-2xl mb-4 sm:mb-4 lg:mb-5 hero-animate ${
+              className={`text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-extrabold leading-[1.2] line-clamp-none sm:line-clamp-2 max-w-full sm:max-w-xl lg:max-w-2xl xl:max-w-2xl mb-2 sm:mb-4 lg:mb-5 hero-animate ${
                 heroAnimated ? 'animate-in' : ''
               }`}
               style={{ textShadow: '0 2px 12px rgba(0,0,0,0.35)' }}
@@ -139,9 +139,9 @@ export function HeroSection() {
               Your trusted automotive partner. We handle leasing, financing, and more so you can enjoy the ride.
             </p>
 
-            {/* Mobile: single CTA + secondary link — premium tap targets and spacing */}
+            {/* Mobile: single primary CTA — no secondary link; How It Works is next section below */}
             <div
-              className={`sm:hidden flex flex-col items-stretch gap-3 hero-animate delay-2 ${
+              className={`sm:hidden flex flex-col items-stretch hero-animate delay-2 ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
@@ -149,20 +149,14 @@ export function HeroSection() {
                 <Button
                   asChild
                   size="lg"
-                  className="w-full min-h-[48px] h-12 rounded-xl bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-5 py-3 shrink-0 glow-blue text-base shadow-[0_4px_20px_hsl(214_77%_50%_/_0.35)]"
+                  className="w-full min-h-[44px] h-11 rounded-lg bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-4 py-2.5 shrink-0 glow-blue text-sm shadow-[0_2px_12px_hsl(214_77%_50%_/_0.25)]"
                 >
                   <Link to="/contact">
                     Start the process
-                    <ArrowRight className="ml-2 w-4 h-4" />
+                    <ArrowRight className="ml-1.5 w-3.5 h-3.5" />
                   </Link>
                 </Button>
               </MagneticButton>
-              <a
-                href="#how-it-works"
-                className="text-sm text-white/80 hover:text-accent hover:underline underline-offset-2 py-3 min-h-[44px] flex items-center justify-center transition-colors"
-              >
-                See how it works →
-              </a>
             </div>
 
             {/* Desktop: both buttons (unchanged) */}

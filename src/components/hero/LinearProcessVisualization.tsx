@@ -61,7 +61,7 @@ export function LinearProcessVisualization({ className }: LinearProcessVisualiza
             }}
             aria-hidden
           />
-          <div className="relative flex flex-wrap sm:flex-nowrap justify-between gap-y-8 sm:gap-y-8 gap-x-3 sm:gap-x-4">
+          <div className="relative flex flex-wrap sm:flex-nowrap justify-between gap-y-5 sm:gap-y-8 gap-x-2 sm:gap-x-4">
             {processSteps.map((step, index) => {
               const Icon = step.icon;
               const isActive = index === activeStep;
@@ -70,7 +70,7 @@ export function LinearProcessVisualization({ className }: LinearProcessVisualiza
                   key={index}
                   type="button"
                   onClick={() => setActiveStep(index)}
-                  className="flex flex-col items-center flex-1 min-w-[140px] max-w-[200px] sm:max-w-none mx-auto sm:mx-0 text-left cursor-pointer bg-transparent border-0 p-0 transition-opacity duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(0_0%_3%)]"
+                  className="flex flex-col items-center flex-1 min-w-0 sm:min-w-[140px] max-w-[200px] sm:max-w-none mx-auto sm:mx-0 text-left cursor-pointer bg-transparent border-0 p-0 transition-opacity duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(0_0%_3%)]"
                   style={!isActive ? { opacity: 0.7 } : undefined}
                 >
                   {/* Track row: car centered in this column when active */}
@@ -85,30 +85,30 @@ export function LinearProcessVisualization({ className }: LinearProcessVisualiza
                       </div>
                     )}
                   </div>
-                  {/* Circle + number */}
+                  {/* Circle + number — smaller on mobile */}
                   <div
                     className={cn(
-                      'relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 flex-shrink-0 z-10 text-white transition-all duration-300',
+                      'relative flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full border-2 flex-shrink-0 z-10 text-white transition-all duration-300',
                       isActive
                         ? 'ring-2 ring-accent ring-offset-2 ring-offset-[hsl(0_0%_4%)] bg-accent/20 border-accent scale-105 shadow-[0_0_20px_hsl(214_77%_50%_/_0.25)]'
                         : 'bg-[hsl(0_0%_6%)] border-white/20'
                     )}
                   >
-                    <Icon className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={1.5} />
+                    <Icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" strokeWidth={1.5} />
                     <span
-                      className="absolute -top-0.5 -right-0.5 sm:-top-1 sm:-right-1 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-accent text-white text-xs font-bold flex items-center justify-center"
+                      className="absolute -top-0.5 -right-0.5 sm:-top-1 sm:-right-1 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 rounded-full bg-accent text-white text-[10px] sm:text-xs font-bold flex items-center justify-center"
                       aria-hidden
                     >
                       {index + 1}
                     </span>
                   </div>
-                  {/* Title */}
-                  <h3 className="mt-3 sm:mt-4 text-white font-semibold text-sm text-center sm:text-base">
+                  {/* Title — smaller on mobile */}
+                  <h3 className="mt-2 sm:mt-3 md:mt-4 text-white font-semibold text-xs sm:text-sm md:text-base text-center">
                     {step.title}
                   </h3>
-                  {/* Description — max 2 lines */}
+                  {/* Description — max 2 lines, compact on mobile */}
                   <p
-                    className="mt-1 text-xs text-center leading-relaxed max-w-[180px] sm:max-w-none line-clamp-2"
+                    className="mt-0.5 sm:mt-1 text-[11px] sm:text-xs text-center leading-snug max-w-[140px] sm:max-w-[180px] md:max-w-none line-clamp-2"
                     style={{ color: 'hsl(213 27% 70%)' }}
                   >
                     {step.description}
