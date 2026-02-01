@@ -114,7 +114,7 @@ export function HeroSection() {
             
             {/* Subtext: bridge between heading and CTAs - visible on all devices */}
             <p
-              className={`block text-sm sm:text-base md:text-lg lg:text-xl mb-3 sm:mb-4 lg:mb-8 leading-relaxed max-w-lg hero-animate delay-1 ${
+              className={`block text-sm sm:text-base md:text-lg lg:text-xl mb-3 sm:mb-4 lg:mb-8 leading-relaxed max-w-xl lg:max-w-2xl hero-animate delay-1 ${
                 heroAnimated ? 'animate-in' : ''
               }`}
               style={{ color: 'hsl(213 27% 88%)' }}
