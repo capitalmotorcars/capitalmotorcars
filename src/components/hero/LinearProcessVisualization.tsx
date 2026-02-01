@@ -13,27 +13,27 @@ const processSteps: ProcessStep[] = [
   {
     title: 'Personal Auto Consultant',
     icon: Headphones,
-    description: 'A dedicated consultant manages the entire process and stays with you from start to finish.',
+    description: 'A dedicated consultant manages the full process from start to finish.',
   },
   {
     title: 'Lease Search',
     icon: Search,
-    description: 'We search hundreds of dealerships to find the exact vehicle you want, at the right terms.',
+    description: 'We search hundreds of dealers for the right vehicle and terms.',
   },
   {
     title: 'Get Approved',
     icon: ShieldCheck,
-    description: 'We handle the credit process and compare options to secure the most suitable approval.',
+    description: 'We handle credit and compare options for the best approval.',
   },
   {
     title: 'Add-Ons & Preparation',
     icon: SlidersHorizontal,
-    description: 'Any requested upgrades or adjustments are handled before delivery.',
+    description: 'Upgrades and adjustments are handled before delivery.',
   },
   {
     title: 'Delivered to You',
     icon: MapPin,
-    description: 'Your vehicle is delivered to your home or office. We handle the rest.',
+    description: 'Your vehicle is delivered to your home or office.',
   },
 ];
 
@@ -47,32 +47,18 @@ export function LinearProcessVisualization({ className }: LinearProcessVisualiza
     intervalMs: 3500,
   });
 
-  const carLeftPercent = processSteps.length > 1 ? (activeStep / (processSteps.length - 1)) * 100 : 0;
-
   return (
     <div className={cn('w-full', className)}>
       <div className="flex flex-col items-center">
-        {/* Horizontal row: connecting line + car + step circles */}
+        {/* 5 equal columns: line + car (in active column) + step content */}
         <div className="relative w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Connecting line — behind circles */}
+          {/* Connecting line — behind columns */}
           <div
             className="absolute top-6 left-0 right-0 h-px hidden sm:block"
             style={{ backgroundColor: 'hsl(0 0% 100% / 0.2)' }}
             aria-hidden
           />
-          {/* Car icon — drives along the line */}
-          {!prefersReducedMotion && (
-            <div
-              className="absolute hidden sm:block top-6 z-20 -translate-x-1/2 -translate-y-1/2 transition-[left] duration-700 ease-in-out"
-              style={{ left: `${carLeftPercent}%` }}
-              aria-hidden
-            >
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-accent text-accent-foreground shadow-lg">
-                <Car className="w-5 h-5" strokeWidth={1.5} />
-              </div>
-            </div>
-          )}
-          <div className="relative flex flex-wrap justify-between gap-y-10 sm:gap-y-8 gap-x-4">
+          <div className="relative flex flex-wrap sm:flex-nowrap justify-between gap-y-10 sm:gap-y-8 gap-x-4">
             {processSteps.map((step, index) => {
               const Icon = step.icon;
               const isActive = index === activeStep;
@@ -84,6 +70,17 @@ export function LinearProcessVisualization({ className }: LinearProcessVisualiza
                   className="flex flex-col items-center flex-1 min-w-[140px] max-w-[200px] sm:max-w-none mx-auto sm:mx-0 text-left cursor-pointer bg-transparent border-0 p-0 transition-opacity duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(0_0%_3%)]"
                   style={!isActive ? { opacity: 0.7 } : undefined}
                 >
+                  {/* Track row: car centered in this column when active */}
+                  <div className="relative w-full flex justify-center h-12 hidden sm:flex items-center flex-shrink-0">
+                    {!prefersReducedMotion && isActive && (
+                      <div
+                        className="flex items-center justify-center w-10 h-10 rounded-full bg-accent text-accent-foreground shadow-lg z-20"
+                        aria-hidden
+                      >
+                        <Car className="w-5 h-5" strokeWidth={1.5} />
+                      </div>
+                    )}
+                  </div>
                   {/* Circle + number */}
                   <div
                     className={cn(
@@ -105,9 +102,9 @@ export function LinearProcessVisualization({ className }: LinearProcessVisualiza
                   <h3 className="mt-3 text-white font-semibold text-sm text-center sm:text-base">
                     {step.title}
                   </h3>
-                  {/* Description */}
+                  {/* Description — max 2 lines */}
                   <p
-                    className="mt-1 text-xs text-center leading-relaxed max-w-[180px] sm:max-w-none"
+                    className="mt-1 text-xs text-center leading-relaxed max-w-[180px] sm:max-w-none line-clamp-2"
                     style={{ color: 'hsl(213 27% 70%)' }}
                   >
                     {step.description}
