@@ -8,7 +8,6 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { SectionDivider } from '@/components/ui/SectionDivider';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { HeroSection } from '@/components/hero/HeroSection';
-import { CircularProcessVisualization } from '@/components/hero/CircularProcessVisualization';
 import { PeopleSection } from '@/components/home/PeopleSection';
 import { VehicleTypesCarousel } from '@/components/home/VehicleTypesCarousel';
 import { BrandsCarousel } from '@/components/home/BrandsCarousel';
@@ -28,18 +27,6 @@ export default function HomePage() {
       <JsonLd data={organizationSchema} />
       <HeroSection />
       <SectionDivider variant="curved" nextSectionDark />
-
-      {/* How It Works: mobile-only section so hero and diagram never merge */}
-      <section className="md:hidden py-6 pb-10 bg-[hsl(0_0%_4%)]">
-        <div className="container mx-auto px-4 lg:px-8">
-          <h2 className="text-center text-lg font-semibold tracking-wide mb-6" style={{ color: 'hsl(213 27% 70%)' }}>
-            How It Works
-          </h2>
-          <div className="flex justify-center">
-            <CircularProcessVisualization mobileSize={200} hideMobileTitle />
-          </div>
-        </div>
-      </section>
 
       <VehicleTypesCarousel />
       <SectionDivider variant="curved" nextSectionDark />
