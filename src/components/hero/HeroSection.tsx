@@ -22,10 +22,12 @@ export function HeroSection() {
   return (
     <section className="relative min-h-0 md:min-h-[100dvh] lg:min-h-0 flex flex-col py-16 lg:py-24 overflow-visible md:overflow-hidden hero-section" style={{ backgroundColor: 'hsl(0 0% 3%)' }}>
       {/* Background Image - parallax, more visible for premium feel */}
-      <div ref={parallaxRef} className="absolute inset-0 overflow-hidden">
+      <div ref={parallaxRef} className="absolute inset-0 overflow-hidden min-h-[50vh] md:min-h-[100dvh]">
         <img
           src={heroBg}
           alt=""
+          width={1920}
+          height={1080}
           loading="eager"
           decoding="async"
           fetchPriority="high"
