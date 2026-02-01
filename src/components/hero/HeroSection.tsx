@@ -45,7 +45,7 @@ export function HeroSection() {
       />
 
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 z-10 max-w-full flex-1 flex flex-col min-h-0">
-        <div className="flex flex-col flex-1 min-h-0 justify-start gap-12 sm:gap-8">
+        <div className="flex flex-col flex-1 min-h-0 justify-start gap-8 sm:gap-6">
           {/* Content block: heading, subtext, buttons — centered stacked */}
           <div className="max-w-xl lg:max-w-2xl flex-shrink-0 z-10 mx-auto text-center">
             <h1
@@ -180,7 +180,7 @@ export function HeroSection() {
           </div>
 
           {/* How It Works infographic — below content, centered, horizontal linear */}
-          <div className="mt-16 lg:mt-20 w-full flex flex-col items-center px-4 sm:px-6 lg:px-8">
+          <div className="mt-8 lg:mt-10 w-full flex flex-col items-center px-4 sm:px-6 lg:px-8">
             <h2 className="text-center text-lg font-semibold tracking-wide mb-8" style={{ color: 'hsl(213 27% 70%)' }}>
               How It Works
             </h2>
