@@ -121,7 +121,7 @@ export function PeopleSection() {
         />
 
         <div className="max-w-5xl mx-auto">
-        {/* Founder */}
+        {/* Founder — same card size as team on mobile (88px avatar, min-h match) */}
           <div className="flex justify-center">
             <DialogPrimitive.Root open={founderOpen} onOpenChange={setFounderOpen}>
               <DialogPrimitive.Trigger asChild>
@@ -130,6 +130,7 @@ export function PeopleSection() {
                   aria-label="A Note from Our Founder"
                   className={cn(
                     'group text-center focus:outline-none rounded-2xl border border-white/10 bg-white/[0.04] p-4 shadow-[0_8px_32px_rgba(0,0,0,0.2)]',
+                    'min-h-[200px] md:min-h-0 w-full max-w-[min(calc((100%-1rem)/2),220px)] md:max-w-none flex flex-col items-center justify-start',
                     'transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:border-white/20',
                     'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
                     showEntrance && !revealed && 'opacity-0 translate-y-3',
@@ -139,7 +140,7 @@ export function PeopleSection() {
                   )}
                   style={showEntrance ? { transitionDelay: '60ms' } : undefined}
                 >
-                  <div className="relative mx-auto w-[100px] h-[100px] md:w-[156px] md:h-[156px]">
+                  <div className="relative mx-auto w-[88px] h-[88px] md:w-[156px] md:h-[156px] flex-shrink-0">
                     <img
                       src={founder.image}
                       alt={founder.name}
@@ -242,7 +243,7 @@ export function PeopleSection() {
             </DialogPrimitive.Root>
           </div>
 
-          {/* Team */}
+          {/* Team — same card size on mobile (88px avatar, min-h 200px) */}
           <div
             className={cn(
               'mt-8 md:mt-14',
@@ -260,6 +261,7 @@ export function PeopleSection() {
                   onClick={() => setSelectedMember(person)}
                   className={cn(
                     'group text-center focus:outline-none rounded-2xl border border-white/10 bg-white/[0.04] p-4 shadow-[0_8px_32px_rgba(0,0,0,0.2)]',
+                    'min-h-[200px] md:min-h-0 flex flex-col items-center justify-start w-full',
                     'transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:border-white/20',
                     'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
                     showEntrance && !revealed && 'opacity-0 translate-y-3',
@@ -269,7 +271,7 @@ export function PeopleSection() {
                   )}
                   style={showEntrance ? { transitionDelay: `${delay}ms` } : undefined}
                 >
-                  <div className="relative mx-auto w-20 h-20 md:w-[112px] md:h-[112px]">
+                  <div className="relative mx-auto w-[88px] h-[88px] md:w-[112px] md:h-[112px] flex-shrink-0">
                     <img
                       src={person.image}
                       alt={person.name}

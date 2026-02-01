@@ -65,7 +65,7 @@ export function HeroSection() {
           {/* Content block: heading, subtext, buttons — centered stacked */}
           <div className="max-w-xl lg:max-w-2xl flex-shrink-0 z-10 mx-auto text-center">
             <h1
-              className={`text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-extrabold leading-[1.12] sm:line-clamp-2 max-w-full sm:max-w-xl lg:max-w-2xl xl:max-w-2xl mb-3 sm:mb-4 lg:mb-5 hero-animate ${
+              className={`text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-extrabold leading-[1.12] sm:line-clamp-2 max-w-full sm:max-w-xl lg:max-w-2xl xl:max-w-2xl mb-4 sm:mb-4 lg:mb-5 hero-animate ${
                 heroAnimated ? 'animate-in' : ''
               }`}
               style={{ textShadow: '0 2px 12px rgba(0,0,0,0.35)' }}
@@ -131,7 +131,7 @@ export function HeroSection() {
             
             {/* Subtext: bridge between heading and CTAs - visible on all devices */}
             <p
-              className={`block text-sm sm:text-base md:text-lg lg:text-xl mb-3 sm:mb-4 lg:mb-8 leading-relaxed max-w-xl lg:max-w-2xl hero-animate delay-1 ${
+              className={`block text-sm sm:text-base md:text-lg lg:text-xl mb-5 sm:mb-4 lg:mb-8 leading-relaxed max-w-xl lg:max-w-2xl hero-animate delay-1 ${
                 heroAnimated ? 'animate-in' : ''
               }`}
               style={{ color: 'hsl(213 27% 88%)' }}
@@ -139,9 +139,9 @@ export function HeroSection() {
               Your trusted automotive partner. We handle leasing, financing, and more so you can enjoy the ride.
             </p>
 
-            {/* Mobile: single CTA + secondary link */}
+            {/* Mobile: single CTA + secondary link — premium tap targets and spacing */}
             <div
-              className={`sm:hidden flex flex-col items-center gap-2 hero-animate delay-2 ${
+              className={`sm:hidden flex flex-col items-stretch gap-3 hero-animate delay-2 ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
@@ -149,20 +149,20 @@ export function HeroSection() {
                 <Button
                   asChild
                   size="lg"
-                  className="w-full h-10 min-h-[44px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-4 shrink-0 glow-blue text-sm"
+                  className="w-full min-h-[48px] h-12 rounded-xl bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-5 py-3 shrink-0 glow-blue text-base shadow-[0_4px_20px_hsl(214_77%_50%_/_0.35)]"
                 >
                   <Link to="/contact">
                     Start the process
-                    <ArrowRight className="ml-1.5 w-3.5 h-3.5" />
+                    <ArrowRight className="ml-2 w-4 h-4" />
                   </Link>
                 </Button>
               </MagneticButton>
-              <Link
-                to="/services"
-                className="text-sm text-accent hover:text-accent/90 hover:underline underline-offset-2 py-2 min-h-[44px] flex items-center justify-center"
+              <a
+                href="#how-it-works"
+                className="text-sm text-white/80 hover:text-accent hover:underline underline-offset-2 py-3 min-h-[44px] flex items-center justify-center transition-colors"
               >
-                Or view our services →
-              </Link>
+                See how it works →
+              </a>
             </div>
 
             {/* Desktop: both buttons (unchanged) */}
@@ -196,8 +196,8 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* How It Works infographic — premium container on desktop, clean on mobile */}
-          <div className="mt-8 lg:mt-10 w-full flex flex-col items-center px-4 sm:px-6 lg:px-8">
+          {/* How It Works infographic — desktop only; mobile shows in dedicated section below hero */}
+          <div className="hidden md:flex mt-8 lg:mt-10 w-full flex-col items-center px-4 sm:px-6 lg:px-8">
             <div className="w-full max-w-5xl rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-10 shadow-[0_8px_32px_rgba(0,0,0,0.24)]">
               <h2 className="text-center text-lg sm:text-xl font-semibold tracking-wide mb-6 sm:mb-8" style={{ color: 'hsl(213 27% 78%)' }}>
                 How It Works
