@@ -20,8 +20,8 @@ export function HeroSection() {
   ];
 
   return (
-    <section className="relative min-h-0 md:min-h-[100dvh] lg:min-h-0 flex flex-col py-16 lg:py-24 overflow-visible md:overflow-hidden" style={{ backgroundColor: 'hsl(0 0% 3%)' }}>
-      {/* Background Image - parallax */}
+    <section className="relative min-h-0 md:min-h-[100dvh] lg:min-h-0 flex flex-col py-16 lg:py-24 overflow-visible md:overflow-hidden hero-section" style={{ backgroundColor: 'hsl(0 0% 3%)' }}>
+      {/* Background Image - parallax, more visible for premium feel */}
       <div ref={parallaxRef} className="absolute inset-0 overflow-hidden">
         <img
           src={heroBg}
@@ -29,13 +29,27 @@ export function HeroSection() {
           loading="eager"
           decoding="async"
           fetchPriority="high"
-          className="absolute inset-0 w-full h-full object-cover opacity-20 transition-transform duration-100"
+          className="absolute inset-0 w-full h-full object-cover opacity-40 md:opacity-50 transition-transform duration-200 ease-out"
           style={{ transform: `translateY(${parallaxOffset}px)` }}
         />
       </div>
       
-      {/* Dark overlay for CDK-style contrast */}
-      <div className="absolute inset-0" style={{ backgroundColor: 'hsl(0 0% 3% / 0.85)' }} />
+      {/* Gradient overlay: lighter at top for atmosphere, darker at bottom for contrast */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'linear-gradient(to bottom, hsl(0 0% 3% / 0.45) 0%, hsl(0 0% 3% / 0.7) 45%, hsl(0 0% 3% / 0.88) 100%)',
+        }}
+        aria-hidden
+      />
+      {/* Subtle vignette for depth */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-60"
+        style={{
+          background: 'radial-gradient(ellipse 80% 70% at 50% 30%, transparent 0%, hsl(0 0% 0% / 0.4) 100%)',
+        }}
+        aria-hidden
+      />
 
       {/* Gradient fade to next section (dark) - smooth transition */}
       <div
@@ -45,13 +59,14 @@ export function HeroSection() {
       />
 
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 z-10 max-w-full flex-1 flex flex-col min-h-0">
-        <div className="flex flex-col flex-1 min-h-0 justify-start gap-12 sm:gap-8">
+        <div className="flex flex-col flex-1 min-h-0 justify-start gap-8 sm:gap-6">
           {/* Content block: heading, subtext, buttons — centered stacked */}
           <div className="max-w-xl lg:max-w-2xl flex-shrink-0 z-10 mx-auto text-center">
             <h1
               className={`text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-extrabold leading-[1.12] sm:line-clamp-2 max-w-full sm:max-w-xl lg:max-w-2xl xl:max-w-2xl mb-3 sm:mb-4 lg:mb-5 hero-animate ${
                 heroAnimated ? 'animate-in' : ''
               }`}
+              style={{ textShadow: '0 2px 12px rgba(0,0,0,0.35)' }}
             >
               <span className="text-gradient-heading-dark">Find Your Perfect Vehicle with </span>
               <span className="text-gradient-hero-highlight">Zero Dealership Hassle</span>
@@ -179,12 +194,14 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* How It Works infographic — below content, centered, horizontal linear */}
-          <div className="mt-16 lg:mt-20 w-full flex flex-col items-center px-4 sm:px-6 lg:px-8">
-            <h2 className="text-center text-lg font-semibold tracking-wide mb-8" style={{ color: 'hsl(213 27% 70%)' }}>
-              How It Works
-            </h2>
-            <LinearProcessVisualization />
+          {/* How It Works infographic — premium container on desktop, clean on mobile */}
+          <div className="mt-8 lg:mt-10 w-full flex flex-col items-center px-4 sm:px-6 lg:px-8">
+            <div className="w-full max-w-5xl rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-10 shadow-[0_8px_32px_rgba(0,0,0,0.24)]">
+              <h2 className="text-center text-lg sm:text-xl font-semibold tracking-wide mb-6 sm:mb-8" style={{ color: 'hsl(213 27% 78%)' }}>
+                How It Works
+              </h2>
+              <LinearProcessVisualization />
+            </div>
           </div>
         </div>
       </div>

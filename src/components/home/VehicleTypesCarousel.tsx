@@ -165,8 +165,8 @@ export function VehicleTypesCarousel() {
           />
         </div>
 
-        {/* Carousel container */}
-        <div className="relative">
+        {/* Carousel container — premium strip */}
+        <div className="relative mx-4 lg:mx-8 rounded-2xl border border-white/10 bg-white/[0.03] shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
           {/* Navigation arrows */}
           <button
             onClick={() => scroll('left')}
@@ -199,14 +199,14 @@ export function VehicleTypesCarousel() {
                 to={`/vehicles/${type.slug}`}
                 className="flex-shrink-0 flex flex-col items-center group"
               >
-                <div className="w-[220px] h-[140px] sm:w-[280px] sm:h-[175px] md:w-[320px] md:h-[200px] flex items-center justify-center overflow-visible shrink-0 rounded-lg overflow-hidden ring-1 ring-white/10">
+                <div className="w-[220px] h-[140px] sm:w-[280px] sm:h-[175px] md:w-[320px] md:h-[200px] flex items-center justify-center overflow-visible shrink-0 rounded-xl overflow-hidden border border-white/10 bg-white/[0.04] transition-all duration-300 group-hover:scale-[1.02] group-hover:ring-2 group-hover:ring-accent/20 group-hover:shadow-[0_0_24px_hsl(214_77%_50%_/_0.15)]">
                   <img
                     src={type.image}
                     alt={type.name}
                     loading="lazy"
                     decoding="async"
                     className={cn(
-                      'w-full h-full object-contain drop-shadow-xl group-hover:scale-[1.02] transition-transform duration-300',
+                      'w-full h-full object-contain drop-shadow-xl transition-transform duration-300',
                       type.slug === 'luxury' && 'scale-125'
                     )}
                   />

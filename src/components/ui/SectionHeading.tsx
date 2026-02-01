@@ -30,14 +30,23 @@ export function SectionHeading({
       align === 'center' && 'text-center max-w-2xl mx-auto',
       className
     )}>
-      <Component className={cn(
-        'font-bold mb-4 leading-tight',
-        dark ? 'text-white' : 'text-primary',
-        Component === 'h2' && 'text-xl sm:text-2xl md:text-3xl lg:text-4xl',
-        Component === 'h3' && 'text-lg sm:text-xl md:text-2xl lg:text-3xl',
-      )}>
-        {title}
-      </Component>
+      <div className={cn(align === 'center' && 'flex flex-col items-center')}>
+        <Component className={cn(
+          'font-bold mb-4 lg:mb-5 leading-tight',
+          dark ? 'text-white' : 'text-primary',
+          Component === 'h2' && 'text-xl sm:text-2xl md:text-3xl lg:text-4xl',
+          Component === 'h3' && 'text-lg sm:text-xl md:text-2xl lg:text-3xl',
+        )}>
+          {title}
+        </Component>
+        {dark && align === 'center' && (
+          <div
+            className="h-1 w-12 rounded-full shrink-0 mb-2"
+            style={{ background: 'linear-gradient(90deg, hsl(214 77% 50%), hsl(214 77% 50% / 0.5))' }}
+            aria-hidden
+          />
+        )}
+      </div>
       {subtitle && (
         <p className={cn(
           'text-base md:text-lg leading-relaxed',

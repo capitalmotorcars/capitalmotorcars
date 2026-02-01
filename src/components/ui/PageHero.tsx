@@ -56,6 +56,15 @@ export function PageHero({
         }}
       />
 
+      {/* Gradient overlay: darker at bottom for cohesion with home hero */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'linear-gradient(to bottom, transparent 0%, hsl(var(--primary) / 0.15) 70%, hsl(var(--primary) / 0.35) 100%)',
+        }}
+        aria-hidden
+      />
+
       <div className="container mx-auto px-4 lg:px-8 relative">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
           {/* Text Content */}
@@ -105,7 +114,10 @@ export function PageHero({
             )}
 
             {/* Title - exactly 2 lines on mobile */}
-            <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-3 md:mb-6 line-clamp-2 opacity-0 animate-hero-title">
+            <h1 
+              className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-3 md:mb-6 line-clamp-2 opacity-0 animate-hero-title"
+              style={{ textShadow: '0 2px 12px rgba(0,0,0,0.2)' }}
+            >
               {title}
             </h1>
 
@@ -168,7 +180,7 @@ export function PageHero({
               <img
                 src={heroImage}
                 alt={heroImageAlt}
-                className="w-[400px] xl:w-[480px] h-auto object-contain drop-shadow-2xl animate-car-drive-in transition-transform duration-100"
+                className="w-[400px] xl:w-[480px] h-auto object-contain drop-shadow-2xl animate-car-drive-in transition-transform duration-200 ease-out"
                 style={{ transform: `translateY(${parallaxOffset}px)` }}
               />
             </div>

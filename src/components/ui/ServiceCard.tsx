@@ -27,7 +27,10 @@ export function ServiceCard({
     <Link
       to={href}
       className={cn(
-        'group block glass-card border border-white/10 rounded-xl service-card-hover service-card-glow-track transition-all duration-300 min-h-[44px]',
+        'group block transition-all duration-300 min-h-[44px]',
+        dark
+          ? 'glass-card-dark border border-white/10 rounded-2xl service-card-hover hover:ring-2 hover:ring-accent/20 hover:ring-offset-2 hover:ring-offset-[hsl(0_0%_4%)]'
+          : 'glass-card border border-border rounded-xl service-card-hover service-card-glow-track',
         isCore ? 'p-7' : 'p-6'
       )}
     >
@@ -54,9 +57,9 @@ export function ServiceCard({
           <p className={cn('text-sm leading-relaxed', dark ? 'text-white/85' : 'text-muted-foreground')}>
             {description}
           </p>
-          <div className={cn('mt-4 inline-flex items-center gap-1 text-sm font-medium', dark ? 'text-accent' : 'text-accent')}>
+          <div className={cn('mt-4 inline-flex items-center gap-1 text-sm font-medium group-hover:gap-2 transition-[gap] duration-200', dark ? 'text-accent' : 'text-accent')}>
             <span className="story-link">Learn more</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
           </div>
         </div>
       </div>

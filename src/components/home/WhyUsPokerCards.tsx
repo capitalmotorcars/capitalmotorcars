@@ -194,16 +194,16 @@ export function WhyUsPokerCards() {
                   {/* Particles around active card */}
                   <Particles isActive={isActive} />
                   
-                  {/* Card */}
+                  {/* Card — glass style */}
                   <div
                     className={cn(
-                      "relative p-6 rounded-xl transition-all duration-500",
-                      "border bg-gradient-to-b from-white/[0.05] to-white/[0.02]",
+                      "relative p-6 rounded-2xl transition-all duration-500",
+                      "border border-white/10 bg-white/[0.04] shadow-[0_8px_32px_rgba(0,0,0,0.2)]",
                       "backdrop-blur-sm",
                       // Active/hover states
                       isActive
                         ? "border-accent/60 shadow-[0_0_40px_-10px_hsl(214_77%_50%/0.4)] scale-105"
-                        : "border-white/[0.08] hover:border-white/20 hover:bg-white/[0.04]"
+                        : "hover:border-white/20 hover:bg-white/[0.06]"
                     )}
                     style={{
                       boxShadow: isActive
@@ -283,12 +283,12 @@ export function WhyUsPokerCards() {
               >
                 <div
                   className={cn(
-                    "rounded-xl border transition-all duration-300",
+                    "rounded-2xl border transition-all duration-300",
                     "opacity-0 translate-y-4",
                     hasAnimated && "animate-card-reveal",
                     isExpanded
                       ? "border-accent/50 bg-white/[0.05] shadow-[0_0_30px_-10px_hsl(214_77%_50%/0.3)]"
-                      : "border-white/[0.08] bg-transparent"
+                      : "border-white/10 bg-white/[0.04] shadow-[0_8px_32px_rgba(0,0,0,0.2)]"
                   )}
                   style={{
                     animationDelay: `${index * 100}ms`,
