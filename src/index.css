@@ -137,16 +137,16 @@
 }
 
 @layer utilities {
-  /* Scroll reveal animation */
+  /* Scroll reveal animation — optional slight scale for smoother entrance */
   .scroll-reveal {
     opacity: 0;
-    transform: translateY(12px);
-    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    transform: translateY(12px) scale(0.98);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
   }
 
   .scroll-reveal.revealed {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 
   /* Hero stagger animations */
@@ -220,6 +220,10 @@
     .hero-scroll-arrow {
       animation: none;
     }
+    .brands-carousel img {
+      filter: none;
+      opacity: 1;
+    }
   }
 
   /* Page hero badges, key points and stats */
@@ -268,6 +272,14 @@
     border: 1px solid hsl(0 0% 100% / 0.06);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+  }
+
+  /* Premium dark container (hero infographic, forms, stats, cards) */
+  .glass-card-dark {
+    border-radius: 1rem;
+    border: 1px solid hsl(0 0% 100% / 0.1);
+    background: hsl(0 0% 100% / 0.04);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.24);
   }
 
   /* Glow effects */

@@ -39,7 +39,7 @@ function AnimatedCreditSection() {
         ref={ref}
         className={`container mx-auto px-4 lg:px-8 max-w-2xl scroll-reveal ${isRevealed ? 'revealed' : ''}`}
       >
-        <div className="border border-white/10 bg-white/[0.06] backdrop-blur-sm p-4 sm:p-6 md:p-10 rounded-xl shadow-[0_0_20px_hsl(214_77%_50%_/_0.05)] [&_label]:text-white [&_input]:bg-white/10 [&_input]:border-white/25 [&_input]:text-white [&_input]:placeholder:text-white/60 [&_textarea]:bg-white/10 [&_textarea]:border-white/25 [&_textarea]:text-white [&_textarea]:placeholder:text-white/60 [&_.text-muted-foreground]:text-white/90 [&_button:not([type=submit])]:bg-white/10 [&_button:not([type=submit])]:border-white/25 [&_button:not([type=submit])]:text-white [&_button:not([type=submit])_[data-placeholder]]:text-white/60">
+        <div className="glass-card-dark rounded-2xl border border-white/10 bg-white/[0.04] p-4 sm:p-6 md:p-10 [&_label]:text-white [&_input]:bg-white/10 [&_input]:border-white/25 [&_input]:text-white [&_input]:placeholder:text-white/60 [&_input]:focus-visible:ring-accent [&_input]:focus-visible:ring-2 [&_input]:transition-[box-shadow] [&_textarea]:bg-white/10 [&_textarea]:border-white/25 [&_textarea]:text-white [&_textarea]:placeholder:text-white/60 [&_textarea]:focus-visible:ring-accent [&_textarea]:focus-visible:ring-2 [&_textarea]:transition-[box-shadow] [&_.text-muted-foreground]:text-white/90 [&_button:not([type=submit])]:bg-white/10 [&_button:not([type=submit])]:border-white/25 [&_button:not([type=submit])]:text-white [&_button:not([type=submit])_[data-placeholder]]:text-white/60 [&_button:focus-visible]:ring-accent [&_button:focus-visible]:ring-2">
           <CreditApplicationForm />
         </div>
       </div>

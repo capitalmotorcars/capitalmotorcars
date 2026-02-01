@@ -129,7 +129,8 @@ export function PeopleSection() {
                   type="button"
                   aria-label="A Note from Our Founder"
                   className={cn(
-                    'group text-center focus:outline-none',
+                    'group text-center focus:outline-none rounded-2xl border border-white/10 bg-white/[0.04] p-4 shadow-[0_8px_32px_rgba(0,0,0,0.2)]',
+                    'transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:border-white/20',
                     'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
                     showEntrance && !revealed && 'opacity-0 translate-y-3',
                     showEntrance && revealed && 'opacity-100 translate-y-0',
@@ -145,9 +146,9 @@ export function PeopleSection() {
                       loading="lazy"
                       className={cn(
                         'h-full w-full rounded-full object-cover object-top',
-                        'shadow-sm ring-1 ring-border',
+                        'shadow-[0_8px_32px_rgba(0,0,0,0.24)] ring-1 ring-white/10',
                         'transition-transform duration-300 ease-out motion-reduce:transition-none',
-                        'group-hover:scale-[1.01]',
+                        'group-hover:scale-[1.02] group-hover:shadow-lg',
                       )}
                     />
 
@@ -258,7 +259,8 @@ export function PeopleSection() {
                   aria-label={`View ${person.name}'s profile`}
                   onClick={() => setSelectedMember(person)}
                   className={cn(
-                    'group text-center focus:outline-none',
+                    'group text-center focus:outline-none rounded-2xl border border-white/10 bg-white/[0.04] p-4 shadow-[0_8px_32px_rgba(0,0,0,0.2)]',
+                    'transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:border-white/20',
                     'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
                     showEntrance && !revealed && 'opacity-0 translate-y-3',
                     showEntrance && revealed && 'opacity-100 translate-y-0',
@@ -274,9 +276,9 @@ export function PeopleSection() {
                       loading="lazy"
                       className={cn(
                         'h-full w-full rounded-full object-cover object-top',
-                        'shadow-sm ring-1 ring-border',
+                        'shadow-sm ring-1 ring-white/10',
                         'transition-transform duration-300 ease-out motion-reduce:transition-none',
-                        'group-hover:scale-[1.01]',
+                        'group-hover:scale-[1.02]',
                       )}
                     />
 
@@ -328,7 +330,7 @@ export function PeopleSection() {
               <DialogPrimitive.Content
                 className={cn(
                   'fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-2xl -translate-x-1/2 -translate-y-1/2',
-                  'rounded-xl bg-background p-6 md:p-8 shadow-lg ring-1 ring-border',
+                  'rounded-2xl bg-background p-6 md:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.24)] ring-1 ring-white/10',
                   'opacity-0 scale-[0.98]',
                   'data-[state=open]:opacity-100 data-[state=open]:scale-100',
                   'data-[state=closed]:opacity-0 data-[state=closed]:scale-[0.98]',

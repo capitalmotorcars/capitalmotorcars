@@ -49,10 +49,12 @@ export default function HomePage() {
       <section className="py-8 md:py-16 lg:py-20 bg-[hsl(0_0%_4%)]">
         <div className="container mx-auto px-4 lg:px-8">
           <SectionHeading title="Experience You Can Trust" dark />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
-            <StatCard value="30+" label="Years of Industry Experience" dark />
-            <StatCard value="Hundreds" label="of Vehicles Managed End-to-End" dark />
-            <StatCard value="Direct Access" label="to Major Automotive Brands" dark />
+          <div className="max-w-5xl mx-auto rounded-2xl border border-white/10 bg-white/[0.04] p-6 md:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.24)]">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+              <StatCard value="30+" label="Years of Industry Experience" dark />
+              <StatCard value="Hundreds" label="of Vehicles Managed End-to-End" dark />
+              <StatCard value="Direct Access" label="to Major Automotive Brands" dark />
+            </div>
           </div>
         </div>
       </section>
@@ -63,7 +65,7 @@ export default function HomePage() {
       <section className="py-8 md:py-16 lg:py-20" style={{ backgroundColor: 'hsl(0 0% 3%)' }}>
         <div 
           ref={ctaRef}
-          className={`container mx-auto px-4 lg:px-8 text-center scroll-reveal ${ctaRevealed ? 'revealed' : ''}`}
+          className={`container mx-auto px-4 lg:px-8 text-center max-w-3xl rounded-2xl border border-white/10 bg-white/[0.04] py-10 md:py-14 shadow-[0_8px_32px_rgba(0,0,0,0.24)] scroll-reveal ${ctaRevealed ? 'revealed' : ''}`}
         >
           <h2 className="text-2xl md:text-4xl font-bold text-gradient-heading-dark mb-4 md:mb-6 max-w-2xl mx-auto">
             Looking for a simpler way to handle your next vehicle?

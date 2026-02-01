@@ -83,8 +83,8 @@ export function BrandsCarousel() {
           />
         </div>
 
-        {/* Carousel container */}
-        <div className="relative overflow-hidden">
+        {/* Carousel container — premium strip */}
+        <div className="brands-carousel relative overflow-hidden mx-4 lg:mx-8 rounded-2xl border border-white/10 bg-white/[0.03] shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
           {/* Gradient fade edges */}
           <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-[hsl(0_0%_4%)] to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-[hsl(0_0%_4%)] to-transparent z-10 pointer-events-none" />
@@ -92,21 +92,21 @@ export function BrandsCarousel() {
           {/* Scrolling content */}
           <div
             ref={scrollRef}
-            className="flex gap-4 md:gap-12 overflow-x-hidden py-4"
+            className="flex gap-4 md:gap-12 overflow-x-hidden py-6 md:py-8 px-4"
             style={{ scrollBehavior: 'auto' }}
           >
             {duplicatedBrands.map((brand, index) => (
               <div
                 key={`${brand.name}-${index}`}
-                className="flex-shrink-0 flex flex-col items-center justify-center px-2 md:px-6"
+                className="group flex-shrink-0 flex flex-col items-center justify-center px-2 md:px-6"
               >
-                <div className="w-16 h-16 md:w-24 md:h-24 flex items-center justify-center bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                <div className="w-16 h-16 md:w-24 md:h-24 flex items-center justify-center bg-white rounded-xl shadow-sm border border-white/10 transition-all duration-300 group-hover:shadow-md">
                   <img
                     src={brand.logo}
                     alt={brand.name}
                     loading="lazy"
                     decoding="async"
-                    className="h-10 md:h-14 w-auto object-contain transition-all duration-300"
+                    className="h-10 md:h-14 w-auto object-contain transition-all duration-300 grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100"
                   />
                 </div>
                 <span className="mt-2 md:mt-3 text-[10px] md:text-sm font-medium text-white/85">

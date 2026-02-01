@@ -89,11 +89,11 @@ function ServiceCard({ service, index, isRevealed }: ServiceCardProps) {
         "opacity-0 group-hover:opacity-100"
       )} />
       
-      {/* Glass card */}
+      {/* Glass card — align with hero infographic container */}
       <div className={cn(
-        "relative h-full flex flex-col p-4 md:p-6 lg:p-8 rounded-xl overflow-hidden",
-        "bg-white/[0.03] backdrop-blur-md",
-        "border border-white/[0.08]",
+        "relative h-full flex flex-col p-4 md:p-6 lg:p-8 rounded-2xl overflow-hidden",
+        "bg-white/[0.04] backdrop-blur-md",
+        "border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.2)]",
         "transition-all duration-300",
         "group-hover:border-accent/40 group-hover:bg-white/[0.06]",
         "group-hover:-translate-y-1"

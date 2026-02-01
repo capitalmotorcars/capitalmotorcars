@@ -29,7 +29,7 @@ export function HeroSection() {
           loading="eager"
           decoding="async"
           fetchPriority="high"
-          className="absolute inset-0 w-full h-full object-cover opacity-40 md:opacity-50 transition-opacity duration-300"
+          className="absolute inset-0 w-full h-full object-cover opacity-40 md:opacity-50 transition-transform duration-200 ease-out"
           style={{ transform: `translateY(${parallaxOffset}px)` }}
         />
       </div>

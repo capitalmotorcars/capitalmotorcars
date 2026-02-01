@@ -33,7 +33,7 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-background py-3 shadow-md' : 'bg-[hsl(0_0%_3%)] py-3'
+        isScrolled ? 'bg-background/80 backdrop-blur-md py-3 shadow-lg' : 'bg-[hsl(0_0%_3%)] py-3'
       }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
@@ -56,7 +56,7 @@ export function Header() {
               <Link
                 key={link.href}
                 to={link.href}
-                className={`text-sm font-medium transition-colors ${
+                className={`text-sm font-medium transition-colors duration-300 hover:opacity-90 ${
                   isScrolled
                     ? (location.pathname === link.href ? 'text-accent' : 'text-primary hover:text-accent')
                     : (location.pathname === link.href ? 'text-accent' : 'text-white/90 hover:text-white')

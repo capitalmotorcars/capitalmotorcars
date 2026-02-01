@@ -71,7 +71,7 @@ export function Footer() {
   return (
     <footer>
       {/* Main Footer */}
-      <div style={{ backgroundColor: 'hsl(0 0% 3%)' }} className="text-white">
+      <div style={{ backgroundColor: 'hsl(0 0% 3%)' }} className="text-white border-t border-white/10">
         <div className="container mx-auto px-4 lg:px-8 py-6 md:py-8 lg:py-14">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-14">
             {/* Brand & Social */}
@@ -95,7 +95,7 @@ export function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-opacity hover:opacity-100"
+                    className="transition-all duration-300 hover:opacity-100 hover:scale-110"
                     style={{ color: 'hsl(213 20% 75%)', opacity: 0.85 }}
                     aria-label={social.label}
                   >
@@ -106,7 +106,7 @@ export function Footer() {
                   href="https://yelp.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-opacity hover:opacity-100"
+                  className="transition-all duration-300 hover:opacity-100 hover:scale-110"
                   style={{ color: 'hsl(213 20% 75%)', opacity: 0.85 }}
                   aria-label="Yelp"
                 >
@@ -166,7 +166,7 @@ export function Footer() {
                   <li key={link.href}>
                     <Link
                       to={link.href}
-                      className="inline-flex items-center min-h-[44px] py-2 text-sm hover:underline underline-offset-4"
+                      className="inline-flex items-center min-h-[44px] py-2 text-sm hover:underline underline-offset-4 transition-colors duration-200 hover:text-white/95"
                       style={{ color: 'hsl(213 20% 80%)' }}
                     >
                       {link.label}
@@ -186,7 +186,7 @@ export function Footer() {
                   <li key={link.href}>
                     <Link
                       to={link.href}
-                      className="inline-flex items-center min-h-[44px] py-2 text-sm hover:underline underline-offset-4"
+                      className="inline-flex items-center min-h-[44px] py-2 text-sm hover:underline underline-offset-4 transition-colors duration-200 hover:text-white/95"
                       style={{ color: 'hsl(213 20% 80%)' }}
                     >
                       {link.label}

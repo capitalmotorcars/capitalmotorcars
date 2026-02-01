@@ -137,10 +137,10 @@ export default function ServicesPage() {
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
                 aria-pressed={activeCategory === cat.id}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                   activeCategory === cat.id
-                    ? 'bg-accent text-accent-foreground'
-                    : 'text-white/85 hover:text-white hover:bg-white/10 border border-white/20'
+                    ? 'bg-accent text-accent-foreground border-2 border-accent shadow-[0_0_16px_hsl(214_77%_50%_/_0.3)]'
+                    : 'text-white/85 hover:text-white border border-white/10 bg-white/[0.04] hover:bg-white/[0.08] hover:border-white/20'
                 }`}
               >
                 {cat.label}
@@ -148,11 +148,13 @@ export default function ServicesPage() {
             ))}
           </nav>
 
-          {/* Services Grid */}
+          {/* Services Grid — premium container */}
+          <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 md:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.24)]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 tab-content-enter">
             {filteredServices.map((service) => (
               <ServiceCard key={service.href} {...service} dark />
             ))}
+          </div>
           </div>
 
           {/* Additional CTA */}

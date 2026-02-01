@@ -25,7 +25,8 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
 
       {/* Hero Section - dark, brand-aligned */}
       <section className="relative min-h-[60vh] flex items-center overflow-hidden" style={{ backgroundColor: 'hsl(0 0% 3%)' }}>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,hsl(214_77%_50%_/_0.06),transparent_50%)]" aria-hidden />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,hsl(214_77%_50%_/_0.1),transparent_50%)]" aria-hidden />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_70%_80%,hsl(214_77%_50%_/_0.04),transparent)]" aria-hidden />
         
         <div
           ref={heroRef}
@@ -62,8 +63,8 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
               </div>
             </div>
             
-            <div className="relative flex items-center justify-center w-full max-w-lg min-w-0 h-[260px] sm:h-[280px] md:h-[340px] px-4 md:px-0 rounded-lg ring-1 ring-white/10">
-              <div className="absolute inset-0 bg-gradient-to-r from-accent/10 via-transparent to-accent/5 rounded-xl blur-3xl" aria-hidden />
+            <div className="relative flex items-center justify-center w-full max-w-lg min-w-0 h-[260px] sm:h-[280px] md:h-[340px] px-4 md:px-0 rounded-2xl border border-white/10 bg-white/[0.04] shadow-[0_8px_32px_rgba(0,0,0,0.24)]">
+              <div className="absolute inset-0 bg-gradient-to-r from-accent/10 via-transparent to-accent/5 rounded-2xl blur-3xl" aria-hidden />
               <img
                 src={vehicle.image}
                 alt={`${vehicle.name} vehicle`}
@@ -96,7 +97,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
               <div
                 key={index}
                 className={cn(
-                  'group p-4 sm:p-5 md:p-6 rounded-xl border border-white/10 bg-white/[0.06] backdrop-blur-sm hover:border-accent/30 transition-all duration-300 hover:shadow-[0_0_20px_hsl(214_77%_50%_/_0.08)]',
+                  'group p-4 sm:p-5 md:p-6 rounded-2xl border border-white/10 bg-white/[0.04] shadow-[0_8px_32px_rgba(0,0,0,0.2)] backdrop-blur-sm hover:border-accent/30 transition-all duration-300 hover:shadow-[0_0_24px_hsl(214_77%_50%_/_0.12)]',
                   highlightsRevealed && 'stagger-in',
                   highlightsRevealed && index === 0 && 'stagger-in-1',
                   highlightsRevealed && index === 1 && 'stagger-in-2',
@@ -158,7 +159,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
                 <div
                   key={index}
                   className={cn(
-                    'p-4 sm:p-5 rounded-xl border border-white/10 bg-white/[0.06] backdrop-blur-sm hover:border-accent/30 transition-all duration-300',
+                    'p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/[0.04] shadow-[0_8px_32px_rgba(0,0,0,0.2)] backdrop-blur-sm hover:border-accent/30 transition-all duration-300',
                     idealRevealed && 'stagger-in',
                     idealRevealed && `stagger-in-${Math.min(index + 1, 8)}`
                   )}
@@ -194,7 +195,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
               <div
                 key={index}
                 className={cn(
-                  'flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-white/[0.06] backdrop-blur-sm hover:border-accent/30 transition-all duration-300',
+                  'flex items-center gap-4 p-4 rounded-2xl border border-white/10 bg-white/[0.04] shadow-[0_8px_32px_rgba(0,0,0,0.2)] backdrop-blur-sm hover:border-accent/30 transition-all duration-300',
                   featuresRevealed && 'stagger-in',
                   featuresRevealed && `stagger-in-${Math.min(index + 1, 8)}`
                 )}
@@ -229,7 +230,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
             </div>
             
             <div className={cn(
-              'border border-white/10 bg-white/[0.06] backdrop-blur-sm rounded-xl p-4 sm:p-6 md:p-8 shadow-[0_0_20px_hsl(214_77%_50%_/_0.05)] [&_label]:text-white [&_input]:bg-white/10 [&_input]:border-white/25 [&_input]:text-white [&_input]:placeholder:text-white/60 [&_textarea]:bg-white/10 [&_textarea]:border-white/25 [&_textarea]:text-white [&_textarea]:placeholder:text-white/60 [&_.text-muted-foreground]:text-white/90 [&_button:not([type=submit])]:bg-white/10 [&_button:not([type=submit])]:border-white/25 [&_button:not([type=submit])]:text-white [&_button:not([type=submit])_[data-placeholder]]:text-white/60',
+              'glass-card-dark border border-white/10 bg-white/[0.04] backdrop-blur-sm rounded-2xl p-4 sm:p-6 md:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.24)] [&_label]:text-white [&_input]:bg-white/10 [&_input]:border-white/25 [&_input]:text-white [&_input]:placeholder:text-white/60 [&_textarea]:bg-white/10 [&_textarea]:border-white/25 [&_textarea]:text-white [&_textarea]:placeholder:text-white/60 [&_.text-muted-foreground]:text-white/90 [&_button:not([type=submit])]:bg-white/10 [&_button:not([type=submit])]:border-white/25 [&_button:not([type=submit])]:text-white [&_button:not([type=submit])_[data-placeholder]]:text-white/60',
               formRevealed && 'stagger-in stagger-in-1'
             )}>
               <ContactForm

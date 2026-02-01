@@ -96,7 +96,7 @@ export function LinearProcessVisualization({ className }: LinearProcessVisualiza
                   >
                     <Icon className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={1.5} />
                     <span
-                      className="absolute -top-0.5 -right-0.5 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-accent text-white text-xs font-bold flex items-center justify-center"
+                      className="absolute -top-0.5 -right-0.5 sm:-top-1 sm:-right-1 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-accent text-white text-xs font-bold flex items-center justify-center"
                       aria-hidden
                     >
                       {index + 1}
