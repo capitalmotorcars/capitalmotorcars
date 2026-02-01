@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { MagneticButton } from '@/components/ui/MagneticButton';
-import { CircularProcessVisualization } from './CircularProcessVisualization';
+import { LinearProcessVisualization } from './LinearProcessVisualization';
 import { useHeroAnimation } from '@/hooks/useHeroAnimation';
 import { useParallax } from '@/hooks/useParallax';
 import { ArrowRight } from 'lucide-react';
@@ -20,7 +20,7 @@ export function HeroSection() {
   ];
 
   return (
-    <section className="relative min-h-0 md:min-h-[100dvh] lg:min-h-0 flex flex-col pt-4 pb-8 sm:pt-6 sm:pb-8 lg:pt-6 lg:pb-12 overflow-visible md:overflow-hidden" style={{ backgroundColor: 'hsl(0 0% 3%)' }}>
+    <section className="relative min-h-0 md:min-h-[100dvh] lg:min-h-0 flex flex-col py-16 lg:py-24 overflow-visible md:overflow-hidden" style={{ backgroundColor: 'hsl(0 0% 3%)' }}>
       {/* Background Image - parallax */}
       <div ref={parallaxRef} className="absolute inset-0 overflow-hidden">
         <img
@@ -45,9 +45,9 @@ export function HeroSection() {
       />
 
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 z-10 max-w-full flex-1 flex flex-col min-h-0">
-        <div className="flex flex-col flex-1 lg:flex-row lg:items-start lg:justify-center lg:gap-12 xl:gap-16 max-w-6xl lg:mx-auto min-h-0 justify-start gap-12 sm:gap-8 lg:justify-center">
-          {/* Left Column - Content: heading, subtext (bridge), buttons */}
-          <div className="max-w-xl lg:max-w-2xl flex-shrink-0 z-10 lg:pt-0 lg:pb-0 pb-0 sm:pb-2 lg:pb-0 text-center lg:text-left order-1">
+        <div className="flex flex-col flex-1 min-h-0 justify-start gap-12 sm:gap-8">
+          {/* Content block: heading, subtext, buttons — centered stacked */}
+          <div className="max-w-xl lg:max-w-2xl flex-shrink-0 z-10 mx-auto text-center">
             <h1
               className={`text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-extrabold leading-[1.12] sm:line-clamp-2 max-w-full sm:max-w-xl lg:max-w-2xl xl:max-w-2xl mb-3 sm:mb-4 lg:mb-5 hero-animate ${
                 heroAnimated ? 'animate-in' : ''
@@ -62,7 +62,7 @@ export function HeroSection() {
               href="https://share.google/uNNUZv8Ot02uvLzbd"
               target="_blank"
               rel="noopener noreferrer"
-              className={`flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-2 lg:gap-3 mb-1.5 sm:mb-3 lg:mb-6 hero-animate cursor-pointer hover:opacity-80 transition-opacity ${
+              className={`flex flex-col sm:flex-row flex-wrap items-center justify-center gap-2 lg:gap-3 mb-1.5 sm:mb-3 lg:mb-6 hero-animate cursor-pointer hover:opacity-80 transition-opacity ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
@@ -150,7 +150,7 @@ export function HeroSection() {
 
             {/* Desktop: both buttons (unchanged) */}
             <div
-              className={`hidden sm:flex flex-row flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 hero-animate delay-2 ${
+              className={`hidden sm:flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-3 hero-animate delay-2 ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
@@ -179,13 +179,12 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column - Process Visualization: hidden on mobile, shown in separate section below */}
-          <div
-            className="hidden md:flex flex-none lg:flex-1 items-start justify-center min-h-0 mt-0 lg:mt-0 order-2 max-w-full lg:min-h-0 shrink-0 px-4 sm:px-6 md:px-0"
-          >
-            <div className="w-full max-w-[200px] sm:max-w-[260px] md:max-w-[320px] lg:max-w-[420px] xl:max-w-[440px] aspect-square flex items-start justify-center flex-shrink-0 mx-auto">
-              <CircularProcessVisualization mobileSize={200} />
-            </div>
+          {/* How It Works infographic — below content, centered, horizontal linear */}
+          <div className="mt-16 lg:mt-20 w-full flex flex-col items-center px-4 sm:px-6 lg:px-8">
+            <h2 className="text-center text-lg font-semibold tracking-wide mb-8" style={{ color: 'hsl(213 27% 70%)' }}>
+              How It Works
+            </h2>
+            <LinearProcessVisualization />
           </div>
         </div>
       </div>
