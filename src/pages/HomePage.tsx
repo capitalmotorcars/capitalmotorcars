@@ -27,12 +27,12 @@ export default function HomePage() {
       />
       <JsonLd data={organizationSchema} />
       <HeroSection />
-      <SectionDivider variant="curved" nextSectionDark className="h-6 md:h-10" />
+      <SectionDivider variant="curved" nextSectionDark className="h-4 md:h-10" />
 
       {/* How It Works — mobile only; compact section and card */}
       <section
         id="how-it-works"
-        className="md:hidden pt-2 pb-6 px-4 scroll-mt-20"
+        className="md:hidden pt-0 pb-6 px-4 scroll-mt-20"
         style={{ backgroundColor: 'hsl(0 0% 4%)' }}
         aria-labelledby="how-it-works-title"
       >
@@ -44,7 +44,7 @@ export default function HomePage() {
           >
             How It Works
           </h2>
-          <div className="w-full max-w-5xl mx-auto rounded-2xl border border-white/10 bg-white/[0.04] px-3 py-4 shadow-[0_8px_32px_rgba(0,0,0,0.24)]">
+          <div className="w-full max-w-5xl mx-auto rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4 shadow-[0_8px_32px_rgba(0,0,0,0.24)]">
             <LinearProcessVisualization />
           </div>
         </div>

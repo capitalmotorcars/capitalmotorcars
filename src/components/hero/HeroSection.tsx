@@ -20,7 +20,7 @@ export function HeroSection() {
   ];
 
   return (
-    <section className="relative min-h-0 md:min-h-[100dvh] lg:min-h-0 flex flex-col py-12 pb-4 md:py-16 md:pb-16 lg:py-24 lg:pb-24 overflow-visible md:overflow-hidden hero-section" style={{ backgroundColor: 'hsl(0 0% 3%)' }}>
+    <section className="relative min-h-0 md:min-h-[100dvh] lg:min-h-0 flex flex-col pt-10 pb-[max(0.5rem,env(safe-area-inset-bottom))] md:py-16 md:pb-16 lg:py-24 lg:pb-24 overflow-visible md:overflow-hidden hero-section" style={{ backgroundColor: 'hsl(0 0% 3%)' }}>
       {/* Background Image - parallax, more visible for premium feel */}
       <div ref={parallaxRef} className="absolute inset-0 overflow-hidden min-h-[50vh] md:min-h-[100dvh]">
         <img
@@ -36,12 +36,17 @@ export function HeroSection() {
         />
       </div>
       
-      {/* Gradient overlay: lighter at top for atmosphere, darker at bottom for contrast */}
+      {/* Gradient overlay: lighter at top, darker at bottom for contrast */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background: 'linear-gradient(to bottom, hsl(0 0% 3% / 0.45) 0%, hsl(0 0% 3% / 0.7) 45%, hsl(0 0% 3% / 0.88) 100%)',
         }}
+        aria-hidden
+      />
+      {/* Mobile: extra overlay so text reads better in bright light */}
+      <div
+        className="absolute inset-0 pointer-events-none md:hidden bg-[hsl(0_0%_0%_/_0.12)]"
         aria-hidden
       />
       {/* Subtle vignette for depth */}
@@ -61,11 +66,11 @@ export function HeroSection() {
       />
 
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 z-10 max-w-full flex-1 flex flex-col min-h-0">
-        <div className="flex flex-col flex-1 min-h-0 justify-start gap-8 sm:gap-6">
+        <div className="flex flex-col flex-1 min-h-0 justify-start gap-6">
           {/* Content block: heading, subtext, buttons — centered stacked */}
           <div className="max-w-xl lg:max-w-2xl flex-shrink-0 z-10 mx-auto text-center">
             <h1
-              className={`text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-extrabold leading-[1.2] line-clamp-none sm:line-clamp-2 max-w-full sm:max-w-xl lg:max-w-2xl xl:max-w-2xl mb-2 sm:mb-4 lg:mb-5 hero-animate ${
+              className={`text-[1.75rem] sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-extrabold leading-tight sm:leading-[1.2] line-clamp-none sm:line-clamp-2 max-w-full sm:max-w-xl lg:max-w-2xl xl:max-w-2xl mb-2 sm:mb-4 lg:mb-5 hero-animate ${
                 heroAnimated ? 'animate-in' : ''
               }`}
               style={{ textShadow: '0 2px 12px rgba(0,0,0,0.35)' }}
@@ -79,7 +84,7 @@ export function HeroSection() {
               href="https://share.google/uNNUZv8Ot02uvLzbd"
               target="_blank"
               rel="noopener noreferrer"
-              className={`flex flex-col sm:flex-row flex-wrap items-center justify-center gap-2 lg:gap-3 mb-1.5 sm:mb-3 lg:mb-6 hero-animate cursor-pointer hover:opacity-80 transition-opacity ${
+              className={`flex flex-col sm:flex-row flex-wrap items-center justify-center gap-2 lg:gap-3 mb-1 sm:mb-3 lg:mb-6 hero-animate cursor-pointer hover:opacity-80 transition-opacity ${
                 heroAnimated ? 'animate-in' : ''
               }`}
             >
@@ -131,7 +136,7 @@ export function HeroSection() {
             
             {/* Subtext: bridge between heading and CTAs - visible on all devices */}
             <p
-              className={`block text-sm sm:text-base md:text-lg lg:text-xl mb-5 sm:mb-4 lg:mb-8 leading-relaxed max-w-xl lg:max-w-2xl hero-animate delay-1 ${
+              className={`block text-sm sm:text-base md:text-lg lg:text-xl mb-4 lg:mb-8 leading-relaxed max-w-xl lg:max-w-2xl hero-animate delay-1 ${
                 heroAnimated ? 'animate-in' : ''
               }`}
               style={{ color: 'hsl(213 27% 88%)' }}
@@ -139,7 +144,7 @@ export function HeroSection() {
               Your trusted automotive partner. We handle leasing, financing, and more so you can enjoy the ride.
             </p>
 
-            {/* Mobile: single primary CTA — no secondary link; How It Works is next section below */}
+            {/* Mobile: single primary CTA — compact but tappable (40px); How It Works is next below */}
             <div
               className={`sm:hidden flex flex-col items-stretch hero-animate delay-2 ${
                 heroAnimated ? 'animate-in' : ''
@@ -149,7 +154,7 @@ export function HeroSection() {
                 <Button
                   asChild
                   size="lg"
-                  className="w-full min-h-[44px] h-11 rounded-lg bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-4 py-2.5 shrink-0 glow-blue text-sm shadow-[0_2px_12px_hsl(214_77%_50%_/_0.25)]"
+                  className="w-full h-10 min-h-[40px] rounded-lg bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-4 py-2 shrink-0 glow-blue text-sm shadow-[0_2px_12px_hsl(214_77%_50%_/_0.25)]"
                 >
                   <Link to="/contact">
                     Start the process
