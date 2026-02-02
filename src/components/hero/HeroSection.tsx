@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { MagneticButton } from '@/components/ui/MagneticButton';
-import { LinearProcessVisualization } from './LinearProcessVisualization';
+import { CircularProcessVisualization } from './CircularProcessVisualization';
 import { useHeroAnimation } from '@/hooks/useHeroAnimation';
 import { useParallax } from '@/hooks/useParallax';
 import { ArrowRight } from 'lucide-react';
@@ -195,13 +195,13 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* How It Works infographic — desktop only; mobile shows in dedicated section below hero */}
-          <div className="hidden md:flex mt-8 lg:mt-10 w-full flex-col items-center px-4 sm:px-6 lg:px-8">
-            <div className="w-full max-w-5xl rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-10 shadow-[0_8px_32px_rgba(0,0,0,0.24)]">
-              <h2 className="text-center text-lg sm:text-xl font-semibold tracking-wide mb-6 sm:mb-8" style={{ color: 'hsl(213 27% 78%)' }}>
+          {/* How It Works — circular infographic on all breakpoints; card styling from md up */}
+          <div className="flex flex-col items-center w-full mt-4 md:mt-8 lg:mt-10 px-4 sm:px-6 lg:px-8">
+            <div className="w-full max-w-5xl md:rounded-2xl md:border md:border-white/10 md:bg-white/[0.04] md:px-4 md:py-6 lg:px-8 lg:py-10 md:shadow-[0_8px_32px_rgba(0,0,0,0.24)]">
+              <h2 className="text-center text-lg sm:text-xl font-semibold tracking-wide mb-4 md:mb-6 lg:mb-8" style={{ color: 'hsl(213 27% 78%)' }}>
                 How It Works
               </h2>
-              <LinearProcessVisualization />
+              <CircularProcessVisualization mobileSize={260} hideMobileTitle />
             </div>
           </div>
         </div>
