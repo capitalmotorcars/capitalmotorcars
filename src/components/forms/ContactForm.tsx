@@ -170,10 +170,11 @@ export function ContactForm({
 
   if (isSuccess) {
     return (
-      <FormSuccessMessage 
+      <FormSuccessMessage
         title="You're all set!"
         subtitle="A team member will reach out to you shortly."
         timing="Usually within a few hours"
+        showQuickQuestionsCta={false}
       />
     );
   }
