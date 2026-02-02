@@ -8,7 +8,6 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { SectionDivider } from '@/components/ui/SectionDivider';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { HeroSection } from '@/components/hero/HeroSection';
-import { LinearProcessVisualization } from '@/components/hero/LinearProcessVisualization';
 import { PeopleSection } from '@/components/home/PeopleSection';
 import { VehicleTypesCarousel } from '@/components/home/VehicleTypesCarousel';
 import { BrandsCarousel } from '@/components/home/BrandsCarousel';
@@ -28,31 +27,6 @@ export default function HomePage() {
       <JsonLd data={organizationSchema} />
       <HeroSection />
       <SectionDivider variant="curved" nextSectionDark className="h-4 md:h-10" />
-
-      {/* How It Works — mobile only; compact section and card */}
-      <section
-        id="how-it-works"
-        className="md:hidden pt-0 pb-6 px-4 scroll-mt-20"
-        style={{ backgroundColor: 'hsl(0 0% 4%)' }}
-        aria-labelledby="how-it-works-title"
-      >
-        <div className="container mx-auto px-4">
-          <h2
-            id="how-it-works-title"
-            className="text-center text-lg font-semibold tracking-wide mb-4"
-            style={{ color: 'hsl(213 27% 78%)' }}
-          >
-            How It Works
-          </h2>
-          <div className="w-full max-w-5xl mx-auto rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4 shadow-[0_8px_32px_rgba(0,0,0,0.24)]">
-            <LinearProcessVisualization />
-          </div>
-        </div>
-      </section>
-
-      <div className="md:hidden">
-        <SectionDivider variant="curved" nextSectionDark />
-      </div>
 
       <VehicleTypesCarousel />
       <SectionDivider variant="curved" nextSectionDark />
