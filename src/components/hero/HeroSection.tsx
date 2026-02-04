@@ -154,9 +154,9 @@ export function HeroSection() {
         type="button"
         onClick={scrollToNext}
         aria-label="Scroll to next section"
-        className="absolute bottom-9 md:bottom-20 left-1/2 -translate-x-1/2 z-10 flex items-center justify-center text-white/90 hover:text-white transition-colors"
+        className="absolute bottom-10  md:bottom-14  left-1/2 -translate-x-1/2 z-10 flex items-center justify-center text-white/90 hover:text-white transition-colors"
       >
-        <ChevronDown className="w-8 h-8 md:w-12 md:h-12 hero-scroll-arrow" aria-hidden />
+        <ChevronDown className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 hero-scroll-arrow" aria-hidden />
       </button>
     </section>
   );
