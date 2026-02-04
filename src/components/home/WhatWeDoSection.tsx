@@ -4,6 +4,7 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { cn } from '@/lib/utils';
 import { useEffect, useState } from 'react';
+import { BackgroundEffects } from '../ui/BackgroundEffects';
 
 interface Service {
   title: string;
@@ -91,11 +92,9 @@ function ServiceCard({ service, index, isRevealed }: ServiceCardProps) {
       
       {/* Glass card — align with hero infographic container */}
       <div className={cn(
-        "relative h-full flex flex-col p-4 md:p-6 lg:p-8 rounded-2xl overflow-hidden",
-        "bg-white/[0.04] backdrop-blur-md",
-        "border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.2)]",
+        "relative h-full flex flex-col p-4 md:p-6 lg:p-8 rounded-2xl overflow-hidden glass-card-theme",
         "transition-all duration-300",
-        "group-hover:border-accent/40 group-hover:bg-white/[0.06]",
+        "group-hover:border-accent/40 dark:group-hover:bg-white/[0.06]",
         "group-hover:-translate-y-1"
       )}>
         {/* Subtle border highlight on hover (static) */}
@@ -108,8 +107,7 @@ function ServiceCard({ service, index, isRevealed }: ServiceCardProps) {
         
         {/* Number indicator with glow */}
         <span className={cn(
-          "absolute top-4 right-4 text-[10px] font-mono tracking-wider",
-          "text-white/20 group-hover:text-accent/60",
+          "absolute top-4 right-4 text-[10px] font-mono tracking-wider text-section-muted opacity-50 group-hover:text-accent/60",
           "transition-all duration-500"
         )}>
           0{index + 1}
@@ -136,16 +134,16 @@ function ServiceCard({ service, index, isRevealed }: ServiceCardProps) {
         {/* Content */}
         <div className="relative z-10 flex-grow">
           <h3 className={cn(
-            "text-lg md:text-xl font-semibold text-white mb-2",
+            "text-lg md:text-xl font-semibold text-section mb-2",
             "transition-all duration-300",
-            "group-hover:text-white group-hover:tracking-wide"
+            "group-hover:tracking-wide"
           )}>
             {service.title}
           </h3>
           <p className={cn(
-            "text-white/75 text-sm md:text-base leading-relaxed",
+            "text-section-muted text-sm md:text-base leading-relaxed",
             "transition-all duration-300",
-            "group-hover:text-white/90"
+            "group-hover:text-section-muted"
           )}>
             {service.description}
           </p>
@@ -285,57 +283,13 @@ function ConnectingLines() {
   );
 }
 
-function BackgroundEffects() {
-  return (
-    <>
-      {/* Premium gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/[0.02] to-transparent" />
-      
-      {/* Subtle shimmer effect */}
-      <div 
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          background: 'linear-gradient(90deg, transparent 0%, hsl(214 77% 50% / 0.1) 50%, transparent 100%)',
-          backgroundSize: '200% 100%',
-          animation: 'shimmer 8s ease-in-out infinite',
-        }}
-      />
-      
-      {/* Noise texture */}
-      <div 
-        className="absolute inset-0 opacity-[0.012]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-        }}
-      />
-      
-      {/* Floating orbs with enhanced animation */}
-      <div className="absolute top-1/4 left-1/4 w-72 h-72 rounded-full bg-accent/5 blur-[100px] animate-float-orb" />
-      <div className="absolute bottom-1/4 right-1/4 w-56 h-56 rounded-full bg-accent/5 blur-[80px] animate-float-orb-delayed" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-accent/[0.02] blur-[120px] animate-pulse-slow" />
-      
-      {/* Star-like dots */}
-      <div className="absolute top-[15%] left-[10%] w-1 h-1 rounded-full bg-white/20 animate-twinkle" />
-      <div className="absolute top-[25%] right-[15%] w-1.5 h-1.5 rounded-full bg-white/15 animate-twinkle" style={{ animationDelay: '1s' }} />
-      <div className="absolute bottom-[30%] left-[20%] w-1 h-1 rounded-full bg-white/20 animate-twinkle" style={{ animationDelay: '2s' }} />
-      <div className="absolute bottom-[20%] right-[25%] w-1 h-1 rounded-full bg-white/25 animate-twinkle" style={{ animationDelay: '0.5s' }} />
-      <div className="absolute top-[40%] left-[5%] w-0.5 h-0.5 rounded-full bg-white/30 animate-twinkle" style={{ animationDelay: '1.5s' }} />
-      <div className="absolute top-[60%] right-[8%] w-1 h-1 rounded-full bg-white/20 animate-twinkle" style={{ animationDelay: '2.5s' }} />
-    </>
-  );
-}
-
 export function WhatWeDoSection() {
   const { ref, isRevealed } = useScrollReveal();
-  
+
   return (
-    <section 
-      className="relative py-6 md:py-14 lg:py-20 overflow-hidden"
-      style={{ backgroundColor: 'hsl(0 0% 3%)' }}
-    >
-      <BackgroundEffects />
-      
-      <div 
+    <section className="relative py-6 md:py-14 lg:py-20 overflow-hidden ">
+     {/* <BackgroundEffects /> */}
+      <div
         ref={ref}
         className={cn(
           "container relative mx-auto px-4 lg:px-8",
@@ -346,7 +300,6 @@ export function WhatWeDoSection() {
         <SectionHeading
           title="What We Do"
           subtitle="We support customers at every stage of the automotive process."
-          dark
         />
 
         <div className="relative max-w-6xl mx-auto">

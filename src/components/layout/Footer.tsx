@@ -71,7 +71,7 @@ export function Footer() {
   return (
     <footer>
       {/* Main Footer */}
-      <div style={{ backgroundColor: 'hsl(0 0% 3%)' }} className="text-white border-t border-white/10">
+      <div className="text-section border-t border-section">
         <div className="container mx-auto px-4 lg:px-8 py-6 md:py-8 lg:py-14">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-14">
             {/* Brand & Social */}
@@ -82,21 +82,20 @@ export function Footer() {
                   alt="Capital Motor Cars"
                   loading="lazy"
                   decoding="async"
-                  className="h-14 w-auto brightness-0 invert"
+                  className="h-14 w-auto dark:brightness-0 dark:invert"
                 />
               </Link>
-              <p className="text-sm font-medium leading-relaxed mb-7 tracking-[0.15em]" style={{ color: 'hsl(213 12% 62%)' }}>
+              <p className="text-sm font-medium leading-relaxed mb-7 tracking-[0.15em] text-section-muted">
                 Car leasing made easy.
               </p>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 text-section-muted opacity-85 hover:opacity-100">
                 {socialLinks.map((social) => (
                   <a
                     key={social.label}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-all duration-300 hover:opacity-100 hover:scale-110"
-                    style={{ color: 'hsl(213 20% 75%)', opacity: 0.85 }}
+                    className="transition-all duration-300 hover:scale-110"
                     aria-label={social.label}
                   >
                     <social.icon className="h-4 w-4" />
@@ -106,8 +105,7 @@ export function Footer() {
                   href="https://yelp.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-all duration-300 hover:opacity-100 hover:scale-110"
-                  style={{ color: 'hsl(213 20% 75%)', opacity: 0.85 }}
+                  className="transition-all duration-300 hover:scale-110"
                   aria-label="Yelp"
                 >
                   <YelpIcon className="h-4 w-4" />
@@ -117,29 +115,24 @@ export function Footer() {
 
             {/* Locations */}
             <div className="lg:col-span-1">
-              <h3 className="text-sm font-semibold tracking-wide mb-4 text-white">
+              <h3 className="text-sm font-semibold tracking-wide mb-4 text-section">
                 Locations
               </h3>
               <div className="space-y-6">
                 {locations.map((loc, idx) => (
                   <div
                     key={loc.name}
-                    className="text-xs leading-relaxed"
-                    style={{
-                      color: 'hsl(213 20% 80%)',
-                      paddingTop: idx === 0 ? 0 : 16,
-                      borderTop: idx === 0 ? undefined : '1px solid hsl(213 20% 22%)',
-                    }}
+                    className={`text-xs leading-relaxed text-section-muted ${idx === 0 ? '' : 'pt-4 border-t border-section'}`}
                   >
-                    <p className="text-sm font-semibold text-white mb-2">
+                    <p className="text-sm font-semibold text-section mb-2">
                       {loc.name} – {loc.city}
                     </p>
                     <div className="flex items-start gap-2 mb-2">
-                      <MapPin className="h-3.5 w-3.5 mt-0.5 shrink-0" style={{ color: 'hsl(213 20% 65%)' }} />
+                      <MapPin className="h-3.5 w-3.5 mt-0.5 shrink-0 text-section-muted" />
                       <span>{loc.address}</span>
                     </div>
                     <div className="flex items-center gap-2 mb-2">
-                      <Phone className="h-3.5 w-3.5 shrink-0" style={{ color: 'hsl(213 20% 65%)' }} />
+                      <Phone className="h-3.5 w-3.5 shrink-0 text-section-muted" />
                       <a
                         href={`tel:${loc.phone.replace(/\D/g, '')}`}
                         className="hover:underline underline-offset-4"
@@ -148,7 +141,7 @@ export function Footer() {
                       </a>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Building className="h-3.5 w-3.5 shrink-0" style={{ color: 'hsl(213 20% 65%)' }} />
+                      <Building className="h-3.5 w-3.5 shrink-0 text-section-muted" />
                       <span>Fax: {loc.fax}</span>
                     </div>
                   </div>
@@ -158,7 +151,7 @@ export function Footer() {
 
             {/* Services */}
             <div>
-              <h3 className="text-sm font-semibold tracking-wide mb-4 text-white">
+              <h3 className="text-sm font-semibold tracking-wide mb-4 text-section">
                 Services
               </h3>
               <ul className="space-y-1">
@@ -166,8 +159,7 @@ export function Footer() {
                   <li key={link.href}>
                     <Link
                       to={link.href}
-                      className="inline-flex items-center min-h-[44px] py-2 text-sm hover:underline underline-offset-4 transition-colors duration-200 hover:text-white/95"
-                      style={{ color: 'hsl(213 20% 80%)' }}
+                      className="inline-flex items-center min-h-[44px] py-2 text-sm text-section-muted hover:underline underline-offset-4 transition-colors duration-200 hover:text-section"
                     >
                       {link.label}
                     </Link>
@@ -178,7 +170,7 @@ export function Footer() {
 
             {/* Company */}
             <div>
-              <h3 className="text-sm font-semibold tracking-wide mb-4 text-white">
+              <h3 className="text-sm font-semibold tracking-wide mb-4 text-section">
                 Company
               </h3>
               <ul className="space-y-1">
@@ -186,8 +178,7 @@ export function Footer() {
                   <li key={link.href}>
                     <Link
                       to={link.href}
-                      className="inline-flex items-center min-h-[44px] py-2 text-sm hover:underline underline-offset-4 transition-colors duration-200 hover:text-white/95"
-                      style={{ color: 'hsl(213 20% 80%)' }}
+                      className="inline-flex items-center min-h-[44px] py-2 text-sm text-section-muted hover:underline underline-offset-4 transition-colors duration-200 hover:text-section"
                     >
                       {link.label}
                     </Link>
@@ -199,10 +190,10 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div style={{ borderTop: '1px solid hsl(213 20% 30%)' }}>
+        <div className="border-t border-section">
           <div className="container mx-auto px-4 lg:px-8 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-sm" style={{ color: 'hsl(213 20% 70%)' }}>
+              <p className="text-sm text-section-muted">
                 © {new Date().getFullYear()} Capital Motor Cars. All rights reserved.
               </p>
               <div className="flex items-center gap-4">
@@ -210,13 +201,12 @@ export function Footer() {
                   <span key={link.href} className="flex items-center gap-4">
                     <Link
                       to={link.href}
-                      className="inline-flex items-center min-h-[44px] py-2 text-sm hover:underline underline-offset-4"
-                      style={{ color: 'hsl(213 20% 70%)' }}
+                      className="inline-flex items-center min-h-[44px] py-2 text-sm text-section-muted hover:underline underline-offset-4"
                     >
                       {link.label}
                     </Link>
                     {idx < footerLinks.legal.length - 1 && (
-                      <span style={{ color: 'hsl(213 20% 50%)' }}>|</span>
+                      <span className="text-section-muted opacity-60">|</span>
                     )}
                   </span>
                 ))}

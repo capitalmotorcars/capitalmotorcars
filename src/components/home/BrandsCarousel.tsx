@@ -1,6 +1,7 @@
-import { useEffect, useRef } from 'react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { Marquee } from '@/components/ui/Marquee';
+import { cn } from '@/lib/utils';
 
 const brands = [
   { name: 'BMW', logo: 'https://www.carlogos.org/car-logos/bmw-logo.png' },
@@ -19,102 +20,59 @@ const brands = [
   { name: 'Tesla', logo: 'https://www.carlogos.org/car-logos/tesla-logo.png' },
 ];
 
+function BrandCard({ name, logo }: { name: string; logo: string }) {
+  return (
+    <div
+      className={cn(
+        'group/card relative flex h-full w-36 shrink-0 cursor-default overflow-hidden rounded-xl border p-4',
+        'flex-col items-center justify-center text-center',
+        'bg-white/90 border-border/80 shadow-black/5',
+        'dark:bg-white/[0.03] dark:border-white/5 dark:shadow-black/30',
+        'backdrop-blur-sm transition-all duration-300 hover:shadow-md hover:border-accent/30'
+      )}
+    >
+      <div className="flex flex-col items-center justify-center gap-2">
+        <div
+          className={cn(
+            'flex h-14 w-14 items-center justify-center rounded-lg bg-muted/30 dark:bg-white/[0.06]',
+            'grayscale transition-[filter] duration-300 group-hover/card:grayscale-0'
+          )}
+        >
+          <img
+            src={logo}
+            alt={name}
+            loading="lazy"
+            decoding="async"
+            className="h-11 w-11 object-contain"
+          />
+        </div>
+        <span className="text-xs font-medium text-foreground dark:text-white/90">{name}</span>
+      </div>
+    </div>
+  );
+}
+
 export function BrandsCarousel() {
   const { ref, isRevealed } = useScrollReveal();
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
-
-    // Check for reduced motion preference
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) return;
-
-    let animationId: number;
-    let scrollPosition = 0;
-    const scrollSpeed = 0.5; // pixels per frame
-
-    const animate = () => {
-      scrollPosition += scrollSpeed;
-      
-      // Reset position when we've scrolled half the content (since we duplicate it)
-      const halfWidth = scrollContainer.scrollWidth / 2;
-      if (scrollPosition >= halfWidth) {
-        scrollPosition = 0;
-      }
-      
-      scrollContainer.scrollLeft = scrollPosition;
-      animationId = requestAnimationFrame(animate);
-    };
-
-    animationId = requestAnimationFrame(animate);
-
-    // Pause on hover
-    const handleMouseEnter = () => cancelAnimationFrame(animationId);
-    const handleMouseLeave = () => {
-      animationId = requestAnimationFrame(animate);
-    };
-
-    scrollContainer.addEventListener('mouseenter', handleMouseEnter);
-    scrollContainer.addEventListener('mouseleave', handleMouseLeave);
-
-    return () => {
-      cancelAnimationFrame(animationId);
-      scrollContainer.removeEventListener('mouseenter', handleMouseEnter);
-      scrollContainer.removeEventListener('mouseleave', handleMouseLeave);
-    };
-  }, []);
-
-  // Duplicate brands for seamless infinite scroll
-  const duplicatedBrands = [...brands, ...brands];
 
   return (
-    <section className="pt-6 pb-6 md:pt-20 md:pb-24 bg-[hsl(0_0%_4%)]">
-      <div
-        ref={ref}
-        className={`scroll-reveal ${isRevealed ? 'revealed' : ''}`}
-      >
+    <section className="pt-6 pb-6 md:pt-20 md:pb-24 section-bg">
+      <div ref={ref} className={cn('scroll-reveal', isRevealed && 'revealed')}>
         <div className="container mx-auto px-4 lg:px-8 mb-6 md:mb-10">
           <SectionHeading
             title="Brands We Work With"
             subtitle="Access to vehicles from all major manufacturers"
-            dark
           />
         </div>
 
-        {/* Carousel container — premium strip */}
-        <div className="brands-carousel relative overflow-hidden mx-4 lg:mx-8 rounded-2xl border border-white/10 bg-white/[0.03] shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
-          {/* Gradient fade edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-[hsl(0_0%_4%)] to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-[hsl(0_0%_4%)] to-transparent z-10 pointer-events-none" />
-          
-          {/* Scrolling content */}
-          <div
-            ref={scrollRef}
-            className="flex gap-4 md:gap-12 overflow-x-hidden py-6 md:py-8 px-4"
-            style={{ scrollBehavior: 'auto' }}
-          >
-            {duplicatedBrands.map((brand, index) => (
-              <div
-                key={`${brand.name}-${index}`}
-                className="group flex-shrink-0 flex flex-col items-center justify-center px-2 md:px-6"
-              >
-                <div className="w-16 h-16 md:w-24 md:h-24 flex items-center justify-center bg-white rounded-xl shadow-sm border border-white/10 transition-all duration-300 group-hover:shadow-md">
-                  <img
-                    src={brand.logo}
-                    alt={brand.name}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-10 md:h-14 w-auto object-contain transition-all duration-300 grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100"
-                  />
-                </div>
-                <span className="mt-2 md:mt-3 text-[10px] md:text-sm font-medium text-white/85">
-                  {brand.name}
-                </span>
-              </div>
+        <div className="relative flex w-full max-w-[100rem] items-center justify-center overflow-hidden mx-auto px-4 lg:px-8">
+          <Marquee pauseOnHover className="[--duration:30s] [--gap:1.5rem]">
+            {brands.map((brand) => (
+              <BrandCard key={brand.name} name={brand.name} logo={brand.logo} />
             ))}
-          </div>
+          </Marquee>
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-muted to-transparent dark:from-[hsl(0_0%_4%)]" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-muted to-transparent dark:from-[hsl(0_0%_4%)]" />
         </div>
       </div>
     </section>

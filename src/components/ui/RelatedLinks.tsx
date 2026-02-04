@@ -12,7 +12,7 @@ interface RelatedLinksProps {
   title?: string;
   links: RelatedLink[];
   className?: string;
-  /** Use on dark section backgrounds */
+  /** @deprecated Use theme; kept for backward compatibility, ignored */
   dark?: boolean;
 }
 
@@ -20,41 +20,37 @@ interface RelatedLinksProps {
  * Internal linking component for SEO and navigation.
  * Displays related pages to encourage deeper site exploration.
  */
-export function RelatedLinks({ 
-  title = "Related Pages", 
+export function RelatedLinks({
+  title = "Related Pages",
   links,
   className,
-  dark = false,
+  dark: _dark,
 }: RelatedLinksProps) {
   if (links.length === 0) return null;
 
   return (
-    <nav aria-label="Related pages" className={cn("py-8 md:py-10 lg:py-14", dark && "bg-[hsl(0_0%_4%)] border-t border-white/10", className)}>
+    <nav
+      aria-label="Related pages"
+      className={cn("py-8 md:py-10 lg:py-14 section-bg border-t border-section", className)}
+    >
       <div className="container mx-auto px-4 lg:px-8">
-        <h3 className={cn("text-lg font-semibold mb-6", dark ? "text-white" : "text-foreground")}>{title}</h3>
+        <h3 className="text-lg font-semibold mb-6 text-section">{title}</h3>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-3">
           {links.map((link) => (
             <Link
               key={link.href}
               to={link.href}
-              className={cn(
-                "group flex items-start gap-3 p-4 min-h-[44px] rounded-lg transition-colors active:opacity-90",
-                dark
-                  ? "border border-white/10 bg-white/[0.06] backdrop-blur-sm hover:border-accent/50 hover:bg-white/[0.1]"
-                  : "border border-border bg-card hover:border-accent/50 hover:bg-muted/50"
-              )}
+              className="group flex items-start gap-3 p-4 min-h-[44px] rounded-lg transition-colors active:opacity-90 glass-card-theme hover:border-accent/50 dark:hover:bg-white/[0.1]"
             >
               <div className="flex-1 min-w-0">
-                <span className={cn("font-medium transition-colors", dark ? "text-white group-hover:text-accent" : "text-foreground group-hover:text-accent")}>
+                <span className="font-medium transition-colors text-section group-hover:text-accent">
                   {link.title}
                 </span>
                 {link.description && (
-                  <p className={cn("mt-1 text-sm line-clamp-2", dark ? "text-white/85" : "text-muted-foreground")}>
-                    {link.description}
-                  </p>
+                  <p className="mt-1 text-sm line-clamp-2 text-section-muted">{link.description}</p>
                 )}
               </div>
-              <ArrowRight className={cn("w-4 h-4 transition-colors mt-1 shrink-0", dark ? "text-white/75 group-hover:text-accent" : "text-muted-foreground group-hover:text-accent")} />
+              <ArrowRight className="w-4 h-4 transition-colors mt-1 shrink-0 text-section-muted group-hover:text-accent" />
             </Link>
           ))}
         </div>

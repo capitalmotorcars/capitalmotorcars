@@ -67,6 +67,8 @@
     --glow-blue: 0 0 20px hsl(214 77% 50% / 0.3), 0 0 40px hsl(214 77% 50% / 0.15);
     --section-dark: 0 0% 4%;
     --section-darker: 0 0% 3%;
+    /* Theme-aware section divider fill (curved/diagonal/wave) */
+    --section-divider-fill: 216 33% 97%;
   }
 
   .dark {
@@ -97,7 +99,84 @@
     --border: 210 50% 25%;
     --input: 210 50% 25%;
     --ring: 214 77% 50%;
+    --section-divider-fill: 0 0% 3%;
   }
+}
+
+/* Theme-aware utilities: use these so light/dark mode works everywhere (outside @layer to avoid circular @apply) */
+.section-bg {
+  @apply bg-muted dark:bg-[hsl(0_0%_4%)];
+}
+.section-bg-alt {
+  @apply bg-muted;
+}
+.glass-card-theme {
+  @apply rounded-2xl border border-border bg-card shadow-sm dark:border-white/10 dark:bg-white/[0.04] dark:shadow-[0_8px_32px_rgba(0,0,0,0.24)];
+}
+/* How It Works: readable card on hero in both themes */
+.how-it-works-card {
+  @apply rounded-2xl border shadow-lg;
+  @apply bg-white/90 border-border/80 shadow-black/5 dark:bg-white/[0.08] dark:border-white/15 dark:shadow-black/30;
+  @apply backdrop-blur-sm;
+}
+.text-section {
+  @apply text-foreground dark:text-white;
+}
+.text-section-muted {
+  @apply text-muted-foreground dark:text-white/85;
+}
+.border-section {
+  @apply border-border dark:border-white/10;
+}
+/* Form wrapper: theme-aware inputs/labels (use with glass-card-theme) */
+.form-card-theme label {
+  @apply text-foreground dark:text-white;
+}
+.form-card-theme input,
+.form-card-theme textarea {
+  @apply bg-muted border-border text-foreground;
+  @apply dark:bg-white/10 dark:border-white/25 dark:text-white;
+}
+.form-card-theme input::placeholder,
+.form-card-theme textarea::placeholder {
+  color: hsl(var(--muted-foreground));
+}
+.dark .form-card-theme input::placeholder,
+.dark .form-card-theme textarea::placeholder {
+  color: hsl(0 0% 100% / 0.6);
+}
+.form-card-theme .text-muted-foreground {
+  color: hsl(var(--muted-foreground));
+}
+.dark .form-card-theme .text-muted-foreground {
+  color: hsl(0 0% 100% / 0.9);
+}
+.form-card-theme button:not([type=submit]) {
+  @apply bg-muted border-border text-foreground dark:bg-white/10 dark:border-white/25 dark:text-white;
+}
+.form-card-theme button[data-placeholder] {
+  color: hsl(var(--muted-foreground));
+}
+.dark .form-card-theme button[data-placeholder] {
+  color: hsl(0 0% 100% / 0.6);
+}
+.form-card-theme input:focus-visible,
+.form-card-theme textarea:focus-visible,
+.form-card-theme button:focus-visible {
+  @apply ring-accent ring-2;
+}
+/* Hero gradient heading: dark text in light mode, white-to-accent in dark */
+.text-gradient-heading-dark {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--muted-foreground) / 0.9) 45%, hsl(var(--accent)) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.dark .text-gradient-heading-dark {
+  background: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(213 40% 90%) 45%, hsl(214 77% 55%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 @layer base {
@@ -108,10 +187,11 @@
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    @apply bg-muted dark:bg-[hsl(0_0%_4%)];
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-muted text-foreground antialiased dark:bg-[hsl(0_0%_4%)];
     font-size: 1rem;
     line-height: 1.5;
     font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
@@ -301,18 +381,24 @@
     background-clip: text;
   }
 
-  .text-gradient-heading-dark {
-    background: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(213 40% 90%) 45%, hsl(214 77% 55%) 100%);
+  .text-gradient-hero-highlight {
+    background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(214 77% 40%) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-
-  .text-gradient-hero-highlight {
+  .dark .text-gradient-hero-highlight {
     background: linear-gradient(135deg, hsl(187 85% 55%) 0%, hsl(214 77% 50%) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+  /* Hero bottom fade: to next section — light uses background, dark uses black (strong, visible) */
+  .hero-bottom-fade {
+    background: linear-gradient(to bottom, transparent 0%, hsl(var(--muted)) 100%);
+  }
+  .dark .hero-bottom-fade-dark {
+    background: linear-gradient(to bottom, transparent 0%, hsl(0 0% 4%) 100%);
   }
 
   /* Dark background grain texture */
@@ -363,18 +449,6 @@
 
   .section-divider-curved {
     position: relative;
-  }
-
-  .section-divider-curved::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60' preserveAspectRatio='none'%3E%3Cpath fill='hsl(0 0% 3%25)' d='M0 60V30c360 0 720-30 1440-30V60z'/%3E%3C/svg%3E") no-repeat bottom center;
-    background-size: 100% 60px;
-    pointer-events: none;
   }
 
   /* Service card glow-track border on hover */
@@ -501,7 +575,7 @@
 }
 
 .animate-step-description {
-  animation: stepDescription 300ms ease-out forwards;
+  animation: stepDescription 400ms ease-out forwards;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -509,6 +583,99 @@
     animation: none;
     opacity: 1;
     transform: none;
+  }
+}
+
+/* ========== How It Works diagram – smooth transitions (data-active + CSS vars) ========== */
+.hiw-line {
+  stroke-width: 0.08;
+  stroke-dasharray: 1 1.5;
+  transition: stroke 0.35s ease-out, stroke-width 0.35s ease-out, stroke-dasharray 0.35s ease-out;
+}
+.hiw-line[data-active="true"] {
+  stroke-width: 0.28;
+  stroke-dasharray: 20 0;
+  stroke: hsl(var(--accent) / 0.80);
+}
+.dark .hiw-line[data-active="true"] {
+  stroke: hsl(var(--accent) / 0.80);
+}
+.hiw-arc {
+  transition: stroke-dasharray 0.5s ease-out;
+  stroke: hsl(var(--accent) / 0.80);
+}
+/* Center circle – blue border + blue icon (same as step nodes) */
+.hiw-center-icon {
+  border-color: hsl(var(--accent));
+}
+.hiw-center-icon svg,
+.hiw-center-icon svg path {
+  color: hsl(var(--accent));
+  stroke: currentColor;
+}
+.dark .hiw-center-icon {
+  border-color: hsl(var(--accent));
+}
+.dark .hiw-center-icon svg,
+.dark .hiw-center-icon svg path {
+  color: hsl(var(--accent));
+  stroke: currentColor;
+}
+.hiw-node {
+  transform: scale(1);
+  transition: transform 0.3s ease-out, background-color 0.3s ease-out, border-color 0.3s ease-out, color 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+.hiw-node:hover {
+  transform: scale(1.05);
+}
+.hiw-node[data-active="true"] {
+  transform: scale(1.1);
+  border-color: hsl(var(--accent) / 0.80) !important;
+  border-width: 2px;
+}
+.hiw-node-icon {
+  transition: transform 0.3s ease-out;
+}
+/* Steps 1..current: blue border + icon (same 0.80) */
+.hiw-node[data-on-path="true"] {
+  border-color: hsl(var(--accent) / 0.80);
+  border-width: 2px;
+}
+.hiw-node[data-on-path="true"] .hiw-node-icon,
+.hiw-node[data-on-path="true"] .hiw-node-icon path {
+  color: hsl(var(--accent) / 0.80);
+  stroke: currentColor;
+}
+.dark .hiw-node[data-on-path="true"] .hiw-node-icon,
+.dark .hiw-node[data-on-path="true"] .hiw-node-icon path {
+  color: hsl(var(--accent) / 0.80);
+  stroke: currentColor;
+}
+.hiw-node:hover .hiw-node-icon {
+  transform: scale(1.1);
+}
+.hiw-panel-item {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-out;
+}
+.hiw-panel-item[data-active="true"] {
+  opacity: 1;
+  pointer-events: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hiw-line,
+  .hiw-arc,
+  .hiw-node,
+  .hiw-node-icon,
+  .hiw-panel-item {
+    transition: none;
+  }
+  .hiw-node:hover {
+    transform: scale(1);
+  }
+  .hiw-node[data-active="true"] {
+    transform: scale(1.1);
   }
 }
 
@@ -523,7 +690,7 @@
 }
 
 .animate-spin-slow {
-  animation: spin-slow 25s linear infinite;
+  animation: spin-slow 50s linear infinite;
 }
 
 /* Slower spin for outer ring */
@@ -537,7 +704,7 @@
 }
 
 .animate-spin-slower {
-  animation: spin-slower 45s linear infinite;
+  animation: spin-slower 90s linear infinite;
 }
 
 /* Reverse spin for middle ring */
@@ -551,7 +718,7 @@
 }
 
 .animate-spin-reverse {
-  animation: spin-reverse 35s linear infinite;
+  animation: spin-reverse 70s linear infinite;
 }
 
 /* Slow pulse for glow effect */
@@ -600,6 +767,41 @@
     animation: none;
     opacity: 1;
     transform: none;
+  }
+}
+
+/* Marquee (horizontal) */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee var(--duration, 40s) linear infinite;
+}
+
+/* Marquee (vertical) */
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical var(--duration, 40s) linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee-vertical {
+    animation: none;
   }
 }
 

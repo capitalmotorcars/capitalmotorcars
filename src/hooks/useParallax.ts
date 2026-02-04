@@ -23,7 +23,9 @@ export function useParallax(options: UseParallaxOptions = {}) {
       const centerY = rect.top + rect.height / 2;
       const viewportCenter = window.innerHeight / 2;
       const diff = centerY - viewportCenter;
-      setOffset(diff * speed);
+      const raw = diff * speed;
+      const clamped = Math.max(-40, Math.min(40, raw));
+      setOffset(clamped);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });

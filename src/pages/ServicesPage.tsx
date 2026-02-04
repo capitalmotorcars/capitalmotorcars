@@ -120,10 +120,9 @@ export default function ServicesPage() {
         ]}
       />
 
-      <SectionDivider variant="curved" nextSectionDark />
 
       {/* Services */}
-      <section className="py-8 md:py-16 lg:py-20 bg-[hsl(0_0%_4%)]">
+      <section className="py-8 md:py-16 lg:py-20 section-bg">
         <div 
           ref={ref}
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${isRevealed ? 'revealed' : ''}`}
@@ -140,7 +139,7 @@ export default function ServicesPage() {
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                   activeCategory === cat.id
                     ? 'bg-accent text-accent-foreground border-2 border-accent shadow-[0_0_16px_hsl(214_77%_50%_/_0.3)]'
-                    : 'text-white/85 hover:text-white border border-white/10 bg-white/[0.04] hover:bg-white/[0.08] hover:border-white/20'
+                    : 'text-section-muted hover:text-section border-section bg-card dark:bg-white/[0.04] hover:bg-muted dark:hover:bg-white/[0.08]'
                 }`}
               >
                 {cat.label}
@@ -149,17 +148,17 @@ export default function ServicesPage() {
           </nav>
 
           {/* Services Grid — premium container */}
-          <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 md:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.24)]">
+          <div className="glass-card-theme p-6 md:p-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 tab-content-enter">
             {filteredServices.map((service) => (
-              <ServiceCard key={service.href} {...service} dark />
+              <ServiceCard key={service.href} {...service} />
             ))}
           </div>
           </div>
 
           {/* Additional CTA */}
           <div className="mt-10 md:mt-16 text-center">
-            <p className="text-white/85 mb-4">
+            <p className="text-section-muted mb-4">
               Select a service to see how it works.
             </p>
             <Link 
@@ -172,11 +171,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <RelatedLinks 
-        title="Next Steps" 
-        links={servicesPageLinks} 
-        dark
-      />
+      <RelatedLinks title="Next Steps" links={servicesPageLinks} />
     </Layout>
   );
 }

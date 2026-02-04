@@ -1,15 +1,21 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { MagneticButton } from '@/components/ui/MagneticButton';
-import { CircularProcessVisualization } from './CircularProcessVisualization';
+import {
+  VehicleViewer3D,
+  VEHICLE_COLORS,
+  ANNOTATION_DEFS,
+  type VehicleColor,
+} from '@/components/hero/VehicleViewer3D';
 import { useHeroAnimation } from '@/hooks/useHeroAnimation';
-import { useParallax } from '@/hooks/useParallax';
-import { ArrowRight } from 'lucide-react';
-import heroBg from '@/assets/hero-bg.jpg';
+import { ArrowRight, Palette, Sparkles } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export function HeroSection() {
   const heroAnimated = useHeroAnimation();
-  const { ref: parallaxRef, offset: parallaxOffset } = useParallax({ speed: 0.12 });
+  const [selectedColor, setSelectedColor] = useState<VehicleColor>(VEHICLE_COLORS[0]);
+  const [selectedAnnotationId, setSelectedAnnotationId] = useState<number | null>(null);
 
   // Placeholder avatar URLs - diverse, neutral faces
   const avatars = [
@@ -20,63 +26,129 @@ export function HeroSection() {
   ];
 
   return (
-    <section className="relative min-h-0 md:min-h-[100dvh] lg:min-h-0 flex flex-col pt-10 pb-[max(0.5rem,env(safe-area-inset-bottom))] md:py-16 md:pb-16 lg:py-24 lg:pb-24 overflow-visible md:overflow-hidden hero-section" style={{ backgroundColor: 'hsl(0 0% 3%)' }}>
-      {/* Background Image - parallax, more visible for premium feel */}
-      <div ref={parallaxRef} className="absolute inset-0 overflow-hidden min-h-[50vh] md:min-h-[100dvh]">
-        <img
-          src={heroBg}
-          alt=""
-          width={1920}
-          height={1080}
-          loading="eager"
-          decoding="async"
-          fetchPriority="high"
-          className="absolute inset-0 w-full h-full object-cover opacity-40 md:opacity-50 transition-transform duration-200 ease-out"
-          style={{ transform: `translateY(${parallaxOffset}px)` }}
-        />
-      </div>
-      
-      {/* Gradient overlay: lighter at top, darker at bottom for contrast */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'linear-gradient(to bottom, hsl(0 0% 3% / 0.45) 0%, hsl(0 0% 3% / 0.7) 45%, hsl(0 0% 3% / 0.88) 100%)',
-        }}
-        aria-hidden
-      />
-      {/* Mobile: extra overlay so text reads better in bright light */}
-      <div
-        className="absolute inset-0 pointer-events-none md:hidden bg-[hsl(0_0%_0%_/_0.12)]"
-        aria-hidden
-      />
-      {/* Subtle vignette for depth */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-60"
-        style={{
-          background: 'radial-gradient(ellipse 80% 70% at 50% 30%, transparent 0%, hsl(0 0% 0% / 0.4) 100%)',
-        }}
-        aria-hidden
-      />
+    <section className="relative min-h-0 md:min-h-[100dvh] lg:min-h-0 flex flex-col pt-10 pb-[max(0.5rem,env(safe-area-inset-bottom))] md:py-16 md:pb-16 lg:py-24 lg:pb-24 overflow-visible md:overflow-hidden hero-section bg-transparent">
+      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-full flex-1 flex flex-col min-h-0 items-center justify-center">
+        <div className="flex flex-col flex-1 min-h-0 gap-6 lg:gap-8 w-full max-w-[82rem] xl:max-w-[88rem] mx-auto">
+          {/* Two-column row: 3D viewer + settings sidebar */}
+          <div className="flex flex-col lg:flex-row flex-1 min-h-0 gap-4 lg:gap-6 items-stretch lg:min-h-[240px]">
+          {/* Left: 3D viewer — full height on desktop */}
+          <div className="flex-shrink-0 w-full lg:flex-1 flex flex-col gap-3 order-first lg:min-w-0">
+            <div className="hidden lg:block text-center lg:text-left">
+              <h2
+                className={cn(
+                  'text-xl sm:text-2xl font-semibold text-white dark:text-white tracking-tight',
+                  heroAnimated && 'animate-in fade-in-0 slide-in-from-bottom-4 duration-500'
+                )}
+              >
+                Explore the Porsche 918 Spyder
+              </h2>
+              <p
+                className={cn(
+                  'mt-1.5 text-base text-white/90 dark:text-white/85 max-w-md lg:max-w-none',
+                  heroAnimated && 'animate-in fade-in-0 slide-in-from-bottom-4 duration-500 delay-150'
+                )}
+              >
+                Drag to orbit · Tap numbers on the model to zoom to features.
+              </p>
+            </div>
+            <div className="w-full min-h-[160px] sm:min-h-[200px] lg:min-h-[220px] aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:flex-1 max-w-lg sm:max-w-xl md:max-w-2xl lg:max-w-none mx-auto overflow-hidden rounded-2xl flex items-stretch justify-center bg-white/5 dark:bg-black/20 border border-white/10 dark:border-white/10">
+              <VehicleViewer3D
+                className="w-full h-full min-h-[160px]"
+                selectedColor={selectedColor}
+                onColorChange={setSelectedColor}
+                selectedAnnotationId={selectedAnnotationId}
+                onAnnotationSelect={setSelectedAnnotationId}
+                hideOverlays={true}
+              />
+            </div>
+            {/* Mobile: short hint under viewer */}
+            <p className="lg:hidden text-center text-sm text-white/70 dark:text-white/60">
+              Customize color and explore features below.
+            </p>
+          </div>
 
-      {/* Gradient fade to next section (dark) - smooth transition */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-32 md:h-40 pointer-events-none z-[1]"
-        style={{ background: 'linear-gradient(to bottom, transparent 0%, hsl(0 0% 4%) 100%)' }}
-        aria-hidden
-      />
+          {/* Right: Settings column — colors, key features, CTA */}
+          <div className="flex-shrink-0 w-full lg:w-[320px] xl:w-[360px] flex flex-col gap-4 lg:gap-5 order-2">
+            <div
+              className={cn(
+                'rounded-2xl border border-white/10 dark:border-white/10 bg-white/5 dark:bg-black/30 backdrop-blur-sm p-4 sm:p-5 flex flex-col gap-4',
+                heroAnimated && 'animate-in fade-in-0 slide-in-from-bottom-4 duration-500 delay-100'
+              )}
+            >
+              <div className="flex items-center gap-2 text-white dark:text-white">
+                <Palette className="w-5 h-5 text-accent shrink-0" />
+                <span className="font-semibold text-sm uppercase tracking-wider">Exterior color</span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {VEHICLE_COLORS.map((c) => (
+                  <button
+                    key={c.hex}
+                    type="button"
+                    onClick={() => setSelectedColor(c)}
+                    title={c.name}
+                    className={cn(
+                      'w-9 h-9 rounded-full border-2 shadow-sm transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-transparent',
+                      selectedColor.hex === c.hex
+                        ? 'border-accent ring-2 ring-accent/40 scale-110'
+                        : 'border-white/40 hover:border-white/60'
+                    )}
+                    style={{ backgroundColor: c.swatchHex ?? c.hex }}
+                    aria-label={c.name}
+                    aria-pressed={selectedColor.hex === c.hex}
+                  />
+                ))}
+              </div>
+              <p className="text-xs text-white/70 dark:text-white/60">{selectedColor.name}</p>
+            </div>
 
-      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 z-10 max-w-full flex-1 flex flex-col min-h-0">
-        <div className="flex flex-col flex-1 min-h-0 justify-start gap-6">
-          {/* Content block: heading, subtext, buttons — centered stacked */}
-          <div className="max-w-xl lg:max-w-2xl flex-shrink-0 z-10 mx-auto text-center">
+            <div
+              className={cn(
+                'rounded-2xl border border-white/10 dark:border-white/10 bg-white/5 dark:bg-black/30 backdrop-blur-sm p-4 sm:p-5 flex flex-col gap-3 flex-1 min-h-0',
+                heroAnimated && 'animate-in fade-in-0 slide-in-from-bottom-4 duration-500 delay-200'
+              )}
+            >
+              <div className="flex items-center gap-2 text-white dark:text-white">
+                <Sparkles className="w-5 h-5 text-accent shrink-0" />
+                <span className="font-semibold text-sm uppercase tracking-wider">Key features</span>
+              </div>
+              <p className="text-xs text-white/70 dark:text-white/60 mb-1">
+                Tap a feature to zoom the 3D view.
+              </p>
+              <ul className="space-y-1.5 overflow-y-auto flex-1 min-h-0 pr-1">
+                {ANNOTATION_DEFS.map((ann) => (
+                  <li key={ann.id}>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setSelectedAnnotationId(selectedAnnotationId === ann.id ? null : ann.id)
+                      }
+                      className={cn(
+                        'w-full text-left rounded-lg px-3 py-2 text-sm transition-all border border-transparent',
+                        selectedAnnotationId === ann.id
+                          ? 'bg-accent/20 border-accent/40 text-white'
+                          : 'text-white/85 hover:bg-white/10 hover:text-white border-white/5'
+                      )}
+                    >
+                      <span className="font-medium text-accent mr-1.5">{ann.id}.</span>
+                      {ann.description}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          </div>
+
+          {/* Main headline + CTAs — full width below the two-column row */}
+          <div className="max-w-xl flex-shrink-0 z-10 mx-auto w-full flex flex-col items-center text-center">
             <h1
-              className={`text-[1.75rem] sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-extrabold leading-tight sm:leading-[1.2] line-clamp-none sm:line-clamp-2 max-w-full sm:max-w-xl lg:max-w-2xl xl:max-w-2xl mb-2 sm:mb-4 lg:mb-5 hero-animate ${
+              className={`text-[1.75rem] sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-extrabold leading-tight sm:leading-[1.2] line-clamp-none sm:line-clamp-2 max-w-full sm:max-w-xl mb-2 sm:mb-4 lg:mb-5 hero-animate text-section ${
                 heroAnimated ? 'animate-in' : ''
               }`}
-              style={{ textShadow: '0 2px 12px rgba(0,0,0,0.35)' }}
+              style={{ textShadow: '0 2px 12px rgba(0,0,0,0.2)' }}
             >
               <span className="text-gradient-heading-dark">Find Your Perfect Vehicle with </span>
-              <span className="text-gradient-hero-highlight">Zero Dealership Hassle</span>
+              <span className="text-gradient-hero-highlight">Hassle.</span>
             </h1>
 
             {/* Social Proof Badges - below headline */}
@@ -90,39 +162,22 @@ export function HeroSection() {
             >
               {/* Avatars + Customer Count */}
               <div className="flex items-center gap-2">
-                {/* Overlapping Avatars */}
                 <div className="flex -space-x-2">
                   {avatars.map((src, index) => (
                     <img
                       key={index}
                       src={src}
                       alt=""
-                      className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 rounded-full border-2 object-cover"
-                      style={{ borderColor: 'hsl(0 0% 3%)' }}
+                      className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 rounded-full border-2 border-background dark:border-[hsl(0_0%_3%)] object-cover"
                       loading="lazy"
                     />
                   ))}
                 </div>
-                <span
-                  className="inline-flex items-center px-2 py-0.5 sm:px-2.5 sm:py-1 lg:px-3 lg:py-1.5 rounded-full text-[10px] sm:text-[11px] lg:text-xs font-medium text-white"
-                  style={{
-                    backgroundColor: 'hsl(0 0% 100% / 0.08)',
-                    border: '1px solid hsl(0 0% 100% / 0.1)',
-                  }}
-                >
+                <span className="inline-flex items-center px-2 py-0.5 sm:px-2.5 sm:py-1 lg:px-3 lg:py-1.5 rounded-full text-[10px] sm:text-[11px] lg:text-xs font-medium bg-muted/80 dark:bg-white/10 border border-border dark:border-white/10 text-foreground dark:text-white">
                   15k+ Customers
                 </span>
               </div>
-              
-              {/* Google Rating Badge */}
-              <span
-                className="inline-flex items-center gap-1.5 px-2 py-0.5 sm:px-2.5 sm:py-1 lg:px-3 lg:py-1.5 rounded-full text-[10px] sm:text-[11px] lg:text-xs font-medium text-white"
-                style={{
-                  backgroundColor: 'hsl(0 0% 100% / 0.08)',
-                  border: '1px solid hsl(0 0% 100% / 0.1)',
-                }}
-              >
-                {/* Google Icon */}
+              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 sm:px-2.5 sm:py-1 lg:px-3 lg:py-1.5 rounded-full text-[10px] sm:text-[11px] lg:text-xs font-medium bg-muted/80 dark:bg-white/10 border border-border dark:border-white/10 text-foreground dark:text-white">
                 <svg className="w-3 h-3 lg:w-3.5 lg:h-3.5" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                   <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
@@ -133,18 +188,17 @@ export function HeroSection() {
                 5/5 on Google
               </span>
             </a>
-            
-            {/* Subtext: bridge between heading and CTAs - visible on all devices */}
+
+            {/* Subtext */}
             <p
-              className={`block text-sm sm:text-base md:text-lg lg:text-xl mb-4 lg:mb-8 leading-relaxed max-w-xl lg:max-w-2xl hero-animate delay-1 ${
+              className={`block text-sm sm:text-base md:text-lg lg:text-xl mb-4 lg:mb-8 leading-relaxed max-w-xl lg:max-w-none hero-animate delay-1 text-white dark:text-white/90 ${
                 heroAnimated ? 'animate-in' : ''
               }`}
-              style={{ color: 'hsl(213 27% 88%)' }}
             >
               Your trusted automotive partner. We handle leasing, financing, and more so you can enjoy the ride.
             </p>
 
-            {/* Mobile: single primary CTA — compact but tappable (40px); How It Works is next below */}
+            {/* Mobile: single primary CTA */}
             <div
               className={`sm:hidden flex flex-col items-stretch hero-animate delay-2 ${
                 heroAnimated ? 'animate-in' : ''
@@ -164,7 +218,7 @@ export function HeroSection() {
               </MagneticButton>
             </div>
 
-            {/* Desktop: both buttons (unchanged) */}
+            {/* Desktop: both buttons — centered */}
             <div
               className={`hidden sm:flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-3 hero-animate delay-2 ${
                 heroAnimated ? 'animate-in' : ''
@@ -187,21 +241,11 @@ export function HeroSection() {
                   asChild
                   variant="ghost"
                   size="lg"
-                  className="w-full sm:w-auto h-10 min-h-[44px] sm:h-12 border border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white hover:border-white/50 font-medium px-4 sm:px-6 shrink-0 text-sm sm:text-base"
+                  className="w-full sm:w-auto h-10 min-h-[44px] sm:h-12 border border-border dark:border-white/30 bg-transparent text-foreground dark:text-white hover:bg-muted dark:hover:bg-white/10 font-medium px-4 sm:px-6 shrink-0 text-sm sm:text-base"
                 >
                   <Link to="/services">View Services</Link>
                 </Button>
               </MagneticButton>
-            </div>
-          </div>
-
-          {/* How It Works — circular infographic on all breakpoints; card styling from md up */}
-          <div className="flex flex-col items-center w-full mt-4 md:mt-8 lg:mt-10 px-4 sm:px-6 lg:px-8">
-            <div className="w-full max-w-5xl md:rounded-2xl md:border md:border-white/10 md:bg-white/[0.04] md:px-4 md:py-6 lg:px-8 lg:py-10 md:shadow-[0_8px_32px_rgba(0,0,0,0.24)]">
-              <h2 className="text-center text-lg sm:text-xl font-semibold tracking-wide mb-4 md:mb-6 lg:mb-8" style={{ color: 'hsl(213 27% 78%)' }}>
-                How It Works
-              </h2>
-              <CircularProcessVisualization mobileSize={260} hideMobileTitle />
             </div>
           </div>
         </div>

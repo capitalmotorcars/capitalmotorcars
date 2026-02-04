@@ -53,23 +53,22 @@ export default function BrandsPage() {
         ]}
       />
 
-      <SectionDivider variant="curved" nextSectionDark />
 
-      <section className="py-8 md:py-16 lg:py-20 bg-[hsl(0_0%_4%)]">
+      <section className="py-8 md:py-16 lg:py-20 section-bg">
         <div ref={ref} className={`container mx-auto px-4 lg:px-8 scroll-reveal ${isRevealed ? 'revealed' : ''}`}>
           <div className="max-w-3xl mx-auto text-center mb-8 md:mb-12">
-            <p className="text-base md:text-lg text-white">
+            <p className="text-base md:text-lg text-section">
               Availability varies, so the best way to find out what is currently available is to talk to us directly.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 mb-8 md:mb-12">
             {brands.map((brand) => (
-              <div key={brand.name} className="flex flex-col items-center justify-center p-6 md:p-8 rounded-xl border border-white/10 bg-white/[0.06] backdrop-blur-sm hover:border-accent/30 hover:bg-white/[0.08] transition-all card-hover">
-                <div className="flex items-center justify-center p-4 mb-4 rounded-lg bg-white w-full max-w-[140px] min-h-[80px]">
+              <div key={brand.name} className="flex flex-col items-center justify-center p-6 md:p-8 rounded-xl glass-card-theme hover:border-accent/30 dark:hover:bg-white/[0.08] transition-all card-hover">
+                <div className="flex items-center justify-center p-4 mb-4 rounded-lg bg-card dark:bg-white w-full max-w-[140px] min-h-[80px]">
                   <img src={brand.logo} alt={brand.name} loading="lazy" decoding="async" className="h-16 w-auto object-contain transition-all" />
                 </div>
-                <span className="text-sm font-medium text-white">{brand.name}</span>
+                <span className="text-sm font-medium text-section">{brand.name}</span>
               </div>
             ))}
           </div>

@@ -8,9 +8,9 @@ interface LayoutProps {
 
 export function Layout({ children }: LayoutProps) {
   return (
-    <div className="min-h-screen flex flex-col bg-[hsl(0_0%_3%)] overflow-x-hidden dark-bg-grain">
+    <div className="min-h-screen flex flex-col bg-muted overflow-x-hidden dark:bg-[hsl(0_0%_4%)] dark:dark-bg-grain">
       <Header />
-      <main className="flex-1 pt-14 md:pt-16">
+      <main className="flex-1 pt-14 md:pt-12">
         {children}
       </main>
       <Footer />

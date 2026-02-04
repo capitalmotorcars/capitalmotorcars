@@ -72,94 +72,90 @@ export default function AboutPage() {
         heroImageAlt="Porsche Cayenne GTS"
       />
 
-      <SectionDivider variant="curved" nextSectionDark />
 
       {/* Introduction */}
-      <section className="py-8 md:py-16 lg:py-20 bg-[hsl(0_0%_4%)]">
-        <div 
-          ref={introRef} 
+      <section className="py-8 md:py-16 lg:py-20 section-bg">
+        <div
+          ref={introRef}
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${introRevealed ? 'revealed' : ''}`}
         >
           <div className="max-w-3xl">
-            <p className="text-base md:text-lg text-white/85 leading-relaxed mb-6">
+            <p className="text-base md:text-lg text-section-muted leading-relaxed mb-6">
               Capital Motor Cars was created to bring clarity and structure to an automotive process that is often complex and time-consuming. Our focus is on guiding clients through decisions with transparency, accountability, and a clearly defined process.
             </p>
-            <p className="text-base md:text-lg text-white/85 leading-relaxed">
+            <p className="text-base md:text-lg text-section-muted leading-relaxed">
               We work with individuals and businesses who value straightforward communication and long-term thinking. Every engagement is handled with attention to detail, realistic expectations, and consistent follow-through.
             </p>
           </div>
         </div>
       </section>
 
-      <SectionDivider variant="wave" nextSectionDark />
 
       {/* Our Approach */}
-      <section className="py-8 md:py-16 lg:py-20 bg-[hsl(0_0%_3%)]">
-        <div 
-          ref={approachRef} 
+      <section className="py-8 md:py-16 lg:py-20 section-bg-alt">
+        <div
+          ref={approachRef}
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${approachRevealed ? 'revealed' : ''}`}
         >
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8">Our Approach</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-section mb-6 md:mb-8">Our Approach</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
             {approachItems.map((item) => (
               <div key={item.title} className="space-y-4">
                 <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center">
                   <item.icon className="w-5 h-5 text-accent" />
                 </div>
-                <h3 className="text-xl font-semibold text-white">{item.title}</h3>
-                <p className="text-white/85 leading-relaxed">{item.description}</p>
+                <h3 className="text-xl font-semibold text-section">{item.title}</h3>
+                <p className="text-section-muted leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <SectionDivider variant="diagonal" nextSectionDark />
 
       {/* How We Support */}
-      <section className="py-8 md:py-16 lg:py-20 bg-[hsl(0_0%_4%)]">
-        <div 
-          ref={supportRef} 
+      <section className="py-8 md:py-16 lg:py-20 section-bg">
+        <div
+          ref={supportRef}
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${supportRevealed ? 'revealed' : ''}`}
         >
           <div className="max-w-3xl">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8">How We Support Our Clients</h2>
-            <p className="text-base md:text-lg text-white/85 leading-relaxed mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-section mb-6 md:mb-8">How We Support Our Clients</h2>
+            <p className="text-base md:text-lg text-section-muted leading-relaxed mb-6">
               Our role is to simplify decision-making and execution. We help clients evaluate options, manage details, and move forward with confidence, whether they are leasing, financing, or managing end-of-lease requirements.
             </p>
-            <p className="text-lg font-medium text-white">
+            <p className="text-lg font-medium text-section">
               The goal is not speed at any cost, but clarity at every step.
             </p>
           </div>
         </div>
       </section>
 
-      <SectionDivider variant="wave" nextSectionDark />
 
       {/* Locations */}
-      <section className="py-8 md:py-16 lg:py-20 bg-[hsl(0_0%_3%)]">
-        <div 
-          ref={locationsRef} 
+      <section className="py-8 md:py-16 lg:py-20 section-bg-alt">
+        <div
+          ref={locationsRef}
           className={`container mx-auto px-4 lg:px-8 scroll-reveal ${locationsRevealed ? 'revealed' : ''}`}
         >
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8">Locations</h2>
-          <p className="text-white/85 mb-6 md:mb-8 max-w-2xl text-base md:text-lg">
+          <h2 className="text-2xl md:text-3xl font-bold text-section mb-6 md:mb-8">Locations</h2>
+          <p className="text-section-muted mb-6 md:mb-8 max-w-2xl text-base md:text-lg">
             Capital Motor Cars operates across multiple locations to support clients efficiently and locally.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
             {locations.map((location) => (
-              <div 
-                key={location.name} 
-                className="border border-white/10 bg-white/[0.06] backdrop-blur-sm rounded-xl p-6 space-y-3"
+              <div
+                key={location.name}
+                className="glass-card-theme p-6 space-y-3"
               >
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-accent mt-0.5 shrink-0" />
                   <div>
-                    <h3 className="font-semibold text-white">{location.name}</h3>
-                    <p className="text-sm text-white/85">{location.city}</p>
+                    <h3 className="font-semibold text-section">{location.name}</h3>
+                    <p className="text-sm text-section-muted">{location.city}</p>
                   </div>
                 </div>
-                <p className="text-sm text-white/85 pl-8">{location.address}</p>
+                <p className="text-sm text-section-muted pl-8">{location.address}</p>
                 <a 
                   href={`tel:${location.phone.replace(/\D/g, '')}`}
                   className="text-sm text-accent hover:underline underline-offset-4 pl-8 block"
@@ -172,11 +168,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <RelatedLinks 
-        title="Explore More" 
-        links={aboutPageLinks} 
-        dark
-      />
+      <RelatedLinks title="Explore More" links={aboutPageLinks} />
     </Layout>
   );
 }
