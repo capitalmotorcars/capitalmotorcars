@@ -58,7 +58,7 @@ export function VehicleTypesCarousel() {
   const { baseWidth, cardHeight } = useCarouselSize();
 
   return (
-    <section id="discover" className="pt-6 pb-6 md:pt-20 md:pb-24 section-bg">
+    <section id="discover" className="pt-16 pb-16 md:pt-20 md:pb-24  ">
       <div ref={ref} className={cn('scroll-reveal', isRevealed && 'revealed')}>
         <div className="container mx-auto px-4 lg:px-8 mb-6 md:mb-10">
           <SectionHeading

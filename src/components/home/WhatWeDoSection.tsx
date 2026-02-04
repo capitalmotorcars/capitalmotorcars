@@ -1,285 +1,115 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Car, CreditCard, RefreshCw, Wrench, CircleDot, Sparkles, LucideIcon } from 'lucide-react';
+import { ArrowRight, Car, CreditCard, RefreshCw, LucideIcon } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { cn } from '@/lib/utils';
 import { useEffect, useState } from 'react';
-import { BackgroundEffects } from '../ui/BackgroundEffects';
+import luxurySedanImg from '@/assets/luxury-sedan.png';
+import { Button } from '../ui/button';
 
-interface Service {
+interface ServiceItem {
   title: string;
   description: string;
   href: string;
+  ctaText: string;
   icon: LucideIcon;
+  image?: string;
 }
 
-const services: Service[] = [
+const services: ServiceItem[] = [
   {
     title: 'Vehicle Leasing',
     description: 'We help you secure the right lease without spending hours negotiating at dealerships.',
     href: '/services/car-leasing',
+    ctaText: 'Explore Leasing',
     icon: Car,
+    image: luxurySedanImg,
   },
   {
     title: 'Financing & Credit',
     description: 'A straightforward credit application, so we can review financing options with you.',
     href: '/services/financing',
+    ctaText: 'Get Started',
     icon: CreditCard,
   },
   {
     title: 'Trade-In Services',
     description: 'We evaluate your current vehicle and manage the trade-in process from start to finish.',
     href: '/services/trade-in',
+    ctaText: 'Learn More',
     icon: RefreshCw,
-  },
-  {
-    title: 'Wear & Tear Repair',
-    description: 'End-of-lease repairs to reduce wear charges and avoid surprises at return.',
-    href: '/services/wear-and-tear',
-    icon: Wrench,
-  },
-  {
-    title: 'Rim, Wheel & Tire',
-    description: 'Wheel and tire repairs, cosmetic or functional, depending on what is needed.',
-    href: '/services/wheel-repair',
-    icon: CircleDot,
-  },
-  {
-    title: 'Professional Detailing',
-    description: 'Interior and exterior detailing for return, resale, or a proper clean.',
-    href: '/services/detailing',
-    icon: Sparkles,
   },
 ];
 
-interface ServiceCardProps {
-  service: Service;
+interface ServiceColumnProps {
+  service: ServiceItem;
   index: number;
   isRevealed: boolean;
 }
 
-function ServiceCard({ service, index, isRevealed }: ServiceCardProps) {
+function ServiceColumn({ service, index, isRevealed }: ServiceColumnProps) {
   const Icon = service.icon;
   const [hasAnimated, setHasAnimated] = useState(false);
-  
+
   useEffect(() => {
     if (isRevealed && !hasAnimated) {
       const timer = setTimeout(() => setHasAnimated(true), index * 120);
       return () => clearTimeout(timer);
     }
   }, [isRevealed, index, hasAnimated]);
-  
+
   return (
     <Link
       to={service.href}
       className={cn(
-        "group relative block h-full",
-        // Staggered reveal animation
-        "opacity-0 translate-y-8 scale-[0.97]",
-        hasAnimated && "animate-card-reveal"
+        'group flex flex-col h-full text-center',
+        'opacity-0 translate-y-6',
+        hasAnimated && 'animate-card-reveal'
       )}
-      style={{ 
-        animationDelay: `${index * 120}ms`,
-        animationFillMode: 'forwards'
-      }}
+      style={{ animationDelay: `${index * 120}ms`, animationFillMode: 'forwards' }}
     >
-      {/* Subtle glow backdrop on hover */}
-      <div className={cn(
-        "absolute -inset-3 rounded-xl blur-2xl transition-opacity duration-500",
-        "bg-gradient-to-br from-accent/12 via-accent/10 to-accent/12",
-        "opacity-0 group-hover:opacity-100"
-      )} />
-      
-      {/* Glass card — align with hero infographic container */}
-      <div className={cn(
-        "relative h-full flex flex-col p-4 md:p-6 lg:p-8 rounded-2xl overflow-hidden glass-card-theme",
-        "transition-all duration-300",
-        "group-hover:border-accent/40 dark:group-hover:bg-white/[0.06]",
-        "group-hover:-translate-y-1"
-      )}>
-        {/* Subtle border highlight on hover (static) */}
-        <div className={cn(
-          "absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300",
-          "pointer-events-none"
-        )}>
-          <div className="absolute inset-0 rounded-xl border border-accent/20" />
+      <div
+        className={cn(
+          'relative flex flex-col h-full rounded-2xl overflow-hidden',
+          'bg-card dark:bg-white/[0.04] shadow-md dark:shadow-sm',
+          'hover:border-accent/30 hover:shadow-lg',
+          'transition-all duration-300'
+        )}
+      >
+        {/* Top visual: image or gradient + icon */}
+        <div className="relative aspect-[8/5] md:aspect-[3/2] w-full overflow-hidden bg-muted/50 dark:bg-white/5">
+          {service.image ? (
+            <img
+              src={service.image}
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-accent/10 to-accent/5 dark:from-accent/15 dark:to-accent/10">
+              <Icon className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 text-accent/60 dark:text-accent/70" strokeWidth={1.25} />
+            </div>
+          )}
         </div>
+
+        {/* Icon, title, description, CTA — centered */}
+        <div className="flex flex-col items-center flex-grow p-6 sm:p-8 lg:p-10 xl:p-12">
         
-        {/* Number indicator with glow */}
-        <span className={cn(
-          "absolute top-4 right-4 text-[10px] font-mono tracking-wider text-section-muted opacity-50 group-hover:text-accent/60",
-          "transition-all duration-500"
-        )}>
-          0{index + 1}
-        </span>
-        
-        {/* Icon container */}
-        <div className="relative mb-6">
-          <div className={cn(
-            "relative w-14 h-14 rounded-xl flex items-center justify-center",
-            "bg-accent/10",
-            "shadow-[0_0_12px_rgba(31,106,225,0.15)]",
-            "group-hover:shadow-[0_0_20px_rgba(31,106,225,0.25)]",
-            "transition-all duration-300",
-            "group-hover:scale-105"
-          )}>
-            <Icon className={cn(
-              "relative z-10 w-7 h-7 text-accent",
-              "transition-transform duration-300",
-              "group-hover:scale-105"
-            )} />
-          </div>
-        </div>
-        
-        {/* Content */}
-        <div className="relative z-10 flex-grow">
-          <h3 className={cn(
-            "text-lg md:text-xl font-semibold text-section mb-2",
-            "transition-all duration-300",
-            "group-hover:tracking-wide"
-          )}>
+          <h3 className="text-lg sm:text-xl lg:text-2xl  font-bold text-foreground mb-3 sm:mb-4 lg:mb-5">
             {service.title}
           </h3>
-          <p className={cn(
-            "text-section-muted text-sm md:text-base leading-relaxed",
-            "transition-all duration-300",
-            "group-hover:text-section-muted"
-          )}>
+          <p className="text-muted-foreground dark:text-white/70 text-sm sm:text-base lg:text-lg  leading-relaxed mb-6 sm:mb-7 lg:mb-8 flex-grow">
             {service.description}
           </p>
+         <Button
+          asChild
+          size="lg"
+          className="bg-accent hover:bg-accent/90 text-accent-foreground glow-blue w-full text-md"
+        >
+          <Link to={service.href}>{service.ctaText}</Link>
+        </Button>
         </div>
-        
-        {/* Arrow indicator with enhanced animation */}
-        <div className="mt-6 flex items-center gap-2 text-accent">
-          <span className={cn(
-            "text-sm font-medium",
-            "opacity-0 -translate-x-3",
-            "group-hover:opacity-100 group-hover:translate-x-0",
-            "transition-all duration-400 ease-out"
-          )}>
-            Learn more
-          </span>
-          <ArrowRight className={cn(
-            "w-4 h-4",
-            "opacity-0 -translate-x-2",
-            "group-hover:opacity-100 group-hover:translate-x-1",
-            "transition-all duration-400 delay-75 ease-out"
-          )} />
-        </div>
-        
-        {/* Enhanced bottom accent line with glow */}
-        <div className={cn(
-          "absolute bottom-0 left-0 h-[2px] w-0",
-          "bg-gradient-to-r from-accent via-accent/80 to-transparent",
-          "group-hover:w-full",
-          "transition-all duration-700 ease-out",
-          "shadow-[0_0_10px_rgba(31,106,225,0.5)]"
-        )} />
       </div>
     </Link>
-  );
-}
-
-function ConnectingLines() {
-  return (
-    <svg 
-      className="absolute inset-0 w-full h-full pointer-events-none hidden md:block"
-      style={{ zIndex: 0 }}
-    >
-      <defs>
-        <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="hsl(214 77% 50% / 0.05)" />
-          <stop offset="50%" stopColor="hsl(214 77% 50% / 0.25)" />
-          <stop offset="100%" stopColor="hsl(214 77% 50% / 0.05)" />
-        </linearGradient>
-        <linearGradient id="lineGradientV" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="hsl(214 77% 50% / 0.05)" />
-          <stop offset="50%" stopColor="hsl(214 77% 50% / 0.25)" />
-          <stop offset="100%" stopColor="hsl(214 77% 50% / 0.05)" />
-        </linearGradient>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-          <feMerge>
-            <feMergeNode in="coloredBlur"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
-      </defs>
-      
-      {/* Horizontal connecting lines - Row 1 */}
-      <line 
-        x1="22%" y1="25%" x2="38%" y2="25%" 
-        stroke="url(#lineGradient)" 
-        strokeWidth="1"
-        className="animate-line-flow"
-        filter="url(#glow)"
-      />
-      <line 
-        x1="62%" y1="25%" x2="78%" y2="25%" 
-        stroke="url(#lineGradient)" 
-        strokeWidth="1"
-        className="animate-line-flow"
-        style={{ animationDelay: '0.5s' }}
-        filter="url(#glow)"
-      />
-      
-      {/* Horizontal connecting lines - Row 2 */}
-      <line 
-        x1="22%" y1="75%" x2="38%" y2="75%" 
-        stroke="url(#lineGradient)" 
-        strokeWidth="1"
-        className="animate-line-flow"
-        style={{ animationDelay: '1s' }}
-        filter="url(#glow)"
-      />
-      <line 
-        x1="62%" y1="75%" x2="78%" y2="75%" 
-        stroke="url(#lineGradient)" 
-        strokeWidth="1"
-        className="animate-line-flow"
-        style={{ animationDelay: '1.5s' }}
-        filter="url(#glow)"
-      />
-      
-      {/* Vertical connecting lines */}
-      <line 
-        x1="17%" y1="35%" x2="17%" y2="65%" 
-        stroke="url(#lineGradientV)" 
-        strokeWidth="1"
-        className="animate-line-flow-v"
-        filter="url(#glow)"
-      />
-      <line 
-        x1="50%" y1="35%" x2="50%" y2="65%" 
-        stroke="url(#lineGradientV)" 
-        strokeWidth="1"
-        className="animate-line-flow-v"
-        style={{ animationDelay: '0.7s' }}
-        filter="url(#glow)"
-      />
-      <line 
-        x1="83%" y1="35%" x2="83%" y2="65%" 
-        stroke="url(#lineGradientV)" 
-        strokeWidth="1"
-        className="animate-line-flow-v"
-        style={{ animationDelay: '1.4s' }}
-        filter="url(#glow)"
-      />
-      
-      {/* Enhanced glowing nodes */}
-      <circle cx="17%" cy="25%" r="4" className="fill-accent/20 animate-node-pulse" filter="url(#glow)" />
-      <circle cx="17%" cy="25%" r="2" className="fill-accent/60" />
-      <circle cx="50%" cy="25%" r="4" className="fill-accent/20 animate-node-pulse" style={{ animationDelay: '0.3s' }} filter="url(#glow)" />
-      <circle cx="50%" cy="25%" r="2" className="fill-accent/60" />
-      <circle cx="83%" cy="25%" r="4" className="fill-accent/20 animate-node-pulse" style={{ animationDelay: '0.6s' }} filter="url(#glow)" />
-      <circle cx="83%" cy="25%" r="2" className="fill-accent/60" />
-      <circle cx="17%" cy="75%" r="4" className="fill-accent/20 animate-node-pulse" style={{ animationDelay: '0.9s' }} filter="url(#glow)" />
-      <circle cx="17%" cy="75%" r="2" className="fill-accent/60" />
-      <circle cx="50%" cy="75%" r="4" className="fill-accent/20 animate-node-pulse" style={{ animationDelay: '1.2s' }} filter="url(#glow)" />
-      <circle cx="50%" cy="75%" r="2" className="fill-accent/60" />
-      <circle cx="83%" cy="75%" r="4" className="fill-accent/20 animate-node-pulse" style={{ animationDelay: '1.5s' }} filter="url(#glow)" />
-      <circle cx="83%" cy="75%" r="2" className="fill-accent/60" />
-    </svg>
   );
 }
 
@@ -287,14 +117,13 @@ export function WhatWeDoSection() {
   const { ref, isRevealed } = useScrollReveal();
 
   return (
-    <section className="relative py-6 md:py-14 lg:py-20 overflow-hidden ">
-     {/* <BackgroundEffects /> */}
+    <section className="relative py-16 lg:py-20 overflow-hidden ">
       <div
         ref={ref}
         className={cn(
-          "container relative mx-auto px-4 lg:px-8",
-          "scroll-reveal",
-          isRevealed && "revealed"
+          'container relative mx-auto px-4 lg:px-8',
+          'scroll-reveal',
+          isRevealed && 'revealed'
         )}
       >
         <SectionHeading
@@ -302,24 +131,15 @@ export function WhatWeDoSection() {
           subtitle="We support customers at every stage of the automotive process."
         />
 
-        <div className="relative max-w-6xl mx-auto">
-          {/* Connecting lines SVG - Desktop only */}
-          <ConnectingLines />
-          
-          {/* Services Grid */}
-          <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            {services.map((service, index) => (
-              <ServiceCard 
-                key={service.href} 
-                service={service} 
-                index={index}
-                isRevealed={isRevealed}
-              />
-            ))}
-          </div>
-          
-          {/* Mobile connecting line */}
-          <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-accent/20 to-transparent md:hidden" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 lg:gap-12 max-w-7xl mx-auto mt-10 md:mt-14">
+          {services.map((service, index) => (
+            <ServiceColumn
+              key={service.href}
+              service={service}
+              index={index}
+              isRevealed={isRevealed}
+            />
+          ))}
         </div>
       </div>
     </section>

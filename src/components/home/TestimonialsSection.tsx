@@ -146,7 +146,7 @@ export function TestimonialsSection() {
   const [openIndex, setOpenIndex] = React.useState<number | null>(null);
 
   return (
-    <section className="pt-6 pb-6 md:pt-20 md:pb-24 ">
+    <section className="py-16 lg:py-20 ">
       <div ref={ref} className={cn('scroll-reveal', isRevealed && 'revealed')}>
         <div className="container mx-auto px-4 lg:px-8 mb-6 md:mb-10">
           <SectionHeading

@@ -3,7 +3,7 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Marquee } from '@/components/ui/Marquee';
 import { cn } from '@/lib/utils';
 
-const brands = [
+export const brands = [
   { name: 'BMW', logo: 'https://www.carlogos.org/car-logos/bmw-logo.png' },
   { name: 'Mercedes-Benz', logo: 'https://www.carlogos.org/car-logos/mercedes-benz-logo.png' },
   { name: 'Audi', logo: 'https://www.carlogos.org/car-logos/audi-logo.png' },
@@ -17,36 +17,48 @@ const brands = [
   { name: 'Kia', logo: 'https://www.carlogos.org/car-logos/kia-logo.png' },
   { name: 'Nissan', logo: 'https://www.carlogos.org/car-logos/nissan-logo.png' },
   { name: 'Porsche', logo: 'https://www.carlogos.org/car-logos/porsche-logo.png' },
-  { name: 'Tesla', logo: 'https://www.carlogos.org/car-logos/tesla-logo.png' },
 ];
 
-function BrandCard({ name, logo }: { name: string; logo: string }) {
-  return (
-    <div
-      className={cn(
-        'group/card relative flex h-full w-36 shrink-0 cursor-default overflow-hidden rounded-xl border p-4',
-        'flex-col items-center justify-center text-center',
-        'bg-white/90 border-border/80 shadow-black/5',
-        'dark:bg-white/[0.03] dark:border-white/5 dark:shadow-black/30',
-        'backdrop-blur-sm transition-all duration-300 hover:shadow-md hover:border-accent/30'
-      )}
-    >
-      <div className="flex flex-col items-center justify-center gap-2">
-        <div
-          className={cn(
-            'flex h-14 w-14 items-center justify-center rounded-lg bg-muted/30 dark:bg-white/[0.06]',
-            'grayscale transition-[filter] duration-300 group-hover/card:grayscale-0'
-          )}
-        >
+interface BrandCardProps {
+  name: string;
+  logo: string;
+  /** Use "card" for hero strip: rounded card with border, bg, shadow. Omit for plain marquee. */
+  variant?: 'default' | 'card';
+}
+
+export function BrandCard({ name, logo, variant = 'default' }: BrandCardProps) {
+  if (variant === 'card') {
+    return (
+      <div className="group/card relative flex h-full w-28 sm:w-32 p-2 shrink-0 cursor-default overflow-hidden flex-col items-center justify-center text-center transition-all duration-300 rounded-2xl border border-white/15 bg-white/5 dark:bg-white/[0.06] shadow-md shadow-black/5 dark:shadow-black/20 backdrop-blur-sm hover:border-white/25 hover:bg-white/10 dark:hover:bg-white/10 hover:shadow-lg hover:shadow-black/10 dark:hover:shadow-black/30">
+        <div className="flex flex-col items-center justify-center gap-1">
           <img
             src={logo}
             alt={name}
             loading="lazy"
             decoding="async"
-            className="h-11 w-11 object-contain"
+            className="h-10 w-10 sm:h-14 sm:w-14 object-contain grayscale transition-[filter] duration-300 group-hover/card:grayscale-0"
           />
+          <span className="text-[10px] sm:text-xs font-medium text-white/90 dark:text-white/90">
+            {name}
+          </span>
         </div>
-        <span className="text-xs font-medium text-foreground dark:text-white/90">{name}</span>
+      </div>
+    );
+  }
+
+  return (
+    <div className="group/card relative flex h-full w-44 shrink-0 cursor-default overflow-hidden p-4 flex-col items-center justify-center text-center transition-all duration-300">
+      <div className="flex flex-col items-center justify-center gap-2">
+        <img
+          src={logo}
+          alt={name}
+          loading="lazy"
+          decoding="async"
+          className="h-12 w-12 md:h-14 md:w-14 object-contain grayscale transition-[filter] duration-300 group-hover/card:grayscale-0"
+        />
+        <span className="text-xs font-medium text-foreground dark:text-white/90">
+          {name}
+        </span>
       </div>
     </div>
   );

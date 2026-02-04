@@ -7,11 +7,11 @@ import { PeopleSection } from '@/components/home/PeopleSection';
 import { VehicleTypesCarousel } from '@/components/home/VehicleTypesCarousel';
 import { BrandsCarousel } from '@/components/home/BrandsCarousel';
 import { TestimonialsSection } from '@/components/home/TestimonialsSection';
-import { WhyUsPokerCards } from '@/components/home/WhyUsPokerCards';
 import { WhatWeDoSection } from '@/components/home/WhatWeDoSection';
-import { ExperienceTrustSection } from '@/components/home/ExperienceTrustSection';
+import { WhyUsAndExperienceSection } from '@/components/home/WhyUsAndExperienceSection';
 import { FinalCTASection } from '@/components/home/FinalCTASection';
 import { HeroBackgroundWrapper } from '@/components/hero/HeroBackgroundWrapper';
+import { SectionDividerCreative } from '@/components/ui/SectionDividerCreative';
 
 export default function HomePage() {
   return (
@@ -23,15 +23,25 @@ export default function HomePage() {
       <JsonLd data={organizationSchema} />
       <HeroBackgroundWrapper>
         <HeroSection />
-        <HowItWorksSection transparentBackground />
       </HeroBackgroundWrapper>
+      <HowItWorksSection transparentBackground />
+
+      <SectionDividerCreative variant="dot" />
       <VehicleTypesCarousel />
-      <BrandsCarousel />
+
+      <SectionDividerCreative variant="dot" />
       <PeopleSection />
+
+      <SectionDividerCreative variant="dot" />
       <WhatWeDoSection />
-      <WhyUsPokerCards />
-      <ExperienceTrustSection />
+
+      <SectionDividerCreative variant="dot" />
+      <WhyUsAndExperienceSection />
+
+      <SectionDividerCreative variant="dot" />
       <FinalCTASection />
+
+      <SectionDividerCreative variant="dot" />
       <TestimonialsSection />
     </Layout>
   );

@@ -20,7 +20,7 @@ export function ExperienceTrustSection() {
     <section className="py-10 md:py-16 lg:py-20 section-bg relative overflow-hidden">
       {/* Subtle radial glow for depth */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(100%,600px)] h-[320px] rounded-full bg-accent/[0.04] dark:bg-accent/[0.06] blur-[80px] pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(100%,800px)] h-[320px] rounded-full bg-accent/[0.04] dark:bg-accent/[0.06] blur-[80px] pointer-events-none"
         aria-hidden
       />
       <div ref={ref} className="container relative mx-auto px-4 lg:px-8">

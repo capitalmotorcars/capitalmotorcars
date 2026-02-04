@@ -116,7 +116,7 @@
 /* How It Works: readable card on hero in both themes */
 .how-it-works-card {
   @apply rounded-2xl border shadow-lg;
-  @apply bg-white/90 border-border/80 shadow-black/5 dark:bg-white/[0.08] dark:border-white/15 dark:shadow-black/30;
+  @apply border border-border dark:border-white/5 bg-white/90 dark:bg-white/[0.03] backdrop-blur-sm shadow-md ;
   @apply backdrop-blur-sm;
 }
 .text-section {
@@ -165,14 +165,28 @@
 .form-card-theme button:focus-visible {
   @apply ring-accent ring-2;
 }
-/* Hero gradient heading: dark text in light mode, white-to-accent in dark */
+/* Hero gradient heading: same white-to-accent in light and dark (hero has dark bg) */
 .text-gradient-heading-dark {
-  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--muted-foreground) / 0.9) 45%, hsl(var(--accent)) 100%);
+  background: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(213 40% 90%) 45%, hsl(214 77% 55%) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 .dark .text-gradient-heading-dark {
+  background: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(213 40% 90%) 45%, hsl(214 77% 55%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Final CTA heading: black-to-blue gradient in light mode, white-to-blue in dark */
+.text-heading-cta {
+  background: linear-gradient(135deg, hsl(210 40% 11%) 0%, hsl(210 40% 11%) 40%, hsl(214 77% 50%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.dark .text-heading-cta {
   background: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(213 40% 90%) 45%, hsl(214 77% 55%) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -389,6 +403,19 @@
   }
   .dark .text-gradient-hero-highlight {
     background: linear-gradient(135deg, hsl(187 85% 55%) 0%, hsl(214 77% 50%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  /* Vehicle page hero: readable in light (dark→blue) and dark (white→blue) */
+  .text-gradient-vehicle-hero {
+    background: linear-gradient(135deg, hsl(210 40% 15%) 0%, hsl(214 77% 45%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .dark .text-gradient-vehicle-hero {
+    background: linear-gradient(135deg, hsl(0 0% 98%) 0%, hsl(214 77% 55%) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

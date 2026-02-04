@@ -360,7 +360,7 @@ export function CircularProcessVisualization({
     <div className={cn('w-full', className)}>
       {/* Desktop */}
       <div className="hidden md:flex flex-col items-center">
-        {renderDiagram(500, false)}
+        {renderDiagram(600, false)}
         <div className="w-full max-w-sm md:max-w-lg mt-6">{renderPanel(false)}</div>
         <div
           className="flex items-center gap-2 mt-4"

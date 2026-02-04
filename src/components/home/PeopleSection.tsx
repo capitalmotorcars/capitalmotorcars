@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { motion } from 'motion/react';
-import { X, ArrowRight, UserCircle } from 'lucide-react';
+import { X, ArrowRight, UserCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { cn } from '@/lib/utils';
@@ -30,14 +30,29 @@ const founder: Person = {
 };
 
 const team: Person[] = [
+  // Leadership & operations
   { name: 'Henry Liu', role: 'Vice President', image: henryImage, bio: "Henry is a seasoned professional in the automotive leasing industry, known for his strategic leadership and commitment to operational excellence. As Vice President, he plays a key role in driving the company's growth and ensuring that the team delivers top-tier service to all clients.", email: 'henry@capitalmotorcars.com' },
   { name: 'Mark Onbashian', role: 'Vice President', image: markImage, bio: "With years of experience in management and sales, Mark oversees large-scale operations and partnership development. His focus is on maintaining high standards of customer satisfaction and expanding the company's reach within the luxury vehicle market.", email: 'mark@capitalmotorcars.com' },
   { name: 'Yehuda Cohen', role: 'Chief Operating Officer', image: '', bio: "As the Chief Operating Officer at Capital Motor Cars, I bring a wealth of experience in marketing, web design, and small business management. My entrepreneurial journey includes founding and successfully scaling two businesses: Cell Point, a chain of six retail cell phone stores in New York City, and Amerikey, a nationwide lead generation and dispatching service for locksmiths. These ventures honed my skills in building efficient systems, streamlining operations, and driving growth.\n\nAt Capital Motor Cars, I apply these capabilities to enhance logistics, improve processes, and optimize car sales, ensuring we deliver exceptional value and service to our customers.", email: 'yehuda@capitalmotorcars.com' },
   { name: 'Michael Zeitoune', role: 'Director of Finance', image: mikeZImage, bio: "Michael manages the financial health and lending relationships of the company. He works closely with various banking institutions to secure the most favorable leasing rates and financial structures for clients, ensuring a smooth and transparent transaction process.", email: 'mzeitoune@capitalmotorcars.com' },
+  { name: 'Derek Anton', role: 'Business Development Director', image: derekImage, bio: "With more than a decade at BMW NA and a lifelong love for cars, I'm driven to inspire my team to consistently provide an exceptional customer experience.", email: 'derek@capitalmotorcars.com' },
+  { name: 'Michael Dai', role: 'Social Media Manager', image: '', bio: "Michael Dai leads our content and social media efforts, shaping how our brand shows up across digital platforms. In his role as Content Creator and Social Media Manager, he blends creative storytelling with thoughtful strategy to develop campaigns that genuinely resonate with our audience. With a strong eye for visuals and messaging, Michael elevates our online presence, driving engagement and fostering a connected, growing community." },
+  // Sales & consultants
   { name: 'Vicky Azrak', role: 'Sales Manager', image: vickyImage, bio: "Vicky is dedicated to providing a personalized and seamless car-buying experience. As a Sales Manager, she leads her team with a customer-first approach, helping clients navigate their options to find the perfect vehicle that fits their lifestyle and budget.", email: 'vicky@capitalmotorcars.com' },
   { name: 'Michael Minerva', role: 'Sales Manager', image: michaelMImage, bio: "Michael specializes in high-end automotive sales and leasing. He is known for his deep product knowledge and his ability to build long-term relationships with clients through trust, expertise, and a commitment to finding the best deals available.", email: 'minerva@capitalmotorcars.com' },
   { name: 'Bobby Kaufman', role: 'Automotive Consultant', image: '', bio: "Bobby brings more than 30 years of experience from his time at BMW, where he built a reputation for deep product knowledge, exceptional customer care, and a straightforward, honest approach. His decades working with a premier luxury brand shaped his commitment to delivering a premium, stress-free experience for every client he meets.\n\nNow partnered with Capital Motor Cars, Bobby extends that same level of service across all makes and models, offering unbiased guidance, personalized recommendations, and full concierge support. Whether you're exploring luxury, sport, or everyday vehicles, Bobby ensures a smooth, transparent process from start to finish.", email: 'bobby@capitalmotorcars.com' },
-  { name: 'Derek Anton', role: 'Business Development Director', image: derekImage, bio: "Derek focuses on identifying new growth opportunities and enhancing the company's brand presence. He works on building strategic alliances and improving the overall customer journey, from the first point of contact to the final vehicle delivery.", email: 'derek@capitalmotorcars.com' },
+  { name: 'Ricky Wong', role: 'Automotive Consultant', image: '', bio: "With a decade of experience in sales, my goal is to guide clients through the car shopping journey with a high level of service and care." },
+  { name: 'Rafael Frias', role: 'Automotive Consultant', image: '', bio: "Rafael Frias is a seasoned automotive consultant with extensive experience working with top brands such as Chrysler, Dodge, Jeep, and Ram. Known for his strong industry knowledge and client-first approach, Rafael helps customers navigate the car-buying process with confidence. His deep product expertise and personalized guidance make him a reliable and trusted partner in finding the right vehicle." },
+  { name: 'Sarah Flynn', role: 'Automotive Consultant', image: '', bio: "As an automotive consultant, I've built my reputation on delivering more than just vehicles. I offer clarity, confidence, and a white-glove experience for clients who value their time and want to avoid the typical dealership runaround. I entered the industry early, driven and ambitious, and grew my business through results and referrals. I've worked with clients ranging from first-time lessees to C-suite executives, always operating with transparency and a strong work ethic. Now pursuing my MBA at Rutgers, I'm focused on scaling more strategically, strengthening my financial expertise, and helping elevate the standard of the industry." },
+  { name: 'Michael Van Houten', role: 'Automotive Consultant', image: '', bio: "Driven by dedication and determination, I'm committed to delivering an elevated level of service to every client. With over 12 years of experience in the automotive industry, I handle the process from start to finish, ensuring nothing is overlooked. Outside of work, I'm a proud father of three daughters, a little league coach, and an avid weekend fisherman. Those same values of commitment and reliability guide my role as a trusted member of the Capitol Motor Cars team." },
+  { name: 'Jeffrey Horn', role: 'Automotive Consultant', image: '', bio: "With over 10 years of experience in the industry, I focus on building lasting relationships that keep my clients smiling, especially knowing I'll be seeing them again every few years." },
+  { name: 'Daniel Jay Lehrer', role: 'Automotive Consultant', image: '', bio: "My philosophy is simple: lead with passion and honesty, and deliver a first-class level of service that builds lasting relationships with my clients." },
+  { name: 'Markin De La Cruz', role: 'Automotive Consultant', image: '', bio: "I take pride in ensuring that every team member reflects my standards and values. I firmly believe that strong relationships with customers are the foundation of truly exceptional service." },
+  // Delivery & admin
+  { name: 'Jeffrey', role: 'Delivery Specialist', image: '', bio: "Jeffrey is an experienced Delivery Specialist dedicated to delivering a seamless and professional vehicle handoff. Known for his attention to detail and commitment to customer satisfaction, he ensures every delivery is handled with care and precision. Jeffrey's focus on excellence helps leave customers with a positive, lasting impression as they take the wheel of their new vehicle." },
+  { name: 'David Silver', role: 'Delivery Specialist', image: '', bio: "David Silver is our Delivery Specialist, committed to providing a smooth and enjoyable vehicle delivery experience. With a strong focus on efficiency and attention to detail, he oversees every step of the process, from preparation through final handoff. David's dedication to high-quality service ensures that customers drive away feeling confident and fully satisfied." },
+  { name: 'Noah Sagiv', role: 'Delivery Specialist', image: '', bio: "Cars have always been my passion, with a particular love for driving vintage models." },
+  { name: 'Elyse Barrett', role: 'Administrative Assistant', image: '', bio: "I'm dedicated to delivering the highest level of customer service to every client we serve in the South Jersey community." },
   { name: 'James', role: 'Logistics Manager', image: '', bio: "I love the smell of that new car scent. From pickup to delivery, I come straight to you smelling good.", email: 'james@capitalmotorcars.com' },
 ];
 
@@ -55,14 +70,20 @@ const cardTransition = { type: 'spring' as const, stiffness: 500, damping: 32 };
 const hoverTransition = { type: 'tween' as const, duration: 0.12 };
 const dialogFadeTransition = { type: 'tween' as const, duration: 0.4, ease: 'easeOut' as const };
 
+const TEAM_PAGE_SIZE = 6;
+
 export function PeopleSection() {
   const { ref, isRevealed } = useScrollReveal();
   const [founderOpen, setFounderOpen] = React.useState(false);
   const [teamPerson, setTeamPerson] = React.useState<Person | null>(null);
+  const [teamPage, setTeamPage] = React.useState(0);
+
+  const maxTeamPage = Math.max(0, Math.ceil(team.length / TEAM_PAGE_SIZE) - 1);
+  const visibleTeam = team.slice(teamPage * TEAM_PAGE_SIZE, teamPage * TEAM_PAGE_SIZE + TEAM_PAGE_SIZE);
 
   return (
-    <section aria-label="Team" className="relative py-16 md:py-24 section-bg">
-      <div ref={ref} className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+    <section aria-label="Team" className="relative py-16 lg:py-20">
+      <div ref={ref} className=" relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         <div className="max-w-2xl mx-auto text-center mb-12">
           <SectionHeading
             title="Your Car Leasing Journey, Backed by a Dedicated Team"
@@ -70,13 +91,19 @@ export function PeopleSection() {
           />
         </div>
 
+       
+      {/* <div className="how-it-works-card p-6"> */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(100%,500px)] h-[320px] rounded-full bg-accent/[0.04] dark:bg-accent/[0.06] blur-[80px] pointer-events-none"
+        aria-hidden
+      />
         {/* Founder — centered on top */}
         <div className="flex justify-center mb-6">
           <Dialog.Root open={founderOpen} onOpenChange={setFounderOpen}>
             <Dialog.Trigger asChild>
               <motion.button
                 type="button"
-                className={cn(cardClass, 'flex flex-col items-center p-4 text-center w-full max-w-[300px]')}
+                className={cn(cardClass, 'flex flex-col items-center p-4 text-center w-full max-w-[315px]')}
                 aria-label="A note from our founder"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isRevealed ? { opacity: 1, y: 0, transition: { ...cardTransition, delay: 0.30 } } : { opacity: 0, y: 20 }}
@@ -133,14 +160,27 @@ export function PeopleSection() {
           </Dialog.Root>
         </div>
 
-        {/* Team grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-          {team.map((person, i) => (
+        {/* Team carousel — arrows cycle team only; founder stays fixed above */}
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setTeamPage((p) => Math.max(0, p - 1))}
+            disabled={teamPage === 0}
+            aria-label="Previous team members"
+            className={cn(
+              'shrink-0 rounded-full p-2 border border-border dark:border-white/20 bg-card dark:bg-black text-foreground hover:bg-muted dark:hover:bg-white/10 disabled:opacity-40 disabled:pointer-events-none transition-colors',
+            )}
+          >
+            <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
+          </button>
+          <div className="flex-1 min-w-0">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
+              {visibleTeam.map((person, i) => (
             <Dialog.Root key={person.name} open={teamPerson?.name === person.name} onOpenChange={(open) => setTeamPerson(open ? person : null)}>
               <Dialog.Trigger asChild>
                 <motion.button
                   type="button"
-                  className={cn(cardClass, 'flex flex-col items-center p-4 md:p-5 text-center')}
+                  className={cn(cardClass, 'flex flex-col items-center p-4 md:p-5 text-center ')}
                   aria-label={`View ${person.name}`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={isRevealed ? { opacity: 1, y: 0, transition: { ...cardTransition, delay: 0.30 + i * 0.06 } } : { opacity: 0, y: 20 }}
@@ -208,8 +248,27 @@ export function PeopleSection() {
                 </Dialog.Content>
               </Dialog.Portal>
             </Dialog.Root>
-          ))}
+              ))}
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => setTeamPage((p) => Math.min(maxTeamPage, p + 1))}
+            disabled={teamPage >= maxTeamPage}
+            aria-label="Next team members"
+            className={cn(
+              'shrink-0 rounded-full p-2 border border-border dark:border-white/20 bg-card dark:bg-white/5 text-foreground hover:bg-muted dark:hover:bg-white/10 disabled:opacity-40 disabled:pointer-events-none transition-colors',
+            )}
+          >
+            <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
+          </button>
         </div>
+        {maxTeamPage > 0 && (
+          <p className="mt-3 text-center text-xs text-muted-foreground">
+            {teamPage + 1} of {maxTeamPage + 1}
+          </p>
+        )}
+      {/* </div> */}
       </div>
     </section>
   );

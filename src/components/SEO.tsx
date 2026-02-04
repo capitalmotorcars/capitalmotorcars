@@ -3,19 +3,19 @@ import { useEffect } from 'react';
 interface SEOProps {
   title: string;
   description: string;
+  canonicalPath?: string;
+  seoKeywords?: string[];
 }
 
 /**
- * SEO component that sets document title and meta description.
+ * SEO component that sets document title, meta description, canonical URL, and optional keywords.
  * - Titles should be under 60 characters
  * - Descriptions should be under 160 characters
  */
-export function SEO({ title, description }: SEOProps) {
+export function SEO({ title, description, canonicalPath, seoKeywords }: SEOProps) {
   useEffect(() => {
-    // Set document title
     document.title = title;
 
-    // Set or update meta description
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
       metaDescription = document.createElement('meta');
@@ -24,11 +24,36 @@ export function SEO({ title, description }: SEOProps) {
     }
     metaDescription.setAttribute('content', description);
 
-    // Cleanup: restore default title on unmount (optional)
+    // Canonical URL
+    let linkCanonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (canonicalPath) {
+      if (!linkCanonical) {
+        linkCanonical = document.createElement('link');
+        linkCanonical.setAttribute('rel', 'canonical');
+        document.head.appendChild(linkCanonical);
+      }
+      linkCanonical.href = `${typeof window !== 'undefined' ? window.location.origin : ''}${canonicalPath}`;
+    } else if (linkCanonical) {
+      linkCanonical.remove();
+    }
+
+    // Keywords (optional)
+    let metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (seoKeywords?.length) {
+      if (!metaKeywords) {
+        metaKeywords = document.createElement('meta');
+        metaKeywords.setAttribute('name', 'keywords');
+        document.head.appendChild(metaKeywords);
+      }
+      metaKeywords.setAttribute('content', seoKeywords.join(', '));
+    } else if (metaKeywords) {
+      metaKeywords.remove();
+    }
+
     return () => {
       document.title = 'Capital Motor Cars';
     };
-  }, [title, description]);
+  }, [title, description, canonicalPath, seoKeywords]);
 
   return null;
 }
