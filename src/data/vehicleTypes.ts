@@ -1,0 +1,317 @@
+import luxurySedanImg from '@/assets/luxury-sedan.png';
+import electricEqcImg from '@/assets/electric-mercedes-eqc.png';
+import hatchbackAudiImg from '@/assets/hatchback-audi-rs5.png';
+import truckRaptorImg from '@/assets/truck-ford-raptor.png';
+import mercedesSedanImg from '@/assets/mercedes-luxury-sedan.png';
+import minivanOdysseyImg from '@/assets/minivan-odyssey.png';
+import crossoverLexusImg from '@/assets/crossover-lexus-ux.png';
+
+export interface VehicleTypeData {
+  slug: string;
+  name: string;
+  image: string;
+  description: string;
+  highlights: string[];
+  idealFor: string[];
+  popularBrands: string[];
+  features: string[];
+  metaTitle: string;
+  metaDescription: string;
+}
+
+export const vehicleTypes: VehicleTypeData[] = [
+  {
+    slug: 'luxury',
+    name: 'Luxury',
+    image: luxurySedanImg,
+    description: 'Experience the pinnacle of automotive excellence with our curated selection of luxury vehicles. Premium craftsmanship meets cutting-edge technology.',
+    highlights: [
+      'Premium materials and craftsmanship',
+      'Advanced technology and safety features',
+      'Superior comfort and ride quality',
+      'Prestigious brand heritage',
+    ],
+    idealFor: [
+      'Executive professionals seeking refined transportation',
+      'Those who appreciate fine craftsmanship and attention to detail',
+      'Drivers seeking ultimate comfort on long journeys',
+      'Anyone wanting a premium driving experience',
+    ],
+    popularBrands: ['Mercedes-Benz', 'BMW', 'Audi', 'Lexus', 'Porsche'],
+    features: [
+      'Leather interiors with premium stitching',
+      'Premium sound systems (Bang & Olufsen, Burmester)',
+      'Advanced driver assistance systems',
+      'Adaptive air suspension',
+      'Massage seats and climate control',
+      'Panoramic sunroofs',
+    ],
+    metaTitle: 'Luxury Car Leasing | Capital Motor Cars',
+    metaDescription: 'Discover premium luxury vehicles from Mercedes, BMW, Audi and more. Expert guidance for your next luxury car lease.',
+  },
+  {
+    slug: 'electric',
+    name: 'Electric',
+    image: electricEqcImg,
+    description: 'Drive into the future with zero emissions and instant torque. Our electric vehicle selection offers the latest in sustainable mobility.',
+    highlights: [
+      'Zero emissions and lower running costs',
+      'Instant torque for exhilarating acceleration',
+      'Advanced autonomous driving features',
+      'Cutting-edge infotainment technology',
+    ],
+    idealFor: [
+      'Environmentally conscious drivers',
+      'Tech enthusiasts who want the latest innovations',
+      'Commuters looking to reduce fuel costs',
+      'Early adopters of sustainable transportation',
+    ],
+    popularBrands: ['Tesla', 'Rivian', 'Lucid', 'Porsche', 'BMW'],
+    features: [
+      'Fast charging capability (up to 350kW)',
+      'Over-the-air software updates',
+      'Regenerative braking systems',
+      'Autopilot and self-driving features',
+      'Spacious interiors with flat floors',
+      'Home charging solutions included',
+    ],
+    metaTitle: 'Electric Vehicle Leasing | Capital Motor Cars',
+    metaDescription: 'Lease the latest electric vehicles from Tesla, Rivian, Lucid and more. Expert EV guidance and competitive rates.',
+  },
+  {
+    slug: 'hatchback',
+    name: 'Hatchback',
+    image: hatchbackAudiImg,
+    description: 'Compact yet versatile, hatchbacks offer the perfect balance of city maneuverability and practical cargo space.',
+    highlights: [
+      'Easy parking and city navigation',
+      'Excellent fuel efficiency',
+      'Versatile cargo space with fold-down seats',
+      'Lower insurance and maintenance costs',
+    ],
+    idealFor: [
+      'Urban commuters navigating city traffic',
+      'First-time car lessees seeking value',
+      'Those who need flexibility in a compact package',
+      'Budget-conscious drivers without compromising quality',
+    ],
+    popularBrands: ['Volkswagen', 'Honda', 'Mazda', 'MINI', 'Ford'],
+    features: [
+      'Compact exterior with spacious interior',
+      'Split-folding rear seats',
+      'Excellent visibility and maneuverability',
+      'Modern infotainment systems',
+      'Advanced safety features',
+      'Fuel-efficient engines',
+    ],
+    metaTitle: 'Hatchback Car Leasing | Capital Motor Cars',
+    metaDescription: 'Compact and versatile hatchbacks for city driving. Explore Volkswagen, Honda, Mazda and more.',
+  },
+  {
+    slug: 'sedan',
+    name: 'Sedan',
+    image: 'https://pngimg.com/uploads/audi/audi_PNG1736.png',
+    description: 'The classic choice for comfortable daily driving. Sedans offer refined interiors, smooth rides, and timeless styling.',
+    highlights: [
+      'Comfortable ride quality for all passengers',
+      'Refined interior with quality materials',
+      'Excellent trunk space for luggage',
+      'Lower center of gravity for better handling',
+    ],
+    idealFor: [
+      'Families needing comfortable transportation',
+      'Business professionals seeking refined style',
+      'Frequent highway commuters',
+      'Those who value traditional automotive elegance',
+    ],
+    popularBrands: ['Audi', 'BMW', 'Mercedes-Benz', 'Honda', 'Toyota'],
+    features: [
+      'Spacious trunk compartment',
+      'Comfortable rear passenger seating',
+      'Premium sound systems',
+      'Advanced climate control zones',
+      'Smooth and quiet ride',
+      'Comprehensive safety suites',
+    ],
+    metaTitle: 'Sedan Car Leasing | Capital Motor Cars',
+    metaDescription: 'Classic sedans for comfortable daily driving. Explore Audi, BMW, Mercedes and more with flexible lease terms.',
+  },
+  {
+    slug: 'truck',
+    name: 'Truck',
+    image: truckRaptorImg,
+    description: 'Built for work and adventure. Our truck selection offers capability, durability, and the power to handle any job.',
+    highlights: [
+      'Exceptional towing and payload capacity',
+      'Durable construction for heavy-duty use',
+      'Versatile bed configurations',
+      'Off-road capability when needed',
+    ],
+    idealFor: [
+      'Contractors and business owners',
+      'Outdoor enthusiasts and adventurers',
+      'Those who need towing capability',
+      'Families who need space and utility',
+    ],
+    popularBrands: ['Ford', 'Chevrolet', 'RAM', 'GMC', 'Toyota'],
+    features: [
+      'Powerful engine options (V6, V8, Diesel)',
+      'Advanced towing technology',
+      'Durable bed liners and cargo management',
+      '4x4 and off-road packages',
+      'Crew cab options for passengers',
+      'Integrated trailer brake controllers',
+    ],
+    metaTitle: 'Truck Leasing | Capital Motor Cars',
+    metaDescription: 'Powerful trucks for work and adventure. Ford, RAM, Chevrolet and more with commercial leasing options.',
+  },
+  {
+    slug: 'sports',
+    name: 'Sports',
+    image: 'https://pngimg.com/uploads/porsche/porsche_PNG10620.png',
+    description: 'Feel the thrill of the road with our sports car collection. Performance, precision, and pure driving excitement.',
+    highlights: [
+      'Exhilarating acceleration and top speeds',
+      'Precision handling and responsive steering',
+      'Head-turning design and styling',
+      'Advanced performance technology',
+    ],
+    idealFor: [
+      'Driving enthusiasts who crave performance',
+      'Those who appreciate automotive engineering',
+      'Weekend warriors and car collectors',
+      'Anyone seeking an unforgettable driving experience',
+    ],
+    popularBrands: ['Porsche', 'BMW M', 'Mercedes-AMG', 'Audi RS', 'Corvette'],
+    features: [
+      'High-performance engines',
+      'Sport-tuned suspensions',
+      'Performance braking systems',
+      'Launch control and sport modes',
+      'Aerodynamic body designs',
+      'Carbon fiber components',
+    ],
+    metaTitle: 'Sports Car Leasing | Capital Motor Cars',
+    metaDescription: 'Lease high-performance sports cars from Porsche, BMW M, Mercedes-AMG and more. Feel the thrill.',
+  },
+  {
+    slug: 'suv',
+    name: 'SUV',
+    image: 'https://pngimg.com/uploads/land_rover/land_rover_PNG55.png',
+    description: 'Commanding presence meets versatile capability. Our SUV lineup offers space, comfort, and confidence for every journey.',
+    highlights: [
+      'Elevated driving position with excellent visibility',
+      'Spacious interiors for passengers and cargo',
+      'Available all-wheel drive capability',
+      'Versatile for both city and adventure',
+    ],
+    idealFor: [
+      'Growing families needing space',
+      'Active lifestyles requiring cargo flexibility',
+      'Those who encounter varied weather conditions',
+      'Drivers who want commanding road presence',
+    ],
+    popularBrands: ['Land Rover', 'BMW', 'Mercedes-Benz', 'Audi', 'Lexus'],
+    features: [
+      'Third-row seating options',
+      'Advanced AWD systems',
+      'Panoramic moonroofs',
+      'Power liftgates',
+      'Terrain response systems',
+      'Generous towing capacity',
+    ],
+    metaTitle: 'SUV Leasing | Capital Motor Cars',
+    metaDescription: 'Spacious and capable SUVs from Land Rover, BMW, Mercedes and more. Perfect for families and adventurers.',
+  },
+  {
+    slug: 'coupe',
+    name: 'Coupe',
+    image: mercedesSedanImg,
+    description: 'Sleek, stylish, and sporty. Coupes deliver head-turning design with an engaging driving experience.',
+    highlights: [
+      'Sleek and aerodynamic styling',
+      'Sport-focused driving dynamics',
+      'Premium interior appointments',
+      'Distinctive personal style statement',
+    ],
+    idealFor: [
+      'Style-conscious drivers',
+      'Couples or individuals without backseat needs',
+      'Those seeking a sporty daily driver',
+      'Enthusiasts who value design and performance',
+    ],
+    popularBrands: ['BMW', 'Mercedes-Benz', 'Audi', 'Lexus', 'Infiniti'],
+    features: [
+      'Two-door elegant design',
+      'Sport-tuned chassis',
+      'Premium leather interiors',
+      'Performance engine options',
+      'Advanced infotainment',
+      'Active aerodynamics',
+    ],
+    metaTitle: 'Coupe Leasing | Capital Motor Cars',
+    metaDescription: 'Stylish coupes from BMW, Mercedes, Audi and more. Sleek design meets engaging performance.',
+  },
+  {
+    slug: 'minivan',
+    name: 'Minivan',
+    image: minivanOdysseyImg,
+    description: 'The ultimate family vehicle. Minivans offer unmatched interior space, convenience features, and passenger comfort.',
+    highlights: [
+      'Maximum interior space for passengers',
+      'Sliding doors for easy access',
+      'Entertainment systems for passengers',
+      'Extensive safety features',
+    ],
+    idealFor: [
+      'Large families with multiple children',
+      'Carpool drivers and school transportation',
+      'Those who prioritize passenger comfort',
+      'Road trip enthusiasts needing space',
+    ],
+    popularBrands: ['Honda', 'Toyota', 'Chrysler', 'Kia', 'Hyundai'],
+    features: [
+      'Seating for 7-8 passengers',
+      'Power sliding doors',
+      'Rear entertainment systems',
+      'Stow-away seating configurations',
+      'Hands-free power liftgate',
+      'Built-in vacuum systems',
+    ],
+    metaTitle: 'Minivan Leasing | Capital Motor Cars',
+    metaDescription: 'Family-friendly minivans from Honda, Toyota, Chrysler and more. Maximum space and convenience.',
+  },
+  {
+    slug: 'crossover',
+    name: 'Crossover',
+    image: crossoverLexusImg,
+    description: 'The best of both worlds. Crossovers combine car-like handling with SUV versatility and elevated styling.',
+    highlights: [
+      'Car-like fuel efficiency and handling',
+      'SUV-like cargo space and visibility',
+      'Compact footprint for easy parking',
+      'Modern styling and features',
+    ],
+    idealFor: [
+      'Urban families needing versatility',
+      'Those upgrading from sedans wanting more space',
+      'Drivers seeking better fuel economy than full SUVs',
+      'Style-conscious practical buyers',
+    ],
+    popularBrands: ['Lexus', 'BMW', 'Audi', 'Mercedes-Benz', 'Volvo'],
+    features: [
+      'Unibody construction for smooth ride',
+      'Available AWD systems',
+      'Flexible cargo configurations',
+      'Elevated seating position',
+      'Modern safety technology',
+      'Efficient powertrains',
+    ],
+    metaTitle: 'Crossover Leasing | Capital Motor Cars',
+    metaDescription: 'Versatile crossovers from Lexus, BMW, Audi and more. Car-like handling with SUV space.',
+  },
+];
+
+export const getVehicleTypeBySlug = (slug: string): VehicleTypeData | undefined => {
+  return vehicleTypes.find((v) => v.slug === slug);
+};
