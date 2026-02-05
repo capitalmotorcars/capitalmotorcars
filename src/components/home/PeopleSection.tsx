@@ -13,6 +13,15 @@ import mikeZImage from '@/assets/team-mike-z.jpg';
 import vickyImage from '@/assets/team-vicky.jpg';
 import michaelMImage from '@/assets/team-michael-m.jpg';
 import derekImage from '@/assets/team-derek.jpg';
+import rickyImage from '@/assets/team-ricky.jpg';
+import bobbyImage from '@/assets/team-bobby-kaufman.jpg';
+import sarahImage from '@/assets/team-sarah-flynn.jpg';
+import michaelVImage from '@/assets/team-michael-van-houten.jpg';
+import jeffreyHImage from '@/assets/team-jeffrey-horn.jpg';
+import danielLImage from '@/assets/team-daniel-lehrer.jpg';
+import markinDImage from '@/assets/team-markin-cruz.jpg';
+import elyseBImage from '@/assets/team-elyse-barrett.jpg';
+import logoImage from '@/assets/logo.png';
 
 type Person = {
   name: string;
@@ -25,6 +34,7 @@ type Person = {
 const founder: Person = {
   name: 'Christopher Amico',
   role: 'President & CEO',
+  email: 'camico@capitalmotorcars.com',
   image: founderImage,
   bio: "As CEO of Capital Motor Cars, I take great pride in providing the ultimate automotive concierge experience to our clients, through building long and trusting relationships. Excellence is not an option but an obligation I strive to instill in each and every team member throughout the Capital Motor Cars organization. Coming from the corporate environment of Mercedes-Benz and consulting for BMW North America, I've mastered the art of the automotive industry. I look forward to implementing ongoing improvements to better the car leasing experience.",
 };
@@ -33,27 +43,27 @@ const team: Person[] = [
   // Leadership & operations
   { name: 'Henry Liu', role: 'Vice President', image: henryImage, bio: "Henry is a seasoned professional in the automotive leasing industry, known for his strategic leadership and commitment to operational excellence. As Vice President, he plays a key role in driving the company's growth and ensuring that the team delivers top-tier service to all clients.", email: 'henry@capitalmotorcars.com' },
   { name: 'Mark Onbashian', role: 'Vice President', image: markImage, bio: "With years of experience in management and sales, Mark oversees large-scale operations and partnership development. His focus is on maintaining high standards of customer satisfaction and expanding the company's reach within the luxury vehicle market.", email: 'mark@capitalmotorcars.com' },
-  { name: 'Yehuda Cohen', role: 'Chief Operating Officer', image: '', bio: "As the Chief Operating Officer at Capital Motor Cars, I bring a wealth of experience in marketing, web design, and small business management. My entrepreneurial journey includes founding and successfully scaling two businesses: Cell Point, a chain of six retail cell phone stores in New York City, and Amerikey, a nationwide lead generation and dispatching service for locksmiths. These ventures honed my skills in building efficient systems, streamlining operations, and driving growth.\n\nAt Capital Motor Cars, I apply these capabilities to enhance logistics, improve processes, and optimize car sales, ensuring we deliver exceptional value and service to our customers.", email: 'yehuda@capitalmotorcars.com' },
+  { name: 'Yehuda Cohen', role: 'Chief Operating Officer', image: logoImage, bio: "As the Chief Operating Officer at Capital Motor Cars, I bring a wealth of experience in marketing, web design, and small business management. My entrepreneurial journey includes founding and successfully scaling two businesses: Cell Point, a chain of six retail cell phone stores in New York City, and Amerikey, a nationwide lead generation and dispatching service for locksmiths. These ventures honed my skills in building efficient systems, streamlining operations, and driving growth.\n\nAt Capital Motor Cars, I apply these capabilities to enhance logistics, improve processes, and optimize car sales, ensuring we deliver exceptional value and service to our customers.", email: 'yehuda@capitalmotorcars.com' },
   { name: 'Michael Zeitoune', role: 'Director of Finance', image: mikeZImage, bio: "Michael manages the financial health and lending relationships of the company. He works closely with various banking institutions to secure the most favorable leasing rates and financial structures for clients, ensuring a smooth and transparent transaction process.", email: 'mzeitoune@capitalmotorcars.com' },
   { name: 'Derek Anton', role: 'Business Development Director', image: derekImage, bio: "With more than a decade at BMW NA and a lifelong love for cars, I'm driven to inspire my team to consistently provide an exceptional customer experience.", email: 'derek@capitalmotorcars.com' },
-  { name: 'Michael Dai', role: 'Social Media Manager', image: '', bio: "Michael Dai leads our content and social media efforts, shaping how our brand shows up across digital platforms. In his role as Content Creator and Social Media Manager, he blends creative storytelling with thoughtful strategy to develop campaigns that genuinely resonate with our audience. With a strong eye for visuals and messaging, Michael elevates our online presence, driving engagement and fostering a connected, growing community." },
+  { name: 'Michael Dai', role: 'Social Media Manager', image: logoImage, bio: "Michael Dai leads our content and social media efforts, shaping how our brand shows up across digital platforms. In his role as Content Creator and Social Media Manager, he blends creative storytelling with thoughtful strategy to develop campaigns that genuinely resonate with our audience. With a strong eye for visuals and messaging, Michael elevates our online presence, driving engagement and fostering a connected, growing community." },
   // Sales & consultants
   { name: 'Vicky Azrak', role: 'Sales Manager', image: vickyImage, bio: "Vicky is dedicated to providing a personalized and seamless car-buying experience. As a Sales Manager, she leads her team with a customer-first approach, helping clients navigate their options to find the perfect vehicle that fits their lifestyle and budget.", email: 'vicky@capitalmotorcars.com' },
-  { name: 'Michael Minerva', role: 'Sales Manager', image: michaelMImage, bio: "Michael specializes in high-end automotive sales and leasing. He is known for his deep product knowledge and his ability to build long-term relationships with clients through trust, expertise, and a commitment to finding the best deals available.", email: 'minerva@capitalmotorcars.com' },
-  { name: 'Bobby Kaufman', role: 'Automotive Consultant', image: '', bio: "Bobby brings more than 30 years of experience from his time at BMW, where he built a reputation for deep product knowledge, exceptional customer care, and a straightforward, honest approach. His decades working with a premier luxury brand shaped his commitment to delivering a premium, stress-free experience for every client he meets.\n\nNow partnered with Capital Motor Cars, Bobby extends that same level of service across all makes and models, offering unbiased guidance, personalized recommendations, and full concierge support. Whether you're exploring luxury, sport, or everyday vehicles, Bobby ensures a smooth, transparent process from start to finish.", email: 'bobby@capitalmotorcars.com' },
-  { name: 'Ricky Wong', role: 'Automotive Consultant', image: '', bio: "With a decade of experience in sales, my goal is to guide clients through the car shopping journey with a high level of service and care." },
-  { name: 'Rafael Frias', role: 'Automotive Consultant', image: '', bio: "Rafael Frias is a seasoned automotive consultant with extensive experience working with top brands such as Chrysler, Dodge, Jeep, and Ram. Known for his strong industry knowledge and client-first approach, Rafael helps customers navigate the car-buying process with confidence. His deep product expertise and personalized guidance make him a reliable and trusted partner in finding the right vehicle." },
-  { name: 'Sarah Flynn', role: 'Automotive Consultant', image: '', bio: "As an automotive consultant, I've built my reputation on delivering more than just vehicles. I offer clarity, confidence, and a white-glove experience for clients who value their time and want to avoid the typical dealership runaround. I entered the industry early, driven and ambitious, and grew my business through results and referrals. I've worked with clients ranging from first-time lessees to C-suite executives, always operating with transparency and a strong work ethic. Now pursuing my MBA at Rutgers, I'm focused on scaling more strategically, strengthening my financial expertise, and helping elevate the standard of the industry." },
-  { name: 'Michael Van Houten', role: 'Automotive Consultant', image: '', bio: "Driven by dedication and determination, I'm committed to delivering an elevated level of service to every client. With over 12 years of experience in the automotive industry, I handle the process from start to finish, ensuring nothing is overlooked. Outside of work, I'm a proud father of three daughters, a little league coach, and an avid weekend fisherman. Those same values of commitment and reliability guide my role as a trusted member of the Capitol Motor Cars team." },
-  { name: 'Jeffrey Horn', role: 'Automotive Consultant', image: '', bio: "With over 10 years of experience in the industry, I focus on building lasting relationships that keep my clients smiling, especially knowing I'll be seeing them again every few years." },
-  { name: 'Daniel Jay Lehrer', role: 'Automotive Consultant', image: '', bio: "My philosophy is simple: lead with passion and honesty, and deliver a first-class level of service that builds lasting relationships with my clients." },
-  { name: 'Markin De La Cruz', role: 'Automotive Consultant', image: '', bio: "I take pride in ensuring that every team member reflects my standards and values. I firmly believe that strong relationships with customers are the foundation of truly exceptional service." },
+  { name: 'Michael Minerva', role: 'Sales Manager', image: michaelMImage, bio: "Michael specializes in high-end automotive sales and leasing. He is known for his deep product knowledge and his ability to build long-term relationships with clients through trust, expertise, and a commitment to finding the best deals available.", email: 'mike.minerva@capitalmotorcars.com' },
+  { name: 'Bobby Kaufman', role: 'Automotive Consultant', image: bobbyImage, bio: "Bobby brings more than 30 years of experience from his time at BMW, where he built a reputation for deep product knowledge, exceptional customer care, and a straightforward, honest approach. His decades working with a premier luxury brand shaped his commitment to delivering a premium, stress-free experience for every client he meets.\n\nNow partnered with Capital Motor Cars, Bobby extends that same level of service across all makes and models, offering unbiased guidance, personalized recommendations, and full concierge support. Whether you're exploring luxury, sport, or everyday vehicles, Bobby ensures a smooth, transparent process from start to finish.", email: 'bobby@capitalmotorcars.com' },
+  { name: 'Ricky Wong', role: 'Automotive Consultant', image: rickyImage, bio: "With a decade of experience in sales, my goal is to guide clients through the car shopping journey with a high level of service and care.", email: 'ricky@capitalmotorcars.com' },
+  { name: 'Rafael Frias', role: 'Automotive Consultant', image: logoImage, bio: "Rafael Frias is a seasoned automotive consultant with extensive experience working with top brands such as Chrysler, Dodge, Jeep, and Ram. Known for his strong industry knowledge and client-first approach, Rafael helps customers navigate the car-buying process with confidence. His deep product expertise and personalized guidance make him a reliable and trusted partner in finding the right vehicle.", email: 'rafael@capitalmotorcars.com' },
+  { name: 'Sarah Flynn', role: 'Automotive Consultant', image: sarahImage, bio: "As an automotive consultant, I've built my reputation on delivering more than just vehicles. I offer clarity, confidence, and a white-glove experience for clients who value their time and want to avoid the typical dealership runaround. I entered the industry early, driven and ambitious, and grew my business through results and referrals. I've worked with clients ranging from first-time lessees to C-suite executives, always operating with transparency and a strong work ethic. Now pursuing my MBA at Rutgers, I'm focused on scaling more strategically, strengthening my financial expertise, and helping elevate the standard of the industry.", email: 'sarah@capitalmotorcars.com' },
+  { name: 'Michael Van Houten', role: 'Automotive Consultant', image: michaelVImage, bio: "Driven by dedication and determination, I'm committed to delivering an elevated level of service to every client. With over 12 years of experience in the automotive industry, I handle the process from start to finish, ensuring nothing is overlooked. Outside of work, I'm a proud father of three daughters, a little league coach, and an avid weekend fisherman. Those same values of commitment and reliability guide my role as a trusted member of the Capitol Motor Cars team.", email: 'mvanhouten@capitalmotorcars.com' },
+  { name: 'Jeffrey Horn', role: 'Automotive Consultant', image: jeffreyHImage, bio: "With over 10 years of experience in the industry, I focus on building lasting relationships that keep my clients smiling, especially knowing I'll be seeing them again every few years.", email: 'jeffrey@capitalmotorcars.com' },
+  { name: 'Daniel Jay Lehrer', role: 'Automotive Consultant', image: danielLImage, bio: "My philosophy is simple: lead with passion and honesty, and deliver a first-class level of service that builds lasting relationships with my clients.", email: 'dlehrer@capitalmotorcars.com' },
+  { name: 'Markin De La Cruz', role: 'Automotive Consultant', image: markinDImage, bio: "I pride myself on making sure that each team member is an extension of myself. I truly believe that awesome relationships with customers lead to excellent service.", email: 'mark@capitalmotorcars.com' },
   // Delivery & admin
-  { name: 'Jeffrey', role: 'Delivery Specialist', image: '', bio: "Jeffrey is an experienced Delivery Specialist dedicated to delivering a seamless and professional vehicle handoff. Known for his attention to detail and commitment to customer satisfaction, he ensures every delivery is handled with care and precision. Jeffrey's focus on excellence helps leave customers with a positive, lasting impression as they take the wheel of their new vehicle." },
-  { name: 'David Silver', role: 'Delivery Specialist', image: '', bio: "David Silver is our Delivery Specialist, committed to providing a smooth and enjoyable vehicle delivery experience. With a strong focus on efficiency and attention to detail, he oversees every step of the process, from preparation through final handoff. David's dedication to high-quality service ensures that customers drive away feeling confident and fully satisfied." },
-  { name: 'Noah Sagiv', role: 'Delivery Specialist', image: '', bio: "Cars have always been my passion, with a particular love for driving vintage models." },
-  { name: 'Elyse Barrett', role: 'Administrative Assistant', image: '', bio: "I'm dedicated to delivering the highest level of customer service to every client we serve in the South Jersey community." },
-  { name: 'James', role: 'Logistics Manager', image: '', bio: "I love the smell of that new car scent. From pickup to delivery, I come straight to you smelling good.", email: 'james@capitalmotorcars.com' },
+  { name: 'Jeffrey', role: 'Delivery Specialist', image: logoImage, bio: "Jeffrey is an experienced Delivery Specialist dedicated to delivering a seamless and professional vehicle handoff. Known for his attention to detail and commitment to customer satisfaction, he ensures every delivery is handled with care and precision. Jeffrey's focus on excellence helps leave customers with a positive, lasting impression as they take the wheel of their new vehicle.", email: 'info@capitalmotorcars.com' },
+  { name: 'David Silver', role: 'Delivery Specialist', image: logoImage, bio: "David Silver is our Delivery Specialist, committed to providing a smooth and enjoyable vehicle delivery experience. With a strong focus on efficiency and attention to detail, he oversees every step of the process, from preparation through final handoff. David's dedication to high-quality service ensures that customers drive away feeling confident and fully satisfied.", email: 'info@capitalmotorcars.com' },
+  { name: 'Noah Sagiv', role: 'Delivery Specialist', image: logoImage, bio: "Cars have always been my passion, with a particular love for driving vintage models.", email: 'info@capitalmotorcars.com' },
+  { name: 'Elyse Barrett', role: 'Administrative Assistant', image: elyseBImage, bio: "I'm dedicated to delivering the highest level of customer service to every client we serve in the South Jersey community.", email: 'elyse@capitalmotorcars.com' },
+  { name: 'James', role: 'Logistics Manager', image: logoImage, bio: "I love the smell of that new car scent. From pickup to delivery, I come straight to you smelling good.", email: 'james@capitalmotorcars.com' },
 ];
 
 const cardClass = cn(
@@ -111,14 +121,14 @@ export function PeopleSection() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <img src={founder.image} alt="" className="h-14 w-14 md:h-16 md:w-16 rounded-full object-cover ring-2 ring-border shadow-md" />
-                <p className="mt-2.5 text-[10px] font-medium text-muted-foreground uppercase tracking-wider">Founder</p>
-                <h3 className="mt-0.5 text-sm font-semibold text-foreground">{founder.name}</h3>
-                <p className="mt-0.5 text-xs text-muted-foreground">{founder.role}</p>
-                <span className="mt-1.5 inline-flex items-center gap-1.5 text-xs font-medium text-accent">
-                  <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
-                  View profile
-                </span>
+                <img src={founder.image} alt="" className="h-20 w-20 md:h-24 md:w-24 rounded-full object-cover ring-2 ring-border shadow-md" />
+                <p className="mt-3 text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wider">Founder</p>
+                <h3 className="mt-1 text-base md:text-lg font-semibold text-foreground">{founder.name}</h3>
+                <p className="mt-0.5 text-sm md:text-base text-muted-foreground">{founder.role}</p>
+                <span className="mt-1.5 inline-flex items-center gap-1.5 text-sm md:text-base font-medium text-accent">
+                    <ArrowRight className="h-4 w-4 md:h-5 md:w-5 shrink-0" aria-hidden />
+                    View profile
+                  </span>
               </motion.button>
             </Dialog.Trigger>
             <Dialog.Portal>
@@ -140,11 +150,11 @@ export function PeopleSection() {
                 >
                   <div className={cn(dialogPanelClass, 'w-full max-w-lg p-6 md:p-8')}>
                   <div className="flex items-start gap-4">
-                    <img src={founder.image} alt="" className="h-14 w-14 shrink-0 rounded-full object-cover ring-2 ring-border" />
+                    <img src={founder.image} alt="" className="h-20 w-20 md:h-24 md:w-24 shrink-0 rounded-full object-cover ring-2 ring-border" />
                     <div className="min-w-0 flex-1">
-                      <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">A Note from Our Founder</p>
-                      <h3 className="text-xl font-semibold text-foreground">{founder.name}</h3>
-                      <p className="text-sm text-muted-foreground">{founder.role}</p>
+                      <p className="text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wider">A Note from Our Founder</p>
+                      <h3 className="text-xl md:text-2xl font-semibold text-foreground">{founder.name}</h3>
+                      <p className="text-sm md:text-base text-muted-foreground">{founder.role}</p>
                     </div>
                     <Dialog.Close asChild>
                       <button type="button" className="shrink-0 rounded-lg p-2 text-muted-foreground hover:bg-muted hover:text-foreground" aria-label="Close">
@@ -153,6 +163,9 @@ export function PeopleSection() {
                     </Dialog.Close>
                   </div>
                   <p className="mt-4 text-muted-foreground leading-relaxed whitespace-pre-line">{founder.bio}</p>
+                  {founder.email && (
+                    <a href={`mailto:${founder.email}`} className="mt-4 inline-block text-sm font-medium text-accent hover:underline">{founder.email}</a>
+                  )}
                   </div>
                 </motion.div>
               </Dialog.Content>
@@ -189,16 +202,16 @@ export function PeopleSection() {
                   whileTap={{ scale: 0.98 }}
                 >
                   {person.image ? (
-                    <img src={person.image} alt="" className="h-14 w-14 md:h-16 md:w-16 rounded-full object-cover ring-2 ring-border shadow-md" />
+                    <img src={person.image} alt="" className="h-20 w-20 md:h-24 md:w-24 rounded-full object-cover ring-2 ring-border shadow-md" />
                   ) : (
-                    <div className="flex h-14 w-14 md:h-16 md:w-16 shrink-0 items-center justify-center rounded-full bg-muted ring-2 ring-border shadow-md text-muted-foreground">
-                      <UserCircle className="h-7 w-7 md:h-8 md:w-8" aria-hidden />
+                    <div className="flex h-20 w-20 md:h-24 md:w-24 shrink-0 items-center justify-center rounded-full bg-muted ring-2 ring-border shadow-md text-muted-foreground">
+                      <UserCircle className="h-10 w-10 md:h-12 md:w-12" aria-hidden />
                     </div>
                   )}
-                  <h3 className="mt-3 text-sm font-semibold text-foreground truncate w-full">{person.name}</h3>
-                  <p className="mt-0.5 text-xs text-muted-foreground line-clamp-2">{person.role}</p>
-                  <span className="mt-1.5 inline-flex items-center gap-1.5 text-xs font-medium text-accent">
-                    <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
+                  <h3 className="mt-3 text-base md:text-lg font-semibold text-foreground truncate w-full">{person.name}</h3>
+                  <p className="mt-0.5 text-sm md:text-base text-muted-foreground line-clamp-2">{person.role}</p>
+                  <span className="mt-1.5 inline-flex items-center gap-1.5 text-sm md:text-base font-medium text-accent">
+                    <ArrowRight className="h-4 w-4 md:h-5 md:w-5 shrink-0" aria-hidden />
                     View profile
                   </span>
                 </motion.button>
@@ -223,15 +236,15 @@ export function PeopleSection() {
                     <div className={cn(dialogPanelClass, 'w-full max-w-lg p-6 md:p-8')}>
                     <div className="flex items-start gap-4">
                       {person.image ? (
-                        <img src={person.image} alt="" className="h-14 w-14 shrink-0 rounded-full object-cover ring-2 ring-border" />
+                        <img src={person.image} alt="" className="h-20 w-20 md:h-24 md:w-24 shrink-0 rounded-full object-cover ring-2 ring-border" />
                       ) : (
-                        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-muted ring-2 ring-border text-muted-foreground">
-                          <UserCircle className="h-8 w-8" aria-hidden />
+                        <div className="flex h-20 w-20 md:h-24 md:w-24 shrink-0 items-center justify-center rounded-full bg-muted ring-2 ring-border text-muted-foreground">
+                          <UserCircle className="h-10 w-10 md:h-12 md:w-12" aria-hidden />
                         </div>
                       )}
                       <div className="min-w-0 flex-1">
-                        <h3 className="text-xl font-semibold text-foreground">{person.name}</h3>
-                        <p className="text-sm text-muted-foreground">{person.role}</p>
+                        <h3 className="text-xl md:text-2xl font-semibold text-foreground">{person.name}</h3>
+                        <p className="text-sm md:text-base text-muted-foreground">{person.role}</p>
                       </div>
                       <Dialog.Close asChild>
                         <button type="button" className="shrink-0 rounded-lg p-2 text-muted-foreground hover:bg-muted hover:text-foreground" aria-label="Close">

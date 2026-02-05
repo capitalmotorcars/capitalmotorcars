@@ -10,7 +10,7 @@ import bg1 from '@/assets/brand-backgrounds/bg-1.jpeg';
 import bg2 from '@/assets/brand-backgrounds/bg-2.jpg';
 import bg3 from '@/assets/brand-backgrounds/bg-3.jpg';
 
-type FilterType = 'all' | 'suv' | 'hybrid-electric' | 'sedan';
+type FilterType = 'all' | 'suv' | 'hybrid-electric' | 'luxury';
 
 const getFilterCount = (filterId: FilterType): number | undefined => {
   const vehicles = getFilteredVehicles(filterId);
@@ -20,26 +20,24 @@ const getFilterCount = (filterId: FilterType): number | undefined => {
 const filters: { id: FilterType; label: string }[] = [
   { id: 'suv', label: 'SUV / CUV / MPV' },
   { id: 'hybrid-electric', label: 'Hybrid / Electric' },
-  { id: 'sedan', label: 'Sedan' },
-  { id: 'all', label: 'All Vehicles' },
+  { id: 'luxury', label: 'Luxury' },
+  { id: 'all', label: 'All' },
 ];
 
 function getFilteredVehicles(filter: FilterType): VehicleTypeData[] {
-  if (filter === 'all') return vehicleTypes.filter((v) => v.isFeatured);
+  if (filter === 'all') return vehicleTypes;
   if (filter === 'suv') return vehicleTypes.filter((v) => ['suv', 'crossover', 'minivan'].includes(v.slug));
   if (filter === 'hybrid-electric') return vehicleTypes.filter((v) => v.fuelTypes.includes('hybrid') || v.fuelTypes.includes('electric'));
-  if (filter === 'sedan') return vehicleTypes.filter((v) => v.slug === 'sedan' || v.slug === 'luxury');
+  if (filter === 'luxury') return vehicleTypes.filter((v) => v.isLuxury === true).sort((a, b) => (a.sortOrder || 999) - (b.sortOrder || 999));
   return [];
 }
 
 function getVehicleSpecs(vehicle: VehicleTypeData) {
-  const isElectric = vehicle.fuelTypes.includes('electric');
-  const range = isElectric ? '305' : undefined;
-  const mpge = isElectric ? '82-89 MPGe Comb.' : undefined;
   return {
     startingPrice: vehicle.startingPrice || 499,
-    range,
-    mpge,
+    range: vehicle.range,
+    mpge: vehicle.mpge,
+    mpg: vehicle.mpg,
   };
 }
 
@@ -67,42 +65,53 @@ export function VehicleTypesCarousel() {
   const nextVehicleData = filteredVehicles[(currentIndex + 1) % filteredVehicles.length];
 
   const backgrounds = [bg1, bg2, bg3];
-  const currentBgIndex = currentIndex % backgrounds.length;
+  // Map each filter to a background index
+  const filterToBgIndex: Record<FilterType, number> = {
+    'all': 0,
+    'suv': 1,
+    'hybrid-electric': 2,
+    'luxury': 0,
+  };
+  const currentBgIndex = filterToBgIndex[activeFilter];
   const currentBackground = backgrounds[currentBgIndex];
 
   return (
-    <section id="discover" className="relative min-h-[90vh] flex flex-col overflow-hidden">
+    
+     <section className="py-16 lg:py-20 ">
+    <div id="discover" className="relative h-full flex flex-col ">
       {/* Top half: Blurred cityscape background */}
       <div
-        className="absolute top-0 left-0 right-0 h-full bg-cover bg-center bg-no-repeat transition-opacity duration-1000"
+        className="absolute top-0 left-0 right-0 h-[40vh] md:h-[60vh] bg-no-repeat transition-opacity duration-1000 overflow-hidden"
         style={{
           backgroundImage: `url(${currentBackground})`,
-          backgroundPosition: 'center top',
+          backgroundPosition: 'center bottom',
+          backgroundSize: 'cover',
           filter: 'blur(4px)',
         }}
         aria-hidden
       />
       {/* Dark overlay on top half for text readability */}
       <div
-        className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-black/40 via-black/20 to-transparent transition-opacity duration-1000"
+        className="absolute top-0 left-0 right-0 h-[40vh] md:h-[60vh] bg-gradient-to-b from-black/40 via-black/20 to-transparent transition-opacity duration-1000"
         aria-hidden
       />
       {/* Bottom half: White background */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-1/2 bg-white dark:bg-background"
+        className="absolute top-[40vh] md:top-[60vh] left-0 right-0 bottom-0 bg-white dark:bg-background"
         aria-hidden
       />
 
       {/* Content */}
       <div ref={ref} className={cn('relative z-10 flex-1 flex flex-col', 'scroll-reveal', isRevealed && 'revealed')}>
         {/* Title and Filters */}
-        <div className=" mx-auto h-[45vh] px-4 lg:px-8 pt-12 md:pt-16 lg:pt-20">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-8 md:mb-12">
+        <div className="relative z-50 mx-auto h-[35vh] md:h-[45vh] px-4 lg:px-8 pt-6 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-20">
+          <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white text-center pb-2 md:pb-4">
             Discover The Car Of Your Dreams
           </h2>
 
-          {/* Filter Navigation */}
-          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mb-8 md:mb-12">
+          {/* Filter Navigation - wraps on mobile */}
+          <div className="relative z-50 mx-auto pb-2 md:pb-4">
+            <div className="flex flex-wrap items-center gap-1 sm:gap-3 md:gap-4 justify-center max-w-[280px] sm:max-w-none">
             {filters.map((filter) => {
               const isActive = activeFilter === filter.id;
               const count = getFilterCount(filter.id);
@@ -111,7 +120,7 @@ export function VehicleTypesCarousel() {
                   key={filter.id}
                   onClick={() => setActiveFilter(filter.id)}
                   className={cn(
-                    'relative px-4 py-2 text-sm md:text-base font-medium transition-colors',
+                    'relative px-2 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm md:text-base font-medium transition-colors',
                     isActive
                       ? 'text-white'
                       : 'text-white/70 hover:text-white'
@@ -119,7 +128,7 @@ export function VehicleTypesCarousel() {
                 >
                   {filter.label}
                   {count !== undefined && (
-                    <span className="ml-2 inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/20 text-xs font-semibold">
+                    <span className="ml-1 sm:ml-2 inline-flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-white/20 text-[10px] sm:text-xs font-semibold">
                       {count}
                     </span>
                   )}
@@ -129,126 +138,270 @@ export function VehicleTypesCarousel() {
                 </button>
               );
             })}
+            </div>
           </div>
         </div>
 
-        {/* Car Carousel - positioned exactly at 50% (transition between background and white) */}
-        <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 z-30 flex items-center justify-center py-8">
+        {/* Car Carousel - positioned exactly at transition between background and white */}
+        <div className="absolute top-[30vh] md:top-[40vh] left-0 right-0 -translate-y-1/2 z-30 flex items-center justify-center py-4 sm:py-8 pointer-events-none">
           {/* Left Arrow */}
           <button
             onClick={prevVehicle}
-            className="absolute left-4 md:left-8 z-40 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/90 dark:bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-foreground hover:bg-white transition-colors shadow-lg"
+            type="button"
+            style={{ touchAction: 'manipulation' }}
+            className="absolute left-2 sm:left-4 md:left-8 z-50 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-white/90 dark:bg-white/20 backdrop-blur-sm border-2 border-white/40 flex items-center justify-center text-foreground hover:text-foreground hover:bg-white transition-colors shadow-lg pointer-events-auto"
             aria-label="Previous vehicle"
           >
-            <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 pointer-events-none" />
           </button>
 
           {/* Cars */}
-          <div className="relative w-full max-w-7xl mx-auto px-12 md:px-20 lg:px-32 flex items-center justify-center">
-            {/* Previous Car (Left) */}
+          <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32 flex items-center justify-center">
+            {/* Previous Car (Left) - hidden on mobile */}
             {prevVehicleData && (
-              <div className="absolute left-0 w-[25%] opacity-40 scale-75 transition-all duration-500 z-20">
+              <button
+                onClick={prevVehicle}
+                type="button"
+                style={{ touchAction: 'manipulation' }}
+                className="hidden sm:block absolute left-[-10%] sm:left-[-20%] w-[30%] md:w-[38%] scale-80 z-20 cursor-pointer pointer-events-auto"
+                aria-label={`Previous: ${prevVehicleData.name}`}
+              >
                 <img
                   src={prevVehicleData.image}
                   alt={prevVehicleData.name}
                   className="w-full h-auto object-contain"
                 />
-              </div>
+              </button>
             )}
 
             {/* Current Car (Center) */}
             {currentVehicle && (
-              <div className="relative z-30 w-[50%] transition-all duration-500">
+              <div className="relative z-30 w-[85%] sm:w-[60%] md:w-[80%] pointer-events-none">
                 <img
                   src={currentVehicle.image}
                   alt={currentVehicle.name}
-                  className="w-full h-auto object-contain drop-shadow-2xl"
+                  className="w-full h-auto object-contain drop-shadow-2xl pointer-events-none"
                 />
               </div>
             )}
 
-            {/* Next Car (Right) */}
+            {/* Next Car (Right) - hidden on mobile */}
             {nextVehicleData && (
-              <div className="absolute right-0 w-[25%] opacity-40 scale-75 transition-all duration-500 z-20">
+              <button
+                onClick={nextVehicle}
+                type="button"
+                style={{ touchAction: 'manipulation' }}
+                className="hidden sm:block absolute right-[-10%] sm:right-[-20%] w-[30%] sm:w-[38%] scale-80 z-20 cursor-pointer pointer-events-auto"
+                aria-label={`Next: ${nextVehicleData.name}`}
+              >
                 <img
                   src={nextVehicleData.image}
                   alt={nextVehicleData.name}
                   className="w-full h-auto object-contain"
                 />
-              </div>
+              </button>
             )}
           </div>
 
           {/* Right Arrow */}
           <button
             onClick={nextVehicle}
-            className="absolute right-4 md:right-8 z-40 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/90 dark:bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-foreground hover:bg-white transition-colors shadow-lg"
+            type="button"
+            style={{ touchAction: 'manipulation' }}
+            className="absolute right-2 sm:right-4 md:right-8 z-50 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-white/90 dark:bg-white/20 backdrop-blur-sm border-2 border-white/40 flex items-center justify-center text-foreground hover:text-foreground hover:bg-white transition-colors shadow-lg pointer-events-auto"
             aria-label="Next vehicle"
           >
-            <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 pointer-events-none" />
           </button>
         </div>
 
-        {/* Car Details - White Foreground (bottom half) */}
+        {/* Car Details - positioned below vehicles */}
         {currentVehicle && specs && (
-          <div className="relative bg-white dark:bg-background pt-20 md:pt-24 pb-12 md:pb-16 z-10" style={{ minHeight: '50vh' }}>
-            <div className=" mx-auto px-4 lg:px-8 pt-20">
-              <div className="max-w-6xl mx-auto">
-                {/* Car Name */}
-                <div className="flex items-baseline justify-center gap-3 mb-6 md:mb-8">
-                  <span className="text-sm md:text-base text-muted-foreground">2026</span>
-                  <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
-                    {currentVehicle.name}
-                  </h3>
-                  <Link
-                    to={`/vehicles/${currentVehicle.slug}`}
-                    className="text-xs md:text-sm text-muted-foreground hover:text-accent underline"
-                  >
-                    Disclaimers
-                  </Link>
+          <div className="relative bg-white dark:bg-background pt-[5vh] md:pt-28 pb-8 sm:pb-12 md:pb-16 z-10">
+            <div className="mx-auto px-4 lg:px-8">
+              <div className="max-w-7xl mx-auto">
+                {/* Car Name - column layout on mobile, row on desktop */}
+                <div className="flex items-start sm:items-baseline justify-between sm:justify-center gap-3 mb-4 sm:mb-6 md:mb-8">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-baseline gap-1 sm:gap-2 md:gap-3">
+                    <span className="text-xs sm:text-sm md:text-base text-muted-foreground">2026</span>
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground">
+                      {currentVehicle.name}
+                    </h3>
+                    <Link
+                      to={`/vehicles/${currentVehicle.slug}`}
+                      className="hidden sm:inline text-xs md:text-sm text-muted-foreground hover:text-accent underline ml-2"
+                    >
+                      Disclaimers
+                    </Link>
+                  </div>
+                  {/* Carousel dots indicator - mobile only */}
+                  <div className="sm:hidden flex items-center gap-2">
+                    {filteredVehicles.map((_, idx) => (
+                      <span
+                        key={idx}
+                        className={cn(
+                          'w-2 h-2 rounded-full transition-all',
+                          idx === currentIndex ? 'bg-foreground' : 'bg-foreground/30'
+                        )}
+                      />
+                    ))}
+                  </div>
                 </div>
 
                 {/* Specs Grid */}
-                <div className={cn(
-                  'grid gap-4 md:gap-8 mb-8 md:mb-10 pb-6 md:pb-8 border-b border-border',
-                  specs.range && specs.mpge ? 'grid-cols-3' : 'grid-cols-1 max-w-md mx-auto'
-                )}>
-                  <div className="text-center">
-                    <p className="text-xs md:text-sm text-muted-foreground mb-1 md:mb-2">STARTING AT</p>
-                    <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">
-                      ${specs.startingPrice.toLocaleString()}/mo<sup className="text-xs md:text-sm ml-1">¹</sup>
-                    </p>
-                  </div>
-                  {specs.range && (
-                    <div className={cn('text-center', specs.mpge && 'border-x border-border')}>
-                      <p className="text-xs md:text-sm text-muted-foreground mb-1 md:mb-2">RANGE UP TO</p>
-                      <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">
-                        {specs.range} miles<sup className="text-xs md:text-sm ml-1">²</sup>
-                      </p>
+                {(() => {
+                  const hasRange = !!specs.range;
+                  const hasMpge = !!specs.mpge;
+                  const hasMpg = !!specs.mpg;
+                  // Count how many spec columns we have (excluding starting price)
+                  const specCount = (hasRange ? 1 : 0) + (hasMpge ? 1 : 0) + (hasMpg ? 1 : 0);
+                  // Show 3 cols if we have 2+ specs, 2 cols if we have 1 spec, 1 col if no specs
+                  const gridCols = specCount >= 2 ? 'grid-cols-3' : specCount === 1 ? 'grid-cols-2' : 'grid-cols-1 max-w-md mx-auto';
+                  
+                  // Determine border classes for each section
+                  const getBorderClasses = (isFirst: boolean, isLast: boolean) => {
+                    if (isFirst && isLast) return ''; // Only one section, no borders needed
+                    if (isFirst) return 'border-x border-border'; // First section: left border (start) + right border
+                    if (isLast) return 'border-x border-border'; // Last section: left border + right border (end)
+                    return 'border-x border-border'; // Middle sections: both borders
+                  };
+                  
+                  return (
+                    <div className={cn(
+                      'grid gap-3 sm:gap-4 md:gap-8 mb-6 sm:mb-8 md:mb-10 pb-4 sm:pb-6 md:pb-8 border-b border-border',
+                      gridCols
+                    )}>
+                      <div className={cn('text-center', specCount > 0 && 'border-x border-border')}>
+                        <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground mb-1 sm:mb-1.5 md:mb-2">STARTING AT</p>
+                        <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-foreground">
+                          ${specs.startingPrice.toLocaleString()}/mo<sup className="text-[10px] sm:text-xs md:text-sm ml-0.5 sm:ml-1">¹</sup>
+                        </p>
+                      </div>
+                      {hasRange && (
+                        <div className={cn('text-center', getBorderClasses(false, !hasMpge && !hasMpg))}>
+                          <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground mb-1 sm:mb-1.5 md:mb-2">RANGE UP TO</p>
+                          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-foreground">
+                            {specs.range} miles<sup className="text-[10px] sm:text-xs md:text-sm ml-0.5 sm:ml-1">²</sup>
+                          </p>
+                        </div>
+                      )}
+                      {hasMpge && (
+                        <div className={cn('text-center', getBorderClasses(!hasRange, !hasMpg))}>
+                          <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground mb-1 sm:mb-1.5 md:mb-2">MPGe UP TO</p>
+                          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-foreground">
+                            {specs.mpge}<sup className="text-[10px] sm:text-xs md:text-sm ml-0.5 sm:ml-1">³</sup>
+                          </p>
+                        </div>
+                      )}
+                      {hasMpg && (
+                        <div className={cn('text-center', getBorderClasses(!hasRange && !hasMpge, true))}>
+                          <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground mb-1 sm:mb-1.5 md:mb-2">MPG UP TO</p>
+                          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-foreground">
+                            {specs.mpg}<sup className="text-[10px] sm:text-xs md:text-sm ml-0.5 sm:ml-1">³</sup>
+                          </p>
+                        </div>
+                      )}
                     </div>
-                  )}
-                  {specs.mpge && (
-                    <div className="text-center">
-                      <p className="text-xs md:text-sm text-muted-foreground mb-1 md:mb-2">MPGe UP TO</p>
-                      <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">
-                        {specs.mpge}<sup className="text-xs md:text-sm ml-1">³</sup>
-                      </p>
-                    </div>
-                  )}
-                </div>
+                  );
+                })()}
 
-                {/* CTAs */}
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
-                  <Link
-                    to={`/vehicles/${currentVehicle.slug}`}
-                    className="text-sm md:text-base font-medium text-foreground hover:text-accent transition-colors flex items-center gap-1"
+                {/* Additional Details Section */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
+                    {/* Highlights */}
+                    {currentVehicle.highlights && currentVehicle.highlights.length > 0 && (
+                      <div>
+                        <h4 className="text-xs sm:text-sm md:text-base font-semibold text-muted-foreground uppercase mb-3 sm:mb-4">Highlights</h4>
+                        <ul className="space-y-2">
+                          {currentVehicle.highlights.map((highlight, idx) => (
+                            <li key={idx} className="text-sm sm:text-base md:text-lg text-foreground flex items-start gap-2">
+                              <span className="text-accent mt-1">•</span>
+                              <span>{highlight}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {/* Popular Brands */}
+                    {currentVehicle.popularBrands && currentVehicle.popularBrands.length > 0 && (
+                      <div>
+                        <h4 className="text-xs sm:text-sm md:text-base font-semibold text-muted-foreground uppercase mb-3 sm:mb-4">Popular Brands</h4>
+                        <div className="flex flex-wrap gap-2 sm:gap-3">
+                          {currentVehicle.popularBrands.map((brand, idx) => (
+                            <span
+                              key={idx}
+                              className="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm md:text-base bg-muted rounded-full text-foreground"
+                            >
+                              {brand}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Vehicle Specs */}
+                    <div>
+                      <h4 className="text-xs sm:text-sm md:text-base font-semibold text-muted-foreground uppercase mb-3 sm:mb-4">Vehicle Specs</h4>
+                      <div className="space-y-3 sm:space-y-4">
+                        {/* Fuel Types */}
+                        {currentVehicle.fuelTypes && currentVehicle.fuelTypes.length > 0 && (
+                          <div>
+                            <p className="text-xs sm:text-sm text-muted-foreground mb-1">Fuel Types</p>
+                            <p className="text-sm sm:text-base md:text-lg font-medium text-foreground capitalize">
+                              {currentVehicle.fuelTypes.join(', ')}
+                            </p>
+                          </div>
+                        )}
+
+                        {/* Drivetrain */}
+                        {currentVehicle.drivetrain && currentVehicle.drivetrain.length > 0 && (
+                          <div>
+                            <p className="text-xs sm:text-sm text-muted-foreground mb-1">Drivetrain</p>
+                            <p className="text-sm sm:text-base md:text-lg font-medium text-foreground">
+                              {currentVehicle.drivetrain.join(', ')}
+                            </p>
+                          </div>
+                        )}
+
+                        {/* Passenger Capacity */}
+                        {currentVehicle.passengerCapacity && (
+                          <div>
+                            <p className="text-xs sm:text-sm text-muted-foreground mb-1">Passenger Capacity</p>
+                            <p className="text-sm sm:text-base md:text-lg font-medium text-foreground">
+                              {currentVehicle.passengerCapacity} {currentVehicle.passengerCapacity === 1 ? 'person' : 'people'}
+                            </p>
+                          </div>
+                        )}
+
+                        {/* Cargo Space */}
+                        {currentVehicle.cargoSpace && (
+                          <div>
+                            <p className="text-xs sm:text-sm text-muted-foreground mb-1">Cargo Space</p>
+                            <p className="text-sm sm:text-base md:text-lg font-medium text-foreground capitalize">
+                              {currentVehicle.cargoSpace}
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                {/* CTAs - side-by-side on mobile */}
+                <div className="flex flex-row items-center justify-center gap-3 sm:gap-4 md:gap-6 mt-6 sm:mt-8 md:mt-10">
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="lg"
+                    className="flex-1 sm:flex-none border-foreground text-foreground hover:bg-foreground hover:text-background px-4 sm:px-6 md:px-8"
                   >
-                    Build yours <ArrowRight className="w-4 h-4" />
-                  </Link>
+                    <Link to={`/vehicles/${currentVehicle.slug}`} className="flex items-center justify-center gap-1.5 sm:gap-2">
+                      Build yours <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                    </Link>
+                  </Button>
                   <Button
                     asChild
                     size="lg"
-                    className="bg-foreground dark:bg-white text-background dark:text-foreground hover:opacity-90 px-6 md:px-8"
+                    className="flex-1 sm:flex-none bg-foreground dark:bg-white text-background dark:text-foreground hover:opacity-90 px-4 sm:px-6 md:px-8"
                   >
                     <Link to={`/vehicles/${currentVehicle.slug}`}>Learn more</Link>
                   </Button>
@@ -258,6 +411,7 @@ export function VehicleTypesCarousel() {
           </div>
         )}
       </div>
+    </div>
     </section>
   );
 }

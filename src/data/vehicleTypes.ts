@@ -1,11 +1,13 @@
-import luxurySedanImg from '@/assets/luxury-sedan.png';
-import electricEqcImg from '@/assets/electric-mercedes-eqc.png';
-import hatchbackAudiImg from '@/assets/hatchback-audi-rs5.png';
-import truckRaptorImg from '@/assets/truck-ford-raptor.png';
-import mercedesSedanImg from '@/assets/mercedes-luxury-sedan.png';
+import hatchbackAudiImg from '@/assets/hatchback.png';
+import truckRaptorImg from '@/assets/truck.png';
+import coupeNissanImg from '@/assets/coupe.png';
 import minivanOdysseyImg from '@/assets/minivan-odyssey.png';
-import crossoverLexusImg from '@/assets/crossover-lexus-ux.png';
-
+import sedanBmwImg from '@/assets/sedan.png';
+import suvToyotaImg from '@/assets/suv.png';
+import wagonMiniImg from '@/assets/wagon.png';
+import cuvImg from '@/assets/cuv.png';
+import porscheImg from '@/assets/porschee.png';
+import cayenneElectricImg from '@/assets/cayanne.png';
 export type FuelType = 'gasoline' | 'diesel' | 'hybrid' | 'electric';
 export type Drivetrain = 'FWD' | 'RWD' | 'AWD' | '4x4';
 
@@ -37,6 +39,10 @@ export interface VehicleTypeData {
   drivetrain: Drivetrain[];
   passengerCapacity: number;
   cargoSpace: 'small' | 'medium' | 'large';
+  // Vehicle specs
+  range?: string; // Electric range in miles (e.g., "305")
+  mpge?: string; // MPGe for electric/hybrid (e.g., "82-89 MPGe Comb.")
+  mpg?: string; // MPG for gasoline vehicles (e.g., "25-30 MPG")
 
   // SEO
   metaTitle: string;
@@ -47,57 +53,19 @@ export interface VehicleTypeData {
   // Internal
   sortOrder?: number;
   isFeatured?: boolean;
+  isLuxury?: boolean;
   trackingCategory?: string;
 }
 export const vehicleTypes: VehicleTypeData[] = [
-  {
-    slug: 'luxury',
-    name: 'Luxury',
-    bodyStyle: 'Luxury Sedan',
-    image: luxurySedanImg,
-    badge: 'Best Seller',
-    ctaText: 'Explore Luxury Vehicles',
-    description:
-      'Experience the pinnacle of automotive excellence with our curated selection of luxury vehicles. Premium craftsmanship meets cutting-edge technology.',
-    highlights: [
-      'Premium materials and craftsmanship',
-      'Advanced technology and safety features',
-      'Superior comfort and ride quality',
-      'Prestigious brand heritage',
-    ],
-    idealFor: [
-      'Executive professionals',
-      'Drivers who value comfort and prestige',
-      'Long-distance commuters',
-      'Premium lifestyle seekers',
-    ],
-    popularBrands: ['Mercedes-Benz', 'BMW', 'Audi', 'Lexus', 'Porsche'],
-    features: [
-      'Leather interiors',
-      'Adaptive air suspension',
-      'Advanced driver assistance',
-      'Panoramic sunroof',
-      'Massaging seats',
-    ],
-    startingPrice: 899,
-    priceRange: { min: 800, max: 1500 },
-    fuelTypes: ['gasoline', 'hybrid', 'electric'],
-    drivetrain: ['RWD', 'AWD'],
-    passengerCapacity: 5,
-    cargoSpace: 'medium',
-    metaTitle: 'Luxury Car Leasing | Capital Motor Cars',
-    metaDescription: 'Lease premium luxury vehicles from top brands.',
-    canonicalPath: '/vehicles/luxury',
-    isFeatured: true,
-    sortOrder: 1,
-    trackingCategory: 'vehicle_luxury',
-  },
 
+  // =========================
+  // ELECTRIC (PURE EV)
+  // =========================
   {
     slug: 'electric',
     name: 'Electric',
     bodyStyle: 'Electric Vehicle',
-    image: electricEqcImg,
+    image: cayenneElectricImg,
     badge: 'Eco Friendly',
     ctaText: 'Browse Electric Vehicles',
     description:
@@ -108,337 +76,285 @@ export const vehicleTypes: VehicleTypeData[] = [
       'Lower running costs',
       'Advanced autonomous features',
     ],
-    idealFor: [
-      'Eco-conscious drivers',
-      'Tech enthusiasts',
-      'Daily commuters',
-    ],
-    popularBrands: ['Rivian', 'Lucid', 'BMW', 'Porsche'],
-    features: [
-      'Fast charging',
-      'Regenerative braking',
-      'OTA updates',
-      'Smart navigation',
-    ],
+    idealFor: ['Eco-conscious drivers', 'Tech enthusiasts', 'Daily commuters'],
+    popularBrands: ['Tesla', 'Rivian', 'Lucid', 'BMW', 'Porsche'],
+    features: ['Fast charging', 'Regenerative braking', 'OTA updates'],
     startingPrice: 699,
     priceRange: { min: 600, max: 1300 },
-    fuelTypes: ['electric'],
+    fuelTypes: ['electric'], // ✅ correct
     drivetrain: ['RWD', 'AWD'],
     passengerCapacity: 5,
     cargoSpace: 'medium',
+    range: '305',
+    mpge: '82-89 MPGe Comb.',
     metaTitle: 'Electric Vehicle Leasing | Capital Motor Cars',
-    metaDescription: 'Discover the latest electric vehicles with flexible leasing.',
+    metaDescription: 'Discover the latest electric vehicles.',
     canonicalPath: '/vehicles/electric',
     isFeatured: true,
-    sortOrder: 2,
+    sortOrder: 1,
     trackingCategory: 'vehicle_electric',
   },
 
+  // =========================
+  // HATCHBACK
+  // =========================
   {
     slug: 'hatchback',
     name: 'Hatchback',
     bodyStyle: 'Hatchback',
     image: hatchbackAudiImg,
     ctaText: 'View Hatchbacks',
-    description:
-      'Compact, efficient, and versatile. Perfect for city driving with flexible cargo space.',
-    highlights: [
-      'Easy city maneuvering',
-      'Fuel efficient',
-      'Affordable leasing',
-    ],
-    idealFor: [
-      'Urban commuters',
-      'First-time lessees',
-      'Budget-conscious drivers',
-    ],
+    description: 'Compact, efficient, and perfect for city driving.',
+    highlights: ['Easy to park', 'Fuel efficient', 'Affordable'],
+    idealFor: ['Urban commuters', 'First-time drivers'],
     popularBrands: ['Volkswagen', 'Honda', 'Mazda', 'MINI'],
-    features: [
-      'Fold-down rear seats',
-      'Compact footprint',
-      'Modern infotainment',
-    ],
+    features: ['Fold-down rear seats', 'Compact size'],
     startingPrice: 349,
     priceRange: { min: 300, max: 600 },
-    fuelTypes: ['gasoline', 'hybrid'],
+    fuelTypes: ['gasoline', 'hybrid'], // ✅ realistic
     drivetrain: ['FWD'],
     passengerCapacity: 5,
     cargoSpace: 'small',
-    metaTitle: 'Hatchback Leasing | Capital Motor Cars',
+    mpg: '32-38 MPG',
+    mpge: '45-52 MPGe Comb.',
+    metaTitle: 'Hatchback Leasing',
     metaDescription: 'Affordable hatchbacks ideal for city driving.',
     canonicalPath: '/vehicles/hatchback',
-    sortOrder: 3,
+    sortOrder: 2,
     trackingCategory: 'vehicle_hatchback',
   },
+
+  // =========================
+  // COUPE
+  // =========================
   {
     slug: 'coupe',
     name: 'Coupe',
     bodyStyle: 'Coupe',
-    image: mercedesSedanImg,
+    image: coupeNissanImg,
     badge: 'Popular',
     ctaText: 'Explore Coupes',
-    description:
-      'A sleek two-door design focused on style, performance, and driving excitement.',
-    highlights: [
-      'Two-door sporty profile',
-      'Aggressive styling',
-      'Engaging driving dynamics',
-      'Personal style statement',
-    ],
-    idealFor: [
-      'Style-focused drivers',
-      'Couples or solo drivers',
-      'Sporty daily driving',
-      'Driving enthusiasts',
-    ],
-    popularBrands: ['BMW', 'Mercedes-Benz', 'Audi', 'Lexus', 'Infiniti'],
-    features: [
-      'Sport-tuned suspension',
-      'Performance engines',
-      'Frameless doors',
-      'Premium interiors',
-    ],
+    description: 'Sleek two-door vehicles focused on style and performance.',
+    highlights: ['Sporty design', 'Driver-focused'],
+    idealFor: ['Solo drivers', 'Style lovers'],
+    popularBrands: ['BMW', 'Mercedes-Benz', 'Audi'],
+    features: ['Sport suspension', 'Premium interiors'],
     startingPrice: 599,
     priceRange: { min: 550, max: 1200 },
     fuelTypes: ['gasoline', 'hybrid'],
     drivetrain: ['RWD', 'AWD'],
     passengerCapacity: 4,
     cargoSpace: 'small',
-    metaTitle: 'Coupe Leasing | Capital Motor Cars',
-    metaDescription: 'Stylish two-door coupes built for performance and design.',
+    mpg: '22-28 MPG',
+    mpge: '38-45 MPGe Comb.',
+    metaTitle: 'Coupe Leasing',
+    metaDescription: 'Stylish coupes built for driving pleasure.',
     canonicalPath: '/vehicles/coupe',
-    sortOrder: 5,
+    sortOrder: 3,
+    isLuxury: true,
     trackingCategory: 'vehicle_coupe',
   },
-  
+
+  // =========================
+  // SEDAN
+  // =========================
   {
     slug: 'sedan',
     name: 'Sedan',
     bodyStyle: 'Sedan',
-    image: mercedesSedanImg,
+    image: sedanBmwImg,
     ctaText: 'Explore Sedans',
-    description:
-      'A timeless four-door design offering comfort, balance, and refined daily driving.',
-    highlights: [
-      'Four-door practicality',
-      'Comfortable rear seating',
-      'Smooth highway ride',
-      'Refined interior quality',
-    ],
-    idealFor: [
-      'Families',
-      'Business professionals',
-      'Daily commuters',
-      'Long-distance driving',
-    ],
-    popularBrands: ['Audi', 'BMW', 'Mercedes-Benz', 'Toyota', 'Honda'],
-    features: [
-      'Spacious trunk',
-      'Quiet cabin',
-      'Advanced safety systems',
-      'Comfort-focused suspension',
-    ],
+    description: 'Balanced, comfortable, and perfect for daily driving.',
+    highlights: ['Comfort', 'Efficiency', 'Practicality'],
+    idealFor: ['Families', 'Professionals'],
+    popularBrands: ['BMW', 'Mercedes-Benz', 'Toyota', 'Honda'],
+    features: ['Quiet cabin', 'Spacious trunk'],
     startingPrice: 499,
     priceRange: { min: 450, max: 900 },
-    fuelTypes: ['gasoline', 'hybrid'],
+    fuelTypes: ['gasoline', 'hybrid'], // ✅ correct
     drivetrain: ['FWD', 'AWD'],
     passengerCapacity: 5,
     cargoSpace: 'medium',
-    metaTitle: 'Sedan Leasing | Capital Motor Cars',
-    metaDescription: 'Comfortable and practical sedans ideal for everyday driving.',
+    mpg: '28-35 MPG',
+    mpge: '48-55 MPGe Comb.',
+    metaTitle: 'Sedan Leasing',
+    metaDescription: 'Comfortable sedans for everyday use.',
     canonicalPath: '/vehicles/sedan',
     sortOrder: 4,
     trackingCategory: 'vehicle_sedan',
   },
 
-  {
-    slug: 'truck',
-    name: 'Truck',
-    bodyStyle: 'Pickup Truck',
-    image: truckRaptorImg,
-    badge: 'Popular',
-    ctaText: 'Browse Trucks',
-    description:
-      'Powerful, durable, and built to handle work and adventure.',
-    highlights: [
-      'High towing capacity',
-      'Off-road capability',
-      'Durable construction',
-    ],
-    idealFor: [
-      'Contractors',
-      'Outdoor enthusiasts',
-      'Heavy-duty needs',
-    ],
-    popularBrands: ['Ford', 'RAM', 'Chevrolet', 'GMC'],
-    features: [
-      '4x4 systems',
-      'Crew cab options',
-      'Advanced towing tech',
-    ],
-    startingPrice: 749,
-    priceRange: { min: 700, max: 1200 },
-    fuelTypes: ['gasoline', 'diesel'],
-    drivetrain: ['RWD', '4x4'],
-    passengerCapacity: 5,
-    cargoSpace: 'large',
-    metaTitle: 'Truck Leasing | Capital Motor Cars',
-    metaDescription: 'Lease powerful trucks built for work and play.',
-    canonicalPath: '/vehicles/truck',
-    sortOrder: 5,
-    trackingCategory: 'vehicle_truck',
-  },
-
+  // =========================
+  // SPORTS
+  // =========================
   {
     slug: 'sports',
     name: 'Sports',
     bodyStyle: 'Sports Car',
-    image: 'https://pngimg.com/uploads/porsche/porsche_PNG10620.png',
+    image: porscheImg,
     badge: 'New',
     ctaText: 'View Sports Cars',
-    description:
-      'Pure performance and adrenaline-packed driving experiences.',
-    highlights: [
-      'High performance engines',
-      'Precision handling',
-      'Aggressive styling',
-    ],
-    idealFor: [
-      'Car enthusiasts',
-      'Weekend drivers',
-      'Performance seekers',
-    ],
-    popularBrands: ['Porsche', 'BMW M', 'Mercedes-AMG', 'Audi RS'],
-    features: [
-      'Launch control',
-      'Sport suspension',
-      'Performance brakes',
-    ],
+    description: 'High-performance vehicles built for excitement.',
+    highlights: ['Performance', 'Precision handling'],
+    idealFor: ['Enthusiasts', 'Weekend drivers'],
+    popularBrands: ['Porsche', 'BMW M', 'Mercedes-AMG'],
+    features: ['Launch control', 'Performance brakes'],
     startingPrice: 999,
     priceRange: { min: 900, max: 2000 },
-    fuelTypes: ['gasoline'],
+    fuelTypes: ['gasoline', 'hybrid'],
     drivetrain: ['RWD', 'AWD'],
     passengerCapacity: 2,
     cargoSpace: 'small',
-    metaTitle: 'Sports Car Leasing | Capital Motor Cars',
-    metaDescription: 'Lease high-performance sports cars.',
+    mpg: '18-24 MPG',
+    mpge: '35-42 MPGe Comb.',
+    metaTitle: 'Sports Car Leasing',
+    metaDescription: 'Lease adrenaline-packed sports cars.',
     canonicalPath: '/vehicles/sports',
-    sortOrder: 6,
+    sortOrder: 5,
+    isLuxury: true,
     trackingCategory: 'vehicle_sports',
   },
 
+ 
   {
     slug: 'suv',
     name: 'SUV',
     bodyStyle: 'SUV',
-    image: 'https://pngimg.com/uploads/land_rover/land_rover_PNG55.png',
+    image: suvToyotaImg,
     badge: 'Best Seller',
     ctaText: 'Browse SUVs',
-    description:
-      'Spacious, powerful, and versatile for families and adventure.',
-    highlights: [
-      'Elevated driving position',
-      'Spacious interiors',
-      'AWD capability',
-    ],
-    idealFor: [
-      'Families',
-      'Outdoor lifestyles',
-      'All-weather driving',
-    ],
+    description: 'Spacious, capable, and family-friendly.',
+    highlights: ['AWD capability', 'Spacious interior'],
+    idealFor: ['Families', 'Adventure seekers'],
     popularBrands: ['Land Rover', 'BMW', 'Mercedes-Benz', 'Lexus'],
-    features: [
-      'Third-row seating',
-      'Power liftgate',
-      'Terrain modes',
-    ],
+    features: ['Third-row seating', 'Terrain modes'],
     startingPrice: 649,
     priceRange: { min: 600, max: 1100 },
-    fuelTypes: ['gasoline', 'hybrid'],
+    fuelTypes: ['gasoline', 'hybrid'], // ✅ correct
     drivetrain: ['AWD'],
     passengerCapacity: 7,
     cargoSpace: 'large',
-    metaTitle: 'SUV Leasing | Capital Motor Cars',
-    metaDescription: 'Lease spacious and capable SUVs.',
+    mpg: '20-26 MPG',
+    mpge: '42-48 MPGe Comb.',
+    metaTitle: 'SUV Leasing',
+    metaDescription: 'Lease powerful and versatile SUVs.',
     canonicalPath: '/vehicles/suv',
-    sortOrder: 7,
+    sortOrder: 6,
+    isLuxury: true,
     trackingCategory: 'vehicle_suv',
   },
 
+  // =========================
+  // MINIVAN (MPV)
+  // =========================
   {
     slug: 'minivan',
     name: 'Minivan',
     bodyStyle: 'Minivan',
     image: minivanOdysseyImg,
     ctaText: 'View Minivans',
-    description:
-      'Maximum space, comfort, and convenience for families.',
-    highlights: [
-      'Sliding doors',
-      'Flexible seating',
-      'Family-focused tech',
-    ],
-    idealFor: [
-      'Large families',
-      'Carpooling',
-      'Road trips',
-    ],
+    description: 'Maximum space and comfort for families.',
+    highlights: ['Sliding doors', 'Flexible seating'],
+    idealFor: ['Large families', 'Road trips'],
     popularBrands: ['Honda', 'Toyota', 'Chrysler'],
-    features: [
-      '7–8 passenger seating',
-      'Rear entertainment',
-      'Hands-free liftgate',
-    ],
+    features: ['8-passenger seating', 'Rear entertainment'],
     startingPrice: 599,
     priceRange: { min: 550, max: 900 },
-    fuelTypes: ['gasoline', 'hybrid'],
+    fuelTypes: ['gasoline', 'hybrid'], // ✅ correct
     drivetrain: ['FWD'],
     passengerCapacity: 8,
     cargoSpace: 'large',
-    metaTitle: 'Minivan Leasing | Capital Motor Cars',
-    metaDescription: 'Family-friendly minivans with unmatched space.',
+    mpg: '22-28 MPG',
+    mpge: '38-45 MPGe Comb.',
+    metaTitle: 'Minivan Leasing',
+    metaDescription: 'Family-focused minivans.',
     canonicalPath: '/vehicles/minivan',
-    sortOrder: 8,
+    sortOrder: 7,
     trackingCategory: 'vehicle_minivan',
   },
 
+  // =========================
+  // CROSSOVER (CUV)
+  // =========================
   {
     slug: 'crossover',
     name: 'Crossover',
     bodyStyle: 'Crossover',
-    image: crossoverLexusImg,
+    image: cuvImg,
     ctaText: 'Explore Crossovers',
-    description:
-      'Car-like comfort with SUV versatility — the perfect middle ground.',
-    highlights: [
-      'Fuel efficient',
-      'Compact yet spacious',
-      'Easy to drive',
-    ],
-    idealFor: [
-      'Urban families',
-      'Daily drivers',
-      'Style-conscious buyers',
-    ],
+    description: 'SUV versatility with car-like comfort.',
+    highlights: ['Fuel efficient', 'Easy to drive'],
+    idealFor: ['Urban families', 'Daily drivers'],
     popularBrands: ['Lexus', 'BMW', 'Audi', 'Volvo'],
-    features: [
-      'Flexible cargo space',
-      'AWD options',
-      'Modern safety tech',
-    ],
+    features: ['Flexible cargo space', 'AWD options'],
     startingPrice: 549,
     priceRange: { min: 500, max: 850 },
-    fuelTypes: ['gasoline', 'hybrid'],
+    fuelTypes: ['gasoline', 'hybrid'], // ✅ correct
     drivetrain: ['FWD', 'AWD'],
     passengerCapacity: 5,
     cargoSpace: 'medium',
-    metaTitle: 'Crossover Leasing | Capital Motor Cars',
-    metaDescription: 'Versatile crossovers with modern styling.',
+    mpg: '26-32 MPG',
+    mpge: '44-50 MPGe Comb.',
+    metaTitle: 'Crossover Leasing',
+    metaDescription: 'Modern crossovers with versatility.',
     canonicalPath: '/vehicles/crossover',
-    sortOrder: 9,
+    sortOrder: 8,
     trackingCategory: 'vehicle_crossover',
   },
+  
+ 
+  {
+    slug: 'truck',
+    name: 'Truck',
+    bodyStyle: 'Truck',
+    image: truckRaptorImg,
+    ctaText: 'Explore Trucks',
+    description: 'Powerful and capable trucks for any job.',
+    highlights: ['Powerful engine', 'Towing capacity'],
+    idealFor: ['Workers', 'Adventure seekers'],
+    popularBrands: ['Ford', 'Chevrolet', 'Ram'],
+    features: ['Powerful engine', 'Towing capacity'],
+    startingPrice: 799,
+    priceRange: { min: 750, max: 1500 },
+    fuelTypes: ['gasoline', 'diesel', 'hybrid'],
+    drivetrain: ['4x4'],
+    passengerCapacity: 5,
+    cargoSpace: 'large',
+    mpg: '16-22 MPG',
+    mpge: '28-35 MPGe Comb.',
+    metaTitle: 'Truck Leasing',
+    metaDescription: 'Lease powerful and capable trucks.',
+    canonicalPath: '/vehicles/truck',
+    sortOrder: 10,
+    trackingCategory: 'vehicle_truck',
+  },
+  {
+    slug: 'wagon',
+    name: 'Wagon',
+    bodyStyle: 'Wagon',
+    image: wagonMiniImg,
+    ctaText: 'Explore Wagons',
+    description: 'Wagons for the discerning driver.',
+    highlights: ['Wagon'],
+    idealFor: ['Wagon drivers', 'Wagon buyers'],
+    popularBrands: ['Mini', 'Volkswagen'],
+    features: ['Wagon', 'Wagon'],
+    startingPrice: 799,
+    priceRange: { min: 750, max: 1500 },
+    fuelTypes: ['gasoline', 'hybrid'],
+    drivetrain: ['FWD'],
+    passengerCapacity: 5,
+    cargoSpace: 'medium',
+    mpg: '28-34 MPG',
+    mpge: '46-52 MPGe Comb.',
+    metaTitle: 'Wagon Leasing',
+    metaDescription: 'Lease wagons.',
+    canonicalPath: '/vehicles/wagon',
+    sortOrder: 11,
+    trackingCategory: 'vehicle_wagon',
+  },
 ];
+
 
 
 export const getVehicleTypeBySlug = (slug: string): VehicleTypeData | undefined => {
