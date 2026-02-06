@@ -38,7 +38,7 @@ export function ExperienceTrustSection() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {[
               { value: '30+', label: 'Years of Industry Experience', icon: CalendarCheck },
-              { value: 'Hundreds', label: 'of Vehicles Managed End-to-End', icon: Car },
+              { value: 'Hundreds', label: 'of Vehicles Managed End to End', icon: Car },
               { value: 'Direct Access', label: 'to Major Automotive Brands', icon: Building2 },
             ].map((stat, i) => (
               <div

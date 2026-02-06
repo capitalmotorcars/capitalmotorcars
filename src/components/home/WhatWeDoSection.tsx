@@ -32,7 +32,7 @@ const services: ServiceItem[] = [
   },
   {
     title: 'Trade-In Services',
-    description: 'We evaluate your current vehicle and manage the trade-in process from start to finish.',
+    description: 'We evaluate your current vehicle and manage the trade in process from start to finish.',
     href: '/services/trade-in',
     ctaText: 'Learn More',
     icon: RefreshCw,

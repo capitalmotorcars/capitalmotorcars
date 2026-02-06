@@ -31,7 +31,7 @@ export const organizationSchema = {
   '@type': 'LocalBusiness',
   '@id': 'https://capitalmotorcars.com/#organization',
   name: 'Capital Motor Cars',
-  description: 'Simple, stress-free car leasing and automotive services in New Jersey.',
+  description: 'Simple, stress free car leasing and automotive services in New Jersey.',
   url: 'https://capitalmotorcars.com',
   telephone: '+1-201-509-5555',
   email: 'info@capitalmotorcars.com',

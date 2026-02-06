@@ -4,7 +4,7 @@ import coupeCoupeImg from '@/assets/bmw.png';
 import minivanOdysseyImg from '@/assets/minivan-odyssey.png';
 import sedanBmwImg from '@/assets/sedan.png';
 import suvToyotaImg from '@/assets/mercedes.png';
-import wagonMiniImg from '@/assets/wagon.png';
+import wagonBmwImg from '@/assets/wagon.png';
 import cuvImg from '@/assets/cuv.png';
 import porscheImg from '@/assets/porschee.png';
 import cayenneElectricImg from '@/assets/cayanne.png';
@@ -332,7 +332,7 @@ export const vehicleTypes: VehicleTypeData[] = [
     slug: 'wagon',
     name: 'Wagon',
     bodyStyle: 'Wagon',
-    image: wagonMiniImg,
+    image: wagonBmwImg,
     ctaText: 'Explore Wagons',
     description: 'Wagons for the discerning driver.',
     highlights: ['Wagon'],
@@ -345,8 +345,8 @@ export const vehicleTypes: VehicleTypeData[] = [
     drivetrain: ['FWD'],
     passengerCapacity: 5,
     cargoSpace: 'medium',
-    mpg: '28-34 MPG',
-    mpge: '46-52 MPGe Comb.',
+      mpg: '15-18 MPG',
+      mpge: '50-60 MPGe Comb.',
     metaTitle: 'Wagon Leasing',
     metaDescription: 'Lease wagons.',
     canonicalPath: '/vehicles/wagon',

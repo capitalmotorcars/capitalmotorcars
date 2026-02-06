@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import bg1 from '@/assets/brand-backgrounds/bg-1.jpeg';
 import bg2 from '@/assets/brand-backgrounds/bg-2.jpg';
 import bg3 from '@/assets/brand-backgrounds/bg-3.jpg';
-
+import bg4 from '@/assets/brand-backgrounds/bg-4.jpg';  
 type FilterType = 'all' | 'suv' | 'hybrid-electric' | 'luxury';
 
 const getFilterCount = (filterId: FilterType): number | undefined => {
@@ -63,10 +63,10 @@ export function VehicleTypesCarousel() {
   const prevVehicleData = filteredVehicles[(currentIndex - 1 + filteredVehicles.length) % filteredVehicles.length];
   const nextVehicleData = filteredVehicles[(currentIndex + 1) % filteredVehicles.length];
 
-  const backgrounds = [bg1, bg2, bg3];
+  const backgrounds = [bg1, bg2, bg3, bg4];
   // Map each filter to a background index
   const filterToBgIndex: Record<FilterType, number> = {
-    'all': 0,
+    'all': 3,
     'suv': 1,
     'hybrid-electric': 2,
     'luxury': 0,

@@ -25,7 +25,7 @@ const benefits = [
 
 const stats = [
   { value: '30+', label: 'Years of Industry Experience', icon: CalendarCheck },
-  { value: 'Hundreds', label: 'of Vehicles Managed End-to-End', icon: Car },
+  { value: 'Hundreds', label: 'of Vehicles Managed End to End', icon: Car },
   { value: 'Direct Access', label: 'to Major Automotive Brands', icon: Building2 },
 ];
 
@@ -60,7 +60,7 @@ export function WhyUsAndExperienceSection() {
       <div ref={ref} className="container relative mx-auto px-4 lg:px-8">
         <SectionHeading
           title="Why Work with Capital Motor Cars"
-          subtitle="Experience you can trust—transparency, expertise, and numbers that speak."
+          subtitle="Experience you can trust transparency, expertise, and numbers that speak."
         />
 
         <div

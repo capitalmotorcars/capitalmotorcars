@@ -29,7 +29,7 @@ export function HowItWorksSection({ transparentBackground }: HowItWorksSectionPr
               How It Works
             </h2>
             <p className="text-sm sm:text-base text-section-muted max-w-xl mx-auto">
-              From first call to delivery—simple steps, no runaround.
+              From first call to delivery simple steps, no runaround.
             </p>
           </header>
           <CircularProcessVisualization mobileSize={380} hideMobileTitle />

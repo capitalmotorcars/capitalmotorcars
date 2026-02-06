@@ -10,7 +10,7 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 const faqData = [
   {
     question: 'How does car leasing work?',
-    answer: 'Car leasing allows you to drive a new vehicle for a set period (typically 24-48 months) with lower monthly payments than buying. At the end of the lease term, you can return the vehicle, purchase it, or lease a new one. We handle all the negotiations and paperwork to make the process simple and stress-free.',
+    answer: 'Car leasing allows you to drive a new vehicle for a set period (typically 24-48 months) with lower monthly payments than buying. At the end of the lease term, you can return the vehicle, purchase it, or lease a new one. We handle all the negotiations and paperwork to make the process simple and stress free.',
   },
   {
     question: 'What credit score do I need to lease a car?',
@@ -18,7 +18,7 @@ const faqData = [
   },
   {
     question: 'Can I lease a car with bad credit?',
-    answer: 'Yes, it\'s possible to lease a car with less-than-perfect credit. We work with a network of lenders who specialize in various credit situations. You may need a larger down payment or have slightly higher monthly payments, but we\'ll help you find the best options available.',
+    answer: 'Yes, it\'s possible to lease a car with less than perfect credit. We work with a network of lenders who specialize in various credit situations. You may need a larger down payment or have slightly higher monthly payments, but we\'ll help you find the best options available.',
   },
   {
     question: 'What happens at the end of my lease?',

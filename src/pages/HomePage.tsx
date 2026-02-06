@@ -19,7 +19,7 @@ export default function HomePage() {
     <Layout>
       <SEO
         title="Capital Motor Cars | Car Leasing & Automotive Services"
-        description="Simple, stress-free car leasing and automotive services in New Jersey. We handle negotiations, financing, and end-of-lease repairs so you don't have to."
+        description="Simple, stress free car leasing and automotive services in New Jersey. We handle negotiations, financing, and end-of-lease repairs so you don't have to."
       />
       <JsonLd data={organizationSchema} />
       <ScrollTriggeredQuizDialog />
