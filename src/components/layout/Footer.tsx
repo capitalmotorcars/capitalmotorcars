@@ -82,7 +82,7 @@ export function Footer() {
                   alt="Capital Motor Cars"
                   loading="lazy"
                   decoding="async"
-                  className="h-14 w-auto dark:brightness-0 dark:invert"
+                  className="h-24 w-24 dark:brightness-0 dark:invert"
                 />
               </Link>
               <p className="text-sm font-medium leading-relaxed mb-7 tracking-[0.15em] text-section-muted">

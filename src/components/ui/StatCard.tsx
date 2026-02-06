@@ -14,15 +14,15 @@ interface StatCardProps {
 
 export function StatCard({ value, label, icon: Icon, dark: _dark, className }: StatCardProps) {
   return (
-    <div className={cn('glass-card-theme p-4 md:p-7 lg:p-8 transition-all duration-300 hover:scale-[1.02] dark:hover:brightness-110 flex flex-col items-center text-center h-full min-h-0', className)}>
+    <div className={cn('glass-card-theme p-4 md:py-10 md:px-2 flex flex-col items-center text-center h-full min-h-0', className)}>
       {Icon && (
         <div className="flex justify-center mb-4">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl border border-border dark:border-white/10 bg-card dark:bg-white/[0.04]">
-            <Icon className="w-6 h-6 text-section-muted" />
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl border border-accent bg-card dark:bg-white/[0.04]">
+            <Icon className="w-6 h-6 text-accent" />
           </div>
         </div>
       )}
-      <div className="text-lg font-semibold text-section mb-3">{value}</div>
+      <div className="text-lg font-semibold  mb-3 text-accent">{value}</div>
       <p className="text-sm sm:text-base text-section-muted leading-relaxed max-w-[16rem] text-center">{label}</p>
     </div>
   );

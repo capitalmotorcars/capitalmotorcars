@@ -66,15 +66,19 @@ const team: Person[] = [
   { name: 'James', role: 'Logistics Manager', image: logoImage, bio: "I love the smell of that new car scent. From pickup to delivery, I come straight to you smelling good.", email: 'james@capitalmotorcars.com' },
 ];
 
-const cardClass = cn(
+const baseCardClass = cn(
   'rounded-2xl border bg-card overflow-hidden',
   'border-border dark:border-white/20 dark:bg-white/[0.03] dark:border-white/5 dark:shadow-black/30',
-  'hover:border-accent/30',
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
 );
+const cardClass = cn(
+  baseCardClass,
+  'hover:border-accent hover:shadow-[0_0_30px_hsl(214_77%_50%_/_0.4)] hover:shadow-accent/30',
+  'hover:bg-accent/5 dark:hover:bg-accent/10',
+);
 const dialogPanelClass = cn(
-  cardClass,
-  'dark:bg-[#121212]  dark:border-white/5 dark:shadow-black/30',
+  baseCardClass,
+  'dark:bg-[#121212] dark:border-white/5 dark:shadow-black/30',
 );
 const cardTransition = { type: 'spring' as const, stiffness: 500, damping: 32 };
 const hoverTransition = { type: 'tween' as const, duration: 0.12 };
@@ -82,14 +86,34 @@ const dialogFadeTransition = { type: 'tween' as const, duration: 0.4, ease: 'eas
 
 const TEAM_PAGE_SIZE = 6;
 
-export function PeopleSection() {
+// Team members to show on home page (based on image)
+const HOME_PAGE_TEAM_NAMES = [
+  'Henry Liu',
+  'Mark Onbashian',
+  'Michael Zeitoune',
+  'Vicky Azrak',
+  'Michael Minerva',
+  'Derek Anton',
+];
+
+interface PeopleSectionProps {
+  /** If true, only shows specific team members for home page */
+  homePageOnly?: boolean;
+}
+
+export function PeopleSection({ homePageOnly = false }: PeopleSectionProps = {}) {
   const { ref, isRevealed } = useScrollReveal();
   const [founderOpen, setFounderOpen] = React.useState(false);
   const [teamPerson, setTeamPerson] = React.useState<Person | null>(null);
   const [teamPage, setTeamPage] = React.useState(0);
 
-  const maxTeamPage = Math.max(0, Math.ceil(team.length / TEAM_PAGE_SIZE) - 1);
-  const visibleTeam = team.slice(teamPage * TEAM_PAGE_SIZE, teamPage * TEAM_PAGE_SIZE + TEAM_PAGE_SIZE);
+  // Filter team members if homePageOnly is true
+  const filteredTeam = homePageOnly 
+    ? team.filter(person => HOME_PAGE_TEAM_NAMES.includes(person.name))
+    : team;
+
+  const maxTeamPage = Math.max(0, Math.ceil(filteredTeam.length / TEAM_PAGE_SIZE) - 1);
+  const visibleTeam = filteredTeam.slice(teamPage * TEAM_PAGE_SIZE, teamPage * TEAM_PAGE_SIZE + TEAM_PAGE_SIZE);
 
   return (
     <section aria-label="Team" className="relative py-16 lg:py-20">
@@ -113,7 +137,7 @@ export function PeopleSection() {
             <Dialog.Trigger asChild>
               <motion.button
                 type="button"
-                className={cn(cardClass, 'flex flex-col items-center p-4 text-center w-full max-w-[315px]')}
+                className={cn(cardClass, 'group flex flex-col items-center p-4 text-center w-full max-w-[315px]')}
                 aria-label="A note from our founder"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isRevealed ? { opacity: 1, y: 0, transition: { ...cardTransition, delay: 0.30 } } : { opacity: 0, y: 20 }}
@@ -121,12 +145,12 @@ export function PeopleSection() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <img src={founder.image} alt="" className="h-20 w-20 md:h-24 md:w-24 rounded-full object-cover ring-2 ring-border shadow-md" />
-                <p className="mt-3 text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wider">Founder</p>
-                <h3 className="mt-1 text-base md:text-lg font-semibold text-foreground">{founder.name}</h3>
-                <p className="mt-0.5 text-sm md:text-base text-muted-foreground">{founder.role}</p>
-                <span className="mt-1.5 inline-flex items-center gap-1.5 text-sm md:text-base font-medium text-accent">
-                    <ArrowRight className="h-4 w-4 md:h-5 md:w-5 shrink-0" aria-hidden />
+                <img src={founder.image} alt="" className="h-20 w-20 md:h-24 md:w-24 rounded-full object-cover ring-2 ring-border shadow-md transition-all duration-300 group-hover:ring-accent/50" />
+                <p className="mt-3 text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wider transition-all duration-300 group-hover:text-foreground/80">Founder</p>
+                <h3 className="mt-1 text-base md:text-lg font-semibold text-foreground transition-all duration-300 group-hover:font-bold group-hover:text-accent">{founder.name}</h3>
+                <p className="mt-0.5 text-sm md:text-base text-muted-foreground transition-all duration-300 group-hover:text-foreground/90">{founder.role}</p>
+                <span className="mt-1.5 inline-flex items-center gap-1.5 text-sm md:text-base font-medium text-accent transition-all duration-300 group-hover:font-bold group-hover:drop-shadow-[0_0_8px_hsl(214_77%_50%_/_0.5)]">
+                    <ArrowRight className="h-4 w-4 md:h-5 md:w-5 shrink-0 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
                     View profile
                   </span>
               </motion.button>
@@ -174,26 +198,27 @@ export function PeopleSection() {
         </div>
 
         {/* Team carousel — arrows cycle team only; founder stays fixed above */}
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={() => setTeamPage((p) => Math.max(0, p - 1))}
-            disabled={teamPage === 0}
-            aria-label="Previous team members"
-            className={cn(
-              'shrink-0 rounded-full p-2 border border-border dark:border-white/20 bg-card dark:bg-black text-foreground hover:bg-muted dark:hover:bg-white/10 disabled:opacity-40 disabled:pointer-events-none transition-colors',
-            )}
-          >
-            <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
-          </button>
-          <div className="flex-1 min-w-0">
+        {maxTeamPage > 0 && (
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setTeamPage((p) => Math.max(0, p - 1))}
+              disabled={teamPage === 0}
+              aria-label="Previous team members"
+              className={cn(
+                'shrink-0 rounded-full p-2 border border-border dark:border-white/20 bg-card dark:bg-black text-foreground hover:bg-muted dark:hover:bg-white/10 disabled:opacity-40 disabled:pointer-events-none transition-colors',
+              )}
+            >
+              <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
+            </button>
+            <div className="flex-1 min-w-0">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
               {visibleTeam.map((person, i) => (
             <Dialog.Root key={person.name} open={teamPerson?.name === person.name} onOpenChange={(open) => setTeamPerson(open ? person : null)}>
               <Dialog.Trigger asChild>
                 <motion.button
                   type="button"
-                  className={cn(cardClass, 'flex flex-col items-center p-4 md:p-5 text-center ')}
+                  className={cn(cardClass, 'group flex flex-col items-center p-4 md:p-5 text-center')}
                   aria-label={`View ${person.name}`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={isRevealed ? { opacity: 1, y: 0, transition: { ...cardTransition, delay: 0.30 + i * 0.06 } } : { opacity: 0, y: 20 }}
@@ -202,16 +227,108 @@ export function PeopleSection() {
                   whileTap={{ scale: 0.98 }}
                 >
                   {person.image ? (
-                    <img src={person.image} alt="" className="h-20 w-20 md:h-24 md:w-24 rounded-full object-cover ring-2 ring-border shadow-md" />
+                    <img src={person.image} alt="" className="h-20 w-20 md:h-24 md:w-24 rounded-full object-cover ring-2 ring-border shadow-md transition-all duration-300 group-hover:ring-accent/50" />
                   ) : (
-                    <div className="flex h-20 w-20 md:h-24 md:w-24 shrink-0 items-center justify-center rounded-full bg-muted ring-2 ring-border shadow-md text-muted-foreground">
+                    <div className="flex h-20 w-20 md:h-24 md:w-24 shrink-0 items-center justify-center rounded-full bg-muted ring-2 ring-border shadow-md text-muted-foreground transition-all duration-300 group-hover:ring-accent/50">
                       <UserCircle className="h-10 w-10 md:h-12 md:w-12" aria-hidden />
                     </div>
                   )}
-                  <h3 className="mt-3 text-base md:text-lg font-semibold text-foreground truncate w-full">{person.name}</h3>
-                  <p className="mt-0.5 text-sm md:text-base text-muted-foreground line-clamp-2">{person.role}</p>
-                  <span className="mt-1.5 inline-flex items-center gap-1.5 text-sm md:text-base font-medium text-accent">
-                    <ArrowRight className="h-4 w-4 md:h-5 md:w-5 shrink-0" aria-hidden />
+                  <h3 className="mt-3 text-base md:text-lg font-semibold text-foreground truncate w-full transition-all duration-300 group-hover:font-bold group-hover:text-accent">{person.name}</h3>
+                  <p className="mt-0.5 text-sm md:text-base text-muted-foreground line-clamp-2 transition-all duration-300 group-hover:text-foreground/90">{person.role}</p>
+                  <span className="mt-1.5 inline-flex items-center gap-1.5 text-sm md:text-base font-medium text-accent transition-all duration-300 group-hover:font-bold group-hover:drop-shadow-[0_0_8px_hsl(214_77%_50%_/_0.5)]">
+                    <ArrowRight className="h-4 w-4 md:h-5 md:w-5 shrink-0 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+                    View profile
+                  </span>
+                </motion.button>
+              </Dialog.Trigger>
+              <Dialog.Portal>
+                <Dialog.Overlay asChild>
+                  <motion.div
+                    className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={dialogFadeTransition}
+                  />
+                </Dialog.Overlay>
+                <Dialog.Content asChild>
+                  <motion.div
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4"
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={dialogFadeTransition}
+                    onClick={(e) => e.target === e.currentTarget && setTeamPerson(null)}
+                  >
+                    <div className={cn(dialogPanelClass, 'w-full max-w-lg p-6 md:p-8')}>
+                    <div className="flex items-start gap-4">
+                      {person.image ? (
+                        <img src={person.image} alt="" className="h-20 w-20 md:h-24 md:w-24 shrink-0 rounded-full object-cover ring-2 ring-border" />
+                      ) : (
+                        <div className="flex h-20 w-20 md:h-24 md:w-24 shrink-0 items-center justify-center rounded-full bg-muted ring-2 ring-border text-muted-foreground">
+                          <UserCircle className="h-10 w-10 md:h-12 md:w-12" aria-hidden />
+                        </div>
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <h3 className="text-xl md:text-2xl font-semibold text-foreground">{person.name}</h3>
+                        <p className="text-sm md:text-base text-muted-foreground">{person.role}</p>
+                      </div>
+                      <Dialog.Close asChild>
+                        <button type="button" className="shrink-0 rounded-lg p-2 text-muted-foreground hover:bg-muted hover:text-foreground" aria-label="Close">
+                          <X className="h-5 w-5" />
+                        </button>
+                      </Dialog.Close>
+                    </div>
+                    <p className="mt-4 text-muted-foreground leading-relaxed whitespace-pre-line">{person.bio}</p>
+                    {person.email && (
+                      <a href={`mailto:${person.email}`} className="mt-4 inline-block text-sm font-medium text-accent hover:underline">{person.email}</a>
+                    )}
+                    </div>
+                  </motion.div>
+                </Dialog.Content>
+              </Dialog.Portal>
+            </Dialog.Root>
+              ))}
+            </div>
+            </div>
+            <button
+              type="button"
+              onClick={() => setTeamPage((p) => Math.min(maxTeamPage, p + 1))}
+              disabled={teamPage >= maxTeamPage}
+              aria-label="Next team members"
+              className={cn(
+                'shrink-0 rounded-full p-2 border border-border dark:border-white/20 bg-card dark:bg-white/5 text-foreground hover:bg-muted dark:hover:bg-white/10 disabled:opacity-40 disabled:pointer-events-none transition-colors',
+              )}
+            >
+              <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
+            </button>
+          </div>
+        )}
+        {maxTeamPage === 0 && (
+          <div className="flex-1 min-w-0">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
+              {visibleTeam.map((person, i) => (
+            <Dialog.Root key={person.name} open={teamPerson?.name === person.name} onOpenChange={(open) => setTeamPerson(open ? person : null)}>
+              <Dialog.Trigger asChild>
+                <motion.button
+                  type="button"
+                  className={cn(cardClass, 'group flex flex-col items-center p-4 md:p-5 text-center')}
+                  aria-label={`View ${person.name}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isRevealed ? { opacity: 1, y: 0, transition: { ...cardTransition, delay: 0.30 + i * 0.06 } } : { opacity: 0, y: 20 }}
+                  transition={hoverTransition}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {person.image ? (
+                    <img src={person.image} alt="" className="h-20 w-20 md:h-24 md:w-24 rounded-full object-cover ring-2 ring-border shadow-md transition-all duration-300 group-hover:ring-accent/50" />
+                  ) : (
+                    <div className="flex h-20 w-20 md:h-24 md:w-24 shrink-0 items-center justify-center rounded-full bg-muted ring-2 ring-border shadow-md text-muted-foreground transition-all duration-300 group-hover:ring-accent/50">
+                      <UserCircle className="h-10 w-10 md:h-12 md:w-12" aria-hidden />
+                    </div>
+                  )}
+                  <h3 className="mt-3 text-base md:text-lg font-semibold text-foreground truncate w-full transition-all duration-300 group-hover:font-bold group-hover:text-accent">{person.name}</h3>
+                  <p className="mt-0.5 text-sm md:text-base text-muted-foreground line-clamp-2 transition-all duration-300 group-hover:text-foreground/90">{person.role}</p>
+                  <span className="mt-1.5 inline-flex items-center gap-1.5 text-sm md:text-base font-medium text-accent transition-all duration-300 group-hover:font-bold group-hover:drop-shadow-[0_0_8px_hsl(214_77%_50%_/_0.5)]">
+                    <ArrowRight className="h-4 w-4 md:h-5 md:w-5 shrink-0 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
                     View profile
                   </span>
                 </motion.button>
@@ -264,18 +381,7 @@ export function PeopleSection() {
               ))}
             </div>
           </div>
-          <button
-            type="button"
-            onClick={() => setTeamPage((p) => Math.min(maxTeamPage, p + 1))}
-            disabled={teamPage >= maxTeamPage}
-            aria-label="Next team members"
-            className={cn(
-              'shrink-0 rounded-full p-2 border border-border dark:border-white/20 bg-card dark:bg-white/5 text-foreground hover:bg-muted dark:hover:bg-white/10 disabled:opacity-40 disabled:pointer-events-none transition-colors',
-            )}
-          >
-            <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
-          </button>
-        </div>
+        )}
         {maxTeamPage > 0 && (
           <p className="mt-3 text-center text-xs text-muted-foreground">
             {teamPage + 1} of {maxTeamPage + 1}

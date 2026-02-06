@@ -25,7 +25,7 @@ const contactSchema = z.object({
   phone: z.string().min(10, 'Please enter a valid phone number').max(20),
   service: z.string().optional(),
   vehicleType: z.string().optional(),
-  message: z.string().min(10, 'Message must be at least 10 characters').max(1000),
+  message: z.string().max(1000).optional(),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
@@ -250,7 +250,7 @@ export function ContactForm({
 
       <div className="space-y-1.5">
         <div className="flex items-center justify-between">
-          <Label htmlFor="message" className="text-sm font-medium">Message *</Label>
+          <Label htmlFor="message" className="text-sm font-medium">Message</Label>
           <Select onValueChange={handleSuggestionSelect}>
             <SelectTrigger className="w-auto h-7 text-xs text-muted-foreground border-dashed border-input/60">
               <SelectValue placeholder="Need help getting started?" />

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
-import { SectionHeading } from '@/components/ui/SectionHeading';
+import { ChevronLeft, ChevronRight, ArrowRight, Search } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { cn } from '@/lib/utils';
 import { vehicleTypes, VehicleTypeData } from '@/data/vehicleTypes';
@@ -217,8 +216,8 @@ export function VehicleTypesCarousel() {
 
         {/* Car Details - positioned below vehicles */}
         {currentVehicle && specs && (
-          <div className="relative bg-white dark:bg-background pt-[5vh] md:pt-28 pb-8 sm:pb-12 md:pb-16 z-10">
-            <div className="mx-auto px-4 lg:px-8">
+          <div className="relative bg-white dark:bg-black h-full pt-[5vh] md:pt-28  z-10">
+            <div className="mx-auto px-4 lg:px-8 ">
               <div className="max-w-7xl mx-auto">
                 {/* Car Name - column layout on mobile, row on desktop */}
                 <div className="flex items-start sm:items-baseline justify-between sm:justify-center gap-3 mb-4 sm:mb-6 md:mb-8">
@@ -261,17 +260,17 @@ export function VehicleTypesCarousel() {
                   // Determine border classes for each section
                   const getBorderClasses = (isFirst: boolean, isLast: boolean) => {
                     if (isFirst && isLast) return ''; // Only one section, no borders needed
-                    if (isFirst) return 'border-x border-border'; // First section: left border (start) + right border
-                    if (isLast) return 'border-x border-border'; // Last section: left border + right border (end)
-                    return 'border-x border-border'; // Middle sections: both borders
+                    if (isFirst) return 'border-x border-border dark:border-gray-600'; // First section: left border (start) + right border
+                    if (isLast) return 'border-x border-border dark:border-gray-600'; // Last section: left border + right border (end)
+                    return 'border-x border-border dark:border-gray-600'; // Middle sections: both borders
                   };
                   
                   return (
                     <div className={cn(
-                      'grid gap-3 sm:gap-4 md:gap-8 mb-6 sm:mb-8 md:mb-10 pb-4 sm:pb-6 md:pb-8 border-b border-border',
+                      'grid gap-3 sm:gap-4 md:gap-8 mb-6 sm:mb-8 md:mb-10 pb-4 sm:pb-6 md:pb-8 border-b border-border dark:border-gray-600',
                       gridCols
                     )}>
-                      <div className={cn('text-center', specCount > 0 && 'border-x border-border')}>
+                      <div className={cn('text-center', specCount > 0 && 'border-x border-border dark:border-gray-600')}>
                         <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground mb-1 sm:mb-1.5 md:mb-2">STARTING AT</p>
                         <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-foreground">
                           ${specs.startingPrice.toLocaleString()}/mo<sup className="text-[10px] sm:text-xs md:text-sm ml-0.5 sm:ml-1">¹</sup>
@@ -385,33 +384,51 @@ export function VehicleTypesCarousel() {
                       </div>
                     </div>
                   </div>
-
-                {/* CTAs - side-by-side on mobile */}
-                <div className="flex flex-row items-center justify-center gap-3 sm:gap-4 md:gap-6 mt-6 sm:mt-8 md:mt-10">
+  {/* Learn More Button */}
+  <div className="flex flex-row items-center justify-center pt-4 sm:pt-6">
                   <Button
                     asChild
                     variant="outline"
                     size="lg"
-                    className="flex-1 sm:flex-none border-foreground text-foreground hover:bg-foreground hover:text-background px-4 sm:px-6 md:px-8"
+                    className="h-12 sm:h-14 md:h-16 rounded-lg border-2 border-foreground/20 hover:border-foreground/40 bg-transparent hover:bg-foreground/5 text-foreground font-semibold px-8 sm:px-10 md:px-12 text-base sm:text-lg md:text-xl transition-all duration-300"
                   >
-                    <Link to={`/vehicles/${currentVehicle.slug}`} className="flex items-center justify-center gap-1.5 sm:gap-2">
-                      Build yours <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                    <Link to={`/vehicles/${currentVehicle.slug}`} className="flex items-center justify-center gap-2 sm:gap-3">
+                      Learn more about {currentVehicle.name}
+                      <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6" />
                     </Link>
                   </Button>
-                  <Button
-                    asChild
-                    size="lg"
-                    className="flex-1 sm:flex-none bg-foreground dark:bg-white text-background dark:text-foreground hover:opacity-90 px-4 sm:px-6 md:px-8"
-                  >
-                    <Link to={`/vehicles/${currentVehicle.slug}`}>Learn more</Link>
-                  </Button>
+
+                  
                 </div>
+                {/* Quiz Section */}
+                <div className="mt-6 sm:mt-8 md:mt-10 py-4 md:py-10 border-t border-border dark:border-gray-600">
+                  <div className="flex flex-col items-center gap-4 sm:gap-5">
+                    <div className="flex flex-col items-center gap-2 sm:gap-3">
+                    
+                      <p className="text-base sm:text-lg md:text-xl text-foreground font-medium text-center max-w-xl">
+                        Find your perfect vehicle match in just 5 quick questions.
+                      </p>
+                    </div>
+                    <Button
+                      asChild
+                      size="lg"
+                      className="h-12 sm:h-14 rounded-xl border-2 border-accent/40 bg-accent hover:bg-accent/90 hover:border-accent text-accent-foreground font-bold px-8 sm:px-10 text-base sm:text-lg glow-blue shadow-[0_4px_16px_hsl(214_77%_50%_/_0.3)] hover:shadow-[0_6px_24px_hsl(214_77%_55%_/_0.5)] transition-all duration-300"
+                    >
+                      <Link to="/vehicles/sedan" className="flex items-center justify-center gap-2.5">
+                        Start Quiz
+                        <Search className="w-5 h-5" />
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+
+              
               </div>
             </div>
           </div>
         )}
+        </div>
       </div>
-    </div>
     </section>
   );
 }

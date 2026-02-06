@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Car, CreditCard, RefreshCw, LucideIcon } from 'lucide-react';
+import { Car, CreditCard, RefreshCw, ShieldCheck, LucideIcon } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { cn } from '@/lib/utils';
 import { useEffect, useState } from 'react';
-import luxurySedanImg from '@/assets/luxury-sedan.png';
 import { Button } from '../ui/button';
 
 interface ServiceItem {
@@ -23,7 +22,6 @@ const services: ServiceItem[] = [
     href: '/services/car-leasing',
     ctaText: 'Explore Leasing',
     icon: Car,
-    image: luxurySedanImg,
   },
   {
     title: 'Financing & Credit',
@@ -38,6 +36,13 @@ const services: ServiceItem[] = [
     href: '/services/trade-in',
     ctaText: 'Learn More',
     icon: RefreshCw,
+  },
+  {
+    title: 'Protection & Coverage Services',
+    description: 'Extended warranties, glass repairs, key replacements, and comprehensive protection plans.',
+    href: '/services',
+    ctaText: 'View Services',
+    icon: ShieldCheck,
   },
 ];
 
@@ -76,34 +81,26 @@ function ServiceColumn({ service, index, isRevealed }: ServiceColumnProps) {
           'transition-all duration-300'
         )}
       >
-        {/* Top visual: image or gradient + icon */}
-        <div className="relative aspect-[8/5] md:aspect-[3/2] w-full overflow-hidden bg-muted/50 dark:bg-white/5">
-          {service.image ? (
-            <img
-              src={service.image}
-              alt=""
-              className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-            />
-          ) : (
-            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-accent/10 to-accent/5 dark:from-accent/15 dark:to-accent/10">
-              <Icon className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 text-accent/60 dark:text-accent/70" strokeWidth={1.25} />
-            </div>
-          )}
+        {/* Top visual: gradient + icon */}
+        <div className="relative  w-full h-[150px] md:h-[150px] lg:h-[200px] overflow-hidden bg-muted/50 dark:bg-white/5">
+          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-accent/10 to-accent/5 dark:from-accent/15 dark:to-accent/10">
+            <Icon className="w-16 h-16 lg:w-20 lg:h-20 text-accent/60 dark:text-accent/70" strokeWidth={1.25} />
+          </div>
         </div>
 
         {/* Icon, title, description, CTA — centered */}
-        <div className="flex flex-col items-center flex-grow p-6 sm:p-8 lg:p-10 xl:p-12">
+        <div className="flex flex-col items-center flex-grow p-3 sm:p-5 lg:p-6">
         
-          <h3 className="text-lg sm:text-xl lg:text-2xl  font-bold text-foreground mb-3 sm:mb-4 lg:mb-5">
+          <h3 className="text-lg sm:text-lg lg:text-xl font-bold text-foreground mb-2 sm:mb-3">
             {service.title}
           </h3>
-          <p className="text-muted-foreground dark:text-white/70 text-sm sm:text-base lg:text-lg  leading-relaxed mb-6 sm:mb-7 lg:mb-8 flex-grow">
+          <p className="text-muted-foreground dark:text-white/70 text-sm sm:text-sm lg:text-base leading-relaxed mb-4 sm:mb-5 flex-grow">
             {service.description}
           </p>
          <Button
           asChild
-          size="lg"
-          className="bg-accent hover:bg-accent/90 text-accent-foreground glow-blue w-full text-md"
+          size="sm"
+          className="bg-accent hover:bg-accent/90 text-accent-foreground glow-blue w-full text-sm sm:text-sm"
         >
           <Link to={service.href}>{service.ctaText}</Link>
         </Button>
@@ -131,7 +128,7 @@ export function WhatWeDoSection() {
           subtitle="We support customers at every stage of the automotive process."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 lg:gap-12 max-w-7xl mx-auto mt-10 md:mt-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-6 lg:gap-8 max-w-7xl mx-auto mt-10 md:mt-14">
           {services.map((service, index) => (
             <ServiceColumn
               key={service.href}

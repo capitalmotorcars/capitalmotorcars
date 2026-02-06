@@ -1,9 +1,9 @@
-import hatchbackAudiImg from '@/assets/hatchback.png';
-import truckRaptorImg from '@/assets/truck.png';
-import coupeNissanImg from '@/assets/coupe.png';
+import hatchbackAudiImg from '@/assets/audi.png';
+import truckRaptorImg from '@/assets/raptor.png';
+import coupeCoupeImg from '@/assets/bmw.png';
 import minivanOdysseyImg from '@/assets/minivan-odyssey.png';
 import sedanBmwImg from '@/assets/sedan.png';
-import suvToyotaImg from '@/assets/suv.png';
+import suvToyotaImg from '@/assets/mercedes.png';
 import wagonMiniImg from '@/assets/wagon.png';
 import cuvImg from '@/assets/cuv.png';
 import porscheImg from '@/assets/porschee.png';
@@ -77,7 +77,7 @@ export const vehicleTypes: VehicleTypeData[] = [
       'Advanced autonomous features',
     ],
     idealFor: ['Eco-conscious drivers', 'Tech enthusiasts', 'Daily commuters'],
-    popularBrands: ['Tesla', 'Rivian', 'Lucid', 'BMW', 'Porsche'],
+    popularBrands: [ 'Rivian', 'Lucid', 'BMW', 'Porsche'],
     features: ['Fast charging', 'Regenerative braking', 'OTA updates'],
     startingPrice: 699,
     priceRange: { min: 600, max: 1300 },
@@ -115,8 +115,8 @@ export const vehicleTypes: VehicleTypeData[] = [
     drivetrain: ['FWD'],
     passengerCapacity: 5,
     cargoSpace: 'small',
-    mpg: '32-38 MPG',
-    mpge: '45-52 MPGe Comb.',
+    mpg: '24-34 MPG',
+    mpge: '28 MPG Combined',
     metaTitle: 'Hatchback Leasing',
     metaDescription: 'Affordable hatchbacks ideal for city driving.',
     canonicalPath: '/vehicles/hatchback',
@@ -131,7 +131,7 @@ export const vehicleTypes: VehicleTypeData[] = [
     slug: 'coupe',
     name: 'Coupe',
     bodyStyle: 'Coupe',
-    image: coupeNissanImg,
+    image: coupeCoupeImg,
     badge: 'Popular',
     ctaText: 'Explore Coupes',
     description: 'Sleek two-door vehicles focused on style and performance.',
@@ -145,8 +145,8 @@ export const vehicleTypes: VehicleTypeData[] = [
     drivetrain: ['RWD', 'AWD'],
     passengerCapacity: 4,
     cargoSpace: 'small',
-    mpg: '22-28 MPG',
-    mpge: '38-45 MPGe Comb.',
+    mpg: '15-22 MPG',
+    mpge: '17 MPG Combined',
     metaTitle: 'Coupe Leasing',
     metaDescription: 'Stylish coupes built for driving pleasure.',
     canonicalPath: '/vehicles/coupe',

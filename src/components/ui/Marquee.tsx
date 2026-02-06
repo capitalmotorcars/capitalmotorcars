@@ -5,6 +5,7 @@ interface MarqueeProps extends React.HTMLAttributes<HTMLDivElement> {
   pauseOnHover?: boolean;
   vertical?: boolean;
   repeat?: number;
+  allowScroll?: boolean;
   children: React.ReactNode;
 }
 
@@ -15,13 +16,15 @@ export function Marquee({
   children,
   vertical = false,
   repeat = 4,
+  allowScroll = false,
   ...props
 }: MarqueeProps) {
   return (
     <div
       {...props}
       className={cn(
-        'group flex overflow-hidden p-2 [--duration:40s] [--gap:1rem] [gap:var(--gap)]',
+        'group flex p-2 [--duration:40s] [--gap:1rem] [gap:var(--gap)]',
+        allowScroll ? 'overflow-x-auto overflow-y-hidden' : 'overflow-hidden',
         vertical ? 'flex-col' : 'flex-row',
         className
       )}

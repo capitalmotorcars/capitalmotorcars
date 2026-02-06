@@ -7,6 +7,7 @@ import { RelatedLinks, aboutPageLinks } from '@/components/ui/RelatedLinks';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { UserCheck, MessageSquare, Settings, MapPin } from 'lucide-react';
 import porscheCayenne from '@/assets/porsche-cayenne.png';
+import { PeopleSection } from '@/components/home/PeopleSection';
 
 const approachItems = [
   {
@@ -131,6 +132,9 @@ export default function AboutPage() {
         </div>
       </section>
 
+
+      {/* Team Section */}
+      <PeopleSection />
 
       {/* Locations */}
       <section className="py-8 md:py-16 lg:py-20 section-bg-alt">

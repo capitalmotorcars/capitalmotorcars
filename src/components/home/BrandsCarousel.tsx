@@ -29,7 +29,7 @@ interface BrandCardProps {
 export function BrandCard({ name, logo, variant = 'default' }: BrandCardProps) {
   if (variant === 'card') {
     return (
-      <div className="group/card relative flex h-full w-28 sm:w-32 p-2 shrink-0 cursor-default overflow-hidden flex-col items-center justify-center text-center transition-all duration-300 rounded-2xl border border-white/15 bg-white/5 dark:bg-white/[0.06] shadow-md shadow-black/5 dark:shadow-black/20 backdrop-blur-sm hover:border-white/25 hover:bg-white/10 dark:hover:bg-white/10 hover:shadow-lg hover:shadow-black/10 dark:hover:shadow-black/30">
+      <div className="group/card relative flex h-full w-28 sm:w-32 p-2 shrink-0 cursor-grab active:cursor-grabbing overflow-hidden flex-col items-center justify-center text-center transition-all duration-300 rounded-2xl border border-white/15 bg-white/5 dark:bg-white/[0.06] shadow-md shadow-black/5 dark:shadow-black/20 backdrop-blur-sm hover:border-white/25 hover:bg-white/10 dark:hover:bg-white/10 hover:shadow-lg hover:shadow-black/10 dark:hover:shadow-black/30 pointer-events-auto">
         <div className="flex flex-col items-center justify-center gap-1">
           <img
             src={logo}

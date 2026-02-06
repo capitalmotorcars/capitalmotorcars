@@ -12,6 +12,7 @@ import { WhyUsAndExperienceSection } from '@/components/home/WhyUsAndExperienceS
 import { FinalCTASection } from '@/components/home/FinalCTASection';
 import { HeroBackgroundWrapper } from '@/components/hero/HeroBackgroundWrapper';
 import { SectionDividerCreative } from '@/components/ui/SectionDividerCreative';
+import { ScrollTriggeredQuizDialog } from '@/components/home/ScrollTriggeredQuizDialog';
 
 export default function HomePage() {
   return (
@@ -21,6 +22,7 @@ export default function HomePage() {
         description="Simple, stress-free car leasing and automotive services in New Jersey. We handle negotiations, financing, and end-of-lease repairs so you don't have to."
       />
       <JsonLd data={organizationSchema} />
+      <ScrollTriggeredQuizDialog />
       <HeroBackgroundWrapper>
         <HeroSection />
       </HeroBackgroundWrapper>
@@ -30,7 +32,7 @@ export default function HomePage() {
       <VehicleTypesCarousel />
 
       <SectionDividerCreative variant="dot" />
-      <PeopleSection />
+      <PeopleSection homePageOnly={true} />
 
       <SectionDividerCreative variant="dot" />
       <WhatWeDoSection />

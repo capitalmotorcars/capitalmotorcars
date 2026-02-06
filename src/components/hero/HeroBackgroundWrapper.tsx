@@ -1,5 +1,5 @@
 import { useParallax } from '@/hooks/useParallax';
-import heroBg from '@/assets/hero-bg-crop.jpg';
+import heroBg from '@/assets/bg-dealer.png';
 import mobileHeroBg1 from '@/assets/cayenne-mobile.jpg';
 
 import { HeroSpotlight } from '@/components/hero/HeroSpotlight';
@@ -49,12 +49,17 @@ export function HeroBackgroundWrapper({ children }: HeroBackgroundWrapperProps) 
         />
       </div>
       <HeroSpotlight />
+      {/* Dark mode radial gradient overlay only */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-0 dark:opacity-25 bg-[radial-gradient(ellipse_80%_70%_at_50%_30%,transparent_0%,hsl(0_0%_4%)_100%)]"
+        className="absolute inset-0 pointer-events-none hidden dark:block opacity-25"
+        style={{
+          background: 'radial-gradient(ellipse 80% 70% at 50% 30%, transparent 0%, hsl(0, 0%, 4%) 100%)',
+        }}
         aria-hidden
       />
+      {/* Dark mode bottom fade only */}
       <div
-        className="absolute left-0 right-0 h-40 md:h-48 pointer-events-none z-[1] hero-bottom-fade hero-bottom-fade-dark"
+        className="absolute left-0 right-0 h-40 md:h-48 pointer-events-none z-[1] hidden dark:block hero-bottom-fade-dark"
         style={{ bottom: -8 }}
         aria-hidden
       />

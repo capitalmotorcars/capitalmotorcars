@@ -51,7 +51,7 @@ export function ExperienceTrustSection() {
                   transitionDelay: hasAnimated ? `${i * 80}ms` : '0ms',
                 }}
               >
-                <StatCard value={stat.value} label={stat.label} icon={stat.icon} />
+                {/* <StatCard value={stat.value} label={stat.label} icon={stat.icon} /> */}
               </div>
             ))}
           </div>

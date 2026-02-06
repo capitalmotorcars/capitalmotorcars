@@ -105,19 +105,11 @@ export function WhyUsAndExperienceSection() {
                 Experience you can trust
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 sm:items-stretch">
-                {stats.map((stat, i) => (
-                  <div
-                    key={stat.label}
-                    className={cn(
-                      'opacity-0 translate-y-4 transition-all duration-500 ease-out h-full min-h-0',
-                      hasAnimated && 'opacity-100 translate-y-0'
-                    )}
-                    style={{ transitionDelay: hasAnimated ? `${(benefits.length + i) * 80}ms` : '0ms' }}
-                  >
-                    <StatCard value={stat.value} label={stat.label} icon={stat.icon} className="h-full" />
-                  </div>
+                {stats.map((stat) => (
+                  <StatCard key={stat.label} value={stat.value} label={stat.label} icon={stat.icon} className="h-full" />
                 ))}
               </div>
+          
             </div>
           </div>
         </div>

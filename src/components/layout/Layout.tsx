@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { Header } from './Header';
 import { Footer } from './Footer';
+import { FAQSection } from '@/components/home/FAQSection';
 
 interface LayoutProps {
   children: ReactNode;
@@ -13,6 +14,7 @@ export function Layout({ children }: LayoutProps) {
       <main className="flex-1 pt-14 md:pt-12">
         {children}
       </main>
+      <FAQSection />
       <Footer />
     </div>
   );

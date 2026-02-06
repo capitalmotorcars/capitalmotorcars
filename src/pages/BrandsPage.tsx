@@ -6,7 +6,7 @@ import { MagneticButton } from '@/components/ui/MagneticButton';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import mercedesSClass from '@/assets/mercedes-sclass.png';
+import mercedesSClass from '@/assets/bmw.png';
 
 const brands = [
   { name: 'BMW', logo: 'https://www.carlogos.org/car-logos/bmw-logo.png' },
