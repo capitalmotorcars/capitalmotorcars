@@ -267,6 +267,37 @@
     animation-delay: 0.3s;
   }
 
+  /* Prevent content movement on mobile scroll */
+  @media (max-width: 767px) {
+    .hero-section {
+      position: relative !important;
+      transform: translate3d(0, 0, 0) !important;
+      will-change: auto !important;
+      -webkit-transform: translate3d(0, 0, 0) !important;
+      -webkit-overflow-scrolling: touch;
+      overflow: hidden !important;
+    }
+    .hero-section .container {
+      transform: translate3d(0, 0, 0) !important;
+      will-change: auto !important;
+      position: relative !important;
+    }
+    /* Allow hero-animate animations - they use translateY which is fine */
+    .hero-section .hero-animate {
+      opacity: 0;
+      transform: translateY(16px) translateZ(0);
+    }
+    .hero-section .hero-animate.animate-in {
+      animation: heroFadeIn 0.5s ease-out forwards;
+    }
+    .hero-section .hero-animate.delay-1.animate-in {
+      animation-delay: 0.1s;
+    }
+    .hero-section .hero-animate.delay-2.animate-in {
+      animation-delay: 0.2s;
+    }
+  }
+
   /* Card hover effect */
   .card-hover {
     transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;

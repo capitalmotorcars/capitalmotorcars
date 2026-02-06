@@ -23,11 +23,11 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-[95dvh] md:min-h-[100dvh] flex flex-col overflow-visible md:overflow-hidden hero-section bg-transparent py-12 md:py-20 lg:py-28 xl:py-32 ">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex-1 flex flex-col min-h-0 items-center justify-center">
-        <div className="w-full max-w-7xl xl:max-w-[90rem] mx-auto flex flex-col items-center gap-10 md:gap-12 xl:gap-10">
+    <section className="relative min-h-screen md:min-h-[100dvh] flex flex-col overflow-hidden hero-section bg-transparent " style={{ position: 'relative', transform: 'translateZ(0)' }}>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 pt-16 md:pt-20 lg:pt-24 xl:pt-28 flex-1 flex flex-col min-h-0 items-center justify-center" style={{ position: 'relative', transform: 'translate3d(0, 0, 0)', willChange: 'auto' }}>
+        <div className="w-full max-w-7xl xl:max-w-[90rem] mx-auto flex flex-col items-center gap-10 md:gap-12 xl:gap-10 pt-0 md:pt-14" style={{ position: 'relative', transform: 'translate3d(0, 0, 0)', willChange: 'auto' }}>
           {/* Headline, badges, copy, CTAs */}
-          <div className="flex flex-col items-center text-center gap-2 md:gap-6 xl:gap-8 w-full max-w-4xl xl:max-w-6xl pt-8 md:pt-12 xl:pt-8">
+          <div className="flex flex-col items-center text-center gap-2 md:gap-6 xl:gap-8 w-full max-w-4xl xl:max-w-6xl ">
             <h1
               className={` text-4xl  md:text-7xl xl:text-8xl font-extrabold leading-tight tracking-tight hero-animate text-section ${animate}`}
             >
@@ -212,16 +212,16 @@ export function HeroSection() {
         </div>
 
       </div>
-
       {/* Animated scroll-down arrow — middle bottom, scrolls to next section */}
       <button
         type="button"
         onClick={scrollToNext}
         aria-label="Scroll to next section"
-        className="absolute bottom-10  md:bottom-14 xl:bottom-16 left-1/2 -translate-x-1/2 z-10 flex items-center justify-center text-white/90 hover:text-white transition-colors"
+        className="absolute bottom-16 left-1/2 -translate-x-1/2 md:relative md:left-auto md:translate-x-0 md:mt-auto md:bottom-auto flex items-center justify-center text-white/90 hover:text-white transition-colors pb-0 md:pb-4 z-10"
       >
         <ChevronDown className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 xl:w-14 xl:h-14 hero-scroll-arrow" aria-hidden />
       </button>
+
     </section>
   );
 }
