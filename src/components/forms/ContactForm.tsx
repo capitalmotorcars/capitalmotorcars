@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -66,11 +66,8 @@ interface ContactFormProps {
   initialValues?: Partial<ContactFormData>;
   hideServiceField?: boolean;
   showVehicleField?: boolean;
-  /** Source of the form for the lead email (contact page, service page, vehicle page). */
   source?: 'contact' | 'service' | 'vehicle';
-  /** Vehicle name when source is "vehicle" (for webhook payload). */
   vehicleName?: string;
-  /** Service/page title when source is "service" (for webhook payload). */
   serviceTitle?: string;
 }
 
@@ -109,6 +106,17 @@ export function ContactForm({
 
   const selectedService = watch('service');
   const { ref: messageRef, ...messageRegister } = register('message');
+
+  useEffect(() => {
+    if (isSuccess) {
+      const timer = setTimeout(() => {
+        setIsSuccess(false);
+        reset();
+      }, 6000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isSuccess, reset]);
 
   const handleSuggestionSelect = (value: string) => {
     const suggestion = messageSuggestions.find(s => s.value === value);
@@ -250,7 +258,7 @@ export function ContactForm({
 
       <div className="space-y-1.5">
         <div className="flex items-center justify-between">
-          <Label htmlFor="message" className="text-sm font-medium">Message</Label>
+          <Label htmlFor="message" className="text-sm font-medium">Message *</Label>
           <Select onValueChange={handleSuggestionSelect}>
             <SelectTrigger className="w-auto h-7 text-xs text-muted-foreground border-dashed border-input/60">
               <SelectValue placeholder="Need help getting started?" />

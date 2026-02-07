@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Building, Facebook, Instagram, Twitter } from 'lucide-react';
-import logo from '@/assets/logo-main.svg';
+import logo from '@/assets/logo-main-cropped.svg';
 
 const locations = [
   {
@@ -75,20 +75,21 @@ export function Footer() {
         <div className="container mx-auto px-4 lg:px-8 py-6 md:py-8 lg:py-14">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-14">
             {/* Brand & Social */}
-            <div className="text-center md:text-left">
-              <Link to="/" className="inline-block mb-4">
+            <div className="text-center ">
+              <Link to="/" className="inline-block max-w-40 max-h-40 mb-4 ">
                 <img
                   src={logo}
                   alt="Capital Motor Cars"
                   loading="lazy"
                   decoding="async"
-                  className="h-24 w-24 dark:brightness-0 dark:invert"
+                  className="h-full w-full dark:brightness-0 dark:invert"
+                  style={{ transform: 'scale(1.3)' }}
                 />
               </Link>
-              <p className="text-sm font-medium leading-relaxed mb-7 tracking-[0.15em] text-section-muted">
+              <p className="text-sm font-medium leading-relaxed mb-4 tracking-[0.15em] text-section-muted text-center ">
                 Car leasing made easy.
               </p>
-              <div className="flex items-center gap-3 text-section-muted opacity-85 hover:opacity-100">
+              <div className="flex items-center justify-center  gap-3 text-section-muted opacity-85 hover:opacity-100">
                 {socialLinks.map((social) => (
                   <a
                     key={social.label}

@@ -220,7 +220,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
       />
 
       {/* Hero Section - Premium Design */}
-      <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center overflow-hidden pt-20 sm:pt-24 md:pt-28">
+      <section className="relative pt-24 lg:pt-36 h-full flex items-center overflow-hidden">
         <div
           className="absolute inset-0 
             bg-[radial-gradient(circle_at_30%_40%,hsl(214_77%_55%_/_0.12),transparent_55%)]
@@ -249,136 +249,143 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
         >
           <div 
           >
-            {/* Left Column - Content */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={heroRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.5 }}
-              className="space-y-6 md:space-y-8"
-            >
-              <div className="flex flex-wrap items-center gap-3">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border dark:border-white/10 bg-card/80 dark:bg-white/[0.08] backdrop-blur-sm text-accent text-sm font-semibold shadow-sm">
-                  <Star className="w-4 h-4" />
-                  {vehicle.name} Vehicles
-                </div>
-                {vehicle.badge && (
-                  <span
-                    className={cn(
-                      'inline-flex px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm',
-                      vehicle.badge === 'Eco Friendly' && 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30',
-                      vehicle.badge === 'Popular' && 'bg-accent/15 text-accent border border-accent/30',
-                      vehicle.badge === 'Best Seller' && 'bg-amber-500/15 text-amber-700 dark:text-amber-400 border border-amber-500/30',
-                      vehicle.badge === 'New' && 'bg-blue-500/15 text-blue-700 dark:text-blue-400 border border-blue-500/30'
-                    )}
-                  >
-                    {vehicle.badge}
-                  </span>
-                )}
-              </div>
-             
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
-                <span className="text-foreground">Find Your Perfect </span>
-                <span className="text-gradient-vehicle-hero bg-clip-text text-transparent bg-gradient-to-r from-accent to-accent/70">
-                  {vehicle.name} Leasing
-                </span>
-              </h1>
-              
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed max-w-2xl">
-                {vehicle.description}
-              </p>
+        {/* Left Column - Content */}
+        <motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={heroRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+  transition={{ duration: 0.5 }}
+  className="flex flex-col "
+>
+  {/* 1. Integrated Hero Content */}
+  <div className="grid grid-cols-1 lg:grid-cols-6 gap-0 items-start">
+    <div className="lg:col-span-4 space-y-6">
+      {/* Badges */}
+      <div className="flex flex-wrap gap-2">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-accent/30 bg-accent/10 text-accent text-[10px] font-bold uppercase tracking-widest backdrop-blur-md">
+          <Star className="w-3 h-3 fill-accent" />
+          {vehicle.name} Specialist
+        </div>
+        {vehicle.badge && (
+          <span className="px-3 py-1 rounded-full bg-foreground dark:bg-white text-background dark:text-black text-[10px] font-bold uppercase tracking-widest shadow-xl">
+            {vehicle.badge}
+          </span>
+        )}
+      </div>
+      
+      {/* Title */}
+      <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.9] text-foreground">
+        The New <span className="text-accent italic">{vehicle.name}</span> <br/> Experience
+      </h1>
 
-              {/* Pricing & CTA */}
-              <div className="flex flex-wrap items-center gap-4 pt-2">
-                {vehicle.startingPrice != null && (
-                  <div className="flex flex-col">
-                    <span className="text-xs sm:text-sm font-medium text-muted-foreground uppercase tracking-wider">
-                      Starting at
-                    </span>
-                    <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
-                      ${vehicle.startingPrice.toLocaleString()}<span className="text-lg sm:text-xl text-muted-foreground font-normal">/mo</span>
-                    </span>
-                  </div>
-                )}
-                {vehicle.ctaText && (
-                  <Button
-                    asChild
-                    size="lg"
-                    className="h-12 sm:h-14 md:h-16 rounded-xl border border-accent/40 bg-accent hover:bg-accent/90 hover:border-accent text-accent-foreground font-semibold px-6 sm:px-8 md:px-10 text-sm sm:text-base md:text-lg shadow-lg shadow-accent/30 hover:shadow-xl hover:shadow-accent/40 transition-all"
-                  >
-                    <Link to="#contact" className="flex items-center gap-2">
-                      {vehicle.ctaText}
-                      <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-                    </Link>
-                  </Button>
-                )}
-              </div>
+      {/* Description */}
+      <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl border-l-4 border-accent/20 pl-6 py-2">
+        {vehicle.description}
+      </p>
+    </div>
 
-              {/* Quick Specs Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
-                {vehicle.fuelTypes?.length > 0 && (
-                  <div className="flex flex-col gap-1 p-3 rounded-xl border border-border dark:border-white/10 bg-card/50 dark:bg-white/[0.04] backdrop-blur-sm">
-                    <Fuel className="w-5 h-5 text-accent mb-1" />
-                    <span className="text-xs text-muted-foreground">Fuel</span>
-                    <span className="text-sm font-semibold text-foreground">{vehicle.fuelTypes.map(formatFuel).join(', ')}</span>
-                  </div>
-                )}
-                {vehicle.drivetrain?.length > 0 && (
-                  <div className="flex flex-col gap-1 p-3 rounded-xl border border-border dark:border-white/10 bg-card/50 dark:bg-white/[0.04] backdrop-blur-sm">
-                    <Gauge className="w-5 h-5 text-accent mb-1" />
-                    <span className="text-xs text-muted-foreground">Drivetrain</span>
-                    <span className="text-sm font-semibold text-foreground">{vehicle.drivetrain.join(', ')}</span>
-                  </div>
-                )}
-                <div className="flex flex-col gap-1 p-3 rounded-xl border border-border dark:border-white/10 bg-card/50 dark:bg-white/[0.04] backdrop-blur-sm">
-                  <Users className="w-5 h-5 text-accent mb-1" />
-                  <span className="text-xs text-muted-foreground">Seats</span>
-                  <span className="text-sm font-semibold text-foreground">{vehicle.passengerCapacity}</span>
-                </div>
-                <div className="flex flex-col gap-1 p-3 rounded-xl border border-border dark:border-white/10 bg-card/50 dark:bg-white/[0.04] backdrop-blur-sm">
-                  <Package className="w-5 h-5 text-accent mb-1" />
-                  <span className="text-xs text-muted-foreground">Cargo</span>
-                  <span className="text-sm font-semibold text-foreground">{formatCargo(vehicle.cargoSpace)}</span>
-                </div>
-              </div>
+    {/* Vehicle Image - Anchored to the side of the text */}
+    <div className="lg:col-span-2 relative mt-4 lg:mt-0">
+      <div className="absolute inset-0 bg-accent/20 blur-[100px] rounded-full opacity-50" />
+      <motion.img
+  initial={{ opacity: 0, scale: 1.5, x: 20 }} // Start slightly smaller/hidden
+  animate={heroRevealed ? { 
+    opacity: 1, 
+    // Scale 1.1 on mobile, 1.5 on desktop (lg: breakpoint)
+    scale: window.innerWidth < 1024 ? 1.2 : 1.5,
+    x: 0 
+  } : {}}
+  transition={{ 
+    type: "spring", 
+    stiffness: 260, 
+    damping: 20,
+    delay: 0.2 
+  }}
+  src={vehicle.image}
+  alt={vehicle.name}
+  className="relative z-10 w-full h-auto object-contain drop-shadow-[0_35px_35px_rgba(0,0,0,0.4)]"
+/>
+    </div>
+  </div>
 
-              {/* Popular Brands */}
-              <div className="pt-2">
-                <p className="text-xs sm:text-sm font-medium text-muted-foreground mb-3 uppercase tracking-wider">
-                  Popular Brands
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {vehicle.popularBrands.slice(0, 6).map((brand) => (
-                    <span
-                      key={brand}
-                      className="px-3 py-1.5 rounded-lg border border-border dark:border-white/10 bg-card/80 dark:bg-white/[0.08] backdrop-blur-sm text-sm font-medium text-foreground dark:text-white/90 hover:border-accent/30 hover:bg-accent/5 transition-colors"
-                    >
-                      {brand}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-            
-            {/* Right Column - Vehicle Image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={heroRevealed ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative flex items-center justify-center w-full h-full min-h-[500px] md:min-h-[600px] lg:min-h-[700px] xl:min-h-[800px] 2xl:min-h-[900px] overflow-visible"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-transparent rounded-3xl blur-3xl" />
-              <img
-                src={vehicle.image}
-                alt={`${vehicle.name} vehicle`}
-              />
-            </motion.div>
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 bg-muted/20 dark:bg-white/[0.04] p-2 rounded-[2.5rem] border-2 border-border backdrop-blur-sm">
+  {/* 1. Price Card */}
+  <div className="bg-background dark:bg-card shadow-sm rounded-[2rem] p-6 flex flex-col justify-center items-center border border-border/40">
+    <span className="text-[10px] uppercase tracking-[0.2em] text-accent font-black mb-1">Starting at</span>
+    <div className="flex items-baseline gap-1">
+      <span className="text-4xl font-black tracking-tight text-foreground">
+        ${vehicle.startingPrice?.toLocaleString()}
+      </span>
+      <span className="text-muted-foreground font-medium">/mo</span>
+    </div>
+  </div>
+
+  {/* 2. Performance - Pulling from your Highlights */}
+  <div className="flex items-center gap-4 px-8 py-4 justify-center lg:justify-start">
+    <div className="h-12 w-12 rounded-2xl bg-accent/10 flex items-center justify-center text-accent shrink-0">
+      <Gauge className="w-6 h-6" />
+    </div>
+    <div>
+      <p className="text-[10px] uppercase font-black text-muted-foreground tracking-widest">Performance</p>
+      <p className="text-sm font-bold text-foreground">
+        {vehicle.highlights?.[0] || 'Premium Power'}
+      </p>
+    </div>
+  </div>
+
+  {/* 3. Fuel Type - Dynamic gasoline/electric handling */}
+  <div className="flex items-center gap-4 px-8 py-4 justify-center lg:justify-start">
+    <div className="h-12 w-12 rounded-2xl bg-accent/10 flex items-center justify-center text-accent shrink-0">
+      <Fuel className="w-6 h-6" />
+    </div>
+    <div>
+      <p className="text-[10px] uppercase font-black text-muted-foreground tracking-widest">Fuel Type</p>
+      <p className="text-sm font-bold text-foreground capitalize">
+        {vehicle.fuelTypes?.join(' & ') || 'Gasoline'}
+      </p>
+    </div>
+  </div>
+
+  {/* 4. CTA Button */}
+  <Button asChild className="h-full min-h-[85px] rounded-[2rem] bg-accent hover:bg-accent/90 text-accent-foreground text-xl font-black transition-all shadow-xl shadow-accent/20 hover:scale-[1.02] active:scale-[0.98]">
+    <Link to="#contact" className="flex items-center justify-center gap-3 w-full">
+      {vehicle.ctaText} 
+      <ArrowRight className="w-6 h-6" />
+    </Link>
+  </Button>
+</div>
+
+{/* 3. Footer Brands - Showroom Minimalist */}
+<div className=" py-4 border-t border-border/40 flex items-center gap-8 px-4">
+    <div className="flex flex-col shrink-0">
+      <span className="text-[10px] font-black uppercase tracking-[0.4em] text-accent leading-none">
+        Top
+      </span>
+      <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40 leading-none mt-1">
+        Tier
+      </span>
+    </div>
+
+    <div className="h-10 w-px bg-border/80 shrink-0" />
+
+    <div className="flex flex-wrap items-center gap-x-10 gap-y-4">
+      {vehicle.popularBrands.slice(0, 7).map((brand) => (
+        <span 
+          key={brand} 
+          className="text-[12px] font-black text-muted-foreground/40 hover:text-accent transition-all cursor-default tracking-[0.2em] uppercase"
+        >
+          {brand}
+        </span>
+      ))}
+    </div>
+  </div>
+</motion.div>
           </div>
         </div>
       </section>
 
       {/* Pricing & Specs Showcase */}
       {(vehicle.startingPrice || vehicle.mpg || vehicle.mpge || vehicle.range) && (
-        <section className="py-12 md:py-16 lg:py-20 bg-muted/30 dark:bg-black/40">
+        <section className="pt-16 lg:pt-20 bg-muted/30 dark:bg-black/40">
           <div
             ref={specsRef}
             className={cn(
@@ -741,7 +748,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
               const isCurrent = type.slug === vehicle.slug;
               const cardContent = (
                 <>
-                  <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-card dark:bg-white/[0.04] border border-border dark:border-white/10 flex items-center justify-center p-3 group-hover:border-accent/40 transition-colors">
+                  <div className="relative w-full aspect-square md:aspect-[4/3] rounded-xl overflow-hidden bg-card dark:bg-white/[0.04] border border-border dark:border-white/10 flex items-center justify-center p-3 group-hover:border-accent/40 transition-colors">
                     <img
                       src={type.image}
                       alt={type.name}

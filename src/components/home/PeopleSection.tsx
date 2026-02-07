@@ -43,7 +43,6 @@ const team: Person[] = [
   // Leadership & operations
   { name: 'Henry Liu', role: 'Vice President', image: henryImage, bio: "Henry is a seasoned professional in the automotive leasing industry, known for his strategic leadership and commitment to operational excellence. As Vice President, he plays a key role in driving the company's growth and ensuring that the team delivers top-tier service to all clients.", email: 'henry@capitalmotorcars.com' },
   { name: 'Mark Onbashian', role: 'Vice President', image: markImage, bio: "With years of experience in management and sales, Mark oversees large-scale operations and partnership development. His focus is on maintaining high standards of customer satisfaction and expanding the company's reach within the luxury vehicle market.", email: 'mark@capitalmotorcars.com' },
-  { name: 'Yehuda Cohen', role: 'Chief Operating Officer', image: logoImage, bio: "As the Chief Operating Officer at Capital Motor Cars, I bring a wealth of experience in marketing, web design, and small business management. My entrepreneurial journey includes founding and successfully scaling two businesses: Cell Point, a chain of six retail cell phone stores in New York City, and Amerikey, a nationwide lead generation and dispatching service for locksmiths. These ventures honed my skills in building efficient systems, streamlining operations, and driving growth.\n\nAt Capital Motor Cars, I apply these capabilities to enhance logistics, improve processes, and optimize car sales, ensuring we deliver exceptional value and service to our customers.", email: 'yehuda@capitalmotorcars.com' },
   { name: 'Michael Zeitoune', role: 'Director of Finance', image: mikeZImage, bio: "Michael manages the financial health and lending relationships of the company. He works closely with various banking institutions to secure the most favorable leasing rates and financial structures for clients, ensuring a smooth and transparent transaction process.", email: 'mzeitoune@capitalmotorcars.com' },
   { name: 'Derek Anton', role: 'Business Development Director', image: derekImage, bio: "With more than a decade at BMW NA and a lifelong love for cars, I'm driven to inspire my team to consistently provide an exceptional customer experience.", email: 'derek@capitalmotorcars.com' },
   { name: 'Michael Dai', role: 'Social Media Manager', image: logoImage, bio: "Michael Dai leads our content and social media efforts, shaping how our brand shows up across digital platforms. In his role as Content Creator and Social Media Manager, he blends creative storytelling with thoughtful strategy to develop campaigns that genuinely resonate with our audience. With a strong eye for visuals and messaging, Michael elevates our online presence, driving engagement and fostering a connected, growing community." },
@@ -110,13 +109,22 @@ export function PeopleSection({ homePageOnly = false, padding }: PeopleSectionPr
   const [teamPage, setTeamPage] = React.useState(0);
 
   // Filter team members if homePageOnly is true
+  const sortedTeam = [...team].sort((a, b) => {
+    const aHasLogo = a.image === logoImage;
+    const bHasLogo = b.image === logoImage;
+  
+    // If a has a logo and b doesn't, move a down (return 1)
+    // If a doesn't and b does, move a up (return -1)
+    return aHasLogo === bHasLogo ? 0 : aHasLogo ? 1 : -1;
+  });
+  
+  // Now use sortedTeam for your filtering and pagination
   const filteredTeam = homePageOnly 
-    ? team.filter(person => HOME_PAGE_TEAM_NAMES.includes(person.name))
-    : team;
-
+    ? sortedTeam.filter(person => HOME_PAGE_TEAM_NAMES.includes(person.name))
+    : sortedTeam;
+  
   const maxTeamPage = Math.max(0, Math.ceil(filteredTeam.length / TEAM_PAGE_SIZE) - 1);
   const visibleTeam = filteredTeam.slice(teamPage * TEAM_PAGE_SIZE, teamPage * TEAM_PAGE_SIZE + TEAM_PAGE_SIZE);
-
   return (
     <section aria-label="Team" className={cn("relative", padding)}>
       <div ref={ref} className=" relative  mx-auto max-w-6xl">
