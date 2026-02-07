@@ -99,9 +99,11 @@ const HOME_PAGE_TEAM_NAMES = [
 interface PeopleSectionProps {
   /** If true, only shows specific team members for home page */
   homePageOnly?: boolean;
+  /** Custom padding classes for the section */
+  padding?: string;
 }
 
-export function PeopleSection({ homePageOnly = false }: PeopleSectionProps = {}) {
+export function PeopleSection({ homePageOnly = false, padding }: PeopleSectionProps = {}) {
   const { ref, isRevealed } = useScrollReveal();
   const [founderOpen, setFounderOpen] = React.useState(false);
   const [teamPerson, setTeamPerson] = React.useState<Person | null>(null);
@@ -116,8 +118,8 @@ export function PeopleSection({ homePageOnly = false }: PeopleSectionProps = {})
   const visibleTeam = filteredTeam.slice(teamPage * TEAM_PAGE_SIZE, teamPage * TEAM_PAGE_SIZE + TEAM_PAGE_SIZE);
 
   return (
-    <section aria-label="Team" className="relative py-16 lg:py-20">
-      <div ref={ref} className=" relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+    <section aria-label="Team" className={cn("relative", padding)}>
+      <div ref={ref} className=" relative  mx-auto max-w-6xl">
         <div className="max-w-2xl mx-auto text-center mb-12">
           <SectionHeading
             title="Your Car Leasing Journey, Backed by a Dedicated Team"

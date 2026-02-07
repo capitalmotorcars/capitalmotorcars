@@ -3,6 +3,8 @@ import truckRaptorImg from '@/assets/raptor.png';
 import coupeCoupeImg from '@/assets/bmw.png';
 import minivanOdysseyImg from '@/assets/minivan-odyssey.png';
 import sedanBmwImg from '@/assets/sedan.png';
+import sedanMercedesImg from '@/assets/sedan-mercedes.png';
+import sedanAudiImg from '@/assets/sedan-audi.png';
 import suvToyotaImg from '@/assets/mercedes.png';
 import wagonBmwImg from '@/assets/wagon.png';
 import cuvImg from '@/assets/cuv.png';
@@ -12,7 +14,6 @@ export type FuelType = 'gasoline' | 'diesel' | 'hybrid' | 'electric';
 export type Drivetrain = 'FWD' | 'RWD' | 'AWD' | '4x4';
 
 export interface VehicleTypeData {
-  // Core
   slug: string;
   name: string;
   bodyStyle: string;
@@ -20,7 +21,6 @@ export interface VehicleTypeData {
   ogImage?: string;
   icon?: string;
 
-  // Marketing
   description: string;
   highlights: string[];
   idealFor: string[];
@@ -29,8 +29,7 @@ export interface VehicleTypeData {
   badge?: 'Popular' | 'New' | 'Best Seller' | 'Eco Friendly';
   ctaText?: string;
 
-  // Leasing / business
-  startingPrice?: number; // monthly
+  startingPrice?: number;
   priceRange?: {
     min: number;
     max: number;
@@ -39,18 +38,15 @@ export interface VehicleTypeData {
   drivetrain: Drivetrain[];
   passengerCapacity: number;
   cargoSpace: 'small' | 'medium' | 'large';
-  // Vehicle specs
-  range?: string; // Electric range in miles (e.g., "305")
-  mpge?: string; // MPGe for electric/hybrid (e.g., "82-89 MPGe Comb.")
-  mpg?: string; // MPG for gasoline vehicles (e.g., "25-30 MPG")
+  range?: string;
+  mpge?: string;
+  mpg?: string;
 
-  // SEO
   metaTitle: string;
   metaDescription: string;
   seoKeywords?: string[];
   canonicalPath?: string;
 
-  // Internal
   sortOrder?: number;
   isFeatured?: boolean;
   isLuxury?: boolean;
@@ -58,9 +54,6 @@ export interface VehicleTypeData {
 }
 export const vehicleTypes: VehicleTypeData[] = [
 
-  // =========================
-  // ELECTRIC (PURE EV)
-  // =========================
   {
     slug: 'electric',
     name: 'Electric',
@@ -81,7 +74,7 @@ export const vehicleTypes: VehicleTypeData[] = [
     features: ['Fast charging', 'Regenerative braking', 'OTA updates'],
     startingPrice: 699,
     priceRange: { min: 600, max: 1300 },
-    fuelTypes: ['electric'], // ✅ correct
+    fuelTypes: ['electric'],
     drivetrain: ['RWD', 'AWD'],
     passengerCapacity: 5,
     cargoSpace: 'medium',
@@ -95,9 +88,6 @@ export const vehicleTypes: VehicleTypeData[] = [
     trackingCategory: 'vehicle_electric',
   },
 
-  // =========================
-  // HATCHBACK
-  // =========================
   {
     slug: 'hatchback',
     name: 'Hatchback',
@@ -111,7 +101,7 @@ export const vehicleTypes: VehicleTypeData[] = [
     features: ['Fold-down rear seats', 'Compact size'],
     startingPrice: 349,
     priceRange: { min: 300, max: 600 },
-    fuelTypes: ['gasoline', 'hybrid'], // ✅ realistic
+    fuelTypes: ['gasoline', 'hybrid'],
     drivetrain: ['FWD'],
     passengerCapacity: 5,
     cargoSpace: 'small',
@@ -124,9 +114,6 @@ export const vehicleTypes: VehicleTypeData[] = [
     trackingCategory: 'vehicle_hatchback',
   },
 
-  // =========================
-  // COUPE
-  // =========================
   {
     slug: 'coupe',
     name: 'Coupe',
@@ -137,7 +124,7 @@ export const vehicleTypes: VehicleTypeData[] = [
     description: 'Sleek two-door vehicles focused on style and performance.',
     highlights: ['Sporty design', 'Driver-focused'],
     idealFor: ['Solo drivers', 'Style lovers'],
-    popularBrands: ['BMW', 'Mercedes-Benz', 'Audi'],
+    popularBrands: ['BMW', 'Mercedes-Benz', 'Audi', 'Lexus', 'Genesis', 'Toyota', 'Honda', 'Acura', 'Infiniti', 'Cadillac'],
     features: ['Sport suspension', 'Premium interiors'],
     startingPrice: 599,
     priceRange: { min: 550, max: 1200 },
@@ -155,38 +142,84 @@ export const vehicleTypes: VehicleTypeData[] = [
     trackingCategory: 'vehicle_coupe',
   },
 
-  // =========================
-  // SEDAN
-  // =========================
   {
     slug: 'sedan',
     name: 'Sedan',
     bodyStyle: 'Sedan',
     image: sedanBmwImg,
     ctaText: 'Explore Sedans',
-    description: 'Balanced, comfortable, and perfect for daily driving.',
-    highlights: ['Comfort', 'Efficiency', 'Practicality'],
-    idealFor: ['Families', 'Professionals'],
-    popularBrands: ['BMW', 'Mercedes-Benz', 'Toyota', 'Honda'],
-    features: ['Quiet cabin', 'Spacious trunk'],
-    startingPrice: 499,
-    priceRange: { min: 450, max: 900 },
-    fuelTypes: ['gasoline', 'hybrid'], // ✅ correct
-    drivetrain: ['FWD', 'AWD'],
+    description: 'Luxury performance sedan with 335 horsepower, elegant Gran Coupe design, and cutting-edge BMW technology.',
+    highlights: ['335 horsepower', 'Luxury interior', 'Advanced technology', 'Premium comfort'],
+    idealFor: ['Luxury sedan buyers', 'Performance enthusiasts', 'Executive drivers'],
+    popularBrands: ['BMW', 'Mercedes-Benz', 'Audi', 'Lexus', 'Genesis', 'Toyota', 'Honda', 'Acura', 'Infiniti', 'Cadillac'],
+    features: ['3.0L turbocharged 6-cylinder', '8-speed automatic', 'Leather seats', 'Navigation system', 'Collision warning'],
+    startingPrice: 909,
+    priceRange: { min: 900, max: 1200 },
+    fuelTypes: ['gasoline'],
+    drivetrain: ['RWD', 'AWD'],
     passengerCapacity: 5,
     cargoSpace: 'medium',
-    mpg: '28-35 MPG',
-    mpge: '48-55 MPGe Comb.',
-    metaTitle: 'Sedan Leasing',
-    metaDescription: 'Comfortable sedans for everyday use.',
+    mpg: '20-27 MPG (EPA)',
+    mpge: '42-48 MPGe Comb.',
+    metaTitle: 'BMW 8 Series Gran Coupe 840i Leasing',
+    metaDescription: 'Lease the 2026 BMW 8 Series Gran Coupe 840i - luxury performance sedan with 335 hp.',
     canonicalPath: '/vehicles/sedan',
     sortOrder: 4,
+    isLuxury: true,
     trackingCategory: 'vehicle_sedan',
   },
-
-  // =========================
-  // SPORTS
-  // =========================
+  {
+    slug: 'sedan-mercedes-e350',
+    name: 'Sedan',
+    bodyStyle: 'Sedan',
+    image: sedanMercedesImg,
+    ctaText: 'Explore Sedans',
+    description: 'Luxury meets performance in the Mercedes E 350 Sedan, featuring advanced technology, premium comfort, and refined driving dynamics.',
+    highlights: ['Premium luxury', 'Advanced MBUX technology', '4MATIC all-wheel drive', 'Heated leather seats'],
+    idealFor: ['Luxury sedan buyers', 'Professionals', 'Executive drivers'],
+    popularBrands: ['BMW', 'Mercedes-Benz', 'Audi', 'Lexus', 'Genesis', 'Toyota', 'Honda', 'Acura', 'Infiniti', 'Cadillac'],
+    features: ['MBUX infotainment system', 'Ambient interior lighting', 'Heated steering wheel', 'Navigation system', 'Blind-spot monitoring'],
+    startingPrice: 699,
+    priceRange: { min: 679, max: 999 },
+    fuelTypes: ['gasoline'],
+    drivetrain: ['RWD', 'AWD'],
+    passengerCapacity: 5,
+    cargoSpace: 'medium',
+    mpg: '24-33 MPG (EPA)',
+    mpge: '48-55 MPGe Comb.',
+    metaTitle: 'Mercedes E 350 Sedan Leasing',
+    metaDescription: 'Lease the 2026 Mercedes E 350 Sedan - luxury, technology, and performance in one refined package.',
+    canonicalPath: '/vehicles/sedan',
+    sortOrder: 4,
+    isLuxury: true,
+    trackingCategory: 'vehicle_sedan',
+  },
+  {
+    slug: 'sedan-audi-rs3',
+    name: 'Sedan',
+    bodyStyle: 'Sedan',
+    image: sedanAudiImg,
+    ctaText: 'Explore Sedans',
+    description: 'High-performance sport sedan with 394 horsepower, quattro all-wheel drive, and track-ready capabilities for the driving enthusiast.',
+    highlights: ['394 horsepower', '0-60 in 3.6 seconds', 'quattro AWD', 'Sport-tuned suspension'],
+    idealFor: ['Performance enthusiasts', 'Sport sedan lovers', 'Track day drivers'],
+    popularBrands: ['BMW', 'Mercedes-Benz', 'Audi', 'Lexus', 'Genesis', 'Toyota', 'Honda', 'Acura', 'Infiniti', 'Cadillac'],
+    features: ['2.5L turbocharged 5-cylinder', '7-speed DSG transmission', 'RS sport mode', 'Matrix LED headlights', 'Nappa leather seats'],
+    startingPrice: 799,
+    priceRange: { min: 779, max: 1099 },
+    fuelTypes: ['gasoline'],
+    drivetrain: ['AWD'],
+    passengerCapacity: 5,
+    cargoSpace: 'medium',
+    mpg: '20-29 MPG (EPA)',
+    mpge: '40-46 MPGe Comb.',
+    metaTitle: 'Audi RS 3 quattro Sedan Leasing',
+    metaDescription: 'Lease the 2026 Audi RS 3 quattro - ultimate performance sedan with 394 hp and quattro all-wheel drive.',
+    canonicalPath: '/vehicles/sedan',
+    sortOrder: 4,
+    isLuxury: true,
+    trackingCategory: 'vehicle_sedan',
+  },
   {
     slug: 'sports',
     name: 'Sports',
@@ -244,9 +277,6 @@ export const vehicleTypes: VehicleTypeData[] = [
     trackingCategory: 'vehicle_suv',
   },
 
-  // =========================
-  // MINIVAN (MPV)
-  // =========================
   {
     slug: 'minivan',
     name: 'Minivan',
@@ -273,9 +303,6 @@ export const vehicleTypes: VehicleTypeData[] = [
     trackingCategory: 'vehicle_minivan',
   },
 
-  // =========================
-  // CROSSOVER (CUV)
-  // =========================
   {
     slug: 'crossover',
     name: 'Crossover',
@@ -354,9 +381,6 @@ export const vehicleTypes: VehicleTypeData[] = [
     trackingCategory: 'vehicle_wagon',
   },
 ];
-
-
-
 export const getVehicleTypeBySlug = (slug: string): VehicleTypeData | undefined => {
   return vehicleTypes.find((v) => v.slug === slug);
 };

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { cn } from '@/lib/utils';
@@ -91,6 +91,12 @@ export function Header() {
           {/* Theme toggle + CTA */}
           <div className="hidden lg:flex items-center gap-3">
             <ThemeToggle />
+            <Button asChild variant="ghost" size="sm" className="border border-black/50 dark:border-white/50 hover:border-black/80 hover:text-black bg-white/20 dark:bg-white/[0.06] text-black/90 dark:text-white/90 hover:bg-white/15 dark:hover:bg-white/10 font-medium shadow-md shadow-black/5 dark:shadow-black/20 backdrop-blur-sm hover:shadow-lg hover:shadow-black/10 dark:hover:shadow-black/30">
+              <Link to="/quiz" className="flex items-center gap-2">
+                <Search className="w-4 h-4" />
+                Start Quiz
+              </Link>
+            </Button>
             <Button asChild size="sm" className="bg-accent hover:bg-accent/90 text-accent-foreground font-medium shadow-sm">
               <Link to="/contact">Schedule a Call</Link>
             </Button>
@@ -115,7 +121,7 @@ export function Header() {
         <div
           className={cn(
             'lg:hidden overflow-hidden transition-all duration-300 ease-out',
-            isMobileMenuOpen ? 'max-h-[360px] opacity-100' : 'max-h-0 opacity-0'
+            isMobileMenuOpen ? 'max-h-[450px] opacity-100' : 'max-h-0 opacity-0'
           )}
         >
           <div className="mt-4 pt-4 pb-2 border-t border-border dark:border-white/10 bg-background dark:bg-black">
@@ -138,7 +144,13 @@ export function Header() {
                 );
               })}
             </nav>
-            <div className="mt-3 pt-3 mx-2 border-t border-border dark:border-white/10">
+            <div className="mt-3 pt-3 mx-2 border-t border-border dark:border-white/10 space-y-2">
+              <Button asChild variant="outline" className="w-full min-h-[48px] border-accent/40 dark:border-white/40 text-accent dark:text-white font-medium">
+                <Link to="/quiz" className="flex items-center justify-center gap-2">
+                  <Search className="w-4 h-4" />
+                  Find Your Vehicle
+                </Link>
+              </Button>
               <Button asChild className="w-full min-h-[48px] bg-accent hover:bg-accent/90 text-accent-foreground font-medium">
                 <Link to="/contact">Schedule a Call</Link>
               </Button>

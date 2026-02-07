@@ -7,7 +7,7 @@ export function FinalCTASection() {
   const { ref, isRevealed } = useScrollReveal();
 
   return (
-      <section className="py-16 lg:py-20 px-4 md:px-0">
+      <section className="py-16 lg:py-20 px-4 md:px-0 bg-white dark:bg-[hsl(0_0%_4%)]">
         <div
         ref={ref}
         className={`

@@ -13,6 +13,7 @@ import ContactPage from "./pages/ContactPage";
 import CreditApplicationPage from "./pages/CreditApplicationPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsOfServicePage from "./pages/TermsOfServicePage";
+import QuizPage from "./pages/QuizPage";
 import CarLeasingPage from "./pages/services/CarLeasingPage";
 import FinancingPage from "./pages/services/FinancingPage";
 import TradeInPage from "./pages/services/TradeInPage";
@@ -32,6 +33,7 @@ import SUVPage from "./pages/vehicles/SUVPage";
 import CoupePage from "./pages/vehicles/CoupePage";
 import MinivanPage from "./pages/vehicles/MinivanPage";
 import CrossoverPage from "./pages/vehicles/CrossoverPage";
+import WagonPage from "./pages/vehicles/WagonPage";
 
 const queryClient = new QueryClient();
 
@@ -58,6 +60,7 @@ const App = () => (
           <Route path="/credit-application" element={<CreditApplicationPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+          <Route path="/quiz" element={<QuizPage />} />
           
           {/* Vehicle type pages */}
           <Route path="/vehicles/luxury" element={<LuxuryPage />} />
@@ -70,6 +73,7 @@ const App = () => (
           <Route path="/vehicles/coupe" element={<CoupePage />} />
           <Route path="/vehicles/minivan" element={<MinivanPage />} />
           <Route path="/vehicles/crossover" element={<CrossoverPage />} />
+          <Route path="/vehicles/wagon" element={<WagonPage />} />
           
           <Route path="*" element={<NotFound />} />
         </Routes>

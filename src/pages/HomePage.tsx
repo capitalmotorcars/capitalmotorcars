@@ -13,6 +13,7 @@ import { FinalCTASection } from '@/components/home/FinalCTASection';
 import { HeroBackgroundWrapper } from '@/components/hero/HeroBackgroundWrapper';
 import { SectionDividerCreative } from '@/components/ui/SectionDividerCreative';
 import { ScrollTriggeredQuizDialog } from '@/components/home/ScrollTriggeredQuizDialog';
+import { FAQSection } from '@/components/home/FAQSection';
 
 export default function HomePage() {
   return (
@@ -32,7 +33,7 @@ export default function HomePage() {
       <VehicleTypesCarousel />
 
       <SectionDividerCreative variant="dot" />
-      <PeopleSection homePageOnly={true} />
+      <PeopleSection homePageOnly={true} padding="px-4 sm:px-6 lg:px-8 py-10 md:py-16" />
 
       <SectionDividerCreative variant="dot" />
       <WhatWeDoSection />
@@ -45,6 +46,9 @@ export default function HomePage() {
 
       <SectionDividerCreative variant="dot" />
       <TestimonialsSection />
+      <SectionDividerCreative variant="dot" />
+      <FAQSection />
+
     </Layout>
   );
 }

@@ -9,7 +9,7 @@ import bg1 from '@/assets/brand-backgrounds/bg-1.jpeg';
 import bg2 from '@/assets/brand-backgrounds/bg-2.jpg';
 import bg3 from '@/assets/brand-backgrounds/bg-3.jpg';
 import bg4 from '@/assets/brand-backgrounds/bg-4.jpg';  
-type FilterType = 'all' | 'suv' | 'hybrid-electric' | 'luxury';
+type FilterType = 'all' | 'suv' | 'sedan' | 'luxury';
 
 const getFilterCount = (filterId: FilterType): number | undefined => {
   const vehicles = getFilteredVehicles(filterId);
@@ -18,7 +18,7 @@ const getFilterCount = (filterId: FilterType): number | undefined => {
 
 const filters: { id: FilterType; label: string }[] = [
   { id: 'suv', label: 'SUV / CUV / MPV' },
-  { id: 'hybrid-electric', label: 'Hybrid / Electric' },
+  { id: 'sedan', label: 'Sedan' },
   { id: 'luxury', label: 'Luxury' },
   { id: 'all', label: 'All' },
 ];
@@ -26,7 +26,7 @@ const filters: { id: FilterType; label: string }[] = [
 function getFilteredVehicles(filter: FilterType): VehicleTypeData[] {
   if (filter === 'all') return vehicleTypes;
   if (filter === 'suv') return vehicleTypes.filter((v) => ['suv', 'crossover', 'minivan'].includes(v.slug));
-  if (filter === 'hybrid-electric') return vehicleTypes.filter((v) => v.fuelTypes.includes('hybrid') || v.fuelTypes.includes('electric'));
+  if (filter === 'sedan') return vehicleTypes.filter((v) => v.slug === 'sedan' || v.slug.startsWith('sedan-'));
   if (filter === 'luxury') return vehicleTypes.filter((v) => v.isLuxury === true).sort((a, b) => (a.sortOrder || 999) - (b.sortOrder || 999));
   return [];
 }
@@ -42,7 +42,7 @@ function getVehicleSpecs(vehicle: VehicleTypeData) {
 
 export function VehicleTypesCarousel() {
   const { ref, isRevealed } = useScrollReveal();
-  const [activeFilter, setActiveFilter] = useState<FilterType>('hybrid-electric');
+  const [activeFilter, setActiveFilter] = useState<FilterType>('sedan');
   const [currentIndex, setCurrentIndex] = useState(0);
   const filteredVehicles = getFilteredVehicles(activeFilter);
   const currentVehicle = filteredVehicles[currentIndex] || filteredVehicles[0];
@@ -68,7 +68,7 @@ export function VehicleTypesCarousel() {
   const filterToBgIndex: Record<FilterType, number> = {
     'all': 3,
     'suv': 1,
-    'hybrid-electric': 2,
+    'sedan': 2,
     'luxury': 0,
   };
   const currentBgIndex = filterToBgIndex[activeFilter];
@@ -77,10 +77,10 @@ export function VehicleTypesCarousel() {
   return (
     
      <section className="py-16 lg:py-20 ">
-    <div id="discover" className="relative h-full flex flex-col ">
+    <div id="discover" className="relative h-full flex flex-col  ">
       {/* Top half: Blurred cityscape background */}
       <div
-        className="absolute top-0 left-0 right-0 h-[40vh] md:h-[60vh] bg-no-repeat transition-opacity duration-1000 overflow-hidden"
+        className=" absolute top-0 left-0 right-0 h-[40vh] md:h-[60vh] bg-no-repeat transition-opacity duration-1000 overflow-hidden"
         style={{
           backgroundImage: `url(${currentBackground})`,
           backgroundPosition: 'center bottom',
@@ -101,7 +101,7 @@ export function VehicleTypesCarousel() {
       />
 
       {/* Content */}
-      <div ref={ref} className={cn('relative z-10 flex-1 flex flex-col', 'scroll-reveal', isRevealed && 'revealed')}>
+      <div ref={ref} className={cn('relative z-10 flex-1 flex flex-col ', 'scroll-reveal', isRevealed && 'revealed')}>
         {/* Title and Filters */}
         <div className="relative z-50 mx-auto h-[35vh] md:h-[45vh] px-4 lg:px-8 pt-6 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-20">
           <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white text-center pb-2 md:pb-4">
@@ -216,7 +216,7 @@ export function VehicleTypesCarousel() {
 
         {/* Car Details - positioned below vehicles */}
         {currentVehicle && specs && (
-          <div className="relative bg-white dark:bg-black h-full pt-[5vh] md:pt-28  z-10">
+          <div className="relative bg-white dark:bg-[hsl(0_0%_4%)] h-full pt-[5vh] md:pt-28  z-10">
             <div className="mx-auto px-4 lg:px-8 ">
               <div className="max-w-7xl mx-auto">
                 {/* Car Name - column layout on mobile, row on desktop */}
@@ -227,7 +227,7 @@ export function VehicleTypesCarousel() {
                       {currentVehicle.name}
                     </h3>
                     <Link
-                      to={`/vehicles/${currentVehicle.slug}`}
+                      to={currentVehicle.slug.startsWith('sedan') ? `/vehicles/sedan?vehicle=${currentVehicle.slug}` : `/vehicles/${currentVehicle.slug}`}
                       className="hidden sm:inline text-xs md:text-sm text-muted-foreground hover:text-accent underline ml-2"
                     >
                       Disclaimers
@@ -392,7 +392,14 @@ export function VehicleTypesCarousel() {
                     size="lg"
                     className="h-12 sm:h-14 md:h-16 rounded-lg border-2 border-foreground/20 hover:border-foreground/40 bg-transparent hover:bg-foreground/5 text-foreground font-semibold px-8 sm:px-10 md:px-12 text-base sm:text-lg md:text-xl transition-all duration-300"
                   >
-                    <Link to={`/vehicles/${currentVehicle.slug}`} className="flex items-center justify-center gap-2 sm:gap-3">
+                    <Link 
+                      to={
+                        currentVehicle.slug.startsWith('sedan') 
+                          ? `/vehicles/sedan?vehicle=${currentVehicle.slug}` 
+                          : `/vehicles/${currentVehicle.slug}`
+                      } 
+                      className="flex items-center justify-center gap-2 sm:gap-3"
+                    >
                       Learn more about {currentVehicle.name}
                       <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6" />
                     </Link>
@@ -414,7 +421,7 @@ export function VehicleTypesCarousel() {
                       size="lg"
                       className="h-12 sm:h-14 rounded-xl border-2 border-accent/40 bg-accent hover:bg-accent/90 hover:border-accent text-accent-foreground font-bold px-8 sm:px-10 text-base sm:text-lg glow-blue shadow-[0_4px_16px_hsl(214_77%_50%_/_0.3)] hover:shadow-[0_6px_24px_hsl(214_77%_55%_/_0.5)] transition-all duration-300"
                     >
-                      <Link to="/vehicles/sedan" className="flex items-center justify-center gap-2.5">
+                      <Link to="/quiz" className="flex items-center justify-center gap-2.5">
                         Start Quiz
                         <Search className="w-5 h-5" />
                       </Link>

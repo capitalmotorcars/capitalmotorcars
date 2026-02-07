@@ -114,7 +114,7 @@ export function WhatWeDoSection() {
   const { ref, isRevealed } = useScrollReveal();
 
   return (
-    <section className="relative py-16 lg:py-20 overflow-hidden ">
+    <section className="relative py-16 lg:py-20 overflow-hidden bg-white dark:bg-[hsl(0_0%_4%)]">
       <div
         ref={ref}
         className={cn(

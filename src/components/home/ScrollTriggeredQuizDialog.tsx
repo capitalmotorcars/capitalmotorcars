@@ -102,7 +102,7 @@ export function ScrollTriggeredQuizDialog() {
             className="w-full h-12 rounded-lg border border-accent/40 bg-accent hover:bg-accent/90 hover:border-accent text-accent-foreground font-semibold px-8 glow-blue shadow-[0_2px_12px_hsl(214_77%_50%_/_0.25)]"
             onClick={handleClose}
           >
-            <Link to="/vehicles/sedan" className="flex items-center justify-center gap-2">
+            <Link to="/quiz" className="flex items-center justify-center gap-2">
               Start Quiz
               <Search className="w-4 h-4" />
             </Link>
