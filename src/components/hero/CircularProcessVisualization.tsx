@@ -357,7 +357,7 @@ export function CircularProcessVisualization({
   );
 
   return (
-    <div className={cn('w-full', className)}>
+    <div className={cn('w-full ', className)}>
       {/* Desktop */}
       <div className="hidden md:flex flex-col items-center">
         {renderDiagram(600, false)}

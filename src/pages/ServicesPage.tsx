@@ -7,12 +7,12 @@ import { servicesPageLinks } from '@/components/ui/RelatedLinks';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { 
-  Car, 
-  CreditCard, 
-  RefreshCw, 
-  Wrench, 
-  CircleDot, 
+import {
+  Car,
+  CreditCard,
+  RefreshCw,
+  Wrench,
+  CircleDot,
   Sparkles,
   ArrowRight,
   Phone,
@@ -22,6 +22,7 @@ import {
   Shield,
   Award
 } from 'lucide-react';
+import { motion } from 'framer-motion';
 import bg1 from '@/assets/brand-backgrounds/bg-1.jpeg';
 import bg2 from '@/assets/brand-backgrounds/bg-2.jpg';
 import bg3 from '@/assets/brand-backgrounds/bg-3.jpg';
@@ -106,6 +107,12 @@ const categoryToBgIndex: Record<CategoryType, number> = {
   'vehicle-services': 3,
 };
 
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+} as const;
+
 export default function ServicesPage() {
   const [activeCategory, setActiveCategory] = useState<CategoryType>('all');
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -141,47 +148,76 @@ export default function ServicesPage() {
 
   return (
     <Layout>
-      <SEO 
-        title="Our Services | Capital Motor Cars"
-        description="Leasing, financing, trade-in, detailing, and end-of-lease repairs. Practical automotive services handled by professionals in New Jersey."
+      <SEO
+        title="Automotive Services NJ | Car Leasing & Maintenance | Capital Motor Cars"
+        description="Comprehensive automotive services in NJ. From expert car leasing and financing to professional detailing, wheel repair, and end-of-lease protection."
+        seoKeywords={['automotive services NJ', 'car leasing Springfield', 'auto financing NJ', 'car detailing NJ', 'wheel repair Springfield', 'lease return protection']}
+        ogImage="/src/assets/hero-bg.jpg"
+        canonicalPath="/services"
       />
       <JsonLd data={servicesListSchema} />
-      
-      <section className="pt-16 lg:pt-20">
+
+      <section className="pt-16 lg:pt-20 ">
         <div id="services" className="relative h-full flex flex-col">
           {/* Top half: Blurred background */}
           <div className="absolute top-0 left-0 right-0 h-[30vh] md:h-[45vh] overflow-hidden">
-            <img
+            <motion.img
+              initial={{ scale: 1.1, opacity: 0 }}
+              animate={{ scale: 1.05, opacity: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
               src={currentBackground}
               alt=""
-              className="w-full h-full object-cover object-center blur-[1.5px] transition-opacity duration-1000"
+              className="w-full h-full object-cover object-center blur-[1.5px]"
               aria-hidden
             />
           </div>
           {/* Dark overlay on top half for text readability */}
-          <div
-            className="absolute top-0 left-0 right-0 h-[30vh] md:h-[45vh] bg-gradient-to-b from-black/40 via-black/20 to-transparent transition-opacity duration-1000"
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="absolute top-0 left-0 right-0 h-[30vh] md:h-[45vh] bg-gradient-to-b from-black/40 via-black/20 to-transparent"
             aria-hidden
           />
+
+          {/* Gradient fade to bottom content */}
+          <div
+            className="absolute top-[15vh] md:top-[22.5vh] left-0 right-0 h-[15vh] md:h-[22.5vh] bg-gradient-to-b from-transparent via-white/20 to-white dark:to-[hsl(0,0%,4%)]"
+            aria-hidden
+          />
+
           {/* Bottom half: White background */}
           <div
-            className="absolute top-[30vh] md:top-[45vh] left-0 right-0 bottom-0 bg-white dark:bg-background"
+            className="absolute top-[30vh] md:top-[45vh] left-0 right-0 bottom-0 bg-white dark:bg-[hsl(0,0%,4%)]"
             aria-hidden
           />
 
           {/* Content */}
-          <div ref={ref} className={cn('relative z-10 flex-1 flex flex-col', 'scroll-reveal', isRevealed && 'revealed')}>
+          <div ref={ref} className={cn('relative z-10 flex-1 flex flex-col  dark:bg-white/[0.02]', 'scroll-reveal', isRevealed && 'revealed')}>
             {/* Title and Filters */}
             <div className="relative z-50 mx-auto h-[30vh] md:h-[45vh] px-4 lg:px-8 flex flex-col items-center justify-center">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl  font-bold text-white text-center pb-2 md:pb-4 xl:pb-6">
+              <motion.h2
+                {...fadeInUp}
+                transition={{ ...fadeInUp.transition, delay: 0.1 }}
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white text-center pb-2 md:pb-4 xl:pb-6"
+              >
                 Our Services
-              </h2>
-              <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/80 text-center max-w-3xl xl:max-w-5xl mx-auto pb-4 md:pb-6 xl:pb-8">
+              </motion.h2>
+              <motion.p
+                {...fadeInUp}
+                transition={{ ...fadeInUp.transition, delay: 0.2 }}
+                className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/80 text-center max-w-3xl xl:max-w-5xl mx-auto pb-4 md:pb-6 xl:pb-8"
+              >
                 Practical automotive solutions for customers who want things done right and without unnecessary hassle.
-              </p>
+              </motion.p>
 
               {/* Filter Navigation */}
-              <div className="relative z-50 mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="relative z-50 mx-auto"
+              >
                 <div className="flex flex-wrap items-center gap-1 sm:gap-3 md:gap-4 xl:gap-6 justify-center max-w-[380px] sm:max-w-none">
                   {categories.map((category) => {
                     const isActive = activeCategory === category.id;
@@ -210,170 +246,166 @@ export default function ServicesPage() {
                     );
                   })}
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             {/* Service Details */}
             {currentService && (
-              <div className="relative bg-white dark:bg-[hsl(0_0%_4%)] h-full py-8 md:py-16 xl:py-20 z-10">
-                <div className="mx-auto px-4 lg:px-8 xl:px-12">
-                  <div className="max-w-7xl xl:max-w-[90rem] mx-auto">
-                    {/* Service Name */}
-                    <div className="flex items-start sm:items-baseline justify-between sm:justify-center gap-3 mb-4 sm:mb-6 md:mb-8 xl:mb-10">
-                      <div className="flex flex-col sm:flex-row items-start sm:items-baseline gap-1 sm:gap-2 md:gap-3 xl:gap-4">
-                        <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-black dark:text-white">
-                          {currentService.title}
-                        </h3>
-                      </div>
-                   
-                    </div>
+              <div className="relative  py-12 md:py-24 overflow-hidden">
+                {/* Subtle Background Glow */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] aspect-square pointer-events-none">
+                  {/* <div className="w-full h-full bg-accent/[0.08] dark:bg-accent/[0.01] blur-[140px] rounded-full" /> */}
 
-                    {/* Description */}
-                    <div className="mb-6 sm:mb-8 md:mb-10 xl:mb-12 pb-4 sm:pb-6 md:pb-8 xl:pb-10 border-b border-border dark:border-white/20">
-                      <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-black dark:text-white max-w-4xl xl:max-w-5xl">
+                  {/* Optional: Add a second, smaller, brighter core for depth */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 bg-accent/5 blur-[80px] rounded-full" />
+                </div>
+
+                <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+
+                  {/* 1. Hero Header */}
+                  <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b-2 border-border dark:border-white/20 pb-12">
+                    <div className="space-y-4">
+                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest">
+                        Featured Service
+                      </div>
+                      <h3 className="text-4xl md:text-6xl font-black tracking-tighter text-foreground leading-none">
+                        {currentService.title}
+                      </h3>
+                      <p className="text-lg md:text-2xl text-muted-foreground max-w-3xl leading-relaxed">
                         {currentService.description}
                       </p>
                     </div>
 
-                    {/* Highlights */}
-                    {currentService.highlights && currentService.highlights.length > 0 && (
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 xl:gap-12 mb-8 md:mb-12 xl:mb-16">
-                        <div className="sm:border-r sm:border-border dark:sm:border-white/20 pr-6 sm:pr-8 md:pr-10 xl:pr-24">
-                          <h4 className="text-xs sm:text-sm md:text-base xl:text-lg font-semibold text-black dark:text-white uppercase mb-6 sm:mb-8 xl:mb-10">Highlights</h4>
-                          
-                          {/* Stats - Simplified */}
-                          <div className="space-y-6 sm:space-y-8 md:space-y-10">
-                            {/* Stat 1 */}
-                            <div className="flex flex-col items-center text-center gap-3 sm:gap-4">
-                              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-accent/10 dark:bg-accent/20 flex items-center justify-center">
-                                <CheckCircle2 className="w-6 h-6 sm:w-7 sm:h-7 text-accent" />
+                    {/* Quick Contact Link */}
+                    <Link to="/contact" className="hidden md:flex items-center gap-2 text-accent font-bold group">
+                      Get Started <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+
+                    {/* 2. Highlights - Horizontal "Value Cards" */}
+                    <div className="lg:col-span-4 space-y-6">
+                      <h4 className="text-sm uppercase font-bold tracking-[0.3em] text-muted-foreground/60 mb-6">Service Excellence</h4>
+                      <div className="grid grid-cols-1 gap-4">
+                        {[
+                          { icon: CheckCircle2, label: "Dealer-Free", val: "100%", desc: "Skip the showroom hassle" },
+                          { icon: Shield, label: "Pricing", val: "100%", desc: "Fully transparent quotes" },
+                          { icon: Award, label: "Experience", val: "30+", desc: "Years of industry mastery" }
+                        ].map((stat, i) => (
+                          <div key={i} className="group p-6  border-b-2 border-border/60 dark:border-white/10  ">
+                            <div className="flex items-center gap-6 h-full"> {/* Changed to items-center and increased gap */}
+
+                              {/* Larger Icon Container */}
+                              <div className="shrink-0 w-20 h-20 rounded-2xl bg-accent/10 text-accent flex items-center justify-center border border-accent/20 dark:border-white/10">
+                                <stat.icon className="w-10 h-10" /> {/* Bigger Icon */}
                               </div>
-                              <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-br from-accent to-accent/70 bg-clip-text text-transparent">
-                                100%
-                              </span>
-                              <span className="text-xs sm:text-sm md:text-base text-gray-700 dark:text-gray-300">
-                                No dealership visits required
-                              </span>
-                            </div>
-                            
-                            {/* Stat 2 */}
-                            <div className="flex flex-col items-center text-center gap-3 sm:gap-4 pt-6 sm:pt-8 md:pt-10 border-t border-gray-200 dark:border-white/20">
-                              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-accent/10 dark:bg-accent/20 flex items-center justify-center">
-                                <Shield className="w-6 h-6 sm:w-7 sm:h-7 text-accent" />
+
+                              {/* Info - Perfectly Centered Vertically */}
+                              <div className="flex flex-col justify-center py-1">
+                                <div className="flex items-baseline gap-2 mb-1">
+                                  <span className="text-4xl font-black text-black dark:text-white tracking-tighter leading-none">
+                                    {stat.val}
+                                  </span>
+                                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent/80 whitespace-nowrap">
+                                    {stat.label}
+                                  </span>
+                                </div>
+                                <p className="text-sm font-semibold text-muted-foreground/80 leading-tight">
+                                  {stat.desc}
+                                </p>
                               </div>
-                              <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-br from-accent to-accent/70 bg-clip-text text-transparent">
-                                100%
-                              </span>
-                              <span className="text-xs sm:text-sm md:text-base text-gray-700 dark:text-gray-300">
-                                Transparent pricing upfront
-                              </span>
-                            </div>
-                            
-                            {/* Stat 3 */}
-                            <div className="flex flex-col items-center text-center gap-3 sm:gap-4 pt-6 sm:pt-8 md:pt-10 border-t border-gray-200 dark:border-white/20">
-                              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-accent/10 dark:bg-accent/20 flex items-center justify-center">
-                                <Award className="w-6 h-6 sm:w-7 sm:h-7 text-accent" />
-                              </div>
-                              <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-br from-accent to-accent/70 bg-clip-text text-transparent">
-                                30+
-                              </span>
-                              <span className="text-xs sm:text-sm md:text-base text-gray-700 dark:text-gray-300">
-                                Years of experience
-                              </span>
+
                             </div>
                           </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* 3. All Services - The "Switchboard" */}
+                    <div className="lg:col-span-8">
+
+
+                      {/* 3. Other Solutions - High Contrast & Glow */}
+                      <div className="lg:col-span-8">
+                        <div className="flex items-center gap-4 mb-8">
+                          <span className="text-sm uppercase font-bold tracking-[0.4em] text-muted-foreground/40 whitespace-nowrap">
+                            Explore Solutions
+                          </span>
                         </div>
 
-                        {/* All Services Grid */}
-                        <div className="sm:col-span-2 sm:pl-6 sm:pl-8 md:pl-10 xl:pl-12">
-                          <h4 className="text-xs sm:text-sm md:text-base xl:text-lg font-semibold text-black dark:text-white uppercase mb-6 sm:mb-8 xl:mb-10">All Services</h4>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6">
-                            {filteredServices.map((service) => {
-                              const Icon = service.icon;
-                              const isActive = currentService.href === service.href;
-                              return (
-                                <Link
-                                  key={service.href}
-                                  to={service.href}
-                                  className={cn(
-                                    "group relative flex flex-col gap-4 sm:gap-5 p-6 sm:p-7 md:p-8 rounded-xl transition-all duration-300",
-                                    "border border-gray-200 dark:border-white/20",
-                                    "bg-white dark:bg-white/[0.04]",
-                                    "hover:border-accent hover:shadow-lg hover:shadow-accent/20 dark:hover:bg-white/[0.04] hover:bg-accent/5 dark:hover:bg-accent/10",
-                                    isActive && "border-accent bg-accent/5 dark:bg-accent/10 shadow-lg shadow-accent/20"
-                                  )}
-                                >
-                                  <div className="flex items-start gap-4 sm:gap-5 md:gap-6">
-                                    {/* Icon */}
-                                    <div className={cn(
-                                      "flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 rounded-xl flex items-center justify-center transition-all duration-300",
-                                      isActive
-                                        ? "bg-accent/20 dark:bg-accent/30 scale-105"
-                                        : "bg-gray-100 dark:bg-gray-800 group-hover:bg-accent/15 dark:group-hover:bg-accent/25 group-hover:scale-105"
-                                    )}>
-                                      <Icon className={cn(
-                                        "w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 transition-colors duration-300",
-                                        isActive
-                                          ? "text-accent"
-                                          : "text-gray-600 dark:text-gray-400 group-hover:text-accent"
-                                      )} />
-                                    </div>
-                                    
-                                    {/* Content */}
-                                    <div className="flex-1 min-w-0">
-                                      <h5 className={cn(
-                                        "mb-2 sm:mb-2.5 font-semibold text-base sm:text-lg md:text-xl lg:text-2xl transition-colors duration-300",
-                                        isActive
-                                          ? "text-accent"
-                                          : "text-gray-900 dark:text-white group-hover:text-accent"
-                                      )}>
-                                        {service.title}
-                                      </h5>
-                                      <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-400 line-clamp-2 leading-relaxed">
-                                        {service.description}
-                                      </p>
-                                    </div>
-                                  </div>
-                                  
-                                  {/* CTA */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          {filteredServices.map((service) => {
+                            const Icon = service.icon;
+                            const isActive = currentService.href === service.href;
+
+                            return (
+                              <Link
+                                key={service.href}
+                                to={service.href}
+                                className={cn(
+                                  "group relative p-8 rounded-[2rem] border-2 transition-all duration-500",
+                                  "text-black dark:text-white",
+
+                                  isActive
+                                    ? "bg-accent/10 border-accent"
+                                    : "border-2 border-border  bg-white dark:bg-white/[0.02] dark:border-white/20",
+
+                                  "hover:border-accent hover:border-2  dark:hover:border-accent/40 hover:bg-accent/20 hover:bg-accent/5 dark:hover:bg-accent/10 hover:-translate-y-2 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.4)]"
+
+
+
+                                )}
+                              >
+                                <div className="flex flex-col gap-4">
+                                  {/* Icon Container */}
                                   <div className={cn(
-                                    "flex items-center gap-2 text-sm sm:text-base font-semibold transition-all duration-300 pt-3 border-t border-border dark:border-white/20",
+                                    "w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500",
                                     isActive
-                                      ? "text-accent "
-                                      : "text-gray-500 dark:text-gray-500 group-hover:text-accent group-hover:gap-2.5"
+                                      ? "bg-accent text-accent-foreground"
+                                      : "bg-muted dark:bg-white/5 group-hover:bg-accent/10 group-hover:text-accent"
                                   )}>
-                                    <span>View Service</span>
-                                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-1" />
+                                    <Icon className="w-7 h-7" />
                                   </div>
-                                </Link>
-                              );
-                            })}
-                          </div>
+
+                                  {/* Text Content */}
+                                  <div>
+                                    {/* Title - Turns Blue on Hover */}
+                                    <h5 className={cn(
+                                      "font-bold text-xl md:text-xl tracking-tighter uppercase leading-none mb-2 transition-colors duration-300",
+                                      "group-hover:text-accent"
+                                    )}>
+                                      {service.title}
+                                    </h5>
+                                    <p className="text-sm font-medium text-muted-foreground leading-relaxed line-clamp-2 group-hover:text-foreground/80 transition-colors">
+                                      {service.description}
+                                    </p>
+                                  </div>
+
+                                  {/* Bottom Arrow Indicator - Always Visible */}
+                                  <div className="flex items-center gap-2 text-sm   font-bold uppercase tracking-[0.2em] text-muted-foreground/60 group-hover:text-accent transition-all duration-300">
+                                    Select Service
+                                    <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
+                                  </div>
+                                </div>
+                              </Link>
+                            );
+                          })}
+                        </div>
+
+                        {/* 4. Action Buttons (Unified) - Kept exactly how you liked it */}
+                        <div className="mt-12 flex flex-col sm:flex-row gap-4">
+                          <Button asChild variant="outline" size="lg" className="flex-1 p-4 text-lg rounded-2xl h-16 font-bold border-2 bg-white dark:bg-white/[0.02] dark:border-white/20 border-border hover:bg-accent/5 dark:hover:bg-white/[0.04] transition-all">
+                            <Link to="/services/car-leasing">Learn More About {currentService.title}</Link>
+                          </Button>
+                          <Button asChild size="lg" className="flex-1 p-4 rounded-2xl bg-accent text-accent-foreground font-black text-lg h-16 shadow-lg shadow-accent/20  transition-all">
+                            <Link to="/contact">Contact us directly</Link>
+                          </Button>
+
                         </div>
                       </div>
-                    )}
-
-                    {/* CTA Button */}
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 xl:gap-6 pt-6 md:pt-8 xl:pt-10">
-                      <Button
-                        asChild
-                        size="lg"
-                        className="h-12 sm:h-14 xl:h-16 rounded-lg xl:rounded-xl border-2 border-gray-200 dark:border-white/20 bg-white dark:bg-white/[0.10] hover:bg-gray-200 dark:hover:bg-white/[0.20] text-black dark:text-white font-semibold xl:font-bold px-8 sm:px-10 xl:px-12 text-sm sm:text-base xl:text-lg transition-all"
-                      >
-                        <Link to={currentService.href} className="flex items-center justify-center gap-2 xl:gap-3">
-                          Learn more about {currentService.title}
-                        </Link>
-                      </Button>
-                      <Button
-                        asChild
-                        size="lg"
-                        className="h-12 sm:h-14 xl:h-16 rounded-lg xl:rounded-xl border border-accent/40 bg-accent hover:bg-accent/90 hover:border-accent text-accent-foreground font-semibold xl:font-bold px-8 sm:px-10 xl:px-12 text-sm sm:text-base xl:text-lg glow-blue shadow-[0_2px_12px_hsl(214_77%_50%_/_0.25)] hover:shadow-[0_4px_18px_hsl(214_77%_55%_/_0.45)]"
-                      >
-                        <Link to="/contact" className="flex items-center justify-center gap-2 xl:gap-3">
-                          Contact us directly
-                        </Link>
-                      </Button>
                     </div>
+
                   </div>
                 </div>
               </div>
@@ -383,8 +415,8 @@ export default function ServicesPage() {
       </section>
 
       {/* Next Steps Section */}
-      <section className=" py-8 md:py-20 bg-white w-full  bg-white dark:bg-[hsl(0_0%_4%)]  ">
-        <div className="container mx-auto  px-4 lg:px-8 xl:px-12 max-w-7xl xl:max-w-[90rem] mx-auto border-t border-border dark:border-white/20">
+      <section className=" py-8 md:py-20 w-full bg-white   bg-white dark:bg-white/[0.02]  ">
+        <div className="container mx-auto  px-4 lg:px-8 xl:px-12 max-w-7xl xl:max-w-[90rem] mx-auto border-t-2 border-border dark:border-white/20">
           <div className="mt-6 sm:mt-8 md:mt-10 pb-6 sm:pb-8 md:pb-10">
             <div className="text-center mb-6 sm:mb-8 md:mb-10">
               <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl  font-semibold text-foreground mb-3 md:mb-4">
@@ -393,34 +425,48 @@ export default function ServicesPage() {
               <p className="text-base sm:text-lg md:text-xl xl:text-2xl text-black dark:text-white max-w-3xl mx-auto">
                 Ready to get started? Choose your next step and let's make it happen.
               </p>
-            </div>  
-            
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 xl:gap-10">
               {servicesPageLinks.map((link, idx) => {
                 const icons = [Phone, FileText, Building2];
                 const Icon = icons[idx] || ArrowRight;
+
                 return (
                   <Link
                     key={link.href}
                     to={link.href}
-                    className="group flex flex-col h-full gap-4 xl:gap-6 p-6 sm:p-8 xl:p-10 rounded-xl border-2 border-border dark:border-white/20 bg-white dark:bg-white/[0.04] hover:border-accent hover:shadow-[0_0_30px_hsl(214_77%_50%_/_0.4)] hover:shadow-accent/30 transition-all duration-300"
+                    className={cn(
+                      // Base Styles: Black text in light mode, White text in dark mode
+                      "group relative flex flex-col h-full p-8 rounded-[2rem] border-2 transition-all duration-500",
+                      "text-black dark:text-white dark:bg-white/[0.01] border-2 border-border dark:border-white/10 ",
+
+                      // Hover State: The Blue Glow & Lift
+                      "hover:border-accent hover:dark:border-accent/40 hover:bg-accent/5 dark:hover:bg-accent/10 hover:-translate-y-2 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.4)]"
+                    )}
                   >
-                    <div className="flex items-start gap-4 xl:gap-6 flex-1">
-                      <div className="flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 xl:w-20 xl:h-20 rounded-lg flex items-center justify-center bg-accent/10 dark:bg-accent/20 group-hover:bg-accent/20 transition-colors">
-                        <Icon className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 xl:w-10 xl:h-10 text-accent" />
+                    <div className="flex flex-col gap-6 flex-1">
+                      {/* Icon Container - Matching the service card size/style */}
+                      <div className="w-16 h-16 rounded-2xl flex items-center justify-center bg-muted dark:bg-white/5 group-hover:bg-accent text-accent group-hover:text-accent-foreground transition-all duration-500">
+                        <Icon className="w-8 h-8" />
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <h4 className="mb-2 xl:mb-3 font-medium text-lg sm:text-xl md:text-2xl  text-foreground group-hover:text-accent transition-colors">
+
+                      {/* Text Content */}
+                      <div className="flex-1">
+                        {/* Title - Turns Blue on Hover */}
+                        <h4 className="font-bold text-xl sm:text-2xl tracking-tighter uppercase leading-tight mb-3 transition-colors duration-300 group-hover:text-accent">
                           {link.title}
                         </h4>
-                        <p className="text-sm sm:text-base xl:text-lg text-black dark:text-white">
+                        <p className="text-sm sm:text-base text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors">
                           {link.description}
                         </p>
                       </div>
-                    </div>
-                    <div className="flex items-center gap-2 text-black dark:text-white font-semibold text-sm sm:text-base xl:text-lg group-hover:gap-3 transition-[gap] group-hover:text-accent mt-auto">
-                      <span>Get started</span>
-                      <ArrowRight className="w-4 h-4 xl:w-5 xl:h-5 transition-transform group-hover:translate-x-1" />
+
+                      {/* Bottom Indicator - Always Visible & Bold */}
+                      <div className="flex items-center gap-2 text-sm font-black uppercase tracking-[0.2em] text-muted-foreground/60 group-hover:text-accent transition-all duration-300 mt-auto pt-4">
+                        <span>Get Started</span>
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                      </div>
                     </div>
                   </Link>
                 );

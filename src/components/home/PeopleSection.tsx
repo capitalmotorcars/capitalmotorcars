@@ -112,17 +112,17 @@ export function PeopleSection({ homePageOnly = false, padding }: PeopleSectionPr
   const sortedTeam = [...team].sort((a, b) => {
     const aHasLogo = a.image === logoImage;
     const bHasLogo = b.image === logoImage;
-  
+
     // If a has a logo and b doesn't, move a down (return 1)
     // If a doesn't and b does, move a up (return -1)
     return aHasLogo === bHasLogo ? 0 : aHasLogo ? 1 : -1;
   });
-  
+
   // Now use sortedTeam for your filtering and pagination
-  const filteredTeam = homePageOnly 
+  const filteredTeam = homePageOnly
     ? sortedTeam.filter(person => HOME_PAGE_TEAM_NAMES.includes(person.name))
     : sortedTeam;
-  
+
   const maxTeamPage = Math.max(0, Math.ceil(filteredTeam.length / TEAM_PAGE_SIZE) - 1);
   const visibleTeam = filteredTeam.slice(teamPage * TEAM_PAGE_SIZE, teamPage * TEAM_PAGE_SIZE + TEAM_PAGE_SIZE);
   return (
@@ -135,12 +135,12 @@ export function PeopleSection({ homePageOnly = false, padding }: PeopleSectionPr
           />
         </div>
 
-       
-      {/* <div className="how-it-works-card p-6"> */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(100%,500px)] h-[320px] rounded-full bg-accent/[0.04] dark:bg-accent/[0.06] blur-[80px] pointer-events-none"
-        aria-hidden
-      />
+
+        {/* <div className="how-it-works-card p-6"> */}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(100%,500px)] h-[320px] rounded-full bg-accent/[0.04] dark:bg-accent/[0.06] blur-[80px] pointer-events-none"
+          aria-hidden
+        />
         {/* Founder — centered on top */}
         <div className="flex justify-center mb-6">
           <Dialog.Root open={founderOpen} onOpenChange={setFounderOpen}>
@@ -160,9 +160,9 @@ export function PeopleSection({ homePageOnly = false, padding }: PeopleSectionPr
                 <h3 className="mt-1 text-base md:text-lg font-semibold text-foreground transition-all duration-300 group-hover:font-bold group-hover:text-accent">{founder.name}</h3>
                 <p className="mt-0.5 text-sm md:text-base text-muted-foreground transition-all duration-300 group-hover:text-foreground/90">{founder.role}</p>
                 <span className="mt-1.5 inline-flex items-center gap-1.5 text-sm md:text-base font-medium text-accent transition-all duration-300 group-hover:font-bold group-hover:drop-shadow-[0_0_8px_hsl(214_77%_50%_/_0.5)]">
-                    <ArrowRight className="h-4 w-4 md:h-5 md:w-5 shrink-0 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
-                    View profile
-                  </span>
+                  <ArrowRight className="h-4 w-4 md:h-5 md:w-5 shrink-0 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+                  View profile
+                </span>
               </motion.button>
             </Dialog.Trigger>
             <Dialog.Portal>
@@ -183,23 +183,23 @@ export function PeopleSection({ homePageOnly = false, padding }: PeopleSectionPr
                   onClick={(e) => e.target === e.currentTarget && setFounderOpen(false)}
                 >
                   <div className={cn(dialogPanelClass, 'w-full max-w-lg p-6 md:p-8')}>
-                  <div className="flex items-start gap-4">
-                    <img src={founder.image} alt="" className="h-20 w-20 md:h-24 md:w-24 shrink-0 rounded-full object-cover ring-2 ring-border" />
-                    <div className="min-w-0 flex-1">
-                      <p className="text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wider">A Note from Our Founder</p>
-                      <h3 className="text-xl md:text-2xl font-semibold text-foreground">{founder.name}</h3>
-                      <p className="text-sm md:text-base text-muted-foreground">{founder.role}</p>
+                    <div className="flex items-start gap-4">
+                      <img src={founder.image} alt="" className="h-20 w-20 md:h-24 md:w-24 shrink-0 rounded-full object-cover ring-2 ring-border" />
+                      <div className="min-w-0 flex-1">
+                        <p className="text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wider">A Note from Our Founder</p>
+                        <h3 className="text-xl md:text-2xl font-semibold text-foreground">{founder.name}</h3>
+                        <p className="text-sm md:text-base text-muted-foreground">{founder.role}</p>
+                      </div>
+                      <Dialog.Close asChild>
+                        <button type="button" className="shrink-0 rounded-lg p-2 text-muted-foreground hover:bg-muted hover:text-foreground" aria-label="Close">
+                          <X className="h-5 w-5" />
+                        </button>
+                      </Dialog.Close>
                     </div>
-                    <Dialog.Close asChild>
-                      <button type="button" className="shrink-0 rounded-lg p-2 text-muted-foreground hover:bg-muted hover:text-foreground" aria-label="Close">
-                        <X className="h-5 w-5" />
-                      </button>
-                    </Dialog.Close>
-                  </div>
-                  <p className="mt-4 text-muted-foreground leading-relaxed whitespace-pre-line">{founder.bio}</p>
-                  {founder.email && (
-                    <a href={`mailto:${founder.email}`} className="mt-4 inline-block text-sm font-medium text-accent hover:underline">{founder.email}</a>
-                  )}
+                    <p className="mt-4 text-muted-foreground leading-relaxed whitespace-pre-line">{founder.bio}</p>
+                    {founder.email && (
+                      <a href={`mailto:${founder.email}`} className="mt-4 inline-block text-sm font-medium text-accent hover:underline">{founder.email}</a>
+                    )}
                   </div>
                 </motion.div>
               </Dialog.Content>
@@ -222,82 +222,82 @@ export function PeopleSection({ homePageOnly = false, padding }: PeopleSectionPr
               <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
             </button>
             <div className="flex-1 min-w-0">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
-              {visibleTeam.map((person, i) => (
-            <Dialog.Root key={person.name} open={teamPerson?.name === person.name} onOpenChange={(open) => setTeamPerson(open ? person : null)}>
-              <Dialog.Trigger asChild>
-                <motion.button
-                  type="button"
-                  className={cn(cardClass, 'group flex flex-col items-center p-4 md:p-5 text-center')}
-                  aria-label={`View ${person.name}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isRevealed ? { opacity: 1, y: 0, transition: { ...cardTransition, delay: 0.30 + i * 0.06 } } : { opacity: 0, y: 20 }}
-                  transition={hoverTransition}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  {person.image ? (
-                    <img src={person.image} alt="" className="h-20 w-20 md:h-24 md:w-24 rounded-full object-cover ring-2 ring-border shadow-md transition-all duration-300 group-hover:ring-accent/50" />
-                  ) : (
-                    <div className="flex h-20 w-20 md:h-24 md:w-24 shrink-0 items-center justify-center rounded-full bg-muted ring-2 ring-border shadow-md text-muted-foreground transition-all duration-300 group-hover:ring-accent/50">
-                      <UserCircle className="h-10 w-10 md:h-12 md:w-12" aria-hidden />
-                    </div>
-                  )}
-                  <h3 className="mt-3 text-base md:text-lg font-semibold text-foreground truncate w-full transition-all duration-300 group-hover:font-bold group-hover:text-accent">{person.name}</h3>
-                  <p className="mt-0.5 text-sm md:text-base text-muted-foreground line-clamp-2 transition-all duration-300 group-hover:text-foreground/90">{person.role}</p>
-                  <span className="mt-1.5 inline-flex items-center gap-1.5 text-sm md:text-base font-medium text-accent transition-all duration-300 group-hover:font-bold group-hover:drop-shadow-[0_0_8px_hsl(214_77%_50%_/_0.5)]">
-                    <ArrowRight className="h-4 w-4 md:h-5 md:w-5 shrink-0 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
-                    View profile
-                  </span>
-                </motion.button>
-              </Dialog.Trigger>
-              <Dialog.Portal>
-                <Dialog.Overlay asChild>
-                  <motion.div
-                    className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={dialogFadeTransition}
-                  />
-                </Dialog.Overlay>
-                <Dialog.Content asChild>
-                  <motion.div
-                    className="fixed inset-0 z-50 flex items-center justify-center p-4"
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={dialogFadeTransition}
-                    onClick={(e) => e.target === e.currentTarget && setTeamPerson(null)}
-                  >
-                    <div className={cn(dialogPanelClass, 'w-full max-w-lg p-6 md:p-8')}>
-                    <div className="flex items-start gap-4">
-                      {person.image ? (
-                        <img src={person.image} alt="" className="h-20 w-20 md:h-24 md:w-24 shrink-0 rounded-full object-cover ring-2 ring-border" />
-                      ) : (
-                        <div className="flex h-20 w-20 md:h-24 md:w-24 shrink-0 items-center justify-center rounded-full bg-muted ring-2 ring-border text-muted-foreground">
-                          <UserCircle className="h-10 w-10 md:h-12 md:w-12" aria-hidden />
-                        </div>
-                      )}
-                      <div className="min-w-0 flex-1">
-                        <h3 className="text-xl md:text-2xl font-semibold text-foreground">{person.name}</h3>
-                        <p className="text-sm md:text-base text-muted-foreground">{person.role}</p>
-                      </div>
-                      <Dialog.Close asChild>
-                        <button type="button" className="shrink-0 rounded-lg p-2 text-muted-foreground hover:bg-muted hover:text-foreground" aria-label="Close">
-                          <X className="h-5 w-5" />
-                        </button>
-                      </Dialog.Close>
-                    </div>
-                    <p className="mt-4 text-muted-foreground leading-relaxed whitespace-pre-line">{person.bio}</p>
-                    {person.email && (
-                      <a href={`mailto:${person.email}`} className="mt-4 inline-block text-sm font-medium text-accent hover:underline">{person.email}</a>
-                    )}
-                    </div>
-                  </motion.div>
-                </Dialog.Content>
-              </Dialog.Portal>
-            </Dialog.Root>
-              ))}
-            </div>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
+                {visibleTeam.map((person, i) => (
+                  <Dialog.Root key={person.name} open={teamPerson?.name === person.name} onOpenChange={(open) => setTeamPerson(open ? person : null)}>
+                    <Dialog.Trigger asChild>
+                      <motion.button
+                        type="button"
+                        className={cn(cardClass, 'group flex flex-col items-center p-4 md:p-5 text-center')}
+                        aria-label={`View ${person.name}`}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={isRevealed ? { opacity: 1, y: 0, transition: { ...cardTransition, delay: 0.30 + i * 0.06 } } : { opacity: 0, y: 20 }}
+                        transition={hoverTransition}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        {person.image ? (
+                          <img src={person.image} alt="" className="h-20 w-20 md:h-24 md:w-24 rounded-full object-cover ring-2 ring-border shadow-md transition-all duration-300 group-hover:ring-accent/50" />
+                        ) : (
+                          <div className="flex h-20 w-20 md:h-24 md:w-24 shrink-0 items-center justify-center rounded-full bg-muted ring-2 ring-border shadow-md text-muted-foreground transition-all duration-300 group-hover:ring-accent/50">
+                            <UserCircle className="h-10 w-10 md:h-12 md:w-12" aria-hidden />
+                          </div>
+                        )}
+                        <h3 className="mt-3 text-base md:text-lg font-semibold text-foreground truncate w-full transition-all duration-300 group-hover:font-bold group-hover:text-accent">{person.name}</h3>
+                        <p className="mt-0.5 text-sm md:text-base text-muted-foreground line-clamp-2 transition-all duration-300 group-hover:text-foreground/90">{person.role}</p>
+                        <span className="mt-1.5 inline-flex items-center gap-1.5 text-sm md:text-base font-medium text-accent transition-all duration-300 group-hover:font-bold group-hover:drop-shadow-[0_0_8px_hsl(214_77%_50%_/_0.5)]">
+                          <ArrowRight className="h-4 w-4 md:h-5 md:w-5 shrink-0 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+                          View profile
+                        </span>
+                      </motion.button>
+                    </Dialog.Trigger>
+                    <Dialog.Portal>
+                      <Dialog.Overlay asChild>
+                        <motion.div
+                          className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={dialogFadeTransition}
+                        />
+                      </Dialog.Overlay>
+                      <Dialog.Content asChild>
+                        <motion.div
+                          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+                          initial={{ opacity: 0, y: 24 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={dialogFadeTransition}
+                          onClick={(e) => e.target === e.currentTarget && setTeamPerson(null)}
+                        >
+                          <div className={cn(dialogPanelClass, 'w-full max-w-lg p-6 md:p-8')}>
+                            <div className="flex items-start gap-4">
+                              {person.image ? (
+                                <img src={person.image} alt="" className="h-20 w-20 md:h-24 md:w-24 shrink-0 rounded-full object-cover ring-2 ring-border" />
+                              ) : (
+                                <div className="flex h-20 w-20 md:h-24 md:w-24 shrink-0 items-center justify-center rounded-full bg-muted ring-2 ring-border text-muted-foreground">
+                                  <UserCircle className="h-10 w-10 md:h-12 md:w-12" aria-hidden />
+                                </div>
+                              )}
+                              <div className="min-w-0 flex-1">
+                                <h3 className="text-xl md:text-2xl font-semibold text-foreground">{person.name}</h3>
+                                <p className="text-sm md:text-base text-muted-foreground">{person.role}</p>
+                              </div>
+                              <Dialog.Close asChild>
+                                <button type="button" className="shrink-0 rounded-lg p-2 text-muted-foreground hover:bg-muted hover:text-foreground" aria-label="Close">
+                                  <X className="h-5 w-5" />
+                                </button>
+                              </Dialog.Close>
+                            </div>
+                            <p className="mt-4 text-muted-foreground leading-relaxed whitespace-pre-line">{person.bio}</p>
+                            {person.email && (
+                              <a href={`mailto:${person.email}`} className="mt-4 inline-block text-sm font-medium text-accent hover:underline">{person.email}</a>
+                            )}
+                          </div>
+                        </motion.div>
+                      </Dialog.Content>
+                    </Dialog.Portal>
+                  </Dialog.Root>
+                ))}
+              </div>
             </div>
             <button
               type="button"
@@ -316,78 +316,78 @@ export function PeopleSection({ homePageOnly = false, padding }: PeopleSectionPr
           <div className="flex-1 min-w-0">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
               {visibleTeam.map((person, i) => (
-            <Dialog.Root key={person.name} open={teamPerson?.name === person.name} onOpenChange={(open) => setTeamPerson(open ? person : null)}>
-              <Dialog.Trigger asChild>
-                <motion.button
-                  type="button"
-                  className={cn(cardClass, 'group flex flex-col items-center p-4 md:p-5 text-center')}
-                  aria-label={`View ${person.name}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isRevealed ? { opacity: 1, y: 0, transition: { ...cardTransition, delay: 0.30 + i * 0.06 } } : { opacity: 0, y: 20 }}
-                  transition={hoverTransition}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  {person.image ? (
-                    <img src={person.image} alt="" className="h-20 w-20 md:h-24 md:w-24 rounded-full object-cover ring-2 ring-border shadow-md transition-all duration-300 group-hover:ring-accent/50" />
-                  ) : (
-                    <div className="flex h-20 w-20 md:h-24 md:w-24 shrink-0 items-center justify-center rounded-full bg-muted ring-2 ring-border shadow-md text-muted-foreground transition-all duration-300 group-hover:ring-accent/50">
-                      <UserCircle className="h-10 w-10 md:h-12 md:w-12" aria-hidden />
-                    </div>
-                  )}
-                  <h3 className="mt-3 text-base md:text-lg font-semibold text-foreground truncate w-full transition-all duration-300 group-hover:font-bold group-hover:text-accent">{person.name}</h3>
-                  <p className="mt-0.5 text-sm md:text-base text-muted-foreground line-clamp-2 transition-all duration-300 group-hover:text-foreground/90">{person.role}</p>
-                  <span className="mt-1.5 inline-flex items-center gap-1.5 text-sm md:text-base font-medium text-accent transition-all duration-300 group-hover:font-bold group-hover:drop-shadow-[0_0_8px_hsl(214_77%_50%_/_0.5)]">
-                    <ArrowRight className="h-4 w-4 md:h-5 md:w-5 shrink-0 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
-                    View profile
-                  </span>
-                </motion.button>
-              </Dialog.Trigger>
-              <Dialog.Portal>
-                <Dialog.Overlay asChild>
-                  <motion.div
-                    className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={dialogFadeTransition}
-                  />
-                </Dialog.Overlay>
-                <Dialog.Content asChild>
-                  <motion.div
-                    className="fixed inset-0 z-50 flex items-center justify-center p-4"
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={dialogFadeTransition}
-                    onClick={(e) => e.target === e.currentTarget && setTeamPerson(null)}
-                  >
-                    <div className={cn(dialogPanelClass, 'w-full max-w-lg p-6 md:p-8')}>
-                    <div className="flex items-start gap-4">
+                <Dialog.Root key={person.name} open={teamPerson?.name === person.name} onOpenChange={(open) => setTeamPerson(open ? person : null)}>
+                  <Dialog.Trigger asChild>
+                    <motion.button
+                      type="button"
+                      className={cn(cardClass, 'group flex flex-col items-center p-4 md:p-5 text-center')}
+                      aria-label={`View ${person.name}`}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={isRevealed ? { opacity: 1, y: 0, transition: { ...cardTransition, delay: 0.30 + i * 0.06 } } : { opacity: 0, y: 20 }}
+                      transition={hoverTransition}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
                       {person.image ? (
-                        <img src={person.image} alt="" className="h-20 w-20 md:h-24 md:w-24 shrink-0 rounded-full object-cover ring-2 ring-border" />
+                        <img src={person.image} alt="" className="h-20 w-20 md:h-24 md:w-24 rounded-full object-cover ring-2 ring-border shadow-md transition-all duration-300 group-hover:ring-accent/50" />
                       ) : (
-                        <div className="flex h-20 w-20 md:h-24 md:w-24 shrink-0 items-center justify-center rounded-full bg-muted ring-2 ring-border text-muted-foreground">
+                        <div className="flex h-20 w-20 md:h-24 md:w-24 shrink-0 items-center justify-center rounded-full bg-muted ring-2 ring-border shadow-md text-muted-foreground transition-all duration-300 group-hover:ring-accent/50">
                           <UserCircle className="h-10 w-10 md:h-12 md:w-12" aria-hidden />
                         </div>
                       )}
-                      <div className="min-w-0 flex-1">
-                        <h3 className="text-xl md:text-2xl font-semibold text-foreground">{person.name}</h3>
-                        <p className="text-sm md:text-base text-muted-foreground">{person.role}</p>
-                      </div>
-                      <Dialog.Close asChild>
-                        <button type="button" className="shrink-0 rounded-lg p-2 text-muted-foreground hover:bg-muted hover:text-foreground" aria-label="Close">
-                          <X className="h-5 w-5" />
-                        </button>
-                      </Dialog.Close>
-                    </div>
-                    <p className="mt-4 text-muted-foreground leading-relaxed whitespace-pre-line">{person.bio}</p>
-                    {person.email && (
-                      <a href={`mailto:${person.email}`} className="mt-4 inline-block text-sm font-medium text-accent hover:underline">{person.email}</a>
-                    )}
-                    </div>
-                  </motion.div>
-                </Dialog.Content>
-              </Dialog.Portal>
-            </Dialog.Root>
+                      <h3 className="mt-3 text-base md:text-lg font-semibold text-foreground truncate w-full transition-all duration-300 group-hover:font-bold group-hover:text-accent">{person.name}</h3>
+                      <p className="mt-0.5 text-sm md:text-base text-muted-foreground line-clamp-2 transition-all duration-300 group-hover:text-foreground/90">{person.role}</p>
+                      <span className="mt-1.5 inline-flex items-center gap-1.5 text-sm md:text-base font-medium text-accent transition-all duration-300 group-hover:font-bold group-hover:drop-shadow-[0_0_8px_hsl(214_77%_50%_/_0.5)]">
+                        <ArrowRight className="h-4 w-4 md:h-5 md:w-5 shrink-0 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+                        View profile
+                      </span>
+                    </motion.button>
+                  </Dialog.Trigger>
+                  <Dialog.Portal>
+                    <Dialog.Overlay asChild>
+                      <motion.div
+                        className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={dialogFadeTransition}
+                      />
+                    </Dialog.Overlay>
+                    <Dialog.Content asChild>
+                      <motion.div
+                        className="fixed inset-0 z-50 flex items-center justify-center p-4"
+                        initial={{ opacity: 0, y: 24 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={dialogFadeTransition}
+                        onClick={(e) => e.target === e.currentTarget && setTeamPerson(null)}
+                      >
+                        <div className={cn(dialogPanelClass, 'w-full max-w-lg p-6 md:p-8')}>
+                          <div className="flex items-start gap-4">
+                            {person.image ? (
+                              <img src={person.image} alt="" className="h-20 w-20 md:h-24 md:w-24 shrink-0 rounded-full object-cover ring-2 ring-border" />
+                            ) : (
+                              <div className="flex h-20 w-20 md:h-24 md:w-24 shrink-0 items-center justify-center rounded-full bg-muted ring-2 ring-border text-muted-foreground">
+                                <UserCircle className="h-10 w-10 md:h-12 md:w-12" aria-hidden />
+                              </div>
+                            )}
+                            <div className="min-w-0 flex-1">
+                              <h3 className="text-xl md:text-2xl font-semibold text-foreground">{person.name}</h3>
+                              <p className="text-sm md:text-base text-muted-foreground">{person.role}</p>
+                            </div>
+                            <Dialog.Close asChild>
+                              <button type="button" className="shrink-0 rounded-lg p-2 text-muted-foreground hover:bg-muted hover:text-foreground" aria-label="Close">
+                                <X className="h-5 w-5" />
+                              </button>
+                            </Dialog.Close>
+                          </div>
+                          <p className="mt-4 text-muted-foreground leading-relaxed whitespace-pre-line">{person.bio}</p>
+                          {person.email && (
+                            <a href={`mailto:${person.email}`} className="mt-4 inline-block text-sm font-medium text-accent hover:underline">{person.email}</a>
+                          )}
+                        </div>
+                      </motion.div>
+                    </Dialog.Content>
+                  </Dialog.Portal>
+                </Dialog.Root>
               ))}
             </div>
           </div>
@@ -397,7 +397,7 @@ export function PeopleSection({ homePageOnly = false, padding }: PeopleSectionPr
             {teamPage + 1} of {maxTeamPage + 1}
           </p>
         )}
-      {/* </div> */}
+        {/* </div> */}
       </div>
     </section>
   );

@@ -71,9 +71,9 @@ interface ContactFormProps {
   serviceTitle?: string;
 }
 
-export function ContactForm({ 
-  compact = false, 
-  initialValues, 
+export function ContactForm({
+  compact = false,
+  initialValues,
   hideServiceField = false,
   showVehicleField = true,
   source = 'contact',
@@ -256,23 +256,23 @@ export function ContactForm({
         )}
       </div>
 
-      <div className="space-y-1.5">
-        <div className="flex items-center justify-between">
-          <Label htmlFor="message" className="text-sm font-medium">Message *</Label>
-          <Select onValueChange={handleSuggestionSelect}>
-            <SelectTrigger className="w-auto h-7 text-xs text-muted-foreground border-dashed border-input/60">
-              <SelectValue placeholder="Need help getting started?" />
-            </SelectTrigger>
-            <SelectContent>
-              {messageSuggestions.map((suggestion) => (
-                <SelectItem key={suggestion.value} value={suggestion.value}>
-                  {suggestion.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+      <div className="space-y-3">
+        <div className="flex flex-col gap-2">
+          <Label htmlFor="message" className="text-sm font-medium">Message</Label>
+          <div className="flex flex-wrap gap-2">
+            {messageSuggestions.map((suggestion) => (
+              <button
+                key={suggestion.value}
+                type="button"
+                onClick={() => handleSuggestionSelect(suggestion.value)}
+                className="px-3 py-1.5 rounded-full text-xs font-semibold border border-border/60 hover:border-accent hover:bg-accent/5 transition-all text-muted-foreground hover:text-accent bg-background/50 backdrop-blur-sm"
+              >
+                {suggestion.label}
+              </button>
+            ))}
+          </div>
         </div>
-        
+
         <Textarea
           id="message"
           {...messageRegister}

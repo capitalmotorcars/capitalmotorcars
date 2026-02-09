@@ -72,7 +72,7 @@ export const serviceLinks = {
     { href: '/contact', title: 'Schedule a Call', description: 'Discuss financing options with us.' },
   ],
   tradeIn: [
-    { href: '/services/car-leasing', title: 'Car Leasing', description: 'Apply your trade-in value to a new lease.' },
+    { href: '/services/car-leasing', title: 'Car Leasing', description: 'Apply your trade in value to a new lease.' },
     { href: '/services/wear-and-tear', title: 'Wear & Tear Repair', description: 'Prepare your vehicle before trade-in.' },
     { href: '/contact', title: 'Get an Evaluation', description: 'Request a trade-in valuation.' },
   ],

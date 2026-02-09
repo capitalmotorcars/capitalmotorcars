@@ -34,6 +34,7 @@ import CoupePage from "./pages/vehicles/CoupePage";
 import MinivanPage from "./pages/vehicles/MinivanPage";
 import CrossoverPage from "./pages/vehicles/CrossoverPage";
 import WagonPage from "./pages/vehicles/WagonPage";
+import CorvettePage from "./pages/vehicles/Corvette";
 
 const queryClient = new QueryClient();
 
@@ -74,6 +75,7 @@ const App = () => (
           <Route path="/vehicles/minivan" element={<MinivanPage />} />
           <Route path="/vehicles/crossover" element={<CrossoverPage />} />
           <Route path="/vehicles/wagon" element={<WagonPage />} />
+          <Route path="/vehicles/corvette" element={<CorvettePage />} />
           
           <Route path="*" element={<NotFound />} />
         </Routes>

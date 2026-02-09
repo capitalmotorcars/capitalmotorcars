@@ -3,11 +3,12 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
+import { JsonLd } from '@/components/JsonLd';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { motion } from 'motion/react';
-import { Award, Check, Fuel, Gauge, Package, Shield, Star, TrendingUp, Users, Zap, ArrowRight, DollarSign, Calendar, MapPin, X, FileText, Phone, Car, CreditCard } from 'lucide-react';
+import { Award, Check, Fuel, Gauge, Package, Shield, Star, TrendingUp, Users, Zap, ArrowRight, DollarSign, Calendar, MapPin, X, FileText, Phone, Car, CreditCard, Ruler, Scale, Disc, Armchair, ShieldCheck, Cog, Cpu, Wrench, Activity } from 'lucide-react';
 import { VehicleTypeData, vehicleTypes } from '@/data/vehicleTypes';
 import type { FuelType } from '@/data/vehicleTypes';
 import { cn } from '@/lib/utils';
@@ -18,7 +19,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { Marquee } from '@/components/ui/Marquee';
+import { TestimonialsSection } from '../home/TestimonialsSection';
+import { VehicleTypesCarousel } from '../home/VehicleTypesCarousel';
 
 function formatFuel(fuel: FuelType): string {
   return fuel.charAt(0).toUpperCase() + fuel.slice(1);
@@ -217,7 +219,25 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
         description={vehicle.metaDescription}
         canonicalPath={vehicle.canonicalPath}
         seoKeywords={vehicle.seoKeywords}
+        ogImage={vehicle.image}
       />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": vehicle.name,
+        "description": vehicle.description,
+        "image": vehicle.image,
+        "offers": {
+          "@type": "Offer",
+          "price": vehicle.startingPrice,
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        "brand": {
+          "@type": "Brand",
+          "name": vehicle.popularBrands[0] || "Capital Motor Cars"
+        }
+      }} />
 
       {/* Hero Section - Premium Design */}
       <section className="relative pt-24 lg:pt-36 h-full flex items-center overflow-hidden">
@@ -239,7 +259,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
             dark:bg-[radial-gradient(circle_at_center,transparent_40%,rgba(0,0,0,0.25))]"
           aria-hidden
         />
-        
+
         <div
           ref={heroRef}
           className={cn(
@@ -247,405 +267,454 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
             heroRevealed && 'revealed'
           )}
         >
-          <div 
-          >
-        {/* Left Column - Content */}
-        <motion.div
-  initial={{ opacity: 0, y: 20 }}
-  animate={heroRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-  transition={{ duration: 0.5 }}
-  className="flex flex-col "
->
-  {/* 1. Integrated Hero Content */}
-  <div className="grid grid-cols-1 lg:grid-cols-6 gap-0 items-start">
-    <div className="lg:col-span-4 space-y-6">
-      {/* Badges */}
-      <div className="flex flex-wrap gap-2">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-accent/30 bg-accent/10 text-accent text-[10px] font-bold uppercase tracking-widest backdrop-blur-md">
-          <Star className="w-3 h-3 fill-accent" />
-          {vehicle.name} Specialist
-        </div>
-        {vehicle.badge && (
-          <span className="px-3 py-1 rounded-full bg-foreground dark:bg-white text-background dark:text-black text-[10px] font-bold uppercase tracking-widest shadow-xl">
-            {vehicle.badge}
-          </span>
-        )}
-      </div>
-      
-      {/* Title */}
-      <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.9] text-foreground">
-        The New <span className="text-accent italic">{vehicle.name}</span> <br/> Experience
-      </h1>
-
-      {/* Description */}
-      <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl border-l-4 border-accent/20 pl-6 py-2">
-        {vehicle.description}
-      </p>
-    </div>
-
-    {/* Vehicle Image - Anchored to the side of the text */}
-    <div className="lg:col-span-2 relative mt-4 lg:mt-0">
-      <div className="absolute inset-0 bg-accent/20 blur-[100px] rounded-full opacity-50" />
-      <motion.img
-  initial={{ opacity: 0, scale: 1.5, x: 20 }} // Start slightly smaller/hidden
-  animate={heroRevealed ? { 
-    opacity: 1, 
-    // Scale 1.1 on mobile, 1.5 on desktop (lg: breakpoint)
-    scale: window.innerWidth < 1024 ? 1.2 : 1.5,
-    x: 0 
-  } : {}}
-  transition={{ 
-    type: "spring", 
-    stiffness: 260, 
-    damping: 20,
-    delay: 0.2 
-  }}
-  src={vehicle.image}
-  alt={vehicle.name}
-  className="relative z-10 w-full h-auto object-contain drop-shadow-[0_35px_35px_rgba(0,0,0,0.4)]"
-/>
-    </div>
-  </div>
-
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 bg-muted/20 dark:bg-white/[0.04] p-2 rounded-[2.5rem] border-2 border-border backdrop-blur-sm">
-  {/* 1. Price Card */}
-  <div className="bg-background dark:bg-card shadow-sm rounded-[2rem] p-6 flex flex-col justify-center items-center border border-border/40">
-    <span className="text-[10px] uppercase tracking-[0.2em] text-accent font-black mb-1">Starting at</span>
-    <div className="flex items-baseline gap-1">
-      <span className="text-4xl font-black tracking-tight text-foreground">
-        ${vehicle.startingPrice?.toLocaleString()}
-      </span>
-      <span className="text-muted-foreground font-medium">/mo</span>
-    </div>
-  </div>
-
-  {/* 2. Performance - Pulling from your Highlights */}
-  <div className="flex items-center gap-4 px-8 py-4 justify-center lg:justify-start">
-    <div className="h-12 w-12 rounded-2xl bg-accent/10 flex items-center justify-center text-accent shrink-0">
-      <Gauge className="w-6 h-6" />
-    </div>
-    <div>
-      <p className="text-[10px] uppercase font-black text-muted-foreground tracking-widest">Performance</p>
-      <p className="text-sm font-bold text-foreground">
-        {vehicle.highlights?.[0] || 'Premium Power'}
-      </p>
-    </div>
-  </div>
-
-  {/* 3. Fuel Type - Dynamic gasoline/electric handling */}
-  <div className="flex items-center gap-4 px-8 py-4 justify-center lg:justify-start">
-    <div className="h-12 w-12 rounded-2xl bg-accent/10 flex items-center justify-center text-accent shrink-0">
-      <Fuel className="w-6 h-6" />
-    </div>
-    <div>
-      <p className="text-[10px] uppercase font-black text-muted-foreground tracking-widest">Fuel Type</p>
-      <p className="text-sm font-bold text-foreground capitalize">
-        {vehicle.fuelTypes?.join(' & ') || 'Gasoline'}
-      </p>
-    </div>
-  </div>
-
-  {/* 4. CTA Button */}
-  <Button asChild className="h-full min-h-[85px] rounded-[2rem] bg-accent hover:bg-accent/90 text-accent-foreground text-xl font-black transition-all shadow-xl shadow-accent/20 hover:scale-[1.02] active:scale-[0.98]">
-    <Link to="#contact" className="flex items-center justify-center gap-3 w-full">
-      {vehicle.ctaText} 
-      <ArrowRight className="w-6 h-6" />
-    </Link>
-  </Button>
-</div>
-
-{/* 3. Footer Brands - Showroom Minimalist */}
-<div className=" py-4 border-t border-border/40 flex items-center gap-8 px-4">
-    <div className="flex flex-col shrink-0">
-      <span className="text-[10px] font-black uppercase tracking-[0.4em] text-accent leading-none">
-        Top
-      </span>
-      <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40 leading-none mt-1">
-        Tier
-      </span>
-    </div>
-
-    <div className="h-10 w-px bg-border/80 shrink-0" />
-
-    <div className="flex flex-wrap items-center gap-x-10 gap-y-4">
-      {vehicle.popularBrands.slice(0, 7).map((brand) => (
-        <span 
-          key={brand} 
-          className="text-[12px] font-black text-muted-foreground/40 hover:text-accent transition-all cursor-default tracking-[0.2em] uppercase"
-        >
-          {brand}
-        </span>
-      ))}
-    </div>
-  </div>
-</motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing & Specs Showcase */}
-      {(vehicle.startingPrice || vehicle.mpg || vehicle.mpge || vehicle.range) && (
-        <section className="pt-16 lg:pt-20 bg-muted/30 dark:bg-black/40">
           <div
-            ref={specsRef}
-            className={cn(
-              'container mx-auto px-4 lg:px-8 scroll-reveal',
-              specsRevealed && 'revealed'
-            )}
           >
-            <div className="max-w-5xl mx-auto">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-                {vehicle.startingPrice && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={specsRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ delay: 0.1 }}
-                    className="p-6 rounded-2xl border border-border dark:border-white/10 bg-card dark:bg-white/[0.04] backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow"
-                  >
-                    <DollarSign className="w-8 h-8 text-accent mb-3" />
-                    <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">Starting Price</p>
-                    <p className="text-2xl md:text-3xl font-bold text-foreground">
-                      ${vehicle.startingPrice.toLocaleString()}<span className="text-lg text-muted-foreground font-normal">/mo</span>
-                    </p>
-                  </motion.div>
-                )}
-                {vehicle.mpg && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={specsRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ delay: 0.2 }}
-                    className="p-6 rounded-2xl border border-border dark:border-white/10 bg-card dark:bg-white/[0.04] backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow"
-                  >
-                    <Fuel className="w-8 h-8 text-accent mb-3" />
-                    <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">Fuel Economy</p>
-                    <p className="text-2xl md:text-3xl font-bold text-foreground">{vehicle.mpg}</p>
-                  </motion.div>
-                )}
-                {vehicle.mpge && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={specsRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ delay: 0.3 }}
-                    className="p-6 rounded-2xl border border-border dark:border-white/10 bg-card dark:bg-white/[0.04] backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow"
-                  >
-                    <Zap className="w-8 h-8 text-accent mb-3" />
-                    <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">MPGe</p>
-                    <p className="text-2xl md:text-3xl font-bold text-foreground">{vehicle.mpge}</p>
-                  </motion.div>
-                )}
-                {vehicle.range && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={specsRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ delay: 0.4 }}
-                    className="p-6 rounded-2xl border border-border dark:border-white/10 bg-card dark:bg-white/[0.04] backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow"
-                  >
-                    <Gauge className="w-8 h-8 text-accent mb-3" />
-                    <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">Range</p>
-                    <p className="text-2xl md:text-3xl font-bold text-foreground">{vehicle.range} <span className="text-lg text-muted-foreground font-normal">miles</span></p>
-                  </motion.div>
-                )}
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Why Choose + Key Features - Enhanced Design */}
-      <section className="py-12 md:py-16 lg:py-20 section-bg">
-        <div
-          ref={highlightsRef}
-          className={cn(
-            'container mx-auto px-4 lg:px-8 scroll-reveal',
-            highlightsRevealed && 'revealed'
-          )}
-        >
-          <SectionHeading
-            title={`Why Choose a ${vehicle.name} Vehicle?`}
-            subtitle={`Benefits and features that make ${vehicle.name.toLowerCase()} vehicles a great choice`}
-          />
-          
-          <div className="max-w-7xl mx-auto mt-12 md:mt-16">
-            {/* Benefits & Features Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-12">
-              {/* Key Benefits */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={highlightsRevealed ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                transition={{ duration: 0.5 }}
-                className="p-6 md:p-8 lg:p-10 rounded-2xl border border-border dark:border-white/10 bg-card dark:bg-white/[0.04] shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground dark:text-white/70 mb-6 flex items-center gap-2">
-                  <Award className="w-4 h-4 text-accent" />
-                  Key Benefits
-                </h3>
-                <ul className="space-y-4">
-                  {vehicle.highlights.map((highlight, index) => {
-                    const Icon = BENEFIT_ICONS[index % BENEFIT_ICONS.length];
-                    return (
-                      <motion.li
-                        key={index}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={highlightsRevealed ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-                        transition={{ delay: index * 0.1 }}
-                        className="flex gap-4 group"
-                      >
-                        <span className="shrink-0 w-12 h-12 rounded-xl border border-border dark:border-white/10 bg-gradient-to-br from-accent/10 to-accent/5 dark:from-accent/20 dark:to-accent/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                          <Icon className="w-6 h-6 text-accent" />
-                        </span>
-                        <span className="text-foreground dark:text-white/90 font-semibold pt-2 text-base md:text-lg">{highlight}</span>
-                      </motion.li>
-                    );
-                  })}
-                </ul>
-              </motion.div>
-
-              {/* Key Features */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={highlightsRevealed ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
-                transition={{ duration: 0.5 }}
-                className="p-6 md:p-8 lg:p-10 rounded-2xl border border-border dark:border-white/10 bg-gradient-to-br from-muted/30 to-muted/10 dark:from-white/[0.02] dark:to-white/[0.01] shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground dark:text-white/70 mb-6 flex items-center gap-2">
-                  <Check className="w-4 h-4 text-accent" />
-                  Key Features
-                </h3>
-                <ul className="space-y-3">
-                  {vehicle.features.map((feature, index) => (
-                    <motion.li
-                      key={index}
-                      initial={{ opacity: 0, x: 10 }}
-                      animate={highlightsRevealed ? { opacity: 1, x: 0 } : { opacity: 0, x: 10 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="flex items-center gap-3 group"
-                    >
-                      <span className="shrink-0 w-7 h-7 rounded-full bg-gradient-to-br from-accent/20 to-accent/10 dark:from-accent/30 dark:to-accent/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <Check className="w-4 h-4 text-accent" strokeWidth={3} />
-                      </span>
-                      <span className="text-foreground dark:text-white/90 text-sm sm:text-base md:text-lg">{feature}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
-            </div>
-
-            {/* Who Is This For? */}
+            {/* Left Column - Content */}
             <motion.div
-              ref={idealRef}
               initial={{ opacity: 0, y: 20 }}
-              animate={idealRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              animate={heroRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.5 }}
-              className="p-6 md:p-8 lg:p-10 rounded-2xl border border-border dark:border-white/10 bg-card dark:bg-white/[0.04] shadow-lg"
+              className="flex flex-col "
             >
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-2 flex items-center gap-3">
-                <Users className="w-6 h-6 md:w-7 md:h-7 text-accent" />
-                Who Is This For?
-              </h2>
-              <p className="text-muted-foreground dark:text-white/70 text-sm sm:text-base md:text-lg mb-6">
-                A {vehicle.name.toLowerCase()} vehicle is ideal if you…
-              </p>
-              <div className="flex flex-wrap gap-3">
-                {vehicle.idealFor.map((item, index) => (
-                  <motion.span
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={idealRevealed ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="inline-flex items-center gap-2 px-4 py-2.5 md:px-5 md:py-3 rounded-xl text-sm md:text-base font-medium
-                      bg-background/80 dark:bg-white/[0.06] border border-border dark:border-white/10
-                      text-foreground dark:text-white/90
-                      hover:border-accent/40 hover:bg-accent/10 dark:hover:bg-accent/20 transition-all hover:scale-105 shadow-sm"
-                  >
-                    <Check className="w-4 h-4 shrink-0 text-accent" strokeWidth={3} />
-                    {item}
-                  </motion.span>
-                ))}
+              {/* 1. Integrated Hero Content */}
+              <div className="grid grid-cols-1 lg:grid-cols-6 gap-0 items-start">
+                <div className="lg:col-span-4 space-y-6">
+                  {/* Badges */}
+                  <div className="flex flex-wrap gap-2">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-accent/30 bg-accent/10 text-accent text-[10px] font-bold uppercase tracking-widest backdrop-blur-md">
+                      <Star className="w-3 h-3 fill-accent" />
+                      {vehicle.name} Specialist
+                    </div>
+                    {vehicle.badge && (
+                      <span className="px-3 py-1 rounded-full bg-foreground dark:bg-white text-background dark:text-black text-[10px] font-bold uppercase tracking-widest shadow-xl">
+                        {vehicle.badge}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Title */}
+                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.9] text-foreground">
+                    The New <span className="text-accent italic">{vehicle.name}</span> <br /> Experience
+                  </h1>
+
+                  {/* Description */}
+                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl border-l-4 border-accent/20 pl-6 py-2">
+                    {vehicle.description}
+                  </p>
+                </div>
+
+                {/* Vehicle Image - Anchored to the side of the text */}
+                <div className="lg:col-span-2 relative mt-4 lg:mt-0">
+                  <div className="absolute inset-0 bg-accent/20 blur-[100px] rounded-full opacity-50" />
+                  <motion.img
+                    initial={{ opacity: 0, scale: 1.5, x: 20 }} // Start slightly smaller/hidden
+                    animate={heroRevealed ? {
+                      opacity: 1,
+                      // Scale 1.1 on mobile, 1.5 on desktop (lg: breakpoint)
+                      scale: window.innerWidth < 1024 ? 1.2 : 1.5,
+                      x: 0
+                    } : {}}
+                    transition={{
+                      type: "spring",
+                      stiffness: 260,
+                      damping: 20,
+                      delay: 0.2
+                    }}
+                    src={vehicle.image}
+                    alt={vehicle.name}
+                    className="relative z-10 w-full h-auto object-contain drop-shadow-[0_35px_35px_rgba(0,0,0,0.4)]"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2 bg-muted/20 dark:bg-white/[0.04] p-2 rounded-[2.5rem] border-2 border-border backdrop-blur-sm">
+                {/* 1. Price Card */}
+                <div className="col-span-2 md:col-span-1 bg-background dark:bg-card shadow-sm rounded-[2rem] p-6 flex flex-col justify-center items-center border border-border/40">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-accent font-black mb-1">Starting at</span>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-4xl font-black tracking-tight text-foreground">
+                      ${vehicle.startingPrice?.toLocaleString()}
+                    </span>
+                    <span className="text-muted-foreground font-medium">/mo</span>
+                  </div>
+                </div>
+
+                {/* 2. Performance - Pulling from new Performance Data or Highlights */}
+                <div className="flex items-center gap-4 px-8 py-4 justify-center lg:justify-start">
+                  <div className="h-12 w-12 rounded-2xl bg-accent/10 flex items-center justify-center text-accent shrink-0">
+                    <Gauge className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] uppercase font-black text-muted-foreground tracking-widest">Performance</p>
+                    <p className="text-sm font-bold text-foreground">
+                      {vehicle.performance?.hp ? `${vehicle.performance.hp} HP` : (vehicle.highlights?.[0] || 'Premium Power')}
+                    </p>
+                  </div>
+                </div>
+
+                {/* 3. Fuel Type - Dynamic gasoline/electric handling */}
+                <div className="flex items-center gap-4 px-8 py-4 justify-center lg:justify-start">
+                  <div className="h-12 w-12 rounded-2xl bg-accent/10 flex items-center justify-center text-accent shrink-0">
+                    <Fuel className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] uppercase font-black text-muted-foreground tracking-widest">Fuel Type</p>
+                    <p className="text-sm font-bold text-foreground capitalize">
+                      {vehicle.fuelTypes?.join(' & ') || 'Gasoline'}
+                    </p>
+                  </div>
+                </div>
+
+                {/* 4. CTA Button */}
+                <Button asChild className="col-span-2 md:col-span-1 h-full min-h-[85px] rounded-[2rem] bg-accent hover:bg-accent/90 text-accent-foreground text-xl font-black transition-all shadow-xl shadow-accent/20 hover:scale-[1.02] active:scale-[0.98]">
+                  <Link to="#contact" className="flex items-center justify-center gap-3 w-full">
+                    {vehicle.ctaText || 'Get Started'}
+                    <ArrowRight className="w-6 h-6" />
+                  </Link>
+                </Button>
+              </div>
+
+              {/* 3. Footer Brands - Showroom Minimalist */}
+              <div className=" py-4 border-t border-border/40 flex items-center gap-8 px-4">
+                <div className="flex flex-col shrink-0">
+                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-accent leading-none">
+                    Top
+                  </span>
+                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40 leading-none mt-1">
+                    Tier
+                  </span>
+                </div>
+
+                <div className="h-10 w-px bg-border/80 shrink-0" />
+
+                <div className="flex flex-wrap items-center gap-x-10 gap-y-4">
+                  {vehicle.popularBrands.slice(0, 7).map((brand) => (
+                    <span
+                      key={brand}
+                      className="text-[12px] font-black text-muted-foreground/40 hover:text-accent transition-all cursor-default tracking-[0.2em] uppercase"
+                    >
+                      {brand}
+                    </span>
+                  ))}
+                </div>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* How It Works Section */}
-      <section className="py-12 md:py-16 lg:py-20 section-bg border-t border-border dark:border-white/10">
-        <div
-          ref={howItWorksRef}
-          className={cn(
-            'container mx-auto px-4 lg:px-8 scroll-reveal',
-            howItWorksRevealed && 'revealed'
-          )}
-        >
-          <SectionHeading
-            title="How It Works"
-            subtitle="Getting your perfect vehicle is simple and stress-free"
-          />
-          
-          <div className="max-w-6xl mx-auto mt-12 md:mt-16">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-              {howItWorksSteps.map((step, index) => {
-                const Icon = step.icon;
-                return (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={howItWorksRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="relative p-6 md:p-8 rounded-2xl border border-border dark:border-white/10 bg-card dark:bg-white/[0.04] shadow-lg hover:shadow-xl transition-all group"
-                  >
-                    <div className="flex flex-col items-center text-center">
-                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/10 dark:from-accent/30 dark:to-accent/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <Icon className="w-8 h-8 text-accent" />
-                      </div>
-                      <div className="absolute top-6 right-6 w-8 h-8 rounded-full bg-accent/10 dark:bg-accent/20 flex items-center justify-center text-accent font-bold text-sm">
-                        {index + 1}
-                      </div>
-                      <h3 className="text-lg md:text-xl font-bold text-foreground mb-2">{step.title}</h3>
-                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed">{step.description}</p>
+      {/* Pricing & Specs Showcase */}
+      {/* Pricing & Specs Showcase */}
+      <section className="py-20 w-full  overflow-hidden">
+        <div className="mx-auto px-4 lg:px-8 xl:px-12 max-w-7xl xl:max-w-[90rem] flex flex-col gap-10">
+
+          {/* 1. The Performance Dashboard (Specs) */}
+          <div className="w-full">
+            <div className="flex flex-col mb-10">
+              <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-2">Metrics</span>
+              <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-black dark:text-white uppercase">
+                Technical <span className="text-accent italic">Specs</span>
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+              {[
+                // Performance Specs (New)
+                { id: 'hp', icon: Gauge, label: 'Horsepower', val: vehicle.performance?.hp, unit: ' HP', show: !!vehicle.performance?.hp },
+                { id: '0-60', icon: Zap, label: '0-60 MPH', val: vehicle.performance?.zeroToSixty, unit: '', show: !!vehicle.performance?.zeroToSixty },
+                { id: 'torque', icon: Activity, label: 'Torque', val: vehicle.performance?.torque, unit: ' LB-FT', show: !!vehicle.performance?.torque },
+
+                // Drivetrain / Engine Specs (New)
+                { id: 'engine', icon: Cpu, label: 'Engine', val: vehicle.performance?.engine, unit: '', show: !!vehicle.performance?.engine },
+                { id: 'trans', icon: Cog, label: 'Transmission', val: vehicle.performance?.transmission?.replace('Automatic', 'Auto'), unit: '', show: !!vehicle.performance?.transmission },
+                { id: 'drivetrain', icon: Disc, label: 'Drivetrain', val: vehicle.performance?.drivetrain, unit: '', show: !!vehicle.performance?.drivetrain },
+
+                // Efficiency Specs (Legacy + New Fallback)
+                {
+                  id: 'mpg',
+                  icon: Fuel,
+                  label: 'Fuel Economy',
+                  val: vehicle.mpg || (vehicle.fuelEconomy ? `${vehicle.fuelEconomy.avg} MPG` : undefined),
+                  show: (!!vehicle.mpg || !!vehicle.fuelEconomy) && !vehicle.mpge
+                },
+                {
+                  id: 'mpge',
+                  icon: Zap,
+                  label: 'Efficiency',
+                  val: vehicle.mpge,
+                  show: !!vehicle.mpge
+                },
+                {
+                  id: 'range',
+                  icon: Gauge,
+                  label: 'Driving Range',
+                  val: vehicle.range || vehicle.fuelEconomy?.range,
+                  unit: ' MILES',
+                  show: !!vehicle.range || !!vehicle.fuelEconomy?.range
+                },
+              ].filter(s => s.show).map((spec, idx) => (
+                <motion.div
+                  key={spec.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="group relative p-6 rounded-[2.5rem] border-2 border-border/60 dark:border-white/10 bg-muted/5 dark:bg-white/[0.02] hover:border-accent hover:shadow-[0_0_50px_-12px_rgba(59,130,246,0.3)] transition-all duration-500"
+                >
+                  <div className="flex flex-col items-center gap-6">
+                    <div className="w-20 h-20 rounded-[1.8rem] bg-accent/10 text-accent flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-500 shadow-inner">
+                      <spec.icon className="w-10 h-10" />
                     </div>
-                  </motion.div>
-                );
-              })}
+                    <div>
+                      <p className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground/60 mb-1 group-hover:text-accent transition-colors">{spec.label}</p>
+                      <p className="text-xl md:text-2xl font-black text-black dark:text-white tracking-tighter leading-none">
+                        {spec.val}
+                        {spec.unit && <span className="text-xs font-bold text-accent ml-1 uppercase">{spec.unit}</span>}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Testimonials Section */}
-      <section className="py-12 md:py-16 lg:py-20 section-bg border-t border-border dark:border-white/10">
-        <div
-          ref={testimonialsRef}
-          className={cn(
-            'container mx-auto px-4 lg:px-8 scroll-reveal',
-            testimonialsRevealed && 'revealed'
+          {/* 1.5. Detailed Specifications (New) */}
+          {vehicle.specs && (
+            <div className="w-full">
+              <div className="flex flex-col mb-8">
+                <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-2">Details</span>
+                <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-black dark:text-white uppercase">
+                  Vehicle <span className="text-accent italic">Dimensions</span>
+                </h2>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {/* Exterior Stats */}
+                <div className="bg-muted/5 dark:bg-white/[0.02] rounded-3xl p-8 border-2 border-border/60 dark:border-white/10">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="p-3 rounded-xl bg-accent/10 text-accent"><Ruler className="w-6 h-6" /></div>
+                    <h3 className="text-lg font-bold uppercase tracking-wide">Exterior</h3>
+                  </div>
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center border-b border-border/30 pb-2">
+                      <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Length</span>
+                      <span className="text-base font-black">{vehicle.specs.exterior.length}</span>
+                    </div>
+                    <div className="flex justify-between items-center border-b border-border/30 pb-2">
+                      <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Height</span>
+                      <span className="text-base font-black">{vehicle.specs.exterior.height}</span>
+                    </div>
+                    <div className="flex justify-between items-center border-b border-border/30 pb-2">
+                      <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Weight</span>
+                      <span className="text-base font-black">{vehicle.specs.exterior.weight}</span>
+                    </div>
+                    <div className="flex justify-between items-center pt-1">
+                      <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Wheels</span>
+                      <span className="text-base font-black text-right max-w-[50%]">{vehicle.specs.exterior.wheels}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Interior Stats */}
+                <div className="bg-muted/5 dark:bg-white/[0.02] rounded-3xl p-8 border-2 border-border/60 dark:border-white/10">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="p-3 rounded-xl bg-accent/10 text-accent"><Armchair className="w-6 h-6" /></div>
+                    <h3 className="text-lg font-bold uppercase tracking-wide">Interior</h3>
+                  </div>
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center border-b border-border/30 pb-2">
+                      <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Headroom</span>
+                      <span className="text-base font-black">{vehicle.specs.interior.headroom}</span>
+                    </div>
+                    <div className="flex justify-between items-center border-b border-border/30 pb-2">
+                      <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Legroom</span>
+                      <span className="text-base font-black">{vehicle.specs.interior.legroom}</span>
+                    </div>
+                    <div className="flex justify-between items-center border-b border-border/30 pb-2">
+                      <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Cargo</span>
+                      <span className="text-base font-black">{vehicle.specs.interior.cargo}</span>
+                    </div>
+                    <div className="flex justify-between items-center pt-1">
+                      <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Capacity</span>
+                      <span className="text-base font-black">{vehicle.specs.interior.passengers} Passengers</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Warranty Stats */}
+                <div className="bg-muted/5 dark:bg-white/[0.02] rounded-3xl p-8 border-2 border-border/60 dark:border-white/10">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="p-3 rounded-xl bg-accent/10 text-accent"><ShieldCheck className="w-6 h-6" /></div>
+                    <h3 className="text-lg font-bold uppercase tracking-wide">Warranty</h3>
+                  </div>
+                  <div className="space-y-4">
+                    <div className="flex flex-col gap-1 border-b border-border/30 pb-2">
+                      <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Comprehensive</span>
+                      <span className="text-sm font-black">{vehicle.specs.warranty.comprehensive}</span>
+                    </div>
+                    <div className="flex flex-col gap-1 border-b border-border/30 pb-2">
+                      <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Powertrain</span>
+                      <span className="text-sm font-black">{vehicle.specs.warranty.powertrain}</span>
+                    </div>
+                    <div className="flex flex-col gap-1 pt-1">
+                      <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Roadside Assistance</span>
+                      <span className="text-sm font-black">{vehicle.specs.warranty.roadside}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           )}
-        >
-          <SectionHeading
-            title="What Our Clients Say"
-            subtitle="Real experiences from people who leased with us"
-          />
 
-          <div className="relative flex w-full max-w-[100rem] items-center justify-center overflow-hidden mx-auto mt-12 md:mt-16">
-            <Marquee pauseOnHover className="[--duration:60s] [--gap:1.5rem]">
-              {testimonials.map((t, i) => (
-                <TestimonialCard
-                  key={i}
-                  quote={t.quote}
-                  author={t.author}
-                  stars={t.stars}
-                  open={openTestimonialIndex === i}
-                  onOpenChange={(open) => setOpenTestimonialIndex(open ? i : null)}
-                />
-              ))}
-            </Marquee>
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-muted to-transparent dark:from-[hsl(0_0%_4%)]" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-muted to-transparent dark:from-[hsl(0_0%_4%)]" />
+          {/* 2. Benefits & Features (Side-by-Side Comparison) */}
+          <div className="flex flex-col">
+            <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-2">Benefits</span>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-black dark:text-white uppercase">
+              Vehicle <span className="text-accent italic">Benefits</span>
+            </h2>
           </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+            {/* Left: Key Benefits (The "Why") */}
+
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-7 p-10  rounded-[3rem] border-2 border-border/60 dark:border-white/10 bg-muted/5 dark:bg-white/[0.02] relative overflow-hidden"
+            >
+              <div className="absolute top-[-3%] right-[-10%] right-0 md:top-[-4%] md:right-[-5%] p-6 opacity-[0.08] dark:opacity-[0.07]   pointer-events-none">
+                <Award className="w-40 h-40 -rotate-12  text-accent" />
+              </div>
+
+              <h3 className="text-xs font-black uppercase tracking-[0.4em] text-accent mb-12 flex items-center gap-3">
+                <Award className="w-5 h-5" /> Experience Highlights
+              </h3>
+
+              <div className="flex flex-col gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                  {vehicle.highlights.map((highlight, index) => {
+                    const Icon = (index % 2 === 0) ? Shield : Star; // Alternating icons or use your BENEFIT_ICONS
+                    return (
+                      <div key={index} className="flex flex-col gap-4 group">
+                        <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center group-hover:scale-110 transition-transform">
+                          <Icon className="w-6 h-6" />
+                        </div>
+                        <span className="text-lg font-black text-black dark:text-white tracking-tight leading-tight">{highlight}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {vehicle.idealFor && (
+                  <div className="pt-12 border-t border-border/40 dark:border-white/10">
+                    <h3 className="text-xs font-black uppercase tracking-[0.4em] text-accent mb-8 flex items-center gap-3">
+                      <Users className="w-5 h-5" /> Who is this for?
+                    </h3>
+                    <div className="space-y-4">
+                      {vehicle.idealFor.map((ideal, idx) => (
+                        <div key={idx} className="flex items-center gap-4 group">
+                          <div className="w-1.5 h-1.5 rounded-full bg-accent/40 group-hover:bg-accent transition-colors shrink-0" />
+                          <p className="text-lg font-medium text-muted-foreground group-hover:text-foreground transition-colors leading-relaxed">
+                            {ideal}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </motion.div>
+
+            {/* Right: Key Features (The Checklist) */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-5 p-10 rounded-[3rem] border-2 border-border/60 dark:border-white/10 bg-muted/5 dark:bg-white/[0.02] backdrop-blur-sm relative overflow-hidden"
+            >
+              <div className="absolute top-[-5%] right-[-15%] md:right-[-10%] p-6 opacity-[0.05] dark:opacity-[0.04] pointer-events-none">
+                <Check className="w-40 h-40 -rotate-12 text-accent" />
+              </div>
+
+              <h3 className="text-xs font-black uppercase tracking-[0.4em] text-accent mb-8 flex items-center gap-3">
+                <Check className="w-5 h-5" /> Standard Features
+              </h3>
+
+              {vehicle.featureGroups ? (
+                <div className="space-y-8">
+                  {vehicle.featureGroups.map((group, idx) => (
+                    <div key={idx}>
+                      <h4 className="text-sm font-black text-foreground uppercase tracking-widest mb-4 opacity-80">{group.category}</h4>
+                      <div className="space-y-3">
+                        {group.items.map((item, i) => (
+                          <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-muted/5 dark:bg-white/[0.02] border border-border dark:border-accent/15">
+                            <div className="shrink-0 w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center">
+                              <Check className="w-3 h-3 text-accent" strokeWidth={4} />
+                            </div>
+                            <span className="font-bold text-xs md:text-sm text-black dark:text-white">{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {vehicle.features.map((feature, index) => (
+                    <div key={index} className="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-black/40 border border-border/60 group hover:border-accent/50 transition-colors">
+                      <div className="shrink-0 w-6 h-6 rounded-full bg-accent flex items-center justify-center">
+                        <Check className="w-4 h-4 text-accent-foreground" strokeWidth={4} />
+                      </div>
+                      <span className="font-bold text-sm text-black dark:text-white group-hover:text-accent transition-colors">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </motion.div>
+          </div>
+
+          {/* 3. The Journey (How it Works) */}
+          <div className="flex flex-col">
+            <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-2">Process</span>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-black dark:text-white uppercase">
+              Simple <span className="text-accent italic">Leasing</span></h2>
+          </div>
+
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {howItWorksSteps.map((step, index) => (
+              <div key={index} className="group relative p-10 rounded-[2.5rem] border-2 border-border dark:border-white/10  bg-muted/5 dark:bg-white/[0.02] hover:border-accent hover:dark:border-accent transition-all duration-500 overflow-hidden">
+                <span className="absolute -right-4 -bottom-4 text-9xl font-black text-black/[0.03] dark:text-white/[0.03] group-hover:text-accent/10 group-hover:dark:text-accent/10 transition-colors leading-none select-none pointer-events-none">
+                  {index + 1}
+                </span>
+
+                <div className="relative z-10 flex flex-col gap-8">
+                  <div className="w-14 h-14 rounded-2xl bg-accent/10 text-accent flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-500">
+                    <step.icon className="w-7 h-7" />
+                  </div>
+                  <div>
+                    <h3 className="font-black text-xl uppercase tracking-tighter mb-3 text-black dark:text-white group-hover:text-accent transition-colors">
+                      {step.title}
+                    </h3>
+                    <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground/60 leading-relaxed group-hover:text-muted-foreground transition-colors">
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
       </section>
+
+
+
+
 
       {/* FAQ Section */}
-      <section className="py-12 md:py-16 lg:py-20 section-bg border-t border-border dark:border-white/10">
+      <section className="py-12 md:py-16 lg:py-20  border-t border-border dark:border-white/10">
         <div
           ref={faqRef}
           className={cn(
@@ -686,7 +755,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
       </section>
 
       {/* Contact Form Section - Enhanced */}
-      <section id="contact" className="py-12 md:py-16 lg:py-20 section-bg border-t border-border dark:border-white/10">
+      <section id="contact" className="py-12 md:py-16 lg:py-20  border-t border-border dark:border-white/10">
         <div
           ref={formRef}
           className={cn(
@@ -708,7 +777,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
                 Let us help you find the perfect {vehicle.name.toLowerCase()} vehicle. Fill out the form below and our team will get back to you shortly.
               </p>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={formRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -730,74 +799,13 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
         </div>
       </section>
 
-      {/* Explore other vehicle types - Enhanced Grid */}
-      <section className="py-12 md:py-16 lg:py-20 section-bg border-t border-border dark:border-white/10">
-        <div
-          ref={browseRef}
-          className={cn(
-            'container mx-auto px-4 lg:px-8 scroll-reveal',
-            browseRevealed && 'revealed'
-          )}
-        >
-          <SectionHeading
-            title="Explore other vehicle types"
-            subtitle="Switch to any category below—no need to go back to the homepage."
-          />
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 mt-10 md:mt-12">
-            {vehicleTypes.map((type, index) => {
-              const isCurrent = type.slug === vehicle.slug;
-              const cardContent = (
-                <>
-                  <div className="relative w-full aspect-square md:aspect-[4/3] rounded-xl overflow-hidden bg-card dark:bg-white/[0.04] border border-border dark:border-white/10 flex items-center justify-center p-3 group-hover:border-accent/40 transition-colors">
-                    <img
-                      src={type.image}
-                      alt={type.name}
-                      className="w-full h-full object-contain transition-transform group-hover:scale-110 duration-300"
-                      loading="lazy"
-                    />
-                    {isCurrent && (
-                      <span className="absolute top-2 right-2 px-2 py-1 rounded-md bg-accent text-accent-foreground text-[10px] font-bold uppercase tracking-wider shadow-lg">
-                        Current
-                      </span>
-                    )}
-                  </div>
-                  <span className="block mt-3 text-sm md:text-base font-semibold text-foreground text-center group-hover:text-accent transition-colors">
-                    {type.name}
-                  </span>
-                </>
-              );
-              if (isCurrent) {
-                return (
-                  <motion.div
-                    key={type.slug}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={browseRevealed ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-                    transition={{ delay: index * 0.05 }}
-                    className="flex flex-col rounded-2xl p-4 border-2 border-accent/50 bg-accent/10 dark:bg-accent/15 shadow-lg"
-                  >
-                    {cardContent}
-                  </motion.div>
-                );
-              }
-              return (
-                <motion.div
-                  key={type.slug}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={browseRevealed ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-                  transition={{ delay: index * 0.05 }}
-                >
-                  <Link
-                    to={`/vehicles/${type.slug}`}
-                    className="group flex flex-col rounded-2xl p-4 border border-border dark:border-white/10 bg-card dark:bg-white/[0.04] hover:border-accent/40 hover:bg-muted/50 dark:hover:bg-white/[0.06] transition-all duration-300 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                  >
-                    {cardContent}
-                  </Link>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <VehicleTypesCarousel
+        title="Explore Other Vehicle Types"
+        subtitle="Discover the perfect drive across our diverse range of luxury and performance vehicle categories."
+        sectionId="explore-more"
+      />
+
+      <TestimonialsSection />
     </Layout>
   );
 }

@@ -23,7 +23,7 @@ export function ScrollTriggeredQuizDialog() {
       const navEntries = performance.getEntriesByType('navigation') as PerformanceNavigationTiming[];
       const navType = navEntries[0]?.type || 'unknown';
       const isReload = navType === 'reload';
-      
+
       // If it's a reload, set a flag and clear navigation flag immediately
       if (isReload) {
         sessionStorage.setItem(IS_RELOAD_KEY, 'true');
@@ -33,13 +33,13 @@ export function ScrollTriggeredQuizDialog() {
           sessionStorage.removeItem(IS_RELOAD_KEY);
         }, 100);
       }
-      
+
       return isReload;
     };
-    
+
     // Check immediately
     const isReload = checkNavigationType();
-    
+
     // Also check after a small delay in case entry wasn't ready
     const timeoutId = setTimeout(() => {
       checkNavigationType();
@@ -89,10 +89,10 @@ export function ScrollTriggeredQuizDialog() {
       <DialogContent className="w-[calc(100%-2rem)] sm:w-full sm:max-w-md focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 rounded-2xl bg-background dark:bg-black/90 dark:border-white/10 rounded-lg">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-center">
-          Not Sure Which Vehicle Fits You Best?
+            Not Sure Which Vehicle Fits You Best?
           </DialogTitle>
           <DialogDescription className="text-center text-base">
-          <span className="font-bold"></span> Answer just 5 quick questions and we'll help you find the perfect vehicle for your needs.
+            <span className="font-bold"></span> Answer just 5 quick questions and we'll help you find the perfect vehicle for your needs.
           </DialogDescription>
         </DialogHeader>
         <div className="flex flex-col items-center gap-4 pt-4">

@@ -90,20 +90,20 @@ function ServiceColumn({ service, index, isRevealed }: ServiceColumnProps) {
 
         {/* Icon, title, description, CTA — centered */}
         <div className="flex flex-col items-center flex-grow p-3 sm:p-5 lg:p-6">
-        
+
           <h3 className="text-lg sm:text-lg lg:text-xl font-bold text-foreground mb-2 sm:mb-3">
             {service.title}
           </h3>
           <p className="text-muted-foreground dark:text-white/70 text-sm sm:text-sm lg:text-base leading-relaxed mb-4 sm:mb-5 flex-grow">
             {service.description}
           </p>
-         <Button
-          asChild
-          size="sm"
-          className="bg-accent hover:bg-accent/90 text-accent-foreground glow-blue w-full text-sm sm:text-sm"
-        >
-          <Link to={service.href}>{service.ctaText}</Link>
-        </Button>
+          <Button
+            asChild
+            size="sm"
+            className="bg-accent hover:bg-accent/90 text-accent-foreground glow-blue w-full text-sm sm:text-sm"
+          >
+            <Link to={service.href}>{service.ctaText}</Link>
+          </Button>
         </div>
       </div>
     </Link>
@@ -114,7 +114,7 @@ export function WhatWeDoSection() {
   const { ref, isRevealed } = useScrollReveal();
 
   return (
-    <section className="relative py-16 lg:py-20 overflow-hidden bg-white dark:bg-[hsl(0_0%_4%)]">
+    <section className="relative py-16 lg:py-20 overflow-hidden ">
       <div
         ref={ref}
         className={cn(

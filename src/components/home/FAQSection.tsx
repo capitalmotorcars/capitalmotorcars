@@ -46,7 +46,7 @@ export function FAQSection() {
   const { ref, isRevealed } = useScrollReveal();
 
   return (
-    <section className=" py-16 md:py-20 lg:py-24 bg-white dark:bg-[hsl(0_0%_4%)]">
+    <section className=" py-16 md:py-20 lg:py-24 ">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div
           ref={ref}

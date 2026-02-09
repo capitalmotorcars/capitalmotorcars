@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { ArrowRight, X } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import bg1 from '@/assets/background-mercedes.jpeg';
 import bg2 from '@/assets/background-audi.jpg';
 import bg3 from '@/assets/background-ford.jpg';
@@ -63,6 +63,12 @@ const dialogPanelClass = cn(
 );
 const dialogFadeTransition = { type: 'tween' as const, duration: 0.4, ease: 'easeOut' as const };
 
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+} as const;
+
 export default function BrandsPage() {
   const [activeCategory, setActiveCategory] = useState<BrandCategory>('luxury');
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
@@ -76,30 +82,46 @@ export default function BrandsPage() {
 
   return (
     <Layout>
-      <SEO 
-        title="Brands We Work With | Capital Motor Cars"
-        description="We work with BMW, Mercedes, Audi, Lexus, Toyota, and more. Contact us to find out what vehicles are currently available."
+      <SEO
+        title="Car Brands We Lease | Luxury & Popular Models | Capital Motor Cars"
+        description="Explore the wide range of car brands we lease in New Jersey, including BMW, Mercedes-Benz, Audi, Lexus, Toyota, and Ford. Get the best lease deals on any make or model."
+        seoKeywords={['car brands', 'BMW lease NJ', 'Mercedes lease deals', 'Audi leasing', 'Lexus lease NJ', 'Toyota lease deals', 'popular car brands']}
+        ogImage="/src/assets/hero-bg.jpg"
+        canonicalPath="/brands"
       />
-      
+
       <section className="pt-16 lg:pt-20">
         <div id="brands" className="relative h-full flex flex-col">
           {/* Top half: Blurred background */}
           <div className="absolute top-0 left-0 right-0 h-[30vh] md:h-[45vh] overflow-hidden">
-            <img
+            <motion.img
+              initial={{ scale: 1.1, opacity: 0 }}
+              animate={{ scale: 1.05, opacity: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
               src={currentBackground}
               alt=""
-              className="w-full h-full object-cover object-center blur-[1.5px] transition-opacity duration-1000"
+              className="w-full h-full object-cover object-center blur-[1.5px]"
               aria-hidden
             />
           </div>
           {/* Dark overlay on top half for text readability */}
-          <div
-            className="absolute top-0 left-0 right-0 h-[30vh] md:h-[45vh] bg-gradient-to-b from-black/40 via-black/20 to-transparent transition-opacity duration-1000"
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="absolute top-0 left-0 right-0 h-[30vh] md:h-[45vh] bg-gradient-to-b from-black/40 via-black/20 to-transparent"
             aria-hidden
           />
+
+          {/* Gradient fade to bottom content */}
+          <div
+            className="absolute top-[15vh] md:top-[22.5vh] left-0 right-0 h-[15vh] md:h-[22.5vh] bg-gradient-to-b from-transparent via-white/20 to-white dark:to-[hsl(0,0%,4%)]"
+            aria-hidden
+          />
+
           {/* Bottom half: White background */}
           <div
-            className="absolute top-[30vh] md:top-[45vh] left-0 right-0 bottom-0 bg-white dark:bg-background"
+            className="absolute top-[30vh] md:top-[45vh] left-0 right-0 bottom-0 bg-white dark:bg-[hsl(0,0%,4%)]"
             aria-hidden
           />
 
@@ -107,15 +129,28 @@ export default function BrandsPage() {
           <div ref={ref} className={cn('relative z-10 flex-1 flex flex-col', 'scroll-reveal', isRevealed && 'revealed')}>
             {/* Title and Filters */}
             <div className="relative z-50 mx-auto h-[30vh] md:h-[45vh] px-4 lg:px-8 flex flex-col items-center justify-center">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white text-center pb-2 md:pb-4 xl:pb-6">
+              <motion.h2
+                {...fadeInUp}
+                transition={{ ...fadeInUp.transition, delay: 0.1 }}
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white text-center pb-2 md:pb-4 xl:pb-6"
+              >
                 Brands We Work With
-              </h2>
-              <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/80 text-center max-w-3xl xl:max-w-5xl mx-auto pb-4 md:pb-6 xl:pb-8">
+              </motion.h2>
+              <motion.p
+                {...fadeInUp}
+                transition={{ ...fadeInUp.transition, delay: 0.2 }}
+                className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/80 text-center max-w-3xl xl:max-w-5xl mx-auto pb-4 md:pb-6 xl:pb-8"
+              >
                 We work with a wide range of automotive brands and dealerships across New Jersey and beyond.
-              </p>
+              </motion.p>
 
               {/* Stats */}
-              <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 xl:gap-10 pb-4 md:pb-6 xl:pb-8">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 xl:gap-10 pb-4 md:pb-6 xl:pb-8"
+              >
                 <div className="flex flex-col items-center">
                   <span className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white">
                     12+
@@ -142,10 +177,15 @@ export default function BrandsPage() {
                     Dealerships
                   </span>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Filter Navigation */}
-              <div className="relative z-50 mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="relative z-50 mx-auto"
+              >
                 <div className="flex flex-wrap items-center gap-1 sm:gap-3 md:gap-4 xl:gap-6 justify-center max-w-[280px] sm:max-w-none">
                   {brandCategories.map((category) => {
                     const isActive = activeCategory === category.id;
@@ -174,7 +214,7 @@ export default function BrandsPage() {
                     );
                   })}
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             {/* Brands Grid */}
@@ -197,12 +237,12 @@ export default function BrandsPage() {
                             className="group flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 xl:p-10 rounded-xl border-2 border-border dark:border-white/10 bg-card dark:bg-white/[0.04] hover:border-accent hover:shadow-[0_0_30px_hsl(214_77%_50%_/_0.4)] hover:shadow-accent/30 transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                           >
                             <div className="flex items-center justify-center p-4 sm:p-6 mb-3 sm:mb-4 rounded-lg bg-muted dark:bg-white/10 w-full max-w-[160px] sm:max-w-[180px] md:max-w-[200px] xl:max-w-[220px] min-h-[100px] sm:min-h-[120px] md:min-h-[140px] xl:min-h-[160px] group-hover:bg-accent/10 transition-colors">
-                              <img 
-                                src={brand.logo} 
-                                alt={brand.name} 
-                                loading="lazy" 
-                                decoding="async" 
-                                className="h-12 sm:h-16 md:h-20 xl:h-24 w-auto object-contain transition-transform group-hover:scale-110" 
+                              <img
+                                src={brand.logo}
+                                alt={brand.name}
+                                loading="lazy"
+                                decoding="async"
+                                className="h-12 sm:h-16 md:h-20 xl:h-24 w-auto object-contain transition-transform group-hover:scale-110"
                               />
                             </div>
                             <span className="text-sm sm:text-base md:text-lg xl:text-xl font-semibold text-foreground group-hover:text-accent transition-colors text-center">
@@ -230,10 +270,10 @@ export default function BrandsPage() {
                               <div className={cn(dialogPanelClass, 'w-full max-w-lg p-6 md:p-8')}>
                                 <div className="flex items-start gap-4 mb-4">
                                   <div className="flex items-center justify-center shrink-0">
-                                    <img 
-                                      src={brand.logo} 
-                                      alt={brand.name} 
-                                      className="h-16 w-16 md:h-20 md:w-20 object-contain" 
+                                    <img
+                                      src={brand.logo}
+                                      alt={brand.name}
+                                      className="h-16 w-16 md:h-20 md:w-20 object-contain"
                                     />
                                   </div>
                                   <div className="min-w-0 flex-1">
@@ -288,6 +328,6 @@ export default function BrandsPage() {
           </div>
         </div>
       </section>
-    </Layout>
+    </Layout >
   );
 }

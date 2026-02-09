@@ -12,15 +12,15 @@ const ANNOTATION_DEFS: {
   zoomDistance: number;
   cameraDir: [number, number, number];
 }[] = [
-  { id: 1, label: '1', ratio: [0.95, 0.50, 0.88], description: 'Left headlight—sleek lines and LED lighting.', zoomDistance: 1.8, cameraDir: [1.2, 0.25, 0.9] },
-  { id: 2, label: '2', ratio: [0.96, 0.60, 0.5], description: 'Front hood and Porsche emblem—aerodynamic design and brand identity.', zoomDistance: 4.4, cameraDir: [1.4, 0.35, 0] },
-  { id: 3, label: '3', ratio: [0.60, 0.73, 0.96], description: 'Left rearview mirror—aerodynamic design and visibility.', zoomDistance: 1.2, cameraDir: [0.5, 0.1, 1] },
-  { id: 4, label: '4', ratio: [0.78, 0.36, 0.02], description: 'Front-left wheel center cap and brake caliper.', zoomDistance: 2.2, cameraDir: [-8.8, 2.8, -20.6] },
-  { id: 5, label: '5', ratio: [0.50, 0.82, 0.18], description: 'A-pillar and windshield—structural rigidity and visibility.', zoomDistance: 0.2, cameraDir: [-2.6, 4.2, -4.6] },
-  { id: 6, label: '6', ratio: [0.22, 0.76, 0.48], description: 'Rear engine cover—mid-engine layout and cooling.', zoomDistance: 3.2, cameraDir: [-1.2, 0.25, 0.4] },
-  { id: 7, label: '7', ratio: [0.6, 0.68, 0.5], description: 'Interior and driver seat headrest—premium cabin.', zoomDistance: 2.2, cameraDir: [-6.3, 1, -2.2] },
-  { id: 8, label: '8', ratio: [0.05, 0.52, 0.18], description: 'Rear engine bay—918 Spyder hybrid powertrain.', zoomDistance: 3.4, cameraDir: [-1.3, 0.2, -1.2] },
-];
+    { id: 1, label: '1', ratio: [0.95, 0.50, 0.88], description: 'Left headlight—sleek lines and LED lighting.', zoomDistance: 1.8, cameraDir: [1.2, 0.25, 0.9] },
+    { id: 2, label: '2', ratio: [0.96, 0.60, 0.5], description: 'Front hood and Porsche emblem—aerodynamic design and brand identity.', zoomDistance: 4.4, cameraDir: [1.4, 0.35, 0] },
+    { id: 3, label: '3', ratio: [0.60, 0.73, 0.96], description: 'Left rearview mirror—aerodynamic design and visibility.', zoomDistance: 1.2, cameraDir: [0.5, 0.1, 1] },
+    { id: 4, label: '4', ratio: [0.78, 0.36, 0.02], description: 'Front-left wheel center cap and brake caliper.', zoomDistance: 2.2, cameraDir: [-8.8, 2.8, -20.6] },
+    { id: 5, label: '5', ratio: [0.50, 0.82, 0.18], description: 'A-pillar and windshield—structural rigidity and visibility.', zoomDistance: 0.2, cameraDir: [-2.6, 4.2, -4.6] },
+    { id: 6, label: '6', ratio: [0.22, 0.76, 0.48], description: 'Rear engine cover—mid-engine layout and cooling.', zoomDistance: 3.2, cameraDir: [-1.2, 0.25, 0.4] },
+    { id: 7, label: '7', ratio: [0.6, 0.68, 0.5], description: 'Interior and driver seat headrest—premium cabin.', zoomDistance: 2.2, cameraDir: [-6.3, 1, -2.2] },
+    { id: 8, label: '8', ratio: [0.05, 0.52, 0.18], description: 'Rear engine bay—918 Spyder hybrid powertrain.', zoomDistance: 3.4, cameraDir: [-1.3, 0.2, -1.2] },
+  ];
 
 const ZOOM_DURATION = 2;
 
@@ -394,11 +394,10 @@ export function VehicleViewer3D({
               type="button"
               onClick={() => setSelectedColor(c)}
               title={c.name}
-              className={`w-7 h-7 rounded-full border-2 shadow-sm transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-transparent ${
-                selectedColor.hex === c.hex
+              className={`w-7 h-7 rounded-full border-2 shadow-sm transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-transparent ${selectedColor.hex === c.hex
                   ? 'border-foreground dark:border-white ring-2 ring-foreground/30 dark:ring-white/30 scale-110'
                   : 'border-white/50 dark:border-white/30 hover:border-white/80 dark:hover:border-white/50'
-              }`}
+                }`}
               style={{ backgroundColor: c.swatchHex ?? c.hex }}
               aria-label={c.name}
               aria-pressed={selectedColor.hex === c.hex}
@@ -431,7 +430,7 @@ export function VehicleViewer3D({
             <div className="flex items-start justify-between gap-3">
               <div>
                 <p className="text-sm font-medium text-foreground dark:text-white">
-                {ann.id}.  {ann.description}
+                  {ann.id}.  {ann.description}
                 </p>
               </div>
               <button

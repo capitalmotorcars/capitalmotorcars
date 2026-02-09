@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { contactPageLinks } from '@/components/ui/RelatedLinks';
 import { Search, ArrowRight, Phone, Mail, MapPin, FileText, Building2 } from 'lucide-react';
+import { motion } from 'framer-motion';
 import bg1 from '@/assets/contact.jpg';
 
 export default function ContactPage() {
@@ -40,38 +41,60 @@ export default function ContactPage() {
       icon: MapPin,
       title: 'Location',
       description: 'Visit our office',
-      value: 'New Jersey, USA',
-      href: '#',
+      value: '251 Morris Avenue, Springfield, NJ',
+      href: 'https://www.google.com/maps/search/?api=1&query=251+Morris+Avenue+Springfield+NJ+07081',
     },
   ];
 
+  const fadeInUp = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+  } as const;
+
   return (
     <Layout>
-      <SEO 
-        title="Contact Us | Capital Motor Cars"
-        description="Get in touch with Capital Motor Cars. Ask questions about car leasing, financing, or end-of-lease services. We respond quickly."
+      <SEO
+        title="Contact Capital Motor Cars | Springfield NJ Office"
+        description="Get in touch with Capital Motor Cars in Springfield, NJ. Ask about car leasing, financing, or vehicle repairs. Call us at (555) 123-4567 or visit our office."
+        seoKeywords={['contact Capital Motor Cars', 'car leasing Springfield NJ', 'auto leasing contact', 'Capital Motor Cars phone number']}
+        ogImage="/src/assets/contact.jpg"
+        canonicalPath="/contact"
       />
       <JsonLd data={organizationSchema} />
-      
+
       <section className="pt-16 lg:pt-20">
         <div id="contact" className="relative h-full flex flex-col">
           {/* Top half: Blurred background */}
           <div className="absolute top-0 left-0 right-0 h-[30vh] md:h-[45vh] overflow-hidden">
-            <img
+            <motion.img
+              initial={{ scale: 1.1, opacity: 0 }}
+              animate={{ scale: 1.05, opacity: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
               src={currentBackground}
               alt=""
-              className="w-full h-full object-cover object-center blur-[1.5px] transition-opacity duration-1000"
+              className="w-full h-full object-cover object-center blur-[1.5px]"
               aria-hidden
             />
           </div>
           {/* Dark overlay on top half for text readability */}
-          <div
-            className="absolute top-0 left-0 right-0 h-[30vh] md:h-[45vh] bg-gradient-to-b from-black/40 via-black/20 to-transparent transition-opacity duration-1000"
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="absolute top-0 left-0 right-0 h-[30vh] md:h-[45vh] bg-gradient-to-b from-black/40 via-black/20 to-transparent"
             aria-hidden
           />
+
+          {/* Gradient fade to bottom content */}
+          <div
+            className="absolute top-[15vh] md:top-[22.5vh] left-0 right-0 h-[15vh] md:h-[22.5vh] bg-gradient-to-b from-transparent via-white/20 to-white dark:to-[hsl(0,0%,4%)]"
+            aria-hidden
+          />
+
           {/* Bottom half: White background */}
           <div
-            className="absolute top-[30vh] md:top-[45vh] left-0 right-0 bottom-0 bg-white dark:bg-background"
+            className="absolute top-[30vh] md:top-[45vh] left-0 right-0 bottom-0 bg-white dark:bg-[hsl(0,0%,4%)]"
             aria-hidden
           />
 
@@ -79,15 +102,28 @@ export default function ContactPage() {
           <div ref={ref} className={cn('relative z-10 flex-1 flex flex-col', 'scroll-reveal', isRevealed && 'revealed')}>
             {/* Title Section */}
             <div className="relative z-50 mx-auto h-[30vh] md:h-[45vh] px-4 lg:px-8 flex flex-col items-center justify-center">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl  font-bold text-white text-center pb-2 md:pb-4 xl:pb-6">
+              <motion.h2
+                {...fadeInUp}
+                transition={{ ...fadeInUp.transition, delay: 0.1 }}
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white text-center pb-2 md:pb-4 xl:pb-6"
+              >
                 Contact
-              </h2>
-              <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white dark:text-white text-center max-w-3xl xl:max-w-5xl mx-auto pb-4 md:pb-6 xl:pb-8">
+              </motion.h2>
+              <motion.p
+                {...fadeInUp}
+                transition={{ ...fadeInUp.transition, delay: 0.2 }}
+                className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white dark:text-white text-center max-w-3xl xl:max-w-5xl mx-auto pb-4 md:pb-6 xl:pb-8"
+              >
                 If you have any questions or would like to get started, fill out the form and we will respond shortly.
-              </p>
+              </motion.p>
 
               {/* Quiz Section */}
-              <div className="flex flex-col items-center gap-3 sm:gap-4">
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="flex flex-col items-center gap-3 sm:gap-4"
+              >
                 <p className="text-sm sm:text-base md:text-lg xl:text-xl text-white dark:text-white text-center max-w-2xl">
                   Find your perfect vehicle match in just 5 quick questions.
                 </p>
@@ -101,7 +137,7 @@ export default function ContactPage() {
                     <Search className="w-4 h-4 xl:w-5 xl:h-5" />
                   </Link>
                 </Button>
-              </div>
+              </motion.div>
             </div>
 
             {/* Contact Form Section */}
@@ -172,7 +208,7 @@ export default function ContactPage() {
                 Explore other ways to get started with Capital Motor Cars.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 xl:gap-10">
               {contactPageLinks.map((link, idx) => {
                 const icons = [Search, FileText, Building2];
