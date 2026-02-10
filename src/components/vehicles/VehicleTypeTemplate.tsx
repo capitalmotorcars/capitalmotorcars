@@ -210,6 +210,16 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
   const { ref: testimonialsRef, isRevealed: testimonialsRevealed } = useScrollReveal();
   const { ref: faqRef, isRevealed: faqRevealed } = useScrollReveal();
   const [isContactDialogOpen, setIsContactDialogOpen] = React.useState(false);
+  const [isDesktop, setIsDesktop] = React.useState(
+    typeof window !== 'undefined' ? window.innerWidth >= 768 : false
+  );
+
+  React.useEffect(() => {
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 768);
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
 
   return (
     <Layout>
@@ -491,79 +501,112 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {/* Exterior Stats */}
-                <div className="bg-muted/5 dark:bg-white/[0.02] rounded-3xl p-8 border-2 border-border/60 dark:border-white/10">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 rounded-xl bg-accent/10 text-accent"><Ruler className="w-6 h-6" /></div>
-                    <h3 className="text-lg font-bold uppercase tracking-wide">Exterior</h3>
-                  </div>
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-center border-b border-border/30 pb-2">
-                      <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Length</span>
-                      <span className="text-base font-medium">{vehicle.specs.exterior.length}</span>
-                    </div>
-                    <div className="flex justify-between items-center border-b border-border/30 pb-2">
-                      <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Height</span>
-                      <span className="text-base font-medium">{vehicle.specs.exterior.height}</span>
-                    </div>
-                    <div className="flex justify-between items-center border-b border-border/30 pb-2">
-                      <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Weight</span>
-                      <span className="text-base font-medium">{vehicle.specs.exterior.weight}</span>
-                    </div>
-                    <div className="flex justify-between items-center pt-1">
-                      <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Wheels</span>
-                      <span className="text-base font-medium text-right max-w-[50%]">{vehicle.specs.exterior.wheels}</span>
-                    </div>
-                  </div>
-                </div>
+                {/* Exterior Accordion */}
+                <Accordion type="single" collapsible className="w-full" defaultValue={isDesktop ? "exterior" : undefined}>
+                  <AccordionItem
+                    value="exterior"
+                    className="bg-muted/5 dark:bg-white/[0.02] rounded-3xl border-2 border-border/60 dark:border-white/10 overflow-hidden"
+                  >
+                    <AccordionTrigger className="px-8 py-6 hover:no-underline hover:bg-accent/5 transition-colors">
+                      <div className="flex items-center gap-3">
+                        <div className="p-3 rounded-xl bg-accent/10 text-accent">
+                          <Ruler className="w-6 h-6" />
+                        </div>
+                        <h3 className="text-lg font-bold uppercase tracking-wide">Exterior</h3>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-8 pb-6">
+                      <div className="space-y-4 pt-2">
+                        <div className="flex justify-between items-center border-b border-border/30 pb-2">
+                          <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Length</span>
+                          <span className="text-base font-medium">{vehicle.specs.exterior.length}</span>
+                        </div>
+                        <div className="flex justify-between items-center border-b border-border/30 pb-2">
+                          <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Height</span>
+                          <span className="text-base font-medium">{vehicle.specs.exterior.height}</span>
+                        </div>
+                        <div className="flex justify-between items-center border-b border-border/30 pb-2">
+                          <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Weight</span>
+                          <span className="text-base font-medium">{vehicle.specs.exterior.weight}</span>
+                        </div>
+                        <div className="flex justify-between items-center pt-1">
+                          <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Wheels</span>
+                          <span className="text-base font-medium text-right max-w-[50%]">{vehicle.specs.exterior.wheels}</span>
+                        </div>
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
 
-                {/* Interior Stats */}
-                <div className="bg-muted/5 dark:bg-white/[0.02] rounded-3xl p-8 border-2 border-border/60 dark:border-white/10">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 rounded-xl bg-accent/10 text-accent"><Armchair className="w-6 h-6" /></div>
-                    <h3 className="text-lg font-bold uppercase tracking-wide">Interior</h3>
-                  </div>
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-center border-b border-border/30 pb-2">
-                      <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Headroom</span>
-                      <span className="text-base font-medium">{vehicle.specs.interior.headroom}</span>
-                    </div>
-                    <div className="flex justify-between items-center border-b border-border/30 pb-2">
-                      <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Legroom</span>
-                      <span className="text-base font-medium">{vehicle.specs.interior.legroom}</span>
-                    </div>
-                    <div className="flex justify-between items-center border-b border-border/30 pb-2">
-                      <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Cargo</span>
-                      <span className="text-base font-medium">{vehicle.specs.interior.cargo}</span>
-                    </div>
-                    <div className="flex justify-between items-center pt-1">
-                      <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Capacity</span>
-                      <span className="text-base font-medium">{vehicle.specs.interior.passengers} Passengers</span>
-                    </div>
-                  </div>
-                </div>
+                {/* Interior Accordion */}
+                <Accordion type="single" collapsible className="w-full" defaultValue={isDesktop ? "interior" : undefined}>
+                  <AccordionItem
+                    value="interior"
+                    className="bg-muted/5 dark:bg-white/[0.02] rounded-3xl border-2 border-border/60 dark:border-white/10 overflow-hidden"
+                  >
+                    <AccordionTrigger className="px-8 py-6 hover:no-underline hover:bg-accent/5 transition-colors">
+                      <div className="flex items-center gap-3">
+                        <div className="p-3 rounded-xl bg-accent/10 text-accent">
+                          <Armchair className="w-6 h-6" />
+                        </div>
+                        <h3 className="text-lg font-bold uppercase tracking-wide">Interior</h3>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-8 pb-6">
+                      <div className="space-y-4 pt-2">
+                        <div className="flex justify-between items-center border-b border-border/30 pb-2">
+                          <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Headroom</span>
+                          <span className="text-base font-medium">{vehicle.specs.interior.headroom}</span>
+                        </div>
+                        <div className="flex justify-between items-center border-b border-border/30 pb-2">
+                          <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Legroom</span>
+                          <span className="text-base font-medium">{vehicle.specs.interior.legroom}</span>
+                        </div>
+                        <div className="flex justify-between items-center border-b border-border/30 pb-2">
+                          <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Cargo</span>
+                          <span className="text-base font-medium">{vehicle.specs.interior.cargo}</span>
+                        </div>
+                        <div className="flex justify-between items-center pt-1">
+                          <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Capacity</span>
+                          <span className="text-base font-medium">{vehicle.specs.interior.passengers} Passengers</span>
+                        </div>
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
 
-                {/* Warranty Stats */}
-                <div className="bg-muted/5 dark:bg-white/[0.02] rounded-3xl p-8 border-2 border-border/60 dark:border-white/10">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 rounded-xl bg-accent/10 text-accent"><ShieldCheck className="w-6 h-6" /></div>
-                    <h3 className="text-lg font-bold uppercase tracking-wide">Warranty</h3>
-                  </div>
-                  <div className="space-y-4">
-                    <div className="flex flex-col gap-1 border-b border-border/30 pb-2">
-                      <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Comprehensive</span>
-                      <span className="text-sm font-medium">{vehicle.specs.warranty.comprehensive}</span>
-                    </div>
-                    <div className="flex flex-col gap-1 border-b border-border/30 pb-2">
-                      <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Powertrain</span>
-                      <span className="text-sm font-medium">{vehicle.specs.warranty.powertrain}</span>
-                    </div>
-                    <div className="flex flex-col gap-1 pt-1">
-                      <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Roadside Assistance</span>
-                      <span className="text-sm font-medium">{vehicle.specs.warranty.roadside}</span>
-                    </div>
-                  </div>
-                </div>
+                {/* Warranty Accordion */}
+                <Accordion type="single" collapsible className="w-full" defaultValue={isDesktop ? "warranty" : undefined}>
+                  <AccordionItem
+                    value="warranty"
+                    className="bg-muted/5 dark:bg-white/[0.02] rounded-3xl border-2 border-border/60 dark:border-white/10 overflow-hidden"
+                  >
+                    <AccordionTrigger className="px-8 py-6 hover:no-underline hover:bg-accent/5 transition-colors">
+                      <div className="flex items-center gap-3">
+                        <div className="p-3 rounded-xl bg-accent/10 text-accent">
+                          <ShieldCheck className="w-6 h-6" />
+                        </div>
+                        <h3 className="text-lg font-bold uppercase tracking-wide">Warranty</h3>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-8 pb-6">
+                      <div className="space-y-4 pt-2">
+                        <div className="flex flex-col gap-1 border-b border-border/30 pb-2">
+                          <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Comprehensive</span>
+                          <span className="text-sm font-medium">{vehicle.specs.warranty.comprehensive}</span>
+                        </div>
+                        <div className="flex flex-col gap-1 border-b border-border/30 pb-2">
+                          <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Powertrain</span>
+                          <span className="text-sm font-medium">{vehicle.specs.warranty.powertrain}</span>
+                        </div>
+                        <div className="flex flex-col gap-1 pt-1">
+                          <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Roadside Assistance</span>
+                          <span className="text-sm font-medium">{vehicle.specs.warranty.roadside}</span>
+                        </div>
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
               </div>
             </div>
           )}
@@ -676,6 +719,43 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
             </motion.div>
           </div>
 
+          {/* Bottom CTA Section */}
+          <section className="py-20 relative overflow-hidden">
+            <div className="absolute inset-0" aria-hidden />
+            <div className="container relative mx-auto px-4 text-center">
+              <div className="max-w-3xl mx-auto space-y-8">
+                <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter text-foreground">
+                  Ready to Drive Your New <br className="hidden md:block" /> {vehicle.name}?
+                </h2>
+                <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                  Our specialists are ready to help you find the best lease terms for your next {vehicle.name.toLowerCase()}.
+                </p>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                  <Button
+                    onClick={() => setIsContactDialogOpen(true)}
+                    size="lg"
+                    className="h-16 px-10 rounded-2xl bg-accent hover:bg-accent/90 text-accent-foreground text-xl font-black shadow-xl shadow-accent/20 transition-all hover:scale-105 active:scale-95 w-full sm:w-auto"
+                  >
+                    Get Started
+                    <ArrowRight className="ml-2 w-6 h-6" />
+                  </Button>
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="lg"
+                    className="h-16 px-10 rounded-2xl border-2 border-border bg-transparent hover:bg-muted text-foreground text-lg font-bold w-full sm:w-auto"
+                  >
+                    <Link to="/contact">Contact Support</Link>
+                  </Button>
+                </div>
+                <div className="pt-8 flex items-center justify-center gap-6 text-muted-foreground/60">
+                  <div className="flex items-center gap-2"><Check className="w-5 h-5 text-accent" /> No Hidden Fees</div>
+                  <div className="flex items-center gap-2"><Check className="w-5 h-5 text-accent" /> Expert Advice</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* 3. The Journey (How it Works) */}
           <div className="flex flex-col">
             <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-2">Process</span>
@@ -712,42 +792,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
       </section>
 
 
-      {/* Bottom CTA Section */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0" aria-hidden />
-        <div className="container relative mx-auto px-4 text-center">
-          <div className="max-w-3xl mx-auto space-y-8">
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter text-foreground">
-              Ready to Drive Your New <br className="hidden md:block" /> {vehicle.name}?
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Our specialists are ready to help you find the best lease terms for your next {vehicle.name.toLowerCase()}.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-              <Button
-                onClick={() => setIsContactDialogOpen(true)}
-                size="lg"
-                className="h-16 px-10 rounded-2xl bg-accent hover:bg-accent/90 text-accent-foreground text-xl font-black shadow-xl shadow-accent/20 transition-all hover:scale-105 active:scale-95 w-full sm:w-auto"
-              >
-                Get Started
-                <ArrowRight className="ml-2 w-6 h-6" />
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="h-16 px-10 rounded-2xl border-2 border-border bg-transparent hover:bg-muted text-foreground text-lg font-bold w-full sm:w-auto"
-              >
-                <Link to="/contact">Contact Support</Link>
-              </Button>
-            </div>
-            <div className="pt-8 flex items-center justify-center gap-6 text-muted-foreground/60">
-              <div className="flex items-center gap-2"><Check className="w-5 h-5 text-accent" /> No Hidden Fees</div>
-              <div className="flex items-center gap-2"><Check className="w-5 h-5 text-accent" /> Expert Advice</div>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Contact Dialog */}
       <Dialog.Root open={isContactDialogOpen} onOpenChange={setIsContactDialogOpen}>
