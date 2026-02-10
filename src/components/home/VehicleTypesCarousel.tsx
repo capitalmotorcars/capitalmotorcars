@@ -117,7 +117,7 @@ export function VehicleTypesCarousel({
         {/* Content */}
         <div ref={ref} className={cn('relative z-10 flex-1 flex flex-col  ', 'scroll-reveal', isRevealed && 'revealed')}>
           {/* Title and Filters */}
-          <div className="relative z-50 mx-auto h-[30vh] md:h-[40vh]  px-4 lg:px-8 pt-6 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-20">
+          <div className="relative z-50 mx-auto h-[35vh] md:h-[45vh]  px-4 lg:px-8 pt-6 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-20">
             <h2 className="text-xl sm:text-3xl  md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white text-center pb-2 md:pb-4">
               {title}
             </h2>
@@ -235,7 +235,7 @@ export function VehicleTypesCarousel({
 
           {/* Car Details - positioned below vehicles */}
           {currentVehicle && specs && (
-            <div className="relative   h-full pt-[10vh] md:pt-28  z-10">
+            <div className="relative   h-full pt-[5vh] md:pt-16  z-40">
               <div className="mx-auto px-4 lg:px-8 md:pt-24">
                 <div className="max-w-7xl mx-auto">
                   {/* Car Name - column layout on mobile, row on desktop */}
@@ -243,15 +243,15 @@ export function VehicleTypesCarousel({
                     <div className="flex flex-col sm:flex-row items-start sm:items-baseline gap-1 sm:gap-2 md:gap-3">
                       <span className="text-xs sm:text-sm md:text-base text-muted-foreground">2026</span>
                       <Link
-                        to={currentVehicle.slug.startsWith('sedan') ? `/vehicles/sedan?vehicle=${currentVehicle.slug}` : `/vehicles/${currentVehicle.slug}`}
-                        className="hidden sm:inline text-xs md:text-sm text-muted-foreground "
+                        to={`/vehicles/${currentVehicle.slug}`}
+                        className="text-xs md:text-sm text-muted-foreground "
                       >
                         <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold hover:text-accent hover:underline transition-colors duration-300 ease-in-out text-foreground">
                           {currentVehicle.name}
                         </h3>
                       </Link>
                       <Link
-                        to={currentVehicle.slug.startsWith('sedan') ? `/vehicles/sedan?vehicle=${currentVehicle.slug}` : `/vehicles/${currentVehicle.slug}`}
+                        to={`/vehicles/${currentVehicle.slug}`}
                         className="hidden sm:inline text-xs md:text-sm text-muted-foreground hover:text-accent underline ml-2"
                       >
                         Disclaimers
@@ -417,11 +417,7 @@ export function VehicleTypesCarousel({
                       className="h-12 sm:h-14 md:h-16 rounded-lg border-2 border-foreground/20 hover:border-foreground/40 bg-transparent hover:bg-foreground/5 text-foreground font-semibold px-8 sm:px-10 md:px-12 text-base sm:text-lg md:text-xl transition-all duration-300"
                     >
                       <Link
-                        to={
-                          currentVehicle.slug.startsWith('sedan')
-                            ? `/vehicles/sedan?vehicle=${currentVehicle.slug}`
-                            : `/vehicles/${currentVehicle.slug}`
-                        }
+                        to={`/vehicles/${currentVehicle.slug}`}
                         className="flex items-center justify-center gap-2 sm:gap-3"
                       >
                         Learn more about {currentVehicle.name}

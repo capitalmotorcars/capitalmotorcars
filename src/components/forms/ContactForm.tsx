@@ -20,9 +20,75 @@ import { getSubmitErrorMessage, getSubmitErrorFromException } from './getSubmitE
 import { WEBHOOK_URL } from '@/lib/webhook';
 
 const contactSchema = z.object({
-  fullName: z.string().min(2, 'Name must be at least 2 characters').max(100),
-  email: z.string().email('Please enter a valid email address').max(255),
-  phone: z.string().min(10, 'Please enter a valid phone number').max(20),
+  fullName: z.string()
+    .min(2, 'Name must be at least 2 characters')
+    .max(100)
+    .refine(val => !/^(.)\1+$/.test(val.replace(/\s/g, '')), 'Please enter a valid name'),
+  email: z.string()
+    .email('Please enter a valid email address')
+    .max(255)
+    .refine((val) => {
+      const bannedDomains = [
+        'test.com', 'example.com', 'dummy.com', 'temp-mail.org',
+        'mailinator.com', 'tempmail.com', 'test.com', '123.com'
+      ];
+      const domain = val.split('@')[1]?.toLowerCase();
+      return !bannedDomains.includes(domain);
+    }, 'Please use a valid business or personal email')
+    .refine((val) => {
+      const [local, domain] = val.split('@');
+      // Block repeating local parts like 'aaaa@' or '1111@'
+      const isRepeatingLocal = /^(.)\1{3,}$/.test(local);
+      // Block repeating domains like '@111.111'
+      const isRepeatingDomain = domain ? /^(.)\1+\.(.)\2+$/.test(domain) : false;
+
+      return !isRepeatingLocal && !isRepeatingDomain;
+    }, 'Please enter a valid format (e.g., name@company.com)')
+    .refine((val) => {
+      const [local] = val.split('@');
+      // Block repeating patterns like 'dasdasdas' or 'abcabcabc'
+      if (local.length >= 6) {
+        // Check for 2-char patterns (like 'dadada')
+        for (let patternLen = 2; patternLen <= 4; patternLen++) {
+          const pattern = local.slice(0, patternLen);
+          const repeated = pattern.repeat(Math.ceil(local.length / patternLen)).slice(0, local.length);
+          if (local === repeated) return false;
+        }
+      }
+      return true;
+    }, 'Please enter a valid email address'),
+  phone: z.string()
+    .min(10, 'Please enter a valid phone number')
+    .max(20)
+    .refine((val) => {
+      const digits = val.replace(/\D/g, '');
+      // Prevent repeating digits like '1111111111'
+      return !/^(.)\1+$/.test(digits);
+    }, 'Please enter a real phone number')
+    .refine((val) => {
+      const digits = val.replace(/\D/g, '');
+      // Prevent simple sequences like '1234567890'
+      const sequential = "01234567890123456789";
+      return !sequential.includes(digits);
+    }, 'Please enter a real phone number')
+    .refine((val) => {
+      const digits = val.replace(/\D/g, '');
+      // Prevent repeating patterns like '232-323-2323' (digits: 2323232323)
+      if (digits.length >= 6) {
+        // Check for 2-digit patterns repeated (like 232323...)
+        const twoDigitPattern = digits.slice(0, 2);
+        const repeatedTwo = twoDigitPattern.repeat(Math.ceil(digits.length / 2)).slice(0, digits.length);
+        if (digits === repeatedTwo) return false;
+
+        // Check for 3-digit patterns repeated (like 123123123...)
+        if (digits.length >= 9) {
+          const threeDigitPattern = digits.slice(0, 3);
+          const repeatedThree = threeDigitPattern.repeat(Math.ceil(digits.length / 3)).slice(0, digits.length);
+          if (digits === repeatedThree) return false;
+        }
+      }
+      return true;
+    }, 'Please enter a real phone number'),
   service: z.string().optional(),
   vehicleType: z.string().optional(),
   message: z.string().max(1000).optional(),
@@ -66,10 +132,24 @@ interface ContactFormProps {
   initialValues?: Partial<ContactFormData>;
   hideServiceField?: boolean;
   showVehicleField?: boolean;
-  source?: 'contact' | 'service' | 'vehicle';
+  source?: 'contact' | 'service' | 'vehicle' | 'vehicle_dialog';
   vehicleName?: string;
   serviceTitle?: string;
 }
+
+const formatPhoneNumber = (value: string) => {
+  if (!value) return value;
+  const phoneNumber = value.replace(/[^\d]/g, '');
+  const phoneNumberLength = phoneNumber.length;
+  if (phoneNumberLength < 4) return phoneNumber;
+  if (phoneNumberLength < 7) {
+    return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+  }
+  return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(
+    3,
+    6
+  )}-${phoneNumber.slice(6, 10)}`;
+};
 
 export function ContactForm({
   compact = false,
@@ -93,11 +173,12 @@ export function ContactForm({
     formState: { errors },
     reset,
   } = useForm<ContactFormData>({
+    mode: 'onChange',
     resolver: zodResolver(contactSchema),
     defaultValues: {
       fullName: initialValues?.fullName ?? "",
       email: initialValues?.email ?? "",
-      phone: initialValues?.phone ?? "",
+      phone: formatPhoneNumber(initialValues?.phone ?? ""),
       service: initialValues?.service ?? undefined,
       vehicleType: initialValues?.vehicleType ?? undefined,
       message: initialValues?.message ?? "",
@@ -106,6 +187,8 @@ export function ContactForm({
 
   const selectedService = watch('service');
   const { ref: messageRef, ...messageRegister } = register('message');
+
+  const { ref: phoneRef, onChange: onPhoneChange, ...phoneRegister } = register('phone');
 
   useEffect(() => {
     if (isSuccess) {
@@ -141,9 +224,11 @@ export function ContactForm({
           ? (services.find((s) => s.value === data.service)?.label ?? 'Contact')
           : source === 'service'
             ? (serviceTitle ?? 'Service inquiry')
-            : 'N/A';
+            : source === 'vehicle' || source === 'vehicle_dialog'
+              ? 'Vehicle Inquiry'
+              : 'N/A';
       const vehicleLabel =
-        source === 'vehicle'
+        source === 'vehicle' || source === 'vehicle_dialog'
           ? (vehicleName ?? data.vehicleType ?? 'N/A')
           : (vehicleTypeOptions.find((v) => v.value === data.vehicleType)?.label ?? (data.vehicleType ? String(data.vehicleType) : 'N/A'));
 
@@ -226,7 +311,13 @@ export function ContactForm({
           <Input
             id="phone"
             type="tel"
-            {...register('phone')}
+            {...phoneRegister}
+            ref={phoneRef}
+            onChange={(e) => {
+              const formatted = formatPhoneNumber(e.target.value);
+              e.target.value = formatted;
+              onPhoneChange(e);
+            }}
             placeholder="(555) 123-4567"
             className={cn(
               errors.phone && 'border-destructive bg-destructive/5'

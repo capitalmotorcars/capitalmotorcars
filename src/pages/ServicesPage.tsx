@@ -415,7 +415,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Next Steps Section */}
-      <section className=" py-8 md:py-20 w-full bg-white   bg-white dark:bg-white/[0.02]  ">
+      <section className=" py-8 md:py-20 w-full   ">
         <div className="container mx-auto  px-4 lg:px-8 xl:px-12 max-w-7xl xl:max-w-[90rem] mx-auto border-t-2 border-border dark:border-white/20">
           <div className="mt-6 sm:mt-8 md:mt-10 pb-6 sm:pb-8 md:pb-10">
             <div className="text-center mb-6 sm:mb-8 md:mb-10">

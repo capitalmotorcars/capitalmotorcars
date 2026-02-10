@@ -109,7 +109,7 @@ export default function AboutPage() {
           />
 
           {/* Content */}
-          <div ref={headerRef} className={cn('relative  z-10 flex-1 flex flex-col', 'scroll-reveal', headerRevealed && 'revealed')}>
+          <div ref={headerRef} className={cn('relative  z-10 flex-1 flex flex-col dark:bg-white/[0.02]', 'scroll-reveal', headerRevealed && 'revealed')}>
             {/* Title Section */}
             <div className="relative z-50 mx-auto h-[30vh] md:h-[45vh] px-4 lg:px-8 flex flex-col items-center justify-center">
               <motion.img

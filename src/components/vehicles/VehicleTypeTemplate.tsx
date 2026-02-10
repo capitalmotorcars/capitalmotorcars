@@ -205,12 +205,11 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
   const { ref: browseRef, isRevealed: browseRevealed } = useScrollReveal();
   const { ref: highlightsRef, isRevealed: highlightsRevealed } = useScrollReveal();
   const { ref: idealRef, isRevealed: idealRevealed } = useScrollReveal();
-  const { ref: formRef, isRevealed: formRevealed } = useScrollReveal();
   const { ref: specsRef, isRevealed: specsRevealed } = useScrollReveal();
   const { ref: howItWorksRef, isRevealed: howItWorksRevealed } = useScrollReveal();
   const { ref: testimonialsRef, isRevealed: testimonialsRevealed } = useScrollReveal();
   const { ref: faqRef, isRevealed: faqRevealed } = useScrollReveal();
-  const [openTestimonialIndex, setOpenTestimonialIndex] = React.useState<number | null>(null);
+  const [isContactDialogOpen, setIsContactDialogOpen] = React.useState(false);
 
   return (
     <Layout>
@@ -322,17 +321,17 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
                     }}
                     src={vehicle.image}
                     alt={vehicle.name}
-                    className="relative z-10 w-full h-auto object-contain drop-shadow-[0_35px_35px_rgba(0,0,0,0.4)]"
+                    className="relative  w-full h-full object-cover drop-shadow-[0_15px_15px_rgba(0,0,0,0.4)]"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2 bg-muted/20 dark:bg-white/[0.04] p-2 rounded-[2.5rem] border-2 border-border backdrop-blur-sm">
                 {/* 1. Price Card */}
-                <div className="col-span-2 md:col-span-1 bg-background dark:bg-card shadow-sm rounded-[2rem] p-6 flex flex-col justify-center items-center border border-border/40">
+                <div className="col-span-2 md:col-span-1 p-3 md:p-6 bg-background dark:bg-card shadow-sm rounded-[2rem] flex flex-col justify-center items-center border border-border/40">
                   <span className="text-[10px] uppercase tracking-[0.2em] text-accent font-black mb-1">Starting at</span>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-4xl font-black tracking-tight text-foreground">
+                    <span className="text-4xl font-medium tracking-tight text-foreground">
                       ${vehicle.startingPrice?.toLocaleString()}
                     </span>
                     <span className="text-muted-foreground font-medium">/mo</span>
@@ -366,16 +365,19 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
                 </div>
 
                 {/* 4. CTA Button */}
-                <Button asChild className="col-span-2 md:col-span-1 h-full min-h-[85px] rounded-[2rem] bg-accent hover:bg-accent/90 text-accent-foreground text-xl font-black transition-all shadow-xl shadow-accent/20 hover:scale-[1.02] active:scale-[0.98]">
-                  <Link to="#contact" className="flex items-center justify-center gap-3 w-full">
+                <Button
+                  onClick={() => setIsContactDialogOpen(true)}
+                  className="col-span-2 p-6 md:p-6 md:col-span-1 h-full rounded-[2rem] bg-accent hover:bg-accent/90 text-accent-foreground text-xl font-black transition-all shadow-xl shadow-accent/20 hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  <span className="flex items-center justify-center gap-3 w-full cursor-pointer">
                     {vehicle.ctaText || 'Get Started'}
                     <ArrowRight className="w-6 h-6" />
-                  </Link>
+                  </span>
                 </Button>
               </div>
 
               {/* 3. Footer Brands - Showroom Minimalist */}
-              <div className=" py-4 border-t border-border/40 flex items-center gap-8 px-4">
+              <div className=" py-4  flex items-center gap-8 px-4">
                 <div className="flex flex-col shrink-0">
                   <span className="text-[10px] font-black uppercase tracking-[0.4em] text-accent leading-none">
                     Top
@@ -387,11 +389,11 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
 
                 <div className="h-10 w-px bg-border/80 shrink-0" />
 
-                <div className="flex flex-wrap items-center gap-x-10 gap-y-4">
+                <div className="flex flex-wrap items-center gap-x-6 md:gap-x-8 gap-y-2">
                   {vehicle.popularBrands.slice(0, 7).map((brand) => (
                     <span
                       key={brand}
-                      className="text-[12px] font-black text-muted-foreground/40 hover:text-accent transition-all cursor-default tracking-[0.2em] uppercase"
+                      className="text-[12px] font-black text-muted-foreground/40  transition-all  tracking-[0.2em] uppercase"
                     >
                       {brand}
                     </span>
@@ -467,7 +469,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
                     </div>
                     <div>
                       <p className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground/60 mb-1 group-hover:text-accent transition-colors">{spec.label}</p>
-                      <p className="text-xl md:text-2xl font-black text-black dark:text-white tracking-tighter leading-none">
+                      <p className="text-md md:text-xl font-medium text-black dark:text-white tracking-tighter leading-none">
                         {spec.val}
                         {spec.unit && <span className="text-xs font-bold text-accent ml-1 uppercase">{spec.unit}</span>}
                       </p>
@@ -498,19 +500,19 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
                   <div className="space-y-4">
                     <div className="flex justify-between items-center border-b border-border/30 pb-2">
                       <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Length</span>
-                      <span className="text-base font-black">{vehicle.specs.exterior.length}</span>
+                      <span className="text-base font-medium">{vehicle.specs.exterior.length}</span>
                     </div>
                     <div className="flex justify-between items-center border-b border-border/30 pb-2">
                       <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Height</span>
-                      <span className="text-base font-black">{vehicle.specs.exterior.height}</span>
+                      <span className="text-base font-medium">{vehicle.specs.exterior.height}</span>
                     </div>
                     <div className="flex justify-between items-center border-b border-border/30 pb-2">
                       <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Weight</span>
-                      <span className="text-base font-black">{vehicle.specs.exterior.weight}</span>
+                      <span className="text-base font-medium">{vehicle.specs.exterior.weight}</span>
                     </div>
                     <div className="flex justify-between items-center pt-1">
                       <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Wheels</span>
-                      <span className="text-base font-black text-right max-w-[50%]">{vehicle.specs.exterior.wheels}</span>
+                      <span className="text-base font-medium text-right max-w-[50%]">{vehicle.specs.exterior.wheels}</span>
                     </div>
                   </div>
                 </div>
@@ -524,19 +526,19 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
                   <div className="space-y-4">
                     <div className="flex justify-between items-center border-b border-border/30 pb-2">
                       <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Headroom</span>
-                      <span className="text-base font-black">{vehicle.specs.interior.headroom}</span>
+                      <span className="text-base font-medium">{vehicle.specs.interior.headroom}</span>
                     </div>
                     <div className="flex justify-between items-center border-b border-border/30 pb-2">
                       <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Legroom</span>
-                      <span className="text-base font-black">{vehicle.specs.interior.legroom}</span>
+                      <span className="text-base font-medium">{vehicle.specs.interior.legroom}</span>
                     </div>
                     <div className="flex justify-between items-center border-b border-border/30 pb-2">
                       <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Cargo</span>
-                      <span className="text-base font-black">{vehicle.specs.interior.cargo}</span>
+                      <span className="text-base font-medium">{vehicle.specs.interior.cargo}</span>
                     </div>
                     <div className="flex justify-between items-center pt-1">
                       <span className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Capacity</span>
-                      <span className="text-base font-black">{vehicle.specs.interior.passengers} Passengers</span>
+                      <span className="text-base font-medium">{vehicle.specs.interior.passengers} Passengers</span>
                     </div>
                   </div>
                 </div>
@@ -550,15 +552,15 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
                   <div className="space-y-4">
                     <div className="flex flex-col gap-1 border-b border-border/30 pb-2">
                       <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Comprehensive</span>
-                      <span className="text-sm font-black">{vehicle.specs.warranty.comprehensive}</span>
+                      <span className="text-sm font-medium">{vehicle.specs.warranty.comprehensive}</span>
                     </div>
                     <div className="flex flex-col gap-1 border-b border-border/30 pb-2">
                       <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Powertrain</span>
-                      <span className="text-sm font-black">{vehicle.specs.warranty.powertrain}</span>
+                      <span className="text-sm font-medium">{vehicle.specs.warranty.powertrain}</span>
                     </div>
                     <div className="flex flex-col gap-1 pt-1">
                       <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Roadside Assistance</span>
-                      <span className="text-sm font-black">{vehicle.specs.warranty.roadside}</span>
+                      <span className="text-sm font-medium">{vehicle.specs.warranty.roadside}</span>
                     </div>
                   </div>
                 </div>
@@ -596,11 +598,11 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
                   {vehicle.highlights.map((highlight, index) => {
                     const Icon = (index % 2 === 0) ? Shield : Star; // Alternating icons or use your BENEFIT_ICONS
                     return (
-                      <div key={index} className="flex flex-col gap-4 group">
+                      <div key={index} className="flex flex-row items-center gap-4 group">
                         <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                           <Icon className="w-6 h-6" />
                         </div>
-                        <span className="text-lg font-black text-black dark:text-white tracking-tight leading-tight">{highlight}</span>
+                        <span className="text-lg font-medium text-black dark:text-white tracking-tight leading-tight">{highlight}</span>
                       </div>
                     );
                   })}
@@ -652,7 +654,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
                             <div className="shrink-0 w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center">
                               <Check className="w-3 h-3 text-accent" strokeWidth={4} />
                             </div>
-                            <span className="font-bold text-xs md:text-sm text-black dark:text-white">{item}</span>
+                            <span className="font-medium text-xs md:text-sm text-black dark:text-white">{item}</span>
                           </div>
                         ))}
                       </div>
@@ -694,7 +696,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
                     <step.icon className="w-7 h-7" />
                   </div>
                   <div>
-                    <h3 className="font-black text-xl uppercase tracking-tighter mb-3 text-black dark:text-white group-hover:text-accent transition-colors">
+                    <h3 className="font-medium text-xl uppercase tracking-tighter mb-3 text-black dark:text-white group-hover:text-accent transition-colors">
                       {step.title}
                     </h3>
                     <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground/60 leading-relaxed group-hover:text-muted-foreground transition-colors">
@@ -710,7 +712,102 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
       </section>
 
 
+      {/* Bottom CTA Section */}
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0" aria-hidden />
+        <div className="container relative mx-auto px-4 text-center">
+          <div className="max-w-3xl mx-auto space-y-8">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter text-foreground">
+              Ready to Drive Your New <br className="hidden md:block" /> {vehicle.name}?
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Our specialists are ready to help you find the best lease terms for your next {vehicle.name.toLowerCase()}.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+              <Button
+                onClick={() => setIsContactDialogOpen(true)}
+                size="lg"
+                className="h-16 px-10 rounded-2xl bg-accent hover:bg-accent/90 text-accent-foreground text-xl font-black shadow-xl shadow-accent/20 transition-all hover:scale-105 active:scale-95 w-full sm:w-auto"
+              >
+                Get Started
+                <ArrowRight className="ml-2 w-6 h-6" />
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="h-16 px-10 rounded-2xl border-2 border-border bg-transparent hover:bg-muted text-foreground text-lg font-bold w-full sm:w-auto"
+              >
+                <Link to="/contact">Contact Support</Link>
+              </Button>
+            </div>
+            <div className="pt-8 flex items-center justify-center gap-6 text-muted-foreground/60">
+              <div className="flex items-center gap-2"><Check className="w-5 h-5 text-accent" /> No Hidden Fees</div>
+              <div className="flex items-center gap-2"><Check className="w-5 h-5 text-accent" /> Expert Advice</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      {/* Contact Dialog */}
+      <Dialog.Root open={isContactDialogOpen} onOpenChange={setIsContactDialogOpen}>
+        <Dialog.Portal>
+          <Dialog.Overlay asChild>
+            <motion.div
+              className="fixed inset-0 z-[100] bg-black/40 backdrop-blur-sm"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={dialogFadeTransition}
+            />
+          </Dialog.Overlay>
+          <Dialog.Content asChild>
+            <motion.div
+              className="fixed inset-0 z-[101] flex items-center justify-center p-4"
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={dialogFadeTransition}
+              onClick={(e) => e.target === e.currentTarget && setIsContactDialogOpen(false)}
+            >
+              <div className={cn(dialogPanelClass, "w-full max-w-2xl p-6 md:p-10 max-h-[90vh] overflow-y-auto relative bg-background")}>
+                <div className="absolute top-4 right-4 z-10">
+                  <Dialog.Close asChild>
+                    <button
+                      type="button"
+                      className="rounded-full p-2 bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+                      aria-label="Close"
+                    >
+                      <X className="h-6 w-6" />
+                    </button>
+                  </Dialog.Close>
+                </div>
+
+                <div className="text-center mb-8">
+                  <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-foreground mb-3">
+                    Interested in a {vehicle.name}?
+                  </h2>
+                  <p className="text-muted-foreground text-lg max-w-md mx-auto">
+                    Fill out the form below and our team will find the perfect matching {vehicle.name.toLowerCase()} for you.
+                  </p>
+                </div>
+
+                <div className="mt-6">
+                  <ContactForm
+                    source="vehicle_dialog"
+                    vehicleName={vehicle.name}
+                    initialValues={{ vehicleType: vehicle.slug }}
+                    hideServiceField
+                    showVehicleField={false}
+                  />
+                </div>
+              </div>
+            </motion.div>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
+      <VehicleTypesCarousel
+        title="Explore Other Vehicle Types"
+        sectionId="explore-more"
+      />
 
 
       {/* FAQ Section */}
@@ -727,7 +824,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
             subtitle={`Common questions about leasing ${vehicle.name.toLowerCase()} vehicles`}
           />
 
-          <div className="max-w-3xl mx-auto mt-12 md:mt-16">
+          <div className="max-w-5xl mx-auto mt-12 md:mt-16">
             <Accordion type="single" collapsible className="w-full">
               {getVehicleFaqs(vehicle).map((faq, index) => (
                 <motion.div
@@ -754,56 +851,8 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
         </div>
       </section>
 
-      {/* Contact Form Section - Enhanced */}
-      <section id="contact" className="py-12 md:py-16 lg:py-20  border-t border-border dark:border-white/10">
-        <div
-          ref={formRef}
-          className={cn(
-            'container mx-auto px-4 lg:px-8 scroll-reveal',
-            formRevealed && 'revealed'
-          )}
-        >
-          <div className="max-w-3xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={formRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.5 }}
-              className="text-center mb-8 md:mb-12"
-            >
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-                Interested in a {vehicle.name} Vehicle?
-              </h2>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-                Let us help you find the perfect {vehicle.name.toLowerCase()} vehicle. Fill out the form below and our team will get back to you shortly.
-              </p>
-            </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={formRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className={cn(
-                'glass-card-theme form-card-theme rounded-2xl p-6 sm:p-8 md:p-10 shadow-xl',
-                'border border-border dark:border-white/10'
-              )}
-            >
-              <ContactForm
-                source="vehicle"
-                vehicleName={vehicle.name}
-                initialValues={{ vehicleType: vehicle.slug }}
-                hideServiceField
-                showVehicleField={false}
-              />
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
-      <VehicleTypesCarousel
-        title="Explore Other Vehicle Types"
-        subtitle="Discover the perfect drive across our diverse range of luxury and performance vehicle categories."
-        sectionId="explore-more"
-      />
 
       <TestimonialsSection />
     </Layout>

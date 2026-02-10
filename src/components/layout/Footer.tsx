@@ -76,14 +76,14 @@ export function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-14">
             {/* Brand & Social */}
             <div className="text-center ">
-              <Link to="/" className="inline-block max-w-40 max-h-40 mb-4 ">
+              <Link to="/" className="inline-block max-w-40 max-h-40 mb-4 mt-4 ">
                 <img
                   src={logo}
                   alt="Capital Motor Cars"
                   loading="lazy"
                   decoding="async"
                   className="h-full w-full dark:brightness-0 dark:invert"
-                  style={{ transform: 'scale(1.3)' }}
+                  style={{ transform: 'scale(1.7)' }}
                 />
               </Link>
               <p className="text-sm font-medium leading-relaxed mb-4 tracking-[0.15em] text-section-muted text-center ">

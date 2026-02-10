@@ -99,7 +99,7 @@ export default function ContactPage() {
           />
 
           {/* Content */}
-          <div ref={ref} className={cn('relative z-10 flex-1 flex flex-col', 'scroll-reveal', isRevealed && 'revealed')}>
+          <div ref={ref} className={cn('relative z-10 flex-1 flex flex-col dark:bg-white/[0.02]', 'scroll-reveal', isRevealed && 'revealed')}>
             {/* Title Section */}
             <div className="relative z-50 mx-auto h-[30vh] md:h-[45vh] px-4 lg:px-8 flex flex-col items-center justify-center">
               <motion.h2
@@ -141,7 +141,11 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Form Section */}
-            <div className="relative bg-white dark:bg-black h-full pt-12 md:pt-16 xl:pt-20 z-10">
+            <div className="relative py-12 md:pt-16 xl:pt-20 z-10 overflow-hidden">
+              {/* Subtle Background Glow - Matching Services & Brands */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] aspect-square pointer-events-none">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 bg-accent/5 blur-[80px] rounded-full" />
+              </div>
               <div className="mx-auto px-4 lg:px-8 xl:px-12">
                 <div className="max-w-7xl xl:max-w-[90rem] mx-auto">
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-10 xl:gap-12 mb-12 md:mb-16 xl:mb-20 lg:items-start">
@@ -157,7 +161,7 @@ export default function ContactPage() {
                             <a
                               key={method.title}
                               href={method.href}
-                              className="group flex items-start gap-4 p-4 sm:p-5 md:p-6 flex-1 rounded-xl border-2 border-border dark:border-white/10 bg-card dark:bg-white/[0.04] hover:border-accent hover:shadow-[0_0_30px_hsl(214_77%_50%_/_0.4)] hover:shadow-accent/30 transition-all duration-300"
+                              className="group flex items-start gap-4 p-4 sm:p-5 md:p-6 flex-1 rounded-xl border-2 border-border dark:border-white/10 bg-card dark:bg-white/[0.04] hover:border-accent hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.4)] transition-all duration-300"
                             >
                               <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center bg-accent/10 dark:bg-accent/20 group-hover:bg-accent/20 transition-colors">
                                 <Icon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-accent" />
@@ -197,7 +201,7 @@ export default function ContactPage() {
       </section>
 
       {/* More Ways to Connect */}
-      <section className="py-12 bg-white dark:bg-[hsl(0_0%_4%)]">
+      <section className="py-12">
         <div className="container mx-auto px-4 lg:px-8 xl:px-12  border-t mx-auto px-4 lg:px-8 xl:px-12 max-w-7xl xl:max-w-[90rem] mx-auto">
           <div className="mt-16 md:mt-20 pb-6 sm:pb-8 md:pb-10">
             <div className="text-center mb-8 md:mb-12 xl:mb-16">
@@ -217,7 +221,7 @@ export default function ContactPage() {
                   <Link
                     key={link.href}
                     to={link.href}
-                    className="group flex flex-col gap-4 xl:gap-6 p-6 sm:p-8 xl:p-10 rounded-xl border-2 border-border dark:border-white/10 bg-card dark:bg-white/[0.04] hover:border-accent hover:shadow-[0_0_30px_hsl(214_77%_50%_/_0.4)] hover:shadow-accent/30 transition-all duration-300"
+                    className="group flex flex-col gap-4 xl:gap-6 p-6 sm:p-8 xl:p-10 rounded-xl border-2 border-border dark:border-white/10 bg-card dark:bg-white/[0.04] hover:border-accent hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.4)] transition-all duration-300"
                   >
                     <div className="flex items-start gap-4 xl:gap-6">
                       <div className="flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 xl:w-20 xl:h-20 rounded-lg flex items-center justify-center bg-accent/10 dark:bg-accent/20 group-hover:bg-accent/20 transition-colors">

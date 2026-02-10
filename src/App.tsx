@@ -23,18 +23,7 @@ import DetailingPage from "./pages/services/DetailingPage";
 import NotFound from "./pages/NotFound";
 
 // Vehicle type pages
-import LuxuryPage from "./pages/vehicles/LuxuryPage";
-import ElectricPage from "./pages/vehicles/ElectricPage";
-import HatchbackPage from "./pages/vehicles/HatchbackPage";
-import SedanPage from "./pages/vehicles/SedanPage";
-import TruckPage from "./pages/vehicles/TruckPage";
-import SportsPage from "./pages/vehicles/SportsPage";
-import SUVPage from "./pages/vehicles/SUVPage";
-import CoupePage from "./pages/vehicles/CoupePage";
-import MinivanPage from "./pages/vehicles/MinivanPage";
-import CrossoverPage from "./pages/vehicles/CrossoverPage";
-import WagonPage from "./pages/vehicles/WagonPage";
-import CorvettePage from "./pages/vehicles/Corvette";
+import VehicleDetailsPage from "./pages/vehicles/VehicleDetailsPage";
 
 const queryClient = new QueryClient();
 
@@ -45,40 +34,29 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/services/car-leasing" element={<CarLeasingPage />} />
-          <Route path="/services/financing" element={<FinancingPage />} />
-          <Route path="/services/trade-in" element={<TradeInPage />} />
-          <Route path="/services/wear-and-tear" element={<WearAndTearPage />} />
-          <Route path="/services/wheel-repair" element={<WheelRepairPage />} />
-          <Route path="/services/detailing" element={<DetailingPage />} />
-          <Route path="/brands" element={<BrandsPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/credit-application" element={<CreditApplicationPage />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-          <Route path="/terms-of-service" element={<TermsOfServicePage />} />
-          <Route path="/quiz" element={<QuizPage />} />
-          
-          {/* Vehicle type pages */}
-          <Route path="/vehicles/luxury" element={<LuxuryPage />} />
-          <Route path="/vehicles/electric" element={<ElectricPage />} />
-          <Route path="/vehicles/hatchback" element={<HatchbackPage />} />
-          <Route path="/vehicles/sedan" element={<SedanPage />} />
-          <Route path="/vehicles/truck" element={<TruckPage />} />
-          <Route path="/vehicles/sports" element={<SportsPage />} />
-          <Route path="/vehicles/suv" element={<SUVPage />} />
-          <Route path="/vehicles/coupe" element={<CoupePage />} />
-          <Route path="/vehicles/minivan" element={<MinivanPage />} />
-          <Route path="/vehicles/crossover" element={<CrossoverPage />} />
-          <Route path="/vehicles/wagon" element={<WagonPage />} />
-          <Route path="/vehicles/corvette" element={<CorvettePage />} />
-          
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/services/car-leasing" element={<CarLeasingPage />} />
+            <Route path="/services/financing" element={<FinancingPage />} />
+            <Route path="/services/trade-in" element={<TradeInPage />} />
+            <Route path="/services/wear-and-tear" element={<WearAndTearPage />} />
+            <Route path="/services/wheel-repair" element={<WheelRepairPage />} />
+            <Route path="/services/detailing" element={<DetailingPage />} />
+            <Route path="/brands" element={<BrandsPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/credit-application" element={<CreditApplicationPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+            <Route path="/quiz" element={<QuizPage />} />
+
+            {/* Dynamic Vehicle Details Loop */}
+            <Route path="/vehicles/:slug" element={<VehicleDetailsPage />} />
+
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </BrowserRouter>
       </TooltipProvider>
     </ThemeProvider>

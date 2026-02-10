@@ -81,7 +81,7 @@ export default function BrandsPage() {
   const currentBackground = backgrounds[currentBgIndex];
 
   return (
-    <Layout>
+    <Layout >
       <SEO
         title="Car Brands We Lease | Luxury & Popular Models | Capital Motor Cars"
         description="Explore the wide range of car brands we lease in New Jersey, including BMW, Mercedes-Benz, Audi, Lexus, Toyota, and Ford. Get the best lease deals on any make or model."
@@ -90,8 +90,8 @@ export default function BrandsPage() {
         canonicalPath="/brands"
       />
 
-      <section className="pt-16 lg:pt-20">
-        <div id="brands" className="relative h-full flex flex-col">
+      <section className="pt-16 lg:pt-20  ">
+        <div id="brands" className="relative h-full flex flex-col ">
           {/* Top half: Blurred background */}
           <div className="absolute top-0 left-0 right-0 h-[30vh] md:h-[45vh] overflow-hidden">
             <motion.img
@@ -126,7 +126,10 @@ export default function BrandsPage() {
           />
 
           {/* Content */}
-          <div ref={ref} className={cn('relative z-10 flex-1 flex flex-col', 'scroll-reveal', isRevealed && 'revealed')}>
+          <div
+            ref={ref}
+            className={cn('relative z-10 flex-1 flex flex-col dark:bg-white/[0.02]', 'scroll-reveal', isRevealed && 'revealed')}
+          >
             {/* Title and Filters */}
             <div className="relative z-50 mx-auto h-[30vh] md:h-[45vh] px-4 lg:px-8 flex flex-col items-center justify-center">
               <motion.h2
@@ -218,7 +221,11 @@ export default function BrandsPage() {
             </div>
 
             {/* Brands Grid */}
-            <div className="relative bg-white dark:bg-black h-full py-12 md:py-16 xl:py-20 z-10">
+            <div className="relative py-12 md:py-16 xl:py-20 z-10 overflow-hidden">
+              {/* Subtle Background Glow - Matching ServicesPage */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] aspect-square pointer-events-none">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 bg-accent/5 blur-[80px] rounded-full" />
+              </div>
               <div className="mx-auto px-4 lg:px-8 xl:px-12">
                 <div className="max-w-7xl xl:max-w-[90rem] mx-auto">
                   {/* Description */}
@@ -234,7 +241,7 @@ export default function BrandsPage() {
                       <Dialog.Root key={brand.name} open={selectedBrand === brand.name} onOpenChange={(open) => setSelectedBrand(open ? brand.name : null)}>
                         <Dialog.Trigger asChild>
                           <button
-                            className="group flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 xl:p-10 rounded-xl border-2 border-border dark:border-white/10 bg-card dark:bg-white/[0.04] hover:border-accent hover:shadow-[0_0_30px_hsl(214_77%_50%_/_0.4)] hover:shadow-accent/30 transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                            className="group flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 xl:p-10 rounded-xl border-2 border-border dark:border-white/10 bg-card dark:bg-white/[0.04] hover:border-accent hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.4)] transition-all duration-500 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                           >
                             <div className="flex items-center justify-center p-4 sm:p-6 mb-3 sm:mb-4 rounded-lg bg-muted dark:bg-white/10 w-full max-w-[160px] sm:max-w-[180px] md:max-w-[200px] xl:max-w-[220px] min-h-[100px] sm:min-h-[120px] md:min-h-[140px] xl:min-h-[160px] group-hover:bg-accent/10 transition-colors">
                               <img

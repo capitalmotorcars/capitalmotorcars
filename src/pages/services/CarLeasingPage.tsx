@@ -298,7 +298,7 @@ export default function CarLeasingPage() {
               Frequently Asked <span className="text-accent italic">Questions</span>
             </h2>
           </div>
-          <div className="max-w-3xl mx-auto glass-card-theme p-4 md:p-8 mt-12 rounded-[2rem]">
+          <div className="max-w-7xl mx-auto glass-card-theme p-4 md:p-8 mt-12 rounded-[2rem]">
             <Accordion type="single" collapsible className="w-full">
               {faqs.map((faq, index) => (
                 <AccordionItem key={index} value={`item-${index}`} className="border-b-border/40 last:border-0">

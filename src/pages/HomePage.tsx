@@ -33,7 +33,8 @@ export default function HomePage() {
       <HowItWorksSection transparentBackground />
 
       <SectionDividerCreative variant="dot" />
-      <VehicleTypesCarousel title="Discover The Car Of Your Dreams" subtitle="Discover the perfect drive across our diverse range of luxury and performance vehicle categories." />
+      <VehicleTypesCarousel title="Discover The Car Of Your Dreams"
+      />
 
       <SectionDividerCreative variant="dot" />
       <PeopleSection homePageOnly={true} padding="px-4 sm:px-6 lg:px-8 py-10 md:py-16" />
