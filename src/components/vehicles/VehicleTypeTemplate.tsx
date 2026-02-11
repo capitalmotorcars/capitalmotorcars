@@ -7,10 +7,10 @@ import { JsonLd } from '@/components/JsonLd';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Award, Check, Fuel, Gauge, Package, Shield, Star, TrendingUp, Users, Zap, ArrowRight, DollarSign, Calendar, MapPin, X, FileText, Phone, Car, CreditCard, Ruler, Scale, Disc, Armchair, ShieldCheck, Cog, Cpu, Wrench, Activity } from 'lucide-react';
-import { VehicleTypeData, vehicleTypes } from '@/data/vehicleTypes';
-import type { FuelType } from '@/data/vehicleTypes';
+import { VehicleType } from '@/types/vehicle';
+import type { FuelType } from '@/types/vehicle';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
@@ -21,6 +21,7 @@ import {
 } from '@/components/ui/accordion';
 import { TestimonialsSection } from '../home/TestimonialsSection';
 import { VehicleTypesCarousel } from '../home/VehicleTypesCarousel';
+import { BrandDeals } from './BrandDeals';
 
 function formatFuel(fuel: FuelType): string {
   return fuel.charAt(0).toUpperCase() + fuel.slice(1);
@@ -70,7 +71,7 @@ const testimonials = [
   },
 ];
 
-function getVehicleFaqs(vehicle: VehicleTypeData) {
+function getVehicleFaqs(vehicle: VehicleType) {
   return [
     {
       question: `How much does it cost to lease a ${vehicle.name}?`,
@@ -197,7 +198,7 @@ function TestimonialCard({
 }
 
 interface VehicleTypeTemplateProps {
-  vehicle: VehicleTypeData;
+  vehicle: VehicleType;
 }
 
 export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
@@ -207,9 +208,10 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
   const { ref: idealRef, isRevealed: idealRevealed } = useScrollReveal();
   const { ref: specsRef, isRevealed: specsRevealed } = useScrollReveal();
   const { ref: howItWorksRef, isRevealed: howItWorksRevealed } = useScrollReveal();
-  const { ref: testimonialsRef, isRevealed: testimonialsRevealed } = useScrollReveal();
   const { ref: faqRef, isRevealed: faqRevealed } = useScrollReveal();
   const [isContactDialogOpen, setIsContactDialogOpen] = React.useState(false);
+  const [selectedBrand, setSelectedBrand] = React.useState<string | null>(null);
+  const dealsRef = React.useRef<HTMLDivElement>(null);
   const [isDesktop, setIsDesktop] = React.useState(
     typeof window !== 'undefined' ? window.innerWidth >= 768 : false
   );
@@ -401,12 +403,21 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
 
                 <div className="flex flex-wrap items-center gap-x-6 md:gap-x-8 gap-y-2">
                   {vehicle.popularBrands.slice(0, 7).map((brand) => (
-                    <span
+                    <button
                       key={brand}
-                      className="text-[12px] font-black text-muted-foreground/40  transition-all  tracking-[0.2em] uppercase"
+                      onClick={() => {
+                        setSelectedBrand(brand);
+                        setTimeout(() => {
+                          dealsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }, 100);
+                      }}
+                      className={cn(
+                        "text-[12px] font-black transition-all tracking-[0.2em] uppercase hover:text-accent",
+                        selectedBrand === brand ? "text-accent" : "text-muted-foreground/40"
+                      )}
                     >
                       {brand}
-                    </span>
+                    </button>
                   ))}
                 </div>
               </div>
@@ -414,6 +425,31 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
           </div>
         </div>
       </section>
+
+      {/* Inline Brand Deals Section */}
+      <AnimatePresence>
+        {selectedBrand && (
+          <section ref={dealsRef} className="py-12 bg-muted/10 border-y border-border/40">
+            <div className="container mx-auto px-4 lg:px-8">
+              <BrandDeals
+                brand={selectedBrand}
+                bodyStyle={vehicle.bodyStyle}
+                className="mt-0"
+              />
+              <div className="mt-8 flex justify-center">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setSelectedBrand(null)}
+                  className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-foreground"
+                >
+                  <X className="w-4 h-4 mr-2" /> Clear Brand Filter
+                </Button>
+              </div>
+            </div>
+          </section>
+        )}
+      </AnimatePresence>
 
       {/* Pricing & Specs Showcase */}
       {/* Pricing & Specs Showcase */}
@@ -441,28 +477,22 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
                 { id: 'trans', icon: Cog, label: 'Transmission', val: vehicle.performance?.transmission?.replace('Automatic', 'Auto'), unit: '', show: !!vehicle.performance?.transmission },
                 { id: 'drivetrain', icon: Disc, label: 'Drivetrain', val: vehicle.performance?.drivetrain, unit: '', show: !!vehicle.performance?.drivetrain },
 
-                // Efficiency Specs (Legacy + New Fallback)
+                // Efficiency Specs
                 {
-                  id: 'mpg',
-                  icon: Fuel,
-                  label: 'Fuel Economy',
-                  val: vehicle.mpg || (vehicle.fuelEconomy ? `${vehicle.fuelEconomy.avg} MPG` : undefined),
-                  show: (!!vehicle.mpg || !!vehicle.fuelEconomy) && !vehicle.mpge
-                },
-                {
-                  id: 'mpge',
-                  icon: Zap,
-                  label: 'Efficiency',
-                  val: vehicle.mpge,
-                  show: !!vehicle.mpge
+                  id: 'efficiency',
+                  icon: vehicle.fuelTypes.includes('electric') ? Zap : Fuel,
+                  label: vehicle.fuelTypes.includes('electric') ? 'Efficiency' : 'Fuel Economy',
+                  val: vehicle.fuelEconomy ? `${vehicle.fuelEconomy.avg}` : undefined,
+                  unit: vehicle.fuelTypes.includes('electric') ? ' MPGe' : ' MPG',
+                  show: !!vehicle.fuelEconomy && (vehicle.fuelEconomy.avg > 0)
                 },
                 {
                   id: 'range',
                   icon: Gauge,
                   label: 'Driving Range',
-                  val: vehicle.range || vehicle.fuelEconomy?.range,
+                  val: vehicle.fuelEconomy?.range,
                   unit: ' MILES',
-                  show: !!vehicle.range || !!vehicle.fuelEconomy?.range
+                  show: !!vehicle.fuelEconomy?.range && (vehicle.fuelEconomy.range > 0)
                 },
               ].filter(s => s.show).map((spec, idx) => (
                 <motion.div
@@ -703,6 +733,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
                       </div>
                     </div>
                   ))}
+
                 </div>
               ) : (
                 <div className="space-y-3">

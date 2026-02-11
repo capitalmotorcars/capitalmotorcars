@@ -14,6 +14,7 @@ import { HeroBackgroundWrapper } from '@/components/hero/HeroBackgroundWrapper';
 import { SectionDividerCreative } from '@/components/ui/SectionDividerCreative';
 import { ScrollTriggeredQuizDialog } from '@/components/home/ScrollTriggeredQuizDialog';
 import { FAQSection } from '@/components/home/FAQSection';
+import { LeaseDealsSection } from '@/components/home/LeaseDealsSection';
 
 export default function HomePage() {
   return (
@@ -35,6 +36,9 @@ export default function HomePage() {
       <SectionDividerCreative variant="dot" />
       <VehicleTypesCarousel title="Discover The Car Of Your Dreams"
       />
+
+      <SectionDividerCreative variant="dot" />
+      <LeaseDealsSection />
 
       <SectionDividerCreative variant="dot" />
       <PeopleSection homePageOnly={true} padding="px-4 sm:px-6 lg:px-8 py-10 md:py-16" />

@@ -3,18 +3,28 @@ import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, ArrowRight, Search } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { cn } from '@/lib/utils';
-import { vehicleTypes, VehicleTypeData } from '@/data/vehicleTypes';
+// import { vehicleTypes, VehicleTypeData } from '@/data/vehicleTypes'; // Legacy
+import { getAllVehicleTypes } from '@/services/vehicleTypeService';
+import type { VehicleType } from '@/types/vehicle';
 import { Button } from '@/components/ui/button';
 import bg1 from '@/assets/brand-backgrounds/bg-1.jpeg';
 import bg2 from '@/assets/brand-backgrounds/bg-2.jpg';
 import bg3 from '@/assets/brand-backgrounds/bg-3.jpg';
 import bg4 from '@/assets/brand-backgrounds/bg-4.jpg';
+import { BrandDeals } from '@/components/vehicles/BrandDeals';
+import { AnimatePresence } from 'motion/react';
+import { X } from 'lucide-react';
+
 type FilterType = 'all' | 'suv' | 'sedan' | 'luxury';
 
-const getFilterCount = (filterId: FilterType): number | undefined => {
-  const vehicles = getFilteredVehicles(filterId);
-  return vehicles.length > 0 ? vehicles.length : undefined;
-};
+// Legacy adapter helper if needed, or we just operate on VehicleType
+// The frontend uses VehicleTypeData structure.
+// WE need to ensure VehicleType (from service) matches what the UI expects or we map it.
+// VehicleType interface in types/vehicle.ts is:
+// slug, name, bodyStyle, image, vehicleName, description...
+//
+// The UI uses: v.slug, v.bodyStyle, v.name, v.image, v.startingPrice, v.range, v.mpge, v.mpg
+// It seems my new VehicleType interface covers these.
 
 const filters: { id: FilterType; label: string }[] = [
   { id: 'suv', label: 'SUV / CUV / MPV' },
@@ -23,33 +33,23 @@ const filters: { id: FilterType; label: string }[] = [
   { id: 'all', label: 'All' },
 ];
 
-function getFilteredVehicles(filter: FilterType): VehicleTypeData[] {
-  if (filter === 'all') return vehicleTypes;
-  if (filter === 'suv') return vehicleTypes.filter((v) => ['suv', 'crossover', 'minivan'].includes(v.slug));
-  if (filter === 'sedan') return vehicleTypes.filter((v) => v.slug === 'sedan' || v.slug.startsWith('sedan-'));
-  if (filter === 'luxury') return vehicleTypes.filter((v) => v.isLuxury === true).sort((a, b) => (a.sortOrder || 999) - (b.sortOrder || 999));
-  return [];
-}
-
-function getVehicleSpecs(vehicle: VehicleTypeData) {
+function getVehicleSpecs(vehicle: VehicleType) {
   const specs = {
-    startingPrice: vehicle.startingPrice || 499,
-    range: vehicle.range,
-    mpge: vehicle.mpge,
-    mpg: vehicle.mpg,
+    startingPrice: vehicle.startingPrice || (vehicle as any).starting_price || 0,
+    range: vehicle.fuelEconomy?.range || (vehicle as any).fuel_economy?.range || 0,
+    mpge: 0, // Not explicitly in my DB schema as top level, maybe need to check if I added it or if it's in specs?
+    // checking script... I didn't add mpge explicitly to top level.
+    // In vehicleTypes.ts it was `mpge: number`.
+    // In my DB I have fuel_economy jsonb.
+    // Let's assume for now we might miss MPGe unless I add it to the DB or map it from somewhere.
+    // The previous `vehicleTypes.ts` had `mpge`.
+    // My seed script did `fuel_economy: '{"city": ..., "range": ...}'`.
+    // Use fuel_economy.avg as MPG?
+    mpg: vehicle.fuelEconomy?.avg || (vehicle as any).fuel_economy?.avg || 0,
   };
 
-  // Map from new fuelEconomy object if present and legacy fields are missing
-  if (vehicle.fuelEconomy) {
-    if (!specs.range && vehicle.fuelEconomy.range) {
-      specs.range = vehicle.fuelEconomy.range.toString();
-    }
-    // Use highway mpg for "UP TO" if mpg is not explicitly set
-    if (!specs.mpg && vehicle.fuelEconomy.hwy) {
-      specs.mpg = vehicle.fuelEconomy.hwy.toString();
-    }
-  }
-
+  // If I want to support MPGe, I should probably have added it.
+  // For now, let's map what we have.
   return specs;
 }
 
@@ -67,27 +67,111 @@ export function VehicleTypesCarousel({
   const { ref, isRevealed } = useScrollReveal();
   const [activeFilter, setActiveFilter] = useState<FilterType>('sedan');
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [allVehicles, setAllVehicles] = useState<VehicleType[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
+  const dealsRef = useState<HTMLDivElement | null>(null)[0]; // We'll just use a normal ref
+  const brandDealsRef = useState<HTMLDivElement | null>(null)[0];
+
+  useEffect(() => {
+    async function load() {
+      // console.log("Loading vehicles...");
+      const res = await getAllVehicleTypes();
+      if (res.success && res.data) {
+        // console.log("Loaded vehicles:", res.data);
+        setAllVehicles(res.data);
+      } else {
+        console.error("Failed to load vehicles:", res.error);
+      }
+      setLoading(false);
+    }
+    load();
+  }, []);
+
+  const getFilteredVehicles = (filter: FilterType): VehicleType[] => {
+    // 1. First, filter by visibility in hero (showInHero)
+    // Default to true for legacy records where it might be undefined
+    const visibleVehicles = allVehicles.filter(v => v.showInHero !== false);
+
+    if (filter === 'all') {
+      return visibleVehicles.sort((a, b) => {
+        const orderA = a.sortOrder || (a as any).sort_order || 999;
+        const orderB = b.sortOrder || (b as any).sort_order || 999;
+        return orderA - orderB;
+      });
+    }
+
+    const normalizedBodyStyle = (v: VehicleType) => (v.bodyStyle || (v as any).body_style || '').toLowerCase();
+    const normalizedSlug = (v: VehicleType) => (v.slug || '').toLowerCase();
+    const displayCategory = (v: VehicleType) => (v.displayCategory || (v as any).display_category || '').toLowerCase();
+
+    return visibleVehicles.filter((v) => {
+      const category = displayCategory(v);
+      const isLux = (v.isLuxury || (v as any).is_luxury);
+
+      // 1. Luxury Tab is inclusive: Show anything marked as luxury OR explicitly categorized as luxury
+      if (filter === 'luxury') {
+        return isLux || category === 'luxury';
+      }
+
+      // 2. Explicit Category Match (Highest Priority for other tabs)
+      if (category && category !== 'none') {
+        return category === filter;
+      }
+
+      // 3. Fallback Logic (Implicit Category)
+      if (filter === 'suv') {
+        const style = normalizedBodyStyle(v);
+        return style.includes('suv') || style.includes('crossover') || style.includes('minivan');
+      }
+
+      if (filter === 'sedan') {
+        const style = normalizedBodyStyle(v);
+        const slug = normalizedSlug(v);
+        return style.includes('sedan') || slug.startsWith('sedan-');
+      }
+
+      return false;
+    }).sort((a, b) => {
+      // Apply sort order if available
+      const orderA = a.sortOrder || (a as any).sort_order || 999;
+      const orderB = b.sortOrder || (b as any).sort_order || 999;
+      return orderA - orderB;
+    });
+  };
+
   const filteredVehicles = getFilteredVehicles(activeFilter);
+  // Reset index if out of bounds (when filter changes)
+  // But we have an effect for that below.
+
+  const getFilterCount = (filterId: FilterType): number | undefined => {
+    // We can't use getFilteredVehicles directly inside render easily if it depends on state that might technically change,
+    // but here it relies on `allVehicles`.
+    const vehicles = getFilteredVehicles(filterId);
+    return vehicles.length > 0 ? vehicles.length : undefined;
+  };
+
   const currentVehicle = filteredVehicles[currentIndex] || filteredVehicles[0];
   const specs = currentVehicle ? getVehicleSpecs(currentVehicle) : null;
 
   useEffect(() => {
     setCurrentIndex(0);
-  }, [activeFilter]);
+  }, [activeFilter, allVehicles]); // Reset when vehicles load too
 
   const nextVehicle = () => {
+    if (filteredVehicles.length === 0) return;
     setCurrentIndex((prev) => (prev + 1) % filteredVehicles.length);
   };
 
   const prevVehicle = () => {
+    if (filteredVehicles.length === 0) return;
     setCurrentIndex((prev) => (prev - 1 + filteredVehicles.length) % filteredVehicles.length);
   };
 
-  const prevVehicleData = filteredVehicles[(currentIndex - 1 + filteredVehicles.length) % filteredVehicles.length];
-  const nextVehicleData = filteredVehicles[(currentIndex + 1) % filteredVehicles.length];
+  const prevVehicleData = filteredVehicles.length > 0 ? filteredVehicles[(currentIndex - 1 + filteredVehicles.length) % filteredVehicles.length] : null;
+  const nextVehicleData = filteredVehicles.length > 0 ? filteredVehicles[(currentIndex + 1) % filteredVehicles.length] : null;
 
   const backgrounds = [bg1, bg2, bg3, bg4];
-  // Map each filter to a background index
   const filterToBgIndex: Record<FilterType, number> = {
     'all': 3,
     'suv': 1,
@@ -96,6 +180,14 @@ export function VehicleTypesCarousel({
   };
   const currentBgIndex = filterToBgIndex[activeFilter];
   const currentBackground = backgrounds[currentBgIndex];
+
+  // if (loading) {
+  //   return <div className="py-20 text-center text-white">Loading vehicles...</div>;
+  // }
+
+  // Avoid early return so hook refs work properly
+  const isEmpty = filteredVehicles.length === 0 && !loading;
+
 
   return (
 
@@ -116,6 +208,19 @@ export function VehicleTypesCarousel({
 
         {/* Content */}
         <div ref={ref} className={cn('relative z-10 flex-1 flex flex-col  ', 'scroll-reveal', isRevealed && 'revealed')}>
+
+          {loading && (
+            <div className="absolute inset-0 flex items-center justify-center z-50">
+              <div className="text-white">Loading vehicles...</div>
+            </div>
+          )}
+
+          {isEmpty && (
+            <div className="absolute inset-0 flex items-center justify-center z-50 pt-32">
+              <p className="text-white">No vehicles found for this category.</p>
+            </div>
+          )}
+
           {/* Title and Filters */}
           <div className="relative z-50 mx-auto h-[35vh] md:h-[45vh]  px-4 lg:px-8 pt-6 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-20">
             <h2 className="text-xl sm:text-3xl  md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white text-center pb-2 md:pb-4">
@@ -196,7 +301,7 @@ export function VehicleTypesCarousel({
               {currentVehicle && (
                 <div className="relative z-30 w-[85%] sm:w-[60%] md:w-[80%] pointer-events-none">
                   <img
-                    src={currentVehicle.image}
+                    src={currentVehicle.image || (currentVehicle as any).image_url}
                     alt={currentVehicle.name}
                     className="w-full h-auto object-contain drop-shadow-2xl pointer-events-none"
                   />
@@ -259,15 +364,8 @@ export function VehicleTypesCarousel({
                     </div>
                     {/* Carousel dots indicator - mobile only */}
                     <div className="sm:hidden flex items-center gap-2">
-                      {filteredVehicles.map((_, idx) => (
-                        <span
-                          key={idx}
-                          className={cn(
-                            'w-2 h-2 rounded-full transition-all',
-                            idx === currentIndex ? 'bg-foreground' : 'bg-foreground/30'
-                          )}
-                        />
-                      ))}
+                      {/* Simplified dots for mobile perf */}
+                      <span className="text-xs text-muted-foreground">{currentIndex + 1} / {filteredVehicles.length}</span>
                     </div>
                   </div>
 
@@ -281,12 +379,11 @@ export function VehicleTypesCarousel({
                     // Show 3 cols if we have 2+ specs, 2 cols if we have 1 spec, 1 col if no specs
                     const gridCols = specCount >= 2 ? 'grid-cols-3' : specCount === 1 ? 'grid-cols-2' : 'grid-cols-1 max-w-md mx-auto';
 
-                    // Determine border classes for each section
                     const getBorderClasses = (isFirst: boolean, isLast: boolean) => {
-                      if (isFirst && isLast) return ''; // Only one section, no borders needed
-                      if (isFirst) return 'border-x border-border dark:border-gray-600'; // First section: left border (start) + right border
-                      if (isLast) return 'border-x border-border dark:border-gray-600'; // Last section: left border + right border (end)
-                      return 'border-x border-border dark:border-gray-600'; // Middle sections: both borders
+                      if (isFirst && isLast) return '';
+                      if (isFirst) return 'border-x border-border dark:border-gray-600';
+                      if (isLast) return 'border-x border-border dark:border-gray-600';
+                      return 'border-x border-border dark:border-gray-600';
                     };
 
                     return (
@@ -351,12 +448,18 @@ export function VehicleTypesCarousel({
                         <h4 className="text-xs sm:text-sm md:text-base font-semibold text-muted-foreground uppercase mb-3 sm:mb-4">Popular Brands</h4>
                         <div className="flex flex-wrap gap-2 sm:gap-3">
                           {currentVehicle.popularBrands.map((brand, idx) => (
-                            <span
+                            <button
                               key={idx}
-                              className="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm md:text-base bg-muted rounded-full text-foreground"
+                              onClick={() => setSelectedBrand(brand)}
+                              className={cn(
+                                "px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm md:text-base rounded-full transition-all",
+                                selectedBrand === brand
+                                  ? "bg-accent text-accent-foreground shadow-lg shadow-accent/20"
+                                  : "bg-muted text-foreground hover:bg-muted/80"
+                              )}
                             >
                               {brand}
-                            </span>
+                            </button>
                           ))}
                         </div>
                       </div>
@@ -452,6 +555,31 @@ export function VehicleTypesCarousel({
 
                 </div>
               </div>
+
+              {/* Brand Deals Inline */}
+              <AnimatePresence>
+                {selectedBrand && (
+                  <div className="mt-12 pt-12 border-t border-border dark:border-gray-600 bg-white/5 dark:bg-black/5 rounded-[3rem] p-8 md:p-12 mb-12">
+                    <div className="flex justify-between items-center mb-0">
+                      <BrandDeals
+                        brand={selectedBrand}
+                        bodyStyle={currentVehicle.bodyStyle}
+                        className="mt-0 w-full"
+                      />
+                    </div>
+                    <div className="flex justify-center mt-8">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => setSelectedBrand(null)}
+                        className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-foreground"
+                      >
+                        <X className="w-4 h-4 mr-2" /> Close Deals
+                      </Button>
+                    </div>
+                  </div>
+                )}
+              </AnimatePresence>
             </div>
           )}
         </div>

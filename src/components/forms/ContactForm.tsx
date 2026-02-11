@@ -132,9 +132,10 @@ interface ContactFormProps {
   initialValues?: Partial<ContactFormData>;
   hideServiceField?: boolean;
   showVehicleField?: boolean;
-  source?: 'contact' | 'service' | 'vehicle' | 'vehicle_dialog';
+  source?: 'contact' | 'service' | 'vehicle' | 'vehicle_dialog' | 'quiz_result';
   vehicleName?: string;
   serviceTitle?: string;
+  onSubmitSuccess?: () => void;
 }
 
 const formatPhoneNumber = (value: string) => {
@@ -159,6 +160,7 @@ export function ContactForm({
   source = 'contact',
   vehicleName,
   serviceTitle,
+  onSubmitSuccess,
 }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -254,6 +256,9 @@ export function ContactForm({
       }
       setIsSuccess(true);
       reset();
+      if (onSubmitSuccess) {
+        onSubmitSuccess();
+      }
     } catch (e) {
       setSubmitError(getSubmitErrorFromException(e));
     } finally {
