@@ -9,6 +9,8 @@ import { QUIZ_QUESTIONS, IntentResult } from '@/types/quiz';
 import { calculateQuizResult } from '@/hooks/useQuizScoring';
 import { Button } from '@/components/ui/button';
 import { ContactForm } from '@/components/forms/ContactForm';
+import { getAllVehicleTypes } from '@/services/vehicleTypeService';
+import { VehicleType } from '@/types/vehicle';
 import {
   Dialog,
   DialogContent,
@@ -18,6 +20,8 @@ import {
 } from "@/components/ui/dialog";
 
 function QuizResults({ result, answers }: { result: IntentResult; answers: Record<string, string | string[]> }) {
+  console.log(result);
+  const navigate = useNavigate();
   const [selectedVehicle, setSelectedVehicle] = useState<any>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -80,12 +84,23 @@ function QuizResults({ result, answers }: { result: IntentResult; answers: Recor
               </div>
             )}
 
-            <div className="p-8 md:p-10 flex flex-col h-full gap-6">
+            <div className="p-8 md:p-10 flex flex-col h-full gap-4">
               <div>
                 <span className="text-xs font-bold text-accent uppercase tracking-widest mb-2 block">2026 {vehicle.brand}</span>
-                <h3 className="text-3xl font-black text-foreground tracking-tight leading-none group-hover:text-accent transition-colors duration-300">
+                <h3 className="text-2xl font-black text-foreground tracking-tight leading-none group-hover:text-accent transition-colors duration-300">
                   {vehicle.name}
                 </h3>
+                {vehicle.startingPrice && (
+                  <div className="flex items-baseline gap-1 mt-3">
+                    <span className="text-2xl font-bold text-accent">${vehicle.startingPrice}</span>
+                    <span className="text-sm text-muted-foreground font-medium">/month</span>
+                  </div>
+                )}
+                {vehicle.image && (
+                  <div className="relative transition-opacity opacity-80 group-hover:opacity-100">
+                    <img src={vehicle.image} alt="" className="w-full h-full object-contain scale-110 group-hover:scale-125 transition-all duration-300" />
+                  </div>
+                )}
                 <p className="text-sm text-muted-foreground mt-4 leading-relaxed font-medium italic">
                   "{vehicle.whyFits}"
                 </p>
@@ -101,8 +116,11 @@ function QuizResults({ result, answers }: { result: IntentResult; answers: Recor
               </div>
 
               <div className="flex flex-col gap-3 pt-6 border-t border-border/50">
-                <Button className="w-full h-12 rounded-xl bg-accent hover:bg-accent/90 text-accent-foreground font-black tracking-wide uppercase text-xs shadow-lg shadow-accent/20 transition-all">
-                  View Inventory <ArrowRight className="ml-2 w-4 h-4" />
+                <Button
+                  onClick={() => navigate(`/vehicles/${vehicle.slug}`)}
+                  className="w-full h-12 rounded-xl bg-accent hover:bg-accent/90 text-accent-foreground font-black tracking-wide uppercase text-xs shadow-lg shadow-accent/20 transition-all"
+                >
+                  View Details <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
                 <Button
                   variant="outline"
@@ -113,6 +131,7 @@ function QuizResults({ result, answers }: { result: IntentResult; answers: Recor
                 </Button>
               </div>
             </div>
+
           </motion.div>
         ))}
       </div>
@@ -141,10 +160,12 @@ function QuizResults({ result, answers }: { result: IntentResult; answers: Recor
                     onClick={() => {
                       setIsDialogOpen(false);
                       setShowSuccess(false);
+                      // Reset quiz to start
+                      window.location.reload();
                     }}
                     className="h-12 px-8 rounded-xl bg-accent hover:bg-accent/90 text-accent-foreground font-black tracking-wide uppercase text-xs shadow-lg"
                   >
-                    Back to results
+                    Continue
                   </Button>
                 </motion.div>
               ) : (
@@ -184,6 +205,17 @@ export default function QuizPage() {
   const [answers, setAnswers] = useState<Record<string, string | string[]>>({});
   const [isCompleted, setIsCompleted] = useState(false);
   const [result, setResult] = useState<IntentResult | null>(null);
+  const [availableVehicles, setAvailableVehicles] = useState<VehicleType[]>([]);
+
+  useEffect(() => {
+    async function loadVehicles() {
+      const { success, data } = await getAllVehicleTypes();
+      if (success && data) {
+        setAvailableVehicles(data);
+      }
+    }
+    loadVehicles();
+  }, []);
 
   const currentQuestion = QUIZ_QUESTIONS[currentQuestionIndex];
   const progress = ((currentQuestionIndex + (isCompleted ? 1 : 0)) / QUIZ_QUESTIONS.length) * 100;
@@ -244,7 +276,7 @@ export default function QuizPage() {
   }
 
   const handleComplete = () => {
-    const finalResult = calculateQuizResult(answers);
+    const finalResult = calculateQuizResult(answers, availableVehicles);
     setResult(finalResult);
     setIsCompleted(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });

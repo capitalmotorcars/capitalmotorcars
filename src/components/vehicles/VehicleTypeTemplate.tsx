@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
 import { JsonLd } from '@/components/JsonLd';
@@ -21,7 +21,7 @@ import {
 } from '@/components/ui/accordion';
 import { TestimonialsSection } from '../home/TestimonialsSection';
 import { VehicleTypesCarousel } from '../home/VehicleTypesCarousel';
-import { BrandDeals } from './BrandDeals';
+import { BrandLineup } from './BrandLineup';
 
 function formatFuel(fuel: FuelType): string {
   return fuel.charAt(0).toUpperCase() + fuel.slice(1);
@@ -202,16 +202,14 @@ interface VehicleTypeTemplateProps {
 }
 
 export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
+  console.log(vehicle.fuelTypes);
   const { ref: heroRef, isRevealed: heroRevealed } = useScrollReveal();
-  const { ref: browseRef, isRevealed: browseRevealed } = useScrollReveal();
-  const { ref: highlightsRef, isRevealed: highlightsRevealed } = useScrollReveal();
-  const { ref: idealRef, isRevealed: idealRevealed } = useScrollReveal();
-  const { ref: specsRef, isRevealed: specsRevealed } = useScrollReveal();
-  const { ref: howItWorksRef, isRevealed: howItWorksRevealed } = useScrollReveal();
+
   const { ref: faqRef, isRevealed: faqRevealed } = useScrollReveal();
   const [isContactDialogOpen, setIsContactDialogOpen] = React.useState(false);
   const [selectedBrand, setSelectedBrand] = React.useState<string | null>(null);
   const dealsRef = React.useRef<HTMLDivElement>(null);
+  const [searchParams] = useSearchParams();
   const [isDesktop, setIsDesktop] = React.useState(
     typeof window !== 'undefined' ? window.innerWidth >= 768 : false
   );
@@ -223,11 +221,31 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
     return () => window.removeEventListener('resize', checkDesktop);
   }, []);
 
+  // Ensure we never pass null into SEO (would set document.title to "null")
+  const seoTitle =
+    vehicle.metaTitle ||
+    `${vehicle.name} Leasing & Deals | Capital Motor Cars`;
+  const seoDescription =
+    vehicle.metaDescription ||
+    vehicle.description ||
+    `Learn about leasing and financing options for ${vehicle.name} vehicles with Capital Motor Cars.`;
+
+  React.useEffect(() => {
+    const brandParam = searchParams.get('brand');
+    if (brandParam) {
+      setSelectedBrand(brandParam);
+      // Give the layout a moment to stabilize before scrolling
+      setTimeout(() => {
+        dealsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 500);
+    }
+  }, [searchParams]);
+
   return (
     <Layout>
       <SEO
-        title={vehicle.metaTitle}
-        description={vehicle.metaDescription}
+        title={seoTitle}
+        description={seoDescription}
         canonicalPath={vehicle.canonicalPath}
         seoKeywords={vehicle.seoKeywords}
         ogImage={vehicle.image}
@@ -292,6 +310,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
                 <div className="lg:col-span-4 space-y-6">
                   {/* Badges */}
                   <div className="flex flex-wrap gap-2">
+
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-accent/30 bg-accent/10 text-accent text-[10px] font-bold uppercase tracking-widest backdrop-blur-md">
                       <Star className="w-3 h-3 fill-accent" />
                       {vehicle.name} Specialist
@@ -300,6 +319,11 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
                       <span className="px-3 py-1 rounded-full bg-foreground dark:bg-white text-background dark:text-black text-[10px] font-bold uppercase tracking-widest shadow-xl">
                         {vehicle.badge}
                       </span>
+                    )}
+                    {vehicle.year && (
+                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[10px] font-bold uppercase tracking-widest backdrop-blur-md">
+                        {vehicle.year}
+                      </div>
                     )}
                   </div>
 
@@ -402,7 +426,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
                 <div className="h-10 w-px bg-border/80 shrink-0" />
 
                 <div className="flex flex-wrap items-center gap-x-6 md:gap-x-8 gap-y-2">
-                  {vehicle.popularBrands.slice(0, 7).map((brand) => (
+                  {vehicle.popularBrands.map((brand) => (
                     <button
                       key={brand}
                       onClick={() => {
@@ -431,9 +455,11 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
         {selectedBrand && (
           <section ref={dealsRef} className="py-12 bg-muted/10 border-y border-border/40">
             <div className="container mx-auto px-4 lg:px-8">
-              <BrandDeals
+              <BrandLineup
                 brand={selectedBrand}
                 bodyStyle={vehicle.bodyStyle}
+                fuelTypes={vehicle.fuelTypes}
+                excludeVehicleId={vehicle.id}
                 className="mt-0"
               />
               <div className="mt-8 flex justify-center">
@@ -441,7 +467,6 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
                   variant="ghost"
                   size="sm"
                   onClick={() => setSelectedBrand(null)}
-                  className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-foreground"
                 >
                   <X className="w-4 h-4 mr-2" /> Clear Brand Filter
                 </Button>
@@ -858,20 +883,23 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
                 </div>
 
                 <div className="text-center mb-8">
-                  <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-foreground mb-3">
-                    Interested in a {vehicle.name}?
-                  </h2>
-                  <p className="text-muted-foreground text-lg max-w-md mx-auto">
-                    Fill out the form below and our team will find the perfect matching {vehicle.name.toLowerCase()} for you.
-                  </p>
+                  <Dialog.Title className="text-4xl md:text-5xl font-black tracking-tighter text-foreground uppercase mb-4">
+                    Let's Make it <span className="text-accent italic">Happen</span>
+                  </Dialog.Title>
+                  <Dialog.Description className="text-lg text-muted-foreground leading-relaxed">
+                    You're inquiring about the <span className="font-bold text-foreground">2026 {vehicle.name}</span>. Our team will help you secure the best deal.
+                  </Dialog.Description>
                 </div>
 
                 <div className="mt-6">
                   <ContactForm
                     source="vehicle_dialog"
                     vehicleName={vehicle.name}
-                    initialValues={{ vehicleType: vehicle.slug }}
-                    hideServiceField
+                    initialValues={{
+                      vehicleType: vehicle.slug,
+                      service: 'leasing',
+                      message: `I'm particularly interested in the ${vehicle.year || 2026} ${vehicle.name}. Vehicle details: Body Style: ${vehicle.bodyStyle} | Fuel Type: ${vehicle.fuelTypes?.join(', ') || 'N/A'} | Passenger Capacity: ${vehicle.passengerCapacity || 'N/A'} people | Starting Price: $${vehicle.startingPrice?.toLocaleString() || 'N/A'}/month${vehicle.highlights && vehicle.highlights.length > 0 ? ` | Key Features: ${vehicle.highlights.slice(0, 3).join(', ')}` : ''}. Please contact me with available options and best pricing.`
+                    }}
                     showVehicleField={false}
                   />
                 </div>

@@ -47,7 +47,7 @@ const specsSchema = z.object({
         headroom: z.string().default(''),
         legroom: z.string().default(''),
         cargo: z.string().default(''),
-        passengers: z.number().min(1).default(5),
+        passengers: z.number().min(1).default(0),
     }),
     warranty: z.object({
         comprehensive: z.string().default(''),
@@ -82,6 +82,7 @@ const vehicleTypeSchema = z.object({
     is_luxury: z.boolean().default(false),
     is_featured: z.boolean().default(false),
     show_in_hero: z.boolean().default(true),
+    year: z.number().min(2020).max(2030).default(2026),
     meta_title: z.string().nullable().optional(),
     meta_description: z.string().nullable().optional(),
 
@@ -142,6 +143,7 @@ export function VehicleTypeForm({ vehicleType, onSubmit, onCancel, isLoading }: 
         description: vehicleType.description || null,
         starting_price: vehicleType.startingPrice,
         fuel_types: vehicleType.fuelTypes,
+        year: vehicleType.year,
         drivetrain: vehicleType.drivetrain,
         passenger_capacity: vehicleType.passengerCapacity,
         cargo_space: vehicleType.cargoSpace,
@@ -159,7 +161,7 @@ export function VehicleTypeForm({ vehicleType, onSubmit, onCancel, isLoading }: 
         fuel_economy: vehicleType.fuelEconomy || { city: 0, hwy: 0, avg: 0, range: 0 },
         specs: vehicleType.specs || {
             exterior: { length: '', height: '', weight: '', wheels: '' },
-            interior: { headroom: '', legroom: '', cargo: '', passengers: 5 },
+            interior: { headroom: '', legroom: '', cargo: '', passengers: 0 },
             warranty: { comprehensive: '', powertrain: '', roadside: '' }
         },
         feature_groups: vehicleType.featureGroups || [],
@@ -172,8 +174,9 @@ export function VehicleTypeForm({ vehicleType, onSubmit, onCancel, isLoading }: 
         description: null,
         starting_price: 0,
         fuel_types: [],
+        year: new Date().getFullYear(),
         drivetrain: [],
-        passenger_capacity: 5,
+        passenger_capacity: 0,
         cargo_space: 'medium',
         highlights: [],
         popular_brands: [],
@@ -186,7 +189,7 @@ export function VehicleTypeForm({ vehicleType, onSubmit, onCancel, isLoading }: 
         fuel_economy: { city: 0, hwy: 0, avg: 0, range: 0 },
         specs: {
             exterior: { length: '', height: '', weight: '', wheels: '' },
-            interior: { headroom: '', legroom: '', cargo: '', passengers: 5 },
+            interior: { headroom: '', legroom: '', cargo: '', passengers: 0 },
             warranty: { comprehensive: '', powertrain: '', roadside: '' }
         },
         feature_groups: [],
@@ -215,7 +218,7 @@ export function VehicleTypeForm({ vehicleType, onSubmit, onCancel, isLoading }: 
     const watchPopularBrands = watch('popular_brands');
     const watchFuelTypes = watch('fuel_types');
     const watchDrivetrain = watch('drivetrain');
-
+    const watchYear = watch('year');
 
     function handleImageChange(e: React.ChangeEvent<HTMLInputElement>) {
         const file = e.target.files?.[0];
@@ -314,16 +317,49 @@ export function VehicleTypeForm({ vehicleType, onSubmit, onCancel, isLoading }: 
                                     <Select onValueChange={(val) => setValue('bodyStyle', val)} defaultValue={defaultValues.bodyStyle}>
                                         <SelectTrigger className="bg-white/5 border-white/10"><SelectValue placeholder="Select Body Style" /></SelectTrigger>
                                         <SelectContent>
-                                            {['SUV', 'Sedan', 'Coupe', 'Convertible', 'Truck', 'Crossover', 'Minivan', 'Wagon', 'Hatchback', 'Electric', 'Hybrid'].map(s => (
+                                            {['SUV', 'Sedan', 'Coupe', 'Convertible', 'Truck', 'Crossover', 'Minivan', 'Wagon', 'Hatchback'].map(s => (
                                                 <SelectItem key={s} value={s}>{s}</SelectItem>
                                             ))}
                                         </SelectContent>
                                     </Select>
                                 </div>
+
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div className="space-y-2">
+                                        <Label htmlFor="fuel_types">Fuel Type</Label>
+                                        <Select
+                                            onValueChange={(val) => setValue('fuel_types', [val])}
+                                            defaultValue={watchFuelTypes?.[0] || 'gasoline'}
+                                        >
+                                            <SelectTrigger className="bg-white/5 border-white/10"><SelectValue placeholder="Select Fuel Type" /></SelectTrigger>
+                                            <SelectContent>
+                                                <SelectItem value="gasoline">Gasoline</SelectItem>
+                                                <SelectItem value="diesel">Diesel</SelectItem>
+                                                <SelectItem value="electric">Electric</SelectItem>
+                                                <SelectItem value="hybrid">Hybrid</SelectItem>
+                                                <SelectItem value="plugin-hybrid">Plug-in Hybrid</SelectItem>
+                                            </SelectContent>
+                                        </Select>
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="year">Year</Label>
+                                        <Select
+                                            onValueChange={(val) => setValue('year', parseInt(val))}
+                                            defaultValue={String(watchYear) || String(new Date().getFullYear())}
+                                        >
+                                            <SelectTrigger className="bg-white/5 border-white/10"><SelectValue placeholder="Select Year" /></SelectTrigger>
+                                            <SelectContent>
+                                                {Array.from({ length: 11 }, (_, i) => 2020 + i).map(year => (
+                                                    <SelectItem key={year} value={String(year)}>{year}</SelectItem>
+                                                ))}
+                                            </SelectContent>
+                                        </Select>
+                                    </div>
+                                </div>
                                 <div className="space-y-2">
                                     <Label htmlFor="display_category">Display Category (Homepage Tabs)</Label>
                                     <Select
-                                        onValueChange={(val) => setValue('display_category', val === 'none' ? null : val)}
+                                        onValueChange={(val) => setValue('display_category', val)}
                                         defaultValue={defaultValues.display_category || 'none'}
                                     >
                                         <SelectTrigger className="bg-white/5 border-white/10"><SelectValue placeholder="Select Display Category" /></SelectTrigger>
@@ -471,7 +507,7 @@ export function VehicleTypeForm({ vehicleType, onSubmit, onCancel, isLoading }: 
                                 </div>
                                 <div className="space-y-2">
                                     <Label>Passenger Capacity</Label>
-                                    <Input type="number" {...register('passenger_capacity', { valueAsNumber: true })} className="bg-black/20 border-white/10" />
+                                    <Input type="number" {...register('specs.interior.passengers', { valueAsNumber: true })} className="bg-black/20 border-white/10" />
                                 </div>
                             </div>
                             {/* Warranty */}
@@ -499,7 +535,6 @@ export function VehicleTypeForm({ vehicleType, onSubmit, onCancel, isLoading }: 
                             <ArrayInput label="Highlights" value={watchHighlights} onChange={(val) => setValue('highlights', val)} />
                             <ArrayInput label="Ideal For" value={watchIdealFor} onChange={(val) => setValue('ideal_for', val)} />
                             <ArrayInput label="Popular Brands" value={watchPopularBrands} onChange={(val) => setValue('popular_brands', val)} />
-                            <ArrayInput label="Fuel Types" value={watchFuelTypes} onChange={(val) => setValue('fuel_types', val)} />
                             <ArrayInput label="Drivetrain Options" value={watchDrivetrain} onChange={(val) => setValue('drivetrain', val)} />
                             <ArrayInput label="Generic Features" value={watchFeatures} onChange={(val) => setValue('features', val)} />
                         </div>

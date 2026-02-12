@@ -1,78 +1,17 @@
 import { motion } from 'motion/react';
 import { useDeals } from '@/hooks/useDeals';
-import { useVehicleTypes } from '@/hooks/useVehicleTypes';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { ArrowRight, Calendar, Car, CreditCard, Sparkles, Star } from 'lucide-react';
+import { ArrowRight, Calendar, Car, CreditCard, Star } from 'lucide-react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { ContactForm } from '@/components/forms/ContactForm';
 
 interface BrandDealsProps {
     brand: string;
     bodyStyle?: string;
+    fuelTypes?: string[];
     className?: string;
-}
-
-function VehicleCard({ vehicle, index }: { vehicle: any; index: number }) {
-    return (
-        <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            className="group relative h-full flex flex-col rounded-[2.5rem] border-2 border-accent/20 bg-accent/5 overflow-hidden hover:border-accent hover:shadow-[0_0_50px_-12px_rgba(59,130,246,0.3)] transition-all duration-500"
-        >
-            <div className="relative h-48 overflow-hidden bg-muted/20">
-                <div className="absolute inset-0 bg-accent/10 mix-blend-overlay z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                {vehicle.image ? (
-                    <img
-                        src={vehicle.image}
-                        alt={vehicle.vehicleName}
-                        className="w-full h-full object-contain p-4 transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
-                    />
-                ) : (
-                    <div className="w-full h-full flex items-center justify-center">
-                        <Car className="w-12 h-12 text-accent/20" />
-                    </div>
-                )}
-                <div className="absolute top-4 left-4 z-20">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent text-accent-foreground text-[8px] font-black uppercase tracking-widest shadow-lg">
-                        Available Model
-                    </span>
-                </div>
-            </div>
-
-            <div className="flex-1 p-6 flex flex-col gap-3">
-                <h3 className="text-xl font-black text-foreground tracking-tight leading-tight group-hover:text-accent transition-colors">
-                    {vehicle.vehicleName}
-                </h3>
-                <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
-                    {vehicle.description}
-                </p>
-
-                <div className="mt-auto pt-4 border-t border-border/40">
-                    <div className="flex items-center justify-between mb-4">
-                        <div className="flex flex-col">
-                            <span className="text-[8px] uppercase font-bold text-muted-foreground">Starting at</span>
-                            <span className="text-sm font-black text-foreground">${vehicle.startingPrice?.toLocaleString()}<span className="text-[10px] font-medium ml-1">/mo</span></span>
-                        </div>
-                        {vehicle.badge && (
-                            <span className="text-[8px] font-bold px-2 py-1 rounded bg-foreground text-background uppercase tracking-widest">
-                                {vehicle.badge}
-                            </span>
-                        )}
-                    </div>
-                    <Button asChild size="sm" className="w-full h-10 rounded-xl bg-foreground hover:bg-foreground/90 text-background font-black tracking-wide uppercase text-[10px] transition-all">
-                        <Link to={`/vehicles/${vehicle.slug}`} className="cursor-pointer">
-                            Learn More <ArrowRight className="ml-2 w-3 h-3" />
-                        </Link>
-                    </Button>
-                </div>
-            </div>
-        </motion.div>
-    );
 }
 
 function DealCard({ deal, index, onClaim }: { deal: any; index: number; onClaim: (deal: any) => void }) {
@@ -156,38 +95,75 @@ function DealCard({ deal, index, onClaim }: { deal: any; index: number; onClaim:
     );
 }
 
-export function BrandDeals({ brand, bodyStyle, className }: BrandDealsProps) {
-    const { data: deals, isLoading: dealsLoading } = useDeals();
-    const { data: vehicles, isLoading: vehiclesLoading } = useVehicleTypes();
+export function BrandDeals({ brand, bodyStyle, fuelTypes, className }: BrandDealsProps) {
+    const { data: deals, isLoading } = useDeals();
     const [selectedDeal, setSelectedDeal] = useState<any>(null);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-    if (dealsLoading || vehiclesLoading) return null;
+    if (isLoading) return null;
 
-    const filteredDeals = deals?.filter(deal =>
-        deal.make.toLowerCase() === brand.toLowerCase() &&
-        (!bodyStyle || deal.model.toLowerCase().includes(bodyStyle.toLowerCase()) ||
-            (bodyStyle.toLowerCase() === 'suv' && (deal.model.toLowerCase().includes('x') || deal.model.toLowerCase().includes('q')))
-        )
-    ) || [];
+    const filteredDeals = deals?.filter(deal => {
+        const matchesBrand = deal.make.toLowerCase() === brand.toLowerCase();
+        if (!matchesBrand) return false;
 
-    const filteredVehicles = vehicles?.filter(v => {
-        const matchesBrand = v.vehicleName?.toLowerCase().includes(brand.toLowerCase()) ||
-            v.name?.toLowerCase().includes(brand.toLowerCase());
+        const model = deal.model.toLowerCase();
 
-        // Show only vehicles with the same body style
-        const matchesBodyStyle = !bodyStyle || v.bodyStyle?.toLowerCase() === bodyStyle.toLowerCase();
+        // Automatic Fuel Type Filtering for Deals (keyword based)
+        if (fuelTypes && fuelTypes.length > 0) {
+            const matchesFuel = fuelTypes.some(f => {
+                const type = f.toLowerCase();
+                if (type === 'electric') return model.includes('electric') || model.includes('ev') || model.includes('eq');
+                if (type === 'hybrid') return model.includes('hybrid') || model.includes('phev');
+                if (type === 'diesel') return model.includes('diesel') || model.includes('tdi');
+                if (type === 'gasoline') return !model.includes('electric') && !model.includes('ev') && !model.includes('hybrid');
+                return false;
+            });
+            if (!matchesFuel) return false;
+        }
 
-        const isSelf = bodyStyle && v.name.toLowerCase() === bodyStyle.toLowerCase();
+        const style = bodyStyle?.toLowerCase();
 
-        return matchesBrand && matchesBodyStyle && !isSelf;
+        if (!style) return true;
+
+        if (style.includes('suv')) {
+            return (
+                model.includes('suv') ||
+                model.includes('x') || // BMW X series, Tesla Model X, etc.
+                model.includes('q') || // Audi Q series, Infiniti QX
+                model.includes('gl') || // Mercedes GL series (GLA, GLB, GLC, GLE, GLS)
+                model.includes('xc') || // Volvo XC series
+                model.includes('gx') || // Lexus GX
+                model.includes('lx') || // Lexus LX
+                model.includes('rx') || // Lexus RX
+                model.includes('mdx') || // Acura MDX
+                model.includes('rdx') || // Acura RDX
+                model.includes('pathfinder') ||
+                model.includes('tahoe') ||
+                model.includes('suburban') ||
+                model.includes('expedition') ||
+                model.includes('range rover') ||
+                model.includes('navigator')
+            );
+        }
+
+        if (style.includes('sedan')) {
+            return (
+                model.includes('sedan') ||
+                model.includes('series') || // BMW 3, 5, 7 series
+                model.includes('class') || // Mercedes C, E, S class
+                model.includes('is') || // Lexus IS
+                model.includes('es') || // Lexus ES
+                model.includes('ls') || // Lexus LS
+                model.includes('tlx') || // Acura TLX
+                model.includes('accord') ||
+                model.includes('camry')
+            );
+        }
+
+        return model.includes(style);
     }) || [];
 
-    if (filteredDeals.length === 0 && filteredVehicles.length === 0) return (
-        <div className="text-center py-12">
-            <p className="text-muted-foreground text-sm font-medium">No specialized {brand} {bodyStyle} matches found at this time.</p>
-        </div>
-    );
+    if (filteredDeals.length === 0) return null;
 
     const handleClaimClick = (deal: any) => {
         setSelectedDeal(deal);
@@ -195,41 +171,19 @@ export function BrandDeals({ brand, bodyStyle, className }: BrandDealsProps) {
     };
 
     return (
-        <div className={cn("mt-12 space-y-12", className)}>
-            {/* 1. Vehicles Showcase */}
-            {filteredVehicles.length > 0 && (
-                <div className="space-y-8">
-                    <div className="flex flex-col items-start px-2">
-                        <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-2">Available Models</span>
-                        <h3 className="text-2xl md:text-3xl font-black tracking-tighter text-foreground uppercase leading-none">
-                            The <span className="text-accent italic">{brand}</span> Lineup
-                        </h3>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {filteredVehicles.map((vehicle, index) => (
-                            <VehicleCard key={vehicle.id} vehicle={vehicle} index={index} />
-                        ))}
-                    </div>
-                </div>
-            )}
+        <div className={cn("mt-12 space-y-8", className)}>
+            <div className="flex flex-col items-start px-2">
+                <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-2">Current Specials</span>
+                <h3 className="text-2xl md:text-3xl font-black tracking-tighter text-foreground uppercase leading-none">
+                    Limited-Time <span className="text-accent italic">{brand}</span> Deals
+                </h3>
+            </div>
 
-            {/* 2. Deals Grid */}
-            {filteredDeals.length > 0 && (
-                <div className="space-y-8 pt-4 border-t border-border/40">
-                    <div className="flex flex-col items-start px-2">
-                        <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-2">Current Specials</span>
-                        <h3 className="text-2xl md:text-3xl font-black tracking-tighter text-foreground uppercase leading-none">
-                            Limited-Time <span className="text-accent italic">{brand}</span> Deals
-                        </h3>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {filteredDeals.map((deal, index) => (
-                            <DealCard key={deal.id} deal={deal} index={index} onClaim={handleClaimClick} />
-                        ))}
-                    </div>
-                </div>
-            )}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredDeals.map((deal, index) => (
+                    <DealCard key={deal.id} deal={deal} index={index} onClaim={handleClaimClick} />
+                ))}
+            </div>
 
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                 <DialogContent className="max-w-xl p-0 overflow-hidden border-none bg-transparent">

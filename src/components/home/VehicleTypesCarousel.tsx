@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, ArrowRight, Search } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { cn } from '@/lib/utils';
@@ -12,6 +12,7 @@ import bg2 from '@/assets/brand-backgrounds/bg-2.jpg';
 import bg3 from '@/assets/brand-backgrounds/bg-3.jpg';
 import bg4 from '@/assets/brand-backgrounds/bg-4.jpg';
 import { BrandDeals } from '@/components/vehicles/BrandDeals';
+import { BrandLineup } from '@/components/vehicles/BrandLineup';
 import { AnimatePresence } from 'motion/react';
 import { X } from 'lucide-react';
 
@@ -69,9 +70,7 @@ export function VehicleTypesCarousel({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [allVehicles, setAllVehicles] = useState<VehicleType[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
-  const dealsRef = useState<HTMLDivElement | null>(null)[0]; // We'll just use a normal ref
-  const brandDealsRef = useState<HTMLDivElement | null>(null)[0];
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function load() {
@@ -90,8 +89,7 @@ export function VehicleTypesCarousel({
 
   const getFilteredVehicles = (filter: FilterType): VehicleType[] => {
     // 1. First, filter by visibility in hero (showInHero)
-    // Default to true for legacy records where it might be undefined
-    const visibleVehicles = allVehicles.filter(v => v.showInHero !== false);
+    const visibleVehicles = allVehicles.filter(v => v.showInHero === true);
 
     if (filter === 'all') {
       return visibleVehicles.sort((a, b) => {
@@ -114,12 +112,12 @@ export function VehicleTypesCarousel({
         return isLux || category === 'luxury';
       }
 
-      // 2. Explicit Category Match (Highest Priority for other tabs)
-      if (category && category !== 'none') {
+      // 2. Strict Category Match: If an explicit category is set (including 'none'), it MUST match the filter
+      if (category && category !== '') {
         return category === filter;
       }
 
-      // 3. Fallback Logic (Implicit Category)
+      // 3. Fallback Discovery Logic (Only for legacy/missing data)
       if (filter === 'suv') {
         const style = normalizedBodyStyle(v);
         return style.includes('suv') || style.includes('crossover') || style.includes('minivan');
@@ -346,7 +344,7 @@ export function VehicleTypesCarousel({
                   {/* Car Name - column layout on mobile, row on desktop */}
                   <div className="flex items-start sm:items-baseline justify-between sm:justify-center gap-3 mb-4 sm:mb-6 md:mb-8">
                     <div className="flex flex-col sm:flex-row items-start sm:items-baseline gap-1 sm:gap-2 md:gap-3">
-                      <span className="text-xs sm:text-sm md:text-base text-muted-foreground">2026</span>
+                      <span className="text-xs sm:text-sm md:text-base text-muted-foreground">{currentVehicle.year || 2026}</span>
                       <Link
                         to={`/vehicles/${currentVehicle.slug}`}
                         className="text-xs md:text-sm text-muted-foreground "
@@ -355,12 +353,9 @@ export function VehicleTypesCarousel({
                           {currentVehicle.name}
                         </h3>
                       </Link>
-                      <Link
-                        to={`/vehicles/${currentVehicle.slug}`}
-                        className="hidden sm:inline text-xs md:text-sm text-muted-foreground hover:text-accent underline ml-2"
-                      >
+                      <span className="hidden sm:inline text-xs md:text-sm text-muted-foreground ml-2">
                         Disclaimers
-                      </Link>
+                      </span>
                     </div>
                     {/* Carousel dots indicator - mobile only */}
                     <div className="sm:hidden flex items-center gap-2">
@@ -450,13 +445,8 @@ export function VehicleTypesCarousel({
                           {currentVehicle.popularBrands.map((brand, idx) => (
                             <button
                               key={idx}
-                              onClick={() => setSelectedBrand(brand)}
-                              className={cn(
-                                "px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm md:text-base rounded-full transition-all",
-                                selectedBrand === brand
-                                  ? "bg-accent text-accent-foreground shadow-lg shadow-accent/20"
-                                  : "bg-muted text-foreground hover:bg-muted/80"
-                              )}
+                              onClick={() => navigate(`/vehicles/${currentVehicle.slug}?brand=${encodeURIComponent(brand)}`)}
+                              className="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm md:text-base rounded-full bg-muted text-foreground hover:bg-muted/80 transition-all"
                             >
                               {brand}
                             </button>
@@ -556,30 +546,6 @@ export function VehicleTypesCarousel({
                 </div>
               </div>
 
-              {/* Brand Deals Inline */}
-              <AnimatePresence>
-                {selectedBrand && (
-                  <div className="mt-12 pt-12 border-t border-border dark:border-gray-600 bg-white/5 dark:bg-black/5 rounded-[3rem] p-8 md:p-12 mb-12">
-                    <div className="flex justify-between items-center mb-0">
-                      <BrandDeals
-                        brand={selectedBrand}
-                        bodyStyle={currentVehicle.bodyStyle}
-                        className="mt-0 w-full"
-                      />
-                    </div>
-                    <div className="flex justify-center mt-8">
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => setSelectedBrand(null)}
-                        className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-foreground"
-                      >
-                        <X className="w-4 h-4 mr-2" /> Close Deals
-                      </Button>
-                    </div>
-                  </div>
-                )}
-              </AnimatePresence>
             </div>
           )}
         </div>

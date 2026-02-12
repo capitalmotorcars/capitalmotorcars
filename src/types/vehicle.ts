@@ -47,6 +47,7 @@ export interface VehicleType {
     drivetrain: Drivetrain[]; // Mapped from drivetrain
     passengerCapacity: number; // Mapped from passenger_capacity
     cargoSpace: 'small' | 'medium' | 'large' | 'extra-large'; // Mapped from cargo_space
+    year?: number; // Mapped from year
 
     // Complex Objects (JSONB)
     performance?: VehiclePerformance;
@@ -91,6 +92,7 @@ export interface VehicleTypeFormData {
     is_luxury: boolean;
     is_featured: boolean;
     show_in_hero: boolean;
+    year: number;
 
     // JSONB fields as strings or objects depending on form state, but specifically we'll use objects for the API
     performance: VehiclePerformance;

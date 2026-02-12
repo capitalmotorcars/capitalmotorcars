@@ -53,19 +53,39 @@ export function ScrollTriggeredQuizDialog() {
       return;
     }
 
-    // Listen for scroll events - show on first scroll
-    const handleScroll = () => {
-      if (!hasTriggered.current && window.scrollY > 100) {
-        hasTriggered.current = true;
-        setOpen(true);
-      }
+    // Listen for when user scrolls to the "Discover" section
+    const handleIntersection = () => {
+      const discoverSection = document.getElementById('discover');
+      if (!discoverSection || hasTriggered.current) return;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !hasTriggered.current) {
+              hasTriggered.current = true;
+              setOpen(true);
+              observer.disconnect();
+            }
+          });
+        },
+        {
+          threshold: 0.5, // Trigger when 50% of the section is visible
+          rootMargin: '0px'
+        }
+      );
+
+      observer.observe(discoverSection);
+
+      return () => {
+        observer.disconnect();
+      };
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    const cleanup = handleIntersection();
 
     return () => {
       clearTimeout(timeoutId);
-      window.removeEventListener('scroll', handleScroll);
+      if (cleanup) cleanup();
     };
   }, []);
 

@@ -42,6 +42,7 @@ export async function getAllVehicleTypes() {
         showInHero: row.show_in_hero,
         sortOrder: row.sort_order,
         displayCategory: row.display_category,
+        year: row.year,
     }));
 
     return { success: true, data: mappedData };
@@ -88,6 +89,7 @@ export async function getVehicleTypeBySlug(slug: string) {
         showInHero: data.show_in_hero,
         sortOrder: data.sort_order,
         displayCategory: data.display_category,
+        year: data.year,
     };
 
     return { success: true, data: mappedData };
@@ -122,6 +124,7 @@ export async function createVehicleType(formData: Partial<VehicleTypeFormData>) 
         feature_groups: formData.feature_groups,
         meta_title: formData.meta_title,
         meta_description: formData.meta_description,
+        year: formData.year,
     };
 
     const { data, error } = await supabase
@@ -164,6 +167,7 @@ export async function updateVehicleType(id: string, formData: Partial<VehicleTyp
         feature_groups: formData.feature_groups,
         meta_title: formData.meta_title,
         meta_description: formData.meta_description,
+        year: formData.year,
     };
 
     // Remove undefined keys to avoid overriding with null if not intended

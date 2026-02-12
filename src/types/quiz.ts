@@ -46,6 +46,9 @@ export interface RecommendedVehicle {
     whyFits: string;
     highlights: string[];
     type: string;
+    slug?: string;
+    image?: string | null;
+    startingPrice?: number;
 }
 
 export interface IntentResult {
@@ -102,10 +105,10 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
         id: 'budget',
         question: 'Monthly budget range',
         answers: [
-            { id: 'low', label: 'Low', icon: DollarSign, scoring: { 'Daily Comfort': 2, 'Family & Practical': 1 } },
-            { id: 'medium', label: 'Medium', icon: DollarSign, scoring: { 'Family & Practical': 2, 'Daily Comfort': 1 } },
-            { id: 'high', label: 'High', icon: DollarSign, scoring: { 'Premium & Luxury': 3, 'Performance & Fun': 1 } },
-            { id: 'very-high', label: 'Very high', icon: DollarSign, scoring: { 'Performance & Fun': 3, 'Premium & Luxury': 2 } },
+            { id: 'low', label: '$200 - $350/month', description: 'Economy friendly', icon: DollarSign, scoring: { 'Daily Comfort': 2, 'Family & Practical': 1 } },
+            { id: 'medium', label: '$350 - $500/month', description: 'Mid range options', icon: DollarSign, scoring: { 'Family & Practical': 2, 'Daily Comfort': 1 } },
+            { id: 'high', label: '$500 - $700/month', description: 'Premium selection', icon: DollarSign, scoring: { 'Premium & Luxury': 3, 'Performance & Fun': 1 } },
+            { id: 'very-high', label: '$700+/month', description: 'Luxury and performance', icon: DollarSign, scoring: { 'Performance & Fun': 3, 'Premium & Luxury': 2 } },
         ],
     },
     {
@@ -116,7 +119,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
             { id: 'safe', label: 'Safe and practical choice', icon: ShieldCheck, scoring: { 'Family & Practical': 2, 'Daily Comfort': 1 } },
             { id: 'enjoy', label: 'Enjoy every drive', icon: Smile, scoring: { 'Performance & Fun': 3, 'Premium & Luxury': 1 } },
             { id: 'premium', label: 'Premium feel', icon: Crown, scoring: { 'Premium & Luxury': 3 } },
-            { id: 'versatile', label: 'Do-it-all versatility', icon: Infinity, scoring: { 'Family & Practical': 2, 'Work & Utility': 2 } },
+            { id: 'versatile', label: 'Do it all versatility', icon: Infinity, scoring: { 'Family & Practical': 2, 'Work & Utility': 2 } },
             { id: 'surprise', label: 'Surprise me', icon: HelpCircle, scoring: {} },
         ],
     },
