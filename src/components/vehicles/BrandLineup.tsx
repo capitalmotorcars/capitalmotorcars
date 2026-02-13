@@ -13,6 +13,17 @@ interface BrandLineupProps {
     className?: string;
 }
 
+function normalizeBrandField(value: string | null | undefined) {
+    return (value || '').toLowerCase();
+}
+
+function extractBrandToken(value: string | null | undefined) {
+    const normalized = (value || '').toLowerCase().replace(/-/g, ' ');
+    // Take the first "word" (before space) as the core brand token
+    const [first] = normalized.split(/\s+/);
+    return first || normalized;
+}
+
 function VehicleCard({ vehicle, index }: { vehicle: any; index: number }) {
     return (
         <motion.div
@@ -44,13 +55,25 @@ function VehicleCard({ vehicle, index }: { vehicle: any; index: number }) {
 
 
             <div className="flex-1 p-6 flex flex-col gap-3">
-                {vehicle.year && (
-                    <span className="text-[10px] font-bold text-accent uppercase tracking-widest">
-                        {vehicle.year}
-                    </span>
-                )}
+            <div className="flex items-center gap-2 flex-wrap">
+  {vehicle.year && (
+    <span className="px-2 py-1 text-[10px] font-semibold rounded-full
+                     bg-blue-600 text-white
+                     dark:bg-blue-500 dark:text-white">
+      {vehicle.year}
+    </span>
+  )}
+
+  {vehicle.fuelTypes?.length > 0 && (
+    <span className="px-2 py-1 text-[10px] font-semibold rounded-full
+                     bg-white text-blue-600 border border-blue-600
+                     dark:bg-white-600 dark:text-black dark:border-black">
+      {vehicle.fuelTypes.join(', ')}
+    </span>
+  )}
+</div>
                 <h3 className="text-xl font-black text-foreground tracking-tight leading-tight group-hover:text-accent transition-colors">
-                    {vehicle.vehicleName}
+                    {vehicle.vehicleName} 
                 </h3>
                 <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
                     {vehicle.description}
@@ -84,21 +107,23 @@ export function BrandLineup({ brand, bodyStyle, fuelTypes, excludeVehicleId, cla
 
     if (isLoading) return null;
 
+    const brandToken = extractBrandToken(brand);
+
     const filteredVehicles = vehicles?.filter(v => {
         if (excludeVehicleId && v.id === excludeVehicleId) return false;
 
-        const vName = (v.vehicleName || '').toLowerCase();
-        const vCat = (v.name || '').toLowerCase();
-        const vSlug = (v.slug || '').toLowerCase();
-        const vDesc = (v.description || '').toLowerCase();
-        const vMeta = (v.metaTitle || '').toLowerCase();
-        const targetBrand = brand.toLowerCase().trim();
+        const vName = normalizeBrandField(v.vehicleName);
+        const vCat = normalizeBrandField(v.name);
+        const vSlug = normalizeBrandField(v.slug);
+        const vDesc = normalizeBrandField(v.description);
+        const vMeta = normalizeBrandField(v.metaTitle as string | null);
 
-        const matchesBrand = vName.includes(targetBrand) ||
-            vCat.includes(targetBrand) ||
-            vSlug.includes(targetBrand) ||
-            vDesc.includes(targetBrand) ||
-            vMeta.includes(targetBrand);
+        const matchesBrand =
+            vName.includes(brandToken) ||
+            vCat.includes(brandToken) ||
+            vSlug.includes(brandToken) ||
+            vDesc.includes(brandToken) ||
+            vMeta.includes(brandToken);
 
         if (!matchesBrand) return false;
 

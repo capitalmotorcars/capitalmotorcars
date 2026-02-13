@@ -14,6 +14,12 @@ interface BrandDealsProps {
     className?: string;
 }
 
+function normalizeBrand(value: string | null | undefined) {
+    return (value || '')
+        .toLowerCase()
+        .replace(/[\s-]/g, '');
+}
+
 function DealCard({ deal, index, onClaim }: { deal: any; index: number; onClaim: (deal: any) => void }) {
     return (
         <motion.div
@@ -102,8 +108,10 @@ export function BrandDeals({ brand, bodyStyle, fuelTypes, className }: BrandDeal
 
     if (isLoading) return null;
 
+    const targetBrand = normalizeBrand(brand);
+
     const filteredDeals = deals?.filter(deal => {
-        const matchesBrand = deal.make.toLowerCase() === brand.toLowerCase();
+        const matchesBrand = normalizeBrand(deal.make) === targetBrand;
         if (!matchesBrand) return false;
 
         const model = deal.model.toLowerCase();

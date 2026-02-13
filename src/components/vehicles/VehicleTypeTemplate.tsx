@@ -453,12 +453,16 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
       {/* Inline Brand Deals Section */}
       <AnimatePresence>
         {selectedBrand && (
-          <section ref={dealsRef} className="py-12 bg-muted/10 border-y border-border/40">
+          <section ref={dealsRef} className="py-12   border-b border-border dark:border-white/20">
             <div className="container mx-auto px-4 lg:px-8">
               <BrandLineup
                 brand={selectedBrand}
                 bodyStyle={vehicle.bodyStyle}
-                fuelTypes={vehicle.fuelTypes}
+                fuelTypes={
+                  vehicle.bodyStyle?.toLowerCase().includes('sedan')
+                    ? vehicle.fuelTypes
+                    : undefined
+                }
                 excludeVehicleId={vehicle.id}
                 className="mt-0"
               />

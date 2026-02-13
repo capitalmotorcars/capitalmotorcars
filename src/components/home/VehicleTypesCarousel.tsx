@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, ArrowRight, Search } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { cn } from '@/lib/utils';
-// import { vehicleTypes, VehicleTypeData } from '@/data/vehicleTypes'; // Legacy
 import { getAllVehicleTypes } from '@/services/vehicleTypeService';
 import type { VehicleType } from '@/types/vehicle';
 import { Button } from '@/components/ui/button';
@@ -11,21 +10,9 @@ import bg1 from '@/assets/brand-backgrounds/bg-1.jpeg';
 import bg2 from '@/assets/brand-backgrounds/bg-2.jpg';
 import bg3 from '@/assets/brand-backgrounds/bg-3.jpg';
 import bg4 from '@/assets/brand-backgrounds/bg-4.jpg';
-import { BrandDeals } from '@/components/vehicles/BrandDeals';
-import { BrandLineup } from '@/components/vehicles/BrandLineup';
-import { AnimatePresence } from 'motion/react';
-import { X } from 'lucide-react';
 
 type FilterType = 'all' | 'suv' | 'sedan' | 'luxury';
 
-// Legacy adapter helper if needed, or we just operate on VehicleType
-// The frontend uses VehicleTypeData structure.
-// WE need to ensure VehicleType (from service) matches what the UI expects or we map it.
-// VehicleType interface in types/vehicle.ts is:
-// slug, name, bodyStyle, image, vehicleName, description...
-//
-// The UI uses: v.slug, v.bodyStyle, v.name, v.image, v.startingPrice, v.range, v.mpge, v.mpg
-// It seems my new VehicleType interface covers these.
 
 const filters: { id: FilterType; label: string }[] = [
   { id: 'suv', label: 'SUV / CUV / MPV' },
@@ -38,19 +25,10 @@ function getVehicleSpecs(vehicle: VehicleType) {
   const specs = {
     startingPrice: vehicle.startingPrice || (vehicle as any).starting_price || 0,
     range: vehicle.fuelEconomy?.range || (vehicle as any).fuel_economy?.range || 0,
-    mpge: 0, // Not explicitly in my DB schema as top level, maybe need to check if I added it or if it's in specs?
-    // checking script... I didn't add mpge explicitly to top level.
-    // In vehicleTypes.ts it was `mpge: number`.
-    // In my DB I have fuel_economy jsonb.
-    // Let's assume for now we might miss MPGe unless I add it to the DB or map it from somewhere.
-    // The previous `vehicleTypes.ts` had `mpge`.
-    // My seed script did `fuel_economy: '{"city": ..., "range": ...}'`.
-    // Use fuel_economy.avg as MPG?
+    mpge: 0, 
     mpg: vehicle.fuelEconomy?.avg || (vehicle as any).fuel_economy?.avg || 0,
   };
 
-  // If I want to support MPGe, I should probably have added it.
-  // For now, let's map what we have.
   return specs;
 }
 
@@ -74,10 +52,8 @@ export function VehicleTypesCarousel({
 
   useEffect(() => {
     async function load() {
-      // console.log("Loading vehicles...");
       const res = await getAllVehicleTypes();
       if (res.success && res.data) {
-        // console.log("Loaded vehicles:", res.data);
         setAllVehicles(res.data);
       } else {
         console.error("Failed to load vehicles:", res.error);
@@ -88,7 +64,6 @@ export function VehicleTypesCarousel({
   }, []);
 
   const getFilteredVehicles = (filter: FilterType): VehicleType[] => {
-    // 1. First, filter by visibility in hero (showInHero)
     const visibleVehicles = allVehicles.filter(v => v.showInHero === true);
 
     if (filter === 'all') {
@@ -107,17 +82,14 @@ export function VehicleTypesCarousel({
       const category = displayCategory(v);
       const isLux = (v.isLuxury || (v as any).is_luxury);
 
-      // 1. Luxury Tab is inclusive: Show anything marked as luxury OR explicitly categorized as luxury
       if (filter === 'luxury') {
         return isLux || category === 'luxury';
       }
 
-      // 2. Strict Category Match: If an explicit category is set (including 'none'), it MUST match the filter
       if (category && category !== '') {
         return category === filter;
       }
 
-      // 3. Fallback Discovery Logic (Only for legacy/missing data)
       if (filter === 'suv') {
         const style = normalizedBodyStyle(v);
         return style.includes('suv') || style.includes('crossover') || style.includes('minivan');
@@ -131,7 +103,6 @@ export function VehicleTypesCarousel({
 
       return false;
     }).sort((a, b) => {
-      // Apply sort order if available
       const orderA = a.sortOrder || (a as any).sort_order || 999;
       const orderB = b.sortOrder || (b as any).sort_order || 999;
       return orderA - orderB;
@@ -139,12 +110,8 @@ export function VehicleTypesCarousel({
   };
 
   const filteredVehicles = getFilteredVehicles(activeFilter);
-  // Reset index if out of bounds (when filter changes)
-  // But we have an effect for that below.
 
   const getFilterCount = (filterId: FilterType): number | undefined => {
-    // We can't use getFilteredVehicles directly inside render easily if it depends on state that might technically change,
-    // but here it relies on `allVehicles`.
     const vehicles = getFilteredVehicles(filterId);
     return vehicles.length > 0 ? vehicles.length : undefined;
   };
@@ -154,7 +121,7 @@ export function VehicleTypesCarousel({
 
   useEffect(() => {
     setCurrentIndex(0);
-  }, [activeFilter, allVehicles]); // Reset when vehicles load too
+  }, [activeFilter, allVehicles]);
 
   const nextVehicle = () => {
     if (filteredVehicles.length === 0) return;
@@ -179,11 +146,7 @@ export function VehicleTypesCarousel({
   const currentBgIndex = filterToBgIndex[activeFilter];
   const currentBackground = backgrounds[currentBgIndex];
 
-  // if (loading) {
-  //   return <div className="py-20 text-center text-white">Loading vehicles...</div>;
-  // }
-
-  // Avoid early return so hook refs work properly
+ 
   const isEmpty = filteredVehicles.length === 0 && !loading;
 
 
@@ -191,7 +154,6 @@ export function VehicleTypesCarousel({
 
     <section className="py-16 lg:py-20 ">
       <div id={sectionId} className="relative h-full flex flex-col  ">
-        {/* Top half: Blurred cityscape background */}
         <div
           className=" absolute  top-0 left-0 right-0 h-[30vh] md:h-[42vh] bg-no-repeat transition-opacity duration-1000 overflow-hidden"
           style={{
@@ -204,7 +166,6 @@ export function VehicleTypesCarousel({
         />
 
 
-        {/* Content */}
         <div ref={ref} className={cn('relative z-10 flex-1 flex flex-col  ', 'scroll-reveal', isRevealed && 'revealed')}>
 
           {loading && (
@@ -219,7 +180,6 @@ export function VehicleTypesCarousel({
             </div>
           )}
 
-          {/* Title and Filters */}
           <div className="relative z-50 mx-auto h-[35vh] md:h-[45vh]  px-4 lg:px-8 pt-6 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-20">
             <h2 className="text-xl sm:text-3xl  md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white text-center pb-2 md:pb-4">
               {title}

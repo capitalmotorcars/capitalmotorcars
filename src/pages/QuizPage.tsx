@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
-import { ChevronLeft, ChevronRight, Star, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Star, ArrowRight, CheckCircle2, DollarSign } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'motion/react';
 import { QUIZ_QUESTIONS, IntentResult } from '@/types/quiz';
@@ -14,17 +14,21 @@ import { VehicleType } from '@/types/vehicle';
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
 
-function QuizResults({ result, answers }: { result: IntentResult; answers: Record<string, string | string[]> }) {
-  console.log(result);
+function QuizResults({ result, answers, setIsCompleted, setCurrentQuestionIndex }: { 
+  result: IntentResult; 
+  answers: Record<string, string | string[]>;
+  setIsCompleted: (completed: boolean) => void;
+  setCurrentQuestionIndex: (index: number) => void;
+}) {
   const navigate = useNavigate();
   const [selectedVehicle, setSelectedVehicle] = useState<any>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showVehicleDetails, setShowVehicleDetails] = useState(false);
 
   const handleContactClick = (vehicle: any) => {
     setSelectedVehicle(vehicle);
@@ -40,101 +44,257 @@ function QuizResults({ result, answers }: { result: IntentResult; answers: Recor
   }).join(' | ');
 
   return (
-    <div className="max-w-6xl mx-auto py-12 px-4">
-      <div className="text-center mb-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
-          <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-3 block">
-            Your Perfect Match
-          </span>
-          <h2 className="text-2xl md:text-4xl font-black tracking-tighter text-foreground uppercase mb-6">
-            Everything points to <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-600">
-              {result.intent}
-            </span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Based on your lifestyle and preferences, we've curated the top three 2026 models that define {result.intent.toLowerCase()}.
-          </p>
-        </motion.div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {result.vehicles.map((vehicle, index) => (
-          <motion.div
-            key={vehicle.name}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-            className={cn(
-              "group relative flex flex-col rounded-[2.5rem] border-2 bg-muted/5 dark:bg-white/[0.02] overflow-hidden transition-all duration-500",
-              index === 0
-                ? "border-accent shadow-[0_0_50px_-12px_rgba(59,130,246,0.3)] scale-105 z-10"
-                : "border-border/60 dark:border-white/10 hover:border-accent/40"
-            )}
-          >
-            {index === 0 && (
-              <div className="absolute top-4 right-4 z-20">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accent text-accent-foreground text-[10px] font-bold uppercase tracking-widest shadow-xl">
-                  <Star className="w-3 h-3 fill-current" />
-                  Recommended
+    <>
+      {showVehicleDetails && selectedVehicle ? (
+        <div className="max-w-6xl mx-auto py-12 md:py-20 px-4">
+          <div className="mb-8">
+            <Button
+              onClick={() => setShowVehicleDetails(false)}
+              variant="outline"
+              className="mb-6 h-10 px-6 rounded-xl border-border/50 hover:bg-muted/50 font-bold tracking-wide uppercase text-[10px]"
+            >
+              ← Back to Results
+            </Button>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-3 block">
+                Vehicle Details
+              </span>
+              <h2 className="text-2xl md:text-4xl font-black tracking-tighter text-foreground uppercase mb-6">
+                {selectedVehicle.year} {selectedVehicle.brand} <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-600">
+                  {selectedVehicle.name}
                 </span>
-              </div>
-            )}
+              </h2>
+            </motion.div>
+          </div>
 
-            <div className="p-8 md:p-10 flex flex-col h-full gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.1 }}
+            >
+              {selectedVehicle.image && (
+                <div className="relative rounded-[2.5rem] overflow-hidden border-2 border-border/20">
+                  <img 
+                    src={selectedVehicle.image} 
+                    alt={`${selectedVehicle.year} ${selectedVehicle.brand} ${selectedVehicle.name}`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="space-y-8"
+            >
               <div>
-                <span className="text-xs font-bold text-accent uppercase tracking-widest mb-2 block">2026 {vehicle.brand}</span>
-                <h3 className="text-2xl font-black text-foreground tracking-tight leading-none group-hover:text-accent transition-colors duration-300">
-                  {vehicle.name}
-                </h3>
-                {vehicle.startingPrice && (
-                  <div className="flex items-baseline gap-1 mt-3">
-                    <span className="text-2xl font-bold text-accent">${vehicle.startingPrice}</span>
-                    <span className="text-sm text-muted-foreground font-medium">/month</span>
-                  </div>
-                )}
-                {vehicle.image && (
-                  <div className="relative transition-opacity opacity-80 group-hover:opacity-100">
-                    <img src={vehicle.image} alt="" className="w-full h-full object-contain scale-110 group-hover:scale-125 transition-all duration-300" />
-                  </div>
-                )}
-                <p className="text-sm text-muted-foreground mt-4 leading-relaxed font-medium italic">
-                  "{vehicle.whyFits}"
+                <h3 className="text-xl font-black text-foreground uppercase mb-4">Overview</h3>
+                <p className="text-muted-foreground leading-relaxed italic">
+                  "{selectedVehicle.whyFits}"
                 </p>
               </div>
 
-              <div className="space-y-3 flex-1">
-                {vehicle.highlights.map((highlight) => (
-                  <div key={highlight} className="flex items-center gap-3">
-                    <div className="w-1.5 h-1.5 rounded-full bg-accent" />
-                    <span className="text-sm font-bold text-foreground/80 uppercase tracking-wide">{highlight}</span>
+              {selectedVehicle.startingPrice && (
+                <div>
+                  <h3 className="text-xl font-black text-foreground uppercase mb-4">Pricing</h3>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-3xl font-bold text-accent">${selectedVehicle.startingPrice}</span>
+                    <span className="text-lg text-muted-foreground font-medium">/month</span>
                   </div>
-                ))}
-              </div>
+                </div>
+              )}
 
-              <div className="flex flex-col gap-3 pt-6 border-t border-border/50">
+              {selectedVehicle.highlights && selectedVehicle.highlights.length > 0 && (
+                <div>
+                  <h3 className="text-xl font-black text-foreground uppercase mb-4">Key Features</h3>
+                  <div className="space-y-3">
+                    {selectedVehicle.highlights.map((highlight: string, index: number) => (
+                      <div key={index} className="flex items-center gap-3">
+                        <div className="w-2 h-2 rounded-full bg-accent" />
+                        <span className="text-sm font-bold text-foreground/80 uppercase tracking-wide">{highlight}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div className="flex gap-4 pt-6">
                 <Button
-                  onClick={() => navigate(`/vehicles/${vehicle.slug}`)}
-                  className="w-full h-12 rounded-xl bg-accent hover:bg-accent/90 text-accent-foreground font-black tracking-wide uppercase text-xs shadow-lg shadow-accent/20 transition-all"
+                  onClick={() => navigate(`/vehicles/${selectedVehicle.slug}`)}
+                  className="flex-1 h-12 rounded-xl bg-accent hover:bg-accent/90 text-accent-foreground font-black tracking-wide uppercase text-xs shadow-lg"
                 >
-                  View Details <ArrowRight className="ml-2 w-4 h-4" />
+                  View More Details
                 </Button>
                 <Button
+                  onClick={() => setShowVehicleDetails(false)}
                   variant="outline"
-                  onClick={() => handleContactClick(vehicle)}
-                  className="w-full h-12 rounded-xl border-border/50 hover:bg-muted/50 font-bold tracking-wide uppercase text-[10px]"
+                  className="flex-1 h-12 rounded-xl border-border/50 hover:bg-muted/50 font-bold tracking-wide uppercase text-[10px]"
                 >
-                  Contact Us
+                  Back to Results
                 </Button>
               </div>
-            </div>
-
+            </motion.div>
+          </div>
+        </div>
+      ) : (
+        <div className="max-w-6xl mx-auto py-12 md:py-24 px-4">
+          <div className="text-center mb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-3 block">
+              Your Perfect Match
+            </span>
+            <h2 className="text-2xl md:text-4xl font-black tracking-tighter text-foreground uppercase mb-6">
+              Everything points to <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-600">
+                {result.intent}
+              </span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Based on your lifestyle and preferences, we've curated the top three 2026 models that define {result.intent.toLowerCase()}.
+            </p>
           </motion.div>
-        ))}
+        </div>
+
+        {result.needsBudgetAdjustment ? (
+          <div className="text-center py-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="max-w-2xl mx-auto"
+            >
+              <div className="w-20 h-20 bg-yellow-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <DollarSign className="w-10 h-10 text-yellow-500" />
+              </div>
+              <h3 className="text-2xl font-black text-foreground uppercase mb-4">
+                Budget Too <span className="text-yellow-500">Low</span>
+              </h3>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                We don't have any vehicles available in your selected budget range. 
+                Please consider adjusting your budget to see more options.
+              </p>
+              {result.suggestedBudgetRange && (
+                <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-6 mb-8">
+                  <p className="text-lg font-bold text-yellow-700 dark:text-yellow-400">
+                    💡 {result.suggestedBudgetRange.message}
+                  </p>
+                </div>
+              )}
+              <Button
+                onClick={() => {
+                  setIsCompleted(false);
+                  setCurrentQuestionIndex(4); 
+                }}
+                className="h-12 px-8 bg-yellow-500 hover:bg-yellow-600 text-white font-black uppercase tracking-widest text-xs rounded-xl"
+              >
+                Adjust Budget
+              </Button>
+            </motion.div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {result.vehicles.map((vehicle, index) => (
+            <motion.div
+              key={vehicle.name}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className={cn(
+                "group relative flex flex-col rounded-[2.5rem] border-2 bg-muted/5 dark:bg-white/[0.02] overflow-hidden transition-all duration-500",
+                index === 0
+                  ? "border-accent shadow-[0_0_50px_-12px_rgba(59,130,246,0.3)] scale-105 z-10"
+                  : "border-border/60 dark:border-white/10 hover:border-accent/40"
+              )}
+            >
+              {index === 0 && (
+                <div className="absolute top-4 right-4 z-20">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accent text-accent-foreground text-[10px] font-bold uppercase tracking-widest shadow-xl">
+                    <Star className="w-3 h-3 fill-current" />
+                    Recommended
+                  </span>
+                </div>
+              )}
+
+              <div className="p-8 md:p-10 flex flex-col h-full gap-4">
+                <div>
+                  <span className="text-xs font-bold text-accent uppercase tracking-widest mb-2 block">{vehicle.year} {vehicle.brand}</span>
+                  <h3 className="text-2xl font-black text-foreground tracking-tight leading-none group-hover:text-accent transition-colors duration-300">
+                    {vehicle.name}
+                  </h3>
+                  {vehicle.startingPrice && (
+                    <div className="flex items-baseline gap-1 mt-3">
+                      <span className="text-2xl font-bold text-accent">${vehicle.startingPrice}</span>
+                      <span className="text-sm text-muted-foreground font-medium">/month</span>
+                    </div>
+                  )}
+                  {vehicle.image && (
+                    <div className="relative transition-opacity opacity-80 group-hover:opacity-100">
+                      <img src={vehicle.image} alt="" className="w-full h-full object-contain scale-110 group-hover:scale-125 transition-all duration-300" />
+                    </div>
+                  )}
+                  <p className="text-sm text-muted-foreground mt-4 leading-relaxed font-medium italic">
+                    "{vehicle.whyFits}"
+                  </p>
+                </div>
+
+                <div className="space-y-3 flex-1">
+                  {vehicle.highlights.map((highlight) => (
+                    <div key={highlight} className="flex items-center gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+                      <span className="text-sm font-bold text-foreground/80 uppercase tracking-wide">{highlight}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-col gap-3 pt-6 border-t border-border/50">
+                  <Button
+                    onClick={() => navigate(`/vehicles/${vehicle.slug}`)}
+                    className="w-full h-12 rounded-xl bg-accent hover:bg-accent/90 text-accent-foreground font-black tracking-wide uppercase text-xs shadow-lg shadow-accent/20 transition-all"
+                  >
+                    View Details <ArrowRight className="ml-2 w-4 h-4" />
+                  </Button>
+                  <Button
+                    variant="outline"
+                    onClick={() => handleContactClick(vehicle)}
+                    className="w-full h-12 rounded-xl border-border/50 hover:bg-muted/50 font-bold tracking-wide uppercase text-[10px]"
+                  >
+                    Contact Us
+                  </Button>
+                </div>
+              </div>
+
+            </motion.div>
+          ))}
+          </div>
+        )}
+
       </div>
+      )}
+        
+      {!result.needsBudgetAdjustment && !showVehicleDetails && (
+        <div className="text-center mb-12">
+          <Button
+            onClick={() => {
+              // Reset quiz to start
+              window.location.reload();
+            }}
+            variant="outline"
+            size="lg"
+            className="h-12 px-8 rounded-xl border-border/50 hover:bg-muted/50 font-bold tracking-wide uppercase text-lg"
+          >
+            Try Quiz Again
+          </Button>
+        </div>
+      )}
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent className="max-w-2xl p-0 overflow-hidden border-none bg-transparent">
@@ -156,17 +316,31 @@ function QuizResults({ result, answers }: { result: IntentResult; answers: Recor
                   <p className="text-lg text-muted-foreground leading-relaxed mb-8">
                     We received your details and will contact you soon with vehicle options that match your quiz results.
                   </p>
-                  <Button
-                    onClick={() => {
-                      setIsDialogOpen(false);
-                      setShowSuccess(false);
-                      // Reset quiz to start
-                      window.location.reload();
-                    }}
-                    className="h-12 px-8 rounded-xl bg-accent hover:bg-accent/90 text-accent-foreground font-black tracking-wide uppercase text-xs shadow-lg"
-                  >
-                    Continue
-                  </Button>
+                  <div className="flex gap-4 justify-center">
+                    <Button
+                      onClick={() => {
+                        setIsDialogOpen(false);
+                        setShowSuccess(false);
+                        // Reset quiz to start
+                        window.location.reload();
+                      }}
+                      className="h-12 px-8 rounded-xl bg-accent hover:bg-accent/90 text-accent-foreground font-black tracking-wide uppercase text-xs shadow-lg"
+                    >
+                      Continue
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        setIsDialogOpen(false);
+                        setShowSuccess(false);
+                        // Show vehicle details on the same page
+                        setShowVehicleDetails(true);
+                      }}
+                      variant="outline"
+                      className="h-12 px-8 rounded-xl border-border/50 hover:bg-muted/50 font-bold tracking-wide uppercase text-[10px]"
+                    >
+                      View Vehicle Details
+                    </Button>
+                  </div>
                 </motion.div>
               ) : (
                 <div key="form">
@@ -185,6 +359,7 @@ function QuizResults({ result, answers }: { result: IntentResult; answers: Recor
                   <ContactForm
                     source="quiz_result"
                     initialValues={{
+                      service: 'leasing',
                       message: `I just completed the vehicle quiz and my result was "${result.intent}". I'm particularly interested in the 2026 ${selectedVehicle?.brand} ${selectedVehicle?.name}. My answers were: ${formattedAnswers}`
                     }}
                     onSubmitSuccess={() => setShowSuccess(true)}
@@ -195,7 +370,7 @@ function QuizResults({ result, answers }: { result: IntentResult; answers: Recor
           </div>
         </DialogContent>
       </Dialog>
-    </div>
+    </>
   );
 }
 
@@ -297,7 +472,7 @@ export default function QuizPage() {
           title={`Your Perfect Match: ${result.intent} | Capital Motor Cars`}
           description={`Discover the best vehicle matches for your lifestyle: ${result.intent}.`}
         />
-        <QuizResults result={result} answers={answers} />
+        <QuizResults result={result} answers={answers} setIsCompleted={setIsCompleted} setCurrentQuestionIndex={setCurrentQuestionIndex} />
       </Layout>
     );
   }

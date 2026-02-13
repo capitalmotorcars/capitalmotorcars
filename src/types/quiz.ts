@@ -54,6 +54,12 @@ export interface RecommendedVehicle {
 export interface IntentResult {
     intent: Intent;
     vehicles: RecommendedVehicle[];
+    needsBudgetAdjustment?: boolean;
+    suggestedBudgetRange?: {
+        min: number;
+        max: number;
+        message: string;
+    };
 }
 
 export const QUIZ_QUESTIONS: QuizQuestion[] = [
@@ -125,135 +131,3 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     },
 ];
 
-export const INTENT_VEHICLE_MIX: Record<Intent, RecommendedVehicle[]> = {
-    'Family & Practical': [
-        {
-            name: 'RX Hybrid',
-            brand: 'Lexus',
-            year: 2026,
-            whyFits: 'Perfect blend of efficiency and room for the whole family.',
-            highlights: ['Hybrid Efficiency', 'Advanced Safety', 'Spacious Interior'],
-            type: 'Hybrid SUV'
-        },
-        {
-            name: 'Accord',
-            brand: 'Honda',
-            year: 2026,
-            whyFits: 'Reliable, comfortable, and perfect for daily family duties.',
-            highlights: ['Class-leading Space', 'Fuel Efficient', 'Refined Drive'],
-            type: 'Comfortable family sedan'
-        },
-        {
-            name: 'iX',
-            brand: 'BMW',
-            year: 2026,
-            whyFits: 'The future of family travel with zero emissions and peak luxury.',
-            highlights: ['All-Electric Range', 'Futuristic Tech', 'Superb Comfort'],
-            type: 'Family-friendly electric SUV'
-        }
-    ],
-    'Daily Comfort': [
-        {
-            name: 'E-Class',
-            brand: 'Mercedes-Benz',
-            year: 2026,
-            whyFits: 'Superior comfort that makes every commute feel like a getaway.',
-            highlights: ['Luxury Interior', 'Smooth Ride', 'Advanced Driver Assistance'],
-            type: 'Standard sedan'
-        },
-        {
-            name: 'ES Hybrid',
-            brand: 'Lexus',
-            year: 2026,
-            whyFits: 'Quiet, efficient, and exceptionally comfortable for daily use.',
-            highlights: ['Industry-leading Reliability', 'Superb Quietness', 'Great MPG'],
-            type: 'Hybrid sedan'
-        },
-        {
-            name: 'i4',
-            brand: 'BMW',
-            year: 2026,
-            whyFits: 'Agile electric performance paired with everyday luxury and comfort.',
-            highlights: ['Dynamic Handling', 'Quick Charging', 'Premium Cabin'],
-            type: 'Compact luxury electric'
-        }
-    ],
-    'Premium & Luxury': [
-        {
-            name: 'Range Rover',
-            brand: 'Land Rover',
-            year: 2026,
-            whyFits: 'The ultimate statement in luxury and off-road capability.',
-            highlights: ['Unrivaled Prestige', 'Go-Anywhere Ability', 'Exquisite Craftsmanship'],
-            type: 'Luxury SUV'
-        },
-        {
-            name: 'G90',
-            brand: 'Genesis',
-            year: 2026,
-            whyFits: 'World-class luxury and technology that rivals the best in the world.',
-            highlights: ['Rear Seat Luxury', 'Elegant Design', 'Exceptional Warranty'],
-            type: 'Luxury sedan'
-        },
-        {
-            name: 'Taycan',
-            brand: 'Porsche',
-            year: 2026,
-            whyFits: 'Electrifying performance meets unparalleled luxury and design.',
-            highlights: ['Lightning Fast', 'Porsche DNA', 'Cutting-edge Tech'],
-            type: 'Premium electric performance'
-        }
-    ],
-    'Performance & Fun': [
-        {
-            name: '911',
-            brand: 'Porsche',
-            year: 2026,
-            whyFits: 'The benchmark for sports cars, delivering pure driving joy.',
-            highlights: ['Iconic Design', 'Incredible Handling', 'Daily Useable'],
-            type: 'Sport coupe'
-        },
-        {
-            name: 'CT5-V Blackwing',
-            brand: 'Cadillac',
-            year: 2026,
-            whyFits: 'Unfiltered power and performance in a refined executive package.',
-            highlights: ['Raw Power', 'Superb Chassis', 'V-Series Heritage'],
-            type: 'Performance sedan'
-        },
-        {
-            name: 'Charger Daytona',
-            brand: 'Dodge',
-            year: 2026,
-            whyFits: 'The next generation of muscle, proving electric can be exciting.',
-            highlights: ['Electric Muscle', 'Fratzonic Exhaust', 'Bold Styling'],
-            type: 'Electric performance vehicle'
-        }
-    ],
-    'Work & Utility': [
-        {
-            name: 'Yukon Denali',
-            brand: 'GMC',
-            year: 2026,
-            whyFits: 'Towing power and massive space without compromising on luxury.',
-            highlights: ['Huge Cargo Space', 'V8 Power', 'Denali Refinement'],
-            type: 'Full-size SUV'
-        },
-        {
-            name: 'Odyssey',
-            brand: 'Honda',
-            year: 2026,
-            whyFits: 'The ultimate tool for large families and heavy utility needs.',
-            highlights: ['Magic Slide Seats', 'V6 Reliability', 'Endless Cup Holders'],
-            type: 'Minivan'
-        },
-        {
-            name: 'Sienna',
-            brand: 'Toyota',
-            year: 2026,
-            whyFits: 'All-wheel drive and hybrid efficiency for the ultimate utility vehicle.',
-            highlights: ['AWD Standard', '500+ Mile Range', 'Proven Reliability'],
-            type: 'Hybrid family vehicle'
-        }
-    ]
-};

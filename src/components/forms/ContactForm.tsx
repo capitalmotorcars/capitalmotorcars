@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import validator from 'validator';
+import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -19,80 +21,123 @@ import { FormSuccessMessage } from './FormSuccessMessage';
 import { getSubmitErrorMessage, getSubmitErrorFromException } from './getSubmitErrorMessage';
 import { WEBHOOK_URL } from '@/lib/webhook';
 
-const contactSchema = z.object({
-  fullName: z.string()
+function levenshtein(a: string, b: string): number {
+  const matrix = Array.from({ length: b.length + 1 }, () =>
+    Array(a.length + 1).fill(0)
+  );
+
+  for (let i = 0; i <= a.length; i++) matrix[0][i] = i;
+  for (let j = 0; j <= b.length; j++) matrix[j][0] = j;
+
+  for (let j = 1; j <= b.length; j++) {
+    for (let i = 1; i <= a.length; i++) {
+      if (a[i - 1] === b[j - 1]) {
+        matrix[j][i] = matrix[j - 1][i - 1];
+      } else {
+        matrix[j][i] = Math.min(
+          matrix[j - 1][i] + 1,
+          matrix[j][i - 1] + 1,
+          matrix[j - 1][i - 1] + 1
+        );
+      }
+    }
+  }
+
+  return matrix[b.length][a.length];
+}
+
+const bannedDomains = [
+  'test.com',
+  'example.com',
+  'dummy.com',
+  'temp-mail.org',
+  'mailinator.com',
+  'tempmail.com',
+  '123.com',
+];
+
+const commonDomains = [
+  'gmail.com',
+  'yahoo.com',
+  'outlook.com',
+  'hotmail.com',
+  'icloud.com',
+  'aol.com',
+  'live.com',
+];
+
+export const contactSchema = z.object({
+  fullName: z
+    .string()
     .min(2, 'Name must be at least 2 characters')
     .max(100)
-    .refine(val => !/^(.)\1+$/.test(val.replace(/\s/g, '')), 'Please enter a valid name'),
-  email: z.string()
-    .email('Please enter a valid email address')
-    .max(255)
-    .refine((val) => {
-      const bannedDomains = [
-        'test.com', 'example.com', 'dummy.com', 'temp-mail.org',
-        'mailinator.com', 'tempmail.com', 'test.com', '123.com'
-      ];
-      const domain = val.split('@')[1]?.toLowerCase();
-      return !bannedDomains.includes(domain);
-    }, 'Please use a valid business or personal email')
-    .refine((val) => {
-      const [local, domain] = val.split('@');
-      // Block repeating local parts like 'aaaa@' or '1111@'
-      const isRepeatingLocal = /^(.)\1{3,}$/.test(local);
-      // Block repeating domains like '@111.111'
-      const isRepeatingDomain = domain ? /^(.)\1+\.(.)\2+$/.test(domain) : false;
+    .trim()
+    .refine(
+      (val) => !/^(.)\1+$/.test(val.replace(/\s/g, '')),
+      'Please enter a valid name'
+    ),
 
-      return !isRepeatingLocal && !isRepeatingDomain;
-    }, 'Please enter a valid format (e.g., name@company.com)')
+  email: z
+    .string()
+    .trim()
+    .refine((val) => validator.isEmail(val), 'Please enter a valid email address')
+
     .refine((val) => {
-      const [local] = val.split('@');
-      // Block repeating patterns like 'dasdasdas' or 'abcabcabc'
-      if (local.length >= 6) {
-        // Check for 2-char patterns (like 'dadada')
-        for (let patternLen = 2; patternLen <= 4; patternLen++) {
-          const pattern = local.slice(0, patternLen);
-          const repeated = pattern.repeat(Math.ceil(local.length / patternLen)).slice(0, local.length);
-          if (local === repeated) return false;
+      const [local] = val.split('@')
+      if (!local) return false
+
+      const clean = local.toLowerCase()
+
+      if (/^(.)\1+$/.test(clean)) return false
+
+      if (/^(.{2,4})\1+$/.test(clean)) return false
+
+      if (new Set(clean).size < 4) return false
+
+      return true
+    }, 'Please enter a valid email address')
+
+    .refine((val) => {
+      const [, domain] = val.split('@')
+      if (!domain) return false
+
+      const lowerDomain = domain.toLowerCase()
+
+      if (bannedDomains.includes(lowerDomain)) return false
+
+      for (const validDomain of commonDomains) {
+        const distance = levenshtein(lowerDomain, validDomain)
+
+        if (distance > 0 && distance <= 2) {
+          return false
         }
       }
-      return true;
+
+      return true
     }, 'Please enter a valid email address'),
-  phone: z.string()
-    .min(10, 'Please enter a valid phone number')
-    .max(20)
-    .refine((val) => {
-      const digits = val.replace(/\D/g, '');
-      // Prevent repeating digits like '1111111111'
-      return !/^(.)\1+$/.test(digits);
-    }, 'Please enter a real phone number')
-    .refine((val) => {
-      const digits = val.replace(/\D/g, '');
-      // Prevent simple sequences like '1234567890'
-      const sequential = "01234567890123456789";
-      return !sequential.includes(digits);
-    }, 'Please enter a real phone number')
-    .refine((val) => {
-      const digits = val.replace(/\D/g, '');
-      // Prevent repeating patterns like '232-323-2323' (digits: 2323232323)
-      if (digits.length >= 6) {
-        // Check for 2-digit patterns repeated (like 232323...)
-        const twoDigitPattern = digits.slice(0, 2);
-        const repeatedTwo = twoDigitPattern.repeat(Math.ceil(digits.length / 2)).slice(0, digits.length);
-        if (digits === repeatedTwo) return false;
 
-        // Check for 3-digit patterns repeated (like 123123123...)
-        if (digits.length >= 9) {
-          const threeDigitPattern = digits.slice(0, 3);
-          const repeatedThree = threeDigitPattern.repeat(Math.ceil(digits.length / 3)).slice(0, digits.length);
-          if (digits === repeatedThree) return false;
-        }
+  phone: z
+    .string()
+    .trim()
+    .refine((value) => {
+      if (!value) return false;
+      let phoneNumber = parsePhoneNumberFromString(value, 'US');
+      if (!phoneNumber?.isValid()) {
+        phoneNumber = parsePhoneNumberFromString(value);
       }
-      return true;
-    }, 'Please enter a real phone number'),
+      return phoneNumber?.isValid() ?? false;
+    }, 'Please enter a valid phone number'),
+
   service: z.string().optional(),
+
   vehicleType: z.string().optional(),
-  message: z.string().max(1000).optional(),
+
+  message: z
+    .string()
+    .max(1000, 'Message cannot exceed 1000 characters')
+    .optional(),
 });
+
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
