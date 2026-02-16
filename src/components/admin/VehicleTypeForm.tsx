@@ -47,7 +47,7 @@ const specsSchema = z.object({
         headroom: z.string().default(''),
         legroom: z.string().default(''),
         cargo: z.string().default(''),
-        passengers: z.number().min(1).default(0),
+        passengers: z.number().min(1).default(5),
     }),
     warranty: z.object({
         comprehensive: z.string().default(''),
@@ -161,7 +161,7 @@ export function VehicleTypeForm({ vehicleType, onSubmit, onCancel, isLoading }: 
         fuel_economy: vehicleType.fuelEconomy || { city: 0, hwy: 0, avg: 0, range: 0 },
         specs: vehicleType.specs || {
             exterior: { length: '', height: '', weight: '', wheels: '' },
-            interior: { headroom: '', legroom: '', cargo: '', passengers: 0 },
+            interior: { headroom: '', legroom: '', cargo: '', passengers: 5 },
             warranty: { comprehensive: '', powertrain: '', roadside: '' }
         },
         feature_groups: vehicleType.featureGroups || [],
@@ -176,7 +176,7 @@ export function VehicleTypeForm({ vehicleType, onSubmit, onCancel, isLoading }: 
         fuel_types: [],
         year: new Date().getFullYear(),
         drivetrain: [],
-        passenger_capacity: 0,
+        passenger_capacity: 5,
         cargo_space: 'medium',
         highlights: [],
         popular_brands: [],
@@ -189,7 +189,7 @@ export function VehicleTypeForm({ vehicleType, onSubmit, onCancel, isLoading }: 
         fuel_economy: { city: 0, hwy: 0, avg: 0, range: 0 },
         specs: {
             exterior: { length: '', height: '', weight: '', wheels: '' },
-            interior: { headroom: '', legroom: '', cargo: '', passengers: 0 },
+            interior: { headroom: '', legroom: '', cargo: '', passengers: 5 },
             warranty: { comprehensive: '', powertrain: '', roadside: '' }
         },
         feature_groups: [],
