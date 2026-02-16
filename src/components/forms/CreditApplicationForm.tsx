@@ -1785,20 +1785,22 @@ export function CreditApplicationForm() {
               Preferred Consultant <span className="text-destructive">*</span>
               {isFieldValid('consultant') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
             </Label>
-            <Select value={watch('consultant') ?? ''} onValueChange={async (v) => {
+            <Select 
+            value={watch('consultant') ?? ''} onValueChange={async (v) => {
               setValue('consultant', v, { shouldValidate: true, shouldTouch: true });
               await trigger('consultant');
             }}>
               <SelectTrigger className={cn(
-                errors.consultant 
-                  ? 'border-destructive' 
+
+errors.consultant 
+                  ? 'border-destructive ' 
                   : isFieldValid('consultant')
-                    ? 'border-green-500'
+                    ? 'border-green-500 '
                     : ''
               )}>
                 <SelectValue placeholder="Select your preferred consultant" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white dark:bg-black text-foreground dark:text-white boder border-border dark:border-white/10">
                 {CONSULTANT_OPTIONS.filter((o) => o.value).map((o) => (
                   <SelectItem key={o.value} value={o.value}>{o.label}</SelectItem>
                 ))}
