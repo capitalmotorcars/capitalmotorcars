@@ -3,7 +3,7 @@ import { useVehicleTypes } from '@/hooks/useVehicleTypes';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { ArrowRight, Car } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 interface BrandLineupProps {
     brand: string;
@@ -24,7 +24,7 @@ function extractBrandToken(value: string | null | undefined) {
     return first || normalized;
 }
 
-function VehicleCard({ vehicle, index }: { vehicle: any; index: number }) {
+function VehicleCard({ vehicle, index, currentSlug }: { vehicle: any; index: number; currentSlug?: string }) {
     return (
         <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -91,10 +91,21 @@ function VehicleCard({ vehicle, index }: { vehicle: any; index: number }) {
                             </span>
                         )}
                     </div>
-                    <Button asChild size="sm" className="w-full h-10 rounded-xl bg-foreground hover:bg-foreground/90 text-background font-black tracking-wide uppercase text-[10px] transition-all">
-                        <Link to={`/vehicles/${vehicle.slug}`} className="cursor-pointer">
-                            Learn More <ArrowRight className="ml-2 w-3 h-3" />
-                        </Link>
+                    <Button 
+                        asChild={!currentSlug || vehicle.slug !== currentSlug}
+                        size="sm" 
+                        className="w-full h-10 rounded-xl bg-foreground hover:bg-foreground/90 text-background font-black tracking-wide uppercase text-[10px] transition-all"
+                        onClick={currentSlug && vehicle.slug === currentSlug ? () => window.scrollTo({ top: 0, behavior: 'smooth' }) : undefined}
+                    >
+                        {currentSlug && vehicle.slug === currentSlug ? (
+                            <span className="cursor-pointer flex items-center">
+                                Learn More <ArrowRight className="ml-2 w-3 h-3" />
+                            </span>
+                        ) : (
+                            <Link to={`/vehicles/${vehicle.slug}`} className="cursor-pointer flex items-center">
+                                Learn More <ArrowRight className="ml-2 w-3 h-3" />
+                            </Link>
+                        )}
                     </Button>
                 </div>
             </div>
@@ -104,13 +115,14 @@ function VehicleCard({ vehicle, index }: { vehicle: any; index: number }) {
 
 export function BrandLineup({ brand, bodyStyle, fuelTypes, excludeVehicleId, className }: BrandLineupProps) {
     const { data: vehicles, isLoading } = useVehicleTypes();
+    const { slug: currentSlug } = useParams<{ slug?: string }>();
 
     if (isLoading) return null;
 
     const brandToken = extractBrandToken(brand);
 
     const filteredVehicles = vehicles?.filter(v => {
-        if (excludeVehicleId && v.id === excludeVehicleId) return false;
+        // if (excludeVehicleId && v.id === excludeVehicleId) return false;
 
         const vName = normalizeBrandField(v.vehicleName);
         const vCat = normalizeBrandField(v.name);
@@ -145,6 +157,7 @@ export function BrandLineup({ brand, bodyStyle, fuelTypes, excludeVehicleId, cla
 
             // Contextual Logic:
             // 1. If we are in an Alternative energy context (EV/Hybrid), require a strict tag match
+            
             if (isAlt(target)) {
                 if (!target.some(t => source.includes(t))) return false;
             }
@@ -175,7 +188,7 @@ export function BrandLineup({ brand, bodyStyle, fuelTypes, excludeVehicleId, cla
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {filteredVehicles.map((vehicle, index) => (
-                        <VehicleCard key={vehicle.id} vehicle={vehicle} index={index} />
+                        <VehicleCard key={vehicle.id} vehicle={vehicle} index={index} currentSlug={currentSlug} />
                     ))}
                 </div>
             </div>
