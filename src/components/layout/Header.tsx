@@ -6,12 +6,21 @@ import { ThemeToggle } from '@/components/ThemeToggle';
 import { cn } from '@/lib/utils';
 import logo from '@/assets/logo-main.png';
 
-const navLinks = [
+const desktopNavLinks = [
   { href: '/', label: 'Home' },
   { href: '/services', label: 'Services' },
   { href: '/brands', label: 'Brands' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
+];
+
+const mobileNavLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/services', label: 'Services' },
+  { href: '/brands', label: 'Brands' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+  { href: '/credit-application', label: 'Credit Application' },
 ];
 
 export function Header() {
@@ -62,7 +71,7 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
-            {navLinks.map((link) => {
+            {desktopNavLinks.map((link) => {
               const active = isActive(link.href);
               return (
                 <Link
@@ -121,12 +130,12 @@ export function Header() {
         <div
           className={cn(
             'lg:hidden overflow-hidden transition-all duration-300 ease-out',
-            isMobileMenuOpen ? 'max-h-[450px] opacity-100' : 'max-h-0 opacity-0'
+            isMobileMenuOpen ? 'max-h-[550px] opacity-100' : 'max-h-0 opacity-0'
           )}
         >
           <div className="mt-4 pt-4 pb-2 border-t border-border dark:border-white/10 bg-background dark:bg-black">
             <nav className="flex flex-col gap-0.5 px-2" aria-label="Mobile navigation">
-              {navLinks.map((link) => {
+              {mobileNavLinks.map((link) => {
                 const active = isActive(link.href);
                 return (
                   <Link
