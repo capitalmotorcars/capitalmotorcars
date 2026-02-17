@@ -97,7 +97,7 @@ export default function CarLeasingPage() {
         highlightedTitle="Leasing"
         subtitle="Find the right lease for your budget and needs, without spending hours negotiating at dealerships."
         heroImage={heroBg}
-        primaryAction={{ label: "Contact Us", href: "/contact" }}
+        primaryAction={{ label: "Start Credit Application", href: "/credit-application" }}
         secondaryAction={{ label: "Call Us", href: "tel:201-555-0123", icon: Phone }}
       />
 

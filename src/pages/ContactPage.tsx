@@ -132,8 +132,8 @@ export default function ContactPage() {
                   size="lg"
                   className="h-11 sm:h-12 xl:h-14 rounded-lg xl:rounded-xl border border-white/30 bg-white/10 hover:bg-white/20 hover:border-white/50 text-white font-semibold xl:font-bold px-6 sm:px-8 xl:px-10 text-sm sm:text-base xl:text-lg backdrop-blur-sm"
                 >
-                  <Link to="/quiz" className="flex items-center justify-center gap-2 xl:gap-3">
-                    Start Quiz
+                  <Link to="/credit-application" className="flex items-center justify-center gap-2 xl:gap-3">
+                    Start Credit Application
                     <Search className="w-4 h-4 xl:w-5 xl:h-5" />
                   </Link>
                 </Button>

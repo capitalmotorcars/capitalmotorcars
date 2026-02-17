@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams, useNavigate, useParams } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
 import { JsonLd } from '@/components/JsonLd';
@@ -22,12 +22,24 @@ import {
 import { TestimonialsSection } from '../home/TestimonialsSection';
 import { VehicleTypesCarousel } from '../home/VehicleTypesCarousel';
 import { BrandLineup } from './BrandLineup';
+import { useVehicleTypes } from '@/hooks/useVehicleTypes';
 
 function formatFuel(fuel: FuelType): string {
   return fuel.charAt(0).toUpperCase() + fuel.slice(1);
 }
 function formatCargo(space: 'small' | 'medium' | 'large'): string {
   return space.charAt(0).toUpperCase() + space.slice(1);
+}
+
+function normalizeBrandField(value: string | null | undefined) {
+    return (value || '').toLowerCase();
+}
+
+function extractBrandToken(value: string | null | undefined) {
+    const normalized = (value || '').toLowerCase().replace(/-/g, ' ');
+    // Take the first "word" (before space) as the core brand token
+    const [first] = normalized.split(/\s+/);
+    return first || normalized;
 }
 
 const BENEFIT_ICONS = [Zap, Shield, TrendingUp, Award] as const;
@@ -203,8 +215,13 @@ interface VehicleTypeTemplateProps {
 
 export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
   console.log(vehicle.fuelTypes);
+  const { data: vehicles } = useVehicleTypes();
+  const navigate = useNavigate();
   const { ref: heroRef, isRevealed: heroRevealed } = useScrollReveal();
-
+  const { slug: currentSlug } = useParams<{ slug?: string }>();
+  
+  // Store the last clicked brand and vehicle index to cycle through vehicles
+  const [lastBrandClick, setLastBrandClick] = React.useState<{brand: string, index: number} | null>(null);
   const { ref: faqRef, isRevealed: faqRevealed } = useScrollReveal();
   const [isContactDialogOpen, setIsContactDialogOpen] = React.useState(false);
   const [selectedBrand, setSelectedBrand] = React.useState<string | null>(null);
@@ -430,10 +447,74 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
                     <button
                       key={brand}
                       onClick={() => {
-                        setSelectedBrand(brand);
-                        setTimeout(() => {
-                          dealsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        }, 100);
+                        // Use the EXACT same filtering logic as BrandLineup with the same parameters
+                        const brandToken = extractBrandToken(brand);
+                        
+                        const filteredVehicles = vehicles?.filter(v => {
+
+                            const vName = normalizeBrandField(v.vehicleName);
+                            const vCat = normalizeBrandField(v.name);
+                            const vSlug = normalizeBrandField(v.slug);
+                            const vDesc = normalizeBrandField(v.description);
+                            const vMeta = normalizeBrandField(v.metaTitle as string | null);
+
+                            const matchesBrand =
+                                vName.includes(brandToken) ||
+                                vCat.includes(brandToken) ||
+                                vSlug.includes(brandToken) ||
+                                vDesc.includes(brandToken) ||
+                                vMeta.includes(brandToken);
+
+                            if (!matchesBrand) return false;
+
+                            // Show only vehicles with the same body style
+                            const matchesBodyStyle = !vehicle.bodyStyle ||
+                                v.bodyStyle?.toLowerCase().includes(vehicle.bodyStyle.toLowerCase()) ||
+                                vehicle.bodyStyle.toLowerCase().includes(v.bodyStyle?.toLowerCase() || '');
+                            if (!matchesBodyStyle) return false;
+
+                            // Purely Data-Driven Strict Fuel Filtering
+                            const fuelTypes = vehicle.bodyStyle?.toLowerCase().includes('sedan')
+                                ? vehicle.fuelTypes
+                                : undefined;
+                                
+                            if (fuelTypes !== undefined) {
+                                const altKeywords = ['electric', 'hybrid', 'plugin-hybrid', 'diesel'];
+                                const clean = (arr: string[] | null) => (arr || []).map(f => f.toLowerCase().trim()).filter(Boolean);
+
+                                const target = clean(fuelTypes);
+                                const source = clean(v.fuelTypes);
+
+                                const isAlt = (tags: string[]) => tags.some(t => altKeywords.includes(t));
+
+                                // Contextual Logic:
+                                // 1. If we are in an Alternative energy context (EV/Hybrid), require a strict tag match
+                                
+                                if (isAlt(target)) {
+                                    if (!target.some(t => source.includes(t))) return false;
+                                }
+                                // 2. If we are in a Standard context (Gas/Unleaded/Empty), exclude any Alternative models
+                                else if (isAlt(source)) {
+                                    return false;
+                                }
+                                // 3. Otherwise (Standard vs Standard), they match regardless of specific tags or empty arrays
+                            }
+
+                            return true;
+                        }) || [];
+                        
+                        // Redirect to the next vehicle in the cycle
+                        if (filteredVehicles.length > 0) {
+                          let nextIndex = 0;
+                          
+                          // If clicking same brand, move to next vehicle
+                          if (lastBrandClick?.brand === brand) {
+                            nextIndex = (lastBrandClick.index + 1) % filteredVehicles.length;
+                          }
+                          
+                          setLastBrandClick({ brand, index: nextIndex });
+                          navigate(`/vehicles/${filteredVehicles[nextIndex].slug}`);
+                        }
                       }}
                       className={cn(
                         "text-[12px] font-black transition-all tracking-[0.2em] uppercase hover:text-accent",
@@ -451,7 +532,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
       </section>
 
       {/* Inline Brand Deals Section */}
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {selectedBrand && (
           <section ref={dealsRef} className="py-12   border-b border-border dark:border-white/20">
             <div className="container mx-auto px-4 lg:px-8">
@@ -478,7 +559,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
             </div>
           </section>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
 
       {/* Pricing & Specs Showcase */}
       {/* Pricing & Specs Showcase */}

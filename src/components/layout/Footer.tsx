@@ -16,14 +16,7 @@ const locations = [
     address: '105 Merchant Way Marlton, NJ 08053',
     phone: '856-553-5555',
     fax: '856-295-8442',
-  },
-  {
-    name: 'Pier 115',
-    city: 'Edgewater, NJ',
-    address: '115 River Road, Suite 158, Edgewater, NJ 07020',
-    phone: '917-495-5727',
-    fax: '201-603-6588',
-  },
+  }
 ];
 
 const footerLinks = {

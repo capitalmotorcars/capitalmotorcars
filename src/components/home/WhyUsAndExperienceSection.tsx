@@ -60,7 +60,7 @@ export function WhyUsAndExperienceSection() {
       <div ref={ref} className="container relative mx-auto px-4 lg:px-8">
         <SectionHeading
           title="Why Work with Capital Motor Cars"
-          subtitle="Experience you can trust transparency, expertise, and numbers that speak."
+          subtitle="Experience you can trust, transparency, expertise, and numbers that speak."
         />
 
         <div
