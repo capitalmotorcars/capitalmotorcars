@@ -1,10 +1,39 @@
 import { Resend } from 'resend';
 
 const TO_EMAILS = [
-  'kai@capitalmotorcars.com',
-  'Henry@capitalmotorcars.com',
-  'CAmico@capitalmotorcars.com',
+  'info@capitalmotorcars.com',
+  'camico@capitalmotorcars.com',
+  'henry@capitalmotorcars.com',
 ];
+
+// Consultant email mapping (matches frontend)
+const CONSULTANT_EMAIL_MAP: Record<string, string> = {
+  'henry_liu': 'henry@capitalmotorcars.com',
+  'christopher_amico': 'camico@capitalmotorcars.com',
+  'michael_minerva': 'mike.minerva@capitalmotorcars.com',
+  'vicky_azrak': 'vicky@capitalmotorcars.com',
+  'james_dai': 'james@capitalmotorcars.com',
+  'aaron_cui': 'info@capitalmotorcars.com',
+  'abby_gorani': 'info@capitalmotorcars.com',
+  'bobby_kaufman': 'bobby@capitalmotorcars.com',
+  'christine_reich': 'info@capitalmotorcars.com',
+  'derek_anton': 'derek@capitalmotorcars.com',
+  'daniel_jay_lehrer': 'dlehrer@capitalmotorcars.com',
+  'jeffrey_horn': 'jeffrey@capitalmotorcars.com',
+  'mark_onbashian': 'mark@capitalmotorcars.com',
+  'michael_zeitoune': 'mzeitoune@capitalmotorcars.com',
+  'michael_van_houten': 'mvanhouten@capitalmotorcars.com',
+  'rafael_frias': 'rafael@capitalmotorcars.com',
+  'ricky_wong': 'ricky@capitalmotorcars.com',
+  'rushi_sanghavi': 'info@capitalmotorcars.com',
+  'sarah_flynn': 'sarah@capitalmotorcars.com',
+  'stephen_jo': 'info@capitalmotorcars.com',
+  'wilson_dong': 'info@capitalmotorcars.com',
+  'finance_team': 'info@capitalmotorcars.com',
+  'yehuda_cohen': 'info@capitalmotorcars.com',
+  'other': 'info@capitalmotorcars.com',
+};
+
 const SUBJECT = '🚗 New Lead: Capital Motor Cars';
 
 function buildHtml(type: 'contact' | 'credit', body: Record<string, unknown>): string {
@@ -57,13 +86,30 @@ export default async function handler(
     displayBody[label(k)] = v;
   }
 
+  // Use consultant's email if available, otherwise use default recipients
+  let toEmails = [...TO_EMAILS];
+  
+  // First try to use ConsultantEmail from payload
+  if (fields.ConsultantEmail && fields.ConsultantEmail !== 'info@capitalmotorcars.com') {
+    // Send ONLY to selected consultant
+    toEmails = [fields.ConsultantEmail as string];
+  }
+  // Fallback: use server-side mapping if Consultant field exists but no ConsultantEmail
+  else if (fields.Consultant && CONSULTANT_EMAIL_MAP[fields.Consultant as string]) {
+    const consultantEmail = CONSULTANT_EMAIL_MAP[fields.Consultant as string];
+    if (consultantEmail !== 'info@capitalmotorcars.com') {
+      // Send ONLY to selected consultant
+      toEmails = [consultantEmail];
+    }
+  }
+
   const html = buildHtml(type, displayBody);
   const resend = new Resend(apiKey);
 
   try {
     const { data, error } = await resend.emails.send({
       from: fromEmail,
-      to: TO_EMAILS,
+      to: toEmails,
       subject: SUBJECT,
       html,
     });

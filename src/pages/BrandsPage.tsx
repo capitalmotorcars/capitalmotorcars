@@ -21,11 +21,26 @@ const brandCategories: { id: BrandCategory; label: string }[] = [
 ];
 
 const brands = [
+  // Luxury brands
   { name: 'BMW', logo: 'https://www.carlogos.org/car-logos/bmw-logo.png', category: 'luxury' as BrandCategory },
   { name: 'Mercedes-Benz', logo: 'https://www.carlogos.org/car-logos/mercedes-benz-logo.png', category: 'luxury' as BrandCategory },
   { name: 'Audi', logo: 'https://www.carlogos.org/car-logos/audi-logo.png', category: 'luxury' as BrandCategory },
   { name: 'Lexus', logo: 'https://www.carlogos.org/car-logos/lexus-logo.png', category: 'luxury' as BrandCategory },
   { name: 'Porsche', logo: 'https://www.carlogos.org/car-logos/porsche-logo.png', category: 'luxury' as BrandCategory },
+  { name: 'Acura', logo: 'https://www.carlogos.org/car-logos/acura-logo.png', category: 'luxury' as BrandCategory },
+  { name: 'Alfa Romeo', logo: 'https://www.carlogos.org/car-logos/alfa-romeo-logo.png', category: 'luxury' as BrandCategory },
+  { name: 'Aston Martin', logo: 'https://www.carlogos.org/car-logos/aston-martin-logo.png', category: 'luxury' as BrandCategory },
+  { name: 'Bentley', logo: 'https://www.carlogos.org/car-logos/bentley-logo.png', category: 'luxury' as BrandCategory },
+  { name: 'Cadillac', logo: 'https://www.carlogos.org/car-logos/cadillac-logo.png', category: 'luxury' as BrandCategory },
+  { name: 'Infiniti', logo: 'https://www.carlogos.org/car-logos/infiniti-logo.png', category: 'luxury' as BrandCategory },
+  { name: 'Jaguar', logo: 'https://www.carlogos.org/car-logos/jaguar-logo.png', category: 'luxury' as BrandCategory },
+  { name: 'Lamborghini', logo: 'https://www.carlogos.org/car-logos/lamborghini-logo.png', category: 'luxury' as BrandCategory },
+  { name: 'Land Rover', logo: 'https://www.carlogos.org/car-logos/land-rover-logo.png', category: 'luxury' as BrandCategory },
+  { name: 'Lincoln', logo: 'https://www.carlogos.org/car-logos/lincoln-logo.png', category: 'luxury' as BrandCategory },
+  { name: 'Maserati', logo: 'https://www.carlogos.org/car-logos/maserati-logo.png', category: 'luxury' as BrandCategory },
+  { name: 'Volvo', logo: 'https://www.carlogos.org/car-logos/volvo-logo.png', category: 'luxury' as BrandCategory },
+
+  // Popular brands
   { name: 'Toyota', logo: 'https://www.carlogos.org/car-logos/toyota-logo.png', category: 'popular' as BrandCategory },
   { name: 'Honda', logo: 'https://www.carlogos.org/car-logos/honda-logo.png', category: 'popular' as BrandCategory },
   { name: 'Ford', logo: 'https://www.carlogos.org/car-logos/ford-logo.png', category: 'popular' as BrandCategory },
@@ -34,6 +49,18 @@ const brands = [
   { name: 'Hyundai', logo: 'https://www.carlogos.org/car-logos/hyundai-logo.png', category: 'popular' as BrandCategory },
   { name: 'Kia', logo: 'https://www.carlogos.org/car-logos/kia-logo.png', category: 'popular' as BrandCategory },
   { name: 'Nissan', logo: 'https://www.carlogos.org/car-logos/nissan-logo.png', category: 'popular' as BrandCategory },
+  { name: 'Buick', logo: 'https://www.carlogos.org/car-logos/buick-logo.png', category: 'popular' as BrandCategory },
+  { name: 'Chrysler', logo: 'https://www.carlogos.org/car-logos/chrysler-logo.png', category: 'popular' as BrandCategory },
+  { name: 'Dodge', logo: 'https://www.carlogos.org/car-logos/dodge-logo.png', category: 'popular' as BrandCategory },
+  { name: 'Fiat', logo: 'https://www.carlogos.org/car-logos/fiat-logo.png', category: 'popular' as BrandCategory },
+  { name: 'Genesis', logo: 'https://www.carlogos.org/car-logos/genesis-logo.png', category: 'popular' as BrandCategory },
+  { name: 'GMC', logo: 'https://www.carlogos.org/car-logos/gmc-logo.png', category: 'popular' as BrandCategory },
+  { name: 'Jeep', logo: 'https://www.carlogos.org/car-logos/jeep-logo.png', category: 'popular' as BrandCategory },
+  { name: 'Mazda', logo: 'https://www.carlogos.org/car-logos/mazda-logo.png', category: 'popular' as BrandCategory },
+  { name: 'Mini', logo: 'https://www.carlogos.org/car-logos/mini-logo.png', category: 'popular' as BrandCategory },
+  { name: 'Mitsubishi', logo: 'https://www.carlogos.org/car-logos/mitsubishi-logo.png', category: 'popular' as BrandCategory },
+  { name: 'Ram', logo: 'https://www.carlogos.org/car-logos/ram-logo.png', category: 'popular' as BrandCategory },
+  { name: 'Subaru', logo: 'https://www.carlogos.org/car-logos/subaru-logo.png', category: 'popular' as BrandCategory },
 ];
 
 const getFilterCount = (filterId: BrandCategory): number | undefined => {

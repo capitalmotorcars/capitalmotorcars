@@ -17,7 +17,7 @@ import { Loader2, Shield, ChevronLeft, ChevronRight, UserPlus, Upload, User, Mai
 import { FormSuccessMessage } from './FormSuccessMessage';
 import { getSubmitErrorMessage, getSubmitErrorFromException } from './getSubmitErrorMessage';
 import { WEBHOOK_URL_CREDIT_APPLICATION } from '@/lib/webhook';
-import { US_STATES, HOUSING_OPTIONS, CONSULTANT_OPTIONS } from '@/lib/creditConstants';
+import { US_STATES, HOUSING_OPTIONS, CONSULTANT_OPTIONS, getConsultantEmail } from '@/lib/creditConstants';
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -257,6 +257,7 @@ export function CreditApplicationForm() {
           ...(document2Base64 && { Document2Base64: document2Base64 }),
           // Step 5
           Consultant: data.consultant,
+          ConsultantEmail: getConsultantEmail(data.consultant),
           Signature: data.signature,
           SignatureDate: new Date().toISOString().slice(0, 10),
           LegalAgreed: data.legalAgree,

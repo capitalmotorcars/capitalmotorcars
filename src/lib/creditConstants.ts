@@ -88,3 +88,36 @@ export const CONSULTANT_OPTIONS: { value: string; label: string }[] = [
   { value: 'yehuda_cohen', label: 'Yehuda Cohen' },
   { value: 'other', label: 'Other' },
 ];
+
+/** Email mapping for consultants */
+export const CONSULTANT_EMAIL_MAP: Record<string, string> = {
+  'henry_liu': 'henry@capitalmotorcars.com',
+  'christopher_amico': 'camico@capitalmotorcars.com',
+  'michael_minerva': 'mike.minerva@capitalmotorcars.com',
+  'vicky_azrak': 'vicky@capitalmotorcars.com',
+  'james_dai': 'james@capitalmotorcars.com',
+  'aaron_cui': 'info@capitalmotorcars.com',
+  'abby_gorani': 'info@capitalmotorcars.com',
+  'bobby_kaufman': 'bobby@capitalmotorcars.com',
+  'christine_reich': 'info@capitalmotorcars.com',
+  'derek_anton': 'derek@capitalmotorcars.com',
+  'daniel_jay_lehrer': 'dlehrer@capitalmotorcars.com',
+  'jeffrey_horn': 'jeffrey@capitalmotorcars.com',
+  'mark_onbashian': 'mark@capitalmotorcars.com',
+  'michael_zeitoune': 'mzeitoune@capitalmotorcars.com',
+  'michael_van_houten': 'mvanhouten@capitalmotorcars.com',
+  'rafael_frias': 'rafael@capitalmotorcars.com',
+  'ricky_wong': 'ricky@capitalmotorcars.com',
+  'rushi_sanghavi': 'info@capitalmotorcars.com',
+  'sarah_flynn': 'sarah@capitalmotorcars.com',
+  'stephen_jo': 'info@capitalmotorcars.com',
+  'wilson_dong': 'info@capitalmotorcars.com',
+  'finance_team': 'info@capitalmotorcars.com',
+  'yehuda_cohen': 'info@capitalmotorcars.com',
+  'other': 'info@capitalmotorcars.com',
+};
+
+/** Get consultant email by value */
+export const getConsultantEmail = (consultantValue: string): string => {
+  return CONSULTANT_EMAIL_MAP[consultantValue] || 'info@capitalmotorcars.com';
+};
