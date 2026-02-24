@@ -33,7 +33,7 @@ const brands = [
   { name: 'Bentley', logo: 'https://www.carlogos.org/car-logos/bentley-logo.png', category: 'luxury' as BrandCategory },
   { name: 'Cadillac', logo: 'https://www.carlogos.org/car-logos/cadillac-logo.png', category: 'luxury' as BrandCategory },
   { name: 'Infiniti', logo: 'https://www.carlogos.org/car-logos/infiniti-logo.png', category: 'luxury' as BrandCategory },
-  { name: 'Jaguar', logo: 'https://www.carlogos.org/car-logos/jaguar-logo.png', category: 'luxury' as BrandCategory },
+  { name: 'Jaguar', logo: 'https://www.carlogos.org/car-logos/jaguar-logo-2012-download.png', category: 'luxury' as BrandCategory },
   { name: 'Lamborghini', logo: 'https://www.carlogos.org/car-logos/lamborghini-logo.png', category: 'luxury' as BrandCategory },
   { name: 'Land Rover', logo: 'https://www.carlogos.org/car-logos/land-rover-logo.png', category: 'luxury' as BrandCategory },
   { name: 'Lincoln', logo: 'https://www.carlogos.org/car-logos/lincoln-logo.png', category: 'luxury' as BrandCategory },
