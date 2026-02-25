@@ -12,18 +12,18 @@
 
 
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="/shared-img.png">
+  <meta property="og:image" content="https://capitalmotorcars.com/shared-img.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:url" content="">
+  <meta property="og:url" content="https://capitalmotorcars.com">
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="/shared-img.png">
+  <meta name="twitter:image" content="https://capitalmotorcars.com/shared-img.png">
   
   <!-- Apple-specific meta tags for better iMessage sharing -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Capital Motor Cars">
-  <link rel="apple-touch-icon" href="/logo.png">
+  <link rel="apple-touch-icon" href="https://capitalmotorcars.com/logo.png">
   
   <!-- Additional Open Graph tags for better sharing -->
   <meta property="og:site_name" content="Capital Motor Cars">
@@ -36,9 +36,9 @@
     "@type": "AutomotiveBusiness",
     "name": "Capital Motor Cars",
     "description": "Capital Motor Cars helps you lease, finance, and take care of your vehicle with a clear process and personal support. No stress, no games.",
-    "url": "",
-    "logo": "/logo.png",
-    "image": "/shared-img.png",
+    "url": "https://capitalmotorcars.com",
+    "logo": "https://capitalmotorcars.com/logo.png",
+    "image": "https://capitalmotorcars.com/shared-img.png",
     "sameAs": [
       "https://www.instagram.com/capitalmotorcars",
       "https://www.facebook.com/capitalmotorcars"
@@ -46,38 +46,40 @@
   }
   </script>
   
-  <!-- Dynamic URL updates for sharing -->
+  <!-- Fallback for local development -->
   <script>
-    // Update meta tags with current URL for proper sharing
-    document.addEventListener('DOMContentLoaded', function() {
-      const currentUrl = window.location.href;
-      const origin = window.location.origin;
-      
-      // Update Open Graph URL
-      const ogUrl = document.querySelector('meta[property="og:url"]');
-      if (ogUrl) ogUrl.content = currentUrl;
-      
-      // Update structured data URL
-      const structuredData = document.querySelector('script[type="application/ld+json"]');
-      if (structuredData) {
-        const data = JSON.parse(structuredData.textContent);
-        data.url = currentUrl;
-        data.logo = origin + '/logo.png';
-        data.image = origin + '/shared-img.png';
-        structuredData.textContent = JSON.stringify(data);
-      }
-      
-      // Update image URLs
-      const ogImage = document.querySelector('meta[property="og:image"]');
-      const twitterImage = document.querySelector('meta[name="twitter:image"]');
-      const appleIcon = document.querySelector('link[rel="apple-touch-icon"]');
-      const favicon = document.querySelector('link[rel="icon"]');
-      
-      if (ogImage) ogImage.content = origin + '/shared-img.png';
-      if (twitterImage) twitterImage.content = origin + '/shared-img.png';
-      if (appleIcon) appleIcon.href = origin + '/logo.png';
-      if (favicon) favicon.href = origin + '/logo.png';
-    });
+    // Only update URLs if not on production domain
+    if (window.location.origin !== 'https://capitalmotorcars.com') {
+      document.addEventListener('DOMContentLoaded', function() {
+        const currentUrl = window.location.href;
+        const origin = window.location.origin;
+        
+        // Update Open Graph URL
+        const ogUrl = document.querySelector('meta[property="og:url"]');
+        if (ogUrl) ogUrl.content = currentUrl;
+        
+        // Update structured data URL
+        const structuredData = document.querySelector('script[type="application/ld+json"]');
+        if (structuredData) {
+          const data = JSON.parse(structuredData.textContent);
+          data.url = currentUrl;
+          data.logo = origin + '/logo.png';
+          data.image = origin + '/shared-img.png';
+          structuredData.textContent = JSON.stringify(data);
+        }
+        
+        // Update image URLs
+        const ogImage = document.querySelector('meta[property="og:image"]');
+        const twitterImage = document.querySelector('meta[name="twitter:image"]');
+        const appleIcon = document.querySelector('link[rel="apple-touch-icon"]');
+        const favicon = document.querySelector('link[rel="icon"]');
+        
+        if (ogImage) ogImage.content = origin + '/shared-img.png';
+        if (twitterImage) twitterImage.content = origin + '/shared-img.png';
+        if (appleIcon) appleIcon.href = origin + '/logo.png';
+        if (favicon) favicon.href = origin + '/logo.png';
+      });
+    }
   </script>
   <link rel="icon" type="image/png" href="/logo.png">
 
