@@ -41,6 +41,7 @@ const applicantInfoSchema = z.object({
 // Employment (Step 2)
 const employmentSchema = z.object({
   employer: z.string().min(1, 'Employer is required').max(200),
+  employmentAddress: z.string().min(1, 'Employment address is required').max(200),
   position: z.string().min(1, 'Position is required').max(200),
   grossAnnualIncome: z.string().min(1, 'Gross annual income is required').max(30),
   otherAnnualIncome: z.string().max(30).optional(),
@@ -64,6 +65,7 @@ const coApplicantSchema = z.object({
   coYearsAtResidence: z.string().max(10).optional(),
   coMonthlyPayment: z.string().max(20).optional(),
   coEmployer: z.string().max(200).optional(),
+  coEmploymentAddress: z.string().max(200).optional(),
   coPosition: z.string().max(200).optional(),
   coGrossAnnualIncome: z.string().max(30).optional(),
   coOtherAnnualIncome: z.string().max(30).optional(),
@@ -224,6 +226,7 @@ export function CreditApplicationForm() {
           MonthlyPayment: data.monthlyPayment,
           // Step 2
           Employer: data.employer,
+          EmploymentAddress: data.employmentAddress,
           Position: data.position,
           GrossAnnualIncome: data.grossAnnualIncome,
           OtherAnnualIncome: data.otherAnnualIncome ?? '',
@@ -245,6 +248,7 @@ export function CreditApplicationForm() {
             CoYearsAtResidence: data.coYearsAtResidence,
             CoMonthlyPayment: data.coMonthlyPayment,
             CoEmployer: data.coEmployer,
+            CoEmploymentAddress: data.coEmploymentAddress,
             CoPosition: data.coPosition,
             CoGrossAnnualIncome: data.coGrossAnnualIncome,
             CoOtherAnnualIncome: data.coOtherAnnualIncome ?? '',
@@ -292,7 +296,7 @@ export function CreditApplicationForm() {
     if (currentStep === 1) {
       fieldsToValidate = ['firstName', 'lastName', 'ssn', 'dob', 'housing', 'phone', 'email', 'street', 'city', 'state', 'zip', 'yearsAtResidence', 'monthlyPayment'];
     } else if (currentStep === 2) {
-      fieldsToValidate = ['employer', 'position', 'grossAnnualIncome'];
+      fieldsToValidate = ['employer', 'employmentAddress', 'position', 'grossAnnualIncome'];
     } else if (currentStep === 3) {
       // Step 3: Validate co-applicant fields
       const values = getValues();
@@ -302,7 +306,7 @@ export function CreditApplicationForm() {
           'coFirstName', 'coLastName', 'coSsn', 'coDob', 'coHousing', 
           'coPhone', 'coEmail', 'coStreet', 'coCity', 'coState', 
           'coZip', 'coYearsAtResidence', 'coMonthlyPayment', 
-          'coEmployer', 'coPosition', 'coGrossAnnualIncome'
+          'coEmployer', 'coEmploymentAddress', 'coPosition', 'coGrossAnnualIncome'
         ];
         
         // Validate email format if provided
@@ -427,7 +431,7 @@ export function CreditApplicationForm() {
       if (currentStep === 1) {
         fieldsToValidate = ['firstName', 'lastName', 'ssn', 'dob', 'housing', 'phone', 'email', 'street', 'city', 'state', 'zip', 'yearsAtResidence', 'monthlyPayment'];
       } else if (currentStep === 2) {
-        fieldsToValidate = ['employer', 'position', 'grossAnnualIncome'];
+        fieldsToValidate = ['employer', 'employmentAddress', 'position', 'grossAnnualIncome'];
       } else if (currentStep === 3) {
         const values = getValues();
         if (values.coApplicantEnabled) {
@@ -435,7 +439,7 @@ export function CreditApplicationForm() {
             'coFirstName', 'coLastName', 'coSsn', 'coDob', 'coHousing', 
             'coPhone', 'coEmail', 'coStreet', 'coCity', 'coState', 
             'coZip', 'coYearsAtResidence', 'coMonthlyPayment', 
-            'coEmployer', 'coPosition', 'coGrossAnnualIncome'
+            'coEmployer', 'coEmploymentAddress', 'coPosition', 'coGrossAnnualIncome'
           ];
           await trigger(coApplicantFields);
           
@@ -1044,6 +1048,35 @@ export function CreditApplicationForm() {
                 )}
               </div>
               {errors.employer && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.employer.message}</p>}
+            </div>
+            <div className="space-y-1.5 md:col-span-2">
+              <Label htmlFor="employmentAddress" className="text-sm font-medium flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-muted-foreground" />
+                Employment Address <span className="text-destructive">*</span>
+                {isFieldValid('employmentAddress') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+              </Label>
+              <div className="relative">
+                <Input 
+                  id="employmentAddress" 
+                  {...register('employmentAddress', {
+                    onChange: () => trigger('employmentAddress'),
+                    onBlur: () => trigger('employmentAddress'),
+                  })} 
+                  placeholder="e.g. 123 Business Ave, Suite 100, New York, NY 10001" 
+                  className={cn(
+                    errors.employmentAddress 
+                      ? 'border-destructive pr-10' 
+                      : isFieldValid('employmentAddress')
+                        ? 'border-green-500 pr-10'
+                        : ''
+                  )} 
+                />
+                {isFieldValid('employmentAddress') && !errors.employmentAddress && (
+                  <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />
+                )}
+              </div>
+              <p className="text-xs text-muted-foreground dark:text-white/60">Complete work address including street, city, state, and ZIP</p>
+              {errors.employmentAddress && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.employmentAddress.message}</p>}
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="position" className="text-sm font-medium flex items-center gap-1.5">
