@@ -18,6 +18,32 @@ import { FormSuccessMessage } from './FormSuccessMessage';
 import { getSubmitErrorMessage, getSubmitErrorFromException } from './getSubmitErrorMessage';
 import { WEBHOOK_URL_CREDIT_APPLICATION } from '@/lib/webhook';
 import { US_STATES, HOUSING_OPTIONS, CONSULTANT_OPTIONS, getConsultantEmail } from '@/lib/creditConstants';
+import { parsePhoneNumberFromString } from 'libphonenumber-js';
+
+// Phone formatting function
+const formatPhoneNumber = (value: string) => {
+  if (!value) return value;
+  const phoneNumber = value.replace(/[^\d]/g, '');
+  const phoneNumberLength = phoneNumber.length;
+  if (phoneNumberLength < 4) return phoneNumber;
+  if (phoneNumberLength < 7) {
+    return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+  }
+  return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(
+    3,
+    6
+  )}-${phoneNumber.slice(6, 10)}`;
+};
+
+// Housing payment options
+const HOUSING_PAYMENT_OPTIONS = [
+  { value: 'rent', label: 'Rent' },
+  { value: 'mortgage', label: 'Mortgage' },
+  { value: 'own', label: 'Own Outright' },
+  { value: 'family', label: 'Live with Family' },
+  { value: 'other', label: 'Other' },
+];
+
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -46,7 +72,14 @@ const applicantInfoSchema = z.object({
   }, 'Please enter a valid 9-digit Social Security Number'),
   dob: z.string().min(1, 'Date of birth is required').max(20),
   housing: z.string().min(1, 'Housing status is required'),
-  phone: z.string().min(10, 'Valid phone number is required').max(20),
+  phone: z.string().trim().refine((value) => {
+      if (!value) return false;
+      let phoneNumber = parsePhoneNumberFromString(value, 'US');
+      if (!phoneNumber?.isValid()) {
+        phoneNumber = parsePhoneNumberFromString(value);
+      }
+      return phoneNumber?.isValid() ?? false;
+    }, 'Please enter a valid phone number'),
   email: z.string().email('Valid email is required').max(255),
   street: z.string().min(1, 'Street is required').max(200),
   city: z.string().min(1, 'City is required').max(100),
@@ -54,11 +87,20 @@ const applicantInfoSchema = z.object({
   zip: z.string().min(5, 'ZIP is required').max(10),
   yearsAtResidence: z.string().min(1, 'Years at residence is required').max(10),
   monthlyPayment: z.string().min(1, 'Monthly payment is required').max(20),
+  housingPaymentType: z.enum(['rent', 'mortgage', 'own', 'family', 'other'], { required_error: 'Payment type is required' }),
 });
 
 // Employment (Step 2)
 const employmentSchema = z.object({
   employer: z.string().min(1, 'Employer is required').max(200),
+  employmentPhone: z.string().trim().refine((value) => {
+      if (!value) return false;
+      let phoneNumber = parsePhoneNumberFromString(value, 'US');
+      if (!phoneNumber?.isValid()) {
+        phoneNumber = parsePhoneNumberFromString(value);
+      }
+      return phoneNumber?.isValid() ?? false;
+    }, 'Please enter a valid phone number'),
   employmentStreet: z.string().min(1, 'Employment street is required').max(200),
   employmentCity: z.string().min(1, 'Employment city is required').max(100),
   employmentState: z.string().min(1, 'Employment state is required'),
@@ -93,7 +135,14 @@ const coApplicantSchema = z.object({
   }, 'Please enter a valid 9-digit Social Security Number'),
   coDob: z.string().max(20).optional(),
   coHousing: z.string().optional(),
-  coPhone: z.string().max(20).optional(),
+  coPhone: z.string().trim().refine((value) => {
+      if (!value) return true; // Optional field
+      let phoneNumber = parsePhoneNumberFromString(value, 'US');
+      if (!phoneNumber?.isValid()) {
+        phoneNumber = parsePhoneNumberFromString(value);
+      }
+      return phoneNumber?.isValid() ?? false;
+    }, 'Please enter a valid phone number').optional(),
   coEmail: z.string().max(255).optional(),
   coStreet: z.string().max(200).optional(),
   coCity: z.string().max(100).optional(),
@@ -101,7 +150,16 @@ const coApplicantSchema = z.object({
   coZip: z.string().max(10).optional(),
   coYearsAtResidence: z.string().max(10).optional(),
   coMonthlyPayment: z.string().max(20).optional(),
+  coHousingPaymentType: z.enum(['rent', 'mortgage', 'own', 'family', 'other']).optional(),
   coEmployer: z.string().max(200).optional(),
+  coEmploymentPhone: z.string().trim().refine((value) => {
+      if (!value) return true; // Optional field
+      let phoneNumber = parsePhoneNumberFromString(value, 'US');
+      if (!phoneNumber?.isValid()) {
+        phoneNumber = parsePhoneNumberFromString(value);
+      }
+      return phoneNumber?.isValid() ?? false;
+    }, 'Please enter a valid phone number').optional(),
   coEmploymentStreet: z.string().max(200).optional(),
   coEmploymentCity: z.string().max(100).optional(),
   coEmploymentState: z.string().optional(),
@@ -265,8 +323,10 @@ export function CreditApplicationForm() {
           ZIP: data.zip,
           YearsAtResidence: data.yearsAtResidence,
           MonthlyPayment: data.monthlyPayment,
+          HousingPaymentType: data.housingPaymentType,
           // Step 2
           Employer: data.employer,
+          EmploymentPhone: data.employmentPhone,
           EmploymentStreet: data.employmentStreet,
           EmploymentCity: data.employmentCity,
           EmploymentState: data.employmentState,
@@ -292,7 +352,9 @@ export function CreditApplicationForm() {
             CoZIP: data.coZip,
             CoYearsAtResidence: data.coYearsAtResidence,
             CoMonthlyPayment: data.coMonthlyPayment,
+            CoHousingPaymentType: data.coHousingPaymentType,
             CoEmployer: data.coEmployer,
+            CoEmploymentPhone: data.coEmploymentPhone,
             CoEmploymentStreet: data.coEmploymentStreet,
             CoEmploymentCity: data.coEmploymentCity,
             CoEmploymentState: data.coEmploymentState,
@@ -343,9 +405,9 @@ export function CreditApplicationForm() {
   const goNext = async () => {
     let fieldsToValidate: (keyof CreditFormData)[] = [];
     if (currentStep === 1) {
-      fieldsToValidate = ['firstName', 'lastName', 'ssn', 'dob', 'housing', 'phone', 'email', 'street', 'city', 'state', 'zip', 'yearsAtResidence', 'monthlyPayment'];
+      fieldsToValidate = ['firstName', 'lastName', 'ssn', 'dob', 'housing', 'phone', 'email', 'street', 'city', 'state', 'zip', 'yearsAtResidence', 'monthlyPayment', 'housingPaymentType'];
     } else if (currentStep === 2) {
-      fieldsToValidate = ['employer', 'employmentStreet', 'employmentCity', 'employmentState', 'employmentZip', 'yearsAtJob', 'position', 'grossAnnualIncome'];
+      fieldsToValidate = ['employer', 'employmentPhone', 'employmentStreet', 'employmentCity', 'employmentState', 'employmentZip', 'yearsAtJob', 'position', 'grossAnnualIncome'];
     } else if (currentStep === 3) {
       // Step 3: Validate co-applicant fields
       const values = getValues();
@@ -354,8 +416,8 @@ export function CreditApplicationForm() {
         const coApplicantFields: (keyof CreditFormData)[] = [
           'coFirstName', 'coLastName', 'coSsn', 'coDob', 'coHousing', 
           'coPhone', 'coEmail', 'coStreet', 'coCity', 'coState', 
-          'coZip', 'coYearsAtResidence', 'coMonthlyPayment', 
-          'coEmployer', 'coEmploymentStreet', 'coEmploymentCity', 'coEmploymentState', 'coEmploymentZip', 'coYearsAtJob', 'coPosition', 'coGrossAnnualIncome'
+          'coZip', 'coYearsAtResidence', 'coMonthlyPayment', 'coHousingPaymentType',
+          'coEmployer', 'coEmploymentPhone', 'coEmploymentStreet', 'coEmploymentCity', 'coEmploymentState', 'coEmploymentZip', 'coYearsAtJob', 'coPosition', 'coGrossAnnualIncome'
         ];
         
         // Validate email format if provided
@@ -478,17 +540,17 @@ export function CreditApplicationForm() {
       let fieldsToValidate: (keyof CreditFormData)[] = [];
       
       if (currentStep === 1) {
-        fieldsToValidate = ['firstName', 'lastName', 'ssn', 'dob', 'housing', 'phone', 'email', 'street', 'city', 'state', 'zip', 'yearsAtResidence', 'monthlyPayment'];
+        fieldsToValidate = ['firstName', 'lastName', 'ssn', 'dob', 'housing', 'phone', 'email', 'street', 'city', 'state', 'zip', 'yearsAtResidence', 'monthlyPayment', 'housingPaymentType'];
       } else if (currentStep === 2) {
-        fieldsToValidate = ['employer', 'employmentStreet', 'employmentCity', 'employmentState', 'employmentZip', 'yearsAtJob', 'position', 'grossAnnualIncome'];
+        fieldsToValidate = ['employer', 'employmentPhone', 'employmentStreet', 'employmentCity', 'employmentState', 'employmentZip', 'yearsAtJob', 'position', 'grossAnnualIncome'];
       } else if (currentStep === 3) {
         const values = getValues();
         if (values.coApplicantEnabled) {
           const coApplicantFields: (keyof CreditFormData)[] = [
             'coFirstName', 'coLastName', 'coSsn', 'coDob', 'coHousing', 
             'coPhone', 'coEmail', 'coStreet', 'coCity', 'coState', 
-            'coZip', 'coYearsAtResidence', 'coMonthlyPayment', 
-            'coEmployer', 'coEmploymentStreet', 'coEmploymentCity', 'coEmploymentState', 'coEmploymentZip', 'coYearsAtJob', 'coPosition', 'coGrossAnnualIncome'
+            'coZip', 'coYearsAtResidence', 'coMonthlyPayment', 'coHousingPaymentType',
+            'coEmployer', 'coEmploymentPhone', 'coEmploymentStreet', 'coEmploymentCity', 'coEmploymentState', 'coEmploymentZip', 'coYearsAtJob', 'coPosition', 'coGrossAnnualIncome'
           ];
           await trigger(coApplicantFields);
           
@@ -835,7 +897,11 @@ export function CreditApplicationForm() {
                   id="phone" 
                   type="tel" 
                   {...register('phone', {
-                    onChange: () => trigger('phone'),
+                    onChange: (e) => {
+                      const formatted = formatPhoneNumber(e.target.value);
+                      e.target.value = formatted;
+                      trigger('phone');
+                    },
                     onBlur: () => trigger('phone'),
                   })} 
                   placeholder="(555) 123-4567" 
@@ -850,13 +916,12 @@ export function CreditApplicationForm() {
                 {isFieldValid('phone') && !errors.phone && (
                   <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />
                 )}
+                {errors.phone && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.phone.message}</p>}
               </div>
-              {errors.phone && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.phone.message}</p>}
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="email" className="text-sm font-medium flex items-center gap-1.5">
-                <Mail className="w-3.5 h-3.5 text-muted-foreground" />
-                Email Address <span className="text-destructive">*</span>
+                Email <span className="text-destructive">*</span>
                 {isFieldValid('email') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
               </Label>
               <div className="relative">
@@ -879,10 +944,10 @@ export function CreditApplicationForm() {
                 {isFieldValid('email') && !errors.email && (
                   <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />
                 )}
+                {errors.email && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.email.message}</p>}
               </div>
-              {errors.email && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.email.message}</p>}
             </div>
-            </div>
+          </div>
           </div>
 
           <div className="pt-4 border-t border-border dark:border-white/10">
@@ -1055,6 +1120,40 @@ export function CreditApplicationForm() {
                 <p className="text-xs text-muted-foreground dark:text-white/60">Rent or mortgage payment amount</p>
                 {errors.monthlyPayment && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.monthlyPayment.message}</p>}
               </div>
+              <div className="space-y-1.5">
+                <Label htmlFor="housingPaymentType" className="text-sm font-medium flex items-center gap-1.5">
+                  <Home className="w-3.5 h-3.5 text-muted-foreground" />
+                  Payment Type <span className="text-destructive">*</span>
+                  {isFieldValid('housingPaymentType') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+                </Label>
+                <div className="relative">
+                  <Select 
+                    onValueChange={(value: 'rent' | 'mortgage' | 'own' | 'family' | 'other') => {
+                      setValue('housingPaymentType', value);
+                      trigger('housingPaymentType');
+                    }}
+                  >
+                    <SelectTrigger className={cn(
+                      errors.housingPaymentType 
+                        ? 'border-destructive pr-10' 
+                        : isFieldValid('housingPaymentType')
+                          ? 'border-green-500 pr-10'
+                          : ''
+                    )}>
+                      <SelectValue placeholder="Select type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {HOUSING_PAYMENT_OPTIONS.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  {errors.housingPaymentType && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.housingPaymentType.message}</p>}
+                </div>
+                <p className="text-xs text-muted-foreground dark:text-white/60">Select your housing payment type</p>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -1106,6 +1205,7 @@ export function CreditApplicationForm() {
               </div>
               {errors.employer && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.employer.message}</p>}
             </div>
+           
             <div className="space-y-1.5 md:col-span-2">
               <Label htmlFor="employmentStreet" className="text-sm font-medium flex items-center gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-muted-foreground" />
@@ -1278,6 +1378,39 @@ export function CreditApplicationForm() {
               </div>
               {errors.position && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.position.message}</p>}
             </div>
+           <div className="space-y-1.5">
+              <Label htmlFor="employmentPhone" className="text-sm font-medium flex items-center gap-1.5">
+                <Phone className="w-3.5 h-3.5 text-muted-foreground" />
+                Employment Phone <span className="text-destructive">*</span>
+                {isFieldValid('employmentPhone') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+              </Label>
+              <div className="relative">
+                <Input 
+                  id="employmentPhone" 
+                  type="tel"
+                  {...register('employmentPhone', {
+                    onChange: (e) => {
+                      const formatted = formatPhoneNumber(e.target.value);
+                      e.target.value = formatted;
+                      trigger('employmentPhone');
+                    },
+                    onBlur: () => trigger('employmentPhone'),
+                  })}
+                  placeholder="(555) 123-4567" 
+                  className={cn(
+                    errors.employmentPhone 
+                      ? 'border-destructive pr-10' 
+                      : isFieldValid('employmentPhone')
+                        ? 'border-green-500 pr-10'
+                        : ''
+                  )} 
+                />
+                {isFieldValid('employmentPhone') && !errors.employmentPhone && (
+                  <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />
+                )}
+                {errors.employmentPhone && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.employmentPhone.message}</p>}
+              </div>
+            </div>
             <div className="space-y-1.5">
               <Label htmlFor="grossAnnualIncome" className="text-sm font-medium flex items-center gap-1.5">
                 <DollarSign className="w-3.5 h-3.5 text-muted-foreground" />
@@ -1307,6 +1440,7 @@ export function CreditApplicationForm() {
               <p className="text-xs text-muted-foreground dark:text-white/60">Your total income before taxes</p>
               {errors.grossAnnualIncome && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.grossAnnualIncome.message}</p>}
             </div>
+            
             <div className="space-y-1.5">
               <Label htmlFor="otherAnnualIncome" className="text-sm font-medium flex items-center gap-1.5">
                 <DollarSign className="w-3.5 h-3.5 text-muted-foreground" />
