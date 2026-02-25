@@ -13,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Loader2, Shield, ChevronLeft, ChevronRight, UserPlus, Upload, User, Mail, Phone, MapPin, Home, Briefcase, DollarSign, Calendar, Lock, CheckCircle2, X, FileText } from 'lucide-react';
+import { Loader2, Shield, ChevronLeft, ChevronRight, UserPlus, Upload, User, Mail, Phone, MapPin, Home, Briefcase, DollarSign, Calendar, Lock, CheckCircle2, X, FileText, Clock } from 'lucide-react';
 import { FormSuccessMessage } from './FormSuccessMessage';
 import { getSubmitErrorMessage, getSubmitErrorFromException } from './getSubmitErrorMessage';
 import { WEBHOOK_URL_CREDIT_APPLICATION } from '@/lib/webhook';
@@ -25,7 +25,25 @@ import { motion, AnimatePresence } from 'motion/react';
 const applicantInfoSchema = z.object({
   firstName: z.string().min(1, 'First name is required').max(100),
   lastName: z.string().min(1, 'Last name is required').max(100),
-  ssn: z.string().min(9, 'SSN must be at least 9 digits').max(20),
+  ssn: z.string().min(9, 'SSN must be exactly 9 digits').max(20).refine((val) => {
+    // Remove all non-digit characters
+    const digitsOnly = val.replace(/\D/g, '');
+    // Must be exactly 9 digits
+    if (digitsOnly.length !== 9) return false;
+    
+    // Reject obviously fake patterns
+    // All same digits (like 111111111, 222222222, etc.)
+    if (/^(\d)\1+$/.test(digitsOnly)) return false;
+    
+    // Common test patterns
+    const testPatterns = [
+      '123456789', '987654321', '123123123',
+      '111111111', '222222222', '333333333', '444444444',
+      '555555555', '666666666', '777777777', '888888888', '999999999'
+    ];
+    
+    return !testPatterns.includes(digitsOnly);
+  }, 'Please enter a valid 9-digit Social Security Number'),
   dob: z.string().min(1, 'Date of birth is required').max(20),
   housing: z.string().min(1, 'Housing status is required'),
   phone: z.string().min(10, 'Valid phone number is required').max(20),
@@ -41,7 +59,11 @@ const applicantInfoSchema = z.object({
 // Employment (Step 2)
 const employmentSchema = z.object({
   employer: z.string().min(1, 'Employer is required').max(200),
-  employmentAddress: z.string().min(1, 'Employment address is required').max(200),
+  employmentStreet: z.string().min(1, 'Employment street is required').max(200),
+  employmentCity: z.string().min(1, 'Employment city is required').max(100),
+  employmentState: z.string().min(1, 'Employment state is required'),
+  employmentZip: z.string().min(5, 'Employment ZIP is required').max(10),
+  yearsAtJob: z.string().min(1, 'Years at job is required').max(10),
   position: z.string().min(1, 'Position is required').max(200),
   grossAnnualIncome: z.string().min(1, 'Gross annual income is required').max(30),
   otherAnnualIncome: z.string().max(30).optional(),
@@ -53,7 +75,22 @@ const coApplicantSchema = z.object({
   coApplicantEnabled: z.boolean(),
   coFirstName: z.string().max(100).optional(),
   coLastName: z.string().max(100).optional(),
-  coSsn: z.string().max(20).optional(),
+  coSsn: z.string().max(20).optional().refine((val) => {
+    if (!val || val.trim() === '') return true; // Optional field
+    const digitsOnly = val.replace(/\D/g, '');
+    if (digitsOnly.length !== 9) return false;
+    
+    // Reject obviously fake patterns
+    if (/^(\d)\1+$/.test(digitsOnly)) return false;
+    
+    const testPatterns = [
+      '123456789', '987654321', '123123123',
+      '111111111', '222222222', '333333333', '444444444',
+      '555555555', '666666666', '777777777', '888888888', '999999999'
+    ];
+    
+    return !testPatterns.includes(digitsOnly);
+  }, 'Please enter a valid 9-digit Social Security Number'),
   coDob: z.string().max(20).optional(),
   coHousing: z.string().optional(),
   coPhone: z.string().max(20).optional(),
@@ -65,7 +102,11 @@ const coApplicantSchema = z.object({
   coYearsAtResidence: z.string().max(10).optional(),
   coMonthlyPayment: z.string().max(20).optional(),
   coEmployer: z.string().max(200).optional(),
-  coEmploymentAddress: z.string().max(200).optional(),
+  coEmploymentStreet: z.string().max(200).optional(),
+  coEmploymentCity: z.string().max(100).optional(),
+  coEmploymentState: z.string().optional(),
+  coEmploymentZip: z.string().max(10).optional(),
+  coYearsAtJob: z.string().max(10).optional(),
   coPosition: z.string().max(200).optional(),
   coGrossAnnualIncome: z.string().max(30).optional(),
   coOtherAnnualIncome: z.string().max(30).optional(),
@@ -112,7 +153,7 @@ function isCoApplicantSectionValid(data: Partial<CreditFormData>): boolean {
   return (
     (data.coFirstName?.trim()?.length ?? 0) > 0 &&
     (data.coLastName?.trim()?.length ?? 0) > 0 &&
-    (data.coSsn?.trim()?.length ?? 0) >= 9 &&
+    (data.coSsn?.replace(/\D/g, '').length ?? 0) === 9 &&
     (data.coDob?.trim()?.length ?? 0) > 0 &&
     (data.coHousing?.trim()?.length ?? 0) > 0 &&
     (data.coPhone?.trim()?.length ?? 0) >= 10 &&
@@ -226,7 +267,11 @@ export function CreditApplicationForm() {
           MonthlyPayment: data.monthlyPayment,
           // Step 2
           Employer: data.employer,
-          EmploymentAddress: data.employmentAddress,
+          EmploymentStreet: data.employmentStreet,
+          EmploymentCity: data.employmentCity,
+          EmploymentState: data.employmentState,
+          EmploymentZip: data.employmentZip,
+          YearsAtJob: data.yearsAtJob,
           Position: data.position,
           GrossAnnualIncome: data.grossAnnualIncome,
           OtherAnnualIncome: data.otherAnnualIncome ?? '',
@@ -248,7 +293,11 @@ export function CreditApplicationForm() {
             CoYearsAtResidence: data.coYearsAtResidence,
             CoMonthlyPayment: data.coMonthlyPayment,
             CoEmployer: data.coEmployer,
-            CoEmploymentAddress: data.coEmploymentAddress,
+            CoEmploymentStreet: data.coEmploymentStreet,
+            CoEmploymentCity: data.coEmploymentCity,
+            CoEmploymentState: data.coEmploymentState,
+            CoEmploymentZip: data.coEmploymentZip,
+            CoYearsAtJob: data.coYearsAtJob,
             CoPosition: data.coPosition,
             CoGrossAnnualIncome: data.coGrossAnnualIncome,
             CoOtherAnnualIncome: data.coOtherAnnualIncome ?? '',
@@ -296,7 +345,7 @@ export function CreditApplicationForm() {
     if (currentStep === 1) {
       fieldsToValidate = ['firstName', 'lastName', 'ssn', 'dob', 'housing', 'phone', 'email', 'street', 'city', 'state', 'zip', 'yearsAtResidence', 'monthlyPayment'];
     } else if (currentStep === 2) {
-      fieldsToValidate = ['employer', 'employmentAddress', 'position', 'grossAnnualIncome'];
+      fieldsToValidate = ['employer', 'employmentStreet', 'employmentCity', 'employmentState', 'employmentZip', 'yearsAtJob', 'position', 'grossAnnualIncome'];
     } else if (currentStep === 3) {
       // Step 3: Validate co-applicant fields
       const values = getValues();
@@ -306,7 +355,7 @@ export function CreditApplicationForm() {
           'coFirstName', 'coLastName', 'coSsn', 'coDob', 'coHousing', 
           'coPhone', 'coEmail', 'coStreet', 'coCity', 'coState', 
           'coZip', 'coYearsAtResidence', 'coMonthlyPayment', 
-          'coEmployer', 'coEmploymentAddress', 'coPosition', 'coGrossAnnualIncome'
+          'coEmployer', 'coEmploymentStreet', 'coEmploymentCity', 'coEmploymentState', 'coEmploymentZip', 'coYearsAtJob', 'coPosition', 'coGrossAnnualIncome'
         ];
         
         // Validate email format if provided
@@ -327,8 +376,8 @@ export function CreditApplicationForm() {
           if (!values.coLastName?.trim()) {
             setError('coLastName', { message: 'Last name is required', type: 'manual' });
           }
-          if (!values.coSsn?.trim() || (values.coSsn?.trim()?.length ?? 0) < 9) {
-            setError('coSsn', { message: 'SSN must be at least 9 digits', type: 'manual' });
+          if (!values.coSsn?.trim() || (values.coSsn?.replace(/\D/g, '').length ?? 0) !== 9) {
+            setError('coSsn', { message: 'SSN must be exactly 9 digits', type: 'manual' });
           }
           if (!values.coDob?.trim()) {
             setError('coDob', { message: 'Date of birth is required', type: 'manual' });
@@ -431,7 +480,7 @@ export function CreditApplicationForm() {
       if (currentStep === 1) {
         fieldsToValidate = ['firstName', 'lastName', 'ssn', 'dob', 'housing', 'phone', 'email', 'street', 'city', 'state', 'zip', 'yearsAtResidence', 'monthlyPayment'];
       } else if (currentStep === 2) {
-        fieldsToValidate = ['employer', 'employmentAddress', 'position', 'grossAnnualIncome'];
+        fieldsToValidate = ['employer', 'employmentStreet', 'employmentCity', 'employmentState', 'employmentZip', 'yearsAtJob', 'position', 'grossAnnualIncome'];
       } else if (currentStep === 3) {
         const values = getValues();
         if (values.coApplicantEnabled) {
@@ -439,7 +488,7 @@ export function CreditApplicationForm() {
             'coFirstName', 'coLastName', 'coSsn', 'coDob', 'coHousing', 
             'coPhone', 'coEmail', 'coStreet', 'coCity', 'coState', 
             'coZip', 'coYearsAtResidence', 'coMonthlyPayment', 
-            'coEmployer', 'coEmploymentAddress', 'coPosition', 'coGrossAnnualIncome'
+            'coEmployer', 'coEmploymentStreet', 'coEmploymentCity', 'coEmploymentState', 'coEmploymentZip', 'coYearsAtJob', 'coPosition', 'coGrossAnnualIncome'
           ];
           await trigger(coApplicantFields);
           
@@ -452,7 +501,7 @@ export function CreditApplicationForm() {
             // Set individual field errors
             if (!values.coFirstName?.trim()) setError('coFirstName', { message: 'First name is required', type: 'manual' });
             if (!values.coLastName?.trim()) setError('coLastName', { message: 'Last name is required', type: 'manual' });
-            if (!values.coSsn?.trim() || (values.coSsn?.trim()?.length ?? 0) < 9) setError('coSsn', { message: 'SSN must be at least 9 digits', type: 'manual' });
+            if (!values.coSsn?.trim() || (values.coSsn?.replace(/\D/g, '').length ?? 0) !== 9) setError('coSsn', { message: 'SSN must be exactly 9 digits', type: 'manual' });
             if (!values.coDob?.trim()) setError('coDob', { message: 'Date of birth is required', type: 'manual' });
             if (!values.coHousing?.trim()) setError('coHousing', { message: 'Housing status is required', type: 'manual' });
             if (!values.coPhone?.trim() || (values.coPhone?.trim()?.length ?? 0) < 10) setError('coPhone', { message: 'Valid phone number is required', type: 'manual' });
@@ -685,11 +734,19 @@ export function CreditApplicationForm() {
               <div className="relative">
                 <Input 
                   id="ssn" 
+                  type="text"
+                  maxLength={9}
+                  inputMode="numeric"
+                  pattern="[0-9]*"
                   {...register('ssn', {
-                    onChange: () => trigger('ssn'),
+                    onChange: (e) => {
+                      // Only allow numbers
+                      e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                      trigger('ssn');
+                    },
                     onBlur: () => trigger('ssn'),
                   })} 
-                  placeholder="123-45-6789" 
+                  placeholder="123456789" 
                   className={cn(
                     errors.ssn 
                       ? 'border-destructive pr-10' 
@@ -1050,33 +1107,149 @@ export function CreditApplicationForm() {
               {errors.employer && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.employer.message}</p>}
             </div>
             <div className="space-y-1.5 md:col-span-2">
-              <Label htmlFor="employmentAddress" className="text-sm font-medium flex items-center gap-1.5">
+              <Label htmlFor="employmentStreet" className="text-sm font-medium flex items-center gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-muted-foreground" />
-                Employment Address <span className="text-destructive">*</span>
-                {isFieldValid('employmentAddress') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+                Employment Street Address <span className="text-destructive">*</span>
+                {isFieldValid('employmentStreet') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
               </Label>
               <div className="relative">
                 <Input 
-                  id="employmentAddress" 
-                  {...register('employmentAddress', {
-                    onChange: () => trigger('employmentAddress'),
-                    onBlur: () => trigger('employmentAddress'),
+                  id="employmentStreet" 
+                  {...register('employmentStreet', {
+                    onChange: () => trigger('employmentStreet'),
+                    onBlur: () => trigger('employmentStreet'),
                   })} 
-                  placeholder="e.g. 123 Business Ave, Suite 100, New York, NY 10001" 
+                  placeholder="e.g. 123 Business Ave, Suite 100" 
                   className={cn(
-                    errors.employmentAddress 
+                    errors.employmentStreet 
                       ? 'border-destructive pr-10' 
-                      : isFieldValid('employmentAddress')
+                      : isFieldValid('employmentStreet')
                         ? 'border-green-500 pr-10'
                         : ''
                   )} 
                 />
-                {isFieldValid('employmentAddress') && !errors.employmentAddress && (
+                {isFieldValid('employmentStreet') && !errors.employmentStreet && (
                   <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />
                 )}
               </div>
-              <p className="text-xs text-muted-foreground dark:text-white/60">Complete work address including street, city, state, and ZIP</p>
-              {errors.employmentAddress && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.employmentAddress.message}</p>}
+              {errors.employmentStreet && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.employmentStreet.message}</p>}
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="employmentCity" className="text-sm font-medium flex items-center gap-1.5">
+                Employment City <span className="text-destructive">*</span>
+                {isFieldValid('employmentCity') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+              </Label>
+              <div className="relative">
+                <Input 
+                  id="employmentCity" 
+                  {...register('employmentCity', {
+                    onChange: () => trigger('employmentCity'),
+                    onBlur: () => trigger('employmentCity'),
+                  })} 
+                  placeholder="e.g. New York" 
+                  className={cn(
+                    errors.employmentCity 
+                      ? 'border-destructive pr-10' 
+                      : isFieldValid('employmentCity')
+                        ? 'border-green-500 pr-10'
+                        : ''
+                  )} 
+                />
+                {isFieldValid('employmentCity') && !errors.employmentCity && (
+                  <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />
+                )}
+              </div>
+              {errors.employmentCity && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.employmentCity.message}</p>}
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="employmentState" className="text-sm font-medium flex items-center gap-1.5">
+                Employment State <span className="text-destructive">*</span>
+                {isFieldValid('employmentState') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+              </Label>
+              <Select 
+                onValueChange={(value) => {
+                  setValue('employmentState', value);
+                  trigger('employmentState');
+                }}
+              >
+                <SelectTrigger className={cn(
+                  errors.employmentState 
+                    ? 'border-destructive pr-10' 
+                    : isFieldValid('employmentState')
+                      ? 'border-green-500 pr-10'
+                      : ''
+                )}>
+                  <SelectValue placeholder="Select state" />
+                </SelectTrigger>
+                <SelectContent>
+                  {US_STATES.map((state) => (
+                    <SelectItem key={state.value} value={state.value}>
+                      {state.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              {errors.employmentState && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.employmentState.message}</p>}
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="employmentZip" className="text-sm font-medium flex items-center gap-1.5">
+                Employment ZIP <span className="text-destructive">*</span>
+                {isFieldValid('employmentZip') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+              </Label>
+              <div className="relative">
+                <Input 
+                  id="employmentZip" 
+                  {...register('employmentZip', {
+                    onChange: () => trigger('employmentZip'),
+                    onBlur: () => trigger('employmentZip'),
+                  })} 
+                  placeholder="e.g. 10001" 
+                  className={cn(
+                    errors.employmentZip 
+                      ? 'border-destructive pr-10' 
+                      : isFieldValid('employmentZip')
+                        ? 'border-green-500 pr-10'
+                        : ''
+                  )} 
+                />
+                {isFieldValid('employmentZip') && !errors.employmentZip && (
+                  <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />
+                )}
+              </div>
+              {errors.employmentZip && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.employmentZip.message}</p>}
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="yearsAtJob" className="text-sm font-medium flex items-center gap-1.5">
+                <Clock className="w-3.5 h-3.5 text-muted-foreground" />
+                Years at Job <span className="text-destructive">*</span>
+                {isFieldValid('yearsAtJob') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+              </Label>
+              <div className="relative">
+                <Input 
+                  id="yearsAtJob" 
+                  type="number"
+                  min="0"
+                  max="50"
+                  step="0.5"
+                  {...register('yearsAtJob', {
+                    onChange: () => trigger('yearsAtJob'),
+                    onBlur: () => trigger('yearsAtJob'),
+                  })} 
+                  placeholder="e.g. 3" 
+                  className={cn(
+                    errors.yearsAtJob 
+                      ? 'border-destructive pr-10' 
+                      : isFieldValid('yearsAtJob')
+                        ? 'border-green-500 pr-10'
+                        : ''
+                  )} 
+                />
+                {isFieldValid('yearsAtJob') && !errors.yearsAtJob && (
+                  <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />
+                )}
+              </div>
+              <p className="text-xs text-muted-foreground dark:text-white/60">How long you've worked at your current job</p>
+              {errors.yearsAtJob && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.yearsAtJob.message}</p>}
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="position" className="text-sm font-medium flex items-center gap-1.5">
@@ -1257,11 +1430,19 @@ export function CreditApplicationForm() {
                       <div className="relative">
                         <Input 
                           id="coSsn"
+                          type="text"
+                          maxLength={9}
+                          inputMode="numeric"
+                          pattern="[0-9]*"
                           {...register('coSsn', {
-                            onChange: () => trigger('coSsn'),
+                            onChange: (e) => {
+                              // Only allow numbers
+                              e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                              trigger('coSsn');
+                            },
                             onBlur: () => trigger('coSsn'),
                           })} 
-                          placeholder="123-45-6789" 
+                          placeholder="123456789" 
                           className={cn(
                             errors.coSsn 
                               ? 'border-destructive pr-10' 

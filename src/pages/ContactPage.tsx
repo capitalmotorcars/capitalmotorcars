@@ -107,7 +107,7 @@ export default function ContactPage() {
                 transition={{ ...fadeInUp.transition, delay: 0.1 }}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white text-center pb-2 md:pb-4 xl:pb-6"
               >
-                Contact
+                Submit Credit Application
               </motion.h2>
               <motion.p
                 {...fadeInUp}
@@ -130,7 +130,7 @@ export default function ContactPage() {
                 <Button
                   asChild
                   size="lg"
-                  className="h-11 sm:h-12 xl:h-14 rounded-lg xl:rounded-xl border border-white/30 bg-white/10 hover:bg-white/20 hover:border-white/50 text-white font-semibold xl:font-bold px-6 sm:px-8 xl:px-10 text-sm sm:text-base xl:text-lg backdrop-blur-sm"
+                  className="w-full sm:w-auto h-11 sm:h-12 xl:h-14 rounded-lg xl:rounded-xl border border-accent/40 bg-accent/70 hover:bg-accent/90 hover:border-accent text-accent-foreground font-semibold xl:font-bold px-6 sm:px-8 xl:px-10 text-sm sm:text-base xl:text-lg glow-blue shadow-[0_2px_12px_hsl(214_77%_50%_/_0.25)] hover:shadow-[0_4px_18px_hsl(214_77%_55%_/_0.45)] backdrop-blur-sm"
                 >
                   <Link to="/credit-application" className="flex items-center justify-center gap-2 xl:gap-3">
                     Start Credit Application

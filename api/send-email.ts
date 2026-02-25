@@ -21,6 +21,7 @@ const CONSULTANT_EMAIL_MAP: Record<string, string> = {
   'daniel_jay_lehrer': 'dlehrer@capitalmotorcars.com',
   'jeffrey_horn': 'jeffrey@capitalmotorcars.com',
   'mark_onbashian': 'mark@capitalmotorcars.com',
+  'markin': 'mark@capitalmotorcars.com',
   'michael_zeitoune': 'mzeitoune@capitalmotorcars.com',
   'michael_van_houten': 'mvanhouten@capitalmotorcars.com',
   'rafael_frias': 'rafael@capitalmotorcars.com',
