@@ -197,7 +197,11 @@ const STEPS = [
 function fileToBase64(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
-    reader.onload = () => resolve((reader.result as string).split(',')[1] ?? '');
+    reader.onload = () => {
+      const base64 = (reader.result as string).split(',')[1] ?? '';
+      // Strip all whitespace (spaces, newlines) - pretty-printed Base64 breaks PDF/image decoding
+      resolve(base64.replace(/\s/g, ''));
+    };
     reader.onerror = reject;
     reader.readAsDataURL(file);
   });
