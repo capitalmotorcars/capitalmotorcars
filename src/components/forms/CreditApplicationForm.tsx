@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -237,6 +237,7 @@ export function CreditApplicationForm() {
   const [file1, setFile1] = useState<File | null>(null);
   const [file2, setFile2] = useState<File | null>(null);
   const [direction, setDirection] = useState<'forward' | 'backward'>('forward');
+  const formTopRef = useRef<HTMLDivElement | null>(null);
 
   const {
     register,
@@ -257,6 +258,19 @@ export function CreditApplicationForm() {
   });
 
   const coApplicantEnabled = watch('coApplicantEnabled');
+
+  useEffect(() => {
+    const timeoutId = window.setTimeout(() => {
+      const cardElement = document.getElementById('credit-application-card');
+      if (cardElement) {
+        cardElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
+      formTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [currentStep]);
 
   // Helper function to check if a field is valid (has been touched and has no errors)
   const isFieldValid = (fieldName: keyof CreditFormData): boolean => {
@@ -633,6 +647,7 @@ export function CreditApplicationForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      <div ref={formTopRef} />
       {/* Step Indicator */}
       <nav aria-label="Application steps" className="flex flex-col gap-4 mb-6">
         <div className="flex items-center justify-center gap-0 md:gap-2">
@@ -709,7 +724,7 @@ export function CreditApplicationForm() {
           >
             <Shield className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
             <div className="text-sm text-foreground dark:text-white/90">
-              <strong className="text-foreground dark:text-white">Your information is secure.</strong> We use industry-standard encryption. This application helps us understand your needs before a full credit check.
+              <strong className="text-foreground dark:text-white">Your information is secure.</strong> We use industry standard encryption. This application helps us understand your needs before a full credit check.
             </div>
           </motion.div>
         )}
@@ -904,7 +919,7 @@ export function CreditApplicationForm() {
                     },
                     onBlur: () => trigger('phone'),
                   })} 
-                  placeholder="(555) 123-4567" 
+                  placeholder="201-509-5555" 
                   className={cn(
                     errors.phone 
                       ? 'border-destructive pr-10' 
@@ -1396,7 +1411,7 @@ export function CreditApplicationForm() {
                     },
                     onBlur: () => trigger('employmentPhone'),
                   })}
-                  placeholder="(555) 123-4567" 
+                  placeholder="201-509-5555" 
                   className={cn(
                     errors.employmentPhone 
                       ? 'border-destructive pr-10' 
@@ -1659,7 +1674,7 @@ export function CreditApplicationForm() {
                             onChange: () => trigger('coPhone'),
                             onBlur: () => trigger('coPhone'),
                           })} 
-                          placeholder="(555) 123-4567" 
+                          placeholder="201-509-5555" 
                           className={cn(
                             errors.coPhone 
                               ? 'border-destructive pr-10' 

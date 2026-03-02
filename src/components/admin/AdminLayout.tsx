@@ -3,7 +3,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '@/lib/utils';
-import { LogOut, LayoutDashboard, Settings, User, Car } from 'lucide-react';
+import { LogOut, LayoutDashboard, Settings, User, Car, FileText } from 'lucide-react';
 
 
 interface AdminLayoutProps {
@@ -23,6 +23,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
     const navItems = [
         { path: '/admin/deals', label: 'Deals', icon: LayoutDashboard },
         { path: '/admin/vehicles', label: 'Vehicles', icon: Car },
+        { path: '/admin/blogs', label: 'Blog', icon: FileText },
     ];
 
     return (

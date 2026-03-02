@@ -27,15 +27,15 @@ export default function ContactPage() {
       icon: Phone,
       title: 'Phone',
       description: 'Call us directly',
-      value: '(555) 123-4567',
-      href: 'tel:+15551234567',
+      value: '201-509-5555',
+      href: 'tel:+12015095555',
     },
     {
       icon: Mail,
       title: 'Email',
       description: 'Send us an email',
-      value: 'info@capitalmotorcars.com',
-      href: 'mailto:info@capitalmotorcars.com',
+      value: 'sales@capitalmotorcars.com',
+      href: 'mailto:sales@capitalmotorcars.com',
     },
     {
       icon: MapPin,
@@ -56,7 +56,7 @@ export default function ContactPage() {
     <Layout>
       <SEO
         title="Contact Capital Motor Cars | Springfield NJ Office"
-        description="Get in touch with Capital Motor Cars in Springfield, NJ. Ask about car leasing, financing, or vehicle repairs. Call us at (555) 123-4567 or visit our office."
+        description="Get in touch with Capital Motor Cars in Springfield, NJ. Ask about car leasing, financing, or vehicle repairs. Call us at 201-509-5555 or visit our office."
         seoKeywords={['contact Capital Motor Cars', 'car leasing Springfield NJ', 'auto leasing contact', 'Capital Motor Cars phone number']}
         ogImage="/src/assets/contact.jpg"
         canonicalPath="/contact"

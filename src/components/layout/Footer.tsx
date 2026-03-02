@@ -30,6 +30,7 @@ const footerLinks = {
   ],
   company: [
     { href: '/services', label: 'Services' },
+    { href: '/blog', label: 'Blog' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
     { href: '/credit-application', label: 'Credit Application' },

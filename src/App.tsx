@@ -16,6 +16,8 @@ import CreditApplicationPage from "./pages/CreditApplicationPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsOfServicePage from "./pages/TermsOfServicePage";
 import QuizPage from "./pages/QuizPage";
+import BlogPage from "./pages/BlogPage";
+import BlogPostPage from "./pages/BlogPostPage";
 import CarLeasingPage from "./pages/services/CarLeasingPage";
 import FinancingPage from "./pages/services/FinancingPage";
 import TradeInPage from "./pages/services/TradeInPage";
@@ -32,6 +34,7 @@ import LoginPage from "./pages/admin/LoginPage";
 import DealsPage from "./pages/admin/DealsPage";
 import { VehicleTypesPage } from "./pages/admin/VehicleTypesPage";
 import { AdminLayout } from "./components/admin/AdminLayout";
+import BlogPostsPage from "./pages/admin/BlogPostsPage";
 
 const queryClient = new QueryClient();
 
@@ -60,6 +63,8 @@ const App = () => (
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
               <Route path="/terms-of-service" element={<TermsOfServicePage />} />
               <Route path="/quiz" element={<QuizPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/:slug" element={<BlogPostPage />} />
 
               {/* Dynamic Vehicle Details Loop */}
               <Route path="/vehicles/:slug" element={<VehicleDetailsPage />} />
@@ -73,6 +78,7 @@ const App = () => (
               }>
                 <Route path="deals" element={<DealsPage />} />
                 <Route path="vehicles" element={<VehicleTypesPage />} />
+                <Route path="blogs" element={<BlogPostsPage />} />
               </Route>
 
               <Route path="*" element={<NotFound />} />

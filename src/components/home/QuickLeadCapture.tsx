@@ -133,7 +133,7 @@ export function QuickLeadCapture() {
                     id="quickLeadPhone"
                     value={data.phone}
                     onChange={(e) => setData((s) => ({ ...s, phone: e.target.value }))}
-                    placeholder="(555) 123-4567"
+                    placeholder="201-509-5555"
                     className={errors.phone ? "border-destructive" : ""}
                     autoComplete="tel"
                     inputMode="tel"

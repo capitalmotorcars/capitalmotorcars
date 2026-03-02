@@ -27,6 +27,24 @@ CREATE TABLE lease_deals (
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
+-- Blog Posts Table
+CREATE TABLE blog_posts (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  title VARCHAR(200) NOT NULL,
+  slug VARCHAR(200) UNIQUE NOT NULL,
+  excerpt TEXT,
+  content TEXT NOT NULL,
+  cover_image_url TEXT,
+  seo_title VARCHAR(255),
+  seo_description TEXT,
+  seo_keywords TEXT,
+  display_order INTEGER DEFAULT 0,
+  is_active BOOLEAN DEFAULT true,
+  published_at TIMESTAMP WITH TIME ZONE,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
 -- Admin Users Table (Profiles linked to Supabase Auth)
 -- Note: Actual authentication is handled by Supabase Auth (auth.users).
 -- This table matches additional profile data by email.
@@ -58,6 +76,12 @@ CREATE INDEX idx_lease_deals_active_order ON lease_deals(is_active, display_orde
 -- Index for searching by make/model
 CREATE INDEX idx_lease_deals_make_model ON lease_deals(make, model);
 
+-- Index for active blog posts ordered by display_order
+CREATE INDEX idx_blog_posts_active_order ON blog_posts(is_active, display_order) WHERE is_active = true;
+
+-- Index for blog slug lookup
+CREATE INDEX idx_blog_posts_slug ON blog_posts(slug);
+
 -- Index for audit log by deal
 CREATE INDEX idx_audit_log_deal_id ON deal_audit_log(deal_id);
 
@@ -80,6 +104,12 @@ $$ LANGUAGE plpgsql;
 -- Trigger to auto-update updated_at
 CREATE TRIGGER update_lease_deals_updated_at
   BEFORE UPDATE ON lease_deals
+  FOR EACH ROW
+  EXECUTE FUNCTION update_updated_at_column();
+
+-- Trigger to auto-update updated_at on blog posts
+CREATE TRIGGER update_blog_posts_updated_at
+  BEFORE UPDATE ON blog_posts
   FOR EACH ROW
   EXECUTE FUNCTION update_updated_at_column();
 
@@ -116,15 +146,26 @@ CREATE TRIGGER audit_lease_deals_changes
 ALTER TABLE lease_deals ENABLE ROW LEVEL SECURITY;
 ALTER TABLE admin_users ENABLE ROW LEVEL SECURITY;
 ALTER TABLE deal_audit_log ENABLE ROW LEVEL SECURITY;
+ALTER TABLE blog_posts ENABLE ROW LEVEL SECURITY;
 
 -- Public read access to active deals
 CREATE POLICY "Public can view active deals"
   ON lease_deals FOR SELECT
   USING (is_active = true);
 
+-- Public read access to active blog posts
+CREATE POLICY "Public can view active blog posts"
+  ON blog_posts FOR SELECT
+  USING (is_active = true AND (published_at IS NULL OR published_at <= NOW()));
+
 -- Authenticated users (admins) can do everything
 CREATE POLICY "Admins can do everything with deals"
   ON lease_deals FOR ALL
+  USING (auth.role() = 'authenticated');
+
+-- Authenticated users (admins) can do everything with blog posts
+CREATE POLICY "Admins can do everything with blog posts"
+  ON blog_posts FOR ALL
   USING (auth.role() = 'authenticated');
 
 -- Only authenticated users can view admin_users
@@ -160,6 +201,30 @@ CREATE POLICY "Admins can do everything with audit logs"
 -- CREATE POLICY "Authenticated users can delete deal images"
 --   ON storage.objects FOR DELETE
 --   USING (bucket_id = 'deal-images' AND auth.role() = 'authenticated');
+
+-- =====================================================
+-- STORAGE BUCKET (for blog images)
+-- =====================================================
+
+-- Run this in Supabase Dashboard > Storage
+-- 1. Create a bucket named 'blog-images'
+-- 2. Set it to public
+-- 3. Add the following policies:
+
+-- Policy for public read access:
+-- CREATE POLICY "Public can view blog images"
+--   ON storage.objects FOR SELECT
+--   USING (bucket_id = 'blog-images');
+
+-- Policy for authenticated upload:
+-- CREATE POLICY "Authenticated users can upload blog images"
+--   ON storage.objects FOR INSERT
+--   WITH CHECK (bucket_id = 'blog-images' AND auth.role() = 'authenticated');
+
+-- Policy for authenticated delete:
+-- CREATE POLICY "Authenticated users can delete blog images"
+--   ON storage.objects FOR DELETE
+--   USING (bucket_id = 'blog-images' AND auth.role() = 'authenticated');
 
 -- =====================================================
 -- SAMPLE DATA (optional - for testing)

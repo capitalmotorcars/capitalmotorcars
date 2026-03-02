@@ -15,6 +15,7 @@ import { SectionDividerCreative } from '@/components/ui/SectionDividerCreative';
 import { ScrollTriggeredQuizDialog } from '@/components/home/ScrollTriggeredQuizDialog';
 import { FAQSection } from '@/components/home/FAQSection';
 import { LeaseDealsSection } from '@/components/home/LeaseDealsSection';
+import { BlogSection } from '@/components/home/BlogSection';
 
 export default function HomePage() {
   return (
@@ -56,6 +57,8 @@ export default function HomePage() {
       <TestimonialsSection />
       <SectionDividerCreative variant="dot" />
       <FAQSection />
+      <SectionDividerCreative variant="dot" />
+      <BlogSection />
 
     </Layout>
   );

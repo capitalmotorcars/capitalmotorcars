@@ -118,7 +118,7 @@ export default function CreditApplicationPage() {
             <div className="relative bg-white dark:bg-black h-full py-12 md:py-16 z-10">
               <div className="mx-auto px-4 lg:px-8 xl:px-12">
                 <div className="max-w-5xl mx-auto">
-                  <div className="glass-card-theme form-card-theme p-6 sm:p-8 md:p-10 xl:p-12 rounded-xl">
+                  <div id="credit-application-card" className="glass-card-theme form-card-theme p-6 sm:p-8 md:p-10 xl:p-12 rounded-xl scroll-mt-24">
                     <CreditApplicationForm />
                   </div>
                 </div>

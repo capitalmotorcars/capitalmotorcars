@@ -368,7 +368,7 @@ export function ContactForm({
               e.target.value = formatted;
               onPhoneChange(e);
             }}
-            placeholder="(555) 123-4567"
+            placeholder="201-509-5555"
             className={cn(
               errors.phone && 'border-destructive bg-destructive/5'
             )}
