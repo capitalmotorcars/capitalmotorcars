@@ -1,8 +1,22 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
 export function ScrollToTop() {
   const { pathname, search, hash } = useLocation();
+
+  useEffect(() => {
+    // Send page view to Google Analytics (SPA route changes)
+    const pagePath = pathname + search;
+    if (typeof window.gtag === 'function') {
+      window.gtag('config', 'G-9435FK96YE', { page_path: pagePath });
+    }
+  }, [pathname, search]);
 
   useEffect(() => {
     if (hash) {
