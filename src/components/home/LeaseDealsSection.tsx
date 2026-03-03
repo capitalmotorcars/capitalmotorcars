@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 import { useDeals } from '@/hooks/useDeals';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -21,13 +21,9 @@ import {
 } from "@/components/ui/dialog";
 import { ContactForm } from '@/components/forms/ContactForm';
 
-function DealCard({ deal, index, onClaim }: { deal: any; index: number; onClaim: (deal: any) => void }) {
+function DealCard({ deal, onClaim }: { deal: any; onClaim: (deal: any) => void }) {
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
+        <div
             className="group relative h-full flex flex-col rounded-[2.5rem] border-2 border-border/60 dark:border-white/10 bg-muted/5 dark:bg-white/[0.02] overflow-hidden hover:border-accent hover:shadow-[0_0_50px_-12px_rgba(59,130,246,0.3)] transition-all duration-500"
         >
             {/* Image Container */}
@@ -119,7 +115,7 @@ function DealCard({ deal, index, onClaim }: { deal: any; index: number; onClaim:
                     Claim Offer <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
             </div>
-        </motion.div>
+        </div>
     );
 }
 
@@ -199,7 +195,7 @@ export function LeaseDealsSection() {
                         <CarouselContent className="-ml-6 py-4">
                             {deals.map((deal, index) => (
                                 <CarouselItem key={deal.id} className="pl-6 md:basis-1/2 lg:basis-1/3">
-                                    <DealCard deal={deal} index={index} onClaim={handleClaimClick} />
+                                    <DealCard deal={deal} onClaim={handleClaimClick} />
                                 </CarouselItem>
                             ))}
                         </CarouselContent>
