@@ -180,7 +180,7 @@ export function VehicleTypesCarousel({
             </div>
           )}
 
-          <div className="relative z-50 mx-auto h-[35vh] md:h-[45vh]  px-4 lg:px-8 pt-6 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-20">
+          <div className="relative z-50 mx-auto h-[35vh] md:h-[45vh]  px-0 lg:px-8 pt-6 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-20">
             <h2 className="text-xl sm:text-3xl  md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white text-center pb-2 md:pb-4">
               {title}
             </h2>
@@ -201,7 +201,7 @@ export function VehicleTypesCarousel({
                       key={filter.id}
                       onClick={() => setActiveFilter(filter.id)}
                       className={cn(
-                        'relative px-2 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm md:text-base font-medium transition-colors',
+                        'relative px-2 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm md:text-base font-bold transition-colors',
                         isActive
                           ? 'text-white'
                           : 'text-white/70 hover:text-white'

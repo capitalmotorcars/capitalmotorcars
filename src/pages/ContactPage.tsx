@@ -88,7 +88,7 @@ export default function ContactPage() {
 
           {/* Gradient fade to bottom content */}
           <div
-            className="absolute top-[15vh] md:top-[22.5vh] left-0 right-0 h-[15vh] md:h-[22.5vh] bg-gradient-to-b from-transparent via-white/20 to-white dark:to-[hsl(0,0%,4%)]"
+            className="absolute top-[17vh] md:top-[22.5vh] left-0 right-0 h-[17vh] md:h-[22.5vh] bg-gradient-to-b from-transparent via-white/20 to-white dark:to-[hsl(0,0%,4%)]"
             aria-hidden
           />
 
@@ -105,7 +105,7 @@ export default function ContactPage() {
               <motion.h2
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.1 }}
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white text-center pb-2 md:pb-4 xl:pb-6"
+                className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white text-center pb-2 md:pb-4 xl:pb-6"
               >
                 Submit Credit Application
               </motion.h2>

@@ -142,7 +142,7 @@ export default function BrandsPage() {
 
           {/* Gradient fade to bottom content */}
           <div
-            className="absolute top-[16vh] md:top-[22.5vh] left-0 right-0 h-[16vh] md:h-[22.5vh] bg-gradient-to-b from-transparent via-white/20 to-white dark:to-[hsl(0,0%,4%)]"
+            className="absolute top-[17vh] md:top-[22.5vh] left-0 right-0 h-[17vh] md:h-[22.5vh] bg-gradient-to-b from-transparent via-white/20 to-white dark:to-[hsl(0,0%,4%)]"
             aria-hidden
           />
 

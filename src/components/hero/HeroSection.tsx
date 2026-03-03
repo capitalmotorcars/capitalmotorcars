@@ -216,12 +216,12 @@ export function HeroSection() {
 
       </div>
 
-      {/* Animated scroll-down arrow — middle bottom, scrolls to next section */}
+      {/* Animated scroll-down arrow — flex mt-auto for reliable bottom placement on Safari */}
       <button
         type="button"
         onClick={scrollToNext}
         aria-label="Scroll to next section"
-        className="absolute bottom-16 left-1/2 -translate-x-1/2 md:relative md:left-auto md:translate-x-0 md:mt-auto md:bottom-auto flex items-center justify-center text-white/90 hover:text-white transition-colors pb-0 md:pb-4 z-10"
+        className="mt-auto shrink-0 w-full flex justify-center items-center text-white/90 hover:text-white transition-colors pt-4 pb-8 md:pb-4 z-10"
       >
         <ChevronDown className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 xl:w-14 xl:h-14 hero-scroll-arrow" aria-hidden />
       </button>

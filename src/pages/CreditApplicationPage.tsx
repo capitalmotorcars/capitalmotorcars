@@ -66,7 +66,7 @@ export default function CreditApplicationPage() {
 
           {/* Gradient fade to bottom content */}
           <div
-            className="absolute top-[15vh] md:top-[22.5vh] left-0 right-0 h-[15vh] md:h-[22.5vh] bg-gradient-to-b from-transparent via-white/20 to-white dark:to-[hsl(0,0%,4%)]"
+            className="absolute top-[17vh] md:top-[22.5vh] left-0 right-0 h-[17vh] md:h-[22.5vh] bg-gradient-to-b from-transparent via-white/20 to-white dark:to-[hsl(0,0%,4%)]"
             aria-hidden
           />
 
@@ -83,7 +83,7 @@ export default function CreditApplicationPage() {
               <motion.h2
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.1 }}
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white pb-2 md:pb-4 xl:pb-6"
+                className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white pb-2 md:pb-4 xl:pb-6"
               >
                 Credit Application
               </motion.h2>
@@ -105,7 +105,7 @@ export default function CreditApplicationPage() {
                 {benefits.map((benefit, index) => {
                   const Icon = benefit.icon;
                   return (
-                    <div key={index} className="flex items-center gap-2 text-white/90">
+                    <div key={index} className="flex items-center gap-2 text-white font-bold">
                       <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                       <span className="text-xs sm:text-sm md:text-base">{benefit.text}</span>
                     </div>

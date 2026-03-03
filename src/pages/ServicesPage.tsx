@@ -157,10 +157,10 @@ export default function ServicesPage() {
       />
       <JsonLd data={servicesListSchema} />
 
-      <section className="pt-16 lg:pt-20 ">
+      <section className="pt-[max(4rem,calc(4rem+env(safe-area-inset-top,0px)))] lg:pt-[max(5rem,calc(5rem+env(safe-area-inset-top,0px)))]">
         <div id="services" className="relative h-full flex flex-col">
-          {/* Top half: Blurred background */}
-          <div className="absolute top-0 left-0 right-0 h-[30vh] md:h-[45vh] overflow-hidden">
+          {/* Top half: Blurred background - vh on mobile to prevent zoom on scroll; dvh on desktop */}
+          <div className="absolute top-0 left-0 right-0 h-[30vh] md:h-[45dvh] overflow-hidden">
             <motion.img
               initial={{ scale: 1.1, opacity: 0 }}
               animate={{ scale: 1.05, opacity: 1 }}
@@ -176,37 +176,37 @@ export default function ServicesPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
-            className="absolute top-0 left-0 right-0 h-[30vh] md:h-[45vh] bg-gradient-to-b from-black/40 via-black/20 to-transparent"
+            className="absolute top-0 left-0 right-0 h-[30vh] md:h-[45dvh] bg-gradient-to-b from-black/40 via-black/20 to-transparent"
             aria-hidden
           />
 
           {/* Gradient fade to bottom content */}
           <div
-            className="absolute top-[16vh] md:top-[22.5vh] left-0 right-0 h-[16vh] md:h-[22.5vh] bg-gradient-to-b from-transparent via-white/20 to-white dark:to-[hsl(0,0%,4%)]"
+            className="absolute top-[17vh] md:top-[22.5dvh] left-0 right-0 h-[17vh] md:h-[22.5dvh] bg-gradient-to-b from-transparent via-white/20 to-white dark:to-[hsl(0,0%,4%)]"
             aria-hidden
           />
 
           {/* Bottom half: White background */}
           <div
-            className="absolute top-[30vh] md:top-[45vh] left-0 right-0 bottom-0 bg-white dark:bg-[hsl(0,0%,4%)]"
+            className="absolute top-[30vh] md:top-[45dvh] left-0 right-0 bottom-0 bg-white dark:bg-[hsl(0,0%,4%)]"
             aria-hidden
           />
 
           {/* Content */}
           <div ref={ref} className={cn('relative z-10 flex-1 flex flex-col  dark:bg-white/[0.02]', 'scroll-reveal', isRevealed && 'revealed')}>
-            {/* Title and Filters */}
-            <div className="relative z-50 mx-auto h-[30vh] md:h-[45vh] px-4 lg:px-8 flex flex-col items-center justify-center">
+            {/* Title and Filters - vh on mobile for stable height (no zoom on scroll) */}
+            <div className="relative z-50 mx-auto min-h-[30vh] md:min-h-[45dvh] py-8 md:py-12 px-4 lg:px-8 flex flex-col items-center justify-center">
               <motion.h2
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.1 }}
-                className="text-2xl  md:text-7xl  font-bold text-white text-center pb-2 md:pb-4 xl:pb-6"
+                className="text-xl  md:text-7xl  font-bold text-white text-center pb-2 md:pb-4 xl:pb-6"
               >
                 Dealer Free Automotive Services: Leasing, Financing & More
               </motion.h2>
               <motion.p
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.2 }}
-                className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/80 text-center max-w-3xl xl:max-w-5xl mx-auto pb-4 md:pb-6 xl:pb-8"
+                className="text-xs  md:text-lg lg:text-xl xl:text-2xl text-white/80 text-center max-w-3xl xl:max-w-5xl mx-auto pb-2 md:pb-6 xl:pb-8"
               >
                 Practical automotive solutions for customers who want things done right and without unnecessary hassle.
               </motion.p>
@@ -227,10 +227,10 @@ export default function ServicesPage() {
                         key={category.id}
                         onClick={() => setActiveCategory(category.id)}
                         className={cn(
-                          'relative px-2 py-1.5 sm:px-4 sm:py-2 xl:px-6 xl:py-3 text-sm xl:text-xl font-bold transition-colors ',
+                          'relative px-2 py-1 sm:px-4 sm:py-2 xl:px-6 xl:py-3 text-sm xl:text-xl font-bold transition-colors ',
                           isActive
                             ? 'text-white'
-                            : 'text-white/70 hover:text-white'
+                            : 'text-white hover:text-white'
                         )}
                       >
                         {category.label}

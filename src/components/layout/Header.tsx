@@ -51,10 +51,10 @@ export function Header() {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 pt-[max(0.75rem,calc(0.75rem+env(safe-area-inset-top,0px)))] pb-3',
         isScrolled
-          ? 'bg-background/80 backdrop-blur-md py-3 shadow-lg dark:bg-black/80 dark:backdrop-blur-md'
-          : 'bg-background py-3 dark:bg-black'
+          ? 'bg-background/80 backdrop-blur-md shadow-lg dark:bg-black/80 dark:backdrop-blur-md'
+          : 'bg-background dark:bg-black'
       )}
     >
       <div className="container mx-auto px-4 lg:px-8">
