@@ -85,7 +85,7 @@ export default function CreditApplicationPage() {
                 transition={{ ...fadeInUp.transition, delay: 0.1 }}
                 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white pb-2 md:pb-4 xl:pb-6"
               >
-                Secure 5-Step Auto Financing &amp; Leasing Application
+                Secure 5 Step Auto Financing &amp; Leasing Application
               </motion.h2>
               <motion.p
                 {...fadeInUp}
