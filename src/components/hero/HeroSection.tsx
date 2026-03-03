@@ -22,6 +22,11 @@ export function HeroSection() {
     document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const scrollToTestimonials = (e: React.MouseEvent) => {
+    e.preventDefault();
+    document.getElementById('what-our-clients-say')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section className="relative min-h-screen md:min-h-[100dvh] flex flex-col overflow-hidden hero-section bg-transparent " style={{ position: 'relative', transform: 'translateZ(0)' }}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 pt-16 md:pt-20 lg:pt-24 xl:pt-28 flex-1 flex flex-col min-h-0 items-center justify-center" style={{ position: 'relative', transform: 'translate3d(0, 0, 0)', willChange: 'auto' }}>
@@ -69,11 +74,10 @@ export function HeroSection() {
               </div>
 
               {/* Customers & Google Reviews - Show below buttons on mobile, above brands on desktop */}
-              <a
-                href="https://share.google/uNNUZv8Ot02uvLzbd"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-5 hero-animate cursor-pointer hover:opacity-80 transition-opacity pt-4 sm:hidden ${animate}`}
+              <button
+                type="button"
+                onClick={scrollToTestimonials}
+                className={`flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-5 hero-animate cursor-pointer hover:opacity-80 transition-opacity pt-4 sm:hidden bg-transparent border-0 p-0 ${animate}`}
               >
                 <div className="flex items-center gap-3 sm:gap-4">
                   <div className="flex -space-x-2 sm:-space-x-3">
@@ -101,7 +105,7 @@ export function HeroSection() {
                   <span className="text-accent">★★★★★</span>
                   5/5 on Google
                 </span>
-              </a>
+              </button>
             </div>
           </div>
 
@@ -176,11 +180,10 @@ export function HeroSection() {
 
           </div>
           {/* Customers & Google Reviews - Show above brands on desktop */}
-          <a
-            href="https://share.google/uNNUZv8Ot02uvLzbd"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`hidden sm:flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-5 xl:gap-6 hero-animate cursor-pointer hover:opacity-80 transition-opacity ${animate}`}
+          <button
+            type="button"
+            onClick={scrollToTestimonials}
+            className={`hidden sm:flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-5 xl:gap-6 hero-animate cursor-pointer hover:opacity-80 transition-opacity bg-transparent border-0 p-0 ${animate}`}
           >
             <div className="flex items-center gap-3 sm:gap-4 xl:gap-5">
               <div className="flex -space-x-2 sm:-space-x-3 xl:-space-x-4">
@@ -208,7 +211,7 @@ export function HeroSection() {
               <span className="text-accent">★★★★★</span>
               5/5 on Google
             </span>
-          </a>
+          </button>
         </div>
 
       </div>

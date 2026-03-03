@@ -32,14 +32,16 @@ export default function HomePage() {
       <HeroBackgroundWrapper>
         <HeroSection />
       </HeroBackgroundWrapper>
+
+      <LeaseDealsSection />
+      <SectionDividerCreative variant="dot" />
       <HowItWorksSection transparentBackground />
 
       <SectionDividerCreative variant="dot" />
       <VehicleTypesCarousel title="Discover The Car Of Your Dreams"
       />
 
-      <SectionDividerCreative variant="dot" />
-      <LeaseDealsSection />
+     
 
       <SectionDividerCreative variant="dot" />
       <PeopleSection homePageOnly={true} padding="px-4 sm:px-6 lg:px-8 py-10 md:py-16" />
@@ -57,8 +59,8 @@ export default function HomePage() {
       <TestimonialsSection />
       <SectionDividerCreative variant="dot" />
       <FAQSection />
-      <SectionDividerCreative variant="dot" />
-      <BlogSection />
+      {/* <SectionDividerCreative variant="dot" /> */}
+      {/* <BlogSection /> */}
 
     </Layout>
   );
