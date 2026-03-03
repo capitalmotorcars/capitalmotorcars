@@ -13,8 +13,8 @@ export default function CreditApplicationPage() {
 
   const benefits = [
     { icon: Shield, text: 'Secure & Encrypted' },
-    { icon: Clock, text: 'Quick 5-Step Process' },
-    { icon: FileText, text: 'No Credit Check Required' },
+    { icon: Clock, text: 'Quick 5 Step Process' },
+    { icon: FileText, text: 'Simple Application' },
     { icon: CheckCircle2, text: 'Fast Response Time' },
   ];
 
@@ -28,7 +28,7 @@ export default function CreditApplicationPage() {
     <Layout>
       <SEO
         title="Online Credit Application | Secure Auto Financing | Capital Motor Cars"
-        description="Apply for auto financing and leasing credit online. Our secure 5-step application process helps you get quick answers about your car financing options."
+        description="Apply for auto financing and leasing credit online. Our secure 5 Step Application Process helps you get quick answers about your car financing options."
         seoKeywords={['car credit application', 'auto financing NJ', 'lease credit application', 'Capital Motor Cars finance']}
         ogImage="/src/assets/contact.jpg"
         canonicalPath="/credit-application"
@@ -85,7 +85,7 @@ export default function CreditApplicationPage() {
                 transition={{ ...fadeInUp.transition, delay: 0.1 }}
                 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white pb-2 md:pb-4 xl:pb-6"
               >
-                Credit Application
+                Secure 5-Step Auto Financing &amp; Leasing Application
               </motion.h2>
               <motion.p
                 {...fadeInUp}
