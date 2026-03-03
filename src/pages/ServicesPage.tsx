@@ -182,7 +182,7 @@ export default function ServicesPage() {
 
           {/* Gradient fade to bottom content */}
           <div
-            className="absolute top-[15vh] md:top-[22.5vh] left-0 right-0 h-[15vh] md:h-[22.5vh] bg-gradient-to-b from-transparent via-white/20 to-white dark:to-[hsl(0,0%,4%)]"
+            className="absolute top-[16vh] md:top-[22.5vh] left-0 right-0 h-[16vh] md:h-[22.5vh] bg-gradient-to-b from-transparent via-white/20 to-white dark:to-[hsl(0,0%,4%)]"
             aria-hidden
           />
 
@@ -199,9 +199,9 @@ export default function ServicesPage() {
               <motion.h2
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.1 }}
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white text-center pb-2 md:pb-4 xl:pb-6"
+                className="text-2xl  md:text-7xl  font-bold text-white text-center pb-2 md:pb-4 xl:pb-6"
               >
-                Our Services
+                Dealer Free Automotive Services: Leasing, Financing & More
               </motion.h2>
               <motion.p
                 {...fadeInUp}
@@ -227,7 +227,7 @@ export default function ServicesPage() {
                         key={category.id}
                         onClick={() => setActiveCategory(category.id)}
                         className={cn(
-                          'relative px-2 py-1.5 sm:px-4 sm:py-2 xl:px-6 xl:py-3 text-xs sm:text-sm md:text-base xl:text-lg font-medium transition-colors',
+                          'relative px-2 py-1.5 sm:px-4 sm:py-2 xl:px-6 xl:py-3 text-sm xl:text-xl font-bold transition-colors ',
                           isActive
                             ? 'text-white'
                             : 'text-white/70 hover:text-white'
@@ -289,7 +289,7 @@ export default function ServicesPage() {
                       <h4 className="text-sm uppercase font-bold tracking-[0.3em] text-muted-foreground/60 mb-6">Service Excellence</h4>
                       <div className="grid grid-cols-1 gap-4">
                         {[
-                          { icon: CheckCircle2, label: "Dealer-Free", val: "100%", desc: "Skip the showroom hassle" },
+                          { icon: CheckCircle2, label: "Dealer Free", val: "100%", desc: "Skip the showroom hassle" },
                           { icon: Shield, label: "Pricing", val: "100%", desc: "Fully transparent quotes" },
                           { icon: Award, label: "Experience", val: "30+", desc: "Years of industry mastery" }
                         ].map((stat, i) => (
@@ -305,7 +305,7 @@ export default function ServicesPage() {
                               <div className="flex flex-col justify-center py-1">
                                 <div className="flex items-baseline gap-2 mb-1">
                                   <span className="text-4xl font-black text-black dark:text-white tracking-tighter leading-none">
-                                    {stat.val}
+                                    {stat.val}  
                                   </span>
                                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent/80 whitespace-nowrap">
                                     {stat.label}

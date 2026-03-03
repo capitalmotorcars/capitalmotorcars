@@ -142,7 +142,7 @@ export default function BrandsPage() {
 
           {/* Gradient fade to bottom content */}
           <div
-            className="absolute top-[15vh] md:top-[22.5vh] left-0 right-0 h-[15vh] md:h-[22.5vh] bg-gradient-to-b from-transparent via-white/20 to-white dark:to-[hsl(0,0%,4%)]"
+            className="absolute top-[16vh] md:top-[22.5vh] left-0 right-0 h-[16vh] md:h-[22.5vh] bg-gradient-to-b from-transparent via-white/20 to-white dark:to-[hsl(0,0%,4%)]"
             aria-hidden
           />
 
@@ -162,7 +162,7 @@ export default function BrandsPage() {
               <motion.h2
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.1 }}
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white text-center pb-2 md:pb-4 xl:pb-6"
+                className="text-2xl  md:text-7xl  font-bold text-white text-center pb-2 md:pb-4 xl:pb-6"
               >
                 Brands We Work With
               </motion.h2>
@@ -225,7 +225,7 @@ export default function BrandsPage() {
                         key={category.id}
                         onClick={() => setActiveCategory(category.id)}
                         className={cn(
-                          'relative px-2 py-1.5 sm:px-4 sm:py-2 xl:px-6 xl:py-3 text-xs sm:text-sm md:text-base xl:text-lg font-medium transition-colors',
+                          'relative px-2 py-1.5 sm:px-4 sm:py-2 xl:px-6 xl:py-3 text-xs xl:text-xl font-bold transition-colors',
                           isActive
                             ? 'text-white'
                             : 'text-white/70 hover:text-white'
