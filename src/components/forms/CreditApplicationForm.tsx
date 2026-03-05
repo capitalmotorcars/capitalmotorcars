@@ -383,11 +383,15 @@ export function CreditApplicationForm() {
             CoOtherAnnualIncome: data.coOtherAnnualIncome ?? '',
             CoOrganizationAffiliation: data.coOrganizationAffiliation ?? '',
           }),
-          // Step 4
-          Document1FileName: file1?.name ?? '',
-          Document2FileName: file2?.name ?? '',
-          ...(document1Base64 && { Document1Base64: document1Base64 }),
-          ...(document2Base64 && { Document2Base64: document2Base64 }),
+          // Step 4 - only include upload fields when files are present
+          ...(file1 && document1Base64 && {
+            Document1FileName: file1.name,
+            Document1Base64: document1Base64,
+          }),
+          ...(file2 && document2Base64 && {
+            Document2FileName: file2.name,
+            Document2Base64: document2Base64,
+          }),
           // Step 5
           Consultant: data.consultant,
           ConsultantEmail: getConsultantEmail(data.consultant),
