@@ -182,7 +182,26 @@ const legalSchema = z.object({
 const creditSchema = applicantInfoSchema
   .merge(employmentSchema)
   .merge(coApplicantSchema)
-  .merge(legalSchema);
+  .merge(legalSchema)
+  .superRefine((data, ctx) => {
+    if (data.coApplicantEnabled) {
+      if (!data.coEmploymentStreet?.trim()) {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Employment street is required', path: ['coEmploymentStreet'] });
+      }
+      if (!data.coEmploymentCity?.trim()) {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Employment city is required', path: ['coEmploymentCity'] });
+      }
+      if (!data.coEmploymentState?.trim()) {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Employment state is required', path: ['coEmploymentState'] });
+      }
+      if (!data.coEmploymentZip?.trim() || data.coEmploymentZip.replace(/\D/g, '').length < 5) {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Employment ZIP is required', path: ['coEmploymentZip'] });
+      }
+      if (!data.coEmploymentPhone?.trim()) {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Employment phone is required', path: ['coEmploymentPhone'] });
+      }
+    }
+  });
 
 type CreditFormData = z.infer<typeof creditSchema>;
 
@@ -1930,6 +1949,151 @@ export function CreditApplicationForm() {
                         )}
                       </div>
                       {errors.coEmployer && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.coEmployer.message}</p>}
+                    </div>
+                    <div className="space-y-1.5 md:col-span-2">
+                      <Label htmlFor="coEmploymentStreet" className="text-sm font-medium flex items-center gap-1.5">
+                        <MapPin className="w-3.5 h-3.5 text-muted-foreground" />
+                        Employment Street Address <span className="text-destructive">*</span>
+                        {isFieldValid('coEmploymentStreet') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+                      </Label>
+                      <div className="relative">
+                        <Input 
+                          id="coEmploymentStreet"
+                          {...register('coEmploymentStreet', {
+                            onChange: () => trigger('coEmploymentStreet'),
+                            onBlur: () => trigger('coEmploymentStreet'),
+                          })} 
+                          placeholder="e.g. 123 Business Ave, Suite 100" 
+                          className={cn(
+                            errors.coEmploymentStreet 
+                              ? 'border-destructive pr-10' 
+                              : isFieldValid('coEmploymentStreet')
+                                ? 'border-green-500 pr-10'
+                                : ''
+                          )} 
+                        />
+                        {isFieldValid('coEmploymentStreet') && !errors.coEmploymentStreet && (
+                          <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />
+                        )}
+                      </div>
+                      {errors.coEmploymentStreet && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.coEmploymentStreet.message}</p>}
+                    </div>
+                    <div className="space-y-1.5">
+                      <Label htmlFor="coEmploymentCity" className="text-sm font-medium flex items-center gap-1.5">
+                        Employment City <span className="text-destructive">*</span>
+                        {isFieldValid('coEmploymentCity') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+                      </Label>
+                      <div className="relative">
+                        <Input 
+                          id="coEmploymentCity"
+                          {...register('coEmploymentCity', {
+                            onChange: () => trigger('coEmploymentCity'),
+                            onBlur: () => trigger('coEmploymentCity'),
+                          })} 
+                          placeholder="e.g. New York" 
+                          className={cn(
+                            errors.coEmploymentCity 
+                              ? 'border-destructive pr-10' 
+                              : isFieldValid('coEmploymentCity')
+                                ? 'border-green-500 pr-10'
+                                : ''
+                          )} 
+                        />
+                        {isFieldValid('coEmploymentCity') && !errors.coEmploymentCity && (
+                          <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />
+                        )}
+                      </div>
+                      {errors.coEmploymentCity && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.coEmploymentCity.message}</p>}
+                    </div>
+                    <div className="space-y-1.5">
+                      <Label htmlFor="coEmploymentState" className="text-sm font-medium flex items-center gap-1.5">
+                        Employment State <span className="text-destructive">*</span>
+                        {isFieldValid('coEmploymentState') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+                      </Label>
+                      <Select 
+                        onValueChange={(value) => {
+                          setValue('coEmploymentState', value);
+                          trigger('coEmploymentState');
+                        }}
+                      >
+                        <SelectTrigger className={cn(
+                          errors.coEmploymentState 
+                            ? 'border-destructive pr-10' 
+                            : isFieldValid('coEmploymentState')
+                              ? 'border-green-500 pr-10'
+                              : ''
+                        )}>
+                          <SelectValue placeholder="Select state" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {US_STATES.map((state) => (
+                            <SelectItem key={state.value} value={state.value}>
+                              {state.label}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      {errors.coEmploymentState && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.coEmploymentState.message}</p>}
+                    </div>
+                    <div className="space-y-1.5">
+                      <Label htmlFor="coEmploymentZip" className="text-sm font-medium flex items-center gap-1.5">
+                        Employment ZIP <span className="text-destructive">*</span>
+                        {isFieldValid('coEmploymentZip') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+                      </Label>
+                      <div className="relative">
+                        <Input 
+                          id="coEmploymentZip"
+                          {...register('coEmploymentZip', {
+                            onChange: () => trigger('coEmploymentZip'),
+                            onBlur: () => trigger('coEmploymentZip'),
+                          })} 
+                          placeholder="e.g. 10001" 
+                          className={cn(
+                            errors.coEmploymentZip 
+                              ? 'border-destructive pr-10' 
+                              : isFieldValid('coEmploymentZip')
+                                ? 'border-green-500 pr-10'
+                                : ''
+                          )} 
+                        />
+                        {isFieldValid('coEmploymentZip') && !errors.coEmploymentZip && (
+                          <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />
+                        )}
+                      </div>
+                      {errors.coEmploymentZip && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.coEmploymentZip.message}</p>}
+                    </div>
+                    <div className="space-y-1.5">
+                      <Label htmlFor="coEmploymentPhone" className="text-sm font-medium flex items-center gap-1.5">
+                        <Phone className="w-3.5 h-3.5 text-muted-foreground" />
+                        Employment Phone <span className="text-destructive">*</span>
+                        {isFieldValid('coEmploymentPhone') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+                      </Label>
+                      <div className="relative">
+                        <Input 
+                          id="coEmploymentPhone"
+                          type="tel"
+                          {...register('coEmploymentPhone', {
+                            onChange: (e) => {
+                              const formatted = formatPhoneNumber(e.target.value);
+                              e.target.value = formatted;
+                              trigger('coEmploymentPhone');
+                            },
+                            onBlur: () => trigger('coEmploymentPhone'),
+                          })}
+                          placeholder="201-509-5555" 
+                          className={cn(
+                            errors.coEmploymentPhone 
+                              ? 'border-destructive pr-10' 
+                              : isFieldValid('coEmploymentPhone')
+                                ? 'border-green-500 pr-10'
+                                : ''
+                          )} 
+                        />
+                        {isFieldValid('coEmploymentPhone') && !errors.coEmploymentPhone && (
+                          <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />
+                        )}
+                      </div>
+                      {errors.coEmploymentPhone && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.coEmploymentPhone.message}</p>}
                     </div>
                     <div className="space-y-1.5">
                       <Label className="text-sm font-medium flex items-center gap-1.5">
