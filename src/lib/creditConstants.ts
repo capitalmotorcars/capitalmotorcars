@@ -75,7 +75,7 @@ export const CONSULTANT_OPTIONS: { value: string; label: string }[] = [
   { value: 'james_dai', label: 'James Dai' },
   { value: 'jeffrey_horn', label: 'Jeffrey Horn' },
   { value: 'markin', label: 'Markin' },
-  { value: 'mark_onbashian', label: 'Markin DeLacruz' },
+  { value: 'mark_onbashian', label: 'Mark Onbashian' },
   { value: 'michael_minerva', label: 'Michael Minerva' },
   { value: 'michael_zeitoune', label: 'Michael Zeitoune' },
   { value: 'michael_van_houten', label: 'Michael Van Houten' },
