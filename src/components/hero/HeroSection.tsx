@@ -43,7 +43,7 @@ export function HeroSection() {
 
             <div className="flex flex-col items-center gap-3 xl:gap-5 w-full sm:w-auto ">
               <p className={`text-base font-semibold sm:text-base md:text-lg lg:text-2xl xl:text-3xl  w-full max-w-[750px] xl:max-w-[900px] leading-relaxed text-white dark:text-white/90 hero-animate delay-1 ${animate}`}>
-                Your trusted automotive partner. We handle leasing, financing, and more so you can enjoy the ride.
+                Your trusted automotive partner in New Jersey and New York. We handle leasing, financing, and more so you can enjoy the ride.
               </p>
               <div className={`flex flex-row items-center gap-3 xl:gap-4 w-full sm:w-auto hero-animate delay-2 ${animate}`}>
                 <MagneticButton strength={0.45} className="w-full sm:w-auto min-w-0">
