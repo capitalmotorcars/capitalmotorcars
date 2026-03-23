@@ -52,7 +52,7 @@ export function HeroSection() {
                     size="lg"
                     className="w-full sm:w-auto h-11 sm:h-12 xl:h-14 rounded-lg xl:rounded-xl border border-accent/40 bg-accent/70 hover:bg-accent/90 hover:border-accent text-accent-foreground font-semibold xl:font-bold px-6 sm:px-8 xl:px-10 text-sm sm:text-base xl:text-lg glow-blue shadow-[0_2px_12px_hsl(214_77%_50%_/_0.25)] hover:shadow-[0_4px_18px_hsl(214_77%_55%_/_0.45)] backdrop-blur-sm"
                   >
-                    <Link to="/contact" className="flex items-center gap-2 xl:gap-3">
+                    <Link to="/credit-application" className="flex items-center gap-2 xl:gap-3">
                       Credit Application
                       <ArrowRight className=" w-4 h-4 xl:w-5 xl:h-5" />
                     </Link>
