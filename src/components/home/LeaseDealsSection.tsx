@@ -168,7 +168,7 @@ export function LeaseDealsSection() {
                         viewport={{ once: true }}
                     >
                         <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-3 block">
-                            Limited Time Offers
+                            Limited Time New Jersey Offers
                         </span>
                         <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-foreground uppercase mb-6">
                             This Month's <br className="hidden md:block" />
