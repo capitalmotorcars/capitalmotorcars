@@ -21,6 +21,7 @@ import BlogPostPage from "./pages/BlogPostPage";
 import CarLeasingPage from "./pages/services/CarLeasingPage";
 import FinancingPage from "./pages/services/FinancingPage";
 import TradeInPage from "./pages/services/TradeInPage";
+import TradeInValuePage from "./pages/TradeInValuePage";
 import WearAndTearPage from "./pages/services/WearAndTearPage";
 import WheelRepairPage from "./pages/services/WheelRepairPage";
 import DetailingPage from "./pages/services/DetailingPage";
@@ -53,6 +54,7 @@ const App = () => (
               <Route path="/services/car-leasing" element={<CarLeasingPage />} />
               <Route path="/services/financing" element={<FinancingPage />} />
               <Route path="/services/trade-in" element={<TradeInPage />} />
+              <Route path="/trade-in-value" element={<TradeInValuePage />} />
               <Route path="/services/wear-and-tear" element={<WearAndTearPage />} />
               <Route path="/services/wheel-repair" element={<WheelRepairPage />} />
               <Route path="/services/detailing" element={<DetailingPage />} />

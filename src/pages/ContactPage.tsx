@@ -150,18 +150,18 @@ export default function ContactPage() {
                 <div className="max-w-7xl xl:max-w-[90rem] mx-auto">
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-10 xl:gap-12 mb-12 md:mb-16 xl:mb-20 lg:items-start">
                     {/* Contact Methods */}
-                    <div className="lg:col-span-1 flex flex-col h-full">
+                    <div className="lg:col-span-1 flex flex-col lg:self-start">
                       <h3 className="text-xl sm:text-2xl md:text-3xl xl:text-5xl  font-semibold text-black dark:text-white mb-6 md:mb-8 xl:mb-10">
                         Get in Touch
                       </h3>
-                      <div className="flex flex-col gap-4 sm:gap-6 flex-1">
+                      <div className="flex flex-col gap-4 sm:gap-6">
                         {contactMethods.map((method) => {
                           const Icon = method.icon;
                           return (
                             <a
                               key={method.title}
                               href={method.href}
-                              className="group flex items-start gap-4 p-4 sm:p-5 md:p-6 flex-1 rounded-xl border-2 border-border dark:border-white/10 bg-card dark:bg-white/[0.04] hover:border-accent hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.4)] transition-all duration-300"
+                              className="group flex items-start gap-4 p-4 sm:p-5 md:p-6 rounded-xl border-2 border-border dark:border-white/10 bg-card dark:bg-white/[0.04] hover:border-accent hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.4)] transition-all duration-300"
                             >
                               <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center bg-accent/10 dark:bg-accent/20 group-hover:bg-accent/20 transition-colors">
                                 <Icon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-accent" />

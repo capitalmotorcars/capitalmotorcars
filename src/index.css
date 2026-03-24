@@ -168,7 +168,7 @@
   color: hsl(0 0% 100% / 0.9);
 }
 
-.form-card-theme button:not([type=submit]) {
+.form-card-theme button:not([type=submit]):not([data-quick-action]) {
   @apply bg-muted border-border text-foreground dark:bg-white/10 dark:border-white/25 dark:text-white;
 }
 

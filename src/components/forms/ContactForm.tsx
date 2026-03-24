@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -15,11 +16,28 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Upload, X } from 'lucide-react';
+import { Checkbox } from '@/components/ui/checkbox';
 import { cn } from '@/lib/utils';
 import { FormSuccessMessage } from './FormSuccessMessage';
 import { getSubmitErrorMessage, getSubmitErrorFromException } from './getSubmitErrorMessage';
-import { WEBHOOK_URL } from '@/lib/webhook';
+import { WEBHOOK_URL, WEBHOOK_URL_TRADE_IN } from '@/lib/webhook';
+import { CONSULTANT_OPTIONS, getConsultantEmail } from '@/lib/creditConstants';
+
+const MAX_EXTERIOR = 5;
+const MAX_INTERIOR = 5;
+
+function fileToBase64(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64 = (reader.result as string).split(',')[1] ?? '';
+      resolve(base64.replace(/\s/g, ''));
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
 
 function levenshtein(a: string, b: string): number {
   const matrix = Array.from({ length: b.length + 1 }, () =>
@@ -136,6 +154,20 @@ export const contactSchema = z.object({
     .string()
     .max(1000, 'Message cannot exceed 1000 characters')
     .optional(),
+
+  messageSuggestion: z.string().optional(),
+
+  vin: z.string().optional(),
+  make: z.string().optional(),
+  model: z.string().optional(),
+  color: z.string().optional(),
+  mileage: z.string().optional(),
+  brakes: z.boolean().optional(),
+  engine: z.boolean().optional(),
+  transmission: z.boolean().optional(),
+  scratches: z.boolean().optional(),
+  accidents: z.boolean().optional(),
+  salesAgent: z.string().optional(),
 });
 
 
@@ -197,6 +229,14 @@ const formatPhoneNumber = (value: string) => {
   )}-${phoneNumber.slice(6, 10)}`;
 };
 
+function getTradeInFromUrl(searchParams: URLSearchParams): boolean {
+  const tradeIn = searchParams.get('trade-in');
+  const service = searchParams.get('service');
+  if (tradeIn === '1' || tradeIn === 'true') return true;
+  if (service === 'trade-in') return true;
+  return false;
+}
+
 export function ContactForm({
   compact = false,
   initialValues,
@@ -207,10 +247,25 @@ export function ContactForm({
   serviceTitle,
   onSubmitSuccess,
 }: ContactFormProps) {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const tradeInFromUrl = getTradeInFromUrl(searchParams);
+  const initialService = tradeInFromUrl ? 'trade-in' : (initialValues?.service ?? undefined);
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [exteriorFiles, setExteriorFiles] = useState<File[]>([]);
+  const [interiorFiles, setInteriorFiles] = useState<File[]>([]);
+  const [successWasTradeIn, setSuccessWasTradeIn] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const formContentRef = useRef<HTMLDivElement>(null);
+
+  const scrollToFormContent = () => {
+    setTimeout(() => {
+      const el = document.getElementById('contact-form-main') ?? formContentRef.current;
+      el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 150);
+  };
 
   const {
     register,
@@ -226,9 +281,21 @@ export function ContactForm({
       fullName: initialValues?.fullName ?? "",
       email: initialValues?.email ?? "",
       phone: formatPhoneNumber(initialValues?.phone ?? ""),
-      service: initialValues?.service ?? undefined,
+      service: initialService,
       vehicleType: initialValues?.vehicleType ?? undefined,
       message: initialValues?.message ?? "",
+      messageSuggestion: "",
+      vin: "",
+      make: "",
+      model: "",
+      color: "",
+      mileage: "",
+      brakes: false,
+      engine: false,
+      transmission: false,
+      scratches: false,
+      accidents: false,
+      salesAgent: "",
     },
   });
 
@@ -241,6 +308,7 @@ export function ContactForm({
     if (isSuccess) {
       const timer = setTimeout(() => {
         setIsSuccess(false);
+        setSuccessWasTradeIn(false);
         reset();
       }, 6000);
 
@@ -248,24 +316,131 @@ export function ContactForm({
     }
   }, [isSuccess, reset]);
 
+  // Scroll to form when landing with trade-in from URL
+  useEffect(() => {
+    if (tradeInFromUrl) {
+      scrollToFormContent();
+    }
+  }, [tradeInFromUrl]);
+
+  // Sync URL with trade-in selection so shared links work
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams);
+    const hasTradeIn = selectedService === 'trade-in';
+    const urlHasTradeIn = getTradeInFromUrl(params);
+
+    if (hasTradeIn && !urlHasTradeIn) {
+      params.set('trade-in', '1');
+      setSearchParams(params, { replace: true });
+    } else if (!hasTradeIn && urlHasTradeIn) {
+      params.delete('trade-in');
+      if (params.get('service') === 'trade-in') params.delete('service');
+      setSearchParams(params, { replace: true });
+    }
+  }, [selectedService, searchParams, setSearchParams]);
+
   const handleSuggestionSelect = (value: string) => {
     const suggestion = messageSuggestions.find(s => s.value === value);
     if (suggestion) {
-      setValue('message', suggestion.fullText, { shouldValidate: false });
-      setTimeout(() => {
-        textareaRef.current?.focus();
-        if (textareaRef.current) {
-          const len = suggestion.fullText.length;
-          textareaRef.current.setSelectionRange(len, len);
-        }
-      }, 0);
+      if (value === 'trade-in') {
+        setValue('service', 'trade-in', { shouldValidate: false });
+        setValue('message', '', { shouldValidate: false });
+        setValue('messageSuggestion', 'trade-in', { shouldValidate: false });
+      } else {
+        setValue('service', '', { shouldValidate: false });
+        setValue('message', suggestion.fullText, { shouldValidate: false });
+        setValue('messageSuggestion', value, { shouldValidate: false });
+      }
+      scrollToFormContent();
     }
+  };
+
+  const addFiles = (
+    list: File[],
+    setList: React.Dispatch<React.SetStateAction<File[]>>,
+    files: FileList | null,
+    max: number
+  ) => {
+    if (!files?.length) return;
+    const remaining = max - list.length;
+    const toAdd = Array.from(files).slice(0, remaining).filter((f) => f.type.startsWith('image/'));
+    setList((prev) => [...prev, ...toAdd].slice(0, max));
   };
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     setSubmitError(null);
     try {
+      if (data.service === 'trade-in') {
+        const vin = (data.vin ?? '').trim().toUpperCase();
+        const make = (data.make ?? '').trim();
+        const model = (data.model ?? '').trim();
+        const salesAgent = (data.salesAgent ?? '').trim();
+        if (!vin) {
+          setSubmitError('VIN is required for trade-in requests.');
+          return;
+        }
+        if (!make) {
+          setSubmitError('Make is required for trade-in requests.');
+          return;
+        }
+        if (!model) {
+          setSubmitError('Model is required for trade-in requests.');
+          return;
+        }
+        if (!salesAgent) {
+          setSubmitError('Please select a sales agent.');
+          return;
+        }
+        const exteriorBase64 = await Promise.all(exteriorFiles.map((f) => fileToBase64(f)));
+        const interiorBase64 = await Promise.all(interiorFiles.map((f) => fileToBase64(f)));
+        const payload = {
+          Type: 'Trade-In Value',
+          Name: data.fullName,
+          Email: data.email,
+          Phone: data.phone,
+          VIN: vin,
+          Make: make,
+          Model: model,
+          Color: (data.color ?? '').trim(),
+          Mileage: (data.mileage ?? '').trim(),
+          IssuesBrakes: data.brakes ?? false,
+          IssuesEngine: data.engine ?? false,
+          IssuesTransmission: data.transmission ?? false,
+          IssuesScratches: data.scratches ?? false,
+          IssuesAccidents: data.accidents ?? false,
+          SalesAgent: salesAgent,
+          SalesAgentEmail: getConsultantEmail(salesAgent),
+          ExteriorPhotoCount: exteriorFiles.length,
+          InteriorPhotoCount: interiorFiles.length,
+          ExteriorPhotos: exteriorFiles.length > 0
+            ? exteriorFiles.map((f, i) => ({ filename: f.name, base64: exteriorBase64[i] }))
+            : [],
+          InteriorPhotos: interiorFiles.length > 0
+            ? interiorFiles.map((f, i) => ({ filename: f.name, base64: interiorBase64[i] }))
+            : [],
+          Source: source,
+          Service: serviceTitle ?? 'Trade-In Evaluation',
+        };
+        const res = await fetch(WEBHOOK_URL_TRADE_IN, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const json = await res.json().catch(() => ({}));
+        if (res.status < 200 || res.status >= 300) {
+          setSubmitError(getSubmitErrorMessage(res, json));
+          return;
+        }
+        setSuccessWasTradeIn(true);
+        setIsSuccess(true);
+        reset();
+        setExteriorFiles([]);
+        setInteriorFiles([]);
+        if (onSubmitSuccess) onSubmitSuccess();
+        return;
+      }
+
       const serviceLabel =
         source === 'contact'
           ? (services.find((s) => s.value === data.service)?.label ?? 'Contact')
@@ -279,7 +454,14 @@ export function ContactForm({
           ? (vehicleName ?? data.vehicleType ?? 'N/A')
           : (vehicleTypeOptions.find((v) => v.value === data.vehicleType)?.label ?? (data.vehicleType ? String(data.vehicleType) : 'N/A'));
 
+      const suggestionLabel = data.messageSuggestion
+        ? (messageSuggestions.find(s => s.value === data.messageSuggestion)?.label ?? data.messageSuggestion)
+        : undefined;
+
+      const typeLabel = suggestionLabel ?? (serviceLabel !== 'Contact' && serviceLabel !== 'N/A' ? serviceLabel : 'Contact');
+
       const payload = {
+        Type: typeLabel,
         Name: data.fullName,
         Phone: data.phone,
         Email: data.email,
@@ -299,6 +481,7 @@ export function ContactForm({
         setSubmitError(getSubmitErrorMessage(res, json));
         return;
       }
+      setSuccessWasTradeIn(false);
       setIsSuccess(true);
       reset();
       if (onSubmitSuccess) {
@@ -314,9 +497,9 @@ export function ContactForm({
   if (isSuccess) {
     return (
       <FormSuccessMessage
-        title="You're all set!"
-        subtitle="A team member will reach out to you shortly."
-        timing="Usually within a few hours"
+        title={successWasTradeIn ? "Request received!" : "You're all set!"}
+        subtitle={successWasTradeIn ? "We'll review your vehicle details and send you an offer shortly." : "A team member will reach out to you shortly."}
+        timing={successWasTradeIn ? "Usually within 24 hours" : "Usually within a few hours"}
         showQuickQuestionsCta={false}
       />
     );
@@ -324,7 +507,7 @@ export function ContactForm({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-      <div className={compact ? 'space-y-4' : 'grid md:grid-cols-2 gap-5'}>
+      <div id="contact-form-main" ref={formContentRef} className={cn(compact ? 'space-y-4' : 'grid md:grid-cols-2 gap-5', 'scroll-mt-28')}>
         <div className="space-y-1.5">
           <Label htmlFor="fullName" className="text-sm font-medium">Full Name *</Label>
           <Input
@@ -381,7 +564,13 @@ export function ContactForm({
         {!hideServiceField && (
           <div className="space-y-1.5">
             <Label htmlFor="service" className="text-sm font-medium">Service of Interest</Label>
-            <Select value={selectedService} onValueChange={(value) => setValue('service', value)}>
+            <Select
+              value={selectedService}
+              onValueChange={(value) => {
+                setValue('service', value);
+                scrollToFormContent();
+              }}
+            >
               <SelectTrigger className="h-11 border-input/60 focus:border-accent focus:ring-2 focus:ring-accent/20">
                 <SelectValue placeholder="Select a service" />
               </SelectTrigger>
@@ -399,38 +588,202 @@ export function ContactForm({
 
       <div className="space-y-3">
         <div className="flex flex-col gap-2">
-          <Label htmlFor="message" className="text-sm font-medium">Message</Label>
+          <Label className="text-sm font-medium">Quick options</Label>
           <div className="flex flex-wrap gap-2">
-            {messageSuggestions.map((suggestion) => (
-              <button
-                key={suggestion.value}
-                type="button"
-                onClick={() => handleSuggestionSelect(suggestion.value)}
-                className="px-3 py-1.5 rounded-full text-xs font-semibold border border-border/60 hover:border-accent hover:bg-accent/5 transition-all text-muted-foreground hover:text-accent bg-background/50 backdrop-blur-sm"
-              >
-                {suggestion.label}
-              </button>
-            ))}
+            {messageSuggestions.map((suggestion) => {
+              const isSelected =
+                suggestion.value === 'trade-in'
+                  ? selectedService === 'trade-in'
+                  : watch('message') === suggestion.fullText;
+              return (
+                <button
+                  key={suggestion.value}
+                  type="button"
+                  data-quick-action
+                  onClick={() => handleSuggestionSelect(suggestion.value)}
+                  className={cn(
+                    'px-3 py-1.5 rounded-full text-xs font-semibold border-2 transition-all bg-background/50 backdrop-blur-sm',
+                    isSelected
+                      ? 'border-blue-500 bg-blue-500/10 text-blue-600 dark:text-blue-400'
+                      : 'border-border/60 hover:border-accent hover:bg-accent/5 text-muted-foreground hover:text-accent'
+                  )}
+                >
+                  {suggestion.label}
+                </button>
+              );
+            })}
           </div>
         </div>
-
-        <Textarea
-          id="message"
-          {...messageRegister}
-          ref={(e) => {
-            messageRef(e);
-            (textareaRef as React.MutableRefObject<HTMLTextAreaElement | null>).current = e;
-          }}
-          placeholder="You can edit the message or write your own…"
-          rows={compact ? 3 : 5}
-          className={cn(
-            errors.message && 'border-destructive bg-destructive/5'
-          )}
-        />
-        {errors.message && (
-          <p className="text-xs text-destructive mt-1">{errors.message.message}</p>
-        )}
       </div>
+
+      {selectedService === 'trade-in' ? (
+        <div className="space-y-5 pt-1">
+          <div>
+            <h4 className="text-sm font-semibold text-foreground dark:text-white mb-3">Vehicle Details</h4>
+            <div className={compact ? 'space-y-4' : 'grid md:grid-cols-2 lg:grid-cols-3 gap-4'}>
+              <div className="space-y-1.5">
+                <Label htmlFor="vin" className="text-sm font-medium">VIN *</Label>
+                <Input id="vin" {...register('vin')} placeholder="e.g. 1HGBH41JXMN109186" className={cn(errors.vin && 'border-destructive')} />
+                {errors.vin && <p className="text-xs text-destructive">{errors.vin.message}</p>}
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor="make" className="text-sm font-medium">Make *</Label>
+                <Input id="make" {...register('make')} placeholder="e.g. Toyota" className={cn(errors.make && 'border-destructive')} />
+                {errors.make && <p className="text-xs text-destructive">{errors.make.message}</p>}
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor="model" className="text-sm font-medium">Model *</Label>
+                <Input id="model" {...register('model')} placeholder="e.g. Camry" className={cn(errors.model && 'border-destructive')} />
+                {errors.model && <p className="text-xs text-destructive">{errors.model.message}</p>}
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor="color" className="text-sm font-medium">Color</Label>
+                <Input id="color" {...register('color')} placeholder="e.g. Silver, Black" className={cn(errors.color && 'border-destructive')} />
+                {errors.color && <p className="text-xs text-destructive">{errors.color.message}</p>}
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor="mileage" className="text-sm font-medium">Mileage</Label>
+                <Input id="mileage" {...register('mileage')} type="text" inputMode="numeric" placeholder="e.g. 45,000" className={cn(errors.mileage && 'border-destructive')} />
+                {errors.mileage && <p className="text-xs text-destructive">{errors.mileage.message}</p>}
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-semibold text-foreground dark:text-white mb-3">Vehicle Condition (check any that apply)</h4>
+            <div className="flex flex-wrap gap-6">
+              {[
+                { key: 'brakes' as const, label: 'Brakes' },
+                { key: 'engine' as const, label: 'Engine' },
+                { key: 'transmission' as const, label: 'Transmission' },
+                { key: 'scratches' as const, label: 'Scratches' },
+                { key: 'accidents' as const, label: 'Accidents' },
+              ].map(({ key, label }) => (
+                <div key={key} className="flex items-center gap-2">
+                  <Checkbox id={key} checked={watch(key)} onCheckedChange={(v) => setValue(key, !!v)} />
+                  <Label htmlFor={key} className="text-sm font-medium cursor-pointer">{label}</Label>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 className="text-sm font-semibold text-foreground dark:text-white mb-2">Exterior Photos (up to {MAX_EXTERIOR})</h4>
+              <input
+                type="file"
+                accept="image/*"
+                multiple
+                className="hidden"
+                id="exterior-photos"
+                onChange={(e) => addFiles(exteriorFiles, setExteriorFiles, e.target.files, MAX_EXTERIOR)}
+              />
+              <label
+                htmlFor="exterior-photos"
+                className={cn(
+                  'flex flex-col items-center justify-center gap-2 min-h-[100px] rounded-xl border-2 border-dashed cursor-pointer transition-colors',
+                  'border-border dark:border-white/20 hover:border-accent hover:bg-accent/5'
+                )}
+              >
+                <Upload className="w-6 h-6 text-muted-foreground" />
+                <span className="text-sm text-muted-foreground">Click or drop images</span>
+                <span className="text-xs text-muted-foreground">{exteriorFiles.length}/{MAX_EXTERIOR}</span>
+              </label>
+              {exteriorFiles.length > 0 && (
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {exteriorFiles.map((f, i) => (
+                    <div key={i} className="relative group">
+                      <img src={URL.createObjectURL(f)} alt="" className="w-14 h-14 object-cover rounded-lg border" />
+                      <button
+                        type="button"
+                        onClick={() => setExteriorFiles((prev) => prev.filter((_, idx) => idx !== i))}
+                        className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-destructive text-destructive-foreground flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                      >
+                        <X className="w-3 h-3" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+            <div>
+              <h4 className="text-sm font-semibold text-foreground dark:text-white mb-2">Interior Photos (up to {MAX_INTERIOR})</h4>
+              <input
+                type="file"
+                accept="image/*"
+                multiple
+                className="hidden"
+                id="interior-photos"
+                onChange={(e) => addFiles(interiorFiles, setInteriorFiles, e.target.files, MAX_INTERIOR)}
+              />
+              <label
+                htmlFor="interior-photos"
+                className={cn(
+                  'flex flex-col items-center justify-center gap-2 min-h-[100px] rounded-xl border-2 border-dashed cursor-pointer transition-colors',
+                  'border-border dark:border-white/20 hover:border-accent hover:bg-accent/5'
+                )}
+              >
+                <Upload className="w-6 h-6 text-muted-foreground" />
+                <span className="text-sm text-muted-foreground">Click or drop images</span>
+                <span className="text-xs text-muted-foreground">{interiorFiles.length}/{MAX_INTERIOR}</span>
+              </label>
+              {interiorFiles.length > 0 && (
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {interiorFiles.map((f, i) => (
+                    <div key={i} className="relative group">
+                      <img src={URL.createObjectURL(f)} alt="" className="w-14 h-14 object-cover rounded-lg border" />
+                      <button
+                        type="button"
+                        onClick={() => setInteriorFiles((prev) => prev.filter((_, idx) => idx !== i))}
+                        className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-destructive text-destructive-foreground flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                      >
+                        <X className="w-3 h-3" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div>
+            <Label htmlFor="salesAgent" className="text-sm font-medium">Sales Agent *</Label>
+            <Select value={watch('salesAgent')} onValueChange={(v) => setValue('salesAgent', v)}>
+              <SelectTrigger className={cn(errors.salesAgent && 'border-destructive', 'mt-1.5')}>
+                <SelectValue placeholder="Select your sales agent" />
+              </SelectTrigger>
+              <SelectContent>
+                {CONSULTANT_OPTIONS.filter((o) => o.value).map((opt) => (
+                  <SelectItem key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            {errors.salesAgent && <p className="text-xs text-destructive mt-1">{errors.salesAgent.message}</p>}
+          </div>
+        </div>
+      ) : (
+        <div className="space-y-3">
+          <Label htmlFor="message" className="text-sm font-medium">Message</Label>
+          <Textarea
+            id="message"
+            {...messageRegister}
+            ref={(e) => {
+              messageRef(e);
+              (textareaRef as React.MutableRefObject<HTMLTextAreaElement | null>).current = e;
+            }}
+            placeholder="You can edit the message or write your own…"
+            rows={compact ? 3 : 5}
+            className={cn(
+              errors.message && 'border-destructive bg-destructive/5'
+            )}
+          />
+          {errors.message && (
+            <p className="text-xs text-destructive mt-1">{errors.message.message}</p>
+          )}
+        </div>
+      )}
 
       {submitError && (
         <p className="text-sm text-destructive" role="alert">

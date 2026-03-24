@@ -1,9 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { useDeals } from '@/hooks/useDeals';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { ArrowLeft, ArrowRight, Calendar, Car, CreditCard, DollarSign, Sparkles, Star, X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Calendar, Car, CreditCard, DollarSign, MessageCircle, Sparkles, Star, X } from 'lucide-react';
 import {
     Carousel,
     CarouselContent,
@@ -221,6 +222,29 @@ export function LeaseDealsSection() {
                             />
                         ))}
                     </div>
+
+                    {/* Banner: Don't see your car? */}
+                    <Link
+                        to="/contact"
+                        className="mt-8 md:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 p-5 md:p-6 rounded-2xl border-2 border-border/60 dark:border-white/10 bg-muted/5 dark:bg-white/[0.02] hover:border-accent hover:bg-accent/5 hover:shadow-[0_0_40px_-12px_rgba(59,130,246,0.3)] transition-all duration-300 group"
+                    >
+                        <div className="flex items-center gap-3 text-foreground">
+                            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-accent/10 group-hover:bg-accent/20 transition-colors">
+                                <Car className="w-5 h-5 text-accent" />
+                            </div>
+                            <p className="text-center sm:text-left text-base md:text-lg font-medium">
+                                Don't see a car you're looking for? We have all makes and models.{' '}
+                                <span className="text-accent font-semibold group-hover:underline">
+                                    Message or call us to find a deal.
+                                </span>
+                            </p>
+                        </div>
+                        <div className="flex items-center gap-2 text-accent font-semibold text-sm">
+                            <MessageCircle className="w-4 h-4" />
+                            <span>Get in touch</span>
+                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </div>
+                    </Link>
                 </div>
 
                 <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>

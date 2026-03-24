@@ -90,7 +90,7 @@ export default function TradeInPage() {
         highlightedTitle="Trade In"
         subtitle="Get a competitive offer for your vehicle in minutes. We handle the paperwork and pickup."
         heroImage={tradeInHero}
-        primaryAction={{ label: "Get Your Offer", href: "/contact" }}
+        primaryAction={{ label: "Get Your Offer", href: "/trade-in-value" }}
         secondaryAction={{ label: "Call Us", href: "tel:201-555-0123", icon: Phone }}
       />
 
