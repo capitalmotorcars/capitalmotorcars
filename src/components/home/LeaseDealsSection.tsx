@@ -224,7 +224,7 @@ export function LeaseDealsSection() {
                     </div>
 
                     <Link
-                        to="/contact"
+                        to="/contact#contact-form-main"
                         className="mt-8 md:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 p-5 md:p-6 rounded-2xl border-2 border-border/60 dark:border-white/10 bg-muted/5 dark:bg-white/[0.02] hover:border-accent hover:bg-accent/5 hover:shadow-[0_0_40px_-12px_rgba(59,130,246,0.3)] transition-all duration-300 group"
                     >
                         <div className="flex items-center gap-3 text-foreground">

@@ -20,13 +20,20 @@ export function ScrollToTop() {
 
   useEffect(() => {
     if (hash) {
-      // Anchor navigation - scroll to element with smooth behavior
-      const element = document.getElementById(hash.slice(1));
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const id = hash.slice(1);
+      const scrollToElement = () => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          return true;
+        }
+        return false;
+      };
+      if (!scrollToElement()) {
+        const timer = setTimeout(() => scrollToElement(), 300);
+        return () => clearTimeout(timer);
       }
     } else {
-      // Page navigation - instant scroll to top
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
     }
   }, [pathname, search, hash]);
