@@ -31,7 +31,6 @@ export function HeroSection() {
     <section className="relative min-h-screen md:min-h-[100dvh] flex flex-col overflow-hidden hero-section bg-transparent " style={{ position: 'relative', transform: 'translateZ(0)' }}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 pt-16 md:pt-20 lg:pt-24 xl:pt-28 flex-1 flex flex-col min-h-0 items-center justify-center" style={{ position: 'relative', transform: 'translate3d(0, 0, 0)', willChange: 'auto' }}>
         <div className="w-full max-w-7xl xl:max-w-[90rem] mx-auto flex flex-col items-center gap-10 md:gap-12 xl:gap-10 pt-0 md:pt-14" style={{ position: 'relative', transform: 'translate3d(0, 0, 0)', willChange: 'auto' }}>
-          {/* Headline, badges, copy, CTAs */}
           <div className="flex flex-col items-center text-center gap-2 md:gap-6 xl:gap-8 w-full max-w-4xl xl:max-w-6xl ">
             <h1
               className={` text-4xl  md:text-7xl xl:text-8xl font-extrabold leading-tight tracking-tight hero-animate text-section ${animate}`}
