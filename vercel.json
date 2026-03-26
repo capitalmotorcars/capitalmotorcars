@@ -1,9 +1,128 @@
 {
   "installCommand": "npm install --legacy-peer-deps",
-  "rewrites": [
+  "redirects": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.capitalmotorcars.com"
+        }
+      ],
+      "destination": "https://capitalmotorcars.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "express.capitalmotorcars.com"
+        }
+      ],
+      "destination": "https://capitalmotorcars.com/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "nocache"
+        }
+      ],
+      "destination": "https://capitalmotorcars.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "jet_blog_ajax"
+        }
+      ],
+      "destination": "https://capitalmotorcars.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "fbclid"
+        }
+      ],
+      "destination": "https://capitalmotorcars.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/services/car-detailing",
+      "destination": "https://capitalmotorcars.com/services/detailing",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us",
+      "destination": "https://capitalmotorcars.com/contact",
+      "permanent": true
+    },
+    {
+      "source": "/about-us",
+      "destination": "https://capitalmotorcars.com/about",
+      "permanent": true
+    }
+  ],
+  "routes": [
+    {
+      "src": "^/mazda-cx-50-reliability/?$",
+      "status": 410
+    },
+    {
+      "src": "^/toyota-camry-reliability/?$",
+      "status": 410
+    },
+    {
+      "src": "^/toyota-camry-reliability/2/?$",
+      "status": 410
+    },
+    {
+      "src": "^/category/(.*)$",
+      "status": 410
+    },
+    {
+      "src": "^/style/(.*)$",
+      "status": 410
+    },
+    {
+      "src": "^/makes/(.*)$",
+      "status": 410
+    },
+    {
+      "src": "^/types-of-transport/(.*)$",
+      "status": 410
+    },
+    {
+      "src": "^/autos/(.*)$",
+      "status": 410
+    },
+    {
+      "src": "^/brand/page/[0-9]+/?$",
+      "status": 410
+    },
+    {
+      "src": "^/.+/[2-9][0-9]*/?$",
+      "status": 410
+    },
+    {
+      "src": "^/sitemap/?$",
+      "status": 410
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
