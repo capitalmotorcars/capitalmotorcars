@@ -122,7 +122,7 @@ export default function CreditApplicationPage() {
               <div className="mx-auto px-4 lg:px-8 xl:px-12">
                 <div className="max-w-5xl mx-auto">
                   {!applicationType ? (
-                    <div className="flex flex-col md:flex-row gap-6 justify-center max-w-4xl mx-auto">
+                    <div className="hidden md:flex flex-row gap-6 justify-center max-w-4xl mx-auto">
                       <button
                         onClick={() => setApplicationType('personal')}
                         className="flex-1 glass-card-theme form-card-theme p-10 sm:p-12 rounded-3xl flex flex-col items-center justify-center gap-6 border-2 border-transparent hover:border-blue-500/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group cursor-pointer"
@@ -149,9 +149,35 @@ export default function CreditApplicationPage() {
                         </div>
                       </button>
                     </div>
-                  ) : (
-                    <div className="space-y-6">
-                      <div className="flex justify-start">
+                  ) : null}
+
+                  <div className={cn("space-y-6", !applicationType ? "block md:hidden" : "block")}>
+                    {/* Mobile Toggle */}
+                    <div className="md:hidden flex p-1.5 bg-slate-100 dark:bg-slate-900/40 rounded-full border border-slate-200 dark:border-white/10 ring-1 ring-black/5 mx-auto max-w-md w-full relative">
+                      <button 
+                        onClick={() => setApplicationType('personal')}
+                        className={cn("flex-1 rounded-full py-3 text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2", 
+                          (applicationType === 'personal' || applicationType === null) 
+                            ? "bg-blue-600 text-white shadow-sm" 
+                            : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                        )}
+                      >
+                        <User className="w-4 h-4" /> Personal Use
+                      </button>
+                      <button 
+                        onClick={() => setApplicationType('business')}
+                        className={cn("flex-1 rounded-full py-3 text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2", 
+                          applicationType === 'business' 
+                            ? "bg-blue-600 text-white shadow-sm" 
+                            : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                        )}
+                      >
+                        <Building className="w-4 h-4" /> Business Use
+                      </button>
+                    </div>
+
+                    {applicationType && (
+                      <div className="hidden md:flex justify-start">
                         <button 
                           onClick={() => setApplicationType(null)} 
                           className="text-sm font-medium text-muted-foreground hover:text-foreground flex items-center gap-2 transition-colors px-4 py-2.5 rounded-lg hover:bg-muted/50 dark:hover:bg-white/5 border border-transparent hover:border-border dark:hover:border-white/10"
@@ -162,15 +188,16 @@ export default function CreditApplicationPage() {
                           Back to application mode
                         </button>
                       </div>
-                      <div id="credit-application-card" className="glass-card-theme form-card-theme p-6 sm:p-8 md:p-10 xl:p-12 rounded-xl scroll-mt-24">
-                        {applicationType === 'personal' ? (
-                          <CreditApplicationForm />
-                        ) : (
-                          <BusinessCreditApplicationForm />
-                        )}
-                      </div>
+                    )}
+                    
+                    <div id="credit-application-card" className="glass-card-theme form-card-theme p-6 sm:p-8 md:p-10 xl:p-12 rounded-xl scroll-mt-24">
+                      {(applicationType === 'personal' || applicationType === null) ? (
+                        <CreditApplicationForm />
+                      ) : (
+                        <BusinessCreditApplicationForm />
+                      )}
                     </div>
-                  )}
+                  </div>
                 </div>
               </div>
             </div>
