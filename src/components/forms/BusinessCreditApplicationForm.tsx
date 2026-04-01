@@ -15,6 +15,7 @@ import {
 } from '@/components/ui/select';
 import { Loader2, Building, User, Landmark, Upload, Shield, ChevronLeft, ChevronRight, CheckCircle2, X, FileText, Lock, Calendar, Phone, DollarSign, MapPin } from 'lucide-react';
 import { FormSuccessMessage } from './FormSuccessMessage';
+import { AddressAutocomplete } from './AddressAutocomplete';
 import { getSubmitErrorMessage, getSubmitErrorFromException } from './getSubmitErrorMessage';
 import { WEBHOOK_URL_CREDIT_APPLICATION } from '@/lib/webhook';
 import { CONSULTANT_OPTIONS, getConsultantEmail, US_STATES } from '@/lib/creditConstants';
@@ -173,6 +174,7 @@ export function BusinessCreditApplicationForm() {
 
         const payload = {
           VehicleOrService: 'Business Credit Application',
+          Name: data.businessName,
           BusinessName: data.businessName,
           TaxIDNumber: data.taxIdNumber,
           BusinessType: data.businessType,
@@ -570,12 +572,19 @@ export function BusinessCreditApplicationForm() {
                     {isFieldValid('businessStreet') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
                   </Label>
                   <div className="relative">
-                    <Input
+                    <AddressAutocomplete
                       id="businessStreet"
                       {...register('businessStreet', {
                         onChange: () => trigger('businessStreet'),
                         onBlur: () => trigger('businessStreet'),
                       })}
+                      value={watch('businessStreet') || ''}
+                      onAddressSelect={(address) => {
+                        setValue('businessStreet', address.street, { shouldValidate: true, shouldDirty: true });
+                        setValue('businessCity', address.city, { shouldValidate: true, shouldDirty: true });
+                        setValue('businessState', address.state, { shouldValidate: true, shouldDirty: true });
+                        setValue('businessZip', address.zip, { shouldValidate: true, shouldDirty: true });
+                      }}
                       placeholder="302 Fifth Avenue"
                       className={cn(errors.businessStreet ? 'border-destructive pr-10' : isFieldValid('businessStreet') ? 'border-green-500 pr-10' : '')}
                     />

@@ -63,7 +63,6 @@ export const HOUSING_OPTIONS: { value: string; label: string }[] = [
 /** Consultant options for Step 5 (Required). */
 export const CONSULTANT_OPTIONS: { value: string; label: string }[] = [
   { value: '', label: 'Select consultant' },
-  { value: 'abby_gorani', label: 'Abby Gorani' },
   { value: 'aaron_cui', label: 'Aaron Cui' },
   { value: 'bobby_kaufman', label: 'Bobby Kaufman' },
   { value: 'christopher_amico', label: 'Christopher Amico' },
@@ -78,15 +77,12 @@ export const CONSULTANT_OPTIONS: { value: string; label: string }[] = [
   { value: 'mark_onbashian', label: 'Mark Onbashian' },
   { value: 'michael_minerva', label: 'Michael Minerva' },
   { value: 'michael_zeitoune', label: 'Michael Zeitoune' },
-  { value: 'michael_van_houten', label: 'Michael Van Houten' },
   { value: 'rafael_frias', label: 'Rafael Frias' },
   { value: 'ricky_wong', label: 'Ricky Wong' },
-  { value: 'rushi_sanghavi', label: 'Rushi Sanghavi' },
   { value: 'sarah_flynn', label: 'Sarah Flynn' },
   { value: 'stephen_jo', label: 'Stephen Jo' },
   { value: 'vicky_azrak', label: 'Vicky Azrak' },
   { value: 'wilson_dong', label: 'Wilson Dong' },
-  { value: 'yehuda_cohen', label: 'Yehuda Cohen' },
   { value: 'other', label: 'Other' },
 ];
 
@@ -98,7 +94,6 @@ export const CONSULTANT_EMAIL_MAP: Record<string, string> = {
   'vicky_azrak': 'vicky@capitalmotorcars.com',
   'james_dai': 'james@capitalmotorcars.com',
   'aaron_cui': 'info@capitalmotorcars.com',
-  'abby_gorani': 'info@capitalmotorcars.com',
   'bobby_kaufman': 'bobby@capitalmotorcars.com',
   'christine_reich': 'info@capitalmotorcars.com',
   'derek_anton': 'derek@capitalmotorcars.com',
@@ -107,15 +102,12 @@ export const CONSULTANT_EMAIL_MAP: Record<string, string> = {
   'mark_onbashian': 'mark@capitalmotorcars.com',
   'markin': 'mark@capitalmotorcars.com',
   'michael_zeitoune': 'mike@capitalmotorcars.com',
-  'michael_van_houten': 'mvanhouten@capitalmotorcars.com',
   'rafael_frias': 'rafael@capitalmotorcars.com',
   'ricky_wong': 'ricky@capitalmotorcars.com',
-  'rushi_sanghavi': 'info@capitalmotorcars.com',
   'sarah_flynn': 'sarah@capitalmotorcars.com',
   'stephen_jo': 'info@capitalmotorcars.com',
   'wilson_dong': 'info@capitalmotorcars.com',
   'finance_team': 'info@capitalmotorcars.com',
-  'yehuda_cohen': 'info@capitalmotorcars.com',
   'other': 'info@capitalmotorcars.com',
 };
 
