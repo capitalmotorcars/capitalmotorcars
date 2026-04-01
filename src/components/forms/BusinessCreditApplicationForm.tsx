@@ -80,9 +80,9 @@ const businessSchema = z.object({
   }, 'Please enter a valid phone number'),
   branchAddress: z.string().min(1, 'Branch address is required').max(200),
 
-  consultant: z.string().optional(),
-  legalAgree: z.boolean().optional(),
-  signature: z.string().optional(),
+  consultant: z.string().min(1, 'Please select a consultant'),
+  legalAgree: z.boolean().refine((v) => v === true, 'You must agree to the authorization.'),
+  signature: z.string().min(2, 'Full legal name signature is required').max(100),
   signatureDate: z.string().max(20).optional(),
 });
 
@@ -92,8 +92,8 @@ const STEPS = [
   { id: 1, label: 'Business Info', icon: Building },
   { id: 2, label: 'Guarantor', icon: User },
   { id: 3, label: 'Bank Info', icon: Landmark },
-  // { id: 4, label: 'Uploads', icon: Upload },
-  // { id: 5, label: 'Legal', icon: Shield },
+  { id: 4, label: 'Uploads', icon: Upload },
+  { id: 5, label: 'Legal', icon: Shield },
 ] as const;
 
 function fileToBase64(file: File): Promise<string> {
@@ -457,18 +457,23 @@ export function BusinessCreditApplicationForm() {
                   Business Type <span className="text-destructive">*</span>
                   {isFieldValid('businessType') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
                 </Label>
-                <div className="relative">
-                  <Input
-                    id="businessType"
-                    {...register('businessType', {
-                      onChange: () => trigger('businessType'),
-                      onBlur: () => trigger('businessType'),
-                    })}
-                    placeholder="Limited Liability Corporation"
-                    className={cn(errors.businessType ? 'border-destructive pr-10' : isFieldValid('businessType') ? 'border-green-500 pr-10' : '')}
-                  />
-                  {isFieldValid('businessType') && !errors.businessType && <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />}
-                </div>
+                <Select
+                  value={watch('businessType') ?? ''}
+                  onValueChange={async (v) => {
+                    setValue('businessType', v, { shouldValidate: true, shouldTouch: true });
+                    await trigger('businessType');
+                  }}
+                >
+                  <SelectTrigger id="businessType" className={cn(errors.businessType ? 'border-destructive' : isFieldValid('businessType') ? 'border-green-500' : '')}>
+                    <SelectValue placeholder="Select business type" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="LLC">LLC</SelectItem>
+                    <SelectItem value="C-Corp">C-Corp</SelectItem>
+                    <SelectItem value="S-Corp">S-Corp</SelectItem>
+                    <SelectItem value="NGO">NGO</SelectItem>
+                  </SelectContent>
+                </Select>
                 {errors.businessType && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.businessType.message}</p>}
               </div>
 
@@ -780,7 +785,7 @@ export function BusinessCreditApplicationForm() {
         )}
 
         {/* Step 4: Uploads */}
-        {/* {currentStep === 4 && (
+        {currentStep === 4 && (
           <motion.div
             key="step-4"
             custom={direction}
@@ -903,10 +908,10 @@ export function BusinessCreditApplicationForm() {
               </p>
             </div>
           </motion.div>
-        )} */}
+        )}
 
         {/* Step 5: Legal */}
-        {/* {currentStep === 5 && (
+        {currentStep === 5 && (
           <motion.div
             key="step-5"
             custom={direction}
@@ -1002,7 +1007,7 @@ export function BusinessCreditApplicationForm() {
               <Input id="signatureDate" type="date" {...register('signatureDate')} />
             </div>
           </motion.div>
-        )} */}
+        )}
       </AnimatePresence>
 
       {submitError && (
