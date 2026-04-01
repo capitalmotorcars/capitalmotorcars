@@ -99,7 +99,7 @@ export const CONSULTANT_EMAIL_MAP: Record<string, string> = {
   'derek_anton': 'derek@capitalmotorcars.com',
   'daniel_jay_lehrer': 'dlehrer@capitalmotorcars.com',
   'jeffrey_horn': 'jeffrey@capitalmotorcars.com',
-  'mark_onbashian': 'Monbash@capitalmotorcars.com',
+  'mark_onbashian': 'monbash@capitalmotorcars.com',
   'markin': 'mark@capitalmotorcars.com',
   'michael_zeitoune': 'mike@capitalmotorcars.com',
   'rafael_frias': 'rafael@capitalmotorcars.com',
