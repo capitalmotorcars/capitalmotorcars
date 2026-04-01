@@ -15,6 +15,7 @@ import {
 } from '@/components/ui/select';
 import { Loader2, Shield, ChevronLeft, ChevronRight, UserPlus, Upload, User, Mail, Phone, MapPin, Home, Briefcase, DollarSign, Calendar, Lock, CheckCircle2, X, FileText, Clock } from 'lucide-react';
 import { FormSuccessMessage } from './FormSuccessMessage';
+import { AddressAutocomplete } from './AddressAutocomplete';
 import { getSubmitErrorMessage, getSubmitErrorFromException } from './getSubmitErrorMessage';
 import { WEBHOOK_URL_CREDIT_APPLICATION } from '@/lib/webhook';
 import { US_STATES, HOUSING_OPTIONS, CONSULTANT_OPTIONS, getConsultantEmail } from '@/lib/creditConstants';
@@ -1004,12 +1005,19 @@ export function CreditApplicationForm() {
                   {isFieldValid('street') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
                 </Label>
                 <div className="relative">
-                  <Input 
+                  <AddressAutocomplete
                     id="street" 
                     {...register('street', {
                       onChange: () => trigger('street'),
                       onBlur: () => trigger('street'),
                     })} 
+                    value={watch('street') || ''}
+                    onAddressSelect={(address) => {
+                      setValue('street', address.street, { shouldValidate: true, shouldDirty: true });
+                      setValue('city', address.city, { shouldValidate: true, shouldDirty: true });
+                      setValue('state', address.state, { shouldValidate: true, shouldDirty: true });
+                      setValue('zip', address.zip, { shouldValidate: true, shouldDirty: true });
+                    }}
                     placeholder="123 Main Street, Apt 4B" 
                     className={cn(
                       errors.street 
@@ -1255,12 +1263,19 @@ export function CreditApplicationForm() {
                 {isFieldValid('employmentStreet') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
               </Label>
               <div className="relative">
-                <Input 
+                <AddressAutocomplete
                   id="employmentStreet" 
                   {...register('employmentStreet', {
                     onChange: () => trigger('employmentStreet'),
                     onBlur: () => trigger('employmentStreet'),
                   })} 
+                  value={watch('employmentStreet') || ''}
+                  onAddressSelect={(address) => {
+                    setValue('employmentStreet', address.street, { shouldValidate: true, shouldDirty: true });
+                    setValue('employmentCity', address.city, { shouldValidate: true, shouldDirty: true });
+                    setValue('employmentState', address.state, { shouldValidate: true, shouldDirty: true });
+                    setValue('employmentZip', address.zip, { shouldValidate: true, shouldDirty: true });
+                  }}
                   placeholder="e.g. 123 Business Ave, Suite 100" 
                   className={cn(
                     errors.employmentStreet 
@@ -1760,12 +1775,19 @@ export function CreditApplicationForm() {
                         {isFieldValid('coStreet') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
                       </Label>
                       <div className="relative">
-                        <Input 
+                        <AddressAutocomplete
                           id="coStreet"
                           {...register('coStreet', {
                             onChange: () => trigger('coStreet'),
                             onBlur: () => trigger('coStreet'),
                           })} 
+                          value={watch('coStreet') || ''}
+                          onAddressSelect={(address) => {
+                            setValue('coStreet', address.street, { shouldValidate: true, shouldDirty: true });
+                            setValue('coCity', address.city, { shouldValidate: true, shouldDirty: true });
+                            setValue('coState', address.state, { shouldValidate: true, shouldDirty: true });
+                            setValue('coZip', address.zip, { shouldValidate: true, shouldDirty: true });
+                          }}
                           placeholder="123 Main Street" 
                           className={cn(
                             errors.coStreet 
@@ -1957,12 +1979,19 @@ export function CreditApplicationForm() {
                         {isFieldValid('coEmploymentStreet') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
                       </Label>
                       <div className="relative">
-                        <Input 
+                        <AddressAutocomplete
                           id="coEmploymentStreet"
                           {...register('coEmploymentStreet', {
                             onChange: () => trigger('coEmploymentStreet'),
                             onBlur: () => trigger('coEmploymentStreet'),
                           })} 
+                          value={watch('coEmploymentStreet') || ''}
+                          onAddressSelect={(address) => {
+                            setValue('coEmploymentStreet', address.street, { shouldValidate: true, shouldDirty: true });
+                            setValue('coEmploymentCity', address.city, { shouldValidate: true, shouldDirty: true });
+                            setValue('coEmploymentState', address.state, { shouldValidate: true, shouldDirty: true });
+                            setValue('coEmploymentZip', address.zip, { shouldValidate: true, shouldDirty: true });
+                          }}
                           placeholder="e.g. 123 Business Ave, Suite 100" 
                           className={cn(
                             errors.coEmploymentStreet 
