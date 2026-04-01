@@ -152,30 +152,6 @@ export default function CreditApplicationPage() {
                   ) : null}
 
                   <div className={cn("space-y-6", !applicationType ? "block md:hidden" : "block")}>
-                    {/* Mobile Toggle */}
-                    <div className="md:hidden flex p-1.5 bg-slate-100 dark:bg-slate-900/40 rounded-full border border-slate-200 dark:border-white/10 ring-1 ring-black/5 mx-auto max-w-md w-full relative">
-                      <button 
-                        onClick={() => setApplicationType('personal')}
-                        className={cn("flex-1 rounded-full py-3 text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2", 
-                          (applicationType === 'personal' || applicationType === null) 
-                            ? "bg-blue-600 text-white shadow-sm" 
-                            : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-                        )}
-                      >
-                        <User className="w-4 h-4" /> Personal Use
-                      </button>
-                      <button 
-                        onClick={() => setApplicationType('business')}
-                        className={cn("flex-1 rounded-full py-3 text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2", 
-                          applicationType === 'business' 
-                            ? "bg-blue-600 text-white shadow-sm" 
-                            : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-                        )}
-                      >
-                        <Building className="w-4 h-4" /> Business Use
-                      </button>
-                    </div>
-
                     {applicationType && (
                       <div className="hidden md:flex justify-start">
                         <button 
@@ -192,9 +168,9 @@ export default function CreditApplicationPage() {
                     
                     <div id="credit-application-card" className="glass-card-theme form-card-theme p-6 sm:p-8 md:p-10 xl:p-12 rounded-xl scroll-mt-24">
                       {(applicationType === 'personal' || applicationType === null) ? (
-                        <CreditApplicationForm />
+                        <CreditApplicationForm applicationType={applicationType} setApplicationType={setApplicationType} />
                       ) : (
-                        <BusinessCreditApplicationForm />
+                        <BusinessCreditApplicationForm applicationType={applicationType} setApplicationType={setApplicationType} />
                       )}
                     </div>
                   </div>

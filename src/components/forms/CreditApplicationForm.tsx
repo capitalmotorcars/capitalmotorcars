@@ -13,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Loader2, Shield, ChevronLeft, ChevronRight, UserPlus, Upload, User, Mail, Phone, MapPin, Home, Briefcase, DollarSign, Calendar, Lock, CheckCircle2, X, FileText, Clock } from 'lucide-react';
+import { Loader2, Shield, ChevronLeft, ChevronRight, UserPlus, Upload, User, Mail, Phone, MapPin, Home, Briefcase, DollarSign, Calendar, Lock, CheckCircle2, X, FileText, Clock, Building } from 'lucide-react';
 import { FormSuccessMessage } from './FormSuccessMessage';
 import { AddressAutocomplete } from './AddressAutocomplete';
 import { getSubmitErrorMessage, getSubmitErrorFromException } from './getSubmitErrorMessage';
@@ -253,7 +253,12 @@ function isCoApplicantSectionValid(data: Partial<CreditFormData>): boolean {
   );
 }
 
-export function CreditApplicationForm() {
+interface CreditApplicationFormProps {
+  applicationType?: 'personal' | 'business' | null;
+  setApplicationType?: React.Dispatch<React.SetStateAction<'personal' | 'business' | null>>;
+}
+
+export function CreditApplicationForm({ applicationType, setApplicationType }: CreditApplicationFormProps = {}) {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -755,6 +760,36 @@ export function CreditApplicationForm() {
               <strong className="text-foreground dark:text-white">Your information is secure.</strong> We use industry standard encryption. This application helps us understand your needs before a full credit check.
             </div>
           </motion.div>
+        )}
+
+        {/* Mobile Toggle inside the step 1 content, underneath the security notice */}
+        {currentStep === 1 && setApplicationType && (
+          <div className="md:hidden flex p-1.5 bg-slate-100 dark:bg-slate-900/40 rounded-full border border-slate-200 dark:border-white/10 ring-1 ring-black/5 w-full relative mb-6">
+            <button 
+              type="button"
+              data-quick-action="true"
+              onClick={() => setApplicationType('personal')}
+              className={cn("flex-1 rounded-full py-3 text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2", 
+                applicationType !== 'business' 
+                  ? "bg-blue-600 text-white shadow-sm" 
+                  : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+              )}
+            >
+              <User className="w-4 h-4" /> Personal Use
+            </button>
+            <button 
+              type="button"
+              data-quick-action="true"
+              onClick={() => setApplicationType('business')}
+              className={cn("flex-1 rounded-full py-3 text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2", 
+                applicationType === 'business' 
+                  ? "bg-blue-600 text-white shadow-sm" 
+                  : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+              )}
+            >
+              <Building className="w-4 h-4" /> Business Use
+            </button>
+          </div>
         )}
 
         {/* Step 1: Applicant Info */}
