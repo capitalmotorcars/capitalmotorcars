@@ -2,14 +2,17 @@ import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
 import { JsonLd } from '@/components/JsonLd';
 import { CreditApplicationForm } from '@/components/forms/CreditApplicationForm';
+import { BusinessCreditApplicationForm } from '@/components/forms/BusinessCreditApplicationForm';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { cn } from '@/lib/utils';
-import { Shield, FileText, Clock, CheckCircle2 } from 'lucide-react';
+import { Shield, FileText, Clock, CheckCircle2, User, Building } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import bg1 from '@/assets/contact.jpg';
 
 export default function CreditApplicationPage() {
   const { ref, isRevealed } = useScrollReveal();
+  const [applicationType, setApplicationType] = useState<'personal' | 'business' | null>(null);
 
   const benefits = [
     { icon: Shield, text: 'Secure & Encrypted' },
@@ -118,9 +121,56 @@ export default function CreditApplicationPage() {
             <div className="relative bg-white dark:bg-black h-full py-12 md:py-16 z-10">
               <div className="mx-auto px-4 lg:px-8 xl:px-12">
                 <div className="max-w-5xl mx-auto">
-                  <div id="credit-application-card" className="glass-card-theme form-card-theme p-6 sm:p-8 md:p-10 xl:p-12 rounded-xl scroll-mt-24">
-                    <CreditApplicationForm />
-                  </div>
+                  {!applicationType ? (
+                    <div className="flex flex-col md:flex-row gap-6 justify-center max-w-4xl mx-auto">
+                      <button
+                        onClick={() => setApplicationType('personal')}
+                        className="flex-1 glass-card-theme form-card-theme p-10 sm:p-12 rounded-3xl flex flex-col items-center justify-center gap-6 border-2 border-transparent hover:border-blue-500/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group cursor-pointer"
+                      >
+                        <div className="w-24 h-24 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white group-hover:scale-110 shadow-sm transition-all duration-300">
+                          <User className="w-12 h-12" />
+                        </div>
+                        <div className="text-center space-y-3">
+                          <h3 className="text-2xl sm:text-3xl font-bold text-foreground dark:text-white">Personal Use</h3>
+                          <p className="text-sm sm:text-base text-muted-foreground dark:text-white/70 max-w-xs mx-auto">Apply for a personal auto lease or financing.</p>
+                        </div>
+                      </button>
+                      
+                      <button
+                        onClick={() => setApplicationType('business')}
+                        className="flex-1 glass-card-theme form-card-theme p-10 sm:p-12 rounded-3xl flex flex-col items-center justify-center gap-6 border-2 border-transparent hover:border-blue-500/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group cursor-pointer"
+                      >
+                        <div className="w-24 h-24 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white group-hover:scale-110 shadow-sm transition-all duration-300">
+                          <Building className="w-12 h-12" />
+                        </div>
+                        <div className="text-center space-y-3">
+                          <h3 className="text-2xl sm:text-3xl font-bold text-foreground dark:text-white">Business Use</h3>
+                          <p className="text-sm sm:text-base text-muted-foreground dark:text-white/70 max-w-xs mx-auto">Apply for commercial auto leasing or financing.</p>
+                        </div>
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="space-y-6">
+                      <div className="flex justify-start">
+                        <button 
+                          onClick={() => setApplicationType(null)} 
+                          className="text-sm font-medium text-muted-foreground hover:text-foreground flex items-center gap-2 transition-colors px-4 py-2.5 rounded-lg hover:bg-muted/50 dark:hover:bg-white/5 border border-transparent hover:border-border dark:hover:border-white/10"
+                        >
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                          </svg>
+                          Back to application mode
+                        </button>
+                      </div>
+                      <div id="credit-application-card" className="glass-card-theme form-card-theme p-6 sm:p-8 md:p-10 xl:p-12 rounded-xl scroll-mt-24">
+                        {applicationType === 'personal' ? (
+                          <CreditApplicationForm />
+                        ) : (
+                          <BusinessCreditApplicationForm />
+                        )}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
