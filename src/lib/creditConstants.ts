@@ -111,6 +111,7 @@ export const CONSULTANT_EMAIL_MAP: Record<string, string> = {
   'other': 'info@capitalmotorcars.com',
 };
 
+
 /** Get consultant email by value */
 export const getConsultantEmail = (consultantValue: string): string => {
   return CONSULTANT_EMAIL_MAP[consultantValue] || 'info@capitalmotorcars.com';
