@@ -117,3 +117,5 @@ export const CONSULTANT_EMAIL_MAP: Record<string, string> = {
 export const getConsultantEmail = (consultantValue: string): string => {
   return CONSULTANT_EMAIL_MAP[consultantValue] || 'info@capitalmotorcars.com';
 };
+
+
