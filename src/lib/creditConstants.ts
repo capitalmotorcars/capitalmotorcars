@@ -93,7 +93,7 @@ export const CONSULTANT_EMAIL_MAP: Record<string, string> = {
   'michael_minerva': 'mike.minerva@capitalmotorcars.com',
   'vicky_azrak': 'vicky@capitalmotorcars.com',
   'james_dai': 'james@capitalmotorcars.com',
-  'aaron_cui': 'info@capitalmotorcars.com',
+  'aaron_cui': 'aaron@capitalmotorcars.com',
   'bobby_kaufman': 'bobby@capitalmotorcars.com',
   'christine_reich': 'info@capitalmotorcars.com',
   'derek_anton': 'derek@capitalmotorcars.com',
