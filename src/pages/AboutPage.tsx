@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { UserCheck, MessageSquare, Settings, MapPin, ArrowRight, FileText, Building2, Phone } from 'lucide-react';
 import { PeopleSection } from '@/components/home/PeopleSection';
 import { motion } from 'framer-motion';
+import { renderSEOHeading } from '@/utils/seoUtils';
 import bg1 from '@/assets/brand-backgrounds/bg-1.jpeg';
 import aboutImage from '@/assets/logo.png';
 const approachItems = [
@@ -61,7 +62,7 @@ export default function AboutPage() {
       <SEO
         title="About Us | Capital Motor Cars | Our Story & Mission"
         description="Learn more about Capital Motor Cars. We bring clarity and structure to the car leasing and financing process with transparency and accountability."
-        seoKeywords={['Capital Motor Cars about', 'car leasing company NJ', 'automotive experts', 'transparent car leasing']}
+        seoKeywords={['Capital Motor Cars about', 'car leasing company NJ', 'automotive experts', 'transparent car leasing', 'Best Zero Down Lease Deals', 'Affordable NJ Car Leasing', 'Springfield NJ Auto Broker', 'Doorstep Car Delivery NYC', 'Brooklyn Car Lease Specials', 'White-Glove Leasing Service']}
         ogImage="/src/assets/hero-bg.jpg"
         canonicalPath="/about"
       />
@@ -117,9 +118,9 @@ export default function AboutPage() {
               <motion.h2
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.2 }}
-                className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white text-center pb-2 md:pb-4 xl:pb-6"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center pb-2 md:pb-4 xl:pb-6"
               >
-                About Capital Motor Cars
+                {renderSEOHeading("About Capital Motor Cars | Top Auto Broker New Jersey & New York")}
               </motion.h2>
               <motion.p
                 {...fadeInUp}
@@ -138,7 +139,7 @@ export default function AboutPage() {
                     ref={introRef}
                     className={cn('scroll-reveal', introRevealed && 'revealed', 'mb-12 md:mb-16 xl:mb-20 pb-8 md:pb-10 xl:pb-12 border-b border-border dark:border-gray-600')}
                   >
-                    <div className="max-w-4xl xl:max-w-5xl">
+                    <div className="max-w-4xl xl:max-w-5xl mx-auto text-center">
                       <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-black dark:text-white leading-relaxed mb-6 md:mb-8">
                         Capital Motor Cars was created to bring clarity and structure to an automotive process that is often complex and time-consuming. Our focus is on guiding clients through decisions with transparency, accountability, and a clearly defined process.
                       </p>

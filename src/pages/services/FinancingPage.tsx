@@ -56,16 +56,16 @@ const financingSteps = [
 
 
 const idealFor = [
-  "First-time buyers with limited credit history",
-  "Business owners looking for tax advantages",
-  "Buyers looking for the lowest possible APR",
-  "Those rebuilding their credit score"
+  "New York & New Jersey first-time buyers with limited credit history",
+  "New York and New Jersey business owners seeking tax advantages",
+  "New York & New Jersey drivers looking for the lowest possible monthly car payment",
+  "Those in New York or New Jersey rebuilding their credit score"
 ];
 
 const faqs = [
-  { question: "Will checking my options hurt my credit score?", answer: "We can do a soft pull to show you potential options without affecting your credit score. A hard inquiry is only needed when you're ready to finalize the loan." },
-  { question: "Do you work with bad credit?", answer: "Yes. We have relationships with lenders who specialize in all credit tiers, from Tier 1 excellent credit to rebuilding credit profiles." },
-  { question: "Can I finance a lease buyout?", answer: "Absolutely. We specialize in lease buyouts and can often get you better rates than the dealership offering the buyout." },
+  { question: "Will checking my options hurt my credit score?", answer: "No. We start with a soft pull so you get clear answers on your options without any impact to your score. A hard inquiry is only needed when you're ready to finalize the loan in New York or New Jersey." },
+  { question: "Do you work with bad credit in New York or New Jersey?", answer: "Yes. We have relationships with lenders who specialize in all credit tiers across New York and New Jersey — from Tier 1 excellent credit to actively rebuilding credit profiles. We'll give you clear answers upfront." },
+  { question: "Can I finance a lease buyout in New York or New Jersey?", answer: "Absolutely. We specialize in lease buyouts and can often get you better rates than the dealership. Our Springfield, NJ location serves customers throughout New York and New Jersey." },
 ];
 
 export default function FinancingPage() {
@@ -73,9 +73,9 @@ export default function FinancingPage() {
   return (
     <Layout>
       <SEO
-        title="Auto Financing & Credit NJ | Easy Application | Capital Motor Cars"
-        description="Simplify your auto financing with Capital Motor Cars. Apply online for quick credit decisions and transparent terms. Best lender rates in New Jersey."
-        seoKeywords={['auto financing NJ', 'car credit application', 'best auto loan rates', 'Capital Motor Cars financing']}
+        title="Auto Financing New Jersey and New York | Low Monthly Payments | Capital Motor Cars"
+        description="Looking for auto financing in New York or New Jersey? Get clear answers on car loans, explore low monthly car payments, and experience a 100% transparent process with Capital Motor Cars."
+        seoKeywords={['auto financing NJ', 'New York car loans', 'low monthly car payments', 'transparent auto finance', 'Springfield NJ car leasing', 'Capital Motor Cars financing']}
         ogImage="/src/assets/financing.jpg"
         canonicalPath="/services/financing"
       />
@@ -87,12 +87,12 @@ export default function FinancingPage() {
 
       {/* Custom Hero Section (Services Style) */}
       <ServiceHero
-        badge="Quick Credit App"
-        title="Auto"
-        highlightedTitle="Financing"
-        subtitle="Get clear answers about your financing options quickly, with transparent terms and no hidden fees."
+        badge="New York & New Jersey Auto Financing"
+        title="Auto Financing in New York & New Jersey"
+        highlightedTitle=""
+        subtitle="Get clear answers and learn about low monthly car payments with our transparent, expert-led financing process."
         heroImage={financingHero}
-        primaryAction={{ label: "Apply Now", href: "/contact" }}
+        primaryAction={{ label: "Start New York & New Jersey Car Lease Application", href: "/contact" }}
         secondaryAction={{ label: "Call Us", href: "tel:201-555-0123", icon: Phone }}
       />
 
@@ -128,15 +128,15 @@ export default function FinancingPage() {
                     <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                       <Banknote className="w-6 h-6" />
                     </div>
-                    <span className="text-lg font-black text-black dark:text-white tracking-tight leading-tight">Competitive Rates</span>
-                    <p className="text-sm text-muted-foreground">We access wholesale rates from over 30 lenders to beat dealership offers.</p>
+                    <span className="text-lg font-black text-black dark:text-white tracking-tight leading-tight">Competitive New York & New Jersey Rates</span>
+                    <p className="text-sm text-muted-foreground">We access wholesale rates from 30+ lenders across New York and New Jersey — clear answers guaranteed, no surprises.</p>
                   </div>
                   <div className="flex flex-col gap-4 group">
                     <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                       <Clock className="w-6 h-6" />
                     </div>
-                    <span className="text-lg font-black text-black dark:text-white tracking-tight leading-tight">Fast Approval</span>
-                    <p className="text-sm text-muted-foreground">Get a decision in minutes, not hours. We streamlined the paperwork.</p>
+                    <span className="text-lg font-black text-black dark:text-white tracking-tight leading-tight">Fast, Transparent Approval</span>
+                    <p className="text-sm text-muted-foreground">New York & New Jersey drivers get a decision in minutes. We explain every term clearly — no dealer jargon.</p>
                   </div>
                 </div>
 
@@ -176,10 +176,10 @@ export default function FinancingPage() {
 
               <ul className="space-y-6">
                 {[
-                  "No hard credit pull to checking",
-                  "Clear explanation of terms",
-                  "Multiple lender options",
-                  "Secure data handling"
+                  "No hard credit pull to start — clear answers first",
+                  "Plain-English explanation of every term",
+                  "30+ lender options across New York & New Jersey",
+                  "100% secure, transparent data handling"
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-4 group">
                     <div className="shrink-0 w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center mt-1">
@@ -314,13 +314,13 @@ export default function FinancingPage() {
       <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex flex-col mb-8 justify-start items-start md:items-center">
-            <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-2">Get Started</span>
+            <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-2">Get Started — New York & New Jersey</span>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-black dark:text-white uppercase">
-              Apply For <span className="text-accent italic">Credit</span>
+              Start Your <span className="text-accent italic">Application</span>
             </h2>
             <div className="mt-10 w-full">
               <p className="text-muted-foreground mb-4 text-lg max-w-lg mx-auto">
-                Secure your financing today. Safe, fast, and no obligation.
+                New York and New Jersey drivers — get clear answers on auto financing today. Safe, fast, and no obligation.
               </p>
             </div>
             <div className="w-full max-w-2xl mx-auto">

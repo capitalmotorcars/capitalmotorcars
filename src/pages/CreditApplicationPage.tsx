@@ -5,6 +5,7 @@ import { CreditApplicationForm } from '@/components/forms/CreditApplicationForm'
 import { BusinessCreditApplicationForm } from '@/components/forms/BusinessCreditApplicationForm';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { cn } from '@/lib/utils';
+import { renderSEOHeading } from '@/utils/seoUtils';
 import { Shield, FileText, Clock, CheckCircle2, User, Building } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
@@ -30,8 +31,8 @@ export default function CreditApplicationPage() {
   return (
     <Layout>
       <SEO
-        title="Online Credit Application | Secure Auto Financing | Capital Motor Cars"
-        description="Apply for auto financing and leasing credit online. Our secure 5 Step Application Process helps you get quick answers about your car financing options."
+        title="Auto Lease Financing in New Jersey & New York | Capital Motor Cars"
+        description="Apply for auto lease financing in minutes. We help NJ and NY drivers get approved quickly, even with bad credit. Apply Now!"
         seoKeywords={['car credit application', 'auto financing NJ', 'lease credit application', 'Capital Motor Cars finance']}
         ogImage="/src/assets/contact.jpg"
         canonicalPath="/credit-application"
@@ -82,20 +83,20 @@ export default function CreditApplicationPage() {
           {/* Content */}
           <div ref={ref} className={cn('relative z-10 flex-1 flex flex-col', 'scroll-reveal', isRevealed && 'revealed')}>
             {/* Title Section */}
-            <div className="relative z-50 mx-auto h-[30vh] md:h-[45vh] px-4 lg:px-8 flex flex-col items-center justify-center text-center">
+            <div className="relative z-50 mx-auto min-h-[30vh] md:min-h-[45vh] pt-24 md:pt-32 pb-8 px-4 lg:px-8 flex flex-col items-center justify-center text-center">
               <motion.h2
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.1 }}
-                className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white pb-2 md:pb-4 xl:pb-6"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white pb-2 md:pb-4 xl:pb-6 tracking-tight text-center"
               >
-                Secure 5 Step Auto Financing &amp; Leasing Application
+                {renderSEOHeading("Auto Lease Financing in New Jersey & New York | Capital Motor Cars")}
               </motion.h2>
               <motion.p
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.2 }}
                 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/80 max-w-3xl xl:max-w-5xl mx-auto pb-4 md:pb-6 xl:pb-8"
               >
-                Start your financing journey with a quick preliminary application. Get clear answers about your options.
+                Apply for auto lease financing in minutes. We help NJ and NY drivers get approved quickly, even with bad credit. Apply Now!
               </motion.p>
 
               {/* Benefits */}

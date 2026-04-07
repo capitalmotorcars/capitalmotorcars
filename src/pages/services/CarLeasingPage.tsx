@@ -78,8 +78,8 @@ export default function CarLeasingPage() {
   return (
     <Layout>
       <SEO
-        title="Car Leasing Services NJ | Simple & Transparent | Capital Motor Cars"
-        description="Get the best car lease deals without the dealership hassle. We negotiate and coordinate the entire leasing process for you. Serving New Jersey and beyond."
+        title="Car Leasing Deals in New Jersey & New York | Capital Motor Cars"
+        description="Securing a car lease in NJ or NY has never been easier. We find the model, negotiate terms, and deliver directly. Zero Down available in NJ. Call Now!"
         seoKeywords={['car leasing NJ', 'auto leasing services', 'best lease deals NJ', 'hassle-free car leasing']}
         ogImage="/src/assets/car-leasing.jpg"
         canonicalPath="/services/car-leasing"
@@ -93,9 +93,9 @@ export default function CarLeasingPage() {
       {/* Custom Hero Section (Services Style) */}
       <ServiceHero
         badge="Leasing Made Simple"
-        title="Car"
-        highlightedTitle="Leasing"
-        subtitle="Find the right lease for your budget and needs, without spending hours negotiating at dealerships."
+        title="Car Leasing Deals in New Jersey & New York | Capital Motor Cars"
+        highlightedTitle=""
+        subtitle="Securing a car lease in NJ or NY has never been easier. We find the model, negotiate terms, and deliver directly. Zero Down available in NJ. Call Now!"
         heroImage={heroBg}
         primaryAction={{ label: "Start Credit Application", href: "/credit-application" }}
         secondaryAction={{ label: "Call Us", href: "tel:201-555-0123", icon: Phone }}

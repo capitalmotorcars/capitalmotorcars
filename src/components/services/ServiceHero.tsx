@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { LucideIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { renderSEOHeading } from '@/utils/seoUtils';
 
 interface ServiceHeroProps {
     badge: string;
@@ -91,7 +92,7 @@ export function ServiceHero({
                             transition={{ ...fadeInUp.transition, delay: 0.3 }}
                             className="text-3xl md:text-5xl font-bold text-white tracking-tighter"
                         >
-                            {title} <span className="text-white/90 italic">{highlightedTitle}</span>
+                            {renderSEOHeading(title)} {highlightedTitle && <span className="text-white/90 italic">{renderSEOHeading(highlightedTitle)}</span>}
                         </motion.h1>
                         <motion.p
                             {...fadeInUp}

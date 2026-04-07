@@ -70,8 +70,8 @@ export default function WheelRepairPage() {
   return (
     <Layout>
       <SEO
-        title="Rim & Wheel Repair NJ | Curb Rash Restoration | Capital Motor Cars"
-        description="Professional wheel and rim repair in NJ. We restore curb rash, bends, and oxidation to factory standards. Maximize your vehicle's resale value."
+        title="Wheel & Rim Repair Services in New Jersey & New York | Capital Motor Cars"
+        description="Avoid expensive lease return penalties with professional wheel and rim repair in New Jersey & New York. We fix curb rash quickly and affordably. Get a Free Estimate!"
         seoKeywords={['wheel repair NJ', 'rim restoration NJ', 'curb rash repair', 'Capital Motor Cars wheel repair']}
         ogImage="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1200&q=60"
         canonicalPath="/services/wheel-repair"
@@ -85,9 +85,9 @@ export default function WheelRepairPage() {
       {/* Custom Hero Section (Services Style) */}
       <ServiceHero
         badge="Expert Restoration"
-        title="Restore Your"
-        highlightedTitle="Wheels"
-        subtitle="Elite wheel refinishing and tire repair. Erase curb rash and restore that factory showroom look."
+        title="Wheel & Rim Repair Services in New Jersey & New York | Capital Motor Cars"
+        highlightedTitle=""
+        subtitle="Avoid expensive lease return penalties with professional wheel and rim repair in New Jersey & New York. We fix curb rash quickly and affordably. Get a Free Estimate!"
         heroImage="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1200&q=60"
         primaryAction={{ label: "Book Repair", href: "/contact" }}
         secondaryAction={{ label: "Call Us", href: "tel:201-555-0123", icon: Phone }}

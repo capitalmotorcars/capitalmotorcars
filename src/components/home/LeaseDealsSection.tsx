@@ -190,6 +190,8 @@ export function LeaseDealsSection() {
                         opts={{
                             align: 'start',
                             loop: true,
+                            duration: 40,
+                            dragFree: false,
                         }}
                         className="w-full"
                     >

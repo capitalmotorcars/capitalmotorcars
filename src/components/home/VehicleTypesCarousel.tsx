@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+
 import { ChevronLeft, ChevronRight, ArrowRight, Search } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { cn } from '@/lib/utils';
@@ -46,9 +47,19 @@ export function VehicleTypesCarousel({
   const { ref, isRevealed } = useScrollReveal();
   const [activeFilter, setActiveFilter] = useState<FilterType>('sedan');
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  // slideDir: 0=idle, 1=going next (slide left), -1=going prev (slide right)
+  const [slideDir, setSlideDir] = useState(0);
+  // CSS transitions enabled/disabled (disabled only during the instant snap-back)
+  const [transitionOn, setTransitionOn] = useState(true);
+  // scales for [prev, current, next] slots
+  const [scales, setScales] = useState([0.75, 1, 0.75]);
   const [allVehicles, setAllVehicles] = useState<VehicleType[]>([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+
+  // The CSS transition duration in ms — must match the string below
+  const DURATION = 480;
 
   useEffect(() => {
     async function load() {
@@ -123,14 +134,50 @@ export function VehicleTypesCarousel({
     setCurrentIndex(0);
   }, [activeFilter, allVehicles]);
 
+  // trackTranslateX: each car slot = 60% of container.
+  // To center slot 1: translateX = -(60*1)% + (100-60)/2 % = -40%
+  // Slide to next  (slot 2): -40% - 60% = -100%
+  // Slide to prev  (slot 0): -40% + 60% = +20%
+  const CARD_W = 60;
+  const BASE_X = -((CARD_W) - (100 - CARD_W) / 2); // -40
+  const trackX = slideDir === 0 ? BASE_X : slideDir === 1 ? BASE_X - CARD_W : BASE_X + CARD_W;
+  const ease = 'cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+  const transition = transitionOn ? `transform ${DURATION}ms ${ease}` : 'none';
+
   const nextVehicle = () => {
-    if (filteredVehicles.length === 0) return;
-    setCurrentIndex((prev) => (prev + 1) % filteredVehicles.length);
+    if (isAnimating || filteredVehicles.length === 0) return;
+    setIsAnimating(true);
+    setSlideDir(1);
+    setScales([0.75, 0.75, 1]);   // current shrinks, next grows
+    setTimeout(() => {
+      // Snap: disable transitions, update content + reset position + reset scales, all in one render
+      setTransitionOn(false);
+      setCurrentIndex(prev => (prev + 1) % filteredVehicles.length);
+      setSlideDir(0);
+      setScales([0.75, 1, 0.75]);
+      // Re-enable transitions after 2 frames (browser has painted the snapped state)
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        setTransitionOn(true);
+        setIsAnimating(false);
+      }));
+    }, DURATION + 20);
   };
 
   const prevVehicle = () => {
-    if (filteredVehicles.length === 0) return;
-    setCurrentIndex((prev) => (prev - 1 + filteredVehicles.length) % filteredVehicles.length);
+    if (isAnimating || filteredVehicles.length === 0) return;
+    setIsAnimating(true);
+    setSlideDir(-1);
+    setScales([1, 0.75, 0.75]);   // prev grows, current shrinks
+    setTimeout(() => {
+      setTransitionOn(false);
+      setCurrentIndex(prev => (prev - 1 + filteredVehicles.length) % filteredVehicles.length);
+      setSlideDir(0);
+      setScales([0.75, 1, 0.75]);
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        setTransitionOn(true);
+        setIsAnimating(false);
+      }));
+    }, DURATION + 20);
   };
 
   const prevVehicleData = filteredVehicles.length > 0 ? filteredVehicles[(currentIndex - 1 + filteredVehicles.length) % filteredVehicles.length] : null;
@@ -155,7 +202,7 @@ export function VehicleTypesCarousel({
     <section className="py-16 lg:py-20 ">
       <div id={sectionId} className="relative h-full flex flex-col  ">
         <div
-          className=" absolute  top-0 left-0 right-0 h-[30vh] md:h-[42vh] bg-no-repeat transition-opacity duration-1000 overflow-hidden"
+          className=" absolute  top-0 left-0 right-0 h-[38vh] md:h-[52vh] bg-no-repeat transition-opacity duration-1000 overflow-hidden"
           style={{
             backgroundImage: `url(${currentBackground})`,
             backgroundPosition: 'center bottom ',
@@ -180,7 +227,7 @@ export function VehicleTypesCarousel({
             </div>
           )}
 
-          <div className="relative z-50 mx-auto h-[35vh] md:h-[45vh]  px-0 lg:px-8 pt-6 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-20">
+          <div className="relative z-50 mx-auto h-[38vh] md:h-[52vh]  px-0 lg:px-8 pt-6 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-20">
             <h2 className="text-xl sm:text-3xl  md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white text-center pb-2 md:pb-4">
               {title}
             </h2>
@@ -223,78 +270,115 @@ export function VehicleTypesCarousel({
             </div>
           </div>
 
-          {/* Car Carousel - positioned exactly at transition between background and white */}
-          <div className="absolute top-[30vh] md:top-[42vh] left-0 right-0 -translate-y-1/2 z-30 flex items-center justify-center py-4 sm:py-8 pointer-events-none">
-            {/* Left Arrow */}
-            <button
-              onClick={prevVehicle}
-              type="button"
-              style={{ touchAction: 'manipulation' }}
-              className="absolute left-2 sm:left-4 md:left-8 z-50 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-white/90 dark:bg-white/20 backdrop-blur-sm border-2 border-white/40 flex items-center justify-center text-foreground hover:text-foreground hover:bg-white transition-colors shadow-lg pointer-events-auto"
-              aria-label="Previous vehicle"
-            >
-              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 pointer-events-none" />
-            </button>
+          {/* Car Carousel */}
+          <div className="absolute top-[38vh] md:top-[52vh] left-0 right-0 -translate-y-1/2 z-30 py-4 sm:py-8 overflow-hidden">
 
-            {/* Cars */}
-            <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32 flex items-center justify-center">
-              {/* Previous Car (Left) - hidden on mobile */}
-              {prevVehicleData && (
-                <button
-                  onClick={prevVehicle}
-                  type="button"
-                  style={{ touchAction: 'manipulation' }}
-                  className="hidden sm:block absolute left-[-10%] sm:left-[-20%] w-[30%] md:w-[38%] scale-80 z-20 cursor-pointer pointer-events-auto"
-                  aria-label={`Previous: ${prevVehicleData.name}`}
-                >
+            {/* Sliding track: 3 equal-width slots, CSS-transitioned */}
+            <div
+              style={{
+                display: 'flex',
+                transform: `translateX(${trackX}%)`,
+                transition,
+              }}
+            >
+              {/* Slot 0 — prev car */}
+              <div
+                onClick={prevVehicle}
+                role="button"
+                tabIndex={0}
+                style={{
+                  flex: '0 0 60%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  transform: `scale(${scales[0]})`,
+                  transition,
+                  opacity: scales[0] === 1 ? 1 : 0.7,
+                  cursor: 'pointer',
+                  pointerEvents: 'auto',
+                }}
+                aria-label={prevVehicleData ? `Previous: ${prevVehicleData.name}` : 'Previous'}
+              >
+                {prevVehicleData && (
                   <img
                     src={prevVehicleData.image}
-                    alt={prevVehicleData.name}
+                    alt={`${prevVehicleData.name} Lease Deal in New Jersey & New York - Capital Motor Cars`}
+                    title={`${prevVehicleData.name} Lease Deal in New Jersey & New York - Capital Motor Cars`}
                     className="w-full h-auto object-contain"
                   />
-                </button>
-              )}
+                )}
+              </div>
 
-              {/* Current Car (Center) */}
-              {currentVehicle && (
-                <div className="relative z-30 w-[85%] sm:w-[60%] md:w-[80%] pointer-events-none">
+              {/* Slot 1 — current car */}
+              <div
+                style={{
+                  flex: '0 0 60%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  transform: `scale(${scales[1]})`,
+                  transition,
+                  pointerEvents: 'none',
+                }}
+              >
+                {currentVehicle && (
                   <img
                     src={currentVehicle.image || (currentVehicle as any).image_url}
-                    alt={currentVehicle.name}
-                    className="w-full h-auto object-contain drop-shadow-2xl pointer-events-none"
+                    alt={`${currentVehicle.name} Lease Deal in New Jersey & New York - Capital Motor Cars`}
+                    title={`${currentVehicle.name} Lease Deal in New Jersey & New York - Capital Motor Cars`}
+                    className="w-full h-auto object-contain drop-shadow-2xl"
                   />
-                </div>
-              )}
+                )}
+              </div>
 
-              {/* Next Car (Right) - hidden on mobile */}
-              {nextVehicleData && (
-                <button
-                  onClick={nextVehicle}
-                  type="button"
-                  style={{ touchAction: 'manipulation' }}
-                  className="hidden sm:block absolute right-[-10%] sm:right-[-20%] w-[30%] sm:w-[38%] scale-80 z-20 cursor-pointer pointer-events-auto"
-                  aria-label={`Next: ${nextVehicleData.name}`}
-                >
+              {/* Slot 2 — next car */}
+              <div
+                onClick={nextVehicle}
+                role="button"
+                tabIndex={0}
+                style={{
+                  flex: '0 0 60%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  transform: `scale(${scales[2]})`,
+                  transition,
+                  opacity: scales[2] === 1 ? 1 : 0.7,
+                  cursor: 'pointer',
+                  pointerEvents: 'auto',
+                }}
+                aria-label={nextVehicleData ? `Next: ${nextVehicleData.name}` : 'Next'}
+              >
+                {nextVehicleData && (
                   <img
                     src={nextVehicleData.image}
-                    alt={nextVehicleData.name}
+                    alt={`${nextVehicleData.name} Lease Deal in New Jersey & New York - Capital Motor Cars`}
+                    title={`${nextVehicleData.name} Lease Deal in New Jersey & New York - Capital Motor Cars`}
                     className="w-full h-auto object-contain"
                   />
-                </button>
-              )}
+                )}
+              </div>
             </div>
-
-            {/* Right Arrow */}
-            <button
-              onClick={nextVehicle}
-              type="button"
-              style={{ touchAction: 'manipulation' }}
-              className="absolute right-2 sm:right-4 md:right-8 z-50 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-white/90 dark:bg-white/20 backdrop-blur-sm border-2 border-white/40 flex items-center justify-center text-foreground hover:text-foreground hover:bg-white transition-colors shadow-lg pointer-events-auto"
-              aria-label="Next vehicle"
-            >
-              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 pointer-events-none" />
-            </button>
           </div>
+
+          {/* Arrows — outside overflow-hidden, highest z-index so full circle is clickable */}
+          <button
+            onClick={prevVehicle}
+            type="button"
+            style={{ touchAction: 'manipulation', pointerEvents: 'auto', zIndex: 9999 }}
+            className="absolute left-2 sm:left-4 md:left-8 top-[38vh] md:top-[52vh] -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-white/90 dark:bg-white/20 backdrop-blur-sm border-2 border-white/40 flex items-center justify-center text-foreground hover:bg-white transition-colors shadow-lg cursor-pointer"
+            aria-label="Previous vehicle"
+          >
+            <span className="absolute inset-0 rounded-full" aria-hidden="true" />
+            <ChevronLeft className="relative w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 pointer-events-none" />
+          </button>
+          <button
+            onClick={nextVehicle}
+            type="button"
+            style={{ touchAction: 'manipulation', pointerEvents: 'auto', zIndex: 9999 }}
+            className="absolute right-2 sm:right-4 md:right-8 top-[38vh] md:top-[52vh] -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-white/90 dark:bg-white/20 backdrop-blur-sm border-2 border-white/40 flex items-center justify-center text-foreground hover:bg-white transition-colors shadow-lg cursor-pointer"
+            aria-label="Next vehicle"
+          >
+            <span className="absolute inset-0 rounded-full" aria-hidden="true" />
+            <ChevronRight className="relative w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 pointer-events-none" />
+          </button>
 
           {/* Car Details - positioned below vehicles */}
           {currentVehicle && specs && (

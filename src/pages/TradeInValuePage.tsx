@@ -4,6 +4,7 @@ import { JsonLd } from '@/components/JsonLd';
 import { TradeInValueForm } from '@/components/forms/TradeInValueForm';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { cn } from '@/lib/utils';
+import { renderSEOHeading } from '@/utils/seoUtils';
 import { motion } from 'framer-motion';
 import tradeInBg from '@/assets/trade-in.avif';
 
@@ -19,9 +20,9 @@ export default function TradeInValuePage() {
   return (
     <Layout>
       <SEO
-        title="Trade-In Value Request | Get Your Offer | Capital Motor Cars NJ"
-        description="Submit your vehicle details for a fair trade-in valuation. VIN, photos, and condition info. Get an offer from Capital Motor Cars in New Jersey."
-        seoKeywords={['trade in value', 'vehicle appraisal NJ', 'car trade in', 'Capital Motor Cars']}
+        title="Trade-In Value & Lease Upgrades in New York & New Jersey | Capital Motor Cars"
+        description="Looking to trade-in your car? Get max value for your current vehicle and upgrade to a new lease with Zero Down in NJ. Get a Quote!"
+        seoKeywords={['trade in value', 'vehicle appraisal NJ', 'car trade in', 'Capital Motor Cars', 'Best Zero Down Lease Deals', 'Affordable NJ Car Leasing', 'Springfield NJ Auto Broker', 'Doorstep Car Delivery NYC', 'Brooklyn Car Lease Specials', 'White-Glove Leasing Service']}
         ogImage="/src/assets/trade-in.avif"
         canonicalPath="/trade-in-value"
       />
@@ -65,20 +66,20 @@ export default function TradeInValuePage() {
 
           {/* Content */}
           <div ref={ref} className={cn('relative z-10 flex-1 flex flex-col', 'scroll-reveal', isRevealed && 'revealed')}>
-            <div className="relative z-50 mx-auto h-[30vh] md:h-[45vh] px-4 lg:px-8 flex flex-col items-center justify-center text-center">
+            <div className="relative z-50 mx-auto min-h-[30vh] md:min-h-[45vh] pt-24 md:pt-32 pb-8 px-4 lg:px-8 flex flex-col items-center justify-center text-center">
               <motion.h2
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.1 }}
-                className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white pb-2 md:pb-4 xl:pb-6"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white pb-2 md:pb-4 xl:pb-6 tracking-tight text-center"
               >
-                Trade-In Value Request
+                {renderSEOHeading("Trade-In Value & Lease Upgrades in New York & New Jersey | Capital Motor Cars")}
               </motion.h2>
               <motion.p
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.2 }}
                 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/80 max-w-3xl xl:max-w-5xl mx-auto"
               >
-                Submit your vehicle details and photos. We'll send you a competitive offer.
+                Looking to trade-in your car? Get max value for your current vehicle and upgrade to a new lease with Zero Down in NJ. Get a Quote!
               </motion.p>
             </div>
 
