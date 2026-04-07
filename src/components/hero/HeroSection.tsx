@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { useHeroAnimation } from '@/hooks/useHeroAnimation';
 import { ArrowRight, ChevronDown, Sparkles, SearchCheckIcon } from 'lucide-react';
+import { renderSEOHeading } from '@/utils/seoUtils';
 import { Marquee } from '@/components/ui/Marquee';
 import { brands, BrandCard } from '@/components/home/BrandsCarousel';
 
@@ -33,17 +34,17 @@ export function HeroSection() {
         <div className="w-full max-w-7xl xl:max-w-[90rem] mx-auto flex flex-col items-center gap-10 md:gap-12 xl:gap-10 pt-0 md:pt-14" style={{ position: 'relative', transform: 'translate3d(0, 0, 0)', willChange: 'auto' }}>
           <div className="flex flex-col items-center text-center gap-2 md:gap-6 xl:gap-8 w-full max-w-4xl xl:max-w-6xl ">
             <h1
-              className={` text-4xl  md:text-7xl xl:text-8xl font-extrabold leading-tight tracking-tight hero-animate text-section ${animate}`}
+              className={` text-3xl md:text-6xl xl:text-7xl font-extrabold leading-tight tracking-tight hero-animate text-section ${animate}`}
             >
-              <span className="text-gradient-heading-dark">Find Your Perfect Vehicle With Zero Hassle</span>
+              <span className="text-gradient-heading-dark">{renderSEOHeading("New York & New Jersey's Trusted Auto Broker | Best Car Lease Deals, Zero Down & Free Delivery")}</span>
             </h1>
 
 
 
             <div className="flex flex-col items-center gap-3 xl:gap-5 w-full sm:w-auto ">
-              <p className={`text-base font-semibold sm:text-base md:text-lg lg:text-2xl xl:text-3xl  w-full max-w-[750px] xl:max-w-[900px] leading-relaxed text-white dark:text-white/90 hero-animate delay-1 ${animate}`}>
-                Your trusted automotive partner in New Jersey and New York. We handle leasing, financing, and more so you can enjoy the ride.
-              </p>
+              <h2 className={`text-sm font-semibold sm:text-sm md:text-base lg:text-lg xl:text-xl w-full max-w-[620px] xl:max-w-[750px] leading-snug text-white dark:text-white/90 hero-animate delay-1 ${animate}`}>
+                Experience stress-free car leasing with Capital Motor Cars. We negotiate the best deals, handle financing, and provide expert automotive services in New Jersey.
+              </h2>
               <div className={`flex flex-row items-center gap-3 xl:gap-4 w-full sm:w-auto hero-animate delay-2 ${animate}`}>
                 <MagneticButton strength={0.45} className="w-full sm:w-auto min-w-0">
                   <Button

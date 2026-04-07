@@ -7,6 +7,7 @@ import { servicesPageLinks } from '@/components/ui/RelatedLinks';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { renderSEOHeading } from '@/utils/seoUtils';
 import {
   Car,
   CreditCard,
@@ -149,9 +150,9 @@ export default function ServicesPage() {
   return (
     <Layout>
       <SEO
-        title="Automotive Services NJ | Car Leasing & Maintenance | Capital Motor Cars"
-        description="Comprehensive automotive services in NJ. From expert car leasing and financing to professional detailing, wheel repair, and end-of-lease protection."
-        seoKeywords={['automotive services NJ', 'car leasing Springfield', 'auto financing NJ', 'car detailing NJ', 'wheel repair Springfield', 'lease return protection']}
+        title="Auto Leasing Services in New Jersey & New York | Capital Motor Cars"
+        description="Explore our complete auto leasing services tailored for NJ and NY drivers. Enjoy stress-free financing and Zero Down options. Call Now!"
+        seoKeywords={['automotive services NJ', 'car leasing Springfield', 'auto financing NJ', 'car detailing NJ', 'wheel repair Springfield', 'lease return protection', 'Best Zero Down Lease Deals', 'Affordable NJ Car Leasing', 'Springfield NJ Auto Broker', 'Doorstep Car Delivery NYC', 'Brooklyn Car Lease Specials', 'White-Glove Leasing Service']}
         ogImage="/src/assets/hero-bg.jpg"
         canonicalPath="/services"
       />
@@ -195,20 +196,20 @@ export default function ServicesPage() {
           {/* Content */}
           <div ref={ref} className={cn('relative z-10 flex-1 flex flex-col  dark:bg-white/[0.02]', 'scroll-reveal', isRevealed && 'revealed')}>
             {/* Title and Filters - vh on mobile for stable height (no zoom on scroll) */}
-            <div className="relative z-50 mx-auto min-h-[30vh] md:min-h-[45dvh] py-8 md:py-12 px-4 lg:px-8 flex flex-col items-center justify-center">
+            <div className="relative z-50 mx-auto min-h-[30vh] md:min-h-[45dvh] pt-24 md:pt-32 pb-8 px-4 lg:px-8 flex flex-col items-center justify-center">
               <motion.h2
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.1 }}
-                className="text-xl  md:text-7xl  font-bold text-white text-center pb-2 md:pb-4 xl:pb-6"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center pb-2 md:pb-4 xl:pb-6 tracking-tight"
               >
-                Dealer Free Automotive Services: Leasing, Financing & More
+                {renderSEOHeading("Auto Leasing Services in New Jersey & New York | Capital Motor Cars")}
               </motion.h2>
               <motion.p
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.2 }}
                 className="text-xs  md:text-lg lg:text-xl xl:text-2xl text-white/80 text-center max-w-3xl xl:max-w-5xl mx-auto pb-2 md:pb-6 xl:pb-8"
               >
-                Practical automotive solutions for customers who want things done right and without unnecessary hassle.
+                Explore our complete auto leasing services tailored for NJ and NY drivers. Enjoy stress-free financing and Zero Down options. Call Now!
               </motion.p>
 
               {/* Filter Navigation */}

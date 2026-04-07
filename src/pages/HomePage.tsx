@@ -21,9 +21,9 @@ export default function HomePage() {
   return (
     <Layout>
       <SEO
-        title="Capital Motor Cars | Simple Car Leasing & Automotive Services"
+        title="Car Lease Deals in New Jersey & New York | Zero Down, Fast Approval & Free Delivery"
         description="Experience stress-free car leasing with Capital Motor Cars. We negotiate the best deals, handle financing, and provide expert automotive services in New Jersey."
-        seoKeywords={['car leasing NJ', 'auto leasing services', 'car lease deals NJ', 'Capital Motor Cars', 'automotive services Springfield NJ']}
+        seoKeywords={['car leasing NJ', 'auto leasing services', 'car lease deals NJ', 'Capital Motor Cars', 'automotive services Springfield NJ', 'Best Zero Down Lease Deals', 'Affordable NJ Car Leasing', 'Springfield NJ Auto Broker', 'Doorstep Car Delivery NYC', 'Brooklyn Car Lease Specials', 'White-Glove Leasing Service']}
         ogImage="/src/assets/hero-bg.jpg"
         canonicalPath="/"
       />
@@ -41,7 +41,7 @@ export default function HomePage() {
       <VehicleTypesCarousel title="Discover The Car Of Your Dreams"
       />
 
-     
+
 
       <SectionDividerCreative variant="dot" />
       <PeopleSection homePageOnly={true} padding="px-4 sm:px-6 lg:px-8 py-10 md:py-16" />

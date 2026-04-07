@@ -31,36 +31,36 @@ const repairSteps = [
   {
     icon: Search,
     title: "Assess",
-    description: "We review your vehicle for potential lease-end charges before the bank does."
+    description: "We give you clear answers: a full review of your vehicle for New York & New Jersey lease-end charges before the bank ever inspects it."
   },
   {
     icon: Wrench,
     title: "Repair",
-    description: "Our trusted network fixes dents, scratches, and wheel damage at fair prices."
+    description: "Our trusted New York & New Jersey network fixes dents, scratches, and wheel damage at fair, published prices — no surprises."
   },
   {
     icon: FileCheck,
     title: "Verify",
-    description: "We ensure all repairs meet the bank's return standards."
+    description: "We confirm all repairs meet each bank\'s return standards so you get clear answers before handing over the keys."
   },
   {
     icon: Key,
     title: "Return",
-    description: "Hand over your keys with confidence, knowing you won't get a bill later."
+    description: "Return your vehicle in New York or New Jersey with complete confidence and zero unexpected bills."
   }
 ];
 
 const idealFor = [
-  "Drivers with visible bumper scuffs or dents",
-  "Lease returns with 'curb rashed' wheels",
-  "Anyone worried about strict dealer inspections",
-  "High mileage drivers looking to minimize fees"
+  "New York & New Jersey drivers with visible bumper scuffs or dents",
+  "New York and New Jersey lease returns with 'curb rashed' wheels",
+  "Anyone in New York & New Jersey worried about strict dealer inspections",
+  "High mileage New York & New Jersey drivers looking to minimize fees"
 ];
 
 const faqs = [
-  { question: "What counts as 'excess' wear and tear?", answer: "Banks typically charge for scratches over a certain size (often a credit card size), tires with low tread, windshield cracks, and stains. We know each lender's specific scorecard." },
-  { question: "Is it cheaper to fix it myself?", answer: "Almost always. Dealerships charge premium rates for repairs upon return. Our network offers competitive pricing to get the job done for less than the penalty fee." },
-  { question: "Do you handle wheel repair?", answer: "Yes. Wheel 'curb rash' is one of the most common lease penalties. We can often restore wheels to like-new condition for a fraction of the replacement cost." },
+  { question: "What counts as 'excess' wear and tear in New York & New Jersey?", answer: "Banks in New York and New Jersey typically charge for scratches over a credit-card size, tires with low tread, windshield cracks, and stains. We give you clear answers by knowing each lender's specific scorecard before you return." },
+  { question: "Is it cheaper to fix it myself before turning in New York or New Jersey?", answer: "Almost always. Dealerships in New York & New Jersey charge premium rates at return. Our local network offers competitive, transparent pricing so you know every cost upfront — no surprises." },
+  { question: "Do you handle wheel repair across New York and New Jersey?", answer: "Yes. Wheel curb rash is one of the most common lease penalties in New York & New Jersey. We can restore wheels to like-new condition for a fraction of the replacement cost and give you a clear price before we start." },
 ];
 
 export default function WearAndTearPage() {
@@ -68,9 +68,9 @@ export default function WearAndTearPage() {
   return (
     <Layout>
       <SEO
-        title="Lease Return Repair NJ | Wear & Tear Protection | Capital Motor Cars"
-        description="Avoid expensive lease return fees. Capital Motor Cars coordinates expert wear and tear repairs before you turn in your vehicle in New Jersey."
-        seoKeywords={['lease return repair NJ', 'car wear and tear fix', 'end of lease inspection NJ', 'Capital Motor Cars repairs']}
+        title="Lease Protection New York & New Jersey | Wear & Tear Repair | Capital Motor Cars"
+        description="Returning a lease in New York or New Jersey? Get clear answers on wear and tear charges. Capital Motor Cars handles pre-inspection and affordable repairs across New York & New Jersey before you turn in."
+        seoKeywords={['lease return repair NJ', 'New York wear and tear lease', 'end of lease inspection NJ', 'transparent lease protection', 'Springfield NJ car leasing']}
         ogImage="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1200&q=60"
         canonicalPath="/services/wear-and-tear"
       />
@@ -82,12 +82,12 @@ export default function WearAndTearPage() {
 
       {/* Custom Hero Section (Services Style) */}
       <ServiceHero
-        badge="Reduce Penalties"
-        title="Lease"
-        highlightedTitle="Protection"
-        subtitle="Expert repairs before you return your lease. Save money and avoid surprise bills."
+        badge="New York & New Jersey Lease Protection"
+        title="Lease Protection in New York & New Jersey"
+        highlightedTitle=""
+        subtitle="Get clear answers on wear and tear charges before the bank does. Affordable, transparent repairs across New York & New Jersey so you return with confidence."
         heroImage="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1200&q=60"
-        primaryAction={{ label: "Get Protected", href: "/contact" }}
+        primaryAction={{ label: "Start New York & New Jersey Car Lease Protection", href: "/contact" }}
         secondaryAction={{ label: "Call Us", href: "tel:201-555-0123", icon: Phone }}
       />
 
@@ -123,15 +123,15 @@ export default function WearAndTearPage() {
                     <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                       <Wrench className="w-6 h-6" />
                     </div>
-                    <span className="text-lg font-black text-black dark:text-white tracking-tight leading-tight">Expert Repair</span>
-                    <p className="text-sm text-muted-foreground">Certified technicians who know exactly what lease inspectors look for.</p>
+                    <span className="text-lg font-black text-black dark:text-white tracking-tight leading-tight">Expert New York & New Jersey Repair</span>
+                    <p className="text-sm text-muted-foreground">Certified technicians who know exactly what New York and New Jersey lease inspectors look for — clear answers before and after every repair.</p>
                   </div>
                   <div className="flex flex-col gap-4 group">
                     <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                       <Search className="w-6 h-6" />
                     </div>
-                    <span className="text-lg font-black text-black dark:text-white tracking-tight leading-tight">Pre-Inspection</span>
-                    <p className="text-sm text-muted-foreground">We identify issues early so you aren't surprised by a bill later.</p>
+                    <span className="text-lg font-black text-black dark:text-white tracking-tight leading-tight">Transparent Pre-Inspection</span>
+                    <p className="text-sm text-muted-foreground">We identify issues early across New York & New Jersey so you're never hit with an unexpected bill at turn-in.</p>
                   </div>
                 </div>
 
@@ -171,10 +171,10 @@ export default function WearAndTearPage() {
 
               <ul className="space-y-6">
                 {[
-                  "Honest damage assessment",
-                  "Cost effective repair options",
-                  "Coordination with body shops",
-                  "Stress free return prep"
+                  "Clear, upfront damage assessment for New York & New Jersey",
+                  "Transparent, cost-effective repair options",
+                  "Direct coordination with local New York & New Jersey body shops",
+                  "Stress-free return prep — clear answers guaranteed"
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-4 group">
                     <div className="shrink-0 w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center mt-1">
@@ -309,13 +309,13 @@ export default function WearAndTearPage() {
       <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex flex-col mb-8 justify-start items-start md:items-center">
-            <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-2">Get Started</span>
+            <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-2">Get Protected — New York & New Jersey</span>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-black dark:text-white uppercase">
-              Start Your <span className="text-accent italic">Repair</span>
+              Start Your <span className="text-accent italic">Protection</span>
             </h2>
             <div className="mt-10 w-full">
               <p className="text-muted-foreground mb-4 text-lg max-w-lg mx-auto">
-                Don't overpay at the dealership. Let us fix it first.
+                New York and New Jersey drivers — get clear answers on your lease return. Don't overpay at the dealership.
               </p>
             </div>
             <div className="w-full max-w-2xl mx-auto">

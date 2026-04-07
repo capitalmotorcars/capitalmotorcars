@@ -5,6 +5,7 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { renderSEOHeading } from '@/utils/seoUtils';
 import { ArrowRight, X } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { motion } from 'framer-motion';
@@ -110,9 +111,9 @@ export default function BrandsPage() {
   return (
     <Layout >
       <SEO
-        title="Car Brands We Lease | Luxury & Popular Models | Capital Motor Cars"
-        description="Explore the wide range of car brands we lease in New Jersey, including BMW, Mercedes-Benz, Audi, Lexus, Toyota, and Ford. Get the best lease deals on any make or model."
-        seoKeywords={['car brands', 'BMW lease NJ', 'Mercedes lease deals', 'Audi leasing', 'Lexus lease NJ', 'Toyota lease deals', 'popular car brands']}
+        title="All Car Brand Lease Deals in New Jersey & New York | Capital Motor Cars"
+        description="Browse top car brand lease deals across New Jersey and New York. Search luxury and economy options with Zero Down. Get a Quote!"
+        seoKeywords={['car brands', 'BMW lease NJ', 'Mercedes lease deals', 'Audi leasing', 'Lexus lease NJ', 'Toyota lease deals', 'popular car brands', 'Best Zero Down Lease Deals', 'Affordable NJ Car Leasing', 'Springfield NJ Auto Broker', 'Doorstep Car Delivery NYC', 'Brooklyn Car Lease Specials', 'White-Glove Leasing Service']}
         ogImage="/src/assets/hero-bg.jpg"
         canonicalPath="/brands"
       />
@@ -158,20 +159,20 @@ export default function BrandsPage() {
             className={cn('relative z-10 flex-1 flex flex-col dark:bg-white/[0.02]', 'scroll-reveal', isRevealed && 'revealed')}
           >
             {/* Title and Filters */}
-            <div className="relative z-50 mx-auto h-[30vh] md:h-[45vh] px-4 lg:px-8 flex flex-col items-center justify-center">
+            <div className="relative z-50 mx-auto min-h-[30vh] md:min-h-[45vh] pt-24 md:pt-32 pb-8 px-4 lg:px-8 flex flex-col items-center justify-center">
               <motion.h2
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.1 }}
-                className="text-2xl  md:text-7xl  font-bold text-white text-center pb-2 md:pb-4 xl:pb-6"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center pb-2 md:pb-4 xl:pb-6 tracking-tight"
               >
-                Brands We Work With
+                {renderSEOHeading("All Car Brand Lease Deals in New Jersey & New York | Capital Motor Cars")}
               </motion.h2>
               <motion.p
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.2 }}
                 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/80 text-center max-w-3xl xl:max-w-5xl mx-auto pb-4 md:pb-6 xl:pb-8"
               >
-                We work with a wide range of automotive brands and dealerships across New Jersey and beyond.
+                Browse top car brand lease deals across New Jersey and New York. Search luxury and economy options with Zero Down. Get a Quote!
               </motion.p>
 
               {/* Stats */}
