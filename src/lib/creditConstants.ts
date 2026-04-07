@@ -60,6 +60,7 @@ export const HOUSING_OPTIONS: { value: string; label: string }[] = [
   { value: 'live_with_relatives', label: 'Live with Relatives' },
 ];
 
+
 /** Consultant options for Step 5 (Required). */
 export const CONSULTANT_OPTIONS: { value: string; label: string }[] = [
   { value: '', label: 'Select consultant' },
