@@ -13,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Loader2, Building, User, Landmark, Upload, Shield, ChevronLeft, ChevronRight, CheckCircle2, X, FileText, Lock, Calendar, Phone, DollarSign, MapPin } from 'lucide-react';
+import { Loader2, Building, User, Landmark, Upload, Shield, ChevronLeft, ChevronRight, CheckCircle2, X, FileText, Lock, Calendar, Phone, DollarSign, MapPin, Briefcase } from 'lucide-react';
 import { FormSuccessMessage } from './FormSuccessMessage';
 import { AddressAutocomplete } from './AddressAutocomplete';
 import { getSubmitErrorMessage, getSubmitErrorFromException } from './getSubmitErrorMessage';
@@ -68,7 +68,52 @@ const businessSchema = z.object({
   grossAnnualIncome: z.string().min(1, 'Gross annual income is required').max(50),
   yearOfEstablishment: z.string().min(4, 'Year of establishment is required').max(10),
 
+  guarantorName: z.string().min(1, 'Name is required').max(100),
+  guarantorSsn: z.string().min(9, 'SSN must be exactly 9 digits').max(20).refine((val) => {
+    const digitsOnly = val.replace(/\D/g, '');
+    if (digitsOnly.length !== 9) return false;
+    if (/^(\d)\1+$/.test(digitsOnly)) return false;
+    const testPatterns = [
+      '123456789', '987654321', '123123123',
+      '111111111', '222222222', '333333333', '444444444',
+      '555555555', '666666666', '777777777', '888888888', '999999999'
+    ];
+    return !testPatterns.includes(digitsOnly);
+  }, 'Please enter a valid 9-digit Social Security Number'),
+  guarantorDob: z.string().min(1, 'Date of birth is required').max(20),
+  guarantorEmail: z.string().email('Valid email is required').max(255),
+  guarantorPhone: z.string().trim().refine((value) => {
+    if (!value) return false;
+    let phoneNumber = parsePhoneNumberFromString(value, 'US');
+    if (!phoneNumber?.isValid()) {
+      phoneNumber = parsePhoneNumberFromString(value);
+    }
+    return phoneNumber?.isValid() ?? false;
+  }, 'Please enter a valid phone number'),
+  guarantorStreet: z.string().min(1, 'Street is required').max(200),
+  guarantorCity: z.string().min(1, 'City is required').max(100),
+  guarantorState: z.string().min(1, 'State is required'),
+  guarantorZip: z.string().min(5, 'ZIP is required').max(20),
+  guarantorYearsAtResidence: z.string().min(1, 'Years at residence is required').max(10),
+  guarantorMonthlyPayment: z.string().min(1, 'Monthly payment is required').max(20),
   guarantorOwnOrRent: z.enum(['Own', 'Rent'], { required_error: 'Please select Own or Rent' }),
+
+  guarantorEmployer: z.string().min(1, 'Employer is required').max(100),
+  guarantorPosition: z.string().min(1, 'Position is required').max(100),
+  guarantorEmployerStreet: z.string().min(1, 'Street is required').max(200),
+  guarantorEmployerCity: z.string().min(1, 'City is required').max(100),
+  guarantorEmployerState: z.string().min(1, 'State is required'),
+  guarantorEmployerZip: z.string().min(5, 'ZIP is required').max(20),
+  guarantorEmployerPhone: z.string().trim().refine((value) => {
+    if (!value) return false;
+    let phoneNumber = parsePhoneNumberFromString(value, 'US');
+    if (!phoneNumber?.isValid()) {
+      phoneNumber = parsePhoneNumberFromString(value);
+    }
+    return phoneNumber?.isValid() ?? false;
+  }, 'Please enter a valid phone number'),
+  guarantorYearsAtEmployment: z.string().min(1, 'Length of employment is required').max(10),
+  guarantorGrossAnnualIncome: z.string().min(1, 'Gross annual income is required').max(50),
 
   bankName: z.string().min(1, 'Bank name is required').max(100),
   bankPhone: z.string().trim().refine((value) => {
@@ -92,9 +137,10 @@ type BusinessFormData = z.infer<typeof businessSchema>;
 const STEPS = [
   { id: 1, label: 'Business Info', icon: Building },
   { id: 2, label: 'Guarantor', icon: User },
-  { id: 3, label: 'Bank Info', icon: Landmark },
-  { id: 4, label: 'Uploads', icon: Upload },
-  { id: 5, label: 'Legal', icon: Shield },
+  { id: 3, label: 'Employment', icon: Briefcase },
+  { id: 4, label: 'Bank Info', icon: Landmark },
+  { id: 5, label: 'Uploads', icon: Upload },
+  { id: 6, label: 'Legal', icon: Shield },
 ] as const;
 
 function fileToBase64(file: File): Promise<string> {
@@ -153,7 +199,7 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
   }, [currentStep]);
 
   useEffect(() => {
-    if (currentStep === 5) {
+    if (currentStep === 6) {
       setValue('signatureDate', new Date().toISOString().slice(0, 10));
     }
   }, [currentStep, setValue]);
@@ -188,7 +234,21 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
           BusinessPhone: data.businessPhone,
           GrossAnnualIncome: data.grossAnnualIncome,
           YearOfEstablishment: data.yearOfEstablishment,
+          PersonalGuarantorName: data.guarantorName,
+          PersonalGuarantorSSN: data.guarantorSsn,
+          PersonalGuarantorDOB: data.guarantorDob,
+          PersonalGuarantorEmail: data.guarantorEmail,
+          PersonalGuarantorPhone: data.guarantorPhone,
+          PersonalGuarantorAddress: `${data.guarantorStreet}, ${data.guarantorCity}, ${data.guarantorState} ${data.guarantorZip}`,
+          PersonalGuarantorYearsAtResidence: data.guarantorYearsAtResidence,
+          PersonalGuarantorMonthlyPayment: data.guarantorMonthlyPayment,
           PersonalGuarantorOwnOrRent: data.guarantorOwnOrRent,
+          PersonalGuarantorEmployer: data.guarantorEmployer,
+          PersonalGuarantorPosition: data.guarantorPosition,
+          PersonalGuarantorEmployerAddress: `${data.guarantorEmployerStreet}, ${data.guarantorEmployerCity}, ${data.guarantorEmployerState} ${data.guarantorEmployerZip}`,
+          PersonalGuarantorEmployerPhone: data.guarantorEmployerPhone,
+          PersonalGuarantorYearsAtEmployment: data.guarantorYearsAtEmployment,
+          PersonalGuarantorGrossAnnualIncome: data.guarantorGrossAnnualIncome,
           BankName: data.bankName,
           BankPhone: data.bankPhone,
           BankBranchAddress: data.branchAddress,
@@ -236,10 +296,12 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
     if (currentStep === 1) {
       fieldsToValidate = ['businessName', 'taxIdNumber', 'businessType', 'businessStreet', 'businessCity', 'businessState', 'businessZip', 'emailAddress', 'businessPhone', 'grossAnnualIncome', 'yearOfEstablishment'];
     } else if (currentStep === 2) {
-      fieldsToValidate = ['guarantorOwnOrRent'];
+      fieldsToValidate = ['guarantorName', 'guarantorSsn', 'guarantorDob', 'guarantorEmail', 'guarantorPhone', 'guarantorStreet', 'guarantorCity', 'guarantorState', 'guarantorZip', 'guarantorYearsAtResidence', 'guarantorMonthlyPayment', 'guarantorOwnOrRent'];
     } else if (currentStep === 3) {
+      fieldsToValidate = ['guarantorEmployer', 'guarantorPosition', 'guarantorEmployerStreet', 'guarantorEmployerCity', 'guarantorEmployerState', 'guarantorEmployerZip', 'guarantorEmployerPhone', 'guarantorYearsAtEmployment', 'guarantorGrossAnnualIncome'];
+    } else if (currentStep === 4) {
       fieldsToValidate = ['bankName', 'bankPhone', 'branchAddress'];
-    } else if (currentStep === 5) {
+    } else if (currentStep === 6) {
       fieldsToValidate = ['consultant', 'legalAgree', 'signature'];
     }
     
@@ -256,7 +318,7 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
       return;
     }
     
-    if (ok && currentStep < 5) {
+    if (ok && currentStep < 6) {
       setDirection('forward');
       setCurrentStep((s) => s + 1);
     }
@@ -275,10 +337,12 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
       if (currentStep === 1) {
         fieldsToValidate = ['businessName', 'taxIdNumber', 'businessType', 'businessStreet', 'businessCity', 'businessState', 'businessZip', 'emailAddress', 'businessPhone', 'grossAnnualIncome', 'yearOfEstablishment'];
       } else if (currentStep === 2) {
-        fieldsToValidate = ['guarantorOwnOrRent'];
+        fieldsToValidate = ['guarantorName', 'guarantorSsn', 'guarantorDob', 'guarantorEmail', 'guarantorPhone', 'guarantorStreet', 'guarantorCity', 'guarantorState', 'guarantorZip', 'guarantorYearsAtResidence', 'guarantorMonthlyPayment', 'guarantorOwnOrRent'];
       } else if (currentStep === 3) {
+        fieldsToValidate = ['guarantorEmployer', 'guarantorPosition', 'guarantorEmployerStreet', 'guarantorEmployerCity', 'guarantorEmployerState', 'guarantorEmployerZip', 'guarantorEmployerPhone', 'guarantorYearsAtEmployment', 'guarantorGrossAnnualIncome'];
+      } else if (currentStep === 4) {
         fieldsToValidate = ['bankName', 'bankPhone', 'branchAddress'];
-      } else if (currentStep === 5) {
+      } else if (currentStep === 6) {
         fieldsToValidate = ['consultant', 'legalAgree', 'signature'];
       }
       
@@ -697,7 +761,7 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
           </motion.div>
         )}
 
-        {/* Step 2: Guarantor */}
+        {/* Step 2: Guarantor Information */}
         {currentStep === 2 && (
           <motion.div
             key="step-2"
@@ -709,13 +773,147 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
             className="space-y-6"
           >
             <div>
-              <h3 className="text-lg font-semibold text-foreground dark:text-white mb-2 flex items-center gap-2">
-                <User className="w-5 h-5 text-accent" />
+              <h3 className="text-xl font-bold text-foreground dark:text-white mb-1 flex items-center gap-2">
+                <User className="w-5 h-5 text-blue-500" />
                 Personal Guarantor Information
               </h3>
               <p className="text-sm text-muted-foreground dark:text-white/70">Information regarding the guarantor</p>
             </div>
-            <div className="grid md:grid-cols-2 gap-5">
+            <div className="grid md:grid-cols-2 gap-5 mt-4">
+              <div className="space-y-1.5 md:col-span-2">
+                <Label htmlFor="guarantorName" className="text-sm font-medium flex items-center gap-1.5">
+                  Name <span className="text-destructive">*</span>
+                  {isFieldValid('guarantorName') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+                </Label>
+                <div className="relative">
+                  <Input
+                    id="guarantorName"
+                    {...register('guarantorName', {
+                      onChange: () => trigger('guarantorName'),
+                      onBlur: () => trigger('guarantorName'),
+                    })}
+                    placeholder="Omri Negbi"
+                    className={cn(errors.guarantorName ? 'border-destructive pr-10' : isFieldValid('guarantorName') ? 'border-green-500 pr-10' : '')}
+                  />
+                  {isFieldValid('guarantorName') && !errors.guarantorName && <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />}
+                </div>
+                {errors.guarantorName && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.guarantorName.message}</p>}
+              </div>
+
+              <div className="col-span-1 md:col-span-2 grid md:grid-cols-4 gap-5">
+                <div className="space-y-1.5 col-span-1 md:col-span-2">
+                  <Label htmlFor="guarantorStreet" className="text-sm font-medium flex items-center gap-1.5">
+                    Street Address <span className="text-destructive">*</span>
+                    {isFieldValid('guarantorStreet') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+                  </Label>
+                  <div className="relative">
+                    <AddressAutocomplete
+                      id="guarantorStreet"
+                      {...register('guarantorStreet', {
+                        onChange: () => trigger('guarantorStreet'),
+                        onBlur: () => trigger('guarantorStreet'),
+                      })}
+                      value={watch('guarantorStreet') || ''}
+                      onAddressSelect={(address) => {
+                        setValue('guarantorStreet', address.street, { shouldValidate: true, shouldDirty: true });
+                        setValue('guarantorCity', address.city, { shouldValidate: true, shouldDirty: true });
+                        setValue('guarantorState', address.state, { shouldValidate: true, shouldDirty: true });
+                        setValue('guarantorZip', address.zip, { shouldValidate: true, shouldDirty: true });
+                      }}
+                      placeholder="20315 NE 19TH CT"
+                      className={cn(errors.guarantorStreet ? 'border-destructive pr-10' : isFieldValid('guarantorStreet') ? 'border-green-500 pr-10' : '')}
+                    />
+                    {isFieldValid('guarantorStreet') && !errors.guarantorStreet && <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />}
+                  </div>
+                  {errors.guarantorStreet && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.guarantorStreet.message}</p>}
+                </div>
+
+                <div className="space-y-1.5">
+                  <Label htmlFor="guarantorCity" className="text-sm font-medium flex items-center gap-1.5">
+                    City <span className="text-destructive">*</span>
+                    {isFieldValid('guarantorCity') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+                  </Label>
+                  <div className="relative">
+                    <Input
+                      id="guarantorCity"
+                      {...register('guarantorCity', {
+                        onChange: () => trigger('guarantorCity'),
+                        onBlur: () => trigger('guarantorCity'),
+                      })}
+                      placeholder="Miami"
+                      className={cn(errors.guarantorCity ? 'border-destructive pr-10' : isFieldValid('guarantorCity') ? 'border-green-500 pr-10' : '')}
+                    />
+                    {isFieldValid('guarantorCity') && !errors.guarantorCity && <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />}
+                  </div>
+                  {errors.guarantorCity && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.guarantorCity.message}</p>}
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-1.5">
+                    <Label htmlFor="guarantorState" className="text-sm font-medium flex items-center gap-1.5">
+                      State <span className="text-destructive">*</span>
+                    </Label>
+                    <Select value={watch('guarantorState') ?? ''} onValueChange={async (v) => {
+                      setValue('guarantorState', v, { shouldValidate: true, shouldTouch: true });
+                      await trigger('guarantorState');
+                    }}>
+                      <SelectTrigger className={cn(errors.guarantorState ? 'border-destructive' : isFieldValid('guarantorState') ? 'border-green-500' : '')}>
+                        <SelectValue placeholder="FL" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {US_STATES.map((s) => (
+                          <SelectItem key={s.value} value={s.value}>{s.label}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    {errors.guarantorState && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.guarantorState.message}</p>}
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="guarantorZip" className="text-sm font-medium flex items-center gap-1.5">
+                      ZIP <span className="text-destructive">*</span>
+                      {isFieldValid('guarantorZip') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+                    </Label>
+                    <Input
+                      id="guarantorZip"
+                      type="text"
+                      maxLength={5}
+                      inputMode="numeric"
+                      pattern="[0-9]*"
+                      {...register('guarantorZip', {
+                        onChange: (e) => {
+                          e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                          trigger('guarantorZip');
+                        },
+                        onBlur: () => trigger('guarantorZip'),
+                      })}
+                      placeholder="33179"
+                      className={cn(errors.guarantorZip ? 'border-destructive' : isFieldValid('guarantorZip') ? 'border-green-500' : '')}
+                    />
+                    {errors.guarantorZip && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.guarantorZip.message}</p>}
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-1.5">
+                <Label htmlFor="guarantorYearsAtResidence" className="text-sm font-medium flex items-center gap-1.5">
+                  Years at Residence <span className="text-destructive">*</span>
+                  {isFieldValid('guarantorYearsAtResidence') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+                </Label>
+                <div className="relative">
+                  <Input
+                    id="guarantorYearsAtResidence"
+                    {...register('guarantorYearsAtResidence', {
+                      onChange: () => trigger('guarantorYearsAtResidence'),
+                      onBlur: () => trigger('guarantorYearsAtResidence'),
+                    })}
+                    placeholder="5"
+                    className={cn(errors.guarantorYearsAtResidence ? 'border-destructive pr-10' : isFieldValid('guarantorYearsAtResidence') ? 'border-green-500 pr-10' : '')}
+                  />
+                  {isFieldValid('guarantorYearsAtResidence') && !errors.guarantorYearsAtResidence && <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />}
+                </div>
+                {errors.guarantorYearsAtResidence && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.guarantorYearsAtResidence.message}</p>}
+              </div>
+
               <div className="space-y-1.5">
                 <Label htmlFor="guarantorOwnOrRent" className="text-sm font-medium flex items-center gap-1.5">
                   Own or Rent <span className="text-destructive">*</span>
@@ -737,14 +935,349 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
                 </Select>
                 {errors.guarantorOwnOrRent && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.guarantorOwnOrRent.message}</p>}
               </div>
+
+              <div className="space-y-1.5">
+                <Label htmlFor="guarantorMonthlyPayment" className="text-sm font-medium flex items-center gap-1.5">
+                  Monthly Payment <span className="text-destructive">*</span>
+                  {isFieldValid('guarantorMonthlyPayment') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+                </Label>
+                <div className="relative">
+                  <Input
+                    id="guarantorMonthlyPayment"
+                    {...register('guarantorMonthlyPayment', {
+                      onChange: () => trigger('guarantorMonthlyPayment'),
+                      onBlur: () => trigger('guarantorMonthlyPayment'),
+                    })}
+                    placeholder="3200"
+                    className={cn(errors.guarantorMonthlyPayment ? 'border-destructive pr-10' : isFieldValid('guarantorMonthlyPayment') ? 'border-green-500 pr-10' : '')}
+                  />
+                  {isFieldValid('guarantorMonthlyPayment') && !errors.guarantorMonthlyPayment && <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />}
+                </div>
+                {errors.guarantorMonthlyPayment && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.guarantorMonthlyPayment.message}</p>}
+              </div>
+
+              <div className="space-y-1.5">
+                <Label htmlFor="guarantorSsn" className="text-sm font-medium flex items-center gap-1.5">
+                  Social Security <span className="text-destructive">*</span>
+                  {isFieldValid('guarantorSsn') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+                </Label>
+                <div className="relative">
+                  <Input
+                    id="guarantorSsn"
+                    type="text"
+                    maxLength={9}
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    {...register('guarantorSsn', {
+                      onChange: (e) => {
+                        e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                        trigger('guarantorSsn');
+                      },
+                      onBlur: () => trigger('guarantorSsn'),
+                    })}
+                    placeholder="276617744"
+                    className={cn(errors.guarantorSsn ? 'border-destructive pr-10' : isFieldValid('guarantorSsn') ? 'border-green-500 pr-10' : '')}
+                  />
+                  {isFieldValid('guarantorSsn') && !errors.guarantorSsn && <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />}
+                </div>
+                {errors.guarantorSsn && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.guarantorSsn.message}</p>}
+              </div>
+
+              <div className="space-y-1.5">
+                <Label htmlFor="guarantorDob" className="text-sm font-medium flex items-center gap-1.5">
+                  Date of Birth <span className="text-destructive">*</span>
+                  {isFieldValid('guarantorDob') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+                </Label>
+                <div className="relative">
+                  <Input
+                    id="guarantorDob"
+                    type="date"
+                    {...register('guarantorDob', {
+                      onChange: () => trigger('guarantorDob'),
+                      onBlur: () => trigger('guarantorDob'),
+                    })}
+                    className={cn(errors.guarantorDob ? 'border-destructive pr-10' : isFieldValid('guarantorDob') ? 'border-green-500 pr-10' : '')}
+                  />
+                  {isFieldValid('guarantorDob') && !errors.guarantorDob && <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />}
+                </div>
+                {errors.guarantorDob && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.guarantorDob.message}</p>}
+              </div>
+
+              <div className="space-y-1.5">
+                <Label htmlFor="guarantorEmail" className="text-sm font-medium flex items-center gap-1.5">
+                  Email Address <span className="text-destructive">*</span>
+                  {isFieldValid('guarantorEmail') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+                </Label>
+                <div className="relative">
+                  <Input
+                    id="guarantorEmail"
+                    type="email"
+                    {...register('guarantorEmail', {
+                      onChange: () => trigger('guarantorEmail'),
+                      onBlur: () => trigger('guarantorEmail'),
+                    })}
+                    placeholder="omrinegbi@gmail.com"
+                    className={cn(errors.guarantorEmail ? 'border-destructive pr-10' : isFieldValid('guarantorEmail') ? 'border-green-500 pr-10' : '')}
+                  />
+                  {isFieldValid('guarantorEmail') && !errors.guarantorEmail && <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />}
+                </div>
+                {errors.guarantorEmail && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.guarantorEmail.message}</p>}
+              </div>
+
+              <div className="space-y-1.5">
+                <Label htmlFor="guarantorPhone" className="text-sm font-medium flex items-center gap-1.5">
+                  Home Phone <span className="text-destructive">*</span>
+                  {isFieldValid('guarantorPhone') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+                </Label>
+                <div className="relative">
+                  <Input
+                    id="guarantorPhone"
+                    type="tel"
+                    {...register('guarantorPhone', {
+                      onChange: (e) => {
+                        const formatted = formatPhoneNumber(e.target.value);
+                        e.target.value = formatted;
+                        trigger('guarantorPhone');
+                      },
+                      onBlur: () => trigger('guarantorPhone'),
+                    })}
+                    placeholder="(786) 406-5259"
+                    className={cn(errors.guarantorPhone ? 'border-destructive pr-10' : isFieldValid('guarantorPhone') ? 'border-green-500 pr-10' : '')}
+                  />
+                  {isFieldValid('guarantorPhone') && !errors.guarantorPhone && <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />}
+                </div>
+                {errors.guarantorPhone && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.guarantorPhone.message}</p>}
+              </div>
             </div>
+
           </motion.div>
         )}
 
-        {/* Step 3: Bank Information */}
+        {/* Step 3: Guarantor Employment */}
         {currentStep === 3 && (
           <motion.div
             key="step-3"
+            custom={direction}
+            initial={{ opacity: 0, x: direction === 'forward' ? 50 : -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: direction === 'forward' ? -50 : 50 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="space-y-6"
+          >
+            <div>
+              <h3 className="text-xl font-bold text-foreground dark:text-white mb-1 flex items-center gap-2">
+                <Building className="w-5 h-5 text-blue-500" />
+                Personal Guarantor Employment
+              </h3>
+              <p className="text-sm text-muted-foreground dark:text-white/70">Employment details of the guarantor</p>
+            </div>
+              <div className="grid md:grid-cols-2 gap-5">
+                <div className="space-y-1.5 md:col-span-2">
+                  <Label htmlFor="guarantorEmployer" className="text-sm font-medium flex items-center gap-1.5">
+                    Current Employer <span className="text-destructive">*</span>
+                    {isFieldValid('guarantorEmployer') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+                  </Label>
+                  <div className="relative">
+                    <Input
+                      id="guarantorEmployer"
+                      {...register('guarantorEmployer', {
+                        onChange: () => trigger('guarantorEmployer'),
+                        onBlur: () => trigger('guarantorEmployer'),
+                      })}
+                      placeholder="EcoCredit financial"
+                      className={cn(errors.guarantorEmployer ? 'border-destructive pr-10' : isFieldValid('guarantorEmployer') ? 'border-green-500 pr-10' : '')}
+                    />
+                    {isFieldValid('guarantorEmployer') && !errors.guarantorEmployer && <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />}
+                  </div>
+                  {errors.guarantorEmployer && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.guarantorEmployer.message}</p>}
+                </div>
+
+                <div className="space-y-1.5 md:col-span-2">
+                  <Label htmlFor="guarantorPosition" className="text-sm font-medium flex items-center gap-1.5">
+                    Position / Title <span className="text-destructive">*</span>
+                    {isFieldValid('guarantorPosition') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+                  </Label>
+                  <div className="relative">
+                    <Input
+                      id="guarantorPosition"
+                      {...register('guarantorPosition', {
+                        onChange: () => trigger('guarantorPosition'),
+                        onBlur: () => trigger('guarantorPosition'),
+                      })}
+                      placeholder="Owner"
+                      className={cn(errors.guarantorPosition ? 'border-destructive pr-10' : isFieldValid('guarantorPosition') ? 'border-green-500 pr-10' : '')}
+                    />
+                    {isFieldValid('guarantorPosition') && !errors.guarantorPosition && <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />}
+                  </div>
+                  {errors.guarantorPosition && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.guarantorPosition.message}</p>}
+                </div>
+
+                <div className="col-span-1 md:col-span-2 grid md:grid-cols-4 gap-5">
+                  <div className="space-y-1.5 col-span-1 md:col-span-2">
+                    <Label htmlFor="guarantorEmployerStreet" className="text-sm font-medium flex items-center gap-1.5">
+                      Business Address <span className="text-destructive">*</span>
+                      {isFieldValid('guarantorEmployerStreet') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+                    </Label>
+                    <div className="relative">
+                      <AddressAutocomplete
+                        id="guarantorEmployerStreet"
+                        {...register('guarantorEmployerStreet', {
+                          onChange: () => trigger('guarantorEmployerStreet'),
+                          onBlur: () => trigger('guarantorEmployerStreet'),
+                        })}
+                        value={watch('guarantorEmployerStreet') || ''}
+                        onAddressSelect={(address) => {
+                          setValue('guarantorEmployerStreet', address.street, { shouldValidate: true, shouldDirty: true });
+                          setValue('guarantorEmployerCity', address.city, { shouldValidate: true, shouldDirty: true });
+                          setValue('guarantorEmployerState', address.state, { shouldValidate: true, shouldDirty: true });
+                          setValue('guarantorEmployerZip', address.zip, { shouldValidate: true, shouldDirty: true });
+                        }}
+                        placeholder="20315 NE 19TH CT"
+                        className={cn(errors.guarantorEmployerStreet ? 'border-destructive pr-10' : isFieldValid('guarantorEmployerStreet') ? 'border-green-500 pr-10' : '')}
+                      />
+                      {isFieldValid('guarantorEmployerStreet') && !errors.guarantorEmployerStreet && <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />}
+                    </div>
+                    {errors.guarantorEmployerStreet && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.guarantorEmployerStreet.message}</p>}
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <Label htmlFor="guarantorEmployerCity" className="text-sm font-medium flex items-center gap-1.5">
+                      City <span className="text-destructive">*</span>
+                      {isFieldValid('guarantorEmployerCity') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+                    </Label>
+                    <div className="relative">
+                      <Input
+                        id="guarantorEmployerCity"
+                        {...register('guarantorEmployerCity', {
+                          onChange: () => trigger('guarantorEmployerCity'),
+                          onBlur: () => trigger('guarantorEmployerCity'),
+                        })}
+                        placeholder="Miami"
+                        className={cn(errors.guarantorEmployerCity ? 'border-destructive pr-10' : isFieldValid('guarantorEmployerCity') ? 'border-green-500 pr-10' : '')}
+                      />
+                      {isFieldValid('guarantorEmployerCity') && !errors.guarantorEmployerCity && <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />}
+                    </div>
+                    {errors.guarantorEmployerCity && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.guarantorEmployerCity.message}</p>}
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="space-y-1.5">
+                      <Label htmlFor="guarantorEmployerState" className="text-sm font-medium flex items-center gap-1.5">
+                        State <span className="text-destructive">*</span>
+                      </Label>
+                      <Select value={watch('guarantorEmployerState') ?? ''} onValueChange={async (v) => {
+                        setValue('guarantorEmployerState', v, { shouldValidate: true, shouldTouch: true });
+                        await trigger('guarantorEmployerState');
+                      }}>
+                        <SelectTrigger className={cn(errors.guarantorEmployerState ? 'border-destructive' : isFieldValid('guarantorEmployerState') ? 'border-green-500' : '')}>
+                          <SelectValue placeholder="FL" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {US_STATES.map((s) => (
+                            <SelectItem key={s.value} value={s.value}>{s.label}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      {errors.guarantorEmployerState && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.guarantorEmployerState.message}</p>}
+                    </div>
+                    <div className="space-y-1.5">
+                      <Label htmlFor="guarantorEmployerZip" className="text-sm font-medium flex items-center gap-1.5">
+                        ZIP <span className="text-destructive">*</span>
+                        {isFieldValid('guarantorEmployerZip') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+                      </Label>
+                      <Input
+                        id="guarantorEmployerZip"
+                        type="text"
+                        maxLength={5}
+                        inputMode="numeric"
+                        pattern="[0-9]*"
+                        {...register('guarantorEmployerZip', {
+                          onChange: (e) => {
+                            e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                            trigger('guarantorEmployerZip');
+                          },
+                          onBlur: () => trigger('guarantorEmployerZip'),
+                        })}
+                        placeholder="33179"
+                        className={cn(errors.guarantorEmployerZip ? 'border-destructive' : isFieldValid('guarantorEmployerZip') ? 'border-green-500' : '')}
+                      />
+                      {errors.guarantorEmployerZip && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.guarantorEmployerZip.message}</p>}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-1.5">
+                  <Label htmlFor="guarantorEmployerPhone" className="text-sm font-medium flex items-center gap-1.5">
+                    Employer Phone <span className="text-destructive">*</span>
+                    {isFieldValid('guarantorEmployerPhone') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+                  </Label>
+                  <div className="relative">
+                    <Input
+                      id="guarantorEmployerPhone"
+                      type="tel"
+                      {...register('guarantorEmployerPhone', {
+                        onChange: (e) => {
+                          const formatted = formatPhoneNumber(e.target.value);
+                          e.target.value = formatted;
+                          trigger('guarantorEmployerPhone');
+                        },
+                        onBlur: () => trigger('guarantorEmployerPhone'),
+                      })}
+                      placeholder="(786) 406-5259"
+                      className={cn(errors.guarantorEmployerPhone ? 'border-destructive pr-10' : isFieldValid('guarantorEmployerPhone') ? 'border-green-500 pr-10' : '')}
+                    />
+                    {isFieldValid('guarantorEmployerPhone') && !errors.guarantorEmployerPhone && <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />}
+                  </div>
+                  {errors.guarantorEmployerPhone && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.guarantorEmployerPhone.message}</p>}
+                </div>
+
+                <div className="space-y-1.5">
+                  <Label htmlFor="guarantorYearsAtEmployment" className="text-sm font-medium flex items-center gap-1.5">
+                    Length of Employment <span className="text-destructive">*</span>
+                    {isFieldValid('guarantorYearsAtEmployment') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+                  </Label>
+                  <div className="relative">
+                    <Input
+                      id="guarantorYearsAtEmployment"
+                      {...register('guarantorYearsAtEmployment', {
+                        onChange: () => trigger('guarantorYearsAtEmployment'),
+                        onBlur: () => trigger('guarantorYearsAtEmployment'),
+                      })}
+                      placeholder="5"
+                      className={cn(errors.guarantorYearsAtEmployment ? 'border-destructive pr-10' : isFieldValid('guarantorYearsAtEmployment') ? 'border-green-500 pr-10' : '')}
+                    />
+                    {isFieldValid('guarantorYearsAtEmployment') && !errors.guarantorYearsAtEmployment && <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />}
+                  </div>
+                  {errors.guarantorYearsAtEmployment && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.guarantorYearsAtEmployment.message}</p>}
+                </div>
+
+                <div className="space-y-1.5">
+                  <Label htmlFor="guarantorGrossAnnualIncome" className="text-sm font-medium flex items-center gap-1.5">
+                    Gross Annual Income <span className="text-destructive">*</span>
+                    {isFieldValid('guarantorGrossAnnualIncome') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
+                  </Label>
+                  <div className="relative">
+                    <Input
+                      id="guarantorGrossAnnualIncome"
+                      {...register('guarantorGrossAnnualIncome', {
+                        onChange: () => trigger('guarantorGrossAnnualIncome'),
+                        onBlur: () => trigger('guarantorGrossAnnualIncome'),
+                      })}
+                      placeholder="800000"
+                      className={cn(errors.guarantorGrossAnnualIncome ? 'border-destructive pr-10' : isFieldValid('guarantorGrossAnnualIncome') ? 'border-green-500 pr-10' : '')}
+                    />
+                    {isFieldValid('guarantorGrossAnnualIncome') && !errors.guarantorGrossAnnualIncome && <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />}
+                  </div>
+                  {errors.guarantorGrossAnnualIncome && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.guarantorGrossAnnualIncome.message}</p>}
+                </div>
+              </div>
+          </motion.div>
+        )}
+
+        {/* Step 4: Bank Information */}
+        {currentStep === 4 && (
+          <motion.div
+            key="step-4"
             custom={direction}
             initial={{ opacity: 0, x: direction === 'forward' ? 50 : -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -828,10 +1361,10 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
           </motion.div>
         )}
 
-        {/* Step 4: Uploads */}
-        {currentStep === 4 && (
+        {/* Step 5: Uploads */}
+        {currentStep === 5 && (
           <motion.div
-            key="step-4"
+            key="step-5"
             custom={direction}
             initial={{ opacity: 0, x: direction === 'forward' ? 50 : -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -954,10 +1487,10 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
           </motion.div>
         )}
 
-        {/* Step 5: Legal */}
-        {currentStep === 5 && (
+        {/* Step 6: Legal */}
+        {currentStep === 6 && (
           <motion.div
-            key="step-5"
+            key="step-6"
             custom={direction}
             initial={{ opacity: 0, x: direction === 'forward' ? 50 : -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -1069,7 +1602,7 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
         >
           <ChevronLeft className="w-4 h-4 mr-1" /> Back
         </Button>
-        {currentStep < 5 ? (
+        {currentStep < 6 ? (
           <Button
             type="button"
             className="min-h-[44px] bg-accent hover:bg-accent/90 text-accent-foreground"
