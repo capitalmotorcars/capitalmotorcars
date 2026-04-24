@@ -5,8 +5,9 @@ export default function PrivacyPolicyPage() {
   return (
     <Layout>
       <SEO 
-        title="Privacy Policy | Capital Motor Cars"
-        description="Learn how Capital Motor Cars collects, uses, and protects your personal information. Your privacy matters to us."
+        title="Privacy Policy | Capital Motor Cars Website & Services"
+        description="Privacy policy for Capital Motor Cars in Springfield, New Jersey. Learn how our car leasing website and services handle your information."
+        seoKeywords={['privacy policy Capital Motor Cars', 'Springfield New Jersey privacy policy', 'car leasing website privacy', 'Capital Motor Cars data policy']}
       />
       <section className="bg-primary py-10 md:py-16">
         <div className="container mx-auto px-4 lg:px-8">

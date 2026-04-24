@@ -23,6 +23,7 @@ import { Input } from '@/components/ui/input';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { SEO } from '@/components/SEO';
 import { VehicleTypeForm } from '@/components/admin/VehicleTypeForm';
 import { getAllVehicleTypes, createVehicleType, updateVehicleType, deleteVehicleType, reorderVehicleTypes } from '@/services/vehicleTypeService';
 import { VehicleType } from '@/types/vehicle';
@@ -272,6 +273,10 @@ export function VehicleTypesPage() {
 
     return (
         <div className="space-y-8 max-w-5xl mx-auto">
+            <SEO
+                title="Vehicle Management | Capital Motor Cars Admin Dashboard"
+                description="Create and manage vehicle type pages from the Capital Motor Cars dashboard."
+            />
             {/* Header Action Bar */}
             <div className="flex flex-col gap-6 pb-6 border-b border-white/5">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">

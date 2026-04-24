@@ -9,14 +9,24 @@ function formatDate(value?: string | null) {
     return new Intl.DateTimeFormat('en-US', { dateStyle: 'medium' }).format(date);
 }
 
-export function BlogCard({ post, className }: { post: BlogPost; className?: string }) {
+export function BlogCard({ post, className, isFeatured }: { post: BlogPost; className?: string; isFeatured?: boolean }) {
+    const seoFriendlyPaths = [
+        'best-lease-deals-new-jersey',
+        'auto-broker-vs-dealership-new-jersey',
+        'bad-credit-car-lease-new-jersey',
+        'zero-down-car-lease-new-jersey',
+        'luxury-car-lease-new-jersey'
+    ];
+    const isSeoFriendlyPath = seoFriendlyPaths.includes(post.slug);
+    const postUrl = isSeoFriendlyPath ? `/${post.slug}` : `/blog/${post.slug}`;
+
     return (
         <article className={cn(
             "group relative overflow-hidden rounded-3xl border border-border/60 dark:border-white/10 bg-muted/5 dark:bg-white/[0.02] shadow-sm transition-all duration-300 hover:border-accent hover:shadow-[0_0_40px_-12px_rgba(59,130,246,0.3)]",
             className
         )}>
-            <Link to={`/blog/${post.slug}`} className="block">
-                <div className="relative h-48 md:h-56 overflow-hidden">
+            <Link to={postUrl} className={cn("block", isFeatured && "relative")}>
+                <div className={cn("relative overflow-hidden", isFeatured ? "h-[350px] md:h-[500px] rounded-[2.5rem]" : "h-48 md:h-56")}>
                     {post.cover_image_url ? (
                         <img
                             src={post.cover_image_url}
@@ -28,24 +38,49 @@ export function BlogCard({ post, className }: { post: BlogPost; className?: stri
                             <span className="text-xs font-bold uppercase tracking-widest">Capital Motor Cars</span>
                         </div>
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-70" />
+                    <div className={cn("absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent", isFeatured ? "opacity-100" : "opacity-70")} />
+                    
+                    {isFeatured && (
+                        <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-14">
+                            <div className="space-y-4 max-w-3xl">
+                                <span className="bg-accent text-accent-foreground text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1.5 rounded-full shadow-lg inline-block mb-2">
+                                    Featured Story
+                                </span>
+                                <div className="flex items-center gap-2 text-xs font-semibold text-white/70 uppercase tracking-wider">
+                                    <Calendar className="w-3.5 h-3.5" />
+                                    <span>{formatDate(post.published_at)}</span>
+                                </div>
+                                <h3 className="text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
+                                    {post.title}
+                                </h3>
+                                <p className="text-white/80 text-base md:text-xl leading-relaxed line-clamp-2 max-w-2xl font-medium">
+                                    {post.excerpt || post.content}
+                                </p>
+                                <span className="inline-flex items-center gap-2 text-base font-bold text-white group-hover:text-accent transition-colors pt-4">
+                                    Read full story <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" />
+                                </span>
+                            </div>
+                        </div>
+                    )}
                 </div>
 
-                <div className="p-6 md:p-8 space-y-4">
-                    <div className="flex items-center gap-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-                        <Calendar className="w-3.5 h-3.5" />
-                        <span>{formatDate(post.published_at)}</span>
+                {!isFeatured && (
+                    <div className="p-6 md:p-8 space-y-4">
+                        <div className="flex items-center gap-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                            <Calendar className="w-3.5 h-3.5" />
+                            <span>{formatDate(post.published_at)}</span>
+                        </div>
+                        <h3 className="text-xl md:text-2xl font-black text-foreground tracking-tight group-hover:text-accent transition-colors">
+                            {post.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
+                            {post.excerpt || post.content}
+                        </p>
+                        <span className="inline-flex items-center gap-2 text-sm font-bold text-accent">
+                            Read article <ArrowRight className="w-4 h-4" />
+                        </span>
                     </div>
-                    <h3 className="text-xl md:text-2xl font-black text-foreground tracking-tight group-hover:text-accent transition-colors">
-                        {post.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
-                        {post.excerpt || post.content}
-                    </p>
-                    <span className="inline-flex items-center gap-2 text-sm font-bold text-accent">
-                        Read article <ArrowRight className="w-4 h-4" />
-                    </span>
-                </div>
+                )}
             </Link>
         </article>
     );

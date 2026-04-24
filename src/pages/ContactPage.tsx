@@ -56,8 +56,8 @@ export default function ContactPage() {
     <Layout>
       <SEO
         title="Contact Capital Motor Cars | Springfield NJ Office"
-        description="Get in touch with Capital Motor Cars in Springfield, NJ. Ask about car leasing, financing, or vehicle repairs. Call us at 201-509-5555 or visit our office."
-        seoKeywords={['contact Capital Motor Cars', 'car leasing Springfield NJ', 'auto leasing contact', 'Capital Motor Cars phone number']}
+        description="Contact Capital Motor Cars in Springfield, New Jersey for car leasing, financing, and auto broker support across NJ and NY."
+        seoKeywords={['contact Capital Motor Cars', 'Springfield NJ car leasing', 'auto broker contact New Jersey', 'Capital Motor Cars phone number', 'Springfield NJ office']}
         ogImage="/src/assets/contact.jpg"
         canonicalPath="/contact"
       />

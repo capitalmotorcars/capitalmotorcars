@@ -481,7 +481,8 @@ export default function QuizPage() {
     <Layout>
       <SEO
         title="Vehicle Quiz | Find Your Perfect Car | Capital Motor Cars"
-        description="Answer dynamic questions to find the perfect 2026 vehicle for your needs. Get personalized recommendations based on your lifestyle."
+        description="Vehicle quiz for New Jersey and New York drivers from Capital Motor Cars. Find your ideal lease match by budget, lifestyle, and body style."
+        seoKeywords={['vehicle quiz New Jersey', 'vehicle quiz New York', 'find your perfect car', 'lease match quiz', 'Capital Motor Cars quiz']}
       />
       <div className="min-h-[80vh] flex items-center justify-center p-4 py-12 md:py-20 bg-muted/30">
         <div className="w-full max-w-2xl">

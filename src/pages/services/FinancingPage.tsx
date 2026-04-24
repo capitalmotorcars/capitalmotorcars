@@ -74,8 +74,8 @@ export default function FinancingPage() {
     <Layout>
       <SEO
         title="Auto Financing New Jersey and New York | Low Monthly Payments | Capital Motor Cars"
-        description="Looking for auto financing in New York or New Jersey? Get clear answers on car loans, explore low monthly car payments, and experience a 100% transparent process with Capital Motor Cars."
-        seoKeywords={['auto financing NJ', 'New York car loans', 'low monthly car payments', 'transparent auto finance', 'Springfield NJ car leasing', 'Capital Motor Cars financing']}
+        description="Auto financing in New Jersey and New York from Capital Motor Cars. Compare low monthly payments, lease buyouts, and credit-friendly approvals."
+        seoKeywords={['auto financing New Jersey', 'auto financing New York', 'low monthly car payments', 'lease buyout financing', 'Capital Motor Cars financing']}
         ogImage="/src/assets/financing.jpg"
         canonicalPath="/services/financing"
       />
@@ -93,7 +93,7 @@ export default function FinancingPage() {
         subtitle="Get clear answers and learn about low monthly car payments with our transparent, expert-led financing process."
         heroImage={financingHero}
         primaryAction={{ label: "Start New York & New Jersey Car Lease Application", href: "/contact" }}
-        secondaryAction={{ label: "Call Us", href: "tel:201-555-0123", icon: Phone }}
+        secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
       />
 
       {/* Why Finance With Us (Benefits Split) */}

@@ -72,8 +72,8 @@ export default function TradeInPage() {
     <Layout>
       <SEO
         title="Vehicle Trade-In Services NJ | Best Market Value | Capital Motor Cars"
-        description="Get the highest value for your vehicle trade-in. We evaluate, appraise, and manage the entire process to ensure you get top dollar in New Jersey."
-        seoKeywords={['car trade in NJ', 'vehicle appraisal services', 'sell my car NJ', 'Capital Motor Cars trade in']}
+        description="Vehicle trade-in services in New Jersey and New York from Capital Motor Cars. Get an appraisal, maximize market value, and apply equity to your next lease."
+        seoKeywords={['vehicle trade in services NJ', 'vehicle trade in services NY', 'car appraisal New Jersey', 'sell my car New York', 'Capital Motor Cars trade in']}
         ogImage="/src/assets/trade-in.avif"
         canonicalPath="/services/trade-in"
       />
@@ -86,12 +86,12 @@ export default function TradeInPage() {
       {/* Custom Hero Section (Services Style) */}
       <ServiceHero
         badge="Fair Market Value"
-        title="Value Your"
+        title="Vehicle Trade-In Services NJ | Best Market Value | Capital Motor Cars"
         highlightedTitle="Trade In"
         subtitle="Get a competitive offer for your vehicle in minutes. We handle the paperwork and pickup."
         heroImage={tradeInHero}
         primaryAction={{ label: "Get Your Offer", href: "/trade-in-value" }}
-        secondaryAction={{ label: "Call Us", href: "tel:201-555-0123", icon: Phone }}
+        secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
       />
 
       {/* Why Trade With Us (Benefits Split) */}

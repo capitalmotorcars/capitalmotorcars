@@ -20,6 +20,7 @@ import { CSS } from '@dnd-kit/utilities';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Switch } from '@/components/ui/switch';
+import { SEO } from '@/components/SEO';
 import { DealForm } from '@/components/admin/DealForm';
 import {
     getAllDeals,
@@ -313,6 +314,10 @@ export default function DealsPage() {
 
     return (
         <div className="space-y-8 max-w-5xl mx-auto">
+            <SEO
+                title="Lease Deals Management | Capital Motor Cars Admin Dashboard"
+                description="Manage featured lease deals in the Capital Motor Cars dashboard."
+            />
             {/* Header Action Bar */}
             <div className="flex flex-col gap-6 pb-6 border-b border-white/5">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">

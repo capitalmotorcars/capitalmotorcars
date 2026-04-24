@@ -61,8 +61,8 @@ export default function AboutPage() {
     <Layout>
       <SEO
         title="About Us | Capital Motor Cars | Our Story & Mission"
-        description="Learn more about Capital Motor Cars. We bring clarity and structure to the car leasing and financing process with transparency and accountability."
-        seoKeywords={['Capital Motor Cars about', 'car leasing company NJ', 'automotive experts', 'transparent car leasing', 'Best Zero Down Lease Deals', 'Affordable NJ Car Leasing', 'Springfield NJ Auto Broker', 'Doorstep Car Delivery NYC', 'Brooklyn Car Lease Specials', 'White-Glove Leasing Service']}
+        description="Car leasing and auto broker experts in New Jersey and New York from Capital Motor Cars. Learn about our story, team, and process."
+        seoKeywords={['about Capital Motor Cars', 'car leasing company New Jersey', 'auto broker New York', 'car leasing experts NJ', 'Capital Motor Cars team']}
         ogImage="/src/assets/hero-bg.jpg"
         canonicalPath="/about"
       />

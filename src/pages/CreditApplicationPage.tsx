@@ -32,8 +32,8 @@ export default function CreditApplicationPage() {
     <Layout>
       <SEO
         title="Auto Lease Financing in New Jersey & New York | Capital Motor Cars"
-        description="Apply for auto lease financing in minutes. We help NJ and NY drivers get approved quickly, even with bad credit. Apply Now!"
-        seoKeywords={['car credit application', 'auto financing NJ', 'lease credit application', 'Capital Motor Cars finance']}
+        description="Auto lease financing in New Jersey and New York from Capital Motor Cars. Apply online for lease and finance approval with fast responses."
+        seoKeywords={['auto lease financing New Jersey', 'auto lease financing New York', 'car credit application NJ', 'lease credit application NY', 'Capital Motor Cars finance']}
         ogImage="/src/assets/contact.jpg"
         canonicalPath="/credit-application"
       />

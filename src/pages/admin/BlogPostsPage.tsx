@@ -19,6 +19,7 @@ import { CSS } from '@dnd-kit/utilities';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Switch } from '@/components/ui/switch';
+import { SEO } from '@/components/SEO';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
@@ -296,6 +297,10 @@ export default function BlogPostsPage() {
 
     return (
         <div className="space-y-8 max-w-5xl mx-auto">
+            <SEO
+                title="Blog Posts Management | Capital Motor Cars Admin Dashboard"
+                description="Create and manage Capital Motor Cars blog posts from the dashboard."
+            />
             <div className="flex flex-col gap-6 pb-6 border-b border-white/5">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
                     <div>

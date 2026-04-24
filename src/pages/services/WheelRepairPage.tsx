@@ -71,8 +71,8 @@ export default function WheelRepairPage() {
     <Layout>
       <SEO
         title="Wheel & Rim Repair Services in New Jersey & New York | Capital Motor Cars"
-        description="Avoid expensive lease return penalties with professional wheel and rim repair in New Jersey & New York. We fix curb rash quickly and affordably. Get a Free Estimate!"
-        seoKeywords={['wheel repair NJ', 'rim restoration NJ', 'curb rash repair', 'Capital Motor Cars wheel repair']}
+        description="Wheel and rim repair in New Jersey and New York from Capital Motor Cars. Fix curb rash, bends, and lease return wheel damage."
+        seoKeywords={['wheel repair New Jersey', 'wheel repair New York', 'rim repair NJ', 'curb rash repair NY', 'Capital Motor Cars wheel repair']}
         ogImage="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1200&q=60"
         canonicalPath="/services/wheel-repair"
       />
@@ -90,7 +90,7 @@ export default function WheelRepairPage() {
         subtitle="Avoid expensive lease return penalties with professional wheel and rim repair in New Jersey & New York. We fix curb rash quickly and affordably. Get a Free Estimate!"
         heroImage="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1200&q=60"
         primaryAction={{ label: "Book Repair", href: "/contact" }}
-        secondaryAction={{ label: "Call Us", href: "tel:201-555-0123", icon: Phone }}
+        secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
       />
 
       {/* Why Restore Wheels (Benefits Split) */}

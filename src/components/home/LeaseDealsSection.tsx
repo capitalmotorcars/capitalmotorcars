@@ -172,13 +172,13 @@ export function LeaseDealsSection() {
                             Limited Time New Jersey Offers
                         </span>
                         <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-foreground uppercase mb-6">
-                            This Month's <br className="hidden md:block" />
+                            Best Car Lease Deals <br className="hidden md:block" />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-600 block mt-2">
-                                Lease Deals
+                                Monthly Car Lease Deals
                             </span>
                         </h2>
                         <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                            Drive your dream car for less. Exclusive offers on our most popular vehicles, curated just for you.
+                            Drive your dream car for less with best car lease deals, cheap car lease deals, new car lease deals, and SUV lease deals curated just for you.
                         </p>
                     </motion.div>
                 </div>

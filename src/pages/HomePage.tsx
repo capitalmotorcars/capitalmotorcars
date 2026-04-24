@@ -1,6 +1,6 @@
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
-import { JsonLd, organizationSchema } from '@/components/JsonLd';
+import { JsonLd, autoDealerSchema, createFaqSchema, createSiteNavigationSchema, localBusinessSchema, websiteSchema } from '@/components/JsonLd';
 import { HeroSection } from '@/components/hero/HeroSection';
 import { HowItWorksSection } from '@/components/home/HowItWorksSection';
 import { PeopleSection } from '@/components/home/PeopleSection';
@@ -16,18 +16,51 @@ import { ScrollTriggeredQuizDialog } from '@/components/home/ScrollTriggeredQuiz
 import { FAQSection } from '@/components/home/FAQSection';
 import { LeaseDealsSection } from '@/components/home/LeaseDealsSection';
 import { BlogSection } from '@/components/home/BlogSection';
+import { primarySeoKeywords, njSeoKeywords } from '@/data/seoKeywords';
+
+const homepageFaqSchema = createFaqSchema([
+  {
+    question: 'What does a car leasing broker do in New Jersey?',
+    answer: 'A car leasing broker compares dealer offers, negotiates lease terms, and helps you secure the right vehicle without spending hours visiting multiple dealerships in New Jersey.',
+  },
+  {
+    question: 'Can a broker help me get a better lease deal in NJ?',
+    answer: 'Yes. A broker can often uncover more competitive pricing, manufacturer programs, and dealer inventory options that are difficult to find on your own.',
+  },
+  {
+    question: 'Do I need to visit a dealership if I use Capital Motor Cars?',
+    answer: 'In many cases, no. Capital Motor Cars handles the search, negotiation, paperwork coordination, and delivery process so you can avoid the usual dealership experience.',
+  },
+  {
+    question: 'Does Capital Motor Cars work with New Jersey and New York drivers?',
+    answer: 'Yes. Capital Motor Cars helps drivers across New Jersey and New York with leasing, financing, trade-ins, and lease return support.',
+  },
+  {
+    question: 'Can a broker help with zero-down lease options in NJ?',
+    answer: 'Yes. Capital Motor Cars can explain available zero-down or low-drive-off options, review lender requirements, and help match you with lease structures that fit your budget.',
+  },
+]);
+
+const primaryNavigationSchema = createSiteNavigationSchema([
+  { name: 'Home', url: 'https://capitalmotorcars.com/' },
+  { name: 'Services', url: 'https://capitalmotorcars.com/services' },
+  { name: 'Brands', url: 'https://capitalmotorcars.com/brands' },
+  { name: 'Blog', url: 'https://capitalmotorcars.com/blog' },
+  { name: 'About', url: 'https://capitalmotorcars.com/about' },
+  { name: 'Contact', url: 'https://capitalmotorcars.com/contact' },
+]);
 
 export default function HomePage() {
   return (
     <Layout>
       <SEO
         title="Car Lease Deals in New Jersey & New York | Zero Down, Fast Approval & Free Delivery"
-        description="Experience stress-free car leasing with Capital Motor Cars. We negotiate the best deals, handle financing, and provide expert automotive services in New Jersey."
-        seoKeywords={['car leasing NJ', 'auto leasing services', 'car lease deals NJ', 'Capital Motor Cars', 'automotive services Springfield NJ', 'Best Zero Down Lease Deals', 'Affordable NJ Car Leasing', 'Springfield NJ Auto Broker', 'Doorstep Car Delivery NYC', 'Brooklyn Car Lease Specials', 'White-Glove Leasing Service']}
+        description="Car lease deals, auto leasing, monthly car lease deals, and luxury car leasing in New Jersey and New York from Capital Motor Cars."
+        seoKeywords={[...primarySeoKeywords, ...njSeoKeywords, 'car lease deals New York', 'zero down car lease', 'fast lease approval', 'Capital Motor Cars']}
         ogImage="/src/assets/hero-bg.jpg"
         canonicalPath="/"
       />
-      <JsonLd data={organizationSchema} />
+      <JsonLd data={[websiteSchema, localBusinessSchema, autoDealerSchema, homepageFaqSchema, ...primaryNavigationSchema]} />
       <ScrollTriggeredQuizDialog />
       <HeroBackgroundWrapper>
         <HeroSection />

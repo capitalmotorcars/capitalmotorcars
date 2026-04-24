@@ -112,8 +112,8 @@ export default function BrandsPage() {
     <Layout >
       <SEO
         title="All Car Brand Lease Deals in New Jersey & New York | Capital Motor Cars"
-        description="Browse top car brand lease deals across New Jersey and New York. Search luxury and economy options with Zero Down. Get a Quote!"
-        seoKeywords={['car brands', 'BMW lease NJ', 'Mercedes lease deals', 'Audi leasing', 'Lexus lease NJ', 'Toyota lease deals', 'popular car brands', 'Best Zero Down Lease Deals', 'Affordable NJ Car Leasing', 'Springfield NJ Auto Broker', 'Doorstep Car Delivery NYC', 'Brooklyn Car Lease Specials', 'White-Glove Leasing Service']}
+        description="Car brand lease deals in New Jersey and New York from Capital Motor Cars. Shop BMW, Mercedes-Benz, Audi, Lexus, Toyota, and more."
+        seoKeywords={['car brand lease deals New Jersey', 'car brand lease deals New York', 'BMW lease NJ', 'Mercedes lease deals NY', 'Capital Motor Cars brands']}
         ogImage="/src/assets/hero-bg.jpg"
         canonicalPath="/brands"
       />

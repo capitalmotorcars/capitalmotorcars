@@ -28,6 +28,7 @@ import bg1 from '@/assets/brand-backgrounds/bg-1.jpeg';
 import bg2 from '@/assets/brand-backgrounds/bg-2.jpg';
 import bg3 from '@/assets/brand-backgrounds/bg-3.jpg';
 import bg4 from '@/assets/brand-backgrounds/bg-4.jpg';
+import { primarySeoKeywords, njSeoKeywords } from '@/data/seoKeywords';
 
 type CategoryType = 'all' | 'leasing' | 'financing' | 'trade-in' | 'vehicle-services';
 
@@ -150,9 +151,9 @@ export default function ServicesPage() {
   return (
     <Layout>
       <SEO
-        title="Auto Leasing Services in New Jersey & New York | Capital Motor Cars"
-        description="Explore our complete auto leasing services tailored for NJ and NY drivers. Enjoy stress-free financing and Zero Down options. Call Now!"
-        seoKeywords={['automotive services NJ', 'car leasing Springfield', 'auto financing NJ', 'car detailing NJ', 'wheel repair Springfield', 'lease return protection', 'Best Zero Down Lease Deals', 'Affordable NJ Car Leasing', 'Springfield NJ Auto Broker', 'Doorstep Car Delivery NYC', 'Brooklyn Car Lease Specials', 'White-Glove Leasing Service']}
+        title="Auto Leasing Services, Car Lease Deals & Luxury Car Leasing in New Jersey & New York | Capital Motor Cars"
+        description="Auto leasing services, car lease deals, monthly car lease deals, and luxury car leasing in New Jersey and New York from Capital Motor Cars."
+        seoKeywords={[...primarySeoKeywords, ...njSeoKeywords, 'auto leasing services New Jersey', 'auto leasing services New York', 'car financing NJ', 'trade in services NY', 'Capital Motor Cars services']}
         ogImage="/src/assets/hero-bg.jpg"
         canonicalPath="/services"
       />
@@ -202,14 +203,14 @@ export default function ServicesPage() {
                 transition={{ ...fadeInUp.transition, delay: 0.1 }}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center pb-2 md:pb-4 xl:pb-6 tracking-tight"
               >
-                {renderSEOHeading("Auto Leasing Services in New Jersey & New York | Capital Motor Cars")}
+                {renderSEOHeading("Auto Leasing Services, Car Lease Deals & Luxury Car Leasing in New Jersey & New York | Capital Motor Cars")}
               </motion.h2>
               <motion.p
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.2 }}
                 className="text-xs  md:text-lg lg:text-xl xl:text-2xl text-white/80 text-center max-w-3xl xl:max-w-5xl mx-auto pb-2 md:pb-6 xl:pb-8"
               >
-                Explore our complete auto leasing services tailored for NJ and NY drivers. Enjoy stress-free financing and Zero Down options. Call Now!
+                Explore our complete auto leasing services tailored for NJ and NY drivers. Enjoy stress-free financing, car lease deals, best car lease deals, and Zero Down options. Call Now!
               </motion.p>
 
               {/* Filter Navigation */}

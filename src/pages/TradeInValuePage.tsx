@@ -21,8 +21,8 @@ export default function TradeInValuePage() {
     <Layout>
       <SEO
         title="Trade-In Value & Lease Upgrades in New York & New Jersey | Capital Motor Cars"
-        description="Looking to trade-in your car? Get max value for your current vehicle and upgrade to a new lease with Zero Down in NJ. Get a Quote!"
-        seoKeywords={['trade in value', 'vehicle appraisal NJ', 'car trade in', 'Capital Motor Cars', 'Best Zero Down Lease Deals', 'Affordable NJ Car Leasing', 'Springfield NJ Auto Broker', 'Doorstep Car Delivery NYC', 'Brooklyn Car Lease Specials', 'White-Glove Leasing Service']}
+        description="Trade-in value requests in New Jersey and New York from Capital Motor Cars. Appraise your current vehicle and upgrade into your next lease."
+        seoKeywords={['trade in value New Jersey', 'trade in value New York', 'vehicle appraisal NJ', 'lease upgrade trade in', 'Capital Motor Cars trade in']}
         ogImage="/src/assets/trade-in.avif"
         canonicalPath="/trade-in-value"
       />

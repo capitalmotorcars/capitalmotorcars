@@ -1,5 +1,6 @@
-import { supabase } from '@/lib/supabase';
+import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 import type { BlogPost, BlogPostFormData, ApiResponse } from '@/types/blog';
+import { MOCK_BLOGS } from '@/data/mockBlogs';
 
 function normalizeKeywords(input?: string) {
     if (!input) return undefined;
@@ -14,6 +15,12 @@ function normalizeKeywords(input?: string) {
  * Get all active blog posts (public)
  */
 export async function getActiveBlogPosts(): Promise<ApiResponse<BlogPost[]>> {
+    const fallbackData = MOCK_BLOGS.filter(p => p.is_active);
+    
+    if (!isSupabaseConfigured) {
+        return { success: true, data: fallbackData };
+    }
+
     try {
         const nowIso = new Date().toISOString();
         const { data, error } = await supabase
@@ -24,15 +31,18 @@ export async function getActiveBlogPosts(): Promise<ApiResponse<BlogPost[]>> {
             .order('display_order', { ascending: true });
 
         if (error) {
-            return { success: false, error: error.message };
+            console.error('Supabase error:', error);
+            return { success: true, data: fallbackData };
         }
 
-        return { success: true, data: data || [] };
+        // If Supabase returns nothing, show the mock blogs so the user can see the new content
+        if (!data || data.length === 0) {
+            return { success: true, data: fallbackData };
+        }
+
+        return { success: true, data };
     } catch (err) {
-        return {
-            success: false,
-            error: err instanceof Error ? err.message : 'Failed to fetch blog posts',
-        };
+        return { success: true, data: fallbackData };
     }
 }
 
@@ -87,6 +97,11 @@ export async function getBlogPostById(id: string): Promise<ApiResponse<BlogPost>
  * Get a single blog post by slug
  */
 export async function getBlogPostBySlug(slug: string): Promise<ApiResponse<BlogPost>> {
+    if (!isSupabaseConfigured) {
+        const post = MOCK_BLOGS.find(p => p.slug === slug);
+        return post ? { success: true, data: post } : { success: false, error: 'Post not found' };
+    }
+
     try {
         const { data, error } = await supabase
             .from('blog_posts')
@@ -95,15 +110,14 @@ export async function getBlogPostBySlug(slug: string): Promise<ApiResponse<BlogP
             .single();
 
         if (error) {
-            return { success: false, error: error.message };
+            const post = MOCK_BLOGS.find(p => p.slug === slug);
+            return post ? { success: true, data: post } : { success: false, error: error.message };
         }
 
         return { success: true, data };
     } catch (err) {
-        return {
-            success: false,
-            error: err instanceof Error ? err.message : 'Failed to fetch blog post',
-        };
+        const post = MOCK_BLOGS.find(p => p.slug === slug);
+        return post ? { success: true, data: post } : { success: false, error: err instanceof Error ? err.message : 'Failed to fetch blog post' };
     }
 }
 

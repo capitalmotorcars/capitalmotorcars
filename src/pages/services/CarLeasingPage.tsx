@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
-import { JsonLd, createServiceSchema } from '@/components/JsonLd';
+import { JsonLd, createFaqSchema, createServiceSchema } from '@/components/JsonLd';
 import { ServiceHero } from '@/components/services/ServiceHero';
 import { RelatedServices } from '@/components/services/RelatedServices';
 import { Button } from '@/components/ui/button';
@@ -29,6 +29,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import { primarySeoKeywords, njSeoKeywords } from '@/data/seoKeywords';
 
 const leasingSteps = [
   {
@@ -78,27 +79,30 @@ export default function CarLeasingPage() {
   return (
     <Layout>
       <SEO
-        title="Car Leasing Deals in New Jersey & New York | Capital Motor Cars"
-        description="Securing a car lease in NJ or NY has never been easier. We find the model, negotiate terms, and deliver directly. Zero Down available in NJ. Call Now!"
-        seoKeywords={['car leasing NJ', 'auto leasing services', 'best lease deals NJ', 'hassle-free car leasing']}
+        title="Car Leasing, Auto Leasing & Car Lease Deals in New Jersey & New York | Capital Motor Cars"
+        description="Car leasing, auto leasing, car lease deals, monthly car lease deals, and luxury car leasing in New Jersey and New York from Capital Motor Cars."
+        seoKeywords={[...primarySeoKeywords, ...njSeoKeywords, 'car leasing deals New York', 'zero down lease NJ', 'fast lease approval', 'Capital Motor Cars leasing']}
         ogImage="/src/assets/car-leasing.jpg"
         canonicalPath="/services/car-leasing"
       />
-      <JsonLd data={createServiceSchema({
-        name: "Car Leasing Services",
-        description: "Professional car leasing negotiation and coordination services. We handle the dealerships so you don't have to.",
-        url: "https://capitalmotorcars.com/services/car-leasing"
-      })} />
+      <JsonLd data={[
+        createServiceSchema({
+          name: "Car Leasing Services",
+          description: "Professional car leasing negotiation and coordination services. We handle the dealerships so you don't have to.",
+          url: "https://capitalmotorcars.com/services/car-leasing"
+        }),
+        createFaqSchema(faqs),
+      ]} />
 
       {/* Custom Hero Section (Services Style) */}
       <ServiceHero
         badge="Leasing Made Simple"
-        title="Car Leasing Deals in New Jersey & New York | Capital Motor Cars"
+        title="Car Leasing, Auto Leasing & Car Lease Deals in New Jersey & New York | Capital Motor Cars"
         highlightedTitle=""
-        subtitle="Securing a car lease in NJ or NY has never been easier. We find the model, negotiate terms, and deliver directly. Zero Down available in NJ. Call Now!"
+        subtitle="Securing a car lease in NJ or NY has never been easier. We find the model, negotiate terms, and deliver directly with best car lease deals, monthly car lease deals, and zero down options available in NJ. Call Now!"
         heroImage={heroBg}
         primaryAction={{ label: "Start Credit Application", href: "/credit-application" }}
-        secondaryAction={{ label: "Call Us", href: "tel:201-555-0123", icon: Phone }}
+        secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
       />
 
       {/* Why Lease With Us (Benefits Split) */}

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Building, Facebook, Instagram, Twitter } from 'lucide-react';
+import { MapPin, Phone, Building, Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 import logo from '@/assets/logo-main-footer.png';
 
 const locations = [
@@ -31,9 +31,16 @@ const footerLinks = {
   company: [
     { href: '/services', label: 'Services' },
     { href: '/blog', label: 'Blog' },
+    { href: '/best-lease-deals-new-jersey', label: 'Best NJ Lease Deals' },
+    { href: '/auto-broker-vs-dealership-new-jersey', label: 'Broker vs Dealership' },
+    { href: '/bad-credit-car-lease-new-jersey', label: 'Bad Credit Leasing' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
-    { href: '/credit-application', label: 'Credit Application' },
+  ],
+  locations: [
+    { href: '/car-lease-deals-new-jersey', label: 'Car Lease Deals NJ' },
+    { href: '/auto-leasing-new-jersey', label: 'Auto Leasing NJ' },
+    { href: '/luxury-car-leasing-nj', label: 'Luxury Car Leasing NJ' },
   ],
   legal: [
     { href: '/privacy-policy', label: 'Privacy Policy' },
@@ -42,9 +49,10 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { href: 'https://facebook.com', icon: Facebook, label: 'Facebook' },
-  { href: 'https://instagram.com', icon: Instagram, label: 'Instagram' },
-  { href: 'https://twitter.com', icon: Twitter, label: 'X (Twitter)' },
+  { href: 'https://www.facebook.com/capitalmotorcars/', icon: Facebook, label: 'Facebook' },
+  { href: 'https://www.instagram.com/capitalmotorcars/', icon: Instagram, label: 'Instagram' },
+  { href: 'https://www.linkedin.com/company/capital-motor-cars/', icon: Linkedin, label: 'LinkedIn' },
+  { href: 'https://x.com/capmotorcars', icon: Twitter, label: 'X' },
 ];
 
 // Yelp icon (not in Lucide)
@@ -67,7 +75,7 @@ export function Footer() {
       {/* Main Footer */}
       <div className="text-section border-t border-section">
         <div className="container mx-auto px-4 lg:px-8 py-6 md:py-8 lg:py-14">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-14">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8 lg:gap-14">
             {/* Brand & Social */}
             <div className="text-center ">
               <Link to="/" className="inline-block  mt-4 ">
@@ -87,12 +95,15 @@ export function Footer() {
                 <p className="text-xs font-semibold tracking-widest text-section-muted">
                   AUTO SALES AND LEASING
                 </p>
-                <p className="text-sm font-bold tracking-wide text-section">
-                  (877)-CMC-8866
-                </p>
+                <a
+                  href="tel:+12015095555"
+                  className="inline-flex items-center justify-center text-sm font-bold tracking-wide text-section hover:underline underline-offset-4"
+                >
+                  +1 201-509-5555
+                </a>
               </div>
               <p className="text-sm font-medium leading-relaxed mb-4 tracking-[0.15em] text-section-muted text-center ">
-                Car leasing made easy.
+                Car leasing, auto leasing, and car lease deals made easy.
               </p>
               <div className="flex items-center justify-center  gap-3 text-section-muted opacity-85 hover:opacity-100">
                 {socialLinks.map((social) => (
@@ -108,7 +119,7 @@ export function Footer() {
                   </a>
                 ))}
                 <a
-                  href="https://yelp.com"
+                  href="https://www.yelp.com/biz/capital-motor-cars-springfield"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="transition-all duration-300 hover:scale-110"
@@ -122,7 +133,7 @@ export function Footer() {
             {/* Locations */}
             <div className="lg:col-span-1">
               <h3 className="text-sm font-semibold tracking-wide mb-4 text-section">
-                Locations
+                Main Offices
               </h3>
               <div className="space-y-6">
                 {locations.map((loc, idx) => (
@@ -181,6 +192,25 @@ export function Footer() {
               </h3>
               <ul className="space-y-1">
                 {footerLinks.company.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      to={link.href}
+                      className="inline-flex items-center min-h-[44px] py-2 text-sm text-section-muted hover:underline underline-offset-4 transition-colors duration-200 hover:text-section"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Locations Links */}
+            <div>
+              <h3 className="text-sm font-semibold tracking-wide mb-4 text-section">
+                Locations
+              </h3>
+              <ul className="space-y-1">
+                {footerLinks.locations.map((link) => (
                   <li key={link.href}>
                     <Link
                       to={link.href}

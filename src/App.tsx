@@ -18,6 +18,9 @@ import TermsOfServicePage from "./pages/TermsOfServicePage";
 import QuizPage from "./pages/QuizPage";
 import BlogPage from "./pages/BlogPage";
 import BlogPostPage from "./pages/BlogPostPage";
+import CarLeaseDealsNewJerseyPage from "./pages/local/CarLeaseDealsNewJerseyPage";
+import AutoLeasingNewJerseyPage from "./pages/local/AutoLeasingNewJerseyPage";
+import LuxuryCarLeasingNJPage from "./pages/local/LuxuryCarLeasingNJPage";
 import CarLeasingPage from "./pages/services/CarLeasingPage";
 import FinancingPage from "./pages/services/FinancingPage";
 import TradeInPage from "./pages/services/TradeInPage";
@@ -67,6 +70,14 @@ const App = () => (
               <Route path="/quiz" element={<QuizPage />} />
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
+              <Route path="/car-lease-deals-new-jersey" element={<CarLeaseDealsNewJerseyPage />} />
+              <Route path="/auto-leasing-new-jersey" element={<AutoLeasingNewJerseyPage />} />
+              <Route path="/luxury-car-leasing-nj" element={<LuxuryCarLeasingNJPage />} />
+              <Route path="/best-lease-deals-new-jersey" element={<BlogPostPage />} />
+              <Route path="/auto-broker-vs-dealership-new-jersey" element={<BlogPostPage />} />
+              <Route path="/bad-credit-car-lease-new-jersey" element={<BlogPostPage />} />
+              <Route path="/zero-down-car-lease-new-jersey" element={<BlogPostPage />} />
+              <Route path="/luxury-car-lease-new-jersey" element={<BlogPostPage />} />
 
               {/* Dynamic Vehicle Details Loop */}
               <Route path="/vehicles/:slug" element={<VehicleDetailsPage />} />

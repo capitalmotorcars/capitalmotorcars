@@ -71,8 +71,8 @@ export default function DetailingPage() {
     <Layout>
       <SEO
         title="Pro Auto Detailing in New Jersey & New York | Capital Motor Cars"
-        description="Protect your lease or owned vehicle with our elite auto detailing in New Jersey & New York. Paint correction, ceramic coating, and deep interior cleaning. Call to Book!"
-        seoKeywords={['car detailing NJ', 'auto detailing Springfield', 'ceramic coating NJ', 'Capital Motor Cars detailing']}
+        description="Auto detailing in New Jersey and New York from Capital Motor Cars. Book paint correction, ceramic coating, and interior detailing."
+        seoKeywords={['auto detailing New Jersey', 'auto detailing New York', 'paint correction NJ', 'ceramic coating NY', 'Capital Motor Cars detailing']}
         ogImage="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&w=1200&q=60"
         canonicalPath="/services/detailing"
       />
@@ -90,7 +90,7 @@ export default function DetailingPage() {
         subtitle="Protect your lease or owned vehicle with our elite auto detailing in New Jersey & New York. Paint correction, ceramic coating, and deep interior cleaning. Call to Book!"
         heroImage="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&w=1200&q=60"
         primaryAction={{ label: "Book Detail", href: "/contact" }}
-        secondaryAction={{ label: "Call Us", href: "tel:201-555-0123", icon: Phone }}
+        secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
       />
 
       {/* Why Detail With Us (Benefits Split) */}

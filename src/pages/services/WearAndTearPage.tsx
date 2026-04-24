@@ -69,8 +69,8 @@ export default function WearAndTearPage() {
     <Layout>
       <SEO
         title="Lease Protection New York & New Jersey | Wear & Tear Repair | Capital Motor Cars"
-        description="Returning a lease in New York or New Jersey? Get clear answers on wear and tear charges. Capital Motor Cars handles pre-inspection and affordable repairs across New York & New Jersey before you turn in."
-        seoKeywords={['lease return repair NJ', 'New York wear and tear lease', 'end of lease inspection NJ', 'transparent lease protection', 'Springfield NJ car leasing']}
+        description="Wear and tear repair in New Jersey and New York from Capital Motor Cars. Reduce lease return charges with pre-inspection and repair support."
+        seoKeywords={['wear and tear repair New Jersey', 'wear and tear repair New York', 'lease return repair NJ', 'end of lease inspection NY', 'Capital Motor Cars lease protection']}
         ogImage="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1200&q=60"
         canonicalPath="/services/wear-and-tear"
       />
@@ -88,7 +88,7 @@ export default function WearAndTearPage() {
         subtitle="Get clear answers on wear and tear charges before the bank does. Affordable, transparent repairs across New York & New Jersey so you return with confidence."
         heroImage="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1200&q=60"
         primaryAction={{ label: "Start New York & New Jersey Car Lease Protection", href: "/contact" }}
-        secondaryAction={{ label: "Call Us", href: "tel:201-555-0123", icon: Phone }}
+        secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
       />
 
       {/* Why Choose Repairs (Benefits Split) */}

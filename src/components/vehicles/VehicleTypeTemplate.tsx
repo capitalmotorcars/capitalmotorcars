@@ -259,7 +259,13 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
   }, [searchParams]);
 
   return (
-    <Layout>
+    <Layout
+      breadcrumbItems={[
+        { name: 'Home', url: 'https://capitalmotorcars.com/' },
+        { name: 'Brands', url: 'https://capitalmotorcars.com/brands' },
+        { name: vehicle.name, url: `https://capitalmotorcars.com/vehicles/${vehicle.slug}` },
+      ]}
+    >
       <SEO
         title={seoTitle}
         description={seoDescription}

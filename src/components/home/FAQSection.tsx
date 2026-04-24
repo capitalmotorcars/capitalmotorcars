@@ -13,32 +13,32 @@ const faqData = [
     answer: 'Car leasing allows you to drive a new vehicle for a set period (typically 24-48 months) with lower monthly payments than buying. At the end of the lease term, you can return the vehicle, purchase it, or lease a new one. We handle all the negotiations and paperwork to make the process simple and stress free.',
   },
   {
-    question: 'What credit score do I need to lease a car?',
-    answer: 'While credit requirements vary by lender, most leasing companies prefer a credit score of 620 or higher. However, we work with multiple lenders and can help find options that work for various credit situations. Contact us to discuss your specific circumstances.',
+    question: 'Can you help me lease a car near me?',
+    answer: 'Yes. If you are searching to lease a car near me in New Jersey, we can help you compare car lease deals, auto leasing options, and the right vehicle for your budget.',
+  },
+  {
+    question: 'Do you offer monthly car lease deals?',
+    answer: 'Yes. We regularly help shoppers review monthly car lease deals, including options that balance payment, mileage, and upfront cost.',
+  },
+  {
+    question: 'What are the best car lease deals right now?',
+    answer: 'The best car lease deals depend on the model, timing, and incentive structure. We help compare offers so you can see which new car lease deals or SUV lease deals make the most sense.',
+  },
+  {
+    question: 'Do you have cheap car lease deals and new car lease deals?',
+    answer: 'Yes. When the numbers work, we can point you toward cheap car lease deals and new car lease deals that fit the budget without making the process confusing.',
   },
   {
     question: 'Can I lease a car with bad credit?',
     answer: 'Yes, it\'s possible to lease a car with less than perfect credit. We work with a network of lenders who specialize in various credit situations. You may need a larger down payment or have slightly higher monthly payments, but we\'ll help you find the best options available.',
   },
   {
-    question: 'What happens at the end of my lease?',
-    answer: 'At the end of your lease, you have three options: return the vehicle and lease a new one, purchase the vehicle at its residual value, or simply return the vehicle and walk away (subject to any end-of-lease fees). We can help you navigate all these options.',
-  },
-  {
     question: 'What is included in my lease payment?',
     answer: 'Your lease payment typically covers the vehicle\'s depreciation during the lease term, plus interest and fees. It does not include insurance, maintenance, or repairs. However, many leases include a warranty that covers major repairs during the lease period.',
   },
   {
-    question: 'Can I customize or modify a leased vehicle?',
-    answer: 'Generally, modifications to leased vehicles are not recommended as you\'ll need to return the vehicle in its original condition. However, reversible modifications like window tinting or certain accessories may be acceptable. Always check with your leasing company before making any changes.',
-  },
-  {
     question: 'What is the difference between leasing and financing?',
     answer: 'Leasing involves paying for the vehicle\'s depreciation over the lease term, while financing means you\'re paying toward ownership. Leases typically have lower monthly payments but you don\'t own the vehicle at the end. Financing has higher payments but you own the car once paid off.',
-  },
-  {
-    question: 'How many miles can I drive on a leased vehicle?',
-    answer: 'Most leases include 10,000-15,000 miles per year. You can negotiate for more miles upfront, or you\'ll pay an overage fee (typically $0.15-$0.25 per mile) for exceeding your limit. We can help you choose the right mileage allowance based on your driving habits.',
   },
 ];
 
@@ -54,7 +54,7 @@ export function FAQSection() {
         >
           <SectionHeading
             title="Frequently Asked Questions"
-            subtitle="Get answers to common questions about car leasing and our services"
+            subtitle="Get answers to common questions about car leasing, auto leasing, monthly car lease deals, and more"
             align="center"
           />
 

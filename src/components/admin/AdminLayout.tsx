@@ -1,6 +1,7 @@
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
+import { JsonLd, createBreadcrumbItemsFromPath, createBreadcrumbSchema } from '@/components/JsonLd';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '@/lib/utils';
 import { LogOut, LayoutDashboard, Settings, User, Car, FileText } from 'lucide-react';
@@ -28,6 +29,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
 
     return (
         <div className="min-h-screen bg-black text-foreground overflow-x-hidden relative">
+            <JsonLd data={createBreadcrumbSchema(createBreadcrumbItemsFromPath(location.pathname))} />
             {/* Ambient Background - Matching Site Theme */}
             <div
                 className="absolute inset-0 

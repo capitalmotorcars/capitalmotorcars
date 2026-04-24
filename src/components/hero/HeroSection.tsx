@@ -36,14 +36,14 @@ export function HeroSection() {
             <h1
               className={` text-3xl md:text-6xl xl:text-7xl font-extrabold leading-tight tracking-tight hero-animate text-section ${animate}`}
             >
-              <span className="text-gradient-heading-dark">{renderSEOHeading("New York & New Jersey's Trusted Auto Broker | Best Car Lease Deals, Zero Down & Free Delivery")}</span>
+              <span className="text-gradient-heading-dark">{renderSEOHeading("New York & New Jersey's Trusted Auto Broker | Best Car Lease Deals, Auto Leasing, Luxury Car Leasing & Free Delivery")}</span>
             </h1>
 
 
 
             <div className="flex flex-col items-center gap-3 xl:gap-5 w-full sm:w-auto ">
               <h2 className={`text-sm font-semibold sm:text-sm md:text-base lg:text-lg xl:text-xl w-full max-w-[620px] xl:max-w-[750px] leading-snug text-white dark:text-white/90 hero-animate delay-1 ${animate}`}>
-                Experience stress-free car leasing with Capital Motor Cars. We negotiate the best deals, handle financing, and provide expert automotive services in New Jersey.
+                Experience stress-free car leasing and auto leasing with Capital Motor Cars. We negotiate the best car lease deals, monthly car lease deals, SUV lease deals, and luxury car leasing options in New Jersey.
               </h2>
               <div className={`flex flex-row items-center gap-3 xl:gap-4 w-full sm:w-auto hero-animate delay-2 ${animate}`}>
                 <MagneticButton strength={0.45} className="w-full sm:w-auto min-w-0">

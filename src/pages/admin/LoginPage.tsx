@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { SEO } from '@/components/SEO';
+import { JsonLd, createBreadcrumbSchema } from '@/components/JsonLd';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -32,6 +34,17 @@ export default function LoginPage() {
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-4">
+            <SEO
+                title="Admin Login | Capital Motor Cars Secure Dashboard Access"
+                description="Authorized access for the Capital Motor Cars dashboard."
+            />
+            <JsonLd
+                data={createBreadcrumbSchema([
+                    { name: 'Home', url: 'https://capitalmotorcars.com/' },
+                    { name: 'Admin', url: 'https://capitalmotorcars.com/admin' },
+                    { name: 'Login', url: 'https://capitalmotorcars.com/admin/login' },
+                ])}
+            />
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

@@ -5,8 +5,9 @@ export default function TermsOfServicePage() {
   return (
     <Layout>
       <SEO 
-        title="Terms of Use | Capital Motor Cars"
-        description="Read the terms and conditions for using Capital Motor Cars website and services. Understand your rights and responsibilities."
+        title="Terms of Use | Capital Motor Cars Website & Services"
+        description="Terms of use for Capital Motor Cars in Springfield, New Jersey. Review the rules for our car leasing website and services."
+        seoKeywords={['terms of use Capital Motor Cars', 'Springfield New Jersey terms of use', 'car leasing website terms', 'Capital Motor Cars legal terms']}
       />
       <section className="bg-primary py-10 md:py-16">
         <div className="container mx-auto px-4 lg:px-8">
