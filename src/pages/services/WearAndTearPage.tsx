@@ -36,7 +36,7 @@ const repairSteps = [
   {
     icon: Wrench,
     title: "Repair",
-    description: "Our trusted New York & New Jersey network fixes dents, scratches, and wheel damage at fair, published prices — no surprises."
+    description: "Our trusted New York & New Jersey network fixes dents, scratches, and wheel damage at fair, published prices with no surprises."
   },
   {
     icon: FileCheck,
@@ -59,7 +59,7 @@ const idealFor = [
 
 const faqs = [
   { question: "What counts as 'excess' wear and tear in New York & New Jersey?", answer: "Banks in New York and New Jersey typically charge for scratches over a credit-card size, tires with low tread, windshield cracks, and stains. We give you clear answers by knowing each lender's specific scorecard before you return." },
-  { question: "Is it cheaper to fix it myself before turning in New York or New Jersey?", answer: "Almost always. Dealerships in New York & New Jersey charge premium rates at return. Our local network offers competitive, transparent pricing so you know every cost upfront — no surprises." },
+  { question: "Is it cheaper to fix it myself before turning in New York or New Jersey?", answer: "Almost always. Dealerships in New York & New Jersey charge premium rates at return. Our local network offers competitive, transparent pricing so you know every cost upfront with no surprises." },
   { question: "Do you handle wheel repair across New York and New Jersey?", answer: "Yes. Wheel curb rash is one of the most common lease penalties in New York & New Jersey. We can restore wheels to like-new condition for a fraction of the replacement cost and give you a clear price before we start." },
 ];
 
@@ -124,7 +124,7 @@ export default function WearAndTearPage() {
                       <Wrench className="w-6 h-6" />
                     </div>
                     <span className="text-lg font-black text-black dark:text-white tracking-tight leading-tight">Expert New York & New Jersey Repair</span>
-                    <p className="text-sm text-muted-foreground">Certified technicians who know exactly what New York and New Jersey lease inspectors look for — clear answers before and after every repair.</p>
+                    <p className="text-sm text-muted-foreground">Certified technicians who know exactly what New York and New Jersey lease inspectors look for, with clear answers before and after every repair.</p>
                   </div>
                   <div className="flex flex-col gap-4 group">
                     <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -174,7 +174,7 @@ export default function WearAndTearPage() {
                   "Clear, upfront damage assessment for New York & New Jersey",
                   "Transparent, cost-effective repair options",
                   "Direct coordination with local New York & New Jersey body shops",
-                  "Stress-free return prep — clear answers guaranteed"
+                  "Stress-free return prep with clear answers guaranteed"
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-4 group">
                     <div className="shrink-0 w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center mt-1">
@@ -309,13 +309,13 @@ export default function WearAndTearPage() {
       <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex flex-col mb-8 justify-start items-start md:items-center">
-            <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-2">Get Protected — New York & New Jersey</span>
+            <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-2">Get Protected | New York & New Jersey</span>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-black dark:text-white uppercase">
               Start Your <span className="text-accent italic">Protection</span>
             </h2>
             <div className="mt-10 w-full">
               <p className="text-muted-foreground mb-4 text-lg max-w-lg mx-auto">
-                New York and New Jersey drivers — get clear answers on your lease return. Don't overpay at the dealership.
+                New York and New Jersey drivers can get clear answers on lease return costs without overpaying at the dealership.
               </p>
             </div>
             <div className="w-full max-w-2xl mx-auto">

@@ -41,6 +41,7 @@ const footerLinks = {
     { href: '/car-lease-deals-new-jersey', label: 'Car Lease Deals NJ' },
     { href: '/auto-leasing-new-jersey', label: 'Auto Leasing NJ' },
     { href: '/luxury-car-leasing-nj', label: 'Luxury Car Leasing NJ' },
+    { href: '/car-leasing-trenton-nj', label: 'Car Leasing Trenton NJ' },
   ],
   legal: [
     { href: '/privacy-policy', label: 'Privacy Policy' },
@@ -142,7 +143,7 @@ export function Footer() {
                     className={`text-xs leading-relaxed text-section-muted ${idx === 0 ? '' : 'pt-4 border-t border-section'}`}
                   >
                     <p className="text-sm font-semibold text-section mb-2">
-                      {loc.name} – {loc.city}
+                      {loc.name} - {loc.city}
                     </p>
                     <div className="flex items-start gap-2 mb-2">
                       <MapPin className="h-3.5 w-3.5 mt-0.5 shrink-0 text-section-muted" />

@@ -150,7 +150,7 @@ export function WhyUsPokerCards() {
       >
         <SectionHeading
           title="Why Work with Capital Motor Cars"
-          subtitle="What sets us apart—transparency, expertise, and a process built around you."
+          subtitle="What sets us apart: transparency, expertise, and a process built around you."
         />
 
         {/* Main border wrapper — same as Experience You Can Trust */}

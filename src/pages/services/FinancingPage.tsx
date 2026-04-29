@@ -64,7 +64,7 @@ const idealFor = [
 
 const faqs = [
   { question: "Will checking my options hurt my credit score?", answer: "No. We start with a soft pull so you get clear answers on your options without any impact to your score. A hard inquiry is only needed when you're ready to finalize the loan in New York or New Jersey." },
-  { question: "Do you work with bad credit in New York or New Jersey?", answer: "Yes. We have relationships with lenders who specialize in all credit tiers across New York and New Jersey — from Tier 1 excellent credit to actively rebuilding credit profiles. We'll give you clear answers upfront." },
+  { question: "Do you work with bad credit in New York or New Jersey?", answer: "Yes. We have relationships with lenders who specialize in all credit tiers across New York and New Jersey, from Tier 1 excellent credit to actively rebuilding credit profiles. We'll give you clear answers upfront." },
   { question: "Can I finance a lease buyout in New York or New Jersey?", answer: "Absolutely. We specialize in lease buyouts and can often get you better rates than the dealership. Our Springfield, NJ location serves customers throughout New York and New Jersey." },
 ];
 
@@ -129,14 +129,14 @@ export default function FinancingPage() {
                       <Banknote className="w-6 h-6" />
                     </div>
                     <span className="text-lg font-black text-black dark:text-white tracking-tight leading-tight">Competitive New York & New Jersey Rates</span>
-                    <p className="text-sm text-muted-foreground">We access wholesale rates from 30+ lenders across New York and New Jersey — clear answers guaranteed, no surprises.</p>
+                    <p className="text-sm text-muted-foreground">We access wholesale rates from 30+ lenders across New York and New Jersey with clear answers and no surprises.</p>
                   </div>
                   <div className="flex flex-col gap-4 group">
                     <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                       <Clock className="w-6 h-6" />
                     </div>
                     <span className="text-lg font-black text-black dark:text-white tracking-tight leading-tight">Fast, Transparent Approval</span>
-                    <p className="text-sm text-muted-foreground">New York & New Jersey drivers get a decision in minutes. We explain every term clearly — no dealer jargon.</p>
+                    <p className="text-sm text-muted-foreground">New York & New Jersey drivers get a decision in minutes. We explain every term clearly with no dealer jargon.</p>
                   </div>
                 </div>
 
@@ -176,7 +176,7 @@ export default function FinancingPage() {
 
               <ul className="space-y-6">
                 {[
-                  "No hard credit pull to start — clear answers first",
+                  "No hard credit pull to start, clear answers first",
                   "Plain-English explanation of every term",
                   "30+ lender options across New York & New Jersey",
                   "100% secure, transparent data handling"
@@ -314,13 +314,13 @@ export default function FinancingPage() {
       <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex flex-col mb-8 justify-start items-start md:items-center">
-            <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-2">Get Started — New York & New Jersey</span>
+            <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-2">Get Started | New York & New Jersey</span>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-black dark:text-white uppercase">
               Start Your <span className="text-accent italic">Application</span>
             </h2>
             <div className="mt-10 w-full">
               <p className="text-muted-foreground mb-4 text-lg max-w-lg mx-auto">
-                New York and New Jersey drivers — get clear answers on auto financing today. Safe, fast, and no obligation.
+                New York and New Jersey drivers can get clear answers on auto financing today. Safe, fast, and no obligation.
               </p>
             </div>
             <div className="w-full max-w-2xl mx-auto">
