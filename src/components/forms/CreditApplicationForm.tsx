@@ -36,6 +36,15 @@ const formatPhoneNumber = (value: string) => {
   )}-${phoneNumber.slice(6, 10)}`;
 };
 
+// DOB formatting function
+const formatDOB = (value: string) => {
+  if (!value) return value;
+  const digits = value.replace(/[^\d]/g, '');
+  if (digits.length <= 2) return digits;
+  if (digits.length <= 4) return `${digits.slice(0, 2)}-${digits.slice(2)}`;
+  return `${digits.slice(0, 2)}-${digits.slice(2, 4)}-${digits.slice(4, 8)}`;
+};
+
 // Housing payment options
 const HOUSING_PAYMENT_OPTIONS = [
   { value: 'rent', label: 'Rent' },
@@ -911,9 +920,14 @@ export function CreditApplicationForm({ applicationType, setApplicationType }: C
               <div className="relative">
                 <Input 
                   id="dob" 
-                  type="date" 
+                  type="text"
+                  maxLength={10}
+                  placeholder="MM-DD-YYYY"
                   {...register('dob', {
-                    onChange: () => trigger('dob'),
+                    onChange: (e) => {
+                      e.target.value = formatDOB(e.target.value);
+                      trigger('dob');
+                    },
                     onBlur: () => trigger('dob'),
                   })} 
                   className={cn(
@@ -1692,9 +1706,14 @@ export function CreditApplicationForm({ applicationType, setApplicationType }: C
                       <div className="relative">
                         <Input 
                           id="coDob"
-                          type="date" 
+                          type="text"
+                          maxLength={10}
+                          placeholder="MM-DD-YYYY"
                           {...register('coDob', {
-                            onChange: () => trigger('coDob'),
+                            onChange: (e) => {
+                              e.target.value = formatDOB(e.target.value);
+                              trigger('coDob');
+                            },
                             onBlur: () => trigger('coDob'),
                           })} 
                           className={cn(
