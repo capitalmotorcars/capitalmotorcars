@@ -42,6 +42,7 @@ const footerLinks = {
     { href: '/auto-leasing-new-jersey', label: 'Auto Leasing NJ' },
     { href: '/luxury-car-leasing-nj', label: 'Luxury Car Leasing NJ' },
     { href: '/car-leasing-trenton-nj', label: 'Car Leasing Trenton NJ' },
+    { href: '/car-leasing-edgewater-nj', label: 'Car Leasing Edgewater NJ' },
   ],
   legal: [
     { href: '/privacy-policy', label: 'Privacy Policy' },
