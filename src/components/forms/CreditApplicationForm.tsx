@@ -17,7 +17,7 @@ import { Loader2, Shield, ChevronLeft, ChevronRight, UserPlus, Upload, User, Mai
 import { FormSuccessMessage } from './FormSuccessMessage';
 import { AddressAutocomplete } from './AddressAutocomplete';
 import { getSubmitErrorMessage, getSubmitErrorFromException } from './getSubmitErrorMessage';
-import { WEBHOOK_URL_CREDIT_APPLICATION } from '@/lib/webhook';
+import { WEBHOOK_CREDIT_APPLICATION_PATH } from '@/lib/webhook';
 import { US_STATES, HOUSING_OPTIONS, CONSULTANT_OPTIONS, getConsultantEmail } from '@/lib/creditConstants';
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
 
@@ -434,7 +434,7 @@ export function CreditApplicationForm({ applicationType, setApplicationType }: C
           LegalAgreed: data.legalAgree,
         };
 
-        const res = await fetch(WEBHOOK_URL_CREDIT_APPLICATION, {
+        const res = await fetch(WEBHOOK_CREDIT_APPLICATION_PATH, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
