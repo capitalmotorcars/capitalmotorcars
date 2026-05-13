@@ -167,7 +167,7 @@ export default function AutoLeasingNewJerseyPage() {
                       text: 'Get help with upgrades, trade-ins, and lease renewals without chasing answers in three different places.',
                     },
                   ].map((card) => (
-                    <div key={card.title} className={`rounded-2xl border border-white/10 bg-white/[0.05] p-4 ${card.span ?? ''}`}>
+                    <div key={card.title} className={`rounded-2xl border border-white/10 bg-white/[0.05] p-4`}>
                       <div className="flex items-center gap-2 text-accent">
                         <card.icon className="h-4 w-4" />
                         <span className="text-xs font-bold uppercase tracking-[0.18em]">{card.title}</span>

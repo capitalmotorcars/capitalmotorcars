@@ -2,6 +2,7 @@ export interface BlogPost {
     id: string;
     title: string;
     slug: string;
+    author?: string;
     excerpt?: string;
     content: string;
     cover_image_url?: string;
@@ -18,6 +19,7 @@ export interface BlogPost {
 export interface BlogPostFormData {
     title: string;
     slug: string;
+    author?: string;
     excerpt?: string;
     content: string;
     cover_image_url?: string;

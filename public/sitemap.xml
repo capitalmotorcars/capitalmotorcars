@@ -138,7 +138,16 @@
     <image:image>
       <image:loc>https://images.unsplash.com/photo-1553440569-bcc63803a83d</image:loc>
       <image:title>Bad Credit Car Leasing NJ</image:title>
-      <image:caption>How to get approved for a new car lease in NJ even with a low credit score.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/bmw-car-lease</loc>
+    <priority>0.95</priority>
+    <changefreq>weekly</changefreq>
+    <image:image>
+      <image:loc>https://onsxnzwhuugnmsxaqpzt.supabase.co/storage/v1/object/public/vehicle-images/vehicle-types/xuoj4gscxnl_1771271808916.webp</image:loc>
+      <image:title>BMW Car Lease Deals</image:title>
+      <image:caption>Discover premium BMW car lease deals with Capital Motor Cars.</image:caption>
     </image:image>
   </url>
   <url>
