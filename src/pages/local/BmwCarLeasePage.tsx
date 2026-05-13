@@ -75,13 +75,13 @@ const faqs = [
 
 const schemas = [
   createWebPageSchema({
-    name: 'BMW Car Lease Deals & Expert Leasing Guide',
-    description: 'Discover the ultimate guide to BMW leasing. Access exclusive BMW car lease deals, learn about MSDs, money factors, and explore models like the X5 and i7.',
+    name: 'BMW Car Lease | BMW Car Lease NJ & US Deals',
+    description: 'Looking for the ultimate BMW car lease? Discover premium BMW car lease NJ and BMW car lease US specials with Capital Motor Cars. We negotiate the best money factors and lease structures.',
     url: 'https://capitalmotorcars.com/bmw-car-lease',
   }),
   createServiceSchema({
     name: 'BMW Auto Leasing Services',
-    description: 'Premium auto leasing services specializing in BMWs. We offer competitive capitalized costs, optimize money factors with MSDs, and provide the best direct BMW lease terms.',
+    description: 'Premium auto leasing services specializing in BMWs. Whether you need a local BMW car lease NJ option or the best BMW car lease US wide, we optimize money factors and provide the best direct lease terms.',
     url: 'https://capitalmotorcars.com/bmw-car-lease',
   }),
   createFaqSchema(faqs),
