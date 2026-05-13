@@ -1,74 +1,70 @@
 import 'dotenv/config';
 import express from 'express';
+import rateLimit from 'express-rate-limit';
 import { Resend } from 'resend';
+import { applyApiCors } from '../lib/httpCors.mjs';
+import {
+  buildHtml,
+  labelKey,
+  resolveConsultantRecipients,
+  sanitizeLeadFields,
+} from '../lib/sendEmailSecurity.mjs';
+import { forwardJsonToWebhook } from '../lib/webhookForward.mjs';
 
-const app = express();
-app.use(express.json());
-
-const TO_EMAILS = [
-  'info@capitalmotorcars.com',
-  'camico@capitalmotorcars.com',
-  'henry@capitalmotorcars.com',
-];
-
-// Consultant email mapping (matches frontend)
-const CONSULTANT_EMAIL_MAP = {
-  'henry_liu': 'henry@capitalmotorcars.com',
-  'christopher_amico': 'camico@capitalmotorcars.com',
-  'michael_minerva': 'mike.minerva@capitalmotorcars.com',
-  'vicky_azrak': 'vicky@capitalmotorcars.com',
-  'james_dai': 'james@capitalmotorcars.com',
-  'aaron_cui': 'info@capitalmotorcars.com',
-  'abby_gorani': 'info@capitalmotorcars.com',
-  'bobby_kaufman': 'bobby@capitalmotorcars.com',
-  'christine_reich': 'info@capitalmotorcars.com',
-  'derek_anton': 'derek@capitalmotorcars.com',
-  'daniel_jay_lehrer': 'dlehrer@capitalmotorcars.com',
-  'jeffrey_horn': 'jeffrey@capitalmotorcars.com',
-  'mark_onbashian': 'mark@capitalmotorcars.com',
-  'markin': 'mark@capitalmotorcars.com',
-  'michael_zeitoune': 'mzeitoune@capitalmotorcars.com',
-  'michael_van_houten': 'mvanhouten@capitalmotorcars.com',
-  'rafael_frias': 'rafael@capitalmotorcars.com',
-  'ricky_wong': 'ricky@capitalmotorcars.com',
-  'rushi_sanghavi': 'info@capitalmotorcars.com',
-  'sarah_flynn': 'sarah@capitalmotorcars.com',
-  'stephen_jo': 'info@capitalmotorcars.com',
-  'wilson_dong': 'info@capitalmotorcars.com',
-  'finance_team': 'info@capitalmotorcars.com',
-  'yehuda_cohen': 'info@capitalmotorcars.com',
-  'other': 'info@capitalmotorcars.com',
-};
 const SUBJECT = '🚗 New Lead: Capital Motor Cars';
 
-function buildHtml(type, body) {
-  const rows = Object.entries(body)
-    .filter(([, v]) => v != null && v !== '')
-    .map(([k, v]) => `<tr><td style="padding:8px 12px;border:1px solid #eee;"><strong>${k}</strong></td><td style="padding:8px 12px;border:1px solid #eee;">${String(v)}</td></tr>`)
-    .join('');
-  return `
-    <div style="font-family:sans-serif;max-width:600px;">
-      <h2 style="color:#1a1a1a;">New ${type === 'contact' ? 'Contact' : 'Credit'} Lead</h2>
-      <p style="color:#555;">Submitted from Capital Motor Cars website.</p>
-      <table style="width:100%;border-collapse:collapse;margin-top:16px;">
-        ${rows}
-      </table>
-    </div>
-  `;
-}
-
-function label(key) {
-  return key.replace(/([A-Z])/g, ' $1').replace(/^./, (s) => s.toUpperCase());
-}
+const app = express();
+app.set('trust proxy', 1);
 
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  applyApiCors(req, res);
   next();
 });
 
-app.options('/api/send-email', (req, res) => res.status(200).end());
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 120,
+  standardHeaders: true,
+  legacyHeaders: false,
+  skip: (req) => req.method === 'OPTIONS',
+});
+
+app.use('/api', apiLimiter);
+app.use(express.json({ limit: '2mb' }));
+
+app.use((req, res, next) => {
+  if (req.method === 'OPTIONS' && req.path.startsWith('/api')) {
+    return res.status(204).end();
+  }
+  next();
+});
+
+const DEFAULT_MAKE_CONTACT = 'https://hook.eu1.make.com/zfw7p0asc4teuk2znyk1pbbg18fv7q7b';
+const DEFAULT_MAKE_CREDIT = 'https://hook.eu1.make.com/jmxgdt9co9e5403vopzm8witym4kg5mv';
+const DEFAULT_MAKE_TRADE_IN = 'https://hook.eu1.make.com/zfw7p0asc4teuk2znyk1pbbg18fv7q7b';
+
+async function proxyMakeWebhook(req, res, envKey, fallbackUrl) {
+  const upstream =
+    process.env[envKey] && process.env[envKey].trim() ? process.env[envKey].trim() : fallbackUrl;
+  try {
+    const r = await forwardJsonToWebhook(upstream, req.body ?? {});
+    const text = await r.text();
+    const ct = r.headers.get('content-type') ?? 'application/json';
+    res.status(r.status).setHeader('Content-Type', ct).send(text);
+  } catch {
+    res.status(502).json({ success: false, error: 'Upstream error' });
+  }
+}
+
+app.post('/api/webhooks/contact', (req, res) =>
+  proxyMakeWebhook(req, res, 'MAKE_WEBHOOK_CONTACT_URL', DEFAULT_MAKE_CONTACT),
+);
+app.post('/api/webhooks/credit', (req, res) =>
+  proxyMakeWebhook(req, res, 'MAKE_WEBHOOK_CREDIT_URL', DEFAULT_MAKE_CREDIT),
+);
+app.post('/api/webhooks/trade-in', (req, res) =>
+  proxyMakeWebhook(req, res, 'MAKE_WEBHOOK_TRADE_IN_URL', DEFAULT_MAKE_TRADE_IN),
+);
 
 app.post('/api/send-email', async (req, res) => {
   const apiKey = process.env.RESEND_API_KEY;
@@ -80,31 +76,14 @@ app.post('/api/send-email', async (req, res) => {
   const type = body.type ?? 'contact';
   const fromEmail = process.env.FROM_EMAIL ?? 'Capital Motor Cars <onboarding@resend.dev>';
 
-  const fields = { ...body };
-  delete fields.type;
+  const fields = sanitizeLeadFields(body);
   const displayBody = {};
   for (const [k, v] of Object.entries(fields)) {
-    displayBody[label(k)] = v;
+    displayBody[labelKey(k)] = v;
   }
 
-  // Use consultant's email if available, otherwise use default recipients
-  let toEmails = [...TO_EMAILS];
-  
-  // First try to use the ConsultantEmail from the payload
-  if (fields.ConsultantEmail && fields.ConsultantEmail !== 'info@capitalmotorcars.com') {
-    // Send ONLY to the selected consultant
-    toEmails = [fields.ConsultantEmail];
-  }
-  // Fallback: use server-side mapping if Consultant field exists but no ConsultantEmail
-  else if (fields.Consultant && CONSULTANT_EMAIL_MAP[fields.Consultant]) {
-    const consultantEmail = CONSULTANT_EMAIL_MAP[fields.Consultant];
-    if (consultantEmail !== 'info@capitalmotorcars.com') {
-      // Send ONLY to the selected consultant
-      toEmails = [consultantEmail];
-    }
-  }
-
-  const html = buildHtml(type, displayBody);
+  const toEmails = resolveConsultantRecipients(fields);
+  const html = buildHtml(type === 'credit' ? 'credit' : 'contact', displayBody);
   const resend = new Resend(apiKey);
 
   try {
