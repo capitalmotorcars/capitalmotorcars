@@ -33,6 +33,23 @@ function isOlderThanSixMonths(value?: string | null) {
   return publishedDate < threshold;
 }
 
+/** Allow internal routes or https: only (blocks javascript:, data:, etc.). */
+function sanitizeMarkdownHref(raw: string): string | null {
+  const href = raw.trim();
+  if (href.startsWith('/') && !href.startsWith('//')) {
+    return href;
+  }
+  try {
+    const u = new URL(href);
+    if (u.protocol === 'https:') {
+      return u.toString();
+    }
+  } catch {
+    return null;
+  }
+  return null;
+}
+
 /** Renders **bold** text and [links](/url) */
 function renderInline(text: string) {
   // Matches [text](url) or **bold**
@@ -51,14 +68,31 @@ function renderInline(text: string) {
       const linkMatch = part.match(/\[([^\]]+)\]\(([^)]+)\)/);
       if (linkMatch) {
         const [, linkText, linkUrl] = linkMatch;
+        const safe = sanitizeMarkdownHref(linkUrl);
+        if (!safe) {
+          return <span key={idx}>{linkText}</span>;
+        }
+        if (safe.startsWith('/')) {
+          return (
+            <Link
+              key={idx}
+              to={safe}
+              className="text-accent underline underline-offset-4 font-bold hover:text-accent/80 transition-colors"
+            >
+              {linkText}
+            </Link>
+          );
+        }
         return (
-          <Link 
-            key={idx} 
-            to={linkUrl} 
+          <a
+            key={idx}
+            href={safe}
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-accent underline underline-offset-4 font-bold hover:text-accent/80 transition-colors"
           >
             {linkText}
-          </Link>
+          </a>
         );
       }
     }
@@ -158,10 +192,10 @@ function BlogContent({ content }: { content: string }) {
     }
 
     // Bullet list (lines starting with - or *)
-    if (/^[\-\*]\s+/.test(line)) {
+    if (/^[-*]\s+/.test(line)) {
       const items: string[] = [];
-      while (i < lines.length && /^[\-\*]\s+/.test(lines[i])) {
-        items.push(lines[i].replace(/^[\-\*]\s+/, '').trim());
+      while (i < lines.length && /^[-*]\s+/.test(lines[i])) {
+        items.push(lines[i].replace(/^[-*]\s+/, '').trim());
         i++;
       }
       blocks.push(
@@ -238,7 +272,7 @@ function BlogContent({ content }: { content: string }) {
     while (i < lines.length) {
       const l = lines[i];
       if (l.trim() === '') break;
-      if (/^[\-\*]\s+/.test(l)) break;
+      if (/^[-*]\s+/.test(l)) break;
       if (l.trim().startsWith('|')) break;
       if ((l.trim().endsWith(':') || l.trim().startsWith('###')) && l.trim().length < 80) break;
       paraLines.push(l);
