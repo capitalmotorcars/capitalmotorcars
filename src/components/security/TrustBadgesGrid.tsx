@@ -13,33 +13,29 @@ export const TRUST_BADGES = [
     alt: 'Strong encryption for your data',
     line: 'Data encryption',
     caption: 'Protected in transit and at rest',
-    renderWhite: true,
   },
   {
     src: '/privacy-protection.png',
     alt: 'Privacy protected: your information handled responsibly',
     line: 'Privacy protection',
     caption: 'Responsible data handling',
-    renderWhite: true,
   },
   {
     src: '/ddos-badge.png',
     alt: 'DDoS protection: resilient hosting',
     line: 'DDoS protection',
     caption: 'Hardened edge network',
-    renderWhite: true,
   },
   {
     src: '/trust-assurance-badge.png',
     alt: 'Security and trust commitment',
     line: 'Trust standards',
     caption: 'Aligned with industry expectations',
-    renderWhite: true,
   },
 ] as const;
 
 type TrustBadgesGridProps = {
-  /** `surface`: light/dark page backgrounds (matches SecurityTrustStrip). `hero`: dark gradient hero (white labels, inverted monochrome marks). */
+  /** `surface`: home strip. `hero`: dark gradient hero on data-security page. */
   variant?: 'surface' | 'hero';
   className?: string;
 };
@@ -67,12 +63,7 @@ export function TrustBadgesGrid({ variant = 'surface', className }: TrustBadgesG
             <img
               src={item.src}
               alt={item.alt}
-              className={cn(
-                'h-auto max-h-[4.5rem] w-full object-contain sm:max-h-24 lg:max-h-[5.25rem]',
-                'renderWhite' in item &&
-                  item.renderWhite &&
-                  (onHero ? 'brightness-0 invert' : 'dark:brightness-0 dark:invert'),
-              )}
+              className="h-auto max-h-[4.5rem] w-full object-contain sm:max-h-24 lg:max-h-[5.25rem]"
               loading="lazy"
               decoding="async"
             />
