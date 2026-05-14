@@ -330,7 +330,7 @@ export default function CreditApplicationDataSecurityPage() {
         </div>
 
         <aside
-          className="hidden max-h-[calc(100vh-7.5rem)] w-56 overflow-y-auto rounded-xl border border-border/80 bg-card/95 p-5 shadow-sm backdrop-blur-sm dark:bg-white/[0.05] lg:fixed lg:right-[max(1rem,calc((100vw-72rem)/2+2rem))] lg:top-28 lg:z-30 lg:block"
+          className="hidden max-h-[calc(100vh-7.5rem)] w-56 overflow-y-auto rounded-xl border border-border bg-background p-5 shadow-lg ring-1 ring-border/40 dark:bg-slate-950 dark:ring-white/10 lg:fixed lg:right-[max(1rem,calc((100vw-72rem)/2+2rem))] lg:top-28 lg:z-30 lg:block"
           aria-label="On this page"
         >
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground">On this page</p>
@@ -345,9 +345,9 @@ export default function CreditApplicationDataSecurityPage() {
               </a>
             ))}
           </nav>
-          <div className="mt-6 rounded-lg bg-accent/10 p-4 text-xs leading-relaxed text-muted-foreground">
+          <p className="mt-6 rounded-lg border border-border/70 bg-muted/50 p-4 text-xs leading-relaxed text-foreground/90 dark:bg-slate-900/80 dark:text-slate-200">
             This is a technical summary, not legal advice. Pair with counsel and vendor DPAs for regulated use cases.
-          </div>
+          </p>
         </aside>
       </section>
 
