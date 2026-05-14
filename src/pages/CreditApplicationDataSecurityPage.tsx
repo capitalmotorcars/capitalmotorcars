@@ -12,14 +12,11 @@ import { motion } from 'framer-motion';
 const LAST_UPDATED = 'May 2026';
 
 const toc = [
-  { id: 'encryption-transit', label: 'Encryption in transit' },
-  { id: 'encryption-rest', label: 'Encryption at rest' },
-  { id: 'file-storage', label: 'Secure file handling' },
-  { id: 'access-control', label: 'Access control' },
-  { id: 'pdf-documents', label: 'PDFs & documents' },
-  { id: 'infrastructure', label: 'Database & infrastructure' },
-  { id: 'logging', label: 'Logging & monitoring' },
-  { id: 'documentation', label: 'Retention & use of this doc' },
+  { id: 'what-you-share', label: 'What you share' },
+  { id: 'when-you-submit', label: 'When you hit submit' },
+  { id: 'uploads', label: 'Photos and PDFs' },
+  { id: 'who-sees-it', label: 'Who can see it' },
+  { id: 'behind-the-site', label: 'Behind this website' },
 ] as const;
 
 const fadeIn = {
@@ -30,30 +27,21 @@ const fadeIn = {
 
 function SectionCard({
   id,
-  number,
   title,
   children,
 }: {
   id: string;
-  number: string;
   title: string;
   children: ReactNode;
 }) {
   return (
     <article
       id={id}
-      className="scroll-mt-28 rounded-2xl border border-border/80 bg-card/40 p-6 shadow-sm backdrop-blur-sm dark:bg-white/[0.03] sm:p-8 md:p-10"
+      className="scroll-mt-28 rounded-2xl border border-border/80 bg-card/40 p-6 shadow-sm sm:p-8 md:p-9"
     >
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
-        <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/15 text-xs font-black tracking-tight text-accent">
-          {number}
-        </span>
-        <div className="min-w-0 flex-1">
-          <h2 className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">{title}</h2>
-          <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground sm:text-[15px] sm:leading-relaxed">
-            {children}
-          </div>
-        </div>
+      <h2 className="text-lg font-bold tracking-tight text-foreground sm:text-xl">{title}</h2>
+      <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-[15px] sm:leading-relaxed">
+        {children}
       </div>
     </article>
   );
@@ -63,25 +51,23 @@ export default function CreditApplicationDataSecurityPage() {
   return (
     <Layout>
       <SEO
-        title="Credit Application Security & Data Protection | Capital Motor Cars"
-        description="Technical overview of how Capital Motor Cars protects credit applications: TLS, secure handling of licenses and SSN, access control, infrastructure, and compliance documentation for lenders and customers."
+        title="How We Protect Your Application | Capital Motor Cars"
+        description="Plain-language summary of how Capital Motor Cars handles credit application information: secure forms, uploads, and who can access your data."
         seoKeywords={[
           'credit application security',
-          'auto finance data protection',
-          'TLS encryption car loan application',
-          'Capital Motor Cars privacy compliance',
+          'car loan application privacy',
+          'Capital Motor Cars data protection',
         ]}
         canonicalPath="/credit-application/data-security"
       />
       <JsonLd
         data={{
           '@context': 'https://schema.org',
-          '@type': 'TechArticle',
-          headline: 'Credit application security and data protection',
+          '@type': 'WebPage',
+          name: 'How we protect your credit application',
           description:
-            'How Capital Motor Cars protects sensitive credit application data including encryption in transit, access controls, and secure processing.',
+            'Plain-language overview of how Capital Motor Cars handles sensitive credit application information.',
           dateModified: '2026-05-14',
-          author: { '@type': 'Organization', name: 'Capital Motor Cars' },
           publisher: { '@type': 'Organization', name: 'Capital Motor Cars' },
         }}
       />
@@ -103,15 +89,14 @@ export default function CreditApplicationDataSecurityPage() {
               <ArrowLeft className="h-4 w-4" aria-hidden />
               Back to credit application
             </Link>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-accent/90">Security &amp; compliance</p>
-            <h1 className="mt-3 max-w-4xl text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl md:leading-[1.1]">
-              How we protect your credit application
+            <h1 className="max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl md:text-[2.5rem] md:leading-tight">
+              How we protect your application
             </h1>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">
-              A clear technical summary for customers, lenders, dealerships, and regulators: what data we collect on the
-              application, how it moves, who can access it, and which industry practices we follow.
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
+              If you are filling out our credit form, you deserve a straight answer about what happens to your information.
+              This page is written for customers and dealers, not for engineers.
             </p>
-            <p className="mt-4 text-xs text-white/50">Last updated: {LAST_UPDATED}</p>
+            <p className="mt-3 text-sm text-white/55">Last updated: {LAST_UPDATED}</p>
             <TrustBadgesGrid
               variant="hero"
               className="mt-10 border-t border-white/10 pt-8 sm:mt-12 sm:pt-10"
@@ -123,13 +108,14 @@ export default function CreditApplicationDataSecurityPage() {
       <div className="border-b border-border/60 bg-muted/20">
         <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
           <p className="text-sm text-muted-foreground">
-            Questions for a compliance packet?{' '}
+            Need something in writing for a bank or lawyer? Email{' '}
             <a
               href="mailto:sales@capitalmotorcars.com"
               className="font-semibold text-foreground underline-offset-4 hover:underline"
             >
               sales@capitalmotorcars.com
             </a>
+            .
           </p>
           <Button asChild className="w-full shrink-0 sm:w-auto">
             <Link to="/credit-application">Start or continue application</Link>
@@ -142,244 +128,116 @@ export default function CreditApplicationDataSecurityPage() {
           <section className="bg-background py-10 md:py-14">
             <div className="relative">
               <div className="min-w-0 space-y-10 md:space-y-12">
-            <motion.div {...fadeIn} className="rounded-2xl border border-accent/20 bg-accent/[0.04] p-6 sm:p-8">
-              <div>
-                <h2 className="text-lg font-bold text-foreground">What this page covers</h2>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
-                    Our online credit application may collect sensitive categories you would expect from an automotive
-                    finance inquiry, including <strong className="text-foreground">driver&apos;s license details</strong>,{' '}
-                    <strong className="text-foreground">addresses</strong>,{' '}
-                    <strong className="text-foreground">Social Security numbers</strong>,{' '}
-                    <strong className="text-foreground">employment and income</strong>, and{' '}
-                    <strong className="text-foreground">uploaded documents</strong> (for example PDFs or images). Below we
-                    describe how that information is protected in line with common industry expectations for secure web
-                    applications and brokered finance workflows.
+                <div className="rounded-xl border border-border/70 bg-muted/20 p-6 sm:p-7">
+                  <p className="text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
+                    The badges above are the same ones we show on the home page. They are there so you can see, at a
+                    glance, that we take connection security, privacy, and uptime seriously. The words under each badge
+                    match what you would read on a typical secure business site (SSL, encryption, privacy, network
+                    protection, and general trust standards). Details follow in plain English.
                   </p>
-              </div>
-            </motion.div>
+                </div>
 
-            <div>
-              <h2 className="mb-5 text-lg font-bold tracking-tight text-foreground">At a glance</h2>
-              <div className="grid gap-4 sm:grid-cols-3">
-                {[
-                  {
-                    title: 'Encryption standards',
-                    body: 'Browser sessions use HTTPS (TLS). Typical browsers negotiate TLS 1.2 or 1.3 with our hosting edge. We do not downgrade you to unsecured HTTP for application submission.',
-                  },
-                  {
-                    title: 'Where uploads go',
-                    body: 'Credit documents are transmitted inside an encrypted JSON submission from your browser to our site API, then forwarded over HTTPS to our automation layer; not posted as public website URLs.',
-                  },
-                  {
-                    title: 'Backups & at-rest',
-                    body:
-                      "Our marketing site and admin data live on managed cloud services (e.g. Supabase, Vercel) that publish encryption-at-rest and backup practices in their trust documentation. Copies in email or automation tools follow each vendor's controls.",
-                  },
-                ].map((item) => (
-                  <div
-                    key={item.title}
-                    className="rounded-xl border border-border/70 bg-card/50 p-5 dark:bg-white/[0.02]"
-                  >
-                    <h3 className="text-sm font-bold text-foreground">{item.title}</h3>
-                    <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{item.body}</p>
+                <div className="space-y-8 md:space-y-10">
+                  <SectionCard id="what-you-share" title="What you share">
+                    <p>
+                      The online application asks for the kind of information any lender or broker needs: who you are,
+                      where you live and work, income, and often a Social Security number. You may also upload a
+                      driver&apos;s license, pay stubs, or other documents. None of that is unusual for a finance
+                      application, but it is sensitive, and we treat it that way.
+                    </p>
+                  </SectionCard>
+
+                  <SectionCard id="when-you-submit" title="When you hit submit">
+                    <p>
+                      You should see a padlock in your browser on our site. That means the data travels over an encrypted
+                      connection (the same HTTPS you use for online banking or shopping). Your answers are sent to our
+                      website first; we do not post them as a public link anyone could stumble on.
+                    </p>
+                    <p>
+                      From there, our systems pass the information along to the tools our team uses to process
+                      applications (for example automation and email). Those handoffs also go over encrypted connections.
+                    </p>
+                  </SectionCard>
+
+                  <SectionCard id="uploads" title="Photos and PDFs">
+                    <p>
+                      If you attach a photo or PDF, it rides along with the rest of your application in that same secure
+                      submission. We do not drop your license into the same public folders we use for car photos on the
+                      website.
+                    </p>
+                  </SectionCard>
+
+                  <SectionCard id="who-sees-it" title="Who can see it">
+                    <p>
+                      Only people and systems that need the application to do their job at Capital Motor Cars (and the
+                      services we use to run the business) should see it. Random visitors browsing the site cannot pull up
+                      your form answers.
+                    </p>
+                    <p>
+                      If someone on your team prints a PDF or saves a copy in email or a spreadsheet, treat that copy
+                      like any other sensitive file at your office. This page cannot control what happens after it leaves
+                      our pipeline, but good habits matter.
+                    </p>
+                  </SectionCard>
+
+                  <SectionCard id="behind-the-site" title="Behind this website">
+                    <p>
+                      The public site is built so that passwords and hook addresses for email and automation stay on the
+                      server, not inside the page code where a curious person could dig them out. We also slow down
+                      automated junk hitting our contact and application endpoints so the forms stay usable for real
+                      customers.
+                    </p>
+                    <p>
+                      Inventory, blog posts, and other site content live in a managed database with access rules so only
+                      approved staff accounts can change them.
+                    </p>
+                    <p>
+                      Completed applications are not stored like a shopping cart in the marketing database. They are
+                      handed off for processing. Long-term storage and how long you keep copies are business and legal
+                      decisions your team should document separately.
+                    </p>
+                  </SectionCard>
+                </div>
+
+                <div className="flex flex-col items-start justify-between gap-6 rounded-xl border border-border bg-muted/30 p-6 sm:flex-row sm:items-center sm:p-8">
+                  <div>
+                    <p className="text-sm font-semibold text-foreground">Ready to apply?</p>
+                    <p className="mt-1 text-sm text-muted-foreground">Same form, same protections.</p>
                   </div>
+                  <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+                    <Button asChild variant="outline" className="w-full sm:w-auto">
+                      <a href="tel:+12015095555" className="inline-flex items-center justify-center gap-2">
+                        201-509-5555
+                      </a>
+                    </Button>
+                    <Button asChild className="w-full sm:w-auto">
+                      <Link to="/credit-application">Apply online</Link>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="border-t border-border/60 bg-muted/15 py-8 lg:hidden">
+            <div className="px-0">
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Jump to section</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {toc.map((item) => (
+                  <a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    className={cn(
+                      'rounded-full border border-border/70 bg-background px-3 py-1.5 text-xs font-medium text-foreground',
+                      'hover:border-accent/40 hover:bg-accent/5',
+                    )}
+                  >
+                    {item.label}
+                  </a>
                 ))}
               </div>
             </div>
-
-            <div className="space-y-8 md:space-y-10">
-              <SectionCard id="encryption-transit" number="01" title="Encryption in transit">
-                <p>
-                  All pages on <strong className="text-foreground">capitalmotorcars.com</strong> are intended to be
-                  served over <strong className="text-foreground">HTTPS</strong>. When you submit the credit application,
-                  your browser opens a <strong className="text-foreground">TLS-encrypted</strong> connection to our origin
-                  (the same site you see in the address bar). That satisfies the usual expectation of{' '}
-                  <strong className="text-foreground">TLS 1.2+</strong> for modern browsers; many clients will negotiate{' '}
-                  <strong className="text-foreground">TLS 1.3</strong> automatically with our hosting provider.
-                </p>
-                <p>
-                  From there, our servers relay application payloads to downstream workflow tools using{' '}
-                  <strong className="text-foreground">HTTPS</strong> as well, so sensitive fields and Base64-encoded
-                  attachments are not sent in cleartext across the public internet between those hops.
-                </p>
-              </SectionCard>
-
-              <SectionCard id="encryption-rest" number="02" title="Encryption at rest">
-                <p>
-                  The public marketing website does <strong className="text-foreground">not</strong> store completed
-                  credit applications in our customer-facing database schema. Instead, structured application data is
-                  delivered to our <strong className="text-foreground">automation and broker systems</strong> for
-                  processing. Those platforms apply their own{' '}
-                  <strong className="text-foreground">encryption at rest</strong> (commonly AES-256 class storage on
-                  modern cloud providers; see each vendor&apos;s security whitepaper).
-                </p>
-                <p>
-                  Where we do store operational data (for example lease highlights, blog content, or admin metadata) in
-                  Supabase, we rely on the platform&apos;s documented{' '}
-                  <strong className="text-foreground">at-rest encryption</strong> and backup encryption practices.
-                </p>
-              </SectionCard>
-
-              <SectionCard id="file-storage" number="03" title="Secure file storage (licenses & uploads)">
-                <p>
-                  Driver&apos;s licenses and other uploads are read in the browser and sent as part of the encrypted
-                  application payload. They are <strong className="text-foreground">not</strong> written to our public
-                  marketing image buckets or exposed as anonymous public URLs from this application flow.
-                </p>
-                <p>
-                  For operational assets that are intentionally public (for example vehicle photography on the site),
-                  we use separate storage paths and access rules so marketing assets are not mixed with applicant
-                  documents.
-                </p>
-              </SectionCard>
-
-              <SectionCard id="access-control" number="04" title="Access control & least privilege">
-                <p>
-                  <strong className="text-foreground">Website administration</strong> (deals, vehicles, blog) requires a
-                  Supabase-authenticated account that also exists in our{' '}
-                  <strong className="text-foreground">admin allowlist</strong>. Database policies restrict write access to
-                  those staff identities; anonymous visitors only receive read-only public content.
-                </p>
-                <p>
-                  <strong className="text-foreground">Submitted applications</strong> are visible only to Capital Motor
-                  Cars personnel and systems connected to our processing pipeline (for example automation and CRM
-                  tools). Access within those tools should follow your internal least-privilege and offboarding policies;
-                  we recommend MFA and workspace role reviews on a schedule.
-                </p>
-                <p>
-                  <strong className="text-foreground">Lead email</strong> routing uses server-side consultant mapping so
-                  the browser cannot override delivery to arbitrary external addresses.
-                </p>
-              </SectionCard>
-
-              <SectionCard id="pdf-documents" number="05" title="PDF generation & email">
-                <p>
-                  This website does not generate credit PDFs on our Node server. If your operations team creates PDFs or
-                  forwards attachments from a workflow tool or mailbox, follow your standard playbook: generate on
-                  trusted workstations or compliant services, avoid leaving temporary files on shared drives, transmit
-                  only to known broker addresses, and delete working copies when retention policies allow.
-                </p>
-              </SectionCard>
-
-              <SectionCard id="infrastructure" number="06" title="Database & infrastructure security">
-                <p>
-                  <strong className="text-foreground">API keys and secrets</strong> for email and webhook forwarding are
-                  kept in server or hosting environment variables; not embedded in client bundles. Public forms call
-                  same-origin API routes; sensitive upstream URLs stay server-side.
-                </p>
-                <p>
-                  <strong className="text-foreground">Row Level Security (RLS)</strong> in Supabase limits who can read
-                  or change operational tables. CORS and rate limiting on our API reduce drive-by abuse of contact and
-                  relay endpoints.
-                </p>
-                <p>
-                  <strong className="text-foreground">Hosting</strong> benefits from the network and perimeter controls of
-                  our cloud vendors (for example Vercel edge TLS and DDoS mitigation). Firewall-style restrictions for
-                  database access are enforced by the managed database product (IP allowlists / platform networking as
-                  configured in your Supabase project).
-                </p>
-              </SectionCard>
-
-              <SectionCard id="logging" number="07" title="Logging & monitoring">
-                <p>
-                  Expect <strong className="text-foreground">HTTP access logs</strong> and{' '}
-                  <strong className="text-foreground">application telemetry</strong> from your hosting and analytics
-                  vendors. Our open-source web app does not ship a bespoke SIEM; for lender-grade monitoring, pair this
-                  page with your organization&apos;s centralized logging (Splunk, Datadog, CloudWatch, etc.) and the audit
-                  exports from your CRM/automation vendor.
-                </p>
-              </SectionCard>
-
-              <SectionCard id="documentation" number="08" title="Retention, deletion & how to use this document">
-                <p>
-                  <strong className="text-foreground">Retention and deletion</strong> for the full application record
-                  (including any copies in email, spreadsheets, or CRM) are governed by your internal records-management
-                  policy and applicable law. We recommend documenting default retention windows and a secure destruction
-                  path for physical or exported files.
-                </p>
-                <p>
-                  You may provide <strong className="text-foreground">this URL</strong> plus your subprocessors list
-                  (hosting, database, email, automation) as a starter compliance packet. For bespoke lender questionnaires,
-                  append answers that reference each vendor&apos;s SOC / ISO reports where required.
-                </p>
-              </SectionCard>
-            </div>
-
-            <div className="flex flex-col items-start justify-between gap-6 rounded-2xl border border-border bg-muted/30 p-6 sm:flex-row sm:items-center sm:p-8">
-              <div>
-                <p className="text-sm font-semibold text-foreground">Ready to apply securely?</p>
-                <p className="mt-1 text-sm text-muted-foreground">The same protections described here apply on the live form.</p>
-              </div>
-              <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-                <Button asChild variant="outline" className="w-full sm:w-auto">
-                  <a href="tel:+12015095555" className="inline-flex items-center justify-center gap-2">
-                    201-509-5555
-                  </a>
-                </Button>
-                <Button asChild className="w-full sm:w-auto">
-                  <Link to="/credit-application">Apply online</Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-        </section>
-
-        <section className="border-t border-border/60 bg-muted/15 py-8 lg:hidden">
-          <div className="px-0">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Jump to section</p>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {toc.map((item) => (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  className={cn(
-                    'rounded-full border border-border/70 bg-background px-3 py-1.5 text-xs font-medium text-foreground',
-                    'hover:border-accent/40 hover:bg-accent/5',
-                  )}
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="border-t border-border/60 bg-muted/25 py-12 md:py-16">
-          <div className="px-0">
-            <h2 className="text-center text-xl font-bold text-foreground md:text-2xl">Compliance checklist alignment</h2>
-            <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-muted-foreground">
-              Map common reviewer questions to the sections above.
-            </p>
-            <ul className="mx-auto mt-10 grid max-w-3xl gap-3 text-sm text-muted-foreground">
-              {[
-                'HTTPS / TLS for all application traffic (Section 01)',
-                'At-rest encryption via managed platforms & downstream tools (Section 02)',
-                'No public URLs for applicant document payloads from this flow (Section 03)',
-                'Role-based admin access and server-side email controls (Section 04)',
-                'Operational guidance for PDF/email handling (Section 05)',
-                'Secrets in server env, RLS, CORS, rate limits, managed hosting (Section 06)',
-                'Centralized logging recommendation (Section 07)',
-                'Retention + how to share this doc (Section 08)',
-              ].map((line) => (
-                <li
-                  key={line}
-                  className="rounded-lg border border-border/50 bg-background/80 px-4 py-3 text-left leading-relaxed"
-                >
-                  <span className="font-semibold text-emerald-700 dark:text-emerald-400/90">&mdash; </span>
-                  {line}
-                </li>
-              ))}
-            </ul>
-            <p className="mx-auto mt-10 max-w-2xl text-center text-xs text-muted-foreground">
-              For an updated PDF or signed attestation, contact{' '}
-              <a href="mailto:sales@capitalmotorcars.com" className="font-medium text-foreground underline-offset-4 hover:underline">
-                sales@capitalmotorcars.com
-              </a>
-              .
-            </p>
-          </div>
-        </section>
+          </section>
         </div>
 
         <aside className="relative hidden lg:block" aria-label="On this page">
@@ -397,7 +255,8 @@ export default function CreditApplicationDataSecurityPage() {
               ))}
             </nav>
             <p className="mt-6 rounded-lg border border-border/70 bg-muted/50 p-4 text-xs leading-relaxed text-foreground/90 dark:bg-slate-900/80 dark:text-slate-200">
-              This is a technical summary, not legal advice. Pair with counsel and vendor DPAs for regulated use cases.
+              This page is for your information. It is not legal advice. Your lawyer can tell you what else you need for
+              your state or your lenders.
             </p>
           </div>
         </aside>
