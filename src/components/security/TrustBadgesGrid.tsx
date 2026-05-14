@@ -58,18 +58,20 @@ export function TrustBadgesGrid({
   const isStrip = layout === 'strip' && !onHero;
 
   const cellPad = onHero
-    ? 'min-w-0 px-3 py-5 sm:px-4 sm:py-7 lg:px-2 lg:py-6 xl:px-3'
+    ? 'min-w-0 px-3 py-5 sm:px-4 sm:py-7 lg:px-2.5 lg:py-6 xl:px-2 xl:py-6 2xl:px-3'
     : isStrip
-      ? 'min-w-0 px-2 py-6 sm:px-3 sm:py-8 lg:px-2 lg:py-6 xl:px-3'
+      ? 'min-w-0 px-2 py-6 sm:px-3 sm:py-8 lg:px-2.5 lg:py-6 xl:px-2 xl:py-6 2xl:px-3'
       : 'min-w-0 px-3 py-8 sm:px-4 sm:py-10';
 
   return (
     <div
       className={cn(
-        'grid w-full min-w-0 max-w-full',
+        /* overflow-x-clip: grid minmax(0,1fr) + wide PNGs can still subpixel-overflow at narrow xl widths */
+        'grid w-full min-w-0 max-w-full overflow-x-clip',
+        /* lg–xl: 3×2 avoids squeezing six wide tiles into ~1000px; xl+: single row */
         isStrip
-          ? 'grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-6 lg:gap-x-3 lg:gap-y-6 xl:gap-x-5 xl:gap-y-6'
-          : 'grid-cols-2 gap-x-2 gap-y-8 sm:grid-cols-3 sm:gap-x-4 lg:grid-cols-6 lg:gap-x-2 lg:gap-y-6 xl:gap-x-3',
+          ? 'grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-8 xl:grid-cols-6 xl:gap-x-2 xl:gap-y-6 2xl:gap-x-4'
+          : 'grid-cols-2 gap-x-2 gap-y-8 sm:grid-cols-3 sm:gap-x-4 lg:grid-cols-3 lg:gap-x-3 lg:gap-y-7 xl:grid-cols-6 xl:gap-x-1.5 xl:gap-y-6 2xl:gap-x-2.5',
         className,
       )}
       role="list"
@@ -90,10 +92,12 @@ export function TrustBadgesGrid({
                 src={item.src}
                 alt={item.alt}
                 className={cn(
-                  'h-auto w-full max-w-full min-w-0 object-contain',
+                  'h-auto w-full min-w-0 object-contain',
+                  /* Cap intrinsic width so very wide badge art cannot force column min-width past 1fr */
+                  'max-w-[min(100%,10.5rem)] sm:max-w-[min(100%,11.5rem)] lg:max-w-[min(100%,12rem)] xl:max-w-full',
                   isStrip
-                    ? 'max-h-[5.75rem] sm:max-h-28 lg:max-h-[7rem] xl:max-h-32'
-                    : 'max-h-[5.5rem] sm:max-h-28 lg:max-h-32',
+                    ? 'max-h-[5.75rem] sm:max-h-28 lg:max-h-[6.5rem] xl:max-h-[6.75rem] 2xl:max-h-32'
+                    : 'max-h-[5.5rem] sm:max-h-28 lg:max-h-[6.25rem] xl:max-h-28 2xl:max-h-32',
                 )}
                 loading="lazy"
                 decoding="async"
@@ -109,8 +113,7 @@ export function TrustBadgesGrid({
             </span>
             <span
               className={cn(
-                'mt-1.5 w-full min-w-0 max-w-[11rem] break-words text-center text-[10px] leading-snug sm:max-w-[12rem] sm:text-xs',
-                isStrip && 'lg:max-w-[11rem]',
+                'mt-1.5 w-full min-w-0 max-w-full hyphens-auto break-words text-center text-[10px] leading-snug sm:text-xs',
                 onHero ? 'text-white/75' : 'text-muted-foreground',
               )}
             >
