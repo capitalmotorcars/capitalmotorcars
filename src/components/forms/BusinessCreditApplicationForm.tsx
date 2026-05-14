@@ -466,7 +466,7 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
               to="/credit-application/data-security"
               className="shrink-0 inline-flex items-center text-sm font-semibold text-emerald-700 dark:text-emerald-400 hover:underline underline-offset-4 w-full sm:w-auto sm:ml-2 justify-end sm:justify-start"
             >
-              Know more
+              Learn more
             </Link>
           </motion.div>
         )}
