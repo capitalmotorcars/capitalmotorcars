@@ -54,8 +54,8 @@ export default function HomePage() {
   return (
     <Layout>
       <SEO
-        title="Car Lease Deals in New Jersey & New York | Zero Down, Fast Approval & Free Delivery"
-        description="Car lease deals, auto leasing, monthly car lease deals, and luxury car leasing in New Jersey and New York from Capital Motor Cars."
+        title="Capital Motor Cars | Premier Auto Broker & Car Leasing in NJ & NY"
+        description="Experience stress-free car leasing with Capital Motor Cars. We negotiate the best auto lease deals with zero down, fast approvals, and free delivery across NJ and NY."
         seoKeywords={[...primarySeoKeywords, ...njSeoKeywords, 'car lease deals New York', 'zero down car lease', 'fast lease approval', 'Capital Motor Cars']}
         ogImage="/src/assets/hero-bg.jpg"
         canonicalPath="/"
