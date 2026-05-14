@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Globe } from 'lucide-react';
+import { ArrowRight, Globe } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 const trustBadges = [
@@ -44,16 +45,24 @@ export function SecurityTrustStrip() {
               <br />
               <span className="font-normal text-muted-foreground">handled with care.</span>
             </h2>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground sm:text-[15px] sm:leading-relaxed">
               Credit and contact flows use encrypted connections and secure processing—so you can apply with
               confidence from New Jersey or New York.
             </p>
-            <Link
-              to="/credit-application/data-security"
-              className="mt-5 inline-flex w-fit text-[11px] font-medium uppercase tracking-[0.22em] text-foreground underline-offset-4 transition-colors hover:text-muted-foreground hover:underline"
-            >
-              How we protect your data
-            </Link>
+            <div className="mt-7 rounded-xl border border-border/80 bg-muted/30 p-4 sm:p-5">
+              <p className="text-sm font-medium leading-snug text-foreground">
+                How we protect your data
+              </p>
+              <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+                Encryption in transit, secure uploads, access controls, and what we tell lenders—all in one place.
+              </p>
+              <Button asChild variant="default" size="sm" className="mt-4 w-full gap-2 sm:w-auto">
+                <Link to="/credit-application/data-security">
+                  Read the security overview
+                  <ArrowRight className="h-4 w-4" aria-hidden />
+                </Link>
+              </Button>
+            </div>
           </div>
 
           {/* Trust badges (assets in /public) */}
@@ -63,33 +72,28 @@ export function SecurityTrustStrip() {
                 <div
                   key={item.src}
                   className={cn(
-                    'flex flex-col items-center justify-center px-4 py-10 sm:px-5 sm:py-12',
-                    index > 0 && 'border-t border-border/50 sm:border-t-0 sm:border-l sm:border-border/50',
+                    'flex flex-col items-center justify-center px-5 py-10 sm:px-6 sm:py-12',
+                    index > 0 && 'border-t border-border/40 sm:border-t-0 sm:border-l sm:border-border/40',
                   )}
                 >
-                  <div
-                    className={cn(
-                      'mb-4 flex w-full max-w-[200px] items-center justify-center sm:max-w-[220px]',
-                      'renderWhite' in item &&
-                        item.renderWhite &&
-                        'rounded-xl bg-zinc-950 px-4 py-3 ring-1 ring-zinc-800/90 dark:bg-zinc-900/95 dark:ring-zinc-700/80',
-                    )}
-                  >
+                  <div className="mb-5 flex w-full max-w-[200px] items-center justify-center sm:max-w-[220px]">
                     <img
                       src={item.src}
                       alt={item.alt}
                       className={cn(
-                        'h-auto max-h-24 w-full object-contain sm:max-h-28',
-                        'renderWhite' in item && item.renderWhite && 'brightness-0 invert',
+                        'h-auto max-h-[5.5rem] w-full object-contain sm:max-h-28',
+                        'renderWhite' in item &&
+                          item.renderWhite &&
+                          'dark:brightness-0 dark:invert',
                       )}
                       loading="lazy"
                       decoding="async"
                     />
                   </div>
-                  <span className="text-center text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground sm:text-[11px] sm:tracking-[0.2em]">
-                    {item.line}
+                  <span className="text-center text-sm font-semibold text-foreground">{item.line}</span>
+                  <span className="mt-1.5 max-w-[14rem] text-center text-xs leading-snug text-muted-foreground">
+                    {item.caption}
                   </span>
-                  <span className="mt-1 text-center text-[10px] text-muted-foreground/80">{item.caption}</span>
                 </div>
               ))}
             </div>
