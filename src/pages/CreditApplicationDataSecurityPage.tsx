@@ -9,6 +9,20 @@ import { TrustBadgesGrid } from '@/components/security/TrustBadgesGrid';
 import { ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
 
+/** Bold + underline for acronyms and technical vocabulary in body copy. */
+function TechTerm({ children, className }: { children: ReactNode; className?: string }) {
+  return (
+    <span
+      className={cn(
+        'font-semibold text-foreground underline decoration-accent decoration-2 underline-offset-[3px]',
+        className,
+      )}
+    >
+      {children}
+    </span>
+  );
+}
+
 const LAST_UPDATED = 'May 2026';
 
 const toc = [
@@ -133,13 +147,15 @@ export default function CreditApplicationDataSecurityPage() {
                 <div className="rounded-xl border border-border/70 bg-muted/20 p-6 sm:p-7">
                   <p className="text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
                     The badges above are the same ones we show on the home page. They line up with how most people think
-                    about safety online: a secure connection to the site, protection for personal data, respect for
-                    privacy, and a network that can stand up to junk traffic. The fifth badge is a general trust mark so
-                    visitors know we are not treating a credit application like a casual contact form.
+                    about safety online: a secure connection (<TechTerm>HTTPS</TechTerm> / <TechTerm>SSL</TechTerm>),
+                    protection for personal data, respect for privacy, and a network that can stand up to junk traffic (
+                    <TechTerm>DDoS</TechTerm> protection). The fifth badge is a general trust mark so visitors know we are
+                    not treating a credit application like a casual contact form.
                   </p>
                   <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
                     Badges are not the same as a legal certificate. They summarize how we operate. The sections below spell
-                    out what actually happens when someone applies, in everyday language.
+                    out what actually happens when someone applies, in everyday language (with technical terms called out
+                    when we use them).
                   </p>
                 </div>
 
@@ -148,13 +164,15 @@ export default function CreditApplicationDataSecurityPage() {
                     <p>
                       The online application asks for the kind of information any lender or broker needs to pull credit
                       and work a deal: your name, contact information, address, employer, income, housing payment, and
-                      often a Social Security number. Depending on the form, we may also ask about a co-applicant, trade
-                      vehicle, or business details.
+                      often a <TechTerm>Social Security number</TechTerm> (<TechTerm>SSN</TechTerm>). Depending on the form,
+                      we may also ask about a <TechTerm>co-applicant</TechTerm>, <TechTerm>trade-in</TechTerm> vehicle, or{' '}
+                      <TechTerm>business</TechTerm> details.
                     </p>
                     <p>
                       You can usually upload supporting files: driver&apos;s license, insurance card, pay stubs, prior
-                      lease paperwork, or similar. None of this is surprising on a finance application, but it is all
-                      worth protecting because it can be used for identity theft if it leaked.
+                      lease paperwork, or similar (often as <TechTerm>PDF</TechTerm> or photos). None of this is surprising
+                      on a finance application, but it is all worth protecting because it can be used for{' '}
+                      <TechTerm>identity theft</TechTerm> if it leaked.
                     </p>
                     <p>
                       We only collect what the application asks for. If you are not comfortable submitting something, call
@@ -166,37 +184,40 @@ export default function CreditApplicationDataSecurityPage() {
                   <SectionCard id="when-you-submit" title="When you hit submit">
                     <p>
                       You should see a padlock in your browser on our site. That means the data travels over an encrypted
-                      connection (HTTPS), the same idea as online banking or shopping on a reputable store. Modern phones
-                      and laptops negotiate a current version of TLS with our hosting provider so the tunnel stays up to
-                      date.
+                      connection (<TechTerm>HTTPS</TechTerm>), the same idea as online banking or shopping on a reputable
+                      store. Modern phones and laptops negotiate a current version of <TechTerm>TLS</TechTerm> with our
+                      hosting provider so the tunnel stays up to date.
                     </p>
                     <p>
                       When you press submit, your answers go to <strong className="text-foreground">our</strong> website
-                      first, not straight into a random third-party widget in the open. The browser talks to our own API on
-                      the same site you are looking at. We do not publish your application as a public link that anyone
-                      could bookmark or forward around the internet.
+                      first, not straight into a random third-party widget in the open. The <TechTerm>browser</TechTerm>{' '}
+                      talks to our own <TechTerm>API</TechTerm> on the same site you are looking at. We do not publish your
+                      application as a public link that anyone could bookmark or forward around the internet.
                     </p>
                     <p>
-                      From there, our server forwards the package to the workflow tools our staff rely on (for example
-                      automation and email). Those next steps also use HTTPS so the handoff is not sent as plain text
-                      across the public web.
+                      From there, our <TechTerm>server</TechTerm> forwards the package to the workflow tools our staff rely
+                      on (for example <TechTerm>automation</TechTerm> and <TechTerm>email</TechTerm>). Those next steps also
+                      use <TechTerm>HTTPS</TechTerm> so the handoff is not sent as <TechTerm>plain text</TechTerm> across the
+                      public web.
                     </p>
                     <p>
-                      We also put basic limits on how hard someone can hammer our public forms (rate limits and request
-                      size caps) so automated junk does not crowd out real customers.
+                      We also put basic limits on how hard someone can hammer our public forms (
+                      <TechTerm>rate limits</TechTerm> and <TechTerm>request size caps</TechTerm>) so automated junk does
+                      not crowd out real customers.
                     </p>
                   </SectionCard>
 
                   <SectionCard id="uploads" title="Photos and PDFs">
                     <p>
-                      If you attach a photo or PDF, it is read in your browser and sent together with the rest of your
-                      answers in that same encrypted submission. We do not put your license or bank paperwork in the same
-                      public image library we use for vehicle photos on the marketing site.
+                      If you attach a photo or <TechTerm>PDF</TechTerm>, it is read in your <TechTerm>browser</TechTerm>{' '}
+                      and sent together with the rest of your answers in that same <TechTerm>encrypted</TechTerm>{' '}
+                      submission. We do not put your license or bank paperwork in the same public{' '}
+                      <TechTerm>image library</TechTerm> we use for vehicle photos on the marketing site.
                     </p>
                     <p>
                       Please only upload documents you are comfortable sharing with a finance office. Use clear photos
-                      (not blurry screenshots) and keep file sizes reasonable so the form stays reliable on slower
-                      connections.
+                      (not blurry screenshots) and keep <TechTerm>file sizes</TechTerm> reasonable so the form stays
+                      reliable on slower connections.
                     </p>
                     <p>
                       If a file fails to upload, try a smaller PDF or a single page at a time. When in doubt, call{' '}
@@ -208,61 +229,67 @@ export default function CreditApplicationDataSecurityPage() {
                   <SectionCard id="who-sees-it" title="Who can see it">
                     <p>
                       Only Capital Motor Cars staff and the software we use to run the brokerage should see a completed
-                      application. A random person browsing inventory on the website cannot open your form or your
-                      uploads.
+                      application. A random person browsing inventory on the <TechTerm>website</TechTerm> cannot open your
+                      form or your <TechTerm>uploads</TechTerm>.
                     </p>
                     <p>
-                      Lead emails are routed on the <strong className="text-foreground">server</strong>, not by whatever
-                      address someone might try to type into the browser. That reduces the chance of an application being
-                      mis-sent because of a tampered field on the client side.
+                      Lead emails are routed on the <TechTerm>server</TechTerm>, not by whatever address someone might try
+                      to type into the browser. That reduces the chance of an application being mis-sent because of a
+                      tampered field on the <TechTerm>client side</TechTerm>.
                     </p>
                     <p>
-                      Once your information reaches a lender, their systems and staff fall under their own rules. We are
-                      describing what happens on <strong className="text-foreground">our</strong> site and our immediate
-                      handoff, not every bank portal down the line.
+                      Once your information reaches a <TechTerm>lender</TechTerm>, their systems and staff fall under their
+                      own rules. We are describing what happens on <strong className="text-foreground">our</strong> site and
+                      our immediate handoff, not every <TechTerm>bank portal</TechTerm> down the line.
                     </p>
                     <p>
-                      If your team prints a PDF, forwards email, or saves a spreadsheet with applicant data, treat those
-                      copies like cash in a safe. Shred what you do not need, lock screens, and remove access when someone
-                      leaves the company. Good habits there matter as much as anything on the website.
+                      If your team prints a <TechTerm>PDF</TechTerm>, forwards <TechTerm>email</TechTerm>, or saves a{' '}
+                      <TechTerm>spreadsheet</TechTerm> with applicant data, treat those copies like cash in a safe. Shred
+                      what you do not need, lock screens, and remove access when someone leaves the company. Good habits
+                      there matter as much as anything on the website.
                     </p>
                   </SectionCard>
 
                   <SectionCard id="behind-the-site" title="Behind this website">
                     <p>
                       The parts of the site you see in the browser are only half the story. Sensitive keys for email and
-                      automation live in server or hosting configuration, not inside the JavaScript bundle that downloads
-                      to your phone. That way a curious user cannot &quot;view source&quot; and walk away with a private
-                      webhook URL.
+                      automation live in <TechTerm>server</TechTerm> or <TechTerm>hosting configuration</TechTerm>, not
+                      inside the <TechTerm>JavaScript bundle</TechTerm> that downloads to your phone. That way a curious user
+                      cannot &quot;view source&quot; and walk away with a private <TechTerm>webhook URL</TechTerm>.
                     </p>
                     <p>
-                      Public forms (contact, credit, trade-in) talk to our API on the same domain. We use standard web
-                      controls (CORS) so random other websites cannot silently post to those endpoints from a visitor&apos;s
-                      browser without going through our pages the way we expect.
+                      Public forms (contact, credit, trade-in) talk to our <TechTerm>API</TechTerm> on the same{' '}
+                      <TechTerm>domain</TechTerm>. We use standard web controls (<TechTerm>CORS</TechTerm>) so random other
+                      websites cannot silently post to those <TechTerm>endpoints</TechTerm> from a visitor&apos;s browser
+                      without going through our pages the way we expect.
                     </p>
                     <p>
-                      Inventory, blog posts, and dealer-facing content live in a managed database. Only approved staff
-                      accounts on an internal allowlist can change that data. Everyone else gets read-only public content.
-                      Behind the scenes we use database row-level rules so permissions line up with that idea.
+                      Inventory, blog posts, and dealer-facing content live in a managed <TechTerm>database</TechTerm>.
+                      Only approved staff accounts on an internal <TechTerm>allowlist</TechTerm> can change that data.
+                      Everyone else gets read-only public content. Behind the scenes we use{' '}
+                      <TechTerm>row-level security</TechTerm> (<TechTerm>RLS</TechTerm>) so permissions line up with that
+                      idea.
                     </p>
                     <p>
-                      The marketing database is not where we park finished credit applications. When you submit, the
-                      package is passed along for processing instead of sitting in the same tables as blog drafts or lease
-                      highlights.
+                      The marketing <TechTerm>database</TechTerm> is not where we park finished credit applications. When
+                      you submit, the package is passed along for processing instead of sitting in the same tables as blog
+                      drafts or lease highlights.
                     </p>
                     <p>
-                      The site is hosted on modern cloud infrastructure (encrypted connections at the edge, protections
-                      against large-scale junk traffic). Anyone with admin access to our backing systems should still use
-                      strong passwords, turn on MFA where the vendor offers it, and avoid sharing one login across multiple
-                      people.
+                      The site is hosted on modern <TechTerm>cloud infrastructure</TechTerm> (<TechTerm>encrypted</TechTerm>{' '}
+                      connections at the edge, protections against large-scale junk traffic). Anyone with{' '}
+                      <TechTerm>admin</TechTerm> access to our backing systems should still use strong passwords, turn on{' '}
+                      <TechTerm>MFA</TechTerm> (<TechTerm>multi-factor authentication</TechTerm>) where the vendor offers it,
+                      and avoid sharing one login across multiple people.
                     </p>
                   </SectionCard>
 
                   <SectionCard id="after-you-apply" title="After you apply">
                     <p>
-                      How long a file is kept, and whether it lives in email, a CRM, or a shared drive, is partly a business
-                      choice and partly a legal one. We recommend writing down a simple retention rule (&quot;delete working
-                      copies after X days unless the deal is open&quot;) and sticking to it.
+                      How long a file is kept, and whether it lives in <TechTerm>email</TechTerm>, a <TechTerm>CRM</TechTerm>,
+                      or a shared drive, is partly a business choice and partly a legal one. We recommend writing down a
+                      simple <TechTerm>retention</TechTerm> rule (&quot;delete working copies after X days unless the deal
+                      is open&quot;) and sticking to it.
                     </p>
                     <p>
                       If you need a correction, a copy of what was submitted, or you want to ask how your data was handled,
@@ -276,8 +303,8 @@ export default function CreditApplicationDataSecurityPage() {
                       . We cannot promise instant turnaround on every request, but we will take genuine inquiries seriously.
                     </p>
                     <p>
-                      This page will get updated when our process changes in a material way. The &quot;Last updated&quot;
-                      date at the top is there so you know how fresh the wording is.
+                      This page will get updated when our process changes in a material way. The{' '}
+                      <TechTerm>Last updated</TechTerm> date at the top is there so you know how fresh the wording is.
                     </p>
                   </SectionCard>
                 </div>
