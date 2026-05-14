@@ -14,12 +14,14 @@ const trustBadges = [
     alt: 'Privacy protected — your data handled responsibly',
     line: 'Privacy commitment',
     caption: 'Responsible data handling',
+    renderWhite: true,
   },
   {
     src: '/ddos-badge.png',
     alt: 'DDoS protection — resilient hosting',
     line: 'DDoS protection',
     caption: 'Hardened edge network',
+    renderWhite: true,
   },
 ] as const;
 
@@ -65,11 +67,21 @@ export function SecurityTrustStrip() {
                     index > 0 && 'border-t border-border/50 sm:border-t-0 sm:border-l sm:border-border/50',
                   )}
                 >
-                  <div className="mb-4 flex w-full max-w-[200px] items-center justify-center sm:max-w-[220px]">
+                  <div
+                    className={cn(
+                      'mb-4 flex w-full max-w-[200px] items-center justify-center sm:max-w-[220px]',
+                      'renderWhite' in item &&
+                        item.renderWhite &&
+                        'rounded-xl bg-zinc-950 px-4 py-3 ring-1 ring-zinc-800/90 dark:bg-zinc-900/95 dark:ring-zinc-700/80',
+                    )}
+                  >
                     <img
                       src={item.src}
                       alt={item.alt}
-                      className="h-auto max-h-24 w-full object-contain sm:max-h-28"
+                      className={cn(
+                        'h-auto max-h-24 w-full object-contain sm:max-h-28',
+                        'renderWhite' in item && item.renderWhite && 'brightness-0 invert',
+                      )}
                       loading="lazy"
                       decoding="async"
                     />
