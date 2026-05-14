@@ -12,6 +12,7 @@ import ServicesPage from "./pages/ServicesPage";
 import BrandsPage from "./pages/BrandsPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
+import CreditApplicationPage from "./pages/CreditApplicationPage";
 import CreditApplicationDataSecurityPage from "./pages/CreditApplicationDataSecurityPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsOfServicePage from "./pages/TermsOfServicePage";
