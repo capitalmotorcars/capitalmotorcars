@@ -7,6 +7,7 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { cn } from '@/lib/utils';
 import { renderSEOHeading } from '@/utils/seoUtils';
 import { Shield, FileText, Clock, CheckCircle2, User, Building } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import bg1 from '@/assets/contact.jpg';
