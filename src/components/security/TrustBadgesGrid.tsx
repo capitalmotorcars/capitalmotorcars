@@ -59,11 +59,11 @@ export function TrustBadgesGrid({ variant = 'surface', className }: TrustBadgesG
           role="listitem"
           className={cn('flex flex-col items-center justify-center text-center', cellPad)}
         >
-          <div className="mb-4 flex w-full max-w-[160px] items-center justify-center sm:max-w-[180px] lg:max-w-[150px]">
+          <div className="mb-4 flex w-full max-w-[190px] items-center justify-center sm:max-w-[210px] lg:max-w-[185px]">
             <img
               src={item.src}
               alt={item.alt}
-              className="h-auto max-h-[4.5rem] w-full object-contain sm:max-h-24 lg:max-h-[5.25rem]"
+              className="h-auto max-h-[5.5rem] w-full object-contain sm:max-h-28 lg:max-h-32"
               loading="lazy"
               decoding="async"
             />
