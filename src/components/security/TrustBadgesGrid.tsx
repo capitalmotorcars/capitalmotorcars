@@ -7,7 +7,7 @@ export const TRUST_BADGES = [
     alt: 'Norton Safe Web: site safety report',
     line: 'Norton Safe Web',
     caption: 'Independent safety verification',
-    href: 'https://safeweb.norton.com/report?url=captitalmotors.com',
+    href: 'https://safeweb.norton.com/report?url=capitalmotorcars.com',
   },
   {
     src: '/ssl-secure-badge.png',
