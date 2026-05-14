@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
+import { clientEnv } from '@/lib/clientEnv';
 import { Loader2 } from 'lucide-react';
 
 interface AddressAutocompleteProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -49,7 +50,7 @@ export const AddressAutocomplete = React.forwardRef<HTMLInputElement, AddressAut
 
         setIsLoading(true);
         try {
-          const token = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
+          const token = clientEnv.mapboxAccessToken;
           const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(value as string)}.json?country=us&types=address&access_token=${token}&limit=5`;
           const res = await fetch(url);
           const data = await res.json();

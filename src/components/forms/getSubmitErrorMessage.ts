@@ -1,4 +1,6 @@
-const isDev = import.meta.env.DEV;
+import { clientEnv } from '@/lib/clientEnv';
+
+const isDev = clientEnv.isDev;
 
 type JsonBody = { error?: string; message?: string };
 
