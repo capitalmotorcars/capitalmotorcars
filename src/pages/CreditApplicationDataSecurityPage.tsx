@@ -95,8 +95,8 @@ export default function CreditApplicationDataSecurityPage() {
           }}
           aria-hidden
         />
-        <div className="relative mx-auto max-w-6xl px-4 pb-12 pt-8 sm:px-6 sm:pb-14 sm:pt-10 lg:px-8 lg:pb-16 lg:pt-14">
-          <motion.div {...fadeIn}>
+        <div className="relative mx-auto max-w-6xl min-w-0 px-4 pb-12 pt-8 sm:px-6 sm:pb-14 sm:pt-10 lg:px-8 lg:pb-16 lg:pt-14">
+          <motion.div className="min-w-0" {...fadeIn}>
             <Link
               to="/credit-application"
               className="mb-6 inline-flex min-h-11 items-center gap-2 rounded-md py-1 text-sm font-medium text-white/75 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/80 sm:mb-8"

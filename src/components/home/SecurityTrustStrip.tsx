@@ -48,7 +48,7 @@ export function SecurityTrustStrip() {
         </div>
 
         {/* Badges: full content width so tiles are not squeezed beside copy */}
-        <div className="border-b border-border/40 bg-muted/[0.12] py-10 sm:py-12 lg:rounded-2xl lg:border lg:border-border/50 lg:px-8 lg:py-12 xl:px-10 xl:py-14 dark:bg-white/[0.02]">
+        <div className="min-w-0 border-b border-border/40 bg-muted/[0.12] py-10 sm:py-12 lg:rounded-2xl lg:border lg:border-border/50 lg:px-8 lg:py-12 xl:px-10 xl:py-14 dark:bg-white/[0.02]">
           <TrustBadgesGrid variant="surface" layout="strip" />
         </div>
 
