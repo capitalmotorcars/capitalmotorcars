@@ -17,7 +17,7 @@ import { Loader2, Building, User, Landmark, Upload, Shield, ChevronLeft, Chevron
 import { FormSuccessMessage } from './FormSuccessMessage';
 import { AddressAutocomplete } from './AddressAutocomplete';
 import { getSubmitErrorMessage, getSubmitErrorFromException } from './getSubmitErrorMessage';
-import { WEBHOOK_URL_CREDIT_APPLICATION } from '@/lib/webhook';
+import { WEBHOOK_CREDIT_APPLICATION_PATH } from '@/lib/webhook';
 import { CONSULTANT_OPTIONS, getConsultantEmail, US_STATES } from '@/lib/creditConstants';
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import { cn } from '@/lib/utils';
@@ -267,7 +267,7 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
           }),
         };
 
-        const res = await fetch(WEBHOOK_URL_CREDIT_APPLICATION, {
+        const res = await fetch(WEBHOOK_CREDIT_APPLICATION_PATH, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),

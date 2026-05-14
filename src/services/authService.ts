@@ -30,6 +30,17 @@ export async function login(credentials: LoginCredentials): Promise<AuthResponse
             return { success: false, error: 'Login failed' };
         }
 
+        const { data: adminRow, error: adminLookupError } = await supabase
+            .from('admin_users')
+            .select('email')
+            .eq('email', credentials.email)
+            .maybeSingle();
+
+        if (adminLookupError || !adminRow) {
+            await supabase.auth.signOut();
+            return { success: false, error: 'Unauthorized' };
+        }
+
         // Update last login timestamp
         await supabase
             .from('admin_users')
@@ -66,11 +77,19 @@ export async function getCurrentUser(): Promise<AdminUser | null> {
     try {
         const { data: { user } } = await supabase.auth.getUser();
 
-        if (!user) return null;
+        if (!user?.email) return null;
+
+        const { data: adminRow } = await supabase
+            .from('admin_users')
+            .select('email')
+            .eq('email', user.email)
+            .maybeSingle();
+
+        if (!adminRow) return null;
 
         return {
             id: user.id,
-            email: user.email!,
+            email: user.email,
             created_at: user.created_at,
         };
     } catch {
@@ -82,8 +101,7 @@ export async function getCurrentUser(): Promise<AdminUser | null> {
  * Check if user is authenticated
  */
 export async function isAuthenticated(): Promise<boolean> {
-    const { data: { session } } = await supabase.auth.getSession();
-    return !!session;
+    return (await getCurrentUser()) != null;
 }
 
 /**

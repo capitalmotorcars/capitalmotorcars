@@ -84,6 +84,8 @@ export const CONSULTANT_OPTIONS: { value: string; label: string }[] = [
   { value: 'stephen_jo', label: 'Stephen Jo' },
   { value: 'vicky_azrak', label: 'Vicky Azrak' },
   { value: 'wilson_dong', label: 'Wilson Dong' },
+  { value: 'dj_kim', label: 'DJ Kim' },
+  { value: 'chris_case', label: 'Chris Case' },
   { value: 'other', label: 'Other' },
 ];
 
@@ -108,6 +110,8 @@ export const CONSULTANT_EMAIL_MAP: Record<string, string> = {
   'sarah_flynn': 'sarah@capitalmotorcars.com',
   'stephen_jo': 'info@capitalmotorcars.com',
   'wilson_dong': 'info@capitalmotorcars.com',
+  'dj_kim': 'dkim@capitalmotorcars.com',
+  'chris_case': 'ccase@capitalmotorcars.com',
   'finance_team': 'info@capitalmotorcars.com',
   'other': 'info@capitalmotorcars.com',
 };

@@ -21,7 +21,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { cn } from '@/lib/utils';
 import { FormSuccessMessage } from './FormSuccessMessage';
 import { getSubmitErrorMessage, getSubmitErrorFromException } from './getSubmitErrorMessage';
-import { WEBHOOK_URL, WEBHOOK_URL_TRADE_IN } from '@/lib/webhook';
+import { WEBHOOK_CONTACT_PATH, WEBHOOK_TRADE_IN_PATH } from '@/lib/webhook';
 import { CONSULTANT_OPTIONS, getConsultantEmail } from '@/lib/creditConstants';
 
 const MAX_EXTERIOR = 5;
@@ -422,7 +422,7 @@ export function ContactForm({
           Source: source,
           Service: serviceTitle ?? 'Trade-In Evaluation',
         };
-        const res = await fetch(WEBHOOK_URL_TRADE_IN, {
+        const res = await fetch(WEBHOOK_TRADE_IN_PATH, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
@@ -471,7 +471,7 @@ export function ContactForm({
         Source: source,
       };
 
-      const res = await fetch(WEBHOOK_URL, {
+      const res = await fetch(WEBHOOK_CONTACT_PATH, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),

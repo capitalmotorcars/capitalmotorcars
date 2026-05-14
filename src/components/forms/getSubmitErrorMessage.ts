@@ -2,9 +2,16 @@ const isDev = import.meta.env.DEV;
 
 type JsonBody = { error?: string; message?: string };
 
+/** User-facing copy when the app cannot reach the backend or upstream is unavailable. */
+const UNAVAILABLE =
+  "We're having trouble reaching our services. Please try again in a moment.";
+
+const NETWORK_ERROR =
+  'Unable to reach our servers. Please check your connection and try again.';
+
 /**
  * Returns a user-facing error message from an API response.
- * In development: shows server error text, logs to console, and suggests starting API for 502/503.
+ * In development, also logs response details to the console.
  */
 export function getSubmitErrorMessage(res: Response, json: unknown): string {
   const body = json as JsonBody;
@@ -17,25 +24,29 @@ export function getSubmitErrorMessage(res: Response, json: unknown): string {
 
   if (isDev) {
     console.warn('[Form submit]', res.status, res.statusText, body);
-    if (res.status === 502 || res.status === 503) {
-      return serverMessage ?? 'API server not reachable. Run `npm run dev` to start the API.';
-    }
-    if (serverMessage) return serverMessage;
   }
+
+  if (res.status === 502 || res.status === 503) {
+    return serverMessage ?? UNAVAILABLE;
+  }
+
+  if (isDev && serverMessage) return serverMessage;
 
   return serverMessage ?? 'Something went wrong. Please try again.';
 }
 
-/**
- * Returns a user-facing error message for a thrown exception (e.g. network error).
- */
+/** Returns a user-facing error message for a thrown exception (e.g. network error). */
 export function getSubmitErrorFromException(e: unknown): string {
-  if (isDev && e instanceof Error) {
-    console.error('[Form submit]', e);
-    if (e.message === 'Failed to fetch') {
-      return 'Cannot reach server. Run `npm run dev` so both the app and API are running.';
+  if (e instanceof Error) {
+    if (isDev) {
+      console.error('[Form submit]', e);
     }
-    return e.message;
+    if (e.message === 'Failed to fetch') {
+      return NETWORK_ERROR;
+    }
+    if (isDev) {
+      return e.message;
+    }
   }
   return 'Something went wrong. Please try again.';
 }

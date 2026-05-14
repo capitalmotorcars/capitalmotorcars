@@ -148,35 +148,94 @@ ALTER TABLE admin_users ENABLE ROW LEVEL SECURITY;
 ALTER TABLE deal_audit_log ENABLE ROW LEVEL SECURITY;
 ALTER TABLE blog_posts ENABLE ROW LEVEL SECURITY;
 
--- Public read access to active deals
+-- Helper: only rows in admin_users for the signed-in email may act as staff.
+-- Public site uses the anon key; staff dashboard uses authenticated + admin_users row.
+
+-- Public read access to active deals (anon site visitors only)
+DROP POLICY IF EXISTS "Public can view active deals" ON lease_deals;
 CREATE POLICY "Public can view active deals"
   ON lease_deals FOR SELECT
+  TO anon
   USING (is_active = true);
 
 -- Public read access to active blog posts
+DROP POLICY IF EXISTS "Public can view active blog posts" ON blog_posts;
 CREATE POLICY "Public can view active blog posts"
   ON blog_posts FOR SELECT
+  TO anon
   USING (is_active = true AND (published_at IS NULL OR published_at <= NOW()));
 
--- Authenticated users (admins) can do everything
-CREATE POLICY "Admins can do everything with deals"
+-- Staff (authenticated + listed in admin_users) full access to deals
+DROP POLICY IF EXISTS "Admins can do everything with deals" ON lease_deals;
+DROP POLICY IF EXISTS "Staff manage deals" ON lease_deals;
+CREATE POLICY "Staff manage deals"
   ON lease_deals FOR ALL
-  USING (auth.role() = 'authenticated');
+  TO authenticated
+  USING (
+    EXISTS (
+      SELECT 1 FROM public.admin_users au
+      WHERE au.email = (SELECT auth.jwt() ->> 'email')
+    )
+  )
+  WITH CHECK (
+    EXISTS (
+      SELECT 1 FROM public.admin_users au
+      WHERE au.email = (SELECT auth.jwt() ->> 'email')
+    )
+  );
 
--- Authenticated users (admins) can do everything with blog posts
-CREATE POLICY "Admins can do everything with blog posts"
+-- Staff full access to blog posts
+DROP POLICY IF EXISTS "Admins can do everything with blog posts" ON blog_posts;
+DROP POLICY IF EXISTS "Staff manage blog posts" ON blog_posts;
+CREATE POLICY "Staff manage blog posts"
   ON blog_posts FOR ALL
-  USING (auth.role() = 'authenticated');
+  TO authenticated
+  USING (
+    EXISTS (
+      SELECT 1 FROM public.admin_users au
+      WHERE au.email = (SELECT auth.jwt() ->> 'email')
+    )
+  )
+  WITH CHECK (
+    EXISTS (
+      SELECT 1 FROM public.admin_users au
+      WHERE au.email = (SELECT auth.jwt() ->> 'email')
+    )
+  );
 
--- Only authenticated users can view admin_users
-CREATE POLICY "Admins can view admin users"
+-- Staff can read admin directory (for profile / future features)
+DROP POLICY IF EXISTS "Admins can view admin users" ON admin_users;
+DROP POLICY IF EXISTS "Staff can read admin directory" ON admin_users;
+CREATE POLICY "Staff can read admin directory"
   ON admin_users FOR SELECT
-  USING (auth.role() = 'authenticated');
+  TO authenticated
+  USING (
+    EXISTS (
+      SELECT 1 FROM public.admin_users au
+      WHERE au.email = (SELECT auth.jwt() ->> 'email')
+    )
+  );
 
--- Authenticated users (admins) can do everything with audit logs
-CREATE POLICY "Admins can do everything with audit logs"
+-- No INSERT/UPDATE/DELETE on admin_users for authenticated clients (bootstrap via SQL/service role)
+
+-- Staff full access to deal audit log
+DROP POLICY IF EXISTS "Admins can do everything with audit logs" ON deal_audit_log;
+DROP POLICY IF EXISTS "Staff manage deal audit log" ON deal_audit_log;
+CREATE POLICY "Staff manage deal audit log"
   ON deal_audit_log FOR ALL
-  USING (auth.role() = 'authenticated');
+  TO authenticated
+  USING (
+    EXISTS (
+      SELECT 1 FROM public.admin_users au
+      WHERE au.email = (SELECT auth.jwt() ->> 'email')
+    )
+  )
+  WITH CHECK (
+    EXISTS (
+      SELECT 1 FROM public.admin_users au
+      WHERE au.email = (SELECT auth.jwt() ->> 'email')
+    )
+  );
 
 -- =====================================================
 -- STORAGE BUCKET (for deal images)
