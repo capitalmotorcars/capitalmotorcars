@@ -1,16 +1,24 @@
 import { cn } from '@/lib/utils';
 
+/** Filenames in /public (see also trust-assurance-badge.png). */
 export const TRUST_BADGES = [
   {
-    src: '/ssl-badge.png',
+    src: '/ssl-secure-badge.png',
     alt: 'SSL secured: encrypted connection',
     line: 'SSL encryption',
     caption: 'HTTPS sitewide',
   },
   {
-    src: '/privacy%20badge.png',
-    alt: 'Privacy protected: your data handled responsibly',
-    line: 'Privacy commitment',
+    src: '/encryption-badge.png',
+    alt: 'Strong encryption for your data',
+    line: 'Data encryption',
+    caption: 'Protected in transit and at rest',
+    renderWhite: true,
+  },
+  {
+    src: '/privacy-protection.png',
+    alt: 'Privacy protected: your information handled responsibly',
+    line: 'Privacy protection',
     caption: 'Responsible data handling',
     renderWhite: true,
   },
@@ -19,6 +27,13 @@ export const TRUST_BADGES = [
     alt: 'DDoS protection: resilient hosting',
     line: 'DDoS protection',
     caption: 'Hardened edge network',
+    renderWhite: true,
+  },
+  {
+    src: '/trust-assurance-badge.png',
+    alt: 'Security and trust commitment',
+    line: 'Trust standards',
+    caption: 'Aligned with industry expectations',
     renderWhite: true,
   },
 ] as const;
@@ -31,33 +46,29 @@ type TrustBadgesGridProps = {
 
 export function TrustBadgesGrid({ variant = 'surface', className }: TrustBadgesGridProps) {
   const onHero = variant === 'hero';
-  const cellPad = onHero ? 'px-5 py-6 sm:px-6 sm:py-8' : 'px-5 py-10 sm:px-6 sm:py-12';
+  const cellPad = onHero ? 'px-3 py-5 sm:px-4 sm:py-7' : 'px-3 py-8 sm:px-4 sm:py-10';
 
   return (
     <div
-      className={cn('grid grid-cols-1 sm:grid-cols-3', className)}
+      className={cn(
+        'grid grid-cols-2 gap-x-2 gap-y-8 sm:grid-cols-3 sm:gap-x-4 lg:grid-cols-5 lg:gap-x-3',
+        className,
+      )}
       role="list"
       aria-label="Security and trust badges"
     >
-      {TRUST_BADGES.map((item, index) => (
+      {TRUST_BADGES.map((item) => (
         <div
           key={item.src}
           role="listitem"
-          className={cn(
-            'flex flex-col items-center justify-center',
-            cellPad,
-            index > 0 &&
-              (onHero
-                ? 'border-t border-white/15 sm:border-t-0 sm:border-l sm:border-white/15'
-                : 'border-t border-border/40 sm:border-t-0 sm:border-l sm:border-border/40'),
-          )}
+          className={cn('flex flex-col items-center justify-center text-center', cellPad)}
         >
-          <div className="mb-5 flex w-full max-w-[200px] items-center justify-center sm:max-w-[220px]">
+          <div className="mb-4 flex w-full max-w-[160px] items-center justify-center sm:max-w-[180px] lg:max-w-[150px]">
             <img
               src={item.src}
               alt={item.alt}
               className={cn(
-                'h-auto max-h-[5.5rem] w-full object-contain sm:max-h-28',
+                'h-auto max-h-[4.5rem] w-full object-contain sm:max-h-24 lg:max-h-[5.25rem]',
                 'renderWhite' in item &&
                   item.renderWhite &&
                   (onHero ? 'brightness-0 invert' : 'dark:brightness-0 dark:invert'),
@@ -68,7 +79,7 @@ export function TrustBadgesGrid({ variant = 'surface', className }: TrustBadgesG
           </div>
           <span
             className={cn(
-              'text-center text-sm font-semibold',
+              'text-center text-xs font-semibold leading-tight sm:text-sm',
               onHero ? 'text-white' : 'text-foreground',
             )}
           >
@@ -76,7 +87,7 @@ export function TrustBadgesGrid({ variant = 'surface', className }: TrustBadgesG
           </span>
           <span
             className={cn(
-              'mt-1.5 max-w-[14rem] text-center text-xs leading-snug',
+              'mt-1.5 max-w-[11rem] text-center text-[10px] leading-snug sm:max-w-[12rem] sm:text-xs',
               onHero ? 'text-white/75' : 'text-muted-foreground',
             )}
           >
