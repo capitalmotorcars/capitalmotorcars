@@ -10,10 +10,16 @@ const trustBadges = [
     caption: 'HTTPS sitewide',
   },
   {
-    src: '/privacy-badge.jpg',
+    src: '/privacy%20badge.png',
     alt: 'Privacy protected — your data handled responsibly',
     line: 'Privacy commitment',
     caption: 'Responsible data handling',
+  },
+  {
+    src: '/ddos-badge.png',
+    alt: 'DDoS protection — resilient hosting',
+    line: 'DDoS protection',
+    caption: 'Hardened edge network',
   },
 ] as const;
 
@@ -50,13 +56,13 @@ export function SecurityTrustStrip() {
 
           {/* Trust badges (assets in /public) */}
           <div className="flex min-h-0 flex-1 flex-col">
-            <div className="grid flex-1 grid-cols-2">
+            <div className="grid flex-1 grid-cols-1 sm:grid-cols-3">
               {trustBadges.map((item, index) => (
                 <div
                   key={item.src}
                   className={cn(
-                    'flex flex-col items-center justify-center px-4 py-10 sm:px-6 sm:py-12',
-                    index === 1 && 'border-l border-border/50',
+                    'flex flex-col items-center justify-center px-4 py-10 sm:px-5 sm:py-12',
+                    index > 0 && 'border-t border-border/50 sm:border-t-0 sm:border-l sm:border-border/50',
                   )}
                 >
                   <div className="mb-4 flex w-full max-w-[200px] items-center justify-center sm:max-w-[220px]">
