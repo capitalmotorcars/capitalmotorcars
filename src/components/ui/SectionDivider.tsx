@@ -44,7 +44,7 @@ export function SectionDivider({
     );
   }
 
-  /* curved — theme-aware fill via CSS variable */
+  /* curved - theme-aware fill via CSS variable */
   return (
     <div className={cn('relative h-10 w-full shrink-0 overflow-hidden', className)} aria-hidden>
       <svg className="absolute bottom-0 w-full" viewBox="0 0 1440 60" preserveAspectRatio="none">

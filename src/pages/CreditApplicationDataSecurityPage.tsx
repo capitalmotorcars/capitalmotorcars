@@ -145,7 +145,7 @@ export default function CreditApplicationDataSecurityPage() {
                 <h2 className="text-lg font-bold text-foreground">What this page covers</h2>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
                     Our online credit application may collect sensitive categories you would expect from an automotive
-                    finance inquiry—including <strong className="text-foreground">driver&apos;s license details</strong>,{' '}
+                    finance inquiry, including <strong className="text-foreground">driver&apos;s license details</strong>,{' '}
                     <strong className="text-foreground">addresses</strong>,{' '}
                     <strong className="text-foreground">Social Security numbers</strong>,{' '}
                     <strong className="text-foreground">employment and income</strong>, and{' '}
@@ -166,7 +166,7 @@ export default function CreditApplicationDataSecurityPage() {
                   },
                   {
                     title: 'Where uploads go',
-                    body: 'Credit documents are transmitted inside an encrypted JSON submission from your browser to our site API, then forwarded over HTTPS to our automation layer—not posted as public website URLs.',
+                    body: 'Credit documents are transmitted inside an encrypted JSON submission from your browser to our site API, then forwarded over HTTPS to our automation layer; not posted as public website URLs.',
                   },
                   {
                     title: 'Backups & at-rest',
@@ -209,7 +209,7 @@ export default function CreditApplicationDataSecurityPage() {
                   delivered to our <strong className="text-foreground">automation and broker systems</strong> for
                   processing. Those platforms apply their own{' '}
                   <strong className="text-foreground">encryption at rest</strong> (commonly AES-256 class storage on
-                  modern cloud providers—see each vendor&apos;s security whitepaper).
+                  modern cloud providers; see each vendor&apos;s security whitepaper).
                 </p>
                 <p>
                   Where we do store operational data (for example lease highlights, blog content, or admin metadata) in
@@ -262,7 +262,7 @@ export default function CreditApplicationDataSecurityPage() {
               <SectionCard id="infrastructure" number="06" title="Database & infrastructure security">
                 <p>
                   <strong className="text-foreground">API keys and secrets</strong> for email and webhook forwarding are
-                  kept in server or hosting environment variables—not embedded in client bundles. Public forms call
+                  kept in server or hosting environment variables; not embedded in client bundles. Public forms call
                   same-origin API routes; sensitive upstream URLs stay server-side.
                 </p>
                 <p>

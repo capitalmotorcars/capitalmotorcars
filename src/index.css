@@ -265,7 +265,7 @@
 
 @layer utilities {
 
-  /* Scroll reveal animation — optional slight scale for smoother entrance */
+  /* Scroll reveal animation - optional slight scale for smoother entrance */
   .scroll-reveal {
     opacity: 0;
     transform: translateY(12px) scale(0.98);
@@ -494,7 +494,7 @@
     background-clip: text;
   }
 
-  /* Hero bottom fade: to next section — light uses background, dark uses black (strong, visible) */
+  /* Hero bottom fade: to next section - light uses background, dark uses black (strong, visible) */
   .hero-bottom-fade {
     background: linear-gradient(to bottom, transparent 0%, hsl(var(--muted)) 100%);
   }

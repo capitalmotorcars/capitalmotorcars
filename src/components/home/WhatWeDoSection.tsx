@@ -88,7 +88,7 @@ function ServiceColumn({ service, index, isRevealed }: ServiceColumnProps) {
           </div>
         </div>
 
-        {/* Icon, title, description, CTA — centered */}
+        {/* Icon, title, description, CTA - centered */}
         <div className="flex flex-col items-center flex-grow p-3 sm:p-5 lg:p-6">
 
           <h3 className="text-lg sm:text-lg lg:text-xl font-bold text-foreground mb-2 sm:mb-3">

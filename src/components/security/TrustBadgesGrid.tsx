@@ -3,20 +3,20 @@ import { cn } from '@/lib/utils';
 export const TRUST_BADGES = [
   {
     src: '/ssl-badge.png',
-    alt: 'SSL secured — encrypted connection',
+    alt: 'SSL secured: encrypted connection',
     line: 'SSL encryption',
     caption: 'HTTPS sitewide',
   },
   {
     src: '/privacy%20badge.png',
-    alt: 'Privacy protected — your data handled responsibly',
+    alt: 'Privacy protected: your data handled responsibly',
     line: 'Privacy commitment',
     caption: 'Responsible data handling',
     renderWhite: true,
   },
   {
     src: '/ddos-badge.png',
-    alt: 'DDoS protection — resilient hosting',
+    alt: 'DDoS protection: resilient hosting',
     line: 'DDoS protection',
     caption: 'Hardened edge network',
     renderWhite: true,

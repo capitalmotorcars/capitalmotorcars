@@ -216,7 +216,7 @@ export function HeroSection() {
 
       </div>
 
-      {/* Animated scroll-down arrow — flex mt-auto for reliable bottom placement on Safari */}
+      {/* Animated scroll-down arrow - flex mt-auto for reliable bottom placement on Safari */}
       <button
         type="button"
         onClick={scrollToNext}

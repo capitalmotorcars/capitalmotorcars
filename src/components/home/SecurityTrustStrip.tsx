@@ -3,7 +3,7 @@ import { ArrowRight, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { TrustBadgesGrid } from '@/components/security/TrustBadgesGrid';
 
-/** Minimal trust strip after hero — monochrome, reference-inspired layout. */
+/** Minimal trust strip after hero - monochrome, reference-inspired layout. */
 export function SecurityTrustStrip() {
   return (
     <section
@@ -23,7 +23,7 @@ export function SecurityTrustStrip() {
               <span className="font-normal text-muted-foreground">handled with care.</span>
             </h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground sm:text-[15px] sm:leading-relaxed">
-              Credit and contact flows use encrypted connections and secure processing—so you can apply with
+              Credit and contact flows use encrypted connections and secure processing, so you can apply with
               confidence from New Jersey or New York.
             </p>
             <div className="mt-7 rounded-xl border border-border/80 bg-muted/30 p-4 sm:p-5">
@@ -31,7 +31,7 @@ export function SecurityTrustStrip() {
                 How we protect your data
               </p>
               <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
-                Encryption in transit, secure uploads, access controls, and what we tell lenders—all in one place.
+                Encryption in transit, secure uploads, access controls, and what we tell lenders: all in one place.
               </p>
               <Button asChild variant="default" size="sm" className="mt-4 w-full gap-2 sm:w-auto">
                 <Link to="/credit-application/data-security">
