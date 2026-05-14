@@ -18,6 +18,7 @@ import { FormSuccessMessage } from './FormSuccessMessage';
 import { AddressAutocomplete } from './AddressAutocomplete';
 import { getSubmitErrorMessage, getSubmitErrorFromException } from './getSubmitErrorMessage';
 import { WEBHOOK_CREDIT_APPLICATION_PATH } from '@/lib/webhook';
+import { Link } from 'react-router-dom';
 import { US_STATES, HOUSING_OPTIONS, CONSULTANT_OPTIONS, getConsultantEmail } from '@/lib/creditConstants';
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
 
@@ -762,12 +763,25 @@ export function CreditApplicationForm({ applicationType, setApplicationType }: C
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="flex items-start gap-3 p-4 rounded-xl bg-accent/10 dark:bg-accent/5 border border-accent/20 dark:border-accent/10 mb-6"
+            className="mb-6 rounded-xl border border-emerald-500/25 bg-emerald-500/[0.06] dark:bg-emerald-500/10 px-4 py-3 sm:px-5 sm:py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
           >
-            <Shield className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
-            <div className="text-sm text-foreground dark:text-white/90">
-              <strong className="text-foreground dark:text-white">Your information is secure.</strong> We use industry standard encryption. This application helps us understand your needs before a full credit check.
+            <div className="flex items-start gap-3 flex-1 min-w-0">
+              <Shield className="w-5 h-5 text-emerald-600 dark:text-emerald-400 mt-0.5 flex-shrink-0" aria-hidden />
+              <p className="text-sm sm:text-base text-foreground dark:text-white/95 leading-snug">
+                <span className="font-semibold text-emerald-700 dark:text-emerald-400">
+                  Your information is end-to-end encrypted.
+                </span>{' '}
+                <span className="text-muted-foreground dark:text-white/75">
+                  Everything you submit is protected in transit with industry-standard encryption.
+                </span>
+              </p>
             </div>
+            <Link
+              to="/credit-application/data-security"
+              className="shrink-0 inline-flex items-center text-sm font-semibold text-emerald-700 dark:text-emerald-400 hover:underline underline-offset-4 w-full sm:w-auto sm:ml-2 justify-end sm:justify-start"
+            >
+              Know more
+            </Link>
           </motion.div>
         )}
 
@@ -908,7 +922,9 @@ export function CreditApplicationForm({ applicationType, setApplicationType }: C
                   <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500 pointer-events-none" />
                 )}
               </div>
-              <p className="text-xs text-muted-foreground dark:text-white/60">Your information is secure and encrypted</p>
+              <p className="text-xs text-muted-foreground dark:text-white/60">
+                End-to-end encrypted in transit to our servers.
+              </p>
               {errors.ssn && <p className="text-xs text-destructive mt-1 flex items-center gap-1"><X className="w-3 h-3" /> {errors.ssn.message}</p>}
             </div>
             <div className="space-y-1.5">
