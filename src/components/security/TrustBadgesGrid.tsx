@@ -37,17 +37,32 @@ export const TRUST_BADGES = [
 type TrustBadgesGridProps = {
   /** `surface`: home strip. `hero`: dark gradient hero on data-security page. */
   variant?: 'surface' | 'hero';
+  /** `strip`: full-width comfortable grid for home section. `default`: hero / compact. */
+  layout?: 'default' | 'strip';
   className?: string;
 };
 
-export function TrustBadgesGrid({ variant = 'surface', className }: TrustBadgesGridProps) {
+export function TrustBadgesGrid({
+  variant = 'surface',
+  layout = 'default',
+  className,
+}: TrustBadgesGridProps) {
   const onHero = variant === 'hero';
-  const cellPad = onHero ? 'px-3 py-5 sm:px-4 sm:py-7' : 'px-3 py-8 sm:px-4 sm:py-10';
+  const isStrip = layout === 'strip' && !onHero;
+
+  const cellPad = onHero
+    ? 'px-3 py-5 sm:px-4 sm:py-7'
+    : isStrip
+      ? 'px-2 py-6 sm:px-3 sm:py-8 lg:px-2 lg:py-6 xl:px-3'
+      : 'px-3 py-8 sm:px-4 sm:py-10';
 
   return (
     <div
       className={cn(
-        'grid grid-cols-2 gap-x-2 gap-y-8 sm:grid-cols-3 sm:gap-x-4 lg:grid-cols-5 lg:gap-x-3',
+        'grid',
+        isStrip
+          ? 'grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-5 lg:gap-x-4 lg:gap-y-6 xl:gap-x-8'
+          : 'grid-cols-2 gap-x-2 gap-y-8 sm:grid-cols-3 sm:gap-x-4 lg:grid-cols-5 lg:gap-x-3',
         className,
       )}
       role="list"
@@ -59,11 +74,23 @@ export function TrustBadgesGrid({ variant = 'surface', className }: TrustBadgesG
           role="listitem"
           className={cn('flex flex-col items-center justify-center text-center', cellPad)}
         >
-          <div className="mb-4 flex w-full max-w-[190px] items-center justify-center sm:max-w-[210px] lg:max-w-[185px]">
+          <div
+            className={cn(
+              'mb-4 flex w-full items-center justify-center',
+              isStrip
+                ? 'max-w-[200px] sm:max-w-[220px] lg:max-w-none lg:px-1 xl:max-w-[200px]'
+                : 'max-w-[190px] sm:max-w-[210px] lg:max-w-[185px]',
+            )}
+          >
             <img
               src={item.src}
               alt={item.alt}
-              className="h-auto max-h-[5.5rem] w-full object-contain sm:max-h-28 lg:max-h-32"
+              className={cn(
+                'h-auto w-full object-contain',
+                isStrip
+                  ? 'max-h-[5.75rem] sm:max-h-28 lg:max-h-[7rem] xl:max-h-32'
+                  : 'max-h-[5.5rem] sm:max-h-28 lg:max-h-32',
+              )}
               loading="lazy"
               decoding="async"
             />
@@ -79,6 +106,7 @@ export function TrustBadgesGrid({ variant = 'surface', className }: TrustBadgesG
           <span
             className={cn(
               'mt-1.5 max-w-[11rem] text-center text-[10px] leading-snug sm:max-w-[12rem] sm:text-xs',
+              isStrip && 'lg:max-w-[11rem]',
               onHero ? 'text-white/75' : 'text-muted-foreground',
             )}
           >
