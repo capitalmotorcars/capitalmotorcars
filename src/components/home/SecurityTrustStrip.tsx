@@ -30,7 +30,7 @@ export function SecurityTrustStrip() {
             </h2>
             <p className="mt-4 max-w-prose text-sm leading-relaxed text-muted-foreground sm:text-[15px] sm:leading-relaxed">
               Credit and contact flows use encrypted connections and secure processing, so you can apply with
-              confidence from New Jersey or New York.
+              confidence from anywhere in the world. 
             </p>
           </div>
 
