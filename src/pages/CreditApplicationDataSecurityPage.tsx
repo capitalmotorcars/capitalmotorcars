@@ -1,26 +1,11 @@
-import type { ComponentType, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
 import { JsonLd } from '@/components/JsonLd';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import {
-  ArrowLeft,
-  Lock,
-  Server,
-  Shield,
-  Database,
-  FolderLock,
-  Users,
-  FileText,
-  Activity,
-  BookOpen,
-  Mail,
-  CheckCircle2,
-  AlertCircle,
-  Phone,
-} from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const LAST_UPDATED = 'May 2026';
@@ -46,13 +31,11 @@ function SectionCard({
   id,
   number,
   title,
-  icon: Icon,
   children,
 }: {
   id: string;
   number: string;
   title: string;
-  icon: ComponentType<{ className?: string }>;
   children: ReactNode;
 }) {
   return (
@@ -61,18 +44,10 @@ function SectionCard({
       className="scroll-mt-28 rounded-2xl border border-border/80 bg-card/40 p-6 shadow-sm backdrop-blur-sm dark:bg-white/[0.03] sm:p-8 md:p-10"
     >
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
-        <div className="flex shrink-0 items-center gap-3 sm:flex-col sm:items-start">
-          <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-accent/15 text-xs font-black tracking-tight text-accent">
-            {number}
-          </span>
-          <div className="hidden rounded-xl bg-accent/10 p-2.5 text-accent sm:block">
-            <Icon className="h-6 w-6" aria-hidden />
-          </div>
-        </div>
+        <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/15 text-xs font-black tracking-tight text-accent">
+          {number}
+        </span>
         <div className="min-w-0 flex-1">
-          <div className="mb-1 flex items-center gap-2 sm:hidden">
-            <Icon className="h-5 w-5 text-accent" aria-hidden />
-          </div>
           <h2 className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">{title}</h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground sm:text-[15px] sm:leading-relaxed">
             {children}
@@ -158,14 +133,12 @@ export default function CreditApplicationDataSecurityPage() {
       </div>
 
       <section className="bg-background py-10 md:py-14">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_220px] lg:gap-14 lg:px-8">
-          <div className="min-w-0 space-y-10 md:space-y-12">
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="min-w-0 space-y-10 md:space-y-12 lg:pr-60">
             <motion.div {...fadeIn} className="rounded-2xl border border-accent/20 bg-accent/[0.04] p-6 sm:p-8">
-              <div className="flex items-start gap-3">
-                <BookOpen className="mt-0.5 h-5 w-5 shrink-0 text-accent" aria-hidden />
-                <div>
-                  <h2 className="text-lg font-bold text-foreground">What this page covers</h2>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
+              <div>
+                <h2 className="text-lg font-bold text-foreground">What this page covers</h2>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
                     Our online credit application may collect sensitive categories you would expect from an automotive
                     finance inquiry—including <strong className="text-foreground">driver&apos;s license details</strong>,{' '}
                     <strong className="text-foreground">addresses</strong>,{' '}
@@ -175,7 +148,6 @@ export default function CreditApplicationDataSecurityPage() {
                     describe how that information is protected in line with common industry expectations for secure web
                     applications and brokered finance workflows.
                   </p>
-                </div>
               </div>
             </motion.div>
 
@@ -186,26 +158,22 @@ export default function CreditApplicationDataSecurityPage() {
                   {
                     title: 'Encryption standards',
                     body: 'Browser sessions use HTTPS (TLS). Typical browsers negotiate TLS 1.2 or 1.3 with our hosting edge. We do not downgrade you to unsecured HTTP for application submission.',
-                    icon: Lock,
                   },
                   {
                     title: 'Where uploads go',
                     body: 'Credit documents are transmitted inside an encrypted JSON submission from your browser to our site API, then forwarded over HTTPS to our automation layer—not posted as public website URLs.',
-                    icon: FolderLock,
                   },
                   {
                     title: 'Backups & at-rest',
                     body:
                       "Our marketing site and admin data live on managed cloud services (e.g. Supabase, Vercel) that publish encryption-at-rest and backup practices in their trust documentation. Copies in email or automation tools follow each vendor's controls.",
-                    icon: Database,
                   },
                 ].map((item) => (
                   <div
                     key={item.title}
                     className="rounded-xl border border-border/70 bg-card/50 p-5 dark:bg-white/[0.02]"
                   >
-                    <item.icon className="h-5 w-5 text-accent" aria-hidden />
-                    <h3 className="mt-3 text-sm font-bold text-foreground">{item.title}</h3>
+                    <h3 className="text-sm font-bold text-foreground">{item.title}</h3>
                     <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{item.body}</p>
                   </div>
                 ))}
@@ -213,7 +181,7 @@ export default function CreditApplicationDataSecurityPage() {
             </div>
 
             <div className="space-y-8 md:space-y-10">
-              <SectionCard id="encryption-transit" number="01" title="Encryption in transit" icon={Lock}>
+              <SectionCard id="encryption-transit" number="01" title="Encryption in transit">
                 <p>
                   All pages on <strong className="text-foreground">capitalmotorcars.com</strong> are intended to be
                   served over <strong className="text-foreground">HTTPS</strong>. When you submit the credit application,
@@ -229,7 +197,7 @@ export default function CreditApplicationDataSecurityPage() {
                 </p>
               </SectionCard>
 
-              <SectionCard id="encryption-rest" number="02" title="Encryption at rest" icon={Database}>
+              <SectionCard id="encryption-rest" number="02" title="Encryption at rest">
                 <p>
                   The public marketing website does <strong className="text-foreground">not</strong> store completed
                   credit applications in our customer-facing database schema. Instead, structured application data is
@@ -245,7 +213,7 @@ export default function CreditApplicationDataSecurityPage() {
                 </p>
               </SectionCard>
 
-              <SectionCard id="file-storage" number="03" title="Secure file storage (licenses & uploads)" icon={FolderLock}>
+              <SectionCard id="file-storage" number="03" title="Secure file storage (licenses & uploads)">
                 <p>
                   Driver&apos;s licenses and other uploads are read in the browser and sent as part of the encrypted
                   application payload. They are <strong className="text-foreground">not</strong> written to our public
@@ -258,7 +226,7 @@ export default function CreditApplicationDataSecurityPage() {
                 </p>
               </SectionCard>
 
-              <SectionCard id="access-control" number="04" title="Access control & least privilege" icon={Users}>
+              <SectionCard id="access-control" number="04" title="Access control & least privilege">
                 <p>
                   <strong className="text-foreground">Website administration</strong> (deals, vehicles, blog) requires a
                   Supabase-authenticated account that also exists in our{' '}
@@ -277,7 +245,7 @@ export default function CreditApplicationDataSecurityPage() {
                 </p>
               </SectionCard>
 
-              <SectionCard id="pdf-documents" number="05" title="PDF generation & email" icon={FileText}>
+              <SectionCard id="pdf-documents" number="05" title="PDF generation & email">
                 <p>
                   This website does not generate credit PDFs on our Node server. If your operations team creates PDFs or
                   forwards attachments from a workflow tool or mailbox, follow your standard playbook: generate on
@@ -286,7 +254,7 @@ export default function CreditApplicationDataSecurityPage() {
                 </p>
               </SectionCard>
 
-              <SectionCard id="infrastructure" number="06" title="Database & infrastructure security" icon={Server}>
+              <SectionCard id="infrastructure" number="06" title="Database & infrastructure security">
                 <p>
                   <strong className="text-foreground">API keys and secrets</strong> for email and webhook forwarding are
                   kept in server or hosting environment variables—not embedded in client bundles. Public forms call
@@ -305,7 +273,7 @@ export default function CreditApplicationDataSecurityPage() {
                 </p>
               </SectionCard>
 
-              <SectionCard id="logging" number="07" title="Logging & monitoring" icon={Activity}>
+              <SectionCard id="logging" number="07" title="Logging & monitoring">
                 <p>
                   Expect <strong className="text-foreground">HTTP access logs</strong> and{' '}
                   <strong className="text-foreground">application telemetry</strong> from your hosting and analytics
@@ -315,7 +283,7 @@ export default function CreditApplicationDataSecurityPage() {
                 </p>
               </SectionCard>
 
-              <SectionCard id="documentation" number="08" title="Retention, deletion & how to use this document" icon={BookOpen}>
+              <SectionCard id="documentation" number="08" title="Retention, deletion & how to use this document">
                 <p>
                   <strong className="text-foreground">Retention and deletion</strong> for the full application record
                   (including any copies in email, spreadsheets, or CRM) are governed by your internal records-management
@@ -331,17 +299,14 @@ export default function CreditApplicationDataSecurityPage() {
             </div>
 
             <div className="rounded-2xl border border-amber-500/25 bg-amber-500/[0.06] p-6 sm:p-8">
-              <div className="flex items-start gap-3">
-                <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-amber-600 dark:text-amber-400" aria-hidden />
-                <div>
-                  <h2 className="text-lg font-bold text-foreground">Additional recommendations</h2>
+              <div>
+                <h2 className="text-lg font-bold text-foreground">Additional recommendations</h2>
                   <ul className="mt-3 list-inside list-disc space-y-2 text-sm text-muted-foreground marker:text-amber-600/80">
                     <li>Publish a formal privacy policy and data subprocessors addendum that names every system touching PII.</li>
                     <li>Run periodic access reviews for automation (Make/Zapier), CRM, and shared inboxes that receive applications.</li>
                     <li>Consider a CAPTCHA or bot mitigation on high-value forms if abuse becomes measurable.</li>
                     <li>Engage counsel for GLBA/FCMA or state-specific auto-finance privacy obligations that apply to your brokerage.</li>
                   </ul>
-                </div>
               </div>
             </div>
 
@@ -353,7 +318,6 @@ export default function CreditApplicationDataSecurityPage() {
               <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
                 <Button asChild variant="outline" className="w-full sm:w-auto">
                   <a href="tel:+12015095555" className="inline-flex items-center justify-center gap-2">
-                    <Phone className="h-4 w-4" aria-hidden />
                     201-509-5555
                   </a>
                 </Button>
@@ -363,32 +327,32 @@ export default function CreditApplicationDataSecurityPage() {
               </div>
             </div>
           </div>
-
-          <aside className="hidden lg:block">
-            <div className="sticky top-28 rounded-xl border border-border/80 bg-card/60 p-5 dark:bg-white/[0.03]">
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground">On this page</p>
-              <nav className="mt-4 space-y-2 border-t border-border/60 pt-4" aria-label="Page sections">
-                {toc.map((item) => (
-                  <a
-                    key={item.id}
-                    href={`#${item.id}`}
-                    className="block text-sm text-muted-foreground transition-colors hover:text-accent"
-                  >
-                    {item.label}
-                  </a>
-                ))}
-              </nav>
-              <div className="mt-6 rounded-lg bg-accent/10 p-4 text-xs leading-relaxed text-muted-foreground">
-                <Shield className="mb-2 h-4 w-4 text-accent" aria-hidden />
-                This is a technical summary, not legal advice. Pair with counsel and vendor DPAs for regulated use cases.
-              </div>
-            </div>
-          </aside>
         </div>
+
+        <aside
+          className="hidden max-h-[calc(100vh-7.5rem)] w-56 overflow-y-auto rounded-xl border border-border/80 bg-card/95 p-5 shadow-sm backdrop-blur-sm dark:bg-white/[0.05] lg:fixed lg:right-[max(1rem,calc((100vw-72rem)/2+2rem))] lg:top-28 lg:z-30 lg:block"
+          aria-label="On this page"
+        >
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground">On this page</p>
+          <nav className="mt-4 space-y-2 border-t border-border/60 pt-4">
+            {toc.map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className="block text-sm text-muted-foreground transition-colors hover:text-accent"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+          <div className="mt-6 rounded-lg bg-accent/10 p-4 text-xs leading-relaxed text-muted-foreground">
+            This is a technical summary, not legal advice. Pair with counsel and vendor DPAs for regulated use cases.
+          </div>
+        </aside>
       </section>
 
       <section className="border-t border-border/60 bg-muted/15 py-8 lg:hidden">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Jump to section</p>
           <div className="mt-3 flex flex-wrap gap-2">
             {toc.map((item) => (
@@ -408,7 +372,7 @@ export default function CreditApplicationDataSecurityPage() {
       </section>
 
       <section className="border-t border-border/60 bg-muted/25 py-12 md:py-16">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 lg:pr-60">
           <h2 className="text-center text-xl font-bold text-foreground md:text-2xl">Compliance checklist alignment</h2>
           <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-muted-foreground">
             Map common reviewer questions to the sections above.
@@ -424,14 +388,16 @@ export default function CreditApplicationDataSecurityPage() {
               'Centralized logging recommendation (Section 07)',
               'Retention + how to share this doc (Section 08)',
             ].map((line) => (
-              <li key={line} className="flex items-start gap-3 rounded-lg border border-border/50 bg-background/80 px-4 py-3">
-                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400" aria-hidden />
-                <span>{line}</span>
+              <li
+                key={line}
+                className="rounded-lg border border-border/50 bg-background/80 px-4 py-3 text-left leading-relaxed"
+              >
+                <span className="font-semibold text-emerald-700 dark:text-emerald-400/90">&mdash; </span>
+                {line}
               </li>
             ))}
           </ul>
           <p className="mx-auto mt-10 max-w-2xl text-center text-xs text-muted-foreground">
-            <Mail className="mr-1 inline h-3.5 w-3.5 align-text-bottom" aria-hidden />
             For an updated PDF or signed attestation, contact{' '}
             <a href="mailto:sales@capitalmotorcars.com" className="font-medium text-foreground underline-offset-4 hover:underline">
               sales@capitalmotorcars.com
