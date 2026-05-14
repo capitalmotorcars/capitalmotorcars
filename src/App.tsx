@@ -12,7 +12,7 @@ import ServicesPage from "./pages/ServicesPage";
 import BrandsPage from "./pages/BrandsPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
-import CreditApplicationPage from "./pages/CreditApplicationPage";
+import CreditApplicationDataSecurityPage from "./pages/CreditApplicationDataSecurityPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsOfServicePage from "./pages/TermsOfServicePage";
 import QuizPage from "./pages/QuizPage";
@@ -67,6 +67,7 @@ const App = () => (
               <Route path="/brands" element={<BrandsPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/credit-application/data-security" element={<CreditApplicationDataSecurityPage />} />
               <Route path="/credit-application" element={<CreditApplicationPage />} />
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
               <Route path="/terms-of-service" element={<TermsOfServicePage />} />
