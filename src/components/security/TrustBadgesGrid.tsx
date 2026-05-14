@@ -21,7 +21,7 @@ export const TRUST_BADGES = [
     caption: 'Responsible data handling',
   },
   {
-    src: '/ddos-badge.png',
+    src: '/dodos-badge.png',
     alt: 'DDoS protection: resilient hosting',
     line: 'DDoS protection',
     caption: 'Hardened edge network',
