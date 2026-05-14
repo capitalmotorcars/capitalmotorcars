@@ -17,6 +17,7 @@ const toc = [
   { id: 'uploads', label: 'Photos and PDFs' },
   { id: 'who-sees-it', label: 'Who can see it' },
   { id: 'behind-the-site', label: 'Behind this website' },
+  { id: 'after-you-apply', label: 'After you apply' },
 ] as const;
 
 const fadeIn = {
@@ -52,7 +53,7 @@ export default function CreditApplicationDataSecurityPage() {
     <Layout>
       <SEO
         title="How We Protect Your Application | Capital Motor Cars"
-        description="Plain-language summary of how Capital Motor Cars handles credit application information: secure forms, uploads, and who can access your data."
+        description="How Capital Motor Cars handles credit applications in plain English: what you submit, secure connections, uploads, who can see your data, and what happens after you apply."
         seoKeywords={[
           'credit application security',
           'car loan application privacy',
@@ -66,7 +67,7 @@ export default function CreditApplicationDataSecurityPage() {
           '@type': 'WebPage',
           name: 'How we protect your credit application',
           description:
-            'Plain-language overview of how Capital Motor Cars handles sensitive credit application information.',
+            'Plain-language overview of credit application handling at Capital Motor Cars: secure forms, uploads, access, and follow-up.',
           dateModified: '2026-05-14',
           publisher: { '@type': 'Organization', name: 'Capital Motor Cars' },
         }}
@@ -94,7 +95,8 @@ export default function CreditApplicationDataSecurityPage() {
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
               If you are filling out our credit form, you deserve a straight answer about what happens to your information.
-              This page is written for customers and dealers, not for engineers.
+              This page is written for customers and dealers first. If you are a lender or someone doing a quick review,
+              you should still find enough detail here to understand how we handle the sensitive parts of an application.
             </p>
             <p className="mt-3 text-sm text-white/55">Last updated: {LAST_UPDATED}</p>
             <TrustBadgesGrid
@@ -130,71 +132,152 @@ export default function CreditApplicationDataSecurityPage() {
               <div className="min-w-0 space-y-10 md:space-y-12">
                 <div className="rounded-xl border border-border/70 bg-muted/20 p-6 sm:p-7">
                   <p className="text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
-                    The badges above are the same ones we show on the home page. They are there so you can see, at a
-                    glance, that we take connection security, privacy, and uptime seriously. The words under each badge
-                    match what you would read on a typical secure business site (SSL, encryption, privacy, network
-                    protection, and general trust standards). Details follow in plain English.
+                    The badges above are the same ones we show on the home page. They line up with how most people think
+                    about safety online: a secure connection to the site, protection for personal data, respect for
+                    privacy, and a network that can stand up to junk traffic. The fifth badge is a general trust mark so
+                    visitors know we are not treating a credit application like a casual contact form.
+                  </p>
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
+                    Badges are not the same as a legal certificate. They summarize how we operate. The sections below spell
+                    out what actually happens when someone applies, in everyday language.
                   </p>
                 </div>
 
                 <div className="space-y-8 md:space-y-10">
                   <SectionCard id="what-you-share" title="What you share">
                     <p>
-                      The online application asks for the kind of information any lender or broker needs: who you are,
-                      where you live and work, income, and often a Social Security number. You may also upload a
-                      driver&apos;s license, pay stubs, or other documents. None of that is unusual for a finance
-                      application, but it is sensitive, and we treat it that way.
+                      The online application asks for the kind of information any lender or broker needs to pull credit
+                      and work a deal: your name, contact information, address, employer, income, housing payment, and
+                      often a Social Security number. Depending on the form, we may also ask about a co-applicant, trade
+                      vehicle, or business details.
+                    </p>
+                    <p>
+                      You can usually upload supporting files: driver&apos;s license, insurance card, pay stubs, prior
+                      lease paperwork, or similar. None of this is surprising on a finance application, but it is all
+                      worth protecting because it can be used for identity theft if it leaked.
+                    </p>
+                    <p>
+                      We only collect what the application asks for. If you are not comfortable submitting something, call
+                      us at <strong className="text-foreground">201-509-5555</strong> and we can walk through alternatives
+                      where the lender allows them.
                     </p>
                   </SectionCard>
 
                   <SectionCard id="when-you-submit" title="When you hit submit">
                     <p>
                       You should see a padlock in your browser on our site. That means the data travels over an encrypted
-                      connection (the same HTTPS you use for online banking or shopping). Your answers are sent to our
-                      website first; we do not post them as a public link anyone could stumble on.
+                      connection (HTTPS), the same idea as online banking or shopping on a reputable store. Modern phones
+                      and laptops negotiate a current version of TLS with our hosting provider so the tunnel stays up to
+                      date.
                     </p>
                     <p>
-                      From there, our systems pass the information along to the tools our team uses to process
-                      applications (for example automation and email). Those handoffs also go over encrypted connections.
+                      When you press submit, your answers go to <strong className="text-foreground">our</strong> website
+                      first, not straight into a random third-party widget in the open. The browser talks to our own API on
+                      the same site you are looking at. We do not publish your application as a public link that anyone
+                      could bookmark or forward around the internet.
+                    </p>
+                    <p>
+                      From there, our server forwards the package to the workflow tools our staff rely on (for example
+                      automation and email). Those next steps also use HTTPS so the handoff is not sent as plain text
+                      across the public web.
+                    </p>
+                    <p>
+                      We also put basic limits on how hard someone can hammer our public forms (rate limits and request
+                      size caps) so automated junk does not crowd out real customers.
                     </p>
                   </SectionCard>
 
                   <SectionCard id="uploads" title="Photos and PDFs">
                     <p>
-                      If you attach a photo or PDF, it rides along with the rest of your application in that same secure
-                      submission. We do not drop your license into the same public folders we use for car photos on the
-                      website.
+                      If you attach a photo or PDF, it is read in your browser and sent together with the rest of your
+                      answers in that same encrypted submission. We do not put your license or bank paperwork in the same
+                      public image library we use for vehicle photos on the marketing site.
+                    </p>
+                    <p>
+                      Please only upload documents you are comfortable sharing with a finance office. Use clear photos
+                      (not blurry screenshots) and keep file sizes reasonable so the form stays reliable on slower
+                      connections.
+                    </p>
+                    <p>
+                      If a file fails to upload, try a smaller PDF or a single page at a time. When in doubt, call{' '}
+                      <strong className="text-foreground">201-509-5555</strong> and we can help you get the paperwork to
+                      the right person without leaving it in the wrong place.
                     </p>
                   </SectionCard>
 
                   <SectionCard id="who-sees-it" title="Who can see it">
                     <p>
-                      Only people and systems that need the application to do their job at Capital Motor Cars (and the
-                      services we use to run the business) should see it. Random visitors browsing the site cannot pull up
-                      your form answers.
+                      Only Capital Motor Cars staff and the software we use to run the brokerage should see a completed
+                      application. A random person browsing inventory on the website cannot open your form or your
+                      uploads.
                     </p>
                     <p>
-                      If someone on your team prints a PDF or saves a copy in email or a spreadsheet, treat that copy
-                      like any other sensitive file at your office. This page cannot control what happens after it leaves
-                      our pipeline, but good habits matter.
+                      Lead emails are routed on the <strong className="text-foreground">server</strong>, not by whatever
+                      address someone might try to type into the browser. That reduces the chance of an application being
+                      mis-sent because of a tampered field on the client side.
+                    </p>
+                    <p>
+                      Once your information reaches a lender, their systems and staff fall under their own rules. We are
+                      describing what happens on <strong className="text-foreground">our</strong> site and our immediate
+                      handoff, not every bank portal down the line.
+                    </p>
+                    <p>
+                      If your team prints a PDF, forwards email, or saves a spreadsheet with applicant data, treat those
+                      copies like cash in a safe. Shred what you do not need, lock screens, and remove access when someone
+                      leaves the company. Good habits there matter as much as anything on the website.
                     </p>
                   </SectionCard>
 
                   <SectionCard id="behind-the-site" title="Behind this website">
                     <p>
-                      The public site is built so that passwords and hook addresses for email and automation stay on the
-                      server, not inside the page code where a curious person could dig them out. We also slow down
-                      automated junk hitting our contact and application endpoints so the forms stay usable for real
-                      customers.
+                      The parts of the site you see in the browser are only half the story. Sensitive keys for email and
+                      automation live in server or hosting configuration, not inside the JavaScript bundle that downloads
+                      to your phone. That way a curious user cannot &quot;view source&quot; and walk away with a private
+                      webhook URL.
                     </p>
                     <p>
-                      Inventory, blog posts, and other site content live in a managed database with access rules so only
-                      approved staff accounts can change them.
+                      Public forms (contact, credit, trade-in) talk to our API on the same domain. We use standard web
+                      controls (CORS) so random other websites cannot silently post to those endpoints from a visitor&apos;s
+                      browser without going through our pages the way we expect.
                     </p>
                     <p>
-                      Completed applications are not stored like a shopping cart in the marketing database. They are
-                      handed off for processing. Long-term storage and how long you keep copies are business and legal
-                      decisions your team should document separately.
+                      Inventory, blog posts, and dealer-facing content live in a managed database. Only approved staff
+                      accounts on an internal allowlist can change that data. Everyone else gets read-only public content.
+                      Behind the scenes we use database row-level rules so permissions line up with that idea.
+                    </p>
+                    <p>
+                      The marketing database is not where we park finished credit applications. When you submit, the
+                      package is passed along for processing instead of sitting in the same tables as blog drafts or lease
+                      highlights.
+                    </p>
+                    <p>
+                      The site is hosted on modern cloud infrastructure (encrypted connections at the edge, protections
+                      against large-scale junk traffic). Anyone with admin access to our backing systems should still use
+                      strong passwords, turn on MFA where the vendor offers it, and avoid sharing one login across multiple
+                      people.
+                    </p>
+                  </SectionCard>
+
+                  <SectionCard id="after-you-apply" title="After you apply">
+                    <p>
+                      How long a file is kept, and whether it lives in email, a CRM, or a shared drive, is partly a business
+                      choice and partly a legal one. We recommend writing down a simple retention rule (&quot;delete working
+                      copies after X days unless the deal is open&quot;) and sticking to it.
+                    </p>
+                    <p>
+                      If you need a correction, a copy of what was submitted, or you want to ask how your data was handled,
+                      email{' '}
+                      <a
+                        href="mailto:sales@capitalmotorcars.com"
+                        className="font-medium text-foreground underline-offset-4 hover:underline"
+                      >
+                        sales@capitalmotorcars.com
+                      </a>
+                      . We cannot promise instant turnaround on every request, but we will take genuine inquiries seriously.
+                    </p>
+                    <p>
+                      This page will get updated when our process changes in a material way. The &quot;Last updated&quot;
+                      date at the top is there so you know how fresh the wording is.
                     </p>
                   </SectionCard>
                 </div>
