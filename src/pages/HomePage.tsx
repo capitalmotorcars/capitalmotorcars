@@ -2,6 +2,7 @@ import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
 import { JsonLd, autoDealerSchema, createFaqSchema, createSiteNavigationSchema, localBusinessSchema, websiteSchema } from '@/components/JsonLd';
 import { HeroSection } from '@/components/hero/HeroSection';
+import { SecurityTrustStrip } from '@/components/home/SecurityTrustStrip';
 import { HowItWorksSection } from '@/components/home/HowItWorksSection';
 import { PeopleSection } from '@/components/home/PeopleSection';
 import { VehicleTypesCarousel } from '@/components/home/VehicleTypesCarousel';
@@ -65,6 +66,8 @@ export default function HomePage() {
       <HeroBackgroundWrapper>
         <HeroSection />
       </HeroBackgroundWrapper>
+
+      <SecurityTrustStrip />
 
       <LeaseDealsSection />
       <SectionDividerCreative variant="dot" />
