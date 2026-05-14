@@ -137,9 +137,11 @@ export default function CreditApplicationDataSecurityPage() {
         </div>
       </div>
 
-      <section className="bg-background py-10 md:py-14">
-        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="min-w-0 space-y-10 md:space-y-12 lg:pr-60">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-0 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_15.5rem] lg:gap-10 lg:px-8 xl:grid-cols-[minmax(0,1fr)_16rem] xl:gap-12">
+        <div className="min-w-0">
+          <section className="bg-background py-10 md:py-14">
+            <div className="relative">
+              <div className="min-w-0 space-y-10 md:space-y-12">
             <motion.div {...fadeIn} className="rounded-2xl border border-accent/20 bg-accent/[0.04] p-6 sm:p-8">
               <div>
                 <h2 className="text-lg font-bold text-foreground">What this page covers</h2>
@@ -303,18 +305,6 @@ export default function CreditApplicationDataSecurityPage() {
               </SectionCard>
             </div>
 
-            <div className="rounded-2xl border border-amber-500/25 bg-amber-500/[0.06] p-6 sm:p-8">
-              <div>
-                <h2 className="text-lg font-bold text-foreground">Additional recommendations</h2>
-                  <ul className="mt-3 list-inside list-disc space-y-2 text-sm text-muted-foreground marker:text-amber-600/80">
-                    <li>Publish a formal privacy policy and data subprocessors addendum that names every system touching PII.</li>
-                    <li>Run periodic access reviews for automation (Make/Zapier), CRM, and shared inboxes that receive applications.</li>
-                    <li>Consider a CAPTCHA or bot mitigation on high-value forms if abuse becomes measurable.</li>
-                    <li>Engage counsel for GLBA/FCMA or state-specific auto-finance privacy obligations that apply to your brokerage.</li>
-                  </ul>
-              </div>
-            </div>
-
             <div className="flex flex-col items-start justify-between gap-6 rounded-2xl border border-border bg-muted/30 p-6 sm:flex-row sm:items-center sm:p-8">
               <div>
                 <p className="text-sm font-semibold text-foreground">Ready to apply securely?</p>
@@ -333,84 +323,85 @@ export default function CreditApplicationDataSecurityPage() {
             </div>
           </div>
         </div>
+        </section>
 
-        <aside
-          className="hidden max-h-[calc(100vh-7.5rem)] w-56 overflow-y-auto rounded-xl border border-border bg-background p-5 shadow-lg ring-1 ring-border/40 dark:bg-slate-950 dark:ring-white/10 lg:fixed lg:right-[max(1rem,calc((100vw-72rem)/2+2rem))] lg:top-28 lg:z-30 lg:block"
-          aria-label="On this page"
-        >
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground">On this page</p>
-          <nav className="mt-4 space-y-2 border-t border-border/60 pt-4">
-            {toc.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                className="block text-sm text-muted-foreground transition-colors hover:text-accent"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-          <p className="mt-6 rounded-lg border border-border/70 bg-muted/50 p-4 text-xs leading-relaxed text-foreground/90 dark:bg-slate-900/80 dark:text-slate-200">
-            This is a technical summary, not legal advice. Pair with counsel and vendor DPAs for regulated use cases.
-          </p>
-        </aside>
-      </section>
-
-      <section className="border-t border-border/60 bg-muted/15 py-8 lg:hidden">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Jump to section</p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {toc.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                className={cn(
-                  'rounded-full border border-border/70 bg-background px-3 py-1.5 text-xs font-medium text-foreground',
-                  'hover:border-accent/40 hover:bg-accent/5',
-                )}
-              >
-                {item.label}
-              </a>
-            ))}
+        <section className="border-t border-border/60 bg-muted/15 py-8 lg:hidden">
+          <div className="px-0">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Jump to section</p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {toc.map((item) => (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  className={cn(
+                    'rounded-full border border-border/70 bg-background px-3 py-1.5 text-xs font-medium text-foreground',
+                    'hover:border-accent/40 hover:bg-accent/5',
+                  )}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="border-t border-border/60 bg-muted/25 py-12 md:py-16">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 lg:pr-60">
-          <h2 className="text-center text-xl font-bold text-foreground md:text-2xl">Compliance checklist alignment</h2>
-          <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-muted-foreground">
-            Map common reviewer questions to the sections above.
-          </p>
-          <ul className="mx-auto mt-10 grid max-w-3xl gap-3 text-sm text-muted-foreground">
-            {[
-              'HTTPS / TLS for all application traffic (Section 01)',
-              'At-rest encryption via managed platforms & downstream tools (Section 02)',
-              'No public URLs for applicant document payloads from this flow (Section 03)',
-              'Role-based admin access and server-side email controls (Section 04)',
-              'Operational guidance for PDF/email handling (Section 05)',
-              'Secrets in server env, RLS, CORS, rate limits, managed hosting (Section 06)',
-              'Centralized logging recommendation (Section 07)',
-              'Retention + how to share this doc (Section 08)',
-            ].map((line) => (
-              <li
-                key={line}
-                className="rounded-lg border border-border/50 bg-background/80 px-4 py-3 text-left leading-relaxed"
-              >
-                <span className="font-semibold text-emerald-700 dark:text-emerald-400/90">&mdash; </span>
-                {line}
-              </li>
-            ))}
-          </ul>
-          <p className="mx-auto mt-10 max-w-2xl text-center text-xs text-muted-foreground">
-            For an updated PDF or signed attestation, contact{' '}
-            <a href="mailto:sales@capitalmotorcars.com" className="font-medium text-foreground underline-offset-4 hover:underline">
-              sales@capitalmotorcars.com
-            </a>
-            .
-          </p>
+        <section className="border-t border-border/60 bg-muted/25 py-12 md:py-16">
+          <div className="px-0">
+            <h2 className="text-center text-xl font-bold text-foreground md:text-2xl">Compliance checklist alignment</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-muted-foreground">
+              Map common reviewer questions to the sections above.
+            </p>
+            <ul className="mx-auto mt-10 grid max-w-3xl gap-3 text-sm text-muted-foreground">
+              {[
+                'HTTPS / TLS for all application traffic (Section 01)',
+                'At-rest encryption via managed platforms & downstream tools (Section 02)',
+                'No public URLs for applicant document payloads from this flow (Section 03)',
+                'Role-based admin access and server-side email controls (Section 04)',
+                'Operational guidance for PDF/email handling (Section 05)',
+                'Secrets in server env, RLS, CORS, rate limits, managed hosting (Section 06)',
+                'Centralized logging recommendation (Section 07)',
+                'Retention + how to share this doc (Section 08)',
+              ].map((line) => (
+                <li
+                  key={line}
+                  className="rounded-lg border border-border/50 bg-background/80 px-4 py-3 text-left leading-relaxed"
+                >
+                  <span className="font-semibold text-emerald-700 dark:text-emerald-400/90">&mdash; </span>
+                  {line}
+                </li>
+              ))}
+            </ul>
+            <p className="mx-auto mt-10 max-w-2xl text-center text-xs text-muted-foreground">
+              For an updated PDF or signed attestation, contact{' '}
+              <a href="mailto:sales@capitalmotorcars.com" className="font-medium text-foreground underline-offset-4 hover:underline">
+                sales@capitalmotorcars.com
+              </a>
+              .
+            </p>
+          </div>
+        </section>
         </div>
-      </section>
+
+        <aside className="relative hidden lg:block" aria-label="On this page">
+          <div className="sticky top-28 z-10 max-h-[calc(100vh-7.5rem)] w-full overflow-y-auto rounded-xl border border-border bg-background p-5 shadow-lg ring-1 ring-border/40 dark:bg-slate-950 dark:ring-white/10">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground">On this page</p>
+            <nav className="mt-4 space-y-2 border-t border-border/60 pt-4">
+              {toc.map((item) => (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  className="block text-sm text-muted-foreground transition-colors hover:text-accent"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+            <p className="mt-6 rounded-lg border border-border/70 bg-muted/50 p-4 text-xs leading-relaxed text-foreground/90 dark:bg-slate-900/80 dark:text-slate-200">
+              This is a technical summary, not legal advice. Pair with counsel and vendor DPAs for regulated use cases.
+            </p>
+          </div>
+        </aside>
+      </div>
     </Layout>
   );
 }
