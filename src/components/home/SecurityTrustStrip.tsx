@@ -1,27 +1,19 @@
 import { Link } from 'react-router-dom';
-import { BadgeCheck, Globe, Lock, Server, Shield } from 'lucide-react';
+import { Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-const badges = [
+const trustBadges = [
   {
-    icon: Lock,
-    line: 'TLS encryption',
+    src: '/ssl-badge.png',
+    alt: 'SSL secured — encrypted connection',
+    line: 'SSL encryption',
     caption: 'HTTPS sitewide',
   },
   {
-    icon: Shield,
-    line: 'Secure applications',
-    caption: 'Protected in transit',
-  },
-  {
-    icon: Server,
-    line: 'Controlled handoff',
-    caption: 'Server-side routing',
-  },
-  {
-    icon: BadgeCheck,
-    line: 'Industry standards',
-    caption: 'Modern web security',
+    src: '/privacy-badge.jpg',
+    alt: 'Privacy protected — your data handled responsibly',
+    line: 'Privacy commitment',
+    caption: 'Responsible data handling',
   },
 ] as const;
 
@@ -56,36 +48,32 @@ export function SecurityTrustStrip() {
             </Link>
           </div>
 
-          {/* Badges row */}
+          {/* Trust badges (assets in /public) */}
           <div className="flex min-h-0 flex-1 flex-col">
-            <div className="grid flex-1 grid-cols-2 sm:grid-cols-4">
-              {badges.map((item, index) => {
-                const Icon = item.icon;
-                return (
-                  <div
-                    key={item.line}
-                    className={cn(
-                      'flex flex-col items-center justify-center px-3 py-9 sm:px-4 sm:py-11',
-                      index % 2 === 1 && 'border-l border-border/50',
-                      index >= 2 && 'border-t border-border/50 sm:border-t-0',
-                      index > 0 && 'sm:border-l sm:border-border/50',
-                    )}
-                  >
-                    <div
-                      className="mb-3 flex h-[52px] w-[52px] items-center justify-center rounded-full border border-border/70 text-foreground/85"
-                      aria-hidden
-                    >
-                      <Icon className="h-5 w-5" strokeWidth={1.35} />
-                    </div>
-                    <span className="text-center text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground sm:text-[11px] sm:tracking-[0.2em]">
-                      {item.line}
-                    </span>
-                    <span className="mt-1 text-center text-[10px] text-muted-foreground/80">
-                      {item.caption}
-                    </span>
+            <div className="grid flex-1 grid-cols-2">
+              {trustBadges.map((item, index) => (
+                <div
+                  key={item.src}
+                  className={cn(
+                    'flex flex-col items-center justify-center px-4 py-10 sm:px-6 sm:py-12',
+                    index === 1 && 'border-l border-border/50',
+                  )}
+                >
+                  <div className="mb-4 flex w-full max-w-[200px] items-center justify-center sm:max-w-[220px]">
+                    <img
+                      src={item.src}
+                      alt={item.alt}
+                      className="h-auto max-h-24 w-full object-contain sm:max-h-28"
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
-                );
-              })}
+                  <span className="text-center text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground sm:text-[11px] sm:tracking-[0.2em]">
+                    {item.line}
+                  </span>
+                  <span className="mt-1 text-center text-[10px] text-muted-foreground/80">{item.caption}</span>
+                </div>
+              ))}
             </div>
 
             {/* Footer rail */}
