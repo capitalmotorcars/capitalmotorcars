@@ -29,8 +29,7 @@ export function SecurityTrustStrip() {
               <span className="font-normal text-muted-foreground">handled with care.</span>
             </h2>
             <p className="mt-4 max-w-prose text-sm leading-relaxed text-muted-foreground sm:text-[15px] sm:leading-relaxed">
-              Credit and contact flows use encrypted connections and secure processing, so you can apply with
-              confidence from anywhere in the world. 
+              Endtoend encryption for your data.
             </p>
           </div>
 
@@ -48,7 +47,7 @@ export function SecurityTrustStrip() {
           </div>
         </div>
 
-        {/* Badges: full content width so five tiles are not squeezed beside copy */}
+        {/* Badges: full content width so tiles are not squeezed beside copy */}
         <div className="border-b border-border/40 bg-muted/[0.12] py-10 sm:py-12 lg:rounded-2xl lg:border lg:border-border/50 lg:px-8 lg:py-12 xl:px-10 xl:py-14 dark:bg-white/[0.02]">
           <TrustBadgesGrid variant="surface" layout="strip" />
         </div>

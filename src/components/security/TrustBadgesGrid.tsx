@@ -3,6 +3,13 @@ import { cn } from '@/lib/utils';
 /** Filenames in /public (see also trust-assurance-badge.png). */
 export const TRUST_BADGES = [
   {
+    src: '/norton-badge.png',
+    alt: 'Norton Safe Web: site safety report',
+    line: 'Norton Safe Web',
+    caption: 'Independent safety verification',
+    href: 'https://safeweb.norton.com/report?url=captitalmotors.com',
+  },
+  {
     src: '/ssl-secure-badge.png',
     alt: 'SSL secured: encrypted connection',
     line: 'SSL encryption',
@@ -61,59 +68,76 @@ export function TrustBadgesGrid({
       className={cn(
         'grid',
         isStrip
-          ? 'grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-5 lg:gap-x-4 lg:gap-y-6 xl:gap-x-8'
-          : 'grid-cols-2 gap-x-2 gap-y-8 sm:grid-cols-3 sm:gap-x-4 lg:grid-cols-5 lg:gap-x-3',
+          ? 'grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-6 lg:gap-x-4 lg:gap-y-6 xl:gap-x-8'
+          : 'grid-cols-2 gap-x-2 gap-y-8 sm:grid-cols-3 sm:gap-x-4 lg:grid-cols-6 lg:gap-x-3',
         className,
       )}
       role="list"
       aria-label="Security and trust badges"
     >
-      {TRUST_BADGES.map((item) => (
-        <div
-          key={item.src}
-          role="listitem"
-          className={cn('flex flex-col items-center justify-center text-center', cellPad)}
-        >
-          <div
-            className={cn(
-              'mb-4 flex w-full items-center justify-center',
-              isStrip
-                ? 'max-w-[200px] sm:max-w-[220px] lg:max-w-none lg:px-1 xl:max-w-[200px]'
-                : 'max-w-[190px] sm:max-w-[210px] lg:max-w-[185px]',
-            )}
-          >
-            <img
-              src={item.src}
-              alt={item.alt}
+      {TRUST_BADGES.map((item) => {
+        const body = (
+          <>
+            <div
               className={cn(
-                'h-auto w-full object-contain',
+                'mb-4 flex w-full items-center justify-center',
                 isStrip
-                  ? 'max-h-[5.75rem] sm:max-h-28 lg:max-h-[7rem] xl:max-h-32'
-                  : 'max-h-[5.5rem] sm:max-h-28 lg:max-h-32',
+                  ? 'max-w-[200px] sm:max-w-[220px] lg:max-w-none lg:px-1 xl:max-w-[200px]'
+                  : 'max-w-[190px] sm:max-w-[210px] lg:max-w-[185px]',
               )}
-              loading="lazy"
-              decoding="async"
-            />
+            >
+              <img
+                src={item.src}
+                alt={item.alt}
+                className={cn(
+                  'h-auto w-full object-contain',
+                  isStrip
+                    ? 'max-h-[5.75rem] sm:max-h-28 lg:max-h-[7rem] xl:max-h-32'
+                    : 'max-h-[5.5rem] sm:max-h-28 lg:max-h-32',
+                )}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <span
+              className={cn(
+                'text-center text-xs font-semibold leading-tight sm:text-sm',
+                onHero ? 'text-white' : 'text-foreground',
+              )}
+            >
+              {item.line}
+            </span>
+            <span
+              className={cn(
+                'mt-1.5 max-w-[11rem] text-center text-[10px] leading-snug sm:max-w-[12rem] sm:text-xs',
+                isStrip && 'lg:max-w-[11rem]',
+                onHero ? 'text-white/75' : 'text-muted-foreground',
+              )}
+            >
+              {item.caption}
+            </span>
+          </>
+        );
+
+        return (
+          <div key={item.src} role="listitem" className={cellPad}>
+            {'href' in item && item.href ? (
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  'flex flex-col items-center justify-center text-center text-inherit no-underline outline-offset-4 transition-opacity hover:opacity-90 focus-visible:rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring',
+                )}
+              >
+                {body}
+              </a>
+            ) : (
+              <div className="flex flex-col items-center justify-center text-center">{body}</div>
+            )}
           </div>
-          <span
-            className={cn(
-              'text-center text-xs font-semibold leading-tight sm:text-sm',
-              onHero ? 'text-white' : 'text-foreground',
-            )}
-          >
-            {item.line}
-          </span>
-          <span
-            className={cn(
-              'mt-1.5 max-w-[11rem] text-center text-[10px] leading-snug sm:max-w-[12rem] sm:text-xs',
-              isStrip && 'lg:max-w-[11rem]',
-              onHero ? 'text-white/75' : 'text-muted-foreground',
-            )}
-          >
-            {item.caption}
-          </span>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }

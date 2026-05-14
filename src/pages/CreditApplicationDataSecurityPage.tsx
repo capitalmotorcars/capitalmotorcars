@@ -52,10 +52,10 @@ function SectionCard({
   return (
     <article
       id={id}
-      className="scroll-mt-28 rounded-2xl border border-border/80 bg-card/40 p-6 shadow-sm sm:p-8 md:p-9"
+      className="scroll-mt-24 rounded-2xl border border-border/80 bg-card/40 p-4 shadow-sm sm:scroll-mt-28 sm:p-8 md:p-9"
     >
-      <h2 className="text-lg font-bold tracking-tight text-foreground sm:text-xl">{title}</h2>
-      <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-[15px] sm:leading-relaxed">
+      <h2 className="break-words text-lg font-bold tracking-tight text-foreground sm:text-xl">{title}</h2>
+      <div className="mt-4 space-y-4 break-words text-base leading-relaxed text-muted-foreground">
         {children}
       </div>
     </article>
@@ -87,7 +87,7 @@ export default function CreditApplicationDataSecurityPage() {
         }}
       />
 
-      <section className="relative overflow-hidden border-b border-border/60 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
+      <section className="relative overflow-x-hidden border-b border-border/60 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.07]"
           style={{
@@ -95,45 +95,40 @@ export default function CreditApplicationDataSecurityPage() {
           }}
           aria-hidden
         />
-        <div className="relative mx-auto max-w-6xl px-4 pb-14 pt-10 sm:px-6 lg:px-8 lg:pb-16 lg:pt-14">
+        <div className="relative mx-auto max-w-6xl px-4 pb-12 pt-8 sm:px-6 sm:pb-14 sm:pt-10 lg:px-8 lg:pb-16 lg:pt-14">
           <motion.div {...fadeIn}>
             <Link
               to="/credit-application"
-              className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-white/75 transition-colors hover:text-white"
+              className="mb-6 inline-flex min-h-11 items-center gap-2 rounded-md py-1 text-sm font-medium text-white/75 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/80 sm:mb-8"
             >
-              <ArrowLeft className="h-4 w-4" aria-hidden />
-              Back to credit application
+              <ArrowLeft className="h-4 w-4 shrink-0" aria-hidden />
+              <span className="break-words">Back to credit application</span>
             </Link>
-            <h1 className="max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl md:text-[2.5rem] md:leading-tight">
+            <h1 className="max-w-3xl break-words text-2xl font-bold tracking-tight sm:text-4xl md:text-[2.5rem] md:leading-tight">
               How we protect your application
             </h1>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
-              If you are filling out our credit form, you deserve a straight answer about what happens to your information.
-              This page is written for customers and dealers first. If you are a lender or someone doing a quick review,
-              you should still find enough detail here to understand how we handle the sensitive parts of an application.
-            </p>
             <p className="mt-3 text-sm text-white/55">Last updated: {LAST_UPDATED}</p>
             <TrustBadgesGrid
               variant="hero"
-              className="mt-10 border-t border-white/10 pt-8 sm:mt-12 sm:pt-10"
+              className="mt-8 border-t border-white/10 pt-6 sm:mt-12 sm:pt-10"
             />
           </motion.div>
         </div>
       </section>
 
       <div className="border-b border-border/60 bg-muted/20">
-        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-          <p className="text-sm text-muted-foreground">
+        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:py-6 lg:px-8">
+          <p className="min-w-0 text-base leading-relaxed text-muted-foreground sm:text-sm sm:leading-normal">
             Need something in writing for a bank or lawyer? Email{' '}
             <a
               href="mailto:sales@capitalmotorcars.com"
-              className="font-semibold text-foreground underline-offset-4 hover:underline"
+              className="break-all font-semibold text-foreground underline-offset-4 hover:underline sm:break-normal"
             >
               sales@capitalmotorcars.com
             </a>
             .
           </p>
-          <Button asChild className="w-full shrink-0 sm:w-auto">
+          <Button asChild className="h-11 w-full shrink-0 sm:h-10 sm:w-auto">
             <Link to="/credit-application">Start or continue application</Link>
           </Button>
         </div>
@@ -141,25 +136,43 @@ export default function CreditApplicationDataSecurityPage() {
 
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-0 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_15.5rem] lg:gap-10 lg:px-8 xl:grid-cols-[minmax(0,1fr)_16rem] xl:gap-12">
         <div className="min-w-0">
-          <section className="bg-background py-10 md:py-14">
+          <section className="bg-background py-8 pb-10 md:py-14">
             <div className="relative">
-              <div className="min-w-0 space-y-10 md:space-y-12">
-                <div className="rounded-xl border border-border/70 bg-muted/20 p-6 sm:p-7">
-                  <p className="text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
-                    The badges above are the same ones we show on the home page. They line up with how most people think
-                    about safety online: a secure connection (<TechTerm>HTTPS</TechTerm> / <TechTerm>SSL</TechTerm>),
-                    protection for personal data, respect for privacy, and a network that can stand up to junk traffic (
-                    <TechTerm>DDoS</TechTerm> protection). The fifth badge is a general trust mark so visitors know we are
-                    not treating a credit application like a casual contact form.
-                  </p>
-                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
-                    Badges are not the same as a legal certificate. They summarize how we operate. The sections below spell
-                    out what actually happens when someone applies, in everyday language (with technical terms called out
-                    when we use them).
+              <div className="min-w-0 space-y-8 md:space-y-12">
+                <div className="lg:hidden">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Jump to section</p>
+                  <nav className="mt-3 flex flex-wrap gap-2" aria-label="Jump to section">
+                    {toc.map((item) => (
+                      <a
+                        key={item.id}
+                        href={`#${item.id}`}
+                        className={cn(
+                          'inline-flex min-h-11 max-w-full items-center justify-center rounded-full border border-border/70 bg-background px-3 py-2 text-center text-sm font-medium leading-snug text-foreground sm:min-h-10 sm:px-4 sm:text-xs',
+                          'active:bg-accent/10 hover:border-accent/40 hover:bg-accent/5',
+                          'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',
+                        )}
+                      >
+                        {item.label}
+                      </a>
+                    ))}
+                  </nav>
+                  <p className="mt-5 rounded-lg border border-border/70 bg-muted/40 p-4 text-base leading-relaxed text-foreground/90 dark:bg-slate-900/50 dark:text-slate-200 sm:text-sm sm:leading-relaxed">
+                    This page is for your information. It is not legal advice. Your lawyer can tell you what else you need
+                    for your state or your lenders.
                   </p>
                 </div>
 
-                <div className="space-y-8 md:space-y-10">
+                <div className="rounded-xl border border-border/70 bg-muted/20 p-4 sm:p-7">
+                  <p className="text-base leading-relaxed text-muted-foreground sm:text-[15px]">
+                    The badges above are the same ones we show on the home page. They line up with how most people think
+                    about safety online: a secure connection (<TechTerm>HTTPS</TechTerm> / <TechTerm>SSL</TechTerm>),
+                    protection for personal data, respect for privacy, and a network that can stand up to junk traffic (
+                    <TechTerm>DDoS</TechTerm> protection).                     The last badge is a general trust mark so visitors know we are
+                    not treating a credit application like a casual contact form.
+                  </p>
+                </div>
+
+                <div className="space-y-6 md:space-y-10">
                   <SectionCard id="what-you-share" title="What you share">
                     <p>
                       The online application asks for the kind of information any lender or broker needs to pull credit
@@ -173,11 +186,6 @@ export default function CreditApplicationDataSecurityPage() {
                       lease paperwork, or similar (often as <TechTerm>PDF</TechTerm> or photos). None of this is surprising
                       on a finance application, but it is all worth protecting because it can be used for{' '}
                       <TechTerm>identity theft</TechTerm> if it leaked.
-                    </p>
-                    <p>
-                      We only collect what the application asks for. If you are not comfortable submitting something, call
-                      us at <strong className="text-foreground">201-509-5555</strong> and we can walk through alternatives
-                      where the lender allows them.
                     </p>
                   </SectionCard>
 
@@ -218,11 +226,6 @@ export default function CreditApplicationDataSecurityPage() {
                       Please only upload documents you are comfortable sharing with a finance office. Use clear photos
                       (not blurry screenshots) and keep <TechTerm>file sizes</TechTerm> reasonable so the form stays
                       reliable on slower connections.
-                    </p>
-                    <p>
-                      If a file fails to upload, try a smaller PDF or a single page at a time. When in doubt, call{' '}
-                      <strong className="text-foreground">201-509-5555</strong> and we can help you get the paperwork to
-                      the right person without leaving it in the wrong place.
                     </p>
                   </SectionCard>
 
@@ -296,7 +299,7 @@ export default function CreditApplicationDataSecurityPage() {
                       email{' '}
                       <a
                         href="mailto:sales@capitalmotorcars.com"
-                        className="font-medium text-foreground underline-offset-4 hover:underline"
+                        className="break-all font-medium text-foreground underline-offset-4 hover:underline sm:break-normal"
                       >
                         sales@capitalmotorcars.com
                       </a>
@@ -308,43 +311,6 @@ export default function CreditApplicationDataSecurityPage() {
                     </p>
                   </SectionCard>
                 </div>
-
-                <div className="flex flex-col items-start justify-between gap-6 rounded-xl border border-border bg-muted/30 p-6 sm:flex-row sm:items-center sm:p-8">
-                  <div>
-                    <p className="text-sm font-semibold text-foreground">Ready to apply?</p>
-                    <p className="mt-1 text-sm text-muted-foreground">Same form, same protections.</p>
-                  </div>
-                  <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-                    <Button asChild variant="outline" className="w-full sm:w-auto">
-                      <a href="tel:+12015095555" className="inline-flex items-center justify-center gap-2">
-                        201-509-5555
-                      </a>
-                    </Button>
-                    <Button asChild className="w-full sm:w-auto">
-                      <Link to="/credit-application">Apply online</Link>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="border-t border-border/60 bg-muted/15 py-8 lg:hidden">
-            <div className="px-0">
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Jump to section</p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {toc.map((item) => (
-                  <a
-                    key={item.id}
-                    href={`#${item.id}`}
-                    className={cn(
-                      'rounded-full border border-border/70 bg-background px-3 py-1.5 text-xs font-medium text-foreground',
-                      'hover:border-accent/40 hover:bg-accent/5',
-                    )}
-                  >
-                    {item.label}
-                  </a>
-                ))}
               </div>
             </div>
           </section>
