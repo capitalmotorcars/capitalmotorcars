@@ -1,30 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
-
-const trustBadges = [
-  {
-    src: '/ssl-badge.png',
-    alt: 'SSL secured — encrypted connection',
-    line: 'SSL encryption',
-    caption: 'HTTPS sitewide',
-  },
-  {
-    src: '/privacy%20badge.png',
-    alt: 'Privacy protected — your data handled responsibly',
-    line: 'Privacy commitment',
-    caption: 'Responsible data handling',
-    renderWhite: true,
-  },
-  {
-    src: '/ddos-badge.png',
-    alt: 'DDoS protection — resilient hosting',
-    line: 'DDoS protection',
-    caption: 'Hardened edge network',
-    renderWhite: true,
-  },
-] as const;
+import { TrustBadgesGrid } from '@/components/security/TrustBadgesGrid';
 
 /** Minimal trust strip after hero — monochrome, reference-inspired layout. */
 export function SecurityTrustStrip() {
@@ -67,36 +44,7 @@ export function SecurityTrustStrip() {
 
           {/* Trust badges (assets in /public) */}
           <div className="flex min-h-0 flex-1 flex-col">
-            <div className="grid flex-1 grid-cols-1 sm:grid-cols-3">
-              {trustBadges.map((item, index) => (
-                <div
-                  key={item.src}
-                  className={cn(
-                    'flex flex-col items-center justify-center px-5 py-10 sm:px-6 sm:py-12',
-                    index > 0 && 'border-t border-border/40 sm:border-t-0 sm:border-l sm:border-border/40',
-                  )}
-                >
-                  <div className="mb-5 flex w-full max-w-[200px] items-center justify-center sm:max-w-[220px]">
-                    <img
-                      src={item.src}
-                      alt={item.alt}
-                      className={cn(
-                        'h-auto max-h-[5.5rem] w-full object-contain sm:max-h-28',
-                        'renderWhite' in item &&
-                          item.renderWhite &&
-                          'dark:brightness-0 dark:invert',
-                      )}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                  <span className="text-center text-sm font-semibold text-foreground">{item.line}</span>
-                  <span className="mt-1.5 max-w-[14rem] text-center text-xs leading-snug text-muted-foreground">
-                    {item.caption}
-                  </span>
-                </div>
-              ))}
-            </div>
+            <TrustBadgesGrid variant="surface" />
 
             {/* Footer rail */}
             <div className="flex flex-col gap-3 border-t border-border/50 px-4 py-3.5 sm:flex-row sm:items-center sm:justify-between sm:px-6">

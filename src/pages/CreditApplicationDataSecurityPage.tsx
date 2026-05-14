@@ -5,6 +5,7 @@ import { SEO } from '@/components/SEO';
 import { JsonLd } from '@/components/JsonLd';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { TrustBadgesGrid } from '@/components/security/TrustBadgesGrid';
 import { ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -111,6 +112,10 @@ export default function CreditApplicationDataSecurityPage() {
               application, how it moves, who can access it, and which industry practices we follow.
             </p>
             <p className="mt-4 text-xs text-white/50">Last updated: {LAST_UPDATED}</p>
+            <TrustBadgesGrid
+              variant="hero"
+              className="mt-10 border-t border-white/10 pt-8 sm:mt-12 sm:pt-10"
+            />
           </motion.div>
         </div>
       </section>
