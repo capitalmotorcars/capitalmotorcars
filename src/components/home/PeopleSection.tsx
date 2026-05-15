@@ -141,7 +141,7 @@ export function PeopleSection({ homePageOnly = false, padding }: PeopleSectionPr
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(100%,500px)] h-[320px] rounded-full bg-accent/[0.04] dark:bg-accent/[0.06] blur-[80px] pointer-events-none"
           aria-hidden
         />
-        {/* Founder — centered on top */}
+        {/* Founder - centered on top */}
         <div className="flex justify-center mb-6">
           <Dialog.Root open={founderOpen} onOpenChange={setFounderOpen}>
             <Dialog.Trigger asChild>
@@ -207,7 +207,7 @@ export function PeopleSection({ homePageOnly = false, padding }: PeopleSectionPr
           </Dialog.Root>
         </div>
 
-        {/* Team carousel — arrows cycle team only; founder stays fixed above */}
+        {/* Team carousel - arrows cycle team only; founder stays fixed above */}
         {maxTeamPage > 0 && (
           <div className="flex items-center gap-2">
             <button

@@ -7,7 +7,7 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { cn } from '@/lib/utils';
 import { renderSEOHeading } from '@/utils/seoUtils';
 import { Shield, FileText, Clock, CheckCircle2, User, Building } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { useState } from 'react';
 import bg1 from '@/assets/contact.jpg';
 
@@ -167,26 +167,6 @@ export default function CreditApplicationPage() {
                       </div>
                     )}
                     
-                    <div
-                      className="mb-4 rounded-xl border border-emerald-500/25 bg-emerald-500/[0.06] dark:bg-emerald-500/10 px-4 py-3 sm:px-5 sm:py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
-                      role="status"
-                    >
-                      <p className="text-sm sm:text-base text-foreground dark:text-white/95 leading-snug">
-                        <span className="font-semibold text-emerald-700 dark:text-emerald-400">
-                          Your information is end-to-end encrypted.
-                        </span>{' '}
-                        <span className="text-muted-foreground dark:text-white/75">
-                          Everything you submit is protected in transit with industry-standard encryption.
-                        </span>
-                      </p>
-                      <Link
-                        to="/credit-application/data-security"
-                        className="shrink-0 inline-flex items-center justify-center text-sm font-semibold text-emerald-700 dark:text-emerald-400 hover:underline underline-offset-4"
-                      >
-                        Know more
-                      </Link>
-                    </div>
-
                     <div id="credit-application-card" className="glass-card-theme form-card-theme p-6 sm:p-8 md:p-10 xl:p-12 rounded-xl scroll-mt-24">
                       {(applicationType === 'personal' || applicationType === null) ? (
                         <CreditApplicationForm applicationType={applicationType} setApplicationType={setApplicationType} />

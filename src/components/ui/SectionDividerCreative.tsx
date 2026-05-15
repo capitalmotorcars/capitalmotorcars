@@ -20,7 +20,7 @@ export function SectionDividerCreative({
       className={cn('relative flex items-center justify-center w-full py-6 md:py-8', className)}
       aria-hidden
     >
-      {/* Gradient line — fades at edges */}
+      {/* Gradient line - fades at edges */}
       <div
         className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 w-full max-w-3xl mx-auto"
         style={{

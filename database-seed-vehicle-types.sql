@@ -83,7 +83,7 @@ INSERT INTO public.vehicle_types (
   'Coupe', 
   '/vehicle-images/corvette.png', 
   'Chevrolet Corvette Z06 1LZ', 
-  'The soul of a race car in a street-legal body. The Z06 features the hand-assembled LT6 V8—the most powerful naturally aspirated production V8 in history.', 
+  'The soul of a race car in a street-legal body. The Z06 features the hand-assembled LT6 V8, the most powerful naturally aspirated production V8 in history.', 
   2272.85, 
   ARRAY['gasoline'], 
   ARRAY['RWD'], 

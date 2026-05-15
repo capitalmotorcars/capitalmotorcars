@@ -11,8 +11,20 @@
     gtag('config', 'G-9435FK96YE');
   </script>
 
-  <!-- SearchAtlas dynamic optimization -->
-  <script nowprocket nitro-exclude type="text/javascript" id="sa-dynamic-optimization" data-uuid="5ce9c5b9-f79c-4869-89f6-51e4e129125c" src="data:text/javascript;base64,dmFyIHNjcmlwdCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoInNjcmlwdCIpO3NjcmlwdC5zZXRBdHRyaWJ1dGUoIm5vd3Byb2NrZXQiLCAiIik7c2NyaXB0LnNldEF0dHJpYnV0ZSgibml0cm8tZXhjbHVkZSIsICIiKTtzY3JpcHQuc3JjID0gImh0dHBzOi8vZGFzaGJvYXJkLnNlYXJjaGF0bGFzLmNvbS9zY3JpcHRzL2R5bmFtaWNfb3B0aW1pemF0aW9uLmpzIjtzY3JpcHQuZGF0YXNldC51dWlkID0gIjVjZTljNWI5LWY3OWMtNDg2OS04OWY2LTUxZTRlMTI5MTI1YyI7c2NyaXB0LmlkID0gInNhLWR5bmFtaWMtb3B0aW1pemF0aW9uLWxvYWRlciI7ZG9jdW1lbnQuaGVhZC5hcHBlbmRDaGlsZChzY3JpcHQpOw=="></script>
+  <!-- SearchAtlas: skip on localhost - their API does not allow dev origins (CORS). -->
+  <script>
+    (function () {
+      var h = location.hostname;
+      if (h === 'localhost' || h === '127.0.0.1') return;
+      var script = document.createElement('script');
+      script.setAttribute('nowprocket', '');
+      script.setAttribute('nitro-exclude', '');
+      script.src = 'https://dashboard.searchatlas.com/scripts/dynamic_optimization.js';
+      script.dataset.uuid = '5ce9c5b9-f79c-4869-89f6-51e4e129125c';
+      script.id = 'sa-dynamic-optimization-loader';
+      document.head.appendChild(script);
+    })();
+  </script>
 
   <meta charset="UTF-8" />
   <meta name="google-site-verification" content="JkeUtzHF7N-aljVt1EvrE3SpoCNAKnMavFmpQW0RV70" />

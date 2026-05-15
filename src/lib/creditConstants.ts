@@ -66,10 +66,12 @@ export const CONSULTANT_OPTIONS: { value: string; label: string }[] = [
   { value: '', label: 'Select consultant' },
   { value: 'aaron_cui', label: 'Aaron Cui' },
   { value: 'bobby_kaufman', label: 'Bobby Kaufman' },
+  { value: 'chris_case', label: 'Chris Case' },
   { value: 'christopher_amico', label: 'Christopher Amico' },
   { value: 'christine_reich', label: 'Christine Reich' },
   { value: 'daniel_jay_lehrer', label: 'Daniel Jay Lehrer' },
   { value: 'derek_anton', label: 'Derek Anton' },
+  { value: 'dj_kim', label: 'DJ Kim' },
   { value: 'finance_team', label: 'Finance Team' },
   { value: 'henry_liu', label: 'Henry Liu' },
   { value: 'james_dai', label: 'James Dai' },
@@ -84,8 +86,6 @@ export const CONSULTANT_OPTIONS: { value: string; label: string }[] = [
   { value: 'stephen_jo', label: 'Stephen Jo' },
   { value: 'vicky_azrak', label: 'Vicky Azrak' },
   { value: 'wilson_dong', label: 'Wilson Dong' },
-  { value: 'dj_kim', label: 'DJ Kim' },
-  { value: 'chris_case', label: 'Chris Case' },
   { value: 'other', label: 'Other' },
 ];
 
@@ -121,5 +121,7 @@ export const CONSULTANT_EMAIL_MAP: Record<string, string> = {
 export const getConsultantEmail = (consultantValue: string): string => {
   return CONSULTANT_EMAIL_MAP[consultantValue] || 'info@capitalmotorcars.com';
 };
+
+
 
 

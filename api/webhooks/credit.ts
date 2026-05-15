@@ -1,8 +1,8 @@
-import { applyApiCors } from '../../lib/httpCors.mjs';
-import { forwardJsonToWebhook } from '../../lib/webhookForward.mjs';
+import { applyApiCors } from "../../lib/httpCors.mjs";
+import { forwardJsonToWebhook } from "../../lib/webhookForward.mjs";
 
 const DEFAULT_UPSTREAM =
-  'https://hook.eu1.make.com/jmxgdt9co9e5403vopzm8witym4kg5mv';
+  "https://hook.eu1.make.com/jmxgdt9co9e5403vopzm8witym4kg5mv";
 
 type Req = {
   method?: string;
@@ -19,22 +19,44 @@ type Res = {
 };
 
 export default async function handler(req: Req, res: Res) {
-  applyApiCors(req as Parameters<typeof applyApiCors>[0], res as Parameters<typeof applyApiCors>[1]);
+  applyApiCors(
+    req as Parameters<typeof applyApiCors>[0],
+    res as Parameters<typeof applyApiCors>[1],
+  );
 
-  if (req.method === 'OPTIONS') {
+  if (req.method === "OPTIONS") {
     return res.status(204).end();
   }
-  if (req.method !== 'POST') {
-    return res.status(405).json({ success: false, error: 'Method not allowed' });
+  if (req.method !== "POST") {
+    return res
+      .status(405)
+      .json({ success: false, error: "Method not allowed" });
   }
 
-  const upstream = process.env.MAKE_WEBHOOK_CREDIT_URL?.trim() || DEFAULT_UPSTREAM;
+  const body = req.body as any;
+
+  if (!body?.Email) {
+    return res.status(400).json({
+      success: false,
+      error: "Missing applicant email",
+    });
+  }
+
+  if (!body?.ConsultantEmail) {
+    return res.status(400).json({
+      success: false,
+      error: "Missing consultant email",
+    });
+  }
+
+  const upstream =
+    process.env.MAKE_WEBHOOK_CREDIT_URL?.trim() || DEFAULT_UPSTREAM;
   try {
     const r = await forwardJsonToWebhook(upstream, req.body);
     const text = await r.text();
-    const ct = r.headers.get('content-type') ?? 'application/json';
-    res.status(r.status).setHeader('Content-Type', ct).send(text);
+    const ct = r.headers.get("content-type") ?? "application/json";
+    res.status(r.status).setHeader("Content-Type", ct).send(text);
   } catch {
-    res.status(502).json({ success: false, error: 'Upstream error' });
+    res.status(502).json({ success: false, error: "Upstream error" });
   }
 }

@@ -18,6 +18,7 @@ import { FormSuccessMessage } from './FormSuccessMessage';
 import { AddressAutocomplete } from './AddressAutocomplete';
 import { getSubmitErrorMessage, getSubmitErrorFromException } from './getSubmitErrorMessage';
 import { WEBHOOK_CREDIT_APPLICATION_PATH } from '@/lib/webhook';
+import { Link } from 'react-router-dom';
 import { CONSULTANT_OPTIONS, getConsultantEmail, US_STATES } from '@/lib/creditConstants';
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import { cn } from '@/lib/utils';
@@ -60,10 +61,10 @@ const businessSchema = z.object({
   businessPhone: z.string().trim().refine((value) => {
     if (!value) return false;
     let phoneNumber = parsePhoneNumberFromString(value, 'US');
-    if (!phoneNumber?.isValid()) {
+    if (!phoneNumber?.isPossible()) {
       phoneNumber = parsePhoneNumberFromString(value);
     }
-    return phoneNumber?.isValid() ?? false;
+    return phoneNumber?.isPossible() ?? false;
   }, 'Please enter a valid phone number'),
   grossAnnualIncome: z.string().min(1, 'Gross annual income is required').max(50),
   yearOfEstablishment: z.string().min(4, 'Year of establishment is required').max(10),
@@ -85,10 +86,10 @@ const businessSchema = z.object({
   guarantorPhone: z.string().trim().refine((value) => {
     if (!value) return false;
     let phoneNumber = parsePhoneNumberFromString(value, 'US');
-    if (!phoneNumber?.isValid()) {
+    if (!phoneNumber?.isPossible()) {
       phoneNumber = parsePhoneNumberFromString(value);
     }
-    return phoneNumber?.isValid() ?? false;
+    return phoneNumber?.isPossible() ?? false;
   }, 'Please enter a valid phone number'),
   guarantorStreet: z.string().min(1, 'Street is required').max(200),
   guarantorCity: z.string().min(1, 'City is required').max(100),
@@ -107,10 +108,10 @@ const businessSchema = z.object({
   guarantorEmployerPhone: z.string().trim().refine((value) => {
     if (!value) return false;
     let phoneNumber = parsePhoneNumberFromString(value, 'US');
-    if (!phoneNumber?.isValid()) {
+    if (!phoneNumber?.isPossible()) {
       phoneNumber = parsePhoneNumberFromString(value);
     }
-    return phoneNumber?.isValid() ?? false;
+    return phoneNumber?.isPossible() ?? false;
   }, 'Please enter a valid phone number'),
   guarantorYearsAtEmployment: z.string().min(1, 'Length of employment is required').max(10),
   guarantorGrossAnnualIncome: z.string().min(1, 'Gross annual income is required').max(50),
@@ -119,10 +120,10 @@ const businessSchema = z.object({
   bankPhone: z.string().trim().refine((value) => {
     if (!value) return false;
     let phoneNumber = parsePhoneNumberFromString(value, 'US');
-    if (!phoneNumber?.isValid()) {
+    if (!phoneNumber?.isPossible()) {
       phoneNumber = parsePhoneNumberFromString(value);
     }
-    return phoneNumber?.isValid() ?? false;
+    return phoneNumber?.isPossible() ?? false;
   }, 'Please enter a valid phone number'),
   branchAddress: z.string().min(1, 'Branch address is required').max(200),
 
@@ -230,6 +231,7 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
           TaxIDNumber: data.taxIdNumber,
           BusinessType: data.businessType,
           BusinessAddress: `${data.businessStreet}, ${data.businessCity}, ${data.businessState} ${data.businessZip}`,
+          Email: data.emailAddress,
           EmailAddress: data.emailAddress,
           BusinessPhone: data.businessPhone,
           GrossAnnualIncome: data.grossAnnualIncome,
@@ -448,12 +450,25 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="flex items-start gap-3 p-4 rounded-xl bg-accent/10 dark:bg-accent/5 border border-accent/20 dark:border-accent/10 mb-6"
+            className="mb-6 rounded-xl border border-emerald-500/25 bg-emerald-500/[0.06] dark:bg-emerald-500/10 px-4 py-3 sm:px-5 sm:py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
           >
-            <Shield className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
-            <div className="text-sm text-foreground dark:text-white/90">
-              <strong className="text-foreground dark:text-white">Your information is secure.</strong> We use industry standard encryption.
+            <div className="flex items-start gap-3 flex-1 min-w-0">
+              <Shield className="w-5 h-5 text-emerald-600 dark:text-emerald-400 mt-0.5 flex-shrink-0" aria-hidden />
+              <p className="text-sm sm:text-base text-foreground dark:text-white/95 leading-snug">
+                <span className="font-semibold text-emerald-700 dark:text-emerald-400">
+                  Your information is end-to-end encrypted.
+                </span>{' '}
+                <span className="text-muted-foreground dark:text-white/75">
+                  Everything you submit is protected in transit with industry-standard encryption.
+                </span>
+              </p>
             </div>
+            <Link
+              to="/credit-application/data-security"
+              className="shrink-0 inline-flex items-center text-sm font-semibold text-emerald-700 dark:text-emerald-400 hover:underline underline-offset-4 w-full sm:w-auto sm:ml-2 justify-end sm:justify-start"
+            >
+              Learn more
+            </Link>
           </motion.div>
         )}
 

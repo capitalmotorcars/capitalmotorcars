@@ -153,7 +153,7 @@ export function WhyUsPokerCards() {
           subtitle="What sets us apart: transparency, expertise, and a process built around you."
         />
 
-        {/* Main border wrapper — same as Experience You Can Trust */}
+        {/* Main border wrapper - same as Experience You Can Trust */}
         <div
           className={cn(
             'max-w-6xl mx-auto rounded-2xl border border-border dark:border-white/10',
@@ -196,7 +196,7 @@ export function WhyUsPokerCards() {
                   {/* Particles around active card */}
                   <Particles isActive={isActive} />
 
-                  {/* Card — glass style, full width, content centered, full text visible */}
+                  {/* Card - glass style, full width, content centered, full text visible */}
                   <div
                     className={cn(
                       "relative w-full min-h-full p-6 rounded-2xl transition-all duration-500",
@@ -212,7 +212,7 @@ export function WhyUsPokerCards() {
                         : '0 8px 30px -10px hsl(0 0% 0% / 0.3)',
                     }}
                   >
-                    {/* Icon with enhanced animation — centered */}
+                    {/* Icon with enhanced animation - centered */}
                     <div className="flex justify-center mb-4">
                       <div
                         className={cn(
@@ -232,7 +232,7 @@ export function WhyUsPokerCards() {
                       </div>
                     </div>
 
-                    {/* Title — centered */}
+                    {/* Title - centered */}
                     <h4 className={cn(
                       "text-lg font-semibold mb-2 transition-all duration-300 w-full",
                       isActive ? "text-section" : "text-section-muted"
@@ -240,7 +240,7 @@ export function WhyUsPokerCards() {
                       {card.title}
                     </h4>
 
-                    {/* Description — full text visible, centered */}
+                    {/* Description - full text visible, centered */}
                     <div className="relative overflow-hidden w-full flex justify-center">
                       <p
                         className={cn(

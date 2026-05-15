@@ -58,7 +58,7 @@ export function VehicleTypesCarousel({
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  // The CSS transition duration in ms — must match the string below
+  // The CSS transition duration in ms - must match the string below
   const DURATION = 480;
 
   useEffect(() => {
@@ -281,7 +281,7 @@ export function VehicleTypesCarousel({
                 transition,
               }}
             >
-              {/* Slot 0 — prev car */}
+              {/* Slot 0 - prev car */}
               <div
                 onClick={prevVehicle}
                 role="button"
@@ -308,7 +308,7 @@ export function VehicleTypesCarousel({
                 )}
               </div>
 
-              {/* Slot 1 — current car */}
+              {/* Slot 1 - current car */}
               <div
                 style={{
                   flex: '0 0 60%',
@@ -329,7 +329,7 @@ export function VehicleTypesCarousel({
                 )}
               </div>
 
-              {/* Slot 2 — next car */}
+              {/* Slot 2 - next car */}
               <div
                 onClick={nextVehicle}
                 role="button"
@@ -358,7 +358,7 @@ export function VehicleTypesCarousel({
             </div>
           </div>
 
-          {/* Arrows — outside overflow-hidden, highest z-index so full circle is clickable */}
+          {/* Arrows - outside overflow-hidden, highest z-index so full circle is clickable */}
           <button
             onClick={prevVehicle}
             type="button"

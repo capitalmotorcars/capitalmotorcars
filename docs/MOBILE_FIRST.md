@@ -17,7 +17,7 @@ This document summarizes the mobile-first approach used across the Capital Motor
 | Area | Base (320–430px) | md (≥768px) | lg (≥1024px) |
 |------|-------------------|-------------|--------------|
 | **Hero** | Single column, stacked CTAs, centered text, “How It Works” infographic below | Same column; optional spacing tweaks | Same; larger type and infographic container |
-| **Header** | Hamburger menu; logo left, CTA in drawer | — | Horizontal nav + “Schedule a Call” button |
+| **Header** | Hamburger menu; logo left, CTA in drawer | - | Horizontal nav + “Schedule a Call” button |
 | **Sections** | Single column, full-width content, 16px padding | Multi-column grids where needed (e.g. stats, cards) | Wider containers, more columns |
 | **Forms** | Full-width inputs, full-width submit (min 44px height) | Same; max-width container | Same; optional max-width for readability |
 | **Carousels** | Horizontal scroll with `overflow-x-hidden`, internal padding (e.g. `px-4`) | More gap between items | Larger gaps, optional padding |
