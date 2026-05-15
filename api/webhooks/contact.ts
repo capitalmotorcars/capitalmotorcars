@@ -28,6 +28,19 @@ export default async function handler(req: Req, res: Res) {
     return res.status(405).json({ success: false, error: 'Method not allowed' });
   }
 
+  const body = req.body as Record<string, unknown> | null | undefined;
+  if (!body || typeof body !== 'object') {
+    return res.status(400).json({ success: false, error: 'Invalid request body' });
+  }
+
+  const name = typeof body.Name === 'string' ? body.Name.trim() : '';
+  const email = typeof body.Email === 'string' ? body.Email.trim() : '';
+  const phone = typeof body.Phone === 'string' ? body.Phone.trim() : '';
+
+  if (!name || !email || !phone) {
+    return res.status(400).json({ success: false, error: 'Name, Email, and Phone are required' });
+  }
+
   const upstream = process.env.MAKE_WEBHOOK_CONTACT_URL?.trim() || DEFAULT_UPSTREAM;
   try {
     const r = await forwardJsonToWebhook(upstream, req.body);
