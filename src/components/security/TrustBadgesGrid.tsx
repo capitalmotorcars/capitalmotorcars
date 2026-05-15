@@ -82,22 +82,20 @@ export function TrustBadgesGrid({
           <>
             <div
               className={cn(
-                'mb-4 flex w-full min-w-0 max-w-full items-center justify-center',
+                /* Fixed-height rail so mixed-aspect logos align; text blocks start on one baseline */
+                'mb-4 flex w-full min-w-0 max-w-full shrink-0 items-center justify-center',
                 isStrip
-                  ? 'max-w-[200px] sm:max-w-[220px] lg:max-w-full lg:px-0.5 xl:max-w-full'
-                  : 'max-w-[190px] sm:max-w-[210px] lg:max-w-full',
+                  ? 'h-[5.75rem] sm:h-28 lg:h-[6.5rem] xl:h-[6.75rem] 2xl:h-32 max-w-[200px] sm:max-w-[220px] lg:max-w-full lg:px-0.5 xl:max-w-full'
+                  : 'h-[5.5rem] sm:h-28 lg:h-[6.25rem] xl:h-28 2xl:h-32 max-w-[190px] sm:max-w-[210px] lg:max-w-full',
               )}
             >
               <img
                 src={item.src}
                 alt={item.alt}
                 className={cn(
-                  'h-auto w-full min-w-0 object-contain',
+                  'mx-auto block max-h-full min-h-0 w-auto max-w-full object-contain',
                   /* Cap intrinsic width so very wide badge art cannot force column min-width past 1fr */
                   'max-w-[min(100%,10.5rem)] sm:max-w-[min(100%,11.5rem)] lg:max-w-[min(100%,12rem)] xl:max-w-full',
-                  isStrip
-                    ? 'max-h-[5.75rem] sm:max-h-28 lg:max-h-[6.5rem] xl:max-h-[6.75rem] 2xl:max-h-32'
-                    : 'max-h-[5.5rem] sm:max-h-28 lg:max-h-[6.25rem] xl:max-h-28 2xl:max-h-32',
                 )}
                 loading="lazy"
                 decoding="async"
@@ -130,13 +128,13 @@ export function TrustBadgesGrid({
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(
-                  'flex min-w-0 w-full max-w-full flex-col items-center justify-center text-center text-inherit no-underline outline-offset-4 transition-opacity hover:opacity-90 focus-visible:rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring',
+                  'flex min-w-0 w-full max-w-full flex-col items-center justify-start text-center text-inherit no-underline outline-offset-4 transition-opacity hover:opacity-90 focus-visible:rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring',
                 )}
               >
                 {body}
               </a>
             ) : (
-              <div className="flex min-w-0 w-full max-w-full flex-col items-center justify-center text-center">{body}</div>
+              <div className="flex min-w-0 w-full max-w-full flex-col items-center justify-start text-center">{body}</div>
             )}
           </div>
         );

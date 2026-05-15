@@ -29,7 +29,7 @@ export function SecurityTrustStrip() {
               <span className="font-normal text-muted-foreground">handled with care.</span>
             </h2>
             <p className="mt-4 max-w-prose text-sm leading-relaxed text-muted-foreground sm:text-[15px] sm:leading-relaxed">
-              Endtoend encryption for your data.
+              End-to-end encryption for your data.
             </p>
           </div>
 
