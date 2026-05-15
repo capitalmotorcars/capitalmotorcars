@@ -99,17 +99,13 @@ export default function BmwCarLeasePage() {
         description="Looking for the ultimate BMW car lease? Discover premium BMW car lease NJ and BMW car lease US specials with Capital Motor Cars. We negotiate the best money factors and lease structures."
         canonicalPath="/bmw-car-lease"
         seoKeywords={[
-          ...primarySeoKeywords, 
-          ...njSeoKeywords,
           'bmw car lease', 
           'bmw car lease nj',
           'bmw car lease us', 
-          'bmw lease deals', 
-          'lease a bmw', 
-          'bmw lease specials', 
-          'bmw multiple security deposits', 
-          'bmw x5 lease', 
-          'bmw i7 lease', 
+          'bmw lease deals nj', 
+          'lease a bmw nj', 
+          'bmw x5 lease nj', 
+          'bmw i7 lease nj', 
           'Capital Motor Cars'
         ]}
         ogType="website"

@@ -71,10 +71,10 @@ export default function AutoLeasingNewJerseyPage() {
   return (
     <Layout>
       <SEO
-        title="Auto Leasing New Jersey | Capital Motor Cars"
-        description="Auto leasing New Jersey with a cleaner experience for new leases, upgrades, trade-ins, and a faster quote flow."
+        title="Premier Auto Leasing in New Jersey | Capital Motor Cars"
+        description="Experience stress-free auto leasing in New Jersey. We handle new leases, upgrades, and trade-ins, providing a faster and easier car quote flow."
         canonicalPath="/auto-leasing-new-jersey"
-        seoKeywords={[...primarySeoKeywords, ...njSeoKeywords, 'auto leasing New Jersey', 'New Jersey auto leasing', 'auto lease NJ', 'lease broker NJ', 'Capital Motor Cars']}
+        seoKeywords={['auto leasing New Jersey', 'New Jersey auto leasing', 'auto lease NJ', 'lease broker NJ', 'auto lease broker New Jersey', 'Capital Motor Cars']}
         ogType="website"
       />
       <JsonLd data={schemas} />

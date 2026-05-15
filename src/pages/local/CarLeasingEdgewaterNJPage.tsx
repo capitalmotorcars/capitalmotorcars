@@ -70,10 +70,10 @@ export default function CarLeasingEdgewaterNJPage() {
   return (
     <Layout>
       <SEO
-        title="Car Leasing Edgewater NJ | Capital Motor Cars"
-        description="Car leasing Edgewater NJ with a cleaner way to compare vehicles, review lease terms, and move toward the right quote."
+        title="Car Leasing Edgewater NJ | Premium Auto Deals | Capital Motor Cars"
+        description="Searching for car leasing in Edgewater, NJ? Capital Motor Cars offers a seamless auto leasing experience. We negotiate terms and deliver right to your door."
         canonicalPath="/car-leasing-edgewater-nj"
-        seoKeywords={[...primarySeoKeywords, ...njSeoKeywords, 'car leasing Edgewater NJ', 'Edgewater NJ car leasing', 'car lease Edgewater NJ', 'lease a car near Edgewater NJ', 'Capital Motor Cars']}
+        seoKeywords={['car leasing Edgewater NJ', 'Edgewater NJ car leasing', 'car lease Edgewater NJ', 'lease a car near Edgewater', 'auto broker Edgewater', 'Capital Motor Cars Edgewater']}
         ogType="website"
       />
       <JsonLd data={schemas} />

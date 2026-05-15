@@ -70,10 +70,10 @@ export default function CarLeasingTrentonNJPage() {
   return (
     <Layout>
       <SEO
-        title="Car Leasing Trenton NJ | Capital Motor Cars"
-        description="Car leasing Trenton NJ with a simpler way to compare vehicles, review lease terms, and move toward the right quote."
+        title="Car Leasing Trenton NJ | Top Auto Broker | Capital Motor Cars"
+        description="Searching for the best car leasing deals in Trenton, NJ? Capital Motor Cars helps you easily compare vehicles, negotiate terms, and secure the perfect lease."
         canonicalPath="/car-leasing-trenton-nj"
-        seoKeywords={[...primarySeoKeywords, ...njSeoKeywords, 'car leasing Trenton NJ', 'Trenton NJ car leasing', 'car lease Trenton NJ', 'lease a car near Trenton NJ', 'Capital Motor Cars']}
+        seoKeywords={['car leasing Trenton NJ', 'Trenton NJ car leasing', 'car lease Trenton NJ', 'lease a car near Trenton', 'auto broker Trenton', 'Capital Motor Cars Trenton']}
         ogType="website"
       />
       <JsonLd data={schemas} />
