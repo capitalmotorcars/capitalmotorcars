@@ -70,10 +70,10 @@ export default function CarLeaseDealsNewJerseyPage() {
   return (
     <Layout>
       <SEO
-        title="Car Lease Deals New Jersey | Capital Motor Cars"
-        description="Explore car lease deals New Jersey, monthly car lease deals, SUV lease deals, and new car lease deals with a faster quote path."
+        title="Best Car Lease Deals in New Jersey | Capital Motor Cars"
+        description="Looking for the best car lease deals in New Jersey? Capital Motor Cars helps you compare vehicles, negotiate terms, and secure the perfect auto lease."
         canonicalPath="/car-lease-deals-new-jersey"
-        seoKeywords={[...primarySeoKeywords, ...njSeoKeywords, 'car lease deals New Jersey', 'New Jersey car lease deals', 'lease specials NJ', 'zero down lease NJ', 'Capital Motor Cars']}
+        seoKeywords={['car lease deals New Jersey', 'New Jersey car lease deals', 'lease specials NJ', 'zero down lease NJ', 'best lease deals NJ', 'Capital Motor Cars']}
         ogType="website"
       />
       <JsonLd data={schemas} />

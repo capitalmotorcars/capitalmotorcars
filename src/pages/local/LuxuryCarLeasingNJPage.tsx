@@ -69,10 +69,10 @@ export default function LuxuryCarLeasingNJPage() {
   return (
     <Layout>
       <SEO
-        title="Luxury Car Leasing NJ | Capital Motor Cars"
-        description="Luxury car leasing NJ with a premium experience for high-end lease shoppers, stronger section alignment, and a cleaner quote flow."
+        title="Luxury Car Leasing NJ | Premium Auto Broker | Capital Motor Cars"
+        description="Experience premier luxury car leasing in NJ. We negotiate top lease deals on high-end luxury vehicles with white-glove delivery directly to you."
         canonicalPath="/luxury-car-leasing-nj"
-        seoKeywords={[...primarySeoKeywords, ...njSeoKeywords, 'luxury car leasing NJ', 'luxury car lease NJ', 'luxury leasing New Jersey', 'premium lease deals NJ', 'Capital Motor Cars']}
+        seoKeywords={['luxury car leasing NJ', 'luxury car lease NJ', 'luxury leasing New Jersey', 'premium lease deals NJ', 'high end car lease NJ', 'Capital Motor Cars']}
         ogType="website"
       />
       <JsonLd data={schemas} />
