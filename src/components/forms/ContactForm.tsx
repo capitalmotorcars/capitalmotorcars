@@ -140,10 +140,10 @@ export const contactSchema = z.object({
     .refine((value) => {
       if (!value) return false;
       let phoneNumber = parsePhoneNumberFromString(value, 'US');
-      if (!phoneNumber?.isValid()) {
+      if (!phoneNumber?.isPossible()) {
         phoneNumber = parsePhoneNumberFromString(value);
       }
-      return phoneNumber?.isValid() ?? false;
+      return phoneNumber?.isPossible() ?? false;
     }, 'Please enter a valid phone number'),
 
   service: z.string().optional(),

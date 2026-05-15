@@ -61,10 +61,10 @@ const businessSchema = z.object({
   businessPhone: z.string().trim().refine((value) => {
     if (!value) return false;
     let phoneNumber = parsePhoneNumberFromString(value, 'US');
-    if (!phoneNumber?.isValid()) {
+    if (!phoneNumber?.isPossible()) {
       phoneNumber = parsePhoneNumberFromString(value);
     }
-    return phoneNumber?.isValid() ?? false;
+    return phoneNumber?.isPossible() ?? false;
   }, 'Please enter a valid phone number'),
   grossAnnualIncome: z.string().min(1, 'Gross annual income is required').max(50),
   yearOfEstablishment: z.string().min(4, 'Year of establishment is required').max(10),
@@ -86,10 +86,10 @@ const businessSchema = z.object({
   guarantorPhone: z.string().trim().refine((value) => {
     if (!value) return false;
     let phoneNumber = parsePhoneNumberFromString(value, 'US');
-    if (!phoneNumber?.isValid()) {
+    if (!phoneNumber?.isPossible()) {
       phoneNumber = parsePhoneNumberFromString(value);
     }
-    return phoneNumber?.isValid() ?? false;
+    return phoneNumber?.isPossible() ?? false;
   }, 'Please enter a valid phone number'),
   guarantorStreet: z.string().min(1, 'Street is required').max(200),
   guarantorCity: z.string().min(1, 'City is required').max(100),
@@ -108,10 +108,10 @@ const businessSchema = z.object({
   guarantorEmployerPhone: z.string().trim().refine((value) => {
     if (!value) return false;
     let phoneNumber = parsePhoneNumberFromString(value, 'US');
-    if (!phoneNumber?.isValid()) {
+    if (!phoneNumber?.isPossible()) {
       phoneNumber = parsePhoneNumberFromString(value);
     }
-    return phoneNumber?.isValid() ?? false;
+    return phoneNumber?.isPossible() ?? false;
   }, 'Please enter a valid phone number'),
   guarantorYearsAtEmployment: z.string().min(1, 'Length of employment is required').max(10),
   guarantorGrossAnnualIncome: z.string().min(1, 'Gross annual income is required').max(50),
@@ -120,10 +120,10 @@ const businessSchema = z.object({
   bankPhone: z.string().trim().refine((value) => {
     if (!value) return false;
     let phoneNumber = parsePhoneNumberFromString(value, 'US');
-    if (!phoneNumber?.isValid()) {
+    if (!phoneNumber?.isPossible()) {
       phoneNumber = parsePhoneNumberFromString(value);
     }
-    return phoneNumber?.isValid() ?? false;
+    return phoneNumber?.isPossible() ?? false;
   }, 'Please enter a valid phone number'),
   branchAddress: z.string().min(1, 'Branch address is required').max(200),
 
@@ -231,6 +231,7 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
           TaxIDNumber: data.taxIdNumber,
           BusinessType: data.businessType,
           BusinessAddress: `${data.businessStreet}, ${data.businessCity}, ${data.businessState} ${data.businessZip}`,
+          Email: data.emailAddress,
           EmailAddress: data.emailAddress,
           BusinessPhone: data.businessPhone,
           GrossAnnualIncome: data.grossAnnualIncome,
