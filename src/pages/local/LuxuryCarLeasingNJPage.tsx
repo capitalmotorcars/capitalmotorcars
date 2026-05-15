@@ -22,7 +22,7 @@ import { SectionDividerCreative } from '@/components/ui/SectionDividerCreative';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import luxuryLeasingImage from '@/assets/background-mercedes.jpeg';
-import { primarySeoKeywords, njSeoKeywords } from '@/data/seoKeywords';
+
 
 const faqs = [
   {

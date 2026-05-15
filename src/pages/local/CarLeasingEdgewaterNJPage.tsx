@@ -23,7 +23,7 @@ import { SectionDividerCreative } from '@/components/ui/SectionDividerCreative';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import carLeaseImage from '@/assets/car-leasing.jpg';
-import { primarySeoKeywords, njSeoKeywords } from '@/data/seoKeywords';
+
 
 const faqs = [
   {

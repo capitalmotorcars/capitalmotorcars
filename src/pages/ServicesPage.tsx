@@ -28,7 +28,7 @@ import bg1 from '@/assets/brand-backgrounds/bg-1.jpeg';
 import bg2 from '@/assets/brand-backgrounds/bg-2.jpg';
 import bg3 from '@/assets/brand-backgrounds/bg-3.jpg';
 import bg4 from '@/assets/brand-backgrounds/bg-4.jpg';
-import { primarySeoKeywords, njSeoKeywords } from '@/data/seoKeywords';
+
 
 type CategoryType = 'all' | 'leasing' | 'financing' | 'trade-in' | 'vehicle-services';
 
@@ -153,7 +153,7 @@ export default function ServicesPage() {
       <SEO
         title="Auto Leasing Services, Car Lease Deals & Luxury Car Leasing in New Jersey & New York | Capital Motor Cars"
         description="Auto leasing services, car lease deals, monthly car lease deals, and luxury car leasing in New Jersey and New York from Capital Motor Cars."
-        seoKeywords={[...primarySeoKeywords, ...njSeoKeywords, 'auto leasing services New Jersey', 'auto leasing services New York', 'car financing NJ', 'trade in services NY', 'Capital Motor Cars services']}
+        seoKeywords={['auto leasing services New Jersey', 'car lease deals NY', 'luxury car leasing NJ', 'Capital Motor Cars services']}
         ogImage="/src/assets/hero-bg.jpg"
         canonicalPath="/services"
       />
