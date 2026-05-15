@@ -63,40 +63,52 @@ export default function HomePage() {
       />
       <JsonLd data={[websiteSchema, localBusinessSchema, autoDealerSchema, homepageFaqSchema, ...primaryNavigationSchema]} />
       <ScrollTriggeredQuizDialog />
-      <HeroBackgroundWrapper>
-        <HeroSection />
-      </HeroBackgroundWrapper>
+      {/*
+        Phone (default, below md): hero first, then main sections, then trust strip (just above footer).
+        md and up: restore visual order hero → trust strip → sections.
+      */}
+      <div className="flex flex-col">
+        <div className="order-1">
+          <HeroBackgroundWrapper>
+            <HeroSection />
+          </HeroBackgroundWrapper>
+        </div>
 
-      <SecurityTrustStrip />
+        <div className="order-3 shrink-0 md:order-2">
+          <SecurityTrustStrip />
+        </div>
 
-      <LeaseDealsSection />
-      <SectionDividerCreative variant="dot" />
-      <HowItWorksSection transparentBackground />
+        <div className="order-2 flex min-h-0 flex-col md:order-3">
+          <LeaseDealsSection />
+          <SectionDividerCreative variant="dot" />
+          <HowItWorksSection transparentBackground />
 
-      <SectionDividerCreative variant="dot" />
-      <VehicleTypesCarousel title="Discover The Car Of Your Dreams"
-      />
+          <SectionDividerCreative variant="dot" />
+          <VehicleTypesCarousel title="Discover The Car Of Your Dreams"
+          />
 
 
 
-      <SectionDividerCreative variant="dot" />
-      <PeopleSection homePageOnly={true} padding="px-4 sm:px-6 lg:px-8 py-10 md:py-16" />
+          <SectionDividerCreative variant="dot" />
+          <PeopleSection homePageOnly={true} padding="px-4 sm:px-6 lg:px-8 py-10 md:py-16" />
 
-      <SectionDividerCreative variant="dot" />
-      <WhatWeDoSection />
+          <SectionDividerCreative variant="dot" />
+          <WhatWeDoSection />
 
-      <SectionDividerCreative variant="dot" />
-      <WhyUsAndExperienceSection />
+          <SectionDividerCreative variant="dot" />
+          <WhyUsAndExperienceSection />
 
-      <SectionDividerCreative variant="dot" />
-      <FinalCTASection />
+          <SectionDividerCreative variant="dot" />
+          <FinalCTASection />
 
-      <SectionDividerCreative variant="dot" />
-      <TestimonialsSection />
-      <SectionDividerCreative variant="dot" />
-      <FAQSection />
-      {/* <SectionDividerCreative variant="dot" /> */}
-      {/* <BlogSection /> */}
+          <SectionDividerCreative variant="dot" />
+          <TestimonialsSection />
+          <SectionDividerCreative variant="dot" />
+          <FAQSection />
+          {/* <SectionDividerCreative variant="dot" /> */}
+          {/* <BlogSection /> */}
+        </div>
+      </div>
 
     </Layout>
   );
