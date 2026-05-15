@@ -31,7 +31,7 @@ const tradeInValueSchema = z.object({
   phone: z.string().trim().refine((v) => {
     if (!v) return false;
     const p = parsePhoneNumberFromString(v, 'US') ?? parsePhoneNumberFromString(v);
-    return p?.isValid() ?? false;
+    return p?.isPossible() ?? false;
   }, 'Valid phone required'),
   vin: z.string().min(1, 'VIN is required').max(20).trim().toUpperCase(),
   make: z.string().min(1, 'Make is required').max(100).trim(),
