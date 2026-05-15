@@ -5,7 +5,7 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { BlogCard } from '@/components/blog/BlogCard';
 import { getActiveBlogPosts } from '@/services/blogService';
 import type { BlogPost } from '@/types/blog';
-import { primarySeoKeywords } from '@/data/seoKeywords';
+
 
 export default function BlogPage() {
     const [posts, setPosts] = useState<BlogPost[]>([]);
@@ -29,7 +29,7 @@ export default function BlogPage() {
                 title="Capital Motor Cars Blog | Leasing Tips & Auto Insights"
                 description="Car leasing blog for New Jersey and New York drivers from Capital Motor Cars. Read lease tips, financing guides, and vehicle insights."
                 canonicalPath="/blog"
-                seoKeywords={[...primarySeoKeywords, 'car leasing blog New Jersey', 'car leasing blog New York', 'lease tips', 'auto financing guides', 'Capital Motor Cars blog']}
+                seoKeywords={['car leasing blog New Jersey', 'car leasing blog New York', 'lease tips', 'auto financing guides', 'Capital Motor Cars blog']}
                 ogType="article"
             />
             <section className="pt-32 pb-16 md:pb-20">

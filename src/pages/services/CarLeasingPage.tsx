@@ -29,7 +29,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { primarySeoKeywords, njSeoKeywords } from '@/data/seoKeywords';
+
 
 const leasingSteps = [
   {
@@ -81,7 +81,7 @@ export default function CarLeasingPage() {
       <SEO
         title="Car Leasing, Auto Leasing & Car Lease Deals in New Jersey & New York | Capital Motor Cars"
         description="Car leasing, auto leasing, car lease deals, monthly car lease deals, and luxury car leasing in New Jersey and New York from Capital Motor Cars."
-        seoKeywords={[...primarySeoKeywords, ...njSeoKeywords, 'car leasing deals New York', 'zero down lease NJ', 'fast lease approval', 'Capital Motor Cars leasing']}
+        seoKeywords={['car leasing New Jersey', 'auto leasing NY', 'car lease deals NJ', 'zero down lease NY', 'Capital Motor Cars leasing']}
         ogImage="/src/assets/car-leasing.jpg"
         canonicalPath="/services/car-leasing"
       />

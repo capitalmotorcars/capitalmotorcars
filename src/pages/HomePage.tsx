@@ -1,23 +1,21 @@
-import { Layout } from '@/components/layout/Layout';
-import { SEO } from '@/components/SEO';
-import { JsonLd, autoDealerSchema, createFaqSchema, createSiteNavigationSchema, localBusinessSchema, websiteSchema } from '@/components/JsonLd';
+import { HeroBackgroundWrapper } from '@/components/hero/HeroBackgroundWrapper';
 import { HeroSection } from '@/components/hero/HeroSection';
-import { SecurityTrustStrip } from '@/components/home/SecurityTrustStrip';
+import { FAQSection } from '@/components/home/FAQSection';
+import { FinalCTASection } from '@/components/home/FinalCTASection';
 import { HowItWorksSection } from '@/components/home/HowItWorksSection';
+import { LeaseDealsSection } from '@/components/home/LeaseDealsSection';
 import { PeopleSection } from '@/components/home/PeopleSection';
-import { VehicleTypesCarousel } from '@/components/home/VehicleTypesCarousel';
-import { BrandsCarousel } from '@/components/home/BrandsCarousel';
+import { ScrollTriggeredQuizDialog } from '@/components/home/ScrollTriggeredQuizDialog';
+import { SecurityTrustStrip } from '@/components/home/SecurityTrustStrip';
 import { TestimonialsSection } from '@/components/home/TestimonialsSection';
+import { VehicleTypesCarousel } from '@/components/home/VehicleTypesCarousel';
 import { WhatWeDoSection } from '@/components/home/WhatWeDoSection';
 import { WhyUsAndExperienceSection } from '@/components/home/WhyUsAndExperienceSection';
-import { FinalCTASection } from '@/components/home/FinalCTASection';
-import { HeroBackgroundWrapper } from '@/components/hero/HeroBackgroundWrapper';
+import { JsonLd, autoDealerSchema, createFaqSchema, createSiteNavigationSchema, localBusinessSchema, websiteSchema } from '@/components/JsonLd';
+import { Layout } from '@/components/layout/Layout';
+import { SEO } from '@/components/SEO';
 import { SectionDividerCreative } from '@/components/ui/SectionDividerCreative';
-import { ScrollTriggeredQuizDialog } from '@/components/home/ScrollTriggeredQuizDialog';
-import { FAQSection } from '@/components/home/FAQSection';
-import { LeaseDealsSection } from '@/components/home/LeaseDealsSection';
-import { BlogSection } from '@/components/home/BlogSection';
-import { primarySeoKeywords, njSeoKeywords } from '@/data/seoKeywords';
+
 
 const homepageFaqSchema = createFaqSchema([
   {
@@ -57,7 +55,7 @@ export default function HomePage() {
       <SEO
         title="Capital Motor Cars | Premier Auto Broker & Car Leasing in NJ & NY"
         description="Experience stress-free car leasing with Capital Motor Cars. We negotiate the best auto lease deals with zero down, fast approvals, and free delivery across NJ and NY."
-        seoKeywords={[...primarySeoKeywords, ...njSeoKeywords, 'car lease deals New York', 'zero down car lease', 'fast lease approval', 'Capital Motor Cars']}
+        seoKeywords={['car leasing NJ', 'auto leasing New Jersey', 'car leasing in New Jersey', 'auto broker NJ', 'best car lease deals NJ', 'zero down car lease', 'Capital Motor Cars']}
         ogImage="/src/assets/hero-bg.jpg"
         canonicalPath="/"
       />
