@@ -16,6 +16,7 @@ export default function ContactPage() {
   const { ref, isRevealed } = useScrollReveal();
 
   const fullName = searchParams.get('fullName') ?? undefined;
+  const email = searchParams.get('email') ?? undefined;
   const phone = searchParams.get('phone') ?? undefined;
   const service = searchParams.get('service') ?? undefined;
   const message = searchParams.get('message') ?? undefined;
@@ -189,7 +190,7 @@ export default function ContactPage() {
                         Send us a Message
                       </h3>
                       <div className="glass-card-theme form-card-theme p-6 sm:p-8 md:p-10 xl:p-12 rounded-xl flex-1">
-                        <ContactForm source="contact" initialValues={{ fullName, phone, service, message }} />
+                        <ContactForm source="contact" initialValues={{ fullName, email, phone, service, message }} />
                       </div>
                     </div>
                   </div>

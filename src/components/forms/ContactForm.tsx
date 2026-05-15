@@ -467,7 +467,7 @@ export function ContactForm({
         Email: data.email,
         Service: serviceLabel,
         Vehicle: vehicleLabel,
-        Message: data.message,
+        Message: data.message ?? '',
         Source: source,
       };
 
