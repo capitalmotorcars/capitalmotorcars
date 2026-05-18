@@ -3334,8 +3334,8 @@ export function CreditApplicationForm({
                 <strong className="text-foreground dark:text-white">
                   Tip:
                 </strong>{" "}
-                Accepted formats include PDF files and images (JPG, PNG).
-                Maximum file size is typically 2MB per file.
+                Accepted formats include PDF files and images (JPG, PNG). Each file can be up to about 40 MB; the
+                server accepts large submissions so scans and phone photos go through reliably.
               </p>
             </div>
           </motion.div>
