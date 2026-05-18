@@ -104,7 +104,7 @@ export function TrustBadgesGrid({
             <span
               className={cn(
                 'w-full min-w-0 break-words text-center text-xs font-semibold leading-tight sm:text-sm',
-                onHero ? 'text-white' : 'text-foreground',
+                onHero ? 'text-foreground dark:text-white' : 'text-foreground',
               )}
             >
               {item.line}
@@ -112,7 +112,7 @@ export function TrustBadgesGrid({
             <span
               className={cn(
                 'mt-1.5 w-full min-w-0 max-w-full hyphens-auto break-words text-center text-[10px] leading-snug sm:text-xs',
-                onHero ? 'text-white/75' : 'text-muted-foreground',
+                onHero ? 'text-muted-foreground dark:text-white/75' : 'text-muted-foreground',
               )}
             >
               {item.caption}
