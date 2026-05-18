@@ -10,7 +10,6 @@ import { Button } from '@/components/ui/button';
 import { renderSEOHeading } from '@/utils/seoUtils';
 import {
   Car,
-  CreditCard,
   RefreshCw,
   Wrench,
   CircleDot,
@@ -30,12 +29,11 @@ import bg3 from '@/assets/brand-backgrounds/bg-3.jpg';
 import bg4 from '@/assets/brand-backgrounds/bg-4.jpg';
 
 
-type CategoryType = 'all' | 'leasing' | 'financing' | 'trade-in' | 'vehicle-services';
+type CategoryType = 'all' | 'leasing' | 'trade-in' | 'vehicle-services';
 
 const categories: { id: CategoryType; label: string }[] = [
   { id: 'all', label: 'All Services' },
   { id: 'leasing', label: 'Leasing' },
-  { id: 'financing', label: 'Financing' },
   { id: 'trade-in', label: 'Trade-In' },
   { id: 'vehicle-services', label: 'Vehicle Services' },
 ];
@@ -48,14 +46,6 @@ const services = [
     icon: Car,
     category: 'leasing' as CategoryType,
     highlights: ['No dealership visits required', 'Transparent pricing upfront', '30+ years of experience'],
-  },
-  {
-    title: 'Financing & Credit',
-    description: 'A simple credit application to review financing options without unnecessary paperwork.',
-    href: '/services/financing',
-    icon: CreditCard,
-    category: 'financing' as CategoryType,
-    highlights: ['Simple application process', 'Quick approval', 'Competitive rates'],
   },
   {
     title: 'Trade-In',
@@ -104,9 +94,8 @@ function getFilteredServices(filter: CategoryType) {
 const categoryToBgIndex: Record<CategoryType, number> = {
   'all': 3,
   'leasing': 0,
-  'financing': 1,
-  'trade-in': 2,
-  'vehicle-services': 3,
+  'trade-in': 1,
+  'vehicle-services': 2,
 };
 
 const fadeInUp = {
@@ -135,7 +124,7 @@ export default function ServicesPage() {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'Capital Motor Cars Services',
-    description: 'Automotive services including leasing, financing, trade-in, and vehicle maintenance.',
+    description: 'Automotive services including leasing, trade-in, and vehicle maintenance.',
     itemListElement: services.map((service, index) => ({
       '@type': 'ListItem',
       position: index + 1,

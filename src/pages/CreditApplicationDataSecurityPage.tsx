@@ -86,7 +86,7 @@ export default function CreditApplicationDataSecurityPage() {
           }}
           aria-hidden
         />
-        <div className="relative mx-auto max-w-6xl min-w-0 px-4 pb-12 pt-8 sm:px-6 sm:pb-14 sm:pt-10 lg:px-8 lg:pb-16 lg:pt-14">
+        <div className="relative mx-auto max-w-6xl min-w-0 px-4 pb-12 pt-[max(4rem,calc(4rem+env(safe-area-inset-top,0px)))] sm:px-6 sm:pb-14 lg:px-8 lg:pb-16 lg:pt-[max(5.5rem,calc(5.5rem+env(safe-area-inset-top,0px)))]">
           <motion.div className="min-w-0" {...fadeIn}>
             <Link
               to="/credit-application"
@@ -246,59 +246,41 @@ export default function CreditApplicationDataSecurityPage() {
 
                   <SectionCard id="behind-the-site" title="Behind this website">
                     <p>
-                      The parts of the site you see in the browser are only half the story. Sensitive keys for email and
-                      automation live in <TechTerm>server</TechTerm> or <TechTerm>hosting configuration</TechTerm>, not
-                      inside the <TechTerm>JavaScript bundle</TechTerm> that downloads to your phone. That way a curious user
-                      cannot &quot;view source&quot; and walk away with a private <TechTerm>webhook URL</TechTerm>.
+                      Sensitive keys for email and automation live in server or hosting configuration.
                     </p>
                     <p>
-                      Public forms (contact, credit, trade-in) talk to our <TechTerm>API</TechTerm> on the same{' '}
-                      <TechTerm>domain</TechTerm>. We use standard web controls (<TechTerm>CORS</TechTerm>) so random other
-                      websites cannot silently post to those <TechTerm>endpoints</TechTerm> from a visitor&apos;s browser
-                      without going through our pages the way we expect.
+                      Public forms talk to our API on the same domain. We use standard web controls (CORS) so random other
+                      websites cannot silently post to those endpoints from a visitor&apos;s browser without going through our
+                      pages the way we expect.
                     </p>
                     <p>
-                      Inventory, blog posts, and dealer-facing content live in a managed <TechTerm>database</TechTerm>.
-                      Only approved staff accounts on an internal <TechTerm>allowlist</TechTerm> can change that data.
-                      Everyone else gets read-only public content. Behind the scenes we use{' '}
-                      <TechTerm>row-level security</TechTerm> (<TechTerm>RLS</TechTerm>) so permissions line up with that
-                      idea.
+                      Inventory, blog posts, and dealer-facing content live in a managed database. Behind the scenes we use
+                      row-level security (RLS) so permissions line up with that idea.
                     </p>
                     <p>
-                      The marketing <TechTerm>database</TechTerm> is not where we park finished credit applications. When
-                      you submit, the package is passed along for processing instead of sitting in the same tables as blog
-                      drafts or lease highlights.
+                      The marketing database is not where we park finished credit applications. When you submit, the package
+                      is passed along for processing instead of sitting in the same tables as blog drafts or lease highlights.
                     </p>
                     <p>
-                      The site is hosted on modern <TechTerm>cloud infrastructure</TechTerm> (<TechTerm>encrypted</TechTerm>{' '}
-                      connections at the edge, protections against large-scale junk traffic). Anyone with{' '}
-                      <TechTerm>admin</TechTerm> access to our backing systems should still use strong passwords, turn on{' '}
-                      <TechTerm>MFA</TechTerm> (<TechTerm>multi-factor authentication</TechTerm>) where the vendor offers it,
-                      and avoid sharing one login across multiple people.
+                      The site is hosted on modern cloud infrastructure (encrypted connections at the edge, protections
+                      against large-scale junk traffic).
                     </p>
                   </SectionCard>
 
                   <SectionCard id="after-you-apply" title="After you apply">
                     <p>
-                      How long a file is kept, and whether it lives in <TechTerm>email</TechTerm>, a <TechTerm>CRM</TechTerm>,
-                      or a shared drive, is partly a business choice and partly a legal one. We recommend writing down a
-                      simple <TechTerm>retention</TechTerm> rule (&quot;delete working copies after X days unless the deal
-                      is open&quot;) and sticking to it.
-                    </p>
-                    <p>
                       If you need a correction, a copy of what was submitted, or you want to ask how your data was handled,
                       email{' '}
                       <a
-                        href="mailto:sales@capitalmotorcars.com"
+                        href="mailto:info@capitalmotorcars.com"
                         className="break-all font-medium text-foreground underline-offset-4 hover:underline sm:break-normal"
                       >
-                        sales@capitalmotorcars.com
+                        info@capitalmotorcars.com
                       </a>
                       . We cannot promise instant turnaround on every request, but we will take genuine inquiries seriously.
                     </p>
                     <p>
-                      This page will get updated when our process changes in a material way. The{' '}
-                      <TechTerm>Last updated</TechTerm> date at the top is there so you know how fresh the wording is.
+                      This page will get updated when our process changes in a material way.
                     </p>
                   </SectionCard>
                 </div>

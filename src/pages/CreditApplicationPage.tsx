@@ -31,8 +31,8 @@ export default function CreditApplicationPage() {
   return (
     <Layout>
       <SEO
-        title="Auto Lease Financing in New Jersey & New York | Capital Motor Cars"
-        description="Auto lease financing in New Jersey and New York from Capital Motor Cars. Apply online for lease and finance approval with fast responses."
+        title="Auto & Car Leasing in New Jersey & New York | Capital Motor Cars"
+        description="Get approved for auto leasing in minutes. We help NJ and NY drivers secure flexible lease options quickly, even with challenged credit. Apply now."
         seoKeywords={['auto lease financing New Jersey', 'auto lease financing New York', 'car credit application NJ', 'lease credit application NY', 'Capital Motor Cars finance']}
         ogImage="/src/assets/contact.jpg"
         canonicalPath="/credit-application"
@@ -40,8 +40,8 @@ export default function CreditApplicationPage() {
       <JsonLd data={{
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "Online Credit Application",
-        "description": "Secure online application for automotive leasing and financing credit.",
+        "name": "Auto & Car Leasing in New Jersey & New York",
+        "description": "Get approved for auto leasing in minutes. We help NJ and NY drivers secure flexible lease options quickly, even with challenged credit. Apply now.",
         "url": "https://capitalmotorcars.com/credit-application"
       }} />
 
@@ -89,14 +89,14 @@ export default function CreditApplicationPage() {
                 transition={{ ...fadeInUp.transition, delay: 0.1 }}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white pb-2 md:pb-4 xl:pb-6 tracking-tight text-center"
               >
-                {renderSEOHeading("Auto Lease Financing in New Jersey & New York | Capital Motor Cars")}
+                {renderSEOHeading("Auto & Car Leasing in New Jersey & New York | Capital Motor Cars")}
               </motion.h2>
               <motion.p
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.2 }}
                 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/80 max-w-3xl xl:max-w-5xl mx-auto pb-4 md:pb-6 xl:pb-8"
               >
-                Apply for auto lease financing in minutes. We help NJ and NY drivers get approved quickly, even with bad credit. Apply Now!
+                Get approved for auto leasing in minutes. We help NJ and NY drivers secure flexible lease options quickly, even with challenged credit. Apply now.
               </motion.p>
 
               {/* Benefits */}
