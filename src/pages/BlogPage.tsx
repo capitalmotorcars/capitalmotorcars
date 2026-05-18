@@ -27,16 +27,16 @@ export default function BlogPage() {
         <Layout>
             <SEO
                 title="Capital Motor Cars Blog | Leasing Tips & Auto Insights"
-                description="Car leasing blog for New Jersey and New York drivers from Capital Motor Cars. Read lease tips, financing guides, and vehicle insights."
+                description="Car leasing blog for New Jersey and New York drivers from Capital Motor Cars. Read lease tips, credit guides, and vehicle insights."
                 canonicalPath="/blog"
-                seoKeywords={['car leasing blog New Jersey', 'car leasing blog New York', 'lease tips', 'auto financing guides', 'Capital Motor Cars blog']}
+                seoKeywords={['car leasing blog New Jersey', 'car leasing blog New York', 'lease tips', 'auto leasing guides', 'Capital Motor Cars blog']}
                 ogType="article"
             />
             <section className="pt-32 pb-16 md:pb-20">
                 <div className="container mx-auto px-4 lg:px-8">
                     <SectionHeading
                         title="Capital Motor Cars Blog"
-                        subtitle="Practical insights on leasing, financing, and the vehicles you love."
+                        subtitle="Practical insights on leasing and the vehicles you love."
                     />
 
                     {loading ? (

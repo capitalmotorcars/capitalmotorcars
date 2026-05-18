@@ -179,7 +179,7 @@ export default function AboutPage() {
                     <div className="max-w-4xl xl:max-w-5xl">
                       <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl  font-semibold text-foreground mb-6 md:mb-8 xl:mb-10">How We Support Our Clients</h2>
                       <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-black dark:text-white leading-relaxed mb-6 md:mb-8">
-                        Our role is to simplify decision-making and execution. We help clients evaluate options, manage details, and move forward with confidence, whether they are leasing, financing, or managing end-of-lease requirements.
+                        Our role is to simplify decision-making and execution. We help clients evaluate options, manage details, and move forward with confidence, whether they are leasing, buying, or managing end-of-lease requirements.
                       </p>
                       <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-foreground">
                         The goal is not speed at any cost, but clarity at every step.

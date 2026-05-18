@@ -1496,7 +1496,7 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
             </div>
             <div className="p-4 rounded-xl bg-accent/10 dark:bg-accent/5 border border-accent/20 dark:border-accent/10">
               <p className="text-xs text-muted-foreground dark:text-white/80">
-                <strong className="text-foreground dark:text-white">Tip:</strong> Accepted formats include PDF files and images (JPG, PNG). Maximum file size is typically 2MB per file.
+                <strong className="text-foreground dark:text-white">Tip:</strong> Accepted formats include PDF files and images (JPG, PNG). Each file can be up to about 40 MB; the server accepts large submissions so scans and phone photos go through reliably.
               </p>
             </div>
           </motion.div>

@@ -175,7 +175,7 @@ type ContactFormData = z.infer<typeof contactSchema>;
 
 const services = [
   { value: 'leasing', label: 'Car Leasing' },
-  { value: 'financing', label: 'Financing & Credit' },
+  { value: 'credit', label: 'Credit & leasing' },
   { value: 'trade-in', label: 'Trade-In' },
   { value: 'wear-tear', label: 'Wear & Tear Repair' },
   { value: 'wheel-repair', label: 'Wheel & Tire Repair' },

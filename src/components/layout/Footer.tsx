@@ -22,7 +22,6 @@ const locations = [
 const footerLinks = {
   services: [
     { href: '/services/car-leasing', label: 'Car Leasing' },
-    { href: '/services/financing', label: 'Financing' },
     { href: '/services/trade-in', label: 'Trade-In' },
     { href: '/services/wear-and-tear', label: 'Wear & Tear Repair' },
     { href: '/services/wheel-repair', label: 'Wheel & Tire Repair' },
