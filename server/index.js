@@ -30,10 +30,22 @@ const apiLimiter = rateLimit({
 });
 
 app.use('/api', apiLimiter);
-app.use(express.json({ limit: '2mb' }));
+
+/** Webhooks forward full credit/trade payloads with base64 files; default 2mb is too small. */
+const jsonWebhook = express.json({ limit: '50mb' });
+const jsonDefault = express.json({ limit: '2mb' });
+app.use((req, res, next) => {
+  /* After app.use('/api', …), req.url is stripped — use originalUrl so /api/webhooks/* is detected. */
+  const pathname = (req.originalUrl ?? req.url ?? '').split('?')[0];
+  if (pathname.startsWith('/api/webhooks')) {
+    return jsonWebhook(req, res, next);
+  }
+  return jsonDefault(req, res, next);
+});
 
 app.use((req, res, next) => {
-  if (req.method === 'OPTIONS' && req.path.startsWith('/api')) {
+  const pathname = (req.originalUrl ?? req.url ?? '').split('?')[0];
+  if (req.method === 'OPTIONS' && pathname.startsWith('/api')) {
     return res.status(204).end();
   }
   next();
