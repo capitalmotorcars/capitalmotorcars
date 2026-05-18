@@ -9,18 +9,9 @@ import { TrustBadgesGrid } from '@/components/security/TrustBadgesGrid';
 import { ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-/** Bold + underline for acronyms and technical vocabulary in body copy. */
-function TechTerm({ children, className }: { children: ReactNode; className?: string }) {
-  return (
-    <span
-      className={cn(
-        'font-semibold text-foreground underline decoration-accent decoration-2 underline-offset-[3px]',
-        className,
-      )}
-    >
-      {children}
-    </span>
-  );
+/** Wraps vocabulary that was previously emphasized; kept for readable JSX grouping. */
+function TechTerm({ children }: { children: ReactNode }) {
+  return <>{children}</>;
 }
 
 const LAST_UPDATED = 'May 2026';
@@ -197,7 +188,7 @@ export default function CreditApplicationDataSecurityPage() {
                       hosting provider so the tunnel stays up to date.
                     </p>
                     <p>
-                      When you press submit, your answers go to <strong className="text-foreground">our</strong> website
+                      When you press submit, your answers go to our website
                       first, not straight into a random third-party widget in the open. The <TechTerm>browser</TechTerm>{' '}
                       talks to our own <TechTerm>API</TechTerm> on the same site you are looking at. We do not publish your
                       application as a public link that anyone could bookmark or forward around the internet.
@@ -242,7 +233,7 @@ export default function CreditApplicationDataSecurityPage() {
                     </p>
                     <p>
                       Once your information reaches a <TechTerm>lender</TechTerm>, their systems and staff fall under their
-                      own rules. We are describing what happens on <strong className="text-foreground">our</strong> site and
+                      own rules. We are describing what happens on our site and
                       our immediate handoff, not every <TechTerm>bank portal</TechTerm> down the line.
                     </p>
                     <p>
