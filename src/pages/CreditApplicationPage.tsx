@@ -33,7 +33,7 @@ export default function CreditApplicationPage() {
       <SEO
         title="Auto & Car Leasing in New Jersey & New York | Capital Motor Cars"
         description="Get approved for auto leasing in minutes. We help NJ and NY drivers secure flexible lease options quickly, even with challenged credit. Apply now."
-        seoKeywords={['auto lease financing New Jersey', 'auto lease financing New York', 'car credit application NJ', 'lease credit application NY', 'Capital Motor Cars finance']}
+        seoKeywords={['auto lease New Jersey', 'auto lease New York', 'car credit application NJ', 'lease credit application NY', 'Capital Motor Cars leasing']}
         ogImage="/src/assets/contact.jpg"
         canonicalPath="/credit-application"
       />
@@ -133,7 +133,7 @@ export default function CreditApplicationPage() {
                         </div>
                         <div className="text-center space-y-3">
                           <h3 className="text-2xl sm:text-3xl font-bold text-foreground dark:text-white">Personal Use</h3>
-                          <p className="text-sm sm:text-base text-muted-foreground dark:text-white/70 max-w-xs mx-auto">Apply for a personal auto lease or financing.</p>
+                          <p className="text-sm sm:text-base text-muted-foreground dark:text-white/70 max-w-xs mx-auto">Apply for a personal auto lease.</p>
                         </div>
                       </button>
                       
@@ -146,7 +146,7 @@ export default function CreditApplicationPage() {
                         </div>
                         <div className="text-center space-y-3">
                           <h3 className="text-2xl sm:text-3xl font-bold text-foreground dark:text-white">Business Use</h3>
-                          <p className="text-sm sm:text-base text-muted-foreground dark:text-white/70 max-w-xs mx-auto">Apply for commercial auto leasing or financing.</p>
+                          <p className="text-sm sm:text-base text-muted-foreground dark:text-white/70 max-w-xs mx-auto">Apply for commercial auto leasing.</p>
                         </div>
                       </button>
                     </div>

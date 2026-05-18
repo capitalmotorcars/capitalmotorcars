@@ -84,6 +84,11 @@
       "source": "/about-us",
       "destination": "https://capitalmotorcars.com/about",
       "permanent": true
+    },
+    {
+      "source": "/services/financing",
+      "destination": "https://capitalmotorcars.com/services/credit",
+      "permanent": true
     }
   ],
   "routes": [

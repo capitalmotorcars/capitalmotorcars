@@ -105,7 +105,7 @@ function BlogCtaBlock({ variant }: { variant: 'mid' | 'end' }) {
   const eyebrow = variant === 'mid' ? 'Ready for a better lease?' : 'Talk to Capital Motor Cars';
   const title = variant === 'mid'
     ? 'Compare lease options without dealership pressure.'
-    : 'Get expert help with leasing, financing, or your next upgrade.';
+    : 'Get expert help with leasing or your next upgrade.';
   const description = variant === 'mid'
     ? 'We help NJ and NY drivers find the right vehicle, review offers clearly, and move faster with less stress.'
     : 'Speak with our team for zero-down options, trade-in guidance, and a simpler car leasing process from start to finish.';

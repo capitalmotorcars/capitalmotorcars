@@ -62,14 +62,14 @@ export function RelatedLinks({
 // Predefined link collections for different contexts
 export const serviceLinks = {
   leasing: [
-    { href: '/services/financing', title: 'Financing & Credit', description: 'Review financing options for your lease.' },
+    { href: '/services/credit', title: 'Credit & leasing', description: 'Review leasing and credit options for your next vehicle.' },
     { href: '/services/trade-in', title: 'Trade-In Services', description: 'Trade in your current vehicle as part of a new lease.' },
     { href: '/contact', title: 'Schedule a Call', description: 'Talk to us about your leasing needs.' },
   ],
-  financing: [
+  credit: [
     { href: '/services/car-leasing', title: 'Car Leasing', description: 'Find the right lease for your budget.' },
-    { href: '/credit-application', title: 'Credit Application', description: 'Start your financing application.' },
-    { href: '/contact', title: 'Schedule a Call', description: 'Discuss financing options with us.' },
+    { href: '/credit-application', title: 'Credit Application', description: 'Start your leasing application.' },
+    { href: '/contact', title: 'Schedule a Call', description: 'Discuss leasing options with us.' },
   ],
   tradeIn: [
     { href: '/services/car-leasing', title: 'Car Leasing', description: 'Apply your trade in value to a new lease.' },
@@ -96,17 +96,17 @@ export const serviceLinks = {
 export const aboutPageLinks = [
   { href: '/services', title: 'Our Services', description: 'See how we can help with your automotive needs.' },
   { href: '/contact', title: 'Contact Us', description: 'Get in touch to start a conversation.' },
-  { href: '/credit-application', title: 'Credit Application', description: 'Begin your financing journey.' },
+  { href: '/credit-application', title: 'Credit Application', description: 'Begin your leasing journey.' },
 ];
 
 export const contactPageLinks = [
   { href: '/services', title: 'Browse Services', description: 'Explore our full range of automotive services.' },
-  { href: '/credit-application', title: 'Credit Application', description: 'Apply for financing online.' },
+  { href: '/credit-application', title: 'Credit Application', description: 'Apply for leasing online.' },
   { href: '/about', title: 'About Us', description: 'Learn more about Capital Motor Cars.' },
 ];
 
 export const servicesPageLinks = [
   { href: '/contact', title: 'Schedule a Call', description: 'Talk to us about your needs.' },
-  { href: '/credit-application', title: 'Credit Application', description: 'Start your financing application.' },
+  { href: '/credit-application', title: 'Credit Application', description: 'Start your leasing application.' },
   { href: '/brands', title: 'Brands We Work With', description: 'See the vehicle brands we support.' },
 ];

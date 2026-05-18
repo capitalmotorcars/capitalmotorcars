@@ -17,7 +17,7 @@ const cards = [
     icon: Award,
     title: 'Real Industry Experience',
     shortText: 'We know how dealerships actually work.',
-    fullText: 'Our team has worked inside dealerships and understands how pricing, financing, and negotiations actually work.',
+    fullText: 'Our team has worked inside dealerships and understands how pricing, leasing, and negotiations actually work.',
   },
   {
     id: 3,

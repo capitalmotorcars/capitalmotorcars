@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ProtectedRoute } from "./components/auth/ProtectedRoute";
@@ -59,7 +59,8 @@ const App = () => (
               <Route path="/" element={<HomePage />} />
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/services/car-leasing" element={<CarLeasingPage />} />
-              <Route path="/services/financing" element={<FinancingPage />} />
+              <Route path="/services/credit" element={<FinancingPage />} />
+              <Route path="/services/financing" element={<Navigate to="/services/credit" replace />} />
               <Route path="/services/trade-in" element={<TradeInPage />} />
               <Route path="/trade-in-value" element={<TradeInValuePage />} />
               <Route path="/services/wear-and-tear" element={<WearAndTearPage />} />

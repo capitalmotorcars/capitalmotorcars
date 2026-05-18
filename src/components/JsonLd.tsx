@@ -12,7 +12,7 @@ const DEFAULT_AUTHOR_NAME = 'Capital Motor Cars Editorial Team';
 const routeLabelMap: Record<string, string> = {
   services: 'Services',
   'car-leasing': 'Car Leasing',
-  financing: 'Financing',
+  credit: 'Credit & leasing',
   'trade-in': 'Trade-In',
   'trade-in-value': 'Trade-In Value',
   'wear-and-tear': 'Wear & Tear Repair',
@@ -246,9 +246,10 @@ export function createBreadcrumbItemsFromPath(pathname: string): BreadcrumbItem[
   let currentPath = '';
 
   for (const segment of segments) {
-    currentPath += `/${segment}`;
+    const pathSegment = segment === 'financing' ? 'credit' : segment;
+    currentPath += `/${pathSegment}`;
     breadcrumbs.push({
-      name: routeLabelMap[segment] || startCaseSlug(segment),
+      name: routeLabelMap[pathSegment] || startCaseSlug(pathSegment),
       url: `${SITE_URL}${currentPath}`,
     });
   }

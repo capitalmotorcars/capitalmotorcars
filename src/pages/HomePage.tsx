@@ -32,7 +32,7 @@ const homepageFaqSchema = createFaqSchema([
   },
   {
     question: 'Does Capital Motor Cars work with New Jersey and New York drivers?',
-    answer: 'Yes. Capital Motor Cars helps drivers across New Jersey and New York with leasing, financing, trade-ins, and lease return support.',
+    answer: 'Yes. Capital Motor Cars helps drivers across New Jersey and New York with leasing, trade-ins, and lease return support.',
   },
   {
     question: 'Can a broker help with zero-down lease options in NJ?',

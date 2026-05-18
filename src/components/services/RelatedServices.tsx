@@ -12,10 +12,10 @@ const services = [
         icon: Car,
     },
     {
-        id: 'financing',
-        title: 'Auto Financing',
+        id: 'credit',
+        title: 'Auto Leasing & Credit',
         description: 'Simple credit applications and wholesale rates for your next vehicle.',
-        href: '/services/financing',
+        href: '/services/credit',
         icon: Banknote,
     },
     {

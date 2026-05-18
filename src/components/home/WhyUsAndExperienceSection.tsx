@@ -14,7 +14,7 @@ const benefits = [
   {
     icon: Award,
     title: 'Real Industry Experience',
-    text: 'Our team has worked inside dealerships and understands pricing, financing, and negotiations.',
+    text: 'Our team has worked inside dealerships and understands pricing, leasing, and negotiations.',
   },
   {
     icon: CheckCircle,

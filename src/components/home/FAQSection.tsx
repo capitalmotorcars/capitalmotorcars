@@ -37,8 +37,8 @@ const faqData = [
     answer: 'Your lease payment typically covers the vehicle\'s depreciation during the lease term, plus interest and fees. It does not include insurance, maintenance, or repairs. However, many leases include a warranty that covers major repairs during the lease period.',
   },
   {
-    question: 'What is the difference between leasing and financing?',
-    answer: 'Leasing involves paying for the vehicle\'s depreciation over the lease term, while financing means you\'re paying toward ownership. Leases typically have lower monthly payments but you don\'t own the vehicle at the end. Financing has higher payments but you own the car once paid off.',
+    question: 'What is the difference between leasing and buying a car?',
+    answer: 'Leasing involves paying for the vehicle\'s depreciation over the lease term, while a purchase loan builds equity toward ownership. Leases typically have lower monthly payments but you don\'t own the vehicle at the end. Buying usually has higher payments but you own the car once it is paid off.',
   },
 ];
 

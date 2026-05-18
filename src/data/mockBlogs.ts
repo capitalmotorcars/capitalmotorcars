@@ -56,7 +56,7 @@ Right now, anything under 0.00200 (which is roughly equivalent to a 4.8% APR) is
 **Does NJ have sales tax on EV leases?**
 No. New Jersey fully exempts Zero Emission Vehicles from the state 6.625% sales tax. This makes EVs the most affordable lease options based on MSRP.
 
-**Can I trade in a car I am financing towards a new lease?**
+**Can I trade in a car I still have a loan on towards a new lease?**
 Yes. If you have positive equity in your current financed vehicle, we can apply that value directly towards your new lease or cut you a check.
 
 ### Conclusion: Do Not Walk Into a Dealership Alone

@@ -24,9 +24,9 @@ const services: ServiceItem[] = [
     icon: Car,
   },
   {
-    title: 'Financing & Credit',
-    description: 'A straightforward credit application, so we can review financing options with you.',
-    href: '/services/financing',
+    title: 'Credit & leasing',
+    description: 'A straightforward credit application, so we can review leasing options with you.',
+    href: '/services/credit',
     ctaText: 'Get Started',
     icon: CreditCard,
   },
