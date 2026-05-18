@@ -78,19 +78,26 @@ export default function CreditApplicationDataSecurityPage() {
         }}
       />
 
-      <section className="relative overflow-x-hidden border-b border-border/60 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
+      <section className="relative overflow-x-hidden border-b border-border/60 bg-gradient-to-br from-slate-100 via-slate-50 to-slate-100 text-foreground dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 dark:text-white">
         <div
-          className="pointer-events-none absolute inset-0 opacity-[0.07]"
+          className="pointer-events-none absolute inset-0 opacity-[0.05] dark:hidden"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230f172a' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-0 hidden opacity-[0.07] dark:block"
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }}
           aria-hidden
         />
-        <div className="relative mx-auto max-w-6xl min-w-0 px-4 pb-12 pt-[max(4rem,calc(4rem+env(safe-area-inset-top,0px)))] sm:px-6 sm:pb-14 lg:px-8 lg:pb-16 lg:pt-[max(5.5rem,calc(5.5rem+env(safe-area-inset-top,0px)))]">
+        <div className="relative mx-auto max-w-6xl min-w-0 px-4 pb-12 pt-[max(5.5rem,calc(5.5rem+env(safe-area-inset-top,0px)))] sm:px-6 sm:pb-14 sm:pt-[max(6rem,calc(6rem+env(safe-area-inset-top,0px)))] lg:px-8 lg:pb-16 lg:pt-[max(7rem,calc(7rem+env(safe-area-inset-top,0px)))]">
           <motion.div className="min-w-0" {...fadeIn}>
             <Link
               to="/credit-application"
-              className="mb-6 inline-flex min-h-11 items-center gap-2 rounded-md py-1 text-sm font-medium text-white/75 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/80 sm:mb-8"
+              className="mb-3 inline-flex min-h-11 items-center gap-2 rounded-md py-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring dark:text-white/75 dark:hover:text-white dark:focus-visible:outline-white/80 sm:mb-4"
             >
               <ArrowLeft className="h-4 w-4 shrink-0" aria-hidden />
               <span className="break-words">Back to credit application</span>
@@ -98,10 +105,10 @@ export default function CreditApplicationDataSecurityPage() {
             <h1 className="max-w-3xl break-words text-2xl font-bold tracking-tight sm:text-4xl md:text-[2.5rem] md:leading-tight">
               How we protect your application
             </h1>
-            <p className="mt-3 text-sm text-white/55">Last updated: {LAST_UPDATED}</p>
+            <p className="mt-3 text-sm text-muted-foreground dark:text-white/55">Last updated: {LAST_UPDATED}</p>
             <TrustBadgesGrid
               variant="hero"
-              className="mt-8 border-t border-white/10 pt-6 sm:mt-12 sm:pt-10"
+              className="mt-8 border-t border-border/60 pt-6 dark:border-white/10 sm:mt-12 sm:pt-10"
             />
           </motion.div>
         </div>
@@ -110,7 +117,7 @@ export default function CreditApplicationDataSecurityPage() {
       <div className="border-b border-border/60 bg-muted/20">
         <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:py-6 lg:px-8">
           <p className="min-w-0 text-base leading-relaxed text-muted-foreground sm:text-sm sm:leading-normal">
-            Need something in writing for a bank or lawyer? Email{' '}
+            Need help? Email{' '}
             <a
               href="mailto:sales@capitalmotorcars.com"
               className="break-all font-semibold text-foreground underline-offset-4 hover:underline sm:break-normal"
@@ -147,100 +154,69 @@ export default function CreditApplicationDataSecurityPage() {
                       </a>
                     ))}
                   </nav>
-                  <p className="mt-5 rounded-lg border border-border/70 bg-muted/40 p-4 text-base leading-relaxed text-foreground/90 dark:bg-slate-900/50 dark:text-slate-200 sm:text-sm sm:leading-relaxed">
-                    This page is for your information. It is not legal advice. Your lawyer can tell you what else you need
-                    for your state or your lenders.
-                  </p>
                 </div>
 
                 <div className="rounded-xl border border-border/70 bg-muted/20 p-4 sm:p-7">
                   <p className="text-base leading-relaxed text-muted-foreground sm:text-[15px]">
-                    The badges above are the same ones we show on the home page. They line up with how most people think
-                    about safety online: a secure connection (<TechTerm>HTTPS</TechTerm> / <TechTerm>SSL</TechTerm>),
-                    protection for personal data, respect for privacy, and a network that can stand up to junk traffic (
-                    <TechTerm>DDoS</TechTerm> protection).                     The last badge is a general trust mark so visitors know we are
-                    not treating a credit application like a casual contact form.
+                    The badges above reflect the same security standards shown across our website. They represent secure
+                    encrypted connections (HTTPS/SSL), protection of personal information, privacy-focused practices, and
+                    safeguards against malicious traffic and attacks (DDoS protection). Together, these measures help
+                    demonstrate that customer credit applications and sensitive data are handled with care and security in
+                    mind.
                   </p>
                 </div>
 
                 <div className="space-y-6 md:space-y-10">
                   <SectionCard id="what-you-share" title="What you share">
                     <p>
-                      The online application asks for the kind of information any lender or broker needs to pull credit
-                      and work a deal: your name, contact information, address, employer, income, housing payment, and
-                      often a <TechTerm>Social Security number</TechTerm> (<TechTerm>SSN</TechTerm>). Depending on the form,
-                      we may also ask about a <TechTerm>co-applicant</TechTerm>, <TechTerm>trade-in</TechTerm> vehicle, or{' '}
-                      <TechTerm>business</TechTerm> details.
-                    </p>
-                    <p>
-                      You can usually upload supporting files: driver&apos;s license, insurance card, pay stubs, prior
-                      lease paperwork, or similar (often as <TechTerm>PDF</TechTerm> or photos). None of this is surprising
-                      on a finance application, but it is all worth protecting because it can be used for{' '}
-                      <TechTerm>identity theft</TechTerm> if it leaked.
+                      The online application may collect information commonly required for vehicle leasing and financing,
+                      including your name, contact details, address, employment information, income, housing payment, and
+                      Social Security number (SSN). In some cases, we may also request co-applicant details, trade-in
+                      vehicle information, or business-related information.
                     </p>
                   </SectionCard>
 
                   <SectionCard id="when-you-submit" title="When you hit submit">
                     <p>
-                      You should see a padlock in your browser on our site. That means the data travels over an encrypted
-                      connection (<TechTerm>HTTPS</TechTerm>), the same idea as online banking or shopping on a reputable
-                      store. Modern phones and laptops negotiate a current version of <TechTerm>TLS</TechTerm> with our
-                      hosting provider so the tunnel stays up to date.
+                      Our website uses secure HTTPS encryption to help protect all application data submitted through our
+                      forms. Information is securely processed through our internal systems and trusted workflow tools using
+                      encrypted connections.
                     </p>
                     <p>
-                      When you press submit, your answers go to our website
-                      first, not straight into a random third-party widget in the open. The <TechTerm>browser</TechTerm>{' '}
-                      talks to our own <TechTerm>API</TechTerm> on the same site you are looking at. We do not publish your
-                      application as a public link that anyone could bookmark or forward around the internet.
-                    </p>
-                    <p>
-                      From there, our <TechTerm>server</TechTerm> forwards the package to the workflow tools our staff rely
-                      on (for example <TechTerm>automation</TechTerm> and <TechTerm>email</TechTerm>). Those next steps also
-                      use <TechTerm>HTTPS</TechTerm> so the handoff is not sent as <TechTerm>plain text</TechTerm> across the
-                      public web.
-                    </p>
-                    <p>
-                      We also put basic limits on how hard someone can hammer our public forms (
-                      <TechTerm>rate limits</TechTerm> and <TechTerm>request size caps</TechTerm>) so automated junk does
-                      not crowd out real customers.
+                      We also implement security measures, including traffic protection and request limits, to help prevent
+                      spam, abuse, and unauthorized access.
                     </p>
                   </SectionCard>
 
                   <SectionCard id="uploads" title="Photos and PDFs">
                     <p>
-                      If you attach a photo or <TechTerm>PDF</TechTerm>, it is read in your <TechTerm>browser</TechTerm>{' '}
-                      and sent together with the rest of your answers in that same <TechTerm>encrypted</TechTerm>{' '}
-                      submission. We do not put your license or bank paperwork in the same public{' '}
-                      <TechTerm>image library</TechTerm> we use for vehicle photos on the marketing site.
+                      Any documents or photos uploaded through the application are securely transmitted using encrypted
+                      connections and are not stored in any public media library or marketing system.
                     </p>
                     <p>
-                      Please only upload documents you are comfortable sharing with a finance office. Use clear photos
-                      (not blurry screenshots) and keep <TechTerm>file sizes</TechTerm> reasonable so the form stays
-                      reliable on slower connections.
+                      Please upload only documents required for the application process, using clear and readable files to
+                      ensure smooth and reliable submission.
                     </p>
                   </SectionCard>
 
                   <SectionCard id="who-sees-it" title="Who can see it">
                     <p>
-                      Only Capital Motor Cars staff and the software we use to run the brokerage should see a completed
-                      application. A random person browsing inventory on the <TechTerm>website</TechTerm> cannot open your
-                      form or your <TechTerm>uploads</TechTerm>.
+                      Only authorized Capital Motor Cars staff and the secure systems we use to operate our brokerage can
+                      access completed applications and uploaded documents. Website visitors cannot view or access your
+                      information.
                     </p>
                     <p>
-                      Lead emails are routed on the <TechTerm>server</TechTerm>, not by whatever address someone might try
-                      to type into the browser. That reduces the chance of an application being mis-sent because of a
-                      tampered field on the <TechTerm>client side</TechTerm>.
+                      Application emails are securely routed through our server systems to help prevent misdirected or
+                      tampered submissions.
                     </p>
                     <p>
-                      Once your information reaches a <TechTerm>lender</TechTerm>, their systems and staff fall under their
-                      own rules. We are describing what happens on our site and
-                      our immediate handoff, not every <TechTerm>bank portal</TechTerm> down the line.
+                      Once your information is shared with a lender, it becomes subject to that lender&apos;s own security
+                      practices and policies. This section applies only to Capital Motor Cars systems and our direct
+                      transfer process.
                     </p>
                     <p>
-                      If your team prints a <TechTerm>PDF</TechTerm>, forwards <TechTerm>email</TechTerm>, or saves a{' '}
-                      <TechTerm>spreadsheet</TechTerm> with applicant data, treat those copies like cash in a safe. Shred
-                      what you do not need, lock screens, and remove access when someone leaves the company. Good habits
-                      there matter as much as anything on the website.
+                      Any printed files, downloaded PDFs, emails, or spreadsheets containing customer information should
+                      be handled securely, with restricted access and proper disposal when no longer needed.
                     </p>
                   </SectionCard>
 
@@ -303,10 +279,6 @@ export default function CreditApplicationDataSecurityPage() {
                 </a>
               ))}
             </nav>
-            <p className="mt-6 rounded-lg border border-border/70 bg-muted/50 p-4 text-xs leading-relaxed text-foreground/90 dark:bg-slate-900/80 dark:text-slate-200">
-              This page is for your information. It is not legal advice. Your lawyer can tell you what else you need for
-              your state or your lenders.
-            </p>
           </div>
         </aside>
       </div>
