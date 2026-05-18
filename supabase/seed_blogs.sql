@@ -67,7 +67,7 @@ Right now, anything under 0.00200, which is roughly equivalent to a 4.8% APR, is
 **Does NJ have sales tax on EV leases?**
 No. New Jersey fully exempts zero-emission vehicles from the state 6.625% sales tax.
 
-**Can I trade in a car I am financing towards a new lease?**
+**Can I trade in a car I still have a loan on towards a new lease?**
 Yes. If you have positive equity in your current financed vehicle, it can be applied toward the new deal or taken as cash.
 
 ### Conclusion: Do Not Walk Into a Dealership Alone
@@ -175,7 +175,7 @@ Banks prefer vehicles with strong resale value, such as Honda, Toyota, and Subar
 ### The $2,000 Down Payment Rule
 In many subprime cases, putting down $2,000 to $3,000 changes the file completely.
 
-- It lowers the amount the bank is financing.
+- It lowers the capitalized cost the lender is covering on the lease.
 - It shows financial stability and serious intent.
 
 Moving from zero down to $2,500 down can be the difference between a rejection and an approval.

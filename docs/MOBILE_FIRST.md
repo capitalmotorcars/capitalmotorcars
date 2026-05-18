@@ -81,7 +81,7 @@ These describe the intended mobile layout for key screens. Use them for design r
 ### Services / Offer (mobile)
 
 - **Page hero**: Title (e.g. “Services”) and breadcrumbs (Home > Services). Same dark style as other page heroes.
-- **Category pills**: Horizontal row of filters (e.g. All Services, Leasing, Financing). Either wrapping or horizontally scrollable with no overflow; adequate spacing between pills.
+- **Category pills**: Horizontal row of filters (e.g. All Services, Leasing, Credit). Either wrapping or horizontally scrollable with no overflow; adequate spacing between pills.
 - **Service cards**: Single column. Each card: icon, title, short description, “Learn more” (or similar) link. Adequate vertical spacing between cards; no cramped blocks. Tap targets for “Learn more” at least 44px where possible.
 
 ### Contact / Lead form (mobile)

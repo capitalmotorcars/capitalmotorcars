@@ -8,7 +8,7 @@ import { RelatedServices } from '@/components/services/RelatedServices';
 import { Button } from '@/components/ui/button';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { motion } from 'framer-motion';
-import financingHero from '@/assets/financing.jpg';
+import creditPageHero from '@/assets/credit-services-hero.jpg';
 import {
   Check,
   ArrowRight,
@@ -30,7 +30,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 
-const financingSteps = [
+const leasingSteps = [
   {
     icon: FileText,
     title: "Apply",
@@ -73,30 +73,30 @@ export default function FinancingPage() {
   return (
     <Layout>
       <SEO
-        title="Auto Financing New Jersey and New York | Low Monthly Payments | Capital Motor Cars"
-        description="Auto financing in New Jersey and New York from Capital Motor Cars. Compare low monthly payments, lease buyouts, and credit-friendly approvals."
-        seoKeywords={['auto financing New Jersey', 'auto financing New York', 'low monthly car payments', 'lease buyout financing', 'Capital Motor Cars financing']}
-        ogImage="/src/assets/financing.jpg"
-        canonicalPath="/services/financing"
+        title="Auto Leasing & Credit in New Jersey and New York | Low Monthly Payments | Capital Motor Cars"
+        description="Auto leasing and credit options in New Jersey and New York from Capital Motor Cars. Compare low monthly payments, lease buyouts, and credit-friendly approvals."
+        seoKeywords={['auto leasing New Jersey', 'auto leasing New York', 'low monthly car payments', 'lease buyout New Jersey', 'Capital Motor Cars leasing']}
+        ogImage="/src/assets/credit-services-hero.jpg"
+        canonicalPath="/services/credit"
       />
       <JsonLd data={createServiceSchema({
-        name: "Auto Financing & Credit Services",
-        description: "Fast and transparent auto financing solutions with access to 30+ lenders for competitive rates.",
-        url: "https://capitalmotorcars.com/services/financing"
+        name: "Auto Leasing & Credit Services",
+        description: "Fast and transparent leasing and credit solutions with access to 30+ lenders for competitive rates.",
+        url: "https://capitalmotorcars.com/services/credit"
       })} />
 
       {/* Custom Hero Section (Services Style) */}
       <ServiceHero
-        badge="New York & New Jersey Auto Financing"
-        title="Auto Financing in New York & New Jersey"
+        badge="New York & New Jersey Auto Leasing & Credit"
+        title="Auto Leasing & Credit in New York & New Jersey"
         highlightedTitle=""
-        subtitle="Get clear answers and learn about low monthly car payments with our transparent, expert-led financing process."
-        heroImage={financingHero}
+        subtitle="Get clear answers and learn about low monthly car payments with our transparent, expert-led leasing process."
+        heroImage={creditPageHero}
         primaryAction={{ label: "Start New York & New Jersey Car Lease Application", href: "/contact" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
       />
 
-      {/* Why Finance With Us (Benefits Split) */}
+      {/* Why lease with us (Benefits Split) */}
       <section className="py-12 md:py-20 w-full  overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex flex-col mb-8 md:mb-16 justify-center items-start md:items-center">
@@ -199,11 +199,11 @@ export default function FinancingPage() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex flex-col items-start md:items-center text-left md:text-center mb-8 md:mb-16">
             <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-2">Process</span>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-black dark:text-white uppercase">Simple <span className="text-accent italic">Financing</span></h2>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-black dark:text-white uppercase">Simple <span className="text-accent italic">Leasing</span></h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {financingSteps.map((step, index) => (
+            {leasingSteps.map((step, index) => (
               <div key={index} className="group relative p-10 rounded-[2.5rem] border-2 border-border/60 bg-muted/10 dark:bg-white/[0.03] hover:border-accent transition-all duration-500 overflow-hidden">
                 <span className="absolute -right-4 -bottom-4 text-9xl font-black text-black/[0.03] dark:text-white/[0.03] group-hover:text-accent/10 transition-colors leading-none select-none pointer-events-none">
                   {index + 1}
@@ -290,7 +290,7 @@ export default function FinancingPage() {
           <div className="flex flex-col mb-8 md:mb-16 justify-center items-start md:items-center">
             <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-2">Support</span>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-black dark:text-white uppercase">
-              Financing <span className="text-accent italic">FAQ</span>
+              Leasing <span className="text-accent italic">FAQ</span>
             </h2>
           </div>
           <div className="max-w-7xl mx-auto glass-card-theme p-4 md:p-8 mt-12 rounded-[2rem]">
@@ -320,14 +320,14 @@ export default function FinancingPage() {
             </h2>
             <div className="mt-10 w-full">
               <p className="text-muted-foreground mb-4 text-lg max-w-lg mx-auto">
-                New York and New Jersey drivers can get clear answers on auto financing today. Safe, fast, and no obligation.
+                New York and New Jersey drivers can get clear answers on auto leasing today. Safe, fast, and no obligation.
               </p>
             </div>
             <div className="w-full max-w-2xl mx-auto">
               <div className="glass-card-theme form-card-theme p-4 sm:p-6 md:p-8 rounded-[2.5rem]">
                 <ContactForm
                   source="service"
-                  serviceTitle="Auto Financing"
+                  serviceTitle="Auto Leasing & Credit"
                   compact
                 />
               </div>
@@ -336,7 +336,7 @@ export default function FinancingPage() {
         </div>
       </section>
 
-      <RelatedServices excludeId="financing" />
+      <RelatedServices excludeId="credit" />
     </Layout>
   );
 }

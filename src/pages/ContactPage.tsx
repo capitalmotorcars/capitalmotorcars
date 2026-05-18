@@ -57,7 +57,7 @@ export default function ContactPage() {
     <Layout>
       <SEO
         title="Contact Capital Motor Cars | Springfield NJ Office"
-        description="Contact Capital Motor Cars in Springfield, New Jersey for car leasing, financing, and auto broker support across NJ and NY."
+        description="Contact Capital Motor Cars in Springfield, New Jersey for car leasing, credit, and auto broker support across NJ and NY."
         seoKeywords={['contact Capital Motor Cars', 'Springfield NJ car leasing', 'auto broker contact New Jersey', 'Capital Motor Cars phone number', 'Springfield NJ office']}
         ogImage="/src/assets/contact.jpg"
         canonicalPath="/contact"

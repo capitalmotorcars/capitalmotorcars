@@ -245,7 +245,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
   const seoDescription =
     vehicle.metaDescription ||
     vehicle.description ||
-    `Learn about leasing and financing options for ${vehicle.name} vehicles with Capital Motor Cars.`;
+    `Learn about leasing and credit options for ${vehicle.name} vehicles with Capital Motor Cars.`;
 
   React.useEffect(() => {
     const brandParam = searchParams.get('brand');

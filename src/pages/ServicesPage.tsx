@@ -199,7 +199,7 @@ export default function ServicesPage() {
                 transition={{ ...fadeInUp.transition, delay: 0.2 }}
                 className="text-xs  md:text-lg lg:text-xl xl:text-2xl text-white/80 text-center max-w-3xl xl:max-w-5xl mx-auto pb-2 md:pb-6 xl:pb-8"
               >
-                Explore our complete auto leasing services tailored for NJ and NY drivers. Enjoy stress-free financing, car lease deals, best car lease deals, and Zero Down options. Call Now!
+                Explore our complete auto leasing services tailored for NJ and NY drivers. Enjoy stress-free leasing, car lease deals, best car lease deals, and Zero Down options. Call Now!
               </motion.p>
 
               {/* Filter Navigation */}
