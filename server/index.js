@@ -31,8 +31,9 @@ const apiLimiter = rateLimit({
 
 app.use('/api', apiLimiter);
 
-/** Webhooks forward full credit/trade payloads with base64 files; default 2mb is too small. */
-const jsonWebhook = express.json({ limit: '50mb' });
+/** Webhooks forward JSON with base64 files (credit, trade-in, contact photos). ~4/3 size inflation; allow generous headroom. */
+const WEBHOOK_JSON_LIMIT = '128mb';
+const jsonWebhook = express.json({ limit: WEBHOOK_JSON_LIMIT });
 const jsonDefault = express.json({ limit: '2mb' });
 app.use((req, res, next) => {
   /* After app.use('/api', …), req.url is stripped — use originalUrl so /api/webhooks/* is detected. */
