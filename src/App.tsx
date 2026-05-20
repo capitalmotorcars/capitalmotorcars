@@ -24,6 +24,7 @@ import AutoLeasingNewJerseyPage from "./pages/local/AutoLeasingNewJerseyPage";
 import LuxuryCarLeasingNJPage from "./pages/local/LuxuryCarLeasingNJPage";
 import CarLeasingTrentonNJPage from "./pages/local/CarLeasingTrentonNJPage";
 import CarLeasingEdgewaterNJPage from "./pages/local/CarLeasingEdgewaterNJPage";
+import CarLeasingMarltonNJPage from "./pages/local/CarLeasingMarltonNJPage";
 import BmwCarLeasePage from "./pages/local/BmwCarLeasePage";
 import CarLeasingPage from "./pages/services/CarLeasingPage";
 import FinancingPage from "./pages/services/FinancingPage";
@@ -81,6 +82,7 @@ const App = () => (
               <Route path="/luxury-car-leasing-nj" element={<LuxuryCarLeasingNJPage />} />
               <Route path="/car-leasing-trenton-nj" element={<CarLeasingTrentonNJPage />} />
               <Route path="/car-leasing-edgewater-nj" element={<CarLeasingEdgewaterNJPage />} />
+              <Route path="/car-leasing-marlton-nj" element={<CarLeasingMarltonNJPage />} />
               <Route path="/best-lease-deals-new-jersey" element={<BlogPostPage />} />
               <Route path="/auto-broker-vs-dealership-new-jersey" element={<BlogPostPage />} />
               <Route path="/bad-credit-car-lease-new-jersey" element={<BlogPostPage />} />
