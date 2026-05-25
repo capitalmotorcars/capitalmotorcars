@@ -43,6 +43,7 @@ const footerLinks = {
     { href: '/car-leasing-trenton-nj', label: 'Car Leasing Trenton NJ' },
     { href: '/car-leasing-edgewater-nj', label: 'Car Leasing Edgewater NJ' },
     { href: '/car-leasing-marlton-nj', label: 'Car Leasing Marlton NJ' },
+    { href: '/car-leasing-springfield-nj', label: 'Car Leasing Springfield NJ' },
   ],
   legal: [
     { href: '/privacy-policy', label: 'Privacy Policy' },
