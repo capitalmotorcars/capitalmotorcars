@@ -89,6 +89,7 @@ const App = () => (
               <Route path="/zero-down-car-lease-new-jersey" element={<BlogPostPage />} />
               <Route path="/luxury-car-lease-new-jersey" element={<BlogPostPage />} />
               <Route path="/lease-return-process-explained-new-jersey" element={<BlogPostPage />} />
+              <Route path="/how-to-lease-a-car-under-business-name" element={<BlogPostPage />} />
               <Route path="/bmw-car-lease" element={<BmwCarLeasePage />} />
               {/* Dynamic Vehicle Details Loop */}
               <Route path="/vehicles/:slug" element={<VehicleDetailsPage />} />
