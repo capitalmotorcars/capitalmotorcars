@@ -1,4 +1,4 @@
-# Welcome to your Capital Motor Cars
+# Welcome to your Capital Motor cars
 
 ## Project info.
 
