@@ -27,6 +27,7 @@ import CarLeasingEdgewaterNJPage from "./pages/local/CarLeasingEdgewaterNJPage";
 import CarLeasingMarltonNJPage from "./pages/local/CarLeasingMarltonNJPage";
 import CarLeasingSpringfieldNJPage from "./pages/local/CarLeasingSpringfieldNJPage";
 import BmwCarLeasePage from "./pages/local/BmwCarLeasePage";
+import ChevySuburbanLeasePage from "./pages/local/ChevySuburbanLeasePage";
 import CarLeasingPage from "./pages/services/CarLeasingPage";
 import FinancingPage from "./pages/services/FinancingPage";
 import TradeInPage from "./pages/services/TradeInPage";
@@ -93,6 +94,7 @@ const App = () => (
               <Route path="/lease-return-process-explained-new-jersey" element={<BlogPostPage />} />
               <Route path="/how-to-lease-a-car-under-business-name" element={<BlogPostPage />} />
               <Route path="/bmw-car-lease" element={<BmwCarLeasePage />} />
+              <Route path="/chevy-suburban-lease-deals" element={<ChevySuburbanLeasePage />} />
               {/* Dynamic Vehicle Details Loop */}
               <Route path="/vehicles/:slug" element={<VehicleDetailsPage />} />
 
