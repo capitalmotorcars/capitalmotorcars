@@ -132,6 +132,16 @@
     </image:image>
   </url>
   <url>
+    <loc>https://capitalmotorcars.com/chevy-suburban-lease-deals</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <image:image>
+      <image:loc>https://upload.wikimedia.org/wikipedia/commons/b/bc/2021_Chevrolet_Suburban_High_Country_Front_View_%28United_States%29.png</image:loc>
+      <image:title>Chevy Suburban Lease Deals</image:title>
+      <image:caption>Compare the lowest lease monthly payments for the Chevrolet Suburban with Capital Motor Cars.</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://capitalmotorcars.com/best-lease-deals-new-jersey</loc>
     <priority>0.95</priority>
     <changefreq>weekly</changefreq>
@@ -219,7 +229,19 @@
   </url>
   <!-- Vehicle type detail pages (slugs aligned with vehicle_types seed) -->
   <url>
-    <loc>https://capitalmotorcars.com/vehicles/cayenne-e-hybrid</loc>
+    <loc>https://capitalmotorcars.com/vehicles/acura-integra</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/mdx</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/alfa-romeo-giulia</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/alfa-romeo-stelvio</loc>
     <priority>0.85</priority>
   </url>
   <url>
@@ -227,7 +249,59 @@
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://capitalmotorcars.com/vehicles/sedan-mercedes-e350</loc>
+    <loc>https://capitalmotorcars.com/vehicles/luxury</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/audi-a4-allroad</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/audi-rs</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/audi-rs-7-quattro</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/audi-rs-q8</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/bmw-i7</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/bmw-m5</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/bmw-x5</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/bmw-x5-sdrive40i</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/cadillac-ct5</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/cadillac-lyriq</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/chevrolet-truck</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/chrysler-pacifica</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/honda</loc>
     <priority>0.85</priority>
   </url>
   <url>
@@ -235,31 +309,7 @@
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://capitalmotorcars.com/vehicles/sedan-rs-etron-gt</loc>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://capitalmotorcars.com/vehicles/sedan-750e</loc>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://capitalmotorcars.com/vehicles/f150-regular-cab-xl</loc>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://capitalmotorcars.com/vehicles/hatchback</loc>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://capitalmotorcars.com/vehicles/suv</loc>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://capitalmotorcars.com/vehicles/minivan</loc>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://capitalmotorcars.com/vehicles/wagon</loc>
+    <loc>https://capitalmotorcars.com/vehicles/coupe</loc>
     <priority>0.85</priority>
   </url>
   <url>
@@ -267,7 +317,183 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://capitalmotorcars.com/vehicles/dodge-charge</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/sedan-rs-etron-gt</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/electric</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/genesis-electrified-g80</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/genesis-g90</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/gmc-hummer</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/toyota-gr</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/hatchback</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/honda-accord</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/honda-civic</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/sedan-750e</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/hybrid</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/cayenne-e-hybrid</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/qx-55</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/jaguar-f-face</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/lexus-is-500</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/lexus-lc</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/lexus-ls</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/nx</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/lexus-nx-350</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/maserati-grecale</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/mazda-cx50</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/mazda3</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/mercedesbenz-amg</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/mercedes-benz-eqe</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/mercedes-convertible</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/mercedes-benz-cle</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/minivan</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/porsche-911</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/porsche-taycan</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/ram-promaster-van</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/range</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/sedan-mercedes-e350</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/sedan</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://capitalmotorcars.com/vehicles/911-gts-hybrid-cabriolet</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/convertible</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/sport-convertible</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/suv</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/toyota-camry</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/toyota-corolla-le</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/toyota-sienna</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/f150-regular-cab-xl</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/truck</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/volvo-xc60</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://capitalmotorcars.com/vehicles/wagon</loc>
     <priority>0.85</priority>
   </url>
 </urlset>
