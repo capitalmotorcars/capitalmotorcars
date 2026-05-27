@@ -10,15 +10,7 @@ function formatDate(value?: string | null) {
 }
 
 export function BlogCard({ post, className, isFeatured }: { post: BlogPost; className?: string; isFeatured?: boolean }) {
-    const seoFriendlyPaths = [
-        'best-lease-deals-new-jersey',
-        'auto-broker-vs-dealership-new-jersey',
-        'bad-credit-car-lease-new-jersey',
-        'zero-down-car-lease-new-jersey',
-        'luxury-car-lease-new-jersey'
-    ];
-    const isSeoFriendlyPath = seoFriendlyPaths.includes(post.slug);
-    const postUrl = isSeoFriendlyPath ? `/${post.slug}` : `/blog/${post.slug}`;
+    const postUrl = `/${post.slug}`;
 
     return (
         <article className={cn(

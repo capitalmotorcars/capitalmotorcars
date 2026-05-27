@@ -49,6 +49,33 @@ import BlogPostsPage from "./pages/admin/BlogPostsPage";
 
 const queryClient = new QueryClient();
 
+const legacyRedirects = [
+  { from: "/get-started", to: "/quiz" },
+  { from: "/ignite", to: "/" }
+];
+
+const blogSlugs = [
+  'best-lease-deals-new-jersey',
+  'auto-broker-vs-dealership-new-jersey',
+  'bad-credit-car-lease-new-jersey',
+  'zero-down-car-lease-new-jersey',
+  'luxury-car-lease-new-jersey',
+  'lease-return-process-explained-new-jersey',
+  'how-to-lease-a-car-under-business-name',
+  'leasing-cars-tax-benefits',
+  'volvo-s60-reliability',
+  'sales-taxes-demystified-your-car-lease-payments-explained',
+  'how-to-negotiate-a-lease-deal',
+  'gas-vs-hybrid-vs-electric-cars-which-one-is-right-for-me',
+  'toyota-prius-reliability',
+  'best-hatchback-cars',
+  'kia-seltos-reliability-detailed-review',
+  'audi-a3-reliability-guide',
+  'what-does-a-zero-down-lease-really-mean',
+  'choosing-a-car-for-a-college-student-read-this-first',
+  'toyota-camry-reliability'
+];
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider attribute="class" defaultTheme="dark" storageKey="capital-motor-theme" enableSystem={false}>
@@ -78,7 +105,6 @@ const App = () => (
               <Route path="/terms-of-service" element={<TermsOfServicePage />} />
               <Route path="/quiz" element={<QuizPage />} />
               <Route path="/blog" element={<BlogPage />} />
-              <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/car-lease-deals-new-jersey" element={<CarLeaseDealsNewJerseyPage />} />
               <Route path="/auto-leasing-new-jersey" element={<AutoLeasingNewJerseyPage />} />
               <Route path="/luxury-car-leasing-nj" element={<LuxuryCarLeasingNJPage />} />
@@ -86,13 +112,17 @@ const App = () => (
               <Route path="/car-leasing-edgewater-nj" element={<CarLeasingEdgewaterNJPage />} />
               <Route path="/car-leasing-marlton-nj" element={<CarLeasingMarltonNJPage />} />
               <Route path="/car-leasing-springfield-nj" element={<CarLeasingSpringfieldNJPage />} />
-              <Route path="/best-lease-deals-new-jersey" element={<BlogPostPage />} />
-              <Route path="/auto-broker-vs-dealership-new-jersey" element={<BlogPostPage />} />
-              <Route path="/bad-credit-car-lease-new-jersey" element={<BlogPostPage />} />
-              <Route path="/zero-down-car-lease-new-jersey" element={<BlogPostPage />} />
-              <Route path="/luxury-car-lease-new-jersey" element={<BlogPostPage />} />
-              <Route path="/lease-return-process-explained-new-jersey" element={<BlogPostPage />} />
-              <Route path="/how-to-lease-a-car-under-business-name" element={<BlogPostPage />} />
+
+              {/* Static Blog Routes */}
+              {blogSlugs.map((slug) => (
+                <Route key={slug} path={`/${slug}`} element={<BlogPostPage />} />
+              ))}
+
+              {/* Legacy Blog Redirects */}
+              {blogSlugs.map((slug) => (
+                <Route key={`blog-${slug}`} path={`/blog/${slug}`} element={<Navigate to={`/${slug}`} replace />} />
+              ))}
+
               <Route path="/bmw-car-lease" element={<BmwCarLeasePage />} />
               <Route path="/chevy-suburban-lease-deals" element={<ChevySuburbanLeasePage />} />
               {/* Dynamic Vehicle Details Loop */}
@@ -109,6 +139,12 @@ const App = () => (
                 <Route path="vehicles" element={<VehicleTypesPage />} />
                 <Route path="blogs" element={<BlogPostsPage />} />
               </Route>
+
+              {/* Legacy Redirects */}
+              {legacyRedirects.flatMap(({ from, to }) => [
+                <Route key={from} path={from} element={<Navigate to={to} replace />} />,
+                <Route key={`${from}/`} path={`${from}/`} element={<Navigate to={to} replace />} />
+              ])}
 
               <Route path="*" element={<NotFound />} />
             </Routes>

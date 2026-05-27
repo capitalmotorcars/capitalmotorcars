@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from 'react';
-import { Link, useParams, useLocation } from 'react-router-dom';
+import { Link, useParams, useLocation, useNavigate } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { JsonLd, createArticleSchema } from '@/components/JsonLd';
 import { SEO } from '@/components/SEO';
@@ -7,6 +7,7 @@ import { getBlogPostBySlug, getActiveBlogPosts } from '@/services/blogService';
 import type { BlogPost } from '@/types/blog';
 import { Button } from '@/components/ui/button';
 import { Calendar, ArrowLeft, ArrowRight, Phone, Search, ChevronRight } from 'lucide-react';
+import NotFound from '@/pages/NotFound';
 
 const BLOG_REFRESH_DATE = new Date('2026-04-01T00:00:00Z');
 const BLOG_REFRESH_LABEL = 'Last Updated: April 2026';
@@ -301,6 +302,7 @@ function BlogContent({ content }: { content: string }) {
 export default function BlogPostPage() {
   const { slug: urlSlug } = useParams();
   const location = useLocation();
+  const navigate = useNavigate();
   const [post, setPost] = useState<BlogPost | null>(null);
   const [allPosts, setAllPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
@@ -312,6 +314,7 @@ export default function BlogPostPage() {
   useEffect(() => {
     async function loadData() {
       if (!actualSlug) return;
+      setLoading(true);
 
       const [postResult, allPostsResult] = await Promise.all([
         getBlogPostBySlug(actualSlug),
@@ -320,6 +323,8 @@ export default function BlogPostPage() {
 
       if (postResult.success && postResult.data) {
         setPost(postResult.data);
+      } else {
+        setPost(null);
       }
 
       if (allPostsResult.success && allPostsResult.data) {
@@ -346,15 +351,7 @@ export default function BlogPostPage() {
   }
 
   if (!post) {
-    return (
-      <Layout>
-        <section className="pt-32 pb-20">
-          <div className="container mx-auto px-4 lg:px-8 text-muted-foreground">
-            Post not found.
-          </div>
-        </section>
-      </Layout>
-    );
+    return <NotFound />;
   }
 
   const publishDate = post.published_at || post.created_at;
@@ -373,13 +370,13 @@ export default function BlogPostPage() {
       breadcrumbItems={[
         { name: 'Home', url: 'https://capitalmotorcars.com/' },
         { name: 'Blog', url: 'https://capitalmotorcars.com/blog' },
-        { name: post.title, url: `https://capitalmotorcars.com/blog/${post.slug}` },
+        { name: post.title, url: `https://capitalmotorcars.com/${post.slug}` },
       ]}
     >
       <SEO
         title={post.seo_title || post.title}
         description={post.seo_description || post.excerpt || 'Capital Motor Cars blog post'}
-        canonicalPath={urlSlug ? `/blog/${post.slug}` : `/${post.slug}`}
+        canonicalPath={`/${post.slug}`}
         seoKeywords={parseKeywords(post.seo_keywords)}
         ogTitle={post.seo_title || post.title}
         ogDescription={post.seo_description || post.excerpt || post.title}
@@ -391,7 +388,7 @@ export default function BlogPostPage() {
           createArticleSchema({
             headline: post.seo_title || post.title,
             description: post.seo_description || post.excerpt || 'Capital Motor Cars blog post',
-            url: urlSlug ? `https://capitalmotorcars.com/blog/${post.slug}` : `https://capitalmotorcars.com/${post.slug}`,
+            url: `https://capitalmotorcars.com/${post.slug}`,
             image: post.cover_image_url,
             publishedAt: post.published_at || post.created_at,
             modifiedAt: post.updated_at,
@@ -473,7 +470,7 @@ export default function BlogPostPage() {
                 <div className="mt-16 pt-10 border-t border-accent/10 flex flex-col sm:flex-row justify-between gap-6">
                   {prevPost ? (
                     <Link
-                      to={prevPost.slug === 'best-lease-deals-new-jersey' ? `/${prevPost.slug}` : `/blog/${prevPost.slug}`}
+                      to={`/${prevPost.slug}`}
                       className="group flex-1 flex flex-col gap-2 p-6 rounded-2xl border border-accent/10 bg-accent/[0.02] hover:bg-accent/[0.05] transition-all"
                     >
                       <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-muted-foreground">
@@ -488,7 +485,7 @@ export default function BlogPostPage() {
 
                   {nextPost ? (
                     <Link
-                      to={nextPost.slug === 'best-lease-deals-new-jersey' ? `/${nextPost.slug}` : `/blog/${nextPost.slug}`}
+                      to={`/${nextPost.slug}`}
                       className="group flex-1 flex flex-col gap-2 p-6 rounded-2xl border border-accent/10 bg-accent/[0.02] hover:bg-accent/[0.05] transition-all text-right"
                     >
                       <span className="flex items-center justify-end gap-2 text-xs font-bold uppercase tracking-widest text-muted-foreground">
@@ -516,7 +513,7 @@ export default function BlogPostPage() {
                     {recentPosts.map((rPost) => (
                       <Link
                         key={rPost.id}
-                        to={rPost.slug === 'best-lease-deals-new-jersey' ? `/${rPost.slug}` : `/blog/${rPost.slug}`}
+                        to={`/${rPost.slug}`}
                         className="group block space-y-2"
                       >
                         <span className="text-[10px] font-bold uppercase tracking-widest text-accent/70">
