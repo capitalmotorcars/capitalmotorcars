@@ -36,7 +36,6 @@ import {
   Building,
 } from "lucide-react";
 import { FormSuccessMessage } from "./FormSuccessMessage";
-import { AddressAutocomplete } from "./AddressAutocomplete";
 import {
   getSubmitErrorMessage,
   getSubmitErrorFromException,
@@ -1515,31 +1514,12 @@ export function CreditApplicationForm({
                     )}
                   </Label>
                   <div className="relative">
-                    <AddressAutocomplete
+                    <Input
                       id="street"
                       {...register("street", {
                         onChange: () => trigger("street"),
                         onBlur: () => trigger("street"),
                       })}
-                      value={watch("street") || ""}
-                      onAddressSelect={(address) => {
-                        setValue("street", address.street, {
-                          shouldValidate: true,
-                          shouldDirty: true,
-                        });
-                        setValue("city", address.city, {
-                          shouldValidate: true,
-                          shouldDirty: true,
-                        });
-                        setValue("state", address.state, {
-                          shouldValidate: true,
-                          shouldDirty: true,
-                        });
-                        setValue("zip", address.zip, {
-                          shouldValidate: true,
-                          shouldDirty: true,
-                        });
-                      }}
                       placeholder="123 Main Street, Apt 4B"
                       className={cn(
                         errors.street
@@ -1883,31 +1863,12 @@ export function CreditApplicationForm({
                   )}
                 </Label>
                 <div className="relative">
-                  <AddressAutocomplete
+                  <Input
                     id="employmentStreet"
                     {...register("employmentStreet", {
                       onChange: () => trigger("employmentStreet"),
                       onBlur: () => trigger("employmentStreet"),
                     })}
-                    value={watch("employmentStreet") || ""}
-                    onAddressSelect={(address) => {
-                      setValue("employmentStreet", address.street, {
-                        shouldValidate: true,
-                        shouldDirty: true,
-                      });
-                      setValue("employmentCity", address.city, {
-                        shouldValidate: true,
-                        shouldDirty: true,
-                      });
-                      setValue("employmentState", address.state, {
-                        shouldValidate: true,
-                        shouldDirty: true,
-                      });
-                      setValue("employmentZip", address.zip, {
-                        shouldValidate: true,
-                        shouldDirty: true,
-                      });
-                    }}
                     placeholder="e.g. 123 Business Ave, Suite 100"
                     className={cn(
                       errors.employmentStreet
@@ -2591,31 +2552,12 @@ export function CreditApplicationForm({
                           )}
                         </Label>
                         <div className="relative">
-                          <AddressAutocomplete
+                          <Input
                             id="coStreet"
                             {...register("coStreet", {
                               onChange: () => trigger("coStreet"),
                               onBlur: () => trigger("coStreet"),
                             })}
-                            value={watch("coStreet") || ""}
-                            onAddressSelect={(address) => {
-                              setValue("coStreet", address.street, {
-                                shouldValidate: true,
-                                shouldDirty: true,
-                              });
-                              setValue("coCity", address.city, {
-                                shouldValidate: true,
-                                shouldDirty: true,
-                              });
-                              setValue("coState", address.state, {
-                                shouldValidate: true,
-                                shouldDirty: true,
-                              });
-                              setValue("coZip", address.zip, {
-                                shouldValidate: true,
-                                shouldDirty: true,
-                              });
-                            }}
                             placeholder="123 Main Street"
                             className={cn(
                               errors.coStreet
@@ -2871,31 +2813,12 @@ export function CreditApplicationForm({
                           )}
                         </Label>
                         <div className="relative">
-                          <AddressAutocomplete
+                          <Input
                             id="coEmploymentStreet"
                             {...register("coEmploymentStreet", {
                               onChange: () => trigger("coEmploymentStreet"),
                               onBlur: () => trigger("coEmploymentStreet"),
                             })}
-                            value={watch("coEmploymentStreet") || ""}
-                            onAddressSelect={(address) => {
-                              setValue("coEmploymentStreet", address.street, {
-                                shouldValidate: true,
-                                shouldDirty: true,
-                              });
-                              setValue("coEmploymentCity", address.city, {
-                                shouldValidate: true,
-                                shouldDirty: true,
-                              });
-                              setValue("coEmploymentState", address.state, {
-                                shouldValidate: true,
-                                shouldDirty: true,
-                              });
-                              setValue("coEmploymentZip", address.zip, {
-                                shouldValidate: true,
-                                shouldDirty: true,
-                              });
-                            }}
                             placeholder="e.g. 123 Business Ave, Suite 100"
                             className={cn(
                               errors.coEmploymentStreet
