@@ -15,7 +15,6 @@ import {
 } from '@/components/ui/select';
 import { Loader2, Building, User, Landmark, Upload, Shield, ChevronLeft, ChevronRight, CheckCircle2, X, FileText, Lock, Calendar, Phone, DollarSign, MapPin, Briefcase } from 'lucide-react';
 import { FormSuccessMessage } from './FormSuccessMessage';
-import { AddressAutocomplete } from './AddressAutocomplete';
 import { getSubmitErrorMessage, getSubmitErrorFromException } from './getSubmitErrorMessage';
 import { WEBHOOK_CREDIT_APPLICATION_PATH } from '@/lib/webhook';
 import { Link } from 'react-router-dom';
@@ -686,19 +685,12 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
                     {isFieldValid('businessStreet') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
                   </Label>
                   <div className="relative">
-                    <AddressAutocomplete
+                    <Input
                       id="businessStreet"
                       {...register('businessStreet', {
                         onChange: () => trigger('businessStreet'),
                         onBlur: () => trigger('businessStreet'),
                       })}
-                      value={watch('businessStreet') || ''}
-                      onAddressSelect={(address) => {
-                        setValue('businessStreet', address.street, { shouldValidate: true, shouldDirty: true });
-                        setValue('businessCity', address.city, { shouldValidate: true, shouldDirty: true });
-                        setValue('businessState', address.state, { shouldValidate: true, shouldDirty: true });
-                        setValue('businessZip', address.zip, { shouldValidate: true, shouldDirty: true });
-                      }}
                       placeholder="302 Fifth Avenue"
                       className={cn(errors.businessStreet ? 'border-destructive pr-10' : isFieldValid('businessStreet') ? 'border-green-500 pr-10' : '')}
                     />
@@ -822,19 +814,12 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
                     {isFieldValid('guarantorStreet') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
                   </Label>
                   <div className="relative">
-                    <AddressAutocomplete
+                    <Input
                       id="guarantorStreet"
                       {...register('guarantorStreet', {
                         onChange: () => trigger('guarantorStreet'),
                         onBlur: () => trigger('guarantorStreet'),
                       })}
-                      value={watch('guarantorStreet') || ''}
-                      onAddressSelect={(address) => {
-                        setValue('guarantorStreet', address.street, { shouldValidate: true, shouldDirty: true });
-                        setValue('guarantorCity', address.city, { shouldValidate: true, shouldDirty: true });
-                        setValue('guarantorState', address.state, { shouldValidate: true, shouldDirty: true });
-                        setValue('guarantorZip', address.zip, { shouldValidate: true, shouldDirty: true });
-                      }}
                       placeholder="20315 NE 19TH CT"
                       className={cn(errors.guarantorStreet ? 'border-destructive pr-10' : isFieldValid('guarantorStreet') ? 'border-green-500 pr-10' : '')}
                     />
@@ -1134,19 +1119,12 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
                       {isFieldValid('guarantorEmployerStreet') && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
                     </Label>
                     <div className="relative">
-                      <AddressAutocomplete
+                      <Input
                         id="guarantorEmployerStreet"
                         {...register('guarantorEmployerStreet', {
                           onChange: () => trigger('guarantorEmployerStreet'),
                           onBlur: () => trigger('guarantorEmployerStreet'),
                         })}
-                        value={watch('guarantorEmployerStreet') || ''}
-                        onAddressSelect={(address) => {
-                          setValue('guarantorEmployerStreet', address.street, { shouldValidate: true, shouldDirty: true });
-                          setValue('guarantorEmployerCity', address.city, { shouldValidate: true, shouldDirty: true });
-                          setValue('guarantorEmployerState', address.state, { shouldValidate: true, shouldDirty: true });
-                          setValue('guarantorEmployerZip', address.zip, { shouldValidate: true, shouldDirty: true });
-                        }}
                         placeholder="20315 NE 19TH CT"
                         className={cn(errors.guarantorEmployerStreet ? 'border-destructive pr-10' : isFieldValid('guarantorEmployerStreet') ? 'border-green-500 pr-10' : '')}
                       />
