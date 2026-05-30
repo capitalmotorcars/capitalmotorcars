@@ -350,14 +350,14 @@ export default function CarLeasingEdgewaterNJPage() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Car Leasing in Edgewater, NJ — What Locals Actually Need
+              Car Leasing in Edgewater, NJ: What Locals Actually Need
             </h2>
             <div className="space-y-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
               <p>
-                Edgewater sits along the Hudson River in Bergen County, directly across from Manhattan. Most residents here commute to New York City — via the George Washington Bridge, Route 4, or the ferry — which means the right lease for Edgewater is different from the right lease for the suburbs farther west.
+                Edgewater sits along the Hudson River in Bergen County, directly across from Manhattan. Most residents here commute to New York City by way of the George Washington Bridge, Route 4, or the ferry, which means the right lease for Edgewater is different from the right lease for the suburbs farther west.
               </p>
               <p>
-                Compact and mid-size vehicles tend to fit best: they're easier to park on River Road and in the high-rise garages that line the waterfront, and they hold up well on the short, stop-and-go commute across the bridge. That said, Edgewater also has a strong luxury segment — residents who want a premium vehicle without the dealership experience Capital Motor Cars was built for.
+                Compact and mid-size vehicles tend to fit best: they're easier to park on River Road and in the high-rise garages that line the waterfront, and they hold up well on the short, stop-and-go commute across the bridge. That said, Edgewater also has a strong luxury segment. Residents who want a premium vehicle without the dealership experience is exactly what Capital Motor Cars was built for.
               </p>
               <p>
                 We serve Edgewater from our office at 115 River Road, Suite 158. If you're comparing lease options near the waterfront or want a vehicle delivered directly to your building, that's exactly what we do.

@@ -94,11 +94,11 @@ export default function CarLeasingPage() {
         createFaqSchema(faqs),
         createHowToSchema({
           name: "How to Lease a Car with Capital Motor Cars",
-          description: "Get your next car lease in 4 simple steps — no dealership visits required.",
+          description: "Get your next car lease in 4 simple steps. No dealership visits required.",
           steps: [
             { name: "Tell Us Your Preferences", text: "Share your vehicle preferences, mileage needs, and monthly budget. We handle the search across our network so you don't have to visit dealerships." },
             { name: "We Search & Negotiate", text: "Our team locates the best available leasing options and negotiates directly with dealers on your behalf to secure competitive terms." },
-            { name: "Review Transparent Options", text: "We present clear, itemized lease options with no hidden fees — just straightforward numbers so you can compare confidently." },
+            { name: "Review Transparent Options", text: "We present clear, itemized lease options with no hidden fees, just straightforward numbers so you can compare confidently." },
             { name: "Sign & Drive", text: "We coordinate vehicle delivery directly to your door. Sign the paperwork and enjoy your new car." },
           ],
         }),

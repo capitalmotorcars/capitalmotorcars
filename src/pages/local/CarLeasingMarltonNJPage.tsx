@@ -350,11 +350,11 @@ export default function CarLeasingMarltonNJPage() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Car Leasing in Marlton, NJ — What Burlington County Drivers Need
+              Car Leasing in Marlton, NJ: What Burlington County Drivers Need
             </h2>
             <div className="space-y-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
               <p>
-                Marlton is part of Evesham Township in Burlington County, sitting at the crossroads of Route 73 and Route 70 — one of South Jersey's busiest corridors. Most residents here commute either toward Philadelphia via I-295 or toward the shore, which means mileage and monthly payment tend to be the first two things that matter.
+                Marlton is part of Evesham Township in Burlington County, sitting at the crossroads of Route 73 and Route 70, one of South Jersey's busiest corridors. Most residents here commute either toward Philadelphia via I-295 or toward the shore, which means mileage and monthly payment tend to be the first two things that matter.
               </p>
               <p>
                 SUVs and crossovers are the most common choice in Marlton: families along the Route 73 corridor need the space, and the roads here are better suited to larger vehicles than the dense streets closer to the city. Pickup trucks also have a strong following in Burlington County, especially for residents splitting time between Marlton and more rural parts of South Jersey.
