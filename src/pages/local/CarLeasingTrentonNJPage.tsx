@@ -350,17 +350,17 @@ export default function CarLeasingTrentonNJPage() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Car Leasing in Trenton, NJ — What Mercer County Drivers Prioritize
+              Car Leasing in Trenton, NJ: What Mercer County Drivers Prioritize
             </h2>
             <div className="space-y-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
               <p>
-                Trenton is the state capital of New Jersey and sits at the center of Mercer County, bordered by I-295 and US-1 — two of the most-traveled commuter corridors in the state. Residents here often commute toward Princeton and New Brunswick to the north, or into Philadelphia across the Delaware River to the west.
+                Trenton is the state capital of New Jersey and sits at the center of Mercer County, bordered by I-295 and US-1, two of the most-traveled commuter corridors in the state. Residents here often commute toward Princeton and New Brunswick to the north, or into Philadelphia across the Delaware River to the west.
               </p>
               <p>
                 In Mercer County, practical and efficient vehicles tend to be the priority: sedans and compact SUVs that handle the highway well and keep monthly costs predictable. Hybrid and electric options have grown in demand here, especially among state workers and professionals who drive consistent routes and want to reduce fuel costs over a 36-month term.
               </p>
               <p>
-                Capital Motor Cars handles leases for Trenton-area drivers the same way as everywhere else: we find the vehicle, negotiate the terms, and deliver it directly. No dealership visits, no pressure — just a clear process from search to signature.
+                Capital Motor Cars handles leases for Trenton-area drivers the same way as everywhere else: we find the vehicle, negotiate the terms, and deliver it directly. No dealership visits, no pressure, just a clear process from search to signature.
               </p>
             </div>
           </div>
