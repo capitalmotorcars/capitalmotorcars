@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
+import { JsonLd, createWebPageSchema } from '@/components/JsonLd';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -114,9 +115,14 @@ export default function BrandsPage() {
         title="All Car Brand Lease Deals in New Jersey & New York | Capital Motor Cars"
         description="Car brand lease deals in New Jersey and New York from Capital Motor Cars. Shop BMW, Mercedes-Benz, Audi, Lexus, Toyota, and more."
         seoKeywords={['car brand lease deals New Jersey', 'car brand lease deals New York', 'BMW lease NJ', 'Mercedes lease deals NY', 'Capital Motor Cars brands']}
-        ogImage="/src/assets/hero-bg.jpg"
+        ogImage="https://www.capitalmotorcars.com/og/hero-bg.jpg"
         canonicalPath="/brands"
       />
+      <JsonLd data={createWebPageSchema({
+        name: 'All Car Brand Lease Deals in New Jersey & New York | Capital Motor Cars',
+        description: 'Car brand lease deals in New Jersey and New York from Capital Motor Cars. Shop BMW, Mercedes-Benz, Audi, Lexus, Toyota, and more.',
+        url: 'https://www.capitalmotorcars.com/brands',
+      })} />
 
       <section className="pt-16 lg:pt-20  ">
         <div id="brands" className="relative h-full flex flex-col ">
@@ -160,13 +166,13 @@ export default function BrandsPage() {
           >
             {/* Title and Filters */}
             <div className="relative z-50 mx-auto min-h-[30vh] md:min-h-[45vh] pt-24 md:pt-32 pb-8 px-4 lg:px-8 flex flex-col items-center justify-center">
-              <motion.h2
+              <motion.h1
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.1 }}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center pb-2 md:pb-4 xl:pb-6 tracking-tight"
               >
                 {renderSEOHeading("All Car Brand Lease Deals in New Jersey & New York | Capital Motor Cars")}
-              </motion.h2>
+              </motion.h1>
               <motion.p
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.2 }}

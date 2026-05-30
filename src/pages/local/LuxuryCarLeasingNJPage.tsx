@@ -51,17 +51,17 @@ const schemas = [
   createWebPageSchema({
     name: 'Luxury Car Leasing NJ',
     description: 'Luxury car leasing NJ with premium-focused messaging, stronger brand alignment, and a cleaner quote path.',
-    url: 'https://capitalmotorcars.com/luxury-car-leasing-nj',
+    url: 'https://www.capitalmotorcars.com/luxury-car-leasing-nj',
   }),
   createServiceSchema({
     name: 'Luxury Car Leasing NJ',
     description: 'Luxury car leasing NJ with premium-focused messaging, stronger brand alignment, and a cleaner quote path.',
-    url: 'https://capitalmotorcars.com/luxury-car-leasing-nj',
+    url: 'https://www.capitalmotorcars.com/luxury-car-leasing-nj',
   }),
   createFaqSchema(faqs),
   createBreadcrumbSchema([
-    { name: 'Home', url: 'https://capitalmotorcars.com/' },
-    { name: 'Luxury Car Leasing NJ', url: 'https://capitalmotorcars.com/luxury-car-leasing-nj' },
+    { name: 'Home', url: 'https://www.capitalmotorcars.com/' },
+    { name: 'Luxury Car Leasing NJ', url: 'https://www.capitalmotorcars.com/luxury-car-leasing-nj' },
   ]),
 ];
 
@@ -74,6 +74,7 @@ export default function LuxuryCarLeasingNJPage() {
         canonicalPath="/luxury-car-leasing-nj"
         seoKeywords={['luxury car leasing NJ', 'luxury car lease NJ', 'luxury leasing New Jersey', 'premium lease deals NJ', 'high end car lease NJ', 'Capital Motor Cars']}
         ogType="website"
+        ogImage="https://www.capitalmotorcars.com/shared-img.png"
       />
       <JsonLd data={schemas} />
 

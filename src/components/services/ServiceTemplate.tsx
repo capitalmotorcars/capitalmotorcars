@@ -76,7 +76,7 @@ export function ServiceTemplate({
   const { ref: formRef, isRevealed: formRevealed } = useScrollReveal();
 
   const schemas = useMemo(() => {
-    const baseUrl = 'https://capitalmotorcars.com';
+    const baseUrl = 'https://www.capitalmotorcars.com';
     const serviceSchema = createServiceSchema({
       name: title,
       description: metaDescription || description,

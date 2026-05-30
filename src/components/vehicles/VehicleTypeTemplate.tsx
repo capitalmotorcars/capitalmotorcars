@@ -261,9 +261,9 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
   return (
     <Layout
       breadcrumbItems={[
-        { name: 'Home', url: 'https://capitalmotorcars.com/' },
-        { name: 'Brands', url: 'https://capitalmotorcars.com/brands' },
-        { name: vehicle.name, url: `https://capitalmotorcars.com/vehicles/${vehicle.slug}` },
+        { name: 'Home', url: 'https://www.capitalmotorcars.com/' },
+        { name: 'Brands', url: 'https://www.capitalmotorcars.com/brands' },
+        { name: vehicle.name, url: `https://www.capitalmotorcars.com/vehicles/${vehicle.slug}` },
       ]}
     >
       <SEO
@@ -271,7 +271,7 @@ export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
         description={seoDescription}
         canonicalPath={vehicle.canonicalPath}
         seoKeywords={vehicle.seoKeywords}
-        ogImage={vehicle.image}
+        ogImage={vehicle.image || 'https://www.capitalmotorcars.com/shared-img.png'}
       />
       <JsonLd data={{
         "@context": "https://schema.org",

@@ -41,12 +41,12 @@ const homepageFaqSchema = createFaqSchema([
 ]);
 
 const primaryNavigationSchema = createSiteNavigationSchema([
-  { name: 'Home', url: 'https://capitalmotorcars.com/' },
-  { name: 'Services', url: 'https://capitalmotorcars.com/services' },
-  { name: 'Brands', url: 'https://capitalmotorcars.com/brands' },
-  { name: 'Blog', url: 'https://capitalmotorcars.com/blog' },
-  { name: 'About', url: 'https://capitalmotorcars.com/about' },
-  { name: 'Contact', url: 'https://capitalmotorcars.com/contact' },
+  { name: 'Home', url: 'https://www.capitalmotorcars.com/' },
+  { name: 'Services', url: 'https://www.capitalmotorcars.com/services' },
+  { name: 'Brands', url: 'https://www.capitalmotorcars.com/brands' },
+  { name: 'Blog', url: 'https://www.capitalmotorcars.com/blog' },
+  { name: 'About', url: 'https://www.capitalmotorcars.com/about' },
+  { name: 'Contact', url: 'https://www.capitalmotorcars.com/contact' },
 ]);
 
 export default function HomePage() {
@@ -56,7 +56,7 @@ export default function HomePage() {
         title="Capital Motor Cars | Premier Auto Broker & Car Leasing in NJ & NY"
         description="Experience stress-free car leasing with Capital Motor Cars. We negotiate the best auto lease deals with zero down, fast approvals, and free delivery across NJ and NY."
         seoKeywords={['car leasing NJ', 'auto leasing New Jersey', 'car leasing in New Jersey', 'auto broker NJ', 'best car lease deals NJ', 'zero down car lease', 'Capital Motor Cars']}
-        ogImage="/src/assets/hero-bg.jpg"
+        ogImage="https://www.capitalmotorcars.com/og/hero-bg.jpg"
         canonicalPath="/"
       />
       <JsonLd data={[websiteSchema, localBusinessSchema, autoDealerSchema, homepageFaqSchema, ...primaryNavigationSchema]} />

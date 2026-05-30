@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
-import { JsonLd, createServiceSchema } from '@/components/JsonLd';
+import { JsonLd, createServiceSchema, createFaqSchema } from '@/components/JsonLd';
 import { ServiceHero } from '@/components/services/ServiceHero';
 import { RelatedServices } from '@/components/services/RelatedServices';
 import { Button } from '@/components/ui/button';
@@ -76,11 +76,14 @@ export default function DetailingPage() {
         ogImage="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&w=1200&q=60"
         canonicalPath="/services/detailing"
       />
-      <JsonLd data={createServiceSchema({
-        name: "Elite Auto Detailing Services",
-        description: "Comprehensive interior and exterior auto detailing and paint protection solutions.",
-        url: "https://capitalmotorcars.com/services/detailing"
-      })} />
+      <JsonLd data={[
+        createServiceSchema({
+          name: "Elite Auto Detailing Services",
+          description: "Comprehensive interior and exterior auto detailing and paint protection solutions.",
+          url: "https://www.capitalmotorcars.com/services/detailing"
+        }),
+        createFaqSchema(faqs),
+      ]} />
 
       {/* Custom Hero Section (Services Style) */}
       <ServiceHero

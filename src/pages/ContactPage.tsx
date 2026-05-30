@@ -59,7 +59,7 @@ export default function ContactPage() {
         title="Contact Capital Motor Cars | Springfield NJ Office"
         description="Contact Capital Motor Cars in Springfield, New Jersey for car leasing, credit, and auto broker support across NJ and NY."
         seoKeywords={['contact Capital Motor Cars', 'Springfield NJ car leasing', 'auto broker contact New Jersey', 'Capital Motor Cars phone number', 'Springfield NJ office']}
-        ogImage="/src/assets/contact.jpg"
+        ogImage="https://www.capitalmotorcars.com/og/contact.jpg"
         canonicalPath="/contact"
       />
       <JsonLd data={organizationSchema} />
@@ -103,13 +103,13 @@ export default function ContactPage() {
           <div ref={ref} className={cn('relative z-10 flex-1 flex flex-col dark:bg-white/[0.02]', 'scroll-reveal', isRevealed && 'revealed')}>
             {/* Title Section */}
             <div className="relative z-50 mx-auto h-[30vh] md:h-[45vh] px-4 lg:px-8 flex flex-col items-center justify-center">
-              <motion.h2
+              <motion.h1
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.1 }}
                 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white text-center pb-2 md:pb-4 xl:pb-6"
               >
-                Submit Credit Application
-              </motion.h2>
+                Contact Capital Motor Cars
+              </motion.h1>
               <motion.p
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.2 }}

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
-import { JsonLd, createServiceSchema } from '@/components/JsonLd';
+import { JsonLd, createServiceSchema, createFaqSchema } from '@/components/JsonLd';
 import { ServiceHero } from '@/components/services/ServiceHero';
 import { RelatedServices } from '@/components/services/RelatedServices';
 import { Button } from '@/components/ui/button';
@@ -76,14 +76,17 @@ export default function FinancingPage() {
         title="Auto Leasing & Credit in New Jersey and New York | Low Monthly Payments | Capital Motor Cars"
         description="Auto leasing and credit options in New Jersey and New York from Capital Motor Cars. Compare low monthly payments, lease buyouts, and credit-friendly approvals."
         seoKeywords={['auto leasing New Jersey', 'auto leasing New York', 'low monthly car payments', 'lease buyout New Jersey', 'Capital Motor Cars leasing']}
-        ogImage="/src/assets/credit-services-hero.jpg"
+        ogImage="https://www.capitalmotorcars.com/og/credit-services-hero.jpg"
         canonicalPath="/services/credit"
       />
-      <JsonLd data={createServiceSchema({
-        name: "Auto Leasing & Credit Services",
-        description: "Fast and transparent leasing and credit solutions with access to 30+ lenders for competitive rates.",
-        url: "https://capitalmotorcars.com/services/credit"
-      })} />
+      <JsonLd data={[
+        createServiceSchema({
+          name: "Auto Leasing & Credit Services",
+          description: "Fast and transparent leasing and credit solutions with access to 30+ lenders for competitive rates.",
+          url: "https://www.capitalmotorcars.com/services/credit"
+        }),
+        createFaqSchema(faqs),
+      ]} />
 
       {/* Custom Hero Section (Services Style) */}
       <ServiceHero

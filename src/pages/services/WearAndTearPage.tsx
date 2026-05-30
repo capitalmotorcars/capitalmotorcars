@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
-import { JsonLd, createServiceSchema } from '@/components/JsonLd';
+import { JsonLd, createServiceSchema, createFaqSchema } from '@/components/JsonLd';
 import { ServiceHero } from '@/components/services/ServiceHero';
 import { RelatedServices } from '@/components/services/RelatedServices';
 import { Button } from '@/components/ui/button';
@@ -74,11 +74,14 @@ export default function WearAndTearPage() {
         ogImage="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1200&q=60"
         canonicalPath="/services/wear-and-tear"
       />
-      <JsonLd data={createServiceSchema({
-        name: "Lease Return Wear & Tear Repair",
-        description: "Pre-inspection and coordination of repairs to minimize lease-end penalties and fees.",
-        url: "https://capitalmotorcars.com/services/wear-and-tear"
-      })} />
+      <JsonLd data={[
+        createServiceSchema({
+          name: "Lease Return Wear & Tear Repair",
+          description: "Pre-inspection and coordination of repairs to minimize lease-end penalties and fees.",
+          url: "https://www.capitalmotorcars.com/services/wear-and-tear"
+        }),
+        createFaqSchema(faqs),
+      ]} />
 
       {/* Custom Hero Section (Services Style) */}
       <ServiceHero

@@ -52,17 +52,17 @@ const schemas = [
   createWebPageSchema({
     name: 'Car Lease Deals New Jersey',
     description: 'Car lease deals New Jersey with a stronger landing-page design, better section flow, and a cleaner conversion path.',
-    url: 'https://capitalmotorcars.com/car-lease-deals-new-jersey',
+    url: 'https://www.capitalmotorcars.com/car-lease-deals-new-jersey',
   }),
   createServiceSchema({
     name: 'Car Lease Deals New Jersey',
     description: 'Car lease deals New Jersey with a stronger landing-page design, better section flow, and a cleaner conversion path.',
-    url: 'https://capitalmotorcars.com/car-lease-deals-new-jersey',
+    url: 'https://www.capitalmotorcars.com/car-lease-deals-new-jersey',
   }),
   createFaqSchema(faqs),
   createBreadcrumbSchema([
-    { name: 'Home', url: 'https://capitalmotorcars.com/' },
-    { name: 'Car Lease Deals New Jersey', url: 'https://capitalmotorcars.com/car-lease-deals-new-jersey' },
+    { name: 'Home', url: 'https://www.capitalmotorcars.com/' },
+    { name: 'Car Lease Deals New Jersey', url: 'https://www.capitalmotorcars.com/car-lease-deals-new-jersey' },
   ]),
 ];
 
@@ -75,6 +75,7 @@ export default function CarLeaseDealsNewJerseyPage() {
         canonicalPath="/car-lease-deals-new-jersey"
         seoKeywords={['car lease deals New Jersey', 'New Jersey car lease deals', 'lease specials NJ', 'zero down lease NJ', 'best lease deals NJ', 'Capital Motor Cars']}
         ogType="website"
+        ogImage="https://www.capitalmotorcars.com/shared-img.png"
       />
       <JsonLd data={schemas} />
 

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
-import { JsonLd, createServiceSchema } from '@/components/JsonLd';
+import { JsonLd, createServiceSchema, createFaqSchema } from '@/components/JsonLd';
 import { ServiceHero } from '@/components/services/ServiceHero';
 import { RelatedServices } from '@/components/services/RelatedServices';
 import { Button } from '@/components/ui/button';
@@ -74,14 +74,17 @@ export default function TradeInPage() {
         title="Vehicle Trade-In Services NJ | Best Market Value | Capital Motor Cars"
         description="Vehicle trade-in services in New Jersey and New York from Capital Motor Cars. Get an appraisal, maximize market value, and apply equity to your next lease."
         seoKeywords={['vehicle trade in services NJ', 'vehicle trade in services NY', 'car appraisal New Jersey', 'sell my car New York', 'Capital Motor Cars trade in']}
-        ogImage="/src/assets/trade-in.avif"
+        ogImage="https://www.capitalmotorcars.com/shared-img.png"
         canonicalPath="/services/trade-in"
       />
-      <JsonLd data={createServiceSchema({
-        name: "Vehicle Trade-In Services",
-        description: "Professional vehicle appraisal and trade-in services to maximize your car's value.",
-        url: "https://capitalmotorcars.com/services/trade-in"
-      })} />
+      <JsonLd data={[
+        createServiceSchema({
+          name: "Vehicle Trade-In Services",
+          description: "Professional vehicle appraisal and trade-in services to maximize your car's value.",
+          url: "https://www.capitalmotorcars.com/services/trade-in"
+        }),
+        createFaqSchema(faqs),
+      ]} />
 
       {/* Custom Hero Section (Services Style) */}
       <ServiceHero

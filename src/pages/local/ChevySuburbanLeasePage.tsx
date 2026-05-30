@@ -75,17 +75,17 @@ const schemas = [
   createWebPageSchema({
     name: 'Chevy Suburban Lease Deals | Lowest Monthly Payments',
     description: 'Get the lowest lease monthly payments on the Chevrolet Suburban. Secure wholesale fleet lease rates from Capital Motor Cars with $0 down options.',
-    url: 'https://capitalmotorcars.com/chevy-suburban-lease-deals',
+    url: 'https://www.capitalmotorcars.com/chevy-suburban-lease-deals',
   }),
   createServiceSchema({
     name: 'Chevy Suburban Leasing Services',
     description: 'Specialized fleet leasing service for the Chevy Suburban. Bypassing dealership markups to provide the cheapest Suburban lease deals with driveway delivery.',
-    url: 'https://capitalmotorcars.com/chevy-suburban-lease-deals',
+    url: 'https://www.capitalmotorcars.com/chevy-suburban-lease-deals',
   }),
   createFaqSchema(faqs),
   createBreadcrumbSchema([
-    { name: 'Home', url: 'https://capitalmotorcars.com/' },
-    { name: 'Chevy Suburban Lease Deals', url: 'https://capitalmotorcars.com/chevy-suburban-lease-deals' },
+    { name: 'Home', url: 'https://www.capitalmotorcars.com/' },
+    { name: 'Chevy Suburban Lease Deals', url: 'https://www.capitalmotorcars.com/chevy-suburban-lease-deals' },
   ]),
 ];
 
@@ -105,7 +105,7 @@ export default function ChevySuburbanLeasePage() {
           'Capital Motor Cars'
         ]}
         ogType="website"
-        ogImage="https://upload.wikimedia.org/wikipedia/commons/b/bc/2021_Chevrolet_Suburban_High_Country_Front_View_%28United_States%29.png"
+        ogImage="https://www.capitalmotorcars.com/shared-img.png"
       />
       <JsonLd data={schemas} />
 

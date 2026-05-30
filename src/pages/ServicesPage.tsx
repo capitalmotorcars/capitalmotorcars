@@ -132,7 +132,7 @@ export default function ServicesPage() {
         '@type': 'Service',
         name: service.title,
         description: service.description,
-        url: `https://capitalmotorcars.com${service.href}`,
+        url: `https://www.capitalmotorcars.com${service.href}`,
       },
     })),
   }), []);
@@ -143,7 +143,7 @@ export default function ServicesPage() {
         title="Auto Leasing Services, Car Lease Deals & Luxury Car Leasing in New Jersey & New York | Capital Motor Cars"
         description="Auto leasing services, car lease deals, monthly car lease deals, and luxury car leasing in New Jersey and New York from Capital Motor Cars."
         seoKeywords={['auto leasing services New Jersey', 'car lease deals NY', 'luxury car leasing NJ', 'Capital Motor Cars services']}
-        ogImage="/src/assets/hero-bg.jpg"
+        ogImage="https://www.capitalmotorcars.com/og/hero-bg.jpg"
         canonicalPath="/services"
       />
       <JsonLd data={servicesListSchema} />
@@ -187,13 +187,13 @@ export default function ServicesPage() {
           <div ref={ref} className={cn('relative z-10 flex-1 flex flex-col  dark:bg-white/[0.02]', 'scroll-reveal', isRevealed && 'revealed')}>
             {/* Title and Filters - vh on mobile for stable height (no zoom on scroll) */}
             <div className="relative z-50 mx-auto min-h-[30vh] md:min-h-[45dvh] pt-24 md:pt-32 pb-8 px-4 lg:px-8 flex flex-col items-center justify-center">
-              <motion.h2
+              <motion.h1
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.1 }}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center pb-2 md:pb-4 xl:pb-6 tracking-tight"
               >
                 {renderSEOHeading("Auto Leasing Services, Car Lease Deals & Luxury Car Leasing in New Jersey & New York | Capital Motor Cars")}
-              </motion.h2>
+              </motion.h1>
               <motion.p
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.2 }}

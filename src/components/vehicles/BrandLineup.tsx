@@ -99,11 +99,11 @@ function VehicleCard({ vehicle, index, currentSlug }: { vehicle: any; index: num
                     >
                         {currentSlug && vehicle.slug === currentSlug ? (
                             <span className="cursor-pointer flex items-center">
-                                Learn More <ArrowRight className="ml-2 w-3 h-3" />
+                                View Details <ArrowRight className="ml-2 w-3 h-3" />
                             </span>
                         ) : (
-                            <Link to={`/vehicles/${vehicle.slug}`} className="cursor-pointer flex items-center">
-                                Learn More <ArrowRight className="ml-2 w-3 h-3" />
+                            <Link to={`/vehicles/${vehicle.slug}`} aria-label={`View details for ${vehicle.vehicleName}`} className="cursor-pointer flex items-center">
+                                View Details <ArrowRight className="ml-2 w-3 h-3" />
                             </Link>
                         )}
                     </Button>

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
-import { JsonLd, createServiceSchema } from '@/components/JsonLd';
+import { JsonLd, createServiceSchema, createFaqSchema } from '@/components/JsonLd';
 import { ServiceHero } from '@/components/services/ServiceHero';
 import { RelatedServices } from '@/components/services/RelatedServices';
 import { Button } from '@/components/ui/button';
@@ -76,11 +76,14 @@ export default function WheelRepairPage() {
         ogImage="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1200&q=60"
         canonicalPath="/services/wheel-repair"
       />
-      <JsonLd data={createServiceSchema({
-        name: "Professional Wheel & Rim Repair",
-        description: "Expert restoration of damaged wheels and rims, including curb rash repair and factory refinishing.",
-        url: "https://capitalmotorcars.com/services/wheel-repair"
-      })} />
+      <JsonLd data={[
+        createServiceSchema({
+          name: "Professional Wheel & Rim Repair",
+          description: "Expert restoration of damaged wheels and rims, including curb rash repair and factory refinishing.",
+          url: "https://www.capitalmotorcars.com/services/wheel-repair"
+        }),
+        createFaqSchema(faqs),
+      ]} />
 
       {/* Custom Hero Section (Services Style) */}
       <ServiceHero

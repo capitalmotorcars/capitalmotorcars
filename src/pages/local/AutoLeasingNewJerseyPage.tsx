@@ -53,17 +53,17 @@ const schemas = [
   createWebPageSchema({
     name: 'Auto Leasing New Jersey',
     description: 'Auto leasing New Jersey with clear service-led messaging for new leases, upgrades, and a faster quote path.',
-    url: 'https://capitalmotorcars.com/auto-leasing-new-jersey',
+    url: 'https://www.capitalmotorcars.com/auto-leasing-new-jersey',
   }),
   createServiceSchema({
     name: 'Auto Leasing New Jersey',
     description: 'Auto leasing New Jersey with clear service-led messaging for new leases, upgrades, and a faster quote path.',
-    url: 'https://capitalmotorcars.com/auto-leasing-new-jersey',
+    url: 'https://www.capitalmotorcars.com/auto-leasing-new-jersey',
   }),
   createFaqSchema(faqs),
   createBreadcrumbSchema([
-    { name: 'Home', url: 'https://capitalmotorcars.com/' },
-    { name: 'Auto Leasing New Jersey', url: 'https://capitalmotorcars.com/auto-leasing-new-jersey' },
+    { name: 'Home', url: 'https://www.capitalmotorcars.com/' },
+    { name: 'Auto Leasing New Jersey', url: 'https://www.capitalmotorcars.com/auto-leasing-new-jersey' },
   ]),
 ];
 
@@ -76,6 +76,7 @@ export default function AutoLeasingNewJerseyPage() {
         canonicalPath="/auto-leasing-new-jersey"
         seoKeywords={['auto leasing New Jersey', 'New Jersey auto leasing', 'auto lease NJ', 'lease broker NJ', 'auto lease broker New Jersey', 'Capital Motor Cars']}
         ogType="website"
+        ogImage="https://www.capitalmotorcars.com/shared-img.png"
       />
       <JsonLd data={schemas} />
 

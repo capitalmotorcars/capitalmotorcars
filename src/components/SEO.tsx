@@ -10,6 +10,7 @@ interface SEOProps {
   ogImage?: string;
   ogType?: 'website' | 'article' | 'product';
   twitterCard?: 'summary' | 'summary_large_image';
+  noindex?: boolean;
 }
 
 /**
@@ -26,6 +27,7 @@ export function SEO({
   ogImage,
   ogType = 'website',
   twitterCard = 'summary_large_image',
+  noindex = false,
 }: SEOProps) {
   useEffect(() => {
     // Basic Meta
@@ -42,6 +44,19 @@ export function SEO({
     };
 
     updateMeta('description', description);
+
+    // Robots (noindex)
+    let metaRobots = document.querySelector('meta[name="robots"]');
+    if (noindex) {
+      if (!metaRobots) {
+        metaRobots = document.createElement('meta');
+        metaRobots.setAttribute('name', 'robots');
+        document.head.appendChild(metaRobots);
+      }
+      metaRobots.setAttribute('content', 'noindex, nofollow');
+    } else if (metaRobots) {
+      metaRobots.remove();
+    }
 
     // Open Graph
     updateMeta('og:title', ogTitle || title, 'property');
@@ -63,7 +78,7 @@ export function SEO({
         linkCanonical.setAttribute('rel', 'canonical');
         document.head.appendChild(linkCanonical);
       }
-      linkCanonical.href = `${typeof window !== 'undefined' ? window.location.origin : ''}${canonicalPath}`;
+      linkCanonical.href = `https://www.capitalmotorcars.com${canonicalPath}`;
     } else if (linkCanonical) {
       linkCanonical.remove();
     }
@@ -84,7 +99,7 @@ export function SEO({
     return () => {
       document.title = 'Capital Motor Cars';
     };
-  }, [title, description, canonicalPath, seoKeywords, ogTitle, ogDescription, ogImage, ogType, twitterCard]);
+  }, [title, description, canonicalPath, seoKeywords, ogTitle, ogDescription, ogImage, ogType, twitterCard, noindex]);
 
   return null;
 }

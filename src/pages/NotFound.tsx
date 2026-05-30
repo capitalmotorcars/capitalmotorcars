@@ -15,11 +15,12 @@ const NotFound = () => {
       <SEO
         title="404 Page Not Found | Capital Motor Cars Support Center"
         description="The page you requested could not be found on Capital Motor Cars."
+        noindex
       />
       <JsonLd
         data={createBreadcrumbSchema([
-          { name: 'Home', url: 'https://capitalmotorcars.com/' },
-          { name: '404', url: `https://capitalmotorcars.com${location.pathname}` },
+          { name: 'Home', url: 'https://www.capitalmotorcars.com/' },
+          { name: '404', url: `https://www.capitalmotorcars.com${location.pathname}` },
         ])}
       />
       <div className="text-center max-w-md w-full">

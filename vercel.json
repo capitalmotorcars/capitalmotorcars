@@ -20,10 +20,10 @@
       "has": [
         {
           "type": "host",
-          "value": "www.capitalmotorcars.com"
+          "value": "capitalmotorcars.com"
         }
       ],
-      "destination": "https://capitalmotorcars.com/:path*",
+      "destination": "https://www.capitalmotorcars.com/:path*",
       "permanent": true
     },
     {
@@ -34,7 +34,7 @@
           "value": "express.capitalmotorcars.com"
         }
       ],
-      "destination": "https://capitalmotorcars.com/",
+      "destination": "https://www.capitalmotorcars.com/",
       "permanent": true
     },
     {
@@ -45,7 +45,7 @@
           "key": "nocache"
         }
       ],
-      "destination": "https://capitalmotorcars.com/:path*",
+      "destination": "https://www.capitalmotorcars.com/:path*",
       "permanent": true
     },
     {
@@ -56,7 +56,7 @@
           "key": "jet_blog_ajax"
         }
       ],
-      "destination": "https://capitalmotorcars.com/:path*",
+      "destination": "https://www.capitalmotorcars.com/:path*",
       "permanent": true
     },
     {
@@ -67,27 +67,27 @@
           "key": "fbclid"
         }
       ],
-      "destination": "https://capitalmotorcars.com/:path*",
+      "destination": "https://www.capitalmotorcars.com/:path*",
       "permanent": true
     },
     {
       "source": "/services/car-detailing",
-      "destination": "https://capitalmotorcars.com/services/detailing",
+      "destination": "https://www.capitalmotorcars.com/services/detailing",
       "permanent": true
     },
     {
       "source": "/contact-us",
-      "destination": "https://capitalmotorcars.com/contact",
+      "destination": "https://www.capitalmotorcars.com/contact",
       "permanent": true
     },
     {
       "source": "/about-us",
-      "destination": "https://capitalmotorcars.com/about",
+      "destination": "https://www.capitalmotorcars.com/about",
       "permanent": true
     },
     {
       "source": "/services/financing",
-      "destination": "https://capitalmotorcars.com/services/credit",
+      "destination": "https://www.capitalmotorcars.com/services/credit",
       "permanent": true
     }
   ],

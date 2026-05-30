@@ -52,17 +52,17 @@ const schemas = [
   createWebPageSchema({
     name: 'Car Leasing Marlton NJ',
     description: 'Car leasing Marlton NJ with a clearer way to compare vehicles, review lease terms, and move toward the right quote.',
-    url: 'https://capitalmotorcars.com/car-leasing-marlton-nj',
+    url: 'https://www.capitalmotorcars.com/car-leasing-marlton-nj',
   }),
   createServiceSchema({
     name: 'Car Leasing Marlton NJ',
     description: 'Car leasing Marlton NJ with a clearer way to compare vehicles, review lease terms, and move toward the right quote.',
-    url: 'https://capitalmotorcars.com/car-leasing-marlton-nj',
+    url: 'https://www.capitalmotorcars.com/car-leasing-marlton-nj',
   }),
   createFaqSchema(faqs),
   createBreadcrumbSchema([
-    { name: 'Home', url: 'https://capitalmotorcars.com/' },
-    { name: 'Car Leasing Marlton NJ', url: 'https://capitalmotorcars.com/car-leasing-marlton-nj' },
+    { name: 'Home', url: 'https://www.capitalmotorcars.com/' },
+    { name: 'Car Leasing Marlton NJ', url: 'https://www.capitalmotorcars.com/car-leasing-marlton-nj' },
   ]),
 ];
 
@@ -70,11 +70,12 @@ export default function CarLeasingMarltonNJPage() {
   return (
     <Layout>
       <SEO
-        title="Car Leasing Marlton NJ | Premium Auto Deals | Capital Motor Cars"
+        title="Car Leasing Marlton NJ | Capital Motor Cars"
         description="Searching for car leasing in Marlton, NJ? Capital Motor Cars offers a seamless auto leasing experience. We negotiate terms and deliver right to your door."
         canonicalPath="/car-leasing-marlton-nj"
         seoKeywords={['car leasing Marlton NJ', 'Marlton NJ car leasing', 'car lease Marlton NJ', 'lease a car near Marlton', 'auto broker Marlton', 'Capital Motor Cars Marlton']}
         ogType="website"
+        ogImage="https://www.capitalmotorcars.com/shared-img.png"
       />
       <JsonLd data={schemas} />
 
@@ -341,6 +342,27 @@ export default function CarLeasingMarltonNJPage() {
                 <p className="mt-3 text-sm md:text-base leading-relaxed text-section-muted">{item.text}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 lg:py-20">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6">
+              Car Leasing in Marlton, NJ — What Burlington County Drivers Need
+            </h2>
+            <div className="space-y-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
+              <p>
+                Marlton is part of Evesham Township in Burlington County, sitting at the crossroads of Route 73 and Route 70 — one of South Jersey's busiest corridors. Most residents here commute either toward Philadelphia via I-295 or toward the shore, which means mileage and monthly payment tend to be the first two things that matter.
+              </p>
+              <p>
+                SUVs and crossovers are the most common choice in Marlton: families along the Route 73 corridor need the space, and the roads here are better suited to larger vehicles than the dense streets closer to the city. Pickup trucks also have a strong following in Burlington County, especially for residents splitting time between Marlton and more rural parts of South Jersey.
+              </p>
+              <p>
+                Capital Motor Cars has an office at 105 Merchant Way, Marlton, NJ 08053. We serve Burlington County drivers directly, with lease options delivered to your driveway and paperwork handled without a dealership visit.
+              </p>
+            </div>
           </div>
         </div>
       </section>

@@ -1,7 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { Link, useParams, useLocation, useNavigate } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
-import { JsonLd, createArticleSchema } from '@/components/JsonLd';
+import { JsonLd, createArticleSchema, createPersonSchema } from '@/components/JsonLd';
 import { SEO } from '@/components/SEO';
 import { getBlogPostBySlug, getActiveBlogPosts } from '@/services/blogService';
 import type { BlogPost } from '@/types/blog';
@@ -368,9 +368,9 @@ export default function BlogPostPage() {
   return (
     <Layout
       breadcrumbItems={[
-        { name: 'Home', url: 'https://capitalmotorcars.com/' },
-        { name: 'Blog', url: 'https://capitalmotorcars.com/blog' },
-        { name: post.title, url: `https://capitalmotorcars.com/${post.slug}` },
+        { name: 'Home', url: 'https://www.capitalmotorcars.com/' },
+        { name: 'Blog', url: 'https://www.capitalmotorcars.com/blog' },
+        { name: post.title, url: `https://www.capitalmotorcars.com/${post.slug}` },
       ]}
     >
       <SEO
@@ -388,11 +388,17 @@ export default function BlogPostPage() {
           createArticleSchema({
             headline: post.seo_title || post.title,
             description: post.seo_description || post.excerpt || 'Capital Motor Cars blog post',
-            url: `https://capitalmotorcars.com/${post.slug}`,
+            url: `https://www.capitalmotorcars.com/${post.slug}`,
             image: post.cover_image_url,
             publishedAt: post.published_at || post.created_at,
             modifiedAt: post.updated_at,
             authorName: 'Capital Motor Cars Editorial Team',
+          }),
+          createPersonSchema({
+            name: 'Capital Motor Cars Editorial Team',
+            jobTitle: 'Automotive Leasing Specialists',
+            description: 'The Capital Motor Cars editorial team consists of automotive leasing experts with over 30 years of combined industry experience, covering car leasing, financing, and vehicle services in New Jersey and New York.',
+            sameAs: ['https://www.capitalmotorcars.com/about'],
           }),
           ...(post.slug.startsWith('car-leasing-') ? [
             {
@@ -400,7 +406,7 @@ export default function BlogPostPage() {
               '@type': 'AutoBroker',
               name: post.title,
               description: post.seo_description || post.excerpt,
-              url: `https://capitalmotorcars.com/${post.slug}`,
+              url: `https://www.capitalmotorcars.com/${post.slug}`,
               image: post.cover_image_url,
               telephone: '+1-201-509-5555',
               priceRange: '$$',

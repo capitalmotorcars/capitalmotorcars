@@ -19,7 +19,7 @@ export default function PrivacyPolicyPage() {
           <p className="text-muted-foreground">Last updated: January 2026</p>
 
           <h2 className="text-xl font-bold text-primary mt-10">Who we are</h2>
-          <p className="text-muted-foreground">Our website address is: https://capitalmotorcars.com/</p>
+          <p className="text-muted-foreground">Our website address is: https://www.capitalmotorcars.com/</p>
 
           <h2 className="text-xl font-bold text-primary mt-10">Comments</h2>
           <p className="text-muted-foreground">

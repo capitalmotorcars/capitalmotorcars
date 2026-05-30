@@ -88,7 +88,7 @@ export function LocalLandingPageTemplate({
   faqs,
 }: LocalLandingPageTemplateProps) {
   const schemas = useMemo(() => {
-    const baseUrl = 'https://capitalmotorcars.com';
+    const baseUrl = 'https://www.capitalmotorcars.com';
     const pageUrl = `${baseUrl}${canonicalPath}`;
 
     return [
