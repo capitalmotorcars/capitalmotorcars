@@ -23,7 +23,7 @@ export default function TradeInValuePage() {
         title="Trade-In Value & Lease Upgrades in New York & New Jersey | Capital Motor Cars"
         description="Trade-in value requests in New Jersey and New York from Capital Motor Cars. Appraise your current vehicle and upgrade into your next lease."
         seoKeywords={['trade in value New Jersey', 'trade in value New York', 'vehicle appraisal NJ', 'lease upgrade trade in', 'Capital Motor Cars trade in']}
-        ogImage="/src/assets/trade-in.avif"
+        ogImage="https://www.capitalmotorcars.com/shared-img.png"
         canonicalPath="/trade-in-value"
       />
       <JsonLd data={{
@@ -31,7 +31,7 @@ export default function TradeInValuePage() {
         "@type": "WebPage",
         "name": "Trade-In Value Request",
         "description": "Submit your vehicle for a trade-in valuation and receive a competitive offer.",
-        "url": "https://capitalmotorcars.com/trade-in-value"
+        "url": "https://www.capitalmotorcars.com/trade-in-value"
       }} />
 
       <section className="pt-16 lg:pt-20">
@@ -67,13 +67,13 @@ export default function TradeInValuePage() {
           {/* Content */}
           <div ref={ref} className={cn('relative z-10 flex-1 flex flex-col', 'scroll-reveal', isRevealed && 'revealed')}>
             <div className="relative z-50 mx-auto min-h-[30vh] md:min-h-[45vh] pt-24 md:pt-32 pb-8 px-4 lg:px-8 flex flex-col items-center justify-center text-center">
-              <motion.h2
+              <motion.h1
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.1 }}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white pb-2 md:pb-4 xl:pb-6 tracking-tight text-center"
               >
                 {renderSEOHeading("Trade-In Value & Lease Upgrades in New York & New Jersey | Capital Motor Cars")}
-              </motion.h2>
+              </motion.h1>
               <motion.p
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.2 }}

@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+/* Google Fonts loaded via <link> in index.html (preconnect + preload) — not here */
 
 @tailwind base;
 @tailwind components;
@@ -90,7 +89,8 @@
     --muted: 210 50% 20%;
     --muted-foreground: 214 32% 75%;
 
-    --accent: 214 77% 50%;
+    /* Lightened from 50% to 62% for WCAG AA contrast (4.5:1) on dark backgrounds */
+    --accent: 214 77% 62%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62% 30%;
@@ -98,7 +98,7 @@
 
     --border: 210 50% 25%;
     --input: 210 50% 25%;
-    --ring: 214 77% 50%;
+    --ring: 214 77% 62%;
     --section-divider-fill: 0 0% 3%;
   }
 }

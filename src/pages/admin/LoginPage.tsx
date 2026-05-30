@@ -40,9 +40,9 @@ export default function LoginPage() {
             />
             <JsonLd
                 data={createBreadcrumbSchema([
-                    { name: 'Home', url: 'https://capitalmotorcars.com/' },
-                    { name: 'Admin', url: 'https://capitalmotorcars.com/admin' },
-                    { name: 'Login', url: 'https://capitalmotorcars.com/admin/login' },
+                    { name: 'Home', url: 'https://www.capitalmotorcars.com/' },
+                    { name: 'Admin', url: 'https://www.capitalmotorcars.com/admin' },
+                    { name: 'Login', url: 'https://www.capitalmotorcars.com/admin/login' },
                 ])}
             />
             <motion.div

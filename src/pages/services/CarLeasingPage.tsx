@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
-import { JsonLd, createFaqSchema, createServiceSchema } from '@/components/JsonLd';
+import { JsonLd, createFaqSchema, createServiceSchema, createHowToSchema } from '@/components/JsonLd';
 import { ServiceHero } from '@/components/services/ServiceHero';
 import { RelatedServices } from '@/components/services/RelatedServices';
 import { Button } from '@/components/ui/button';
@@ -82,16 +82,26 @@ export default function CarLeasingPage() {
         title="Car Leasing, Auto Leasing & Car Lease Deals in New Jersey & New York | Capital Motor Cars"
         description="Car leasing, auto leasing, car lease deals, monthly car lease deals, and luxury car leasing in New Jersey and New York from Capital Motor Cars."
         seoKeywords={['car leasing New Jersey', 'auto leasing NY', 'car lease deals NJ', 'zero down lease NY', 'Capital Motor Cars leasing']}
-        ogImage="/src/assets/car-leasing.jpg"
+        ogImage="https://www.capitalmotorcars.com/og/car-leasing.jpg"
         canonicalPath="/services/car-leasing"
       />
       <JsonLd data={[
         createServiceSchema({
           name: "Car Leasing Services",
           description: "Professional car leasing negotiation and coordination services. We handle the dealerships so you don't have to.",
-          url: "https://capitalmotorcars.com/services/car-leasing"
+          url: "https://www.capitalmotorcars.com/services/car-leasing"
         }),
         createFaqSchema(faqs),
+        createHowToSchema({
+          name: "How to Lease a Car with Capital Motor Cars",
+          description: "Get your next car lease in 4 simple steps — no dealership visits required.",
+          steps: [
+            { name: "Tell Us Your Preferences", text: "Share your vehicle preferences, mileage needs, and monthly budget. We handle the search across our network so you don't have to visit dealerships." },
+            { name: "We Search & Negotiate", text: "Our team locates the best available leasing options and negotiates directly with dealers on your behalf to secure competitive terms." },
+            { name: "Review Transparent Options", text: "We present clear, itemized lease options with no hidden fees — just straightforward numbers so you can compare confidently." },
+            { name: "Sign & Drive", text: "We coordinate vehicle delivery directly to your door. Sign the paperwork and enjoy your new car." },
+          ],
+        }),
       ]} />
 
       {/* Custom Hero Section (Services Style) */}

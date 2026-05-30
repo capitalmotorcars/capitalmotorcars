@@ -52,17 +52,17 @@ const schemas = [
   createWebPageSchema({
     name: 'Car Leasing Edgewater NJ',
     description: 'Car leasing Edgewater NJ with a clearer way to compare vehicles, review lease terms, and move toward the right quote.',
-    url: 'https://capitalmotorcars.com/car-leasing-edgewater-nj',
+    url: 'https://www.capitalmotorcars.com/car-leasing-edgewater-nj',
   }),
   createServiceSchema({
     name: 'Car Leasing Edgewater NJ',
     description: 'Car leasing Edgewater NJ with a clearer way to compare vehicles, review lease terms, and move toward the right quote.',
-    url: 'https://capitalmotorcars.com/car-leasing-edgewater-nj',
+    url: 'https://www.capitalmotorcars.com/car-leasing-edgewater-nj',
   }),
   createFaqSchema(faqs),
   createBreadcrumbSchema([
-    { name: 'Home', url: 'https://capitalmotorcars.com/' },
-    { name: 'Car Leasing Edgewater NJ', url: 'https://capitalmotorcars.com/car-leasing-edgewater-nj' },
+    { name: 'Home', url: 'https://www.capitalmotorcars.com/' },
+    { name: 'Car Leasing Edgewater NJ', url: 'https://www.capitalmotorcars.com/car-leasing-edgewater-nj' },
   ]),
 ];
 
@@ -70,11 +70,12 @@ export default function CarLeasingEdgewaterNJPage() {
   return (
     <Layout>
       <SEO
-        title="Car Leasing Edgewater NJ | Premium Auto Deals | Capital Motor Cars"
+        title="Car Leasing Edgewater NJ | Capital Motor Cars"
         description="Searching for car leasing in Edgewater, NJ? Capital Motor Cars offers a seamless auto leasing experience. We negotiate terms and deliver right to your door."
         canonicalPath="/car-leasing-edgewater-nj"
         seoKeywords={['car leasing Edgewater NJ', 'Edgewater NJ car leasing', 'car lease Edgewater NJ', 'lease a car near Edgewater', 'auto broker Edgewater', 'Capital Motor Cars Edgewater']}
         ogType="website"
+        ogImage="https://www.capitalmotorcars.com/shared-img.png"
       />
       <JsonLd data={schemas} />
 
@@ -341,6 +342,27 @@ export default function CarLeasingEdgewaterNJPage() {
                 <p className="mt-3 text-sm md:text-base leading-relaxed text-section-muted">{item.text}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 lg:py-20">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6">
+              Car Leasing in Edgewater, NJ — What Locals Actually Need
+            </h2>
+            <div className="space-y-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
+              <p>
+                Edgewater sits along the Hudson River in Bergen County, directly across from Manhattan. Most residents here commute to New York City — via the George Washington Bridge, Route 4, or the ferry — which means the right lease for Edgewater is different from the right lease for the suburbs farther west.
+              </p>
+              <p>
+                Compact and mid-size vehicles tend to fit best: they're easier to park on River Road and in the high-rise garages that line the waterfront, and they hold up well on the short, stop-and-go commute across the bridge. That said, Edgewater also has a strong luxury segment — residents who want a premium vehicle without the dealership experience Capital Motor Cars was built for.
+              </p>
+              <p>
+                We serve Edgewater from our office at 115 River Road, Suite 158. If you're comparing lease options near the waterfront or want a vehicle delivered directly to your building, that's exactly what we do.
+              </p>
+            </div>
           </div>
         </div>
       </section>

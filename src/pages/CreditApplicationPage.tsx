@@ -31,18 +31,18 @@ export default function CreditApplicationPage() {
   return (
     <Layout>
       <SEO
-        title="Auto & Car Leasing in New Jersey & New York | Capital Motor Cars"
+        title="Credit Application | Auto Leasing NJ & NY | Capital Motor Cars"
         description="Get approved for auto leasing in minutes. We help NJ and NY drivers secure flexible lease options quickly, even with challenged credit. Apply now."
         seoKeywords={['auto lease New Jersey', 'auto lease New York', 'car credit application NJ', 'lease credit application NY', 'Capital Motor Cars leasing']}
-        ogImage="/src/assets/contact.jpg"
+        ogImage="https://www.capitalmotorcars.com/og/contact.jpg"
         canonicalPath="/credit-application"
       />
       <JsonLd data={{
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "Auto & Car Leasing in New Jersey & New York",
+        "name": "Credit Application | Auto Leasing in New Jersey & New York",
         "description": "Get approved for auto leasing in minutes. We help NJ and NY drivers secure flexible lease options quickly, even with challenged credit. Apply now.",
-        "url": "https://capitalmotorcars.com/credit-application"
+        "url": "https://www.capitalmotorcars.com/credit-application"
       }} />
 
       <section className="pt-16 lg:pt-20">
@@ -84,13 +84,13 @@ export default function CreditApplicationPage() {
           <div ref={ref} className={cn('relative z-10 flex-1 flex flex-col', 'scroll-reveal', isRevealed && 'revealed')}>
             {/* Title Section */}
             <div className="relative z-50 mx-auto min-h-[30vh] md:min-h-[45vh] pt-24 md:pt-32 pb-8 px-4 lg:px-8 flex flex-col items-center justify-center text-center">
-              <motion.h2
+              <motion.h1
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.1 }}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white pb-2 md:pb-4 xl:pb-6 tracking-tight text-center"
               >
-                {renderSEOHeading("Auto & Car Leasing in New Jersey & New York | Capital Motor Cars")}
-              </motion.h2>
+                {renderSEOHeading("Credit Application | Auto Leasing NJ & NY | Capital Motor Cars")}
+              </motion.h1>
               <motion.p
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.2 }}

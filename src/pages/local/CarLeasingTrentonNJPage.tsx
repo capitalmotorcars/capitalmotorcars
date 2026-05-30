@@ -52,17 +52,17 @@ const schemas = [
   createWebPageSchema({
     name: 'Car Leasing Trenton NJ',
     description: 'Car leasing Trenton NJ with a simpler way to compare vehicles, review lease terms, and move toward the right quote.',
-    url: 'https://capitalmotorcars.com/car-leasing-trenton-nj',
+    url: 'https://www.capitalmotorcars.com/car-leasing-trenton-nj',
   }),
   createServiceSchema({
     name: 'Car Leasing Trenton NJ',
     description: 'Car leasing Trenton NJ with a simpler way to compare vehicles, review lease terms, and move toward the right quote.',
-    url: 'https://capitalmotorcars.com/car-leasing-trenton-nj',
+    url: 'https://www.capitalmotorcars.com/car-leasing-trenton-nj',
   }),
   createFaqSchema(faqs),
   createBreadcrumbSchema([
-    { name: 'Home', url: 'https://capitalmotorcars.com/' },
-    { name: 'Car Leasing Trenton NJ', url: 'https://capitalmotorcars.com/car-leasing-trenton-nj' },
+    { name: 'Home', url: 'https://www.capitalmotorcars.com/' },
+    { name: 'Car Leasing Trenton NJ', url: 'https://www.capitalmotorcars.com/car-leasing-trenton-nj' },
   ]),
 ];
 
@@ -70,11 +70,12 @@ export default function CarLeasingTrentonNJPage() {
   return (
     <Layout>
       <SEO
-        title="Car Leasing Trenton NJ | Top Auto Broker | Capital Motor Cars"
-        description="Searching for the best car leasing deals in Trenton, NJ? Capital Motor Cars helps you easily compare vehicles, negotiate terms, and secure the perfect lease."
+        title="Car Leasing Trenton NJ | Capital Motor Cars"
+        description="Searching for car leasing deals in Trenton, NJ? Capital Motor Cars helps you compare vehicles, negotiate terms, and secure the perfect lease with no dealership stress."
         canonicalPath="/car-leasing-trenton-nj"
         seoKeywords={['car leasing Trenton NJ', 'Trenton NJ car leasing', 'car lease Trenton NJ', 'lease a car near Trenton', 'auto broker Trenton', 'Capital Motor Cars Trenton']}
         ogType="website"
+        ogImage="https://www.capitalmotorcars.com/shared-img.png"
       />
       <JsonLd data={schemas} />
 
@@ -341,6 +342,27 @@ export default function CarLeasingTrentonNJPage() {
                 <p className="mt-3 text-sm md:text-base leading-relaxed text-section-muted">{item.text}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 lg:py-20">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6">
+              Car Leasing in Trenton, NJ — What Mercer County Drivers Prioritize
+            </h2>
+            <div className="space-y-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
+              <p>
+                Trenton is the state capital of New Jersey and sits at the center of Mercer County, bordered by I-295 and US-1 — two of the most-traveled commuter corridors in the state. Residents here often commute toward Princeton and New Brunswick to the north, or into Philadelphia across the Delaware River to the west.
+              </p>
+              <p>
+                In Mercer County, practical and efficient vehicles tend to be the priority: sedans and compact SUVs that handle the highway well and keep monthly costs predictable. Hybrid and electric options have grown in demand here, especially among state workers and professionals who drive consistent routes and want to reduce fuel costs over a 36-month term.
+              </p>
+              <p>
+                Capital Motor Cars handles leases for Trenton-area drivers the same way as everywhere else: we find the vehicle, negotiate the terms, and deliver it directly. No dealership visits, no pressure — just a clear process from search to signature.
+              </p>
+            </div>
           </div>
         </div>
       </section>

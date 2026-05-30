@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
-import { SectionHeading } from '@/components/ui/SectionHeading';
+import { JsonLd, createWebPageSchema } from '@/components/JsonLd';
 import { BlogCard } from '@/components/blog/BlogCard';
 import { getActiveBlogPosts } from '@/services/blogService';
 import type { BlogPost } from '@/types/blog';
@@ -30,14 +30,24 @@ export default function BlogPage() {
                 description="Car leasing blog for New Jersey and New York drivers from Capital Motor Cars. Read lease tips, credit guides, and vehicle insights."
                 canonicalPath="/blog"
                 seoKeywords={['car leasing blog New Jersey', 'car leasing blog New York', 'lease tips', 'auto leasing guides', 'Capital Motor Cars blog']}
-                ogType="article"
+                ogType="website"
+                ogImage="https://www.capitalmotorcars.com/shared-img.png"
             />
+            <JsonLd data={createWebPageSchema({
+                name: 'Capital Motor Cars Blog | Leasing Tips & Auto Insights',
+                description: 'Car leasing blog for New Jersey and New York drivers from Capital Motor Cars. Read lease tips, credit guides, and vehicle insights.',
+                url: 'https://www.capitalmotorcars.com/blog',
+            })} />
             <section className="pt-32 pb-16 md:pb-20">
                 <div className="container mx-auto px-4 lg:px-8">
-                    <SectionHeading
-                        title="Capital Motor Cars Blog"
-                        subtitle="Practical insights on leasing and the vehicles you love."
-                    />
+                    <div className="mb-10 text-center">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
+                            Capital Motor Cars Blog
+                        </h1>
+                        <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+                            Practical insights on leasing and the vehicles you love.
+                        </p>
+                    </div>
 
                     {loading ? (
                         <div className="mt-10 text-muted-foreground">Loading posts...</div>

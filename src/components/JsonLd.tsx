@@ -6,7 +6,7 @@ export interface BreadcrumbItem {
   url: string;
 }
 
-const SITE_URL = 'https://capitalmotorcars.com';
+const SITE_URL = 'https://www.capitalmotorcars.com';
 const DEFAULT_AUTHOR_NAME = 'Capital Motor Cars Editorial Team';
 
 const routeLabelMap: Record<string, string> = {
@@ -71,12 +71,19 @@ export function JsonLd({ data }: JsonLdProps) {
 export const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  '@id': 'https://capitalmotorcars.com/#organization',
+  '@id': 'https://www.capitalmotorcars.com/#organization',
   name: 'Capital Motor Cars',
   description: 'Simple, stress free car leasing and automotive services in New Jersey.',
-  url: 'https://capitalmotorcars.com',
+  url: 'https://www.capitalmotorcars.com',
   telephone: '+1-201-509-5555',
   email: 'info@capitalmotorcars.com',
+  logo: {
+    '@type': 'ImageObject',
+    url: 'https://www.capitalmotorcars.com/logo.png',
+    width: 512,
+    height: 512,
+  },
+  image: 'https://www.capitalmotorcars.com/shared-img.png',
   address: [
     {
       '@type': 'PostalAddress',
@@ -85,6 +92,7 @@ export const localBusinessSchema = {
       addressRegion: 'NJ',
       postalCode: '07081',
       addressCountry: 'US',
+      geo: { '@type': 'GeoCoordinates', latitude: 40.6939, longitude: -74.3252 },
     },
     {
       '@type': 'PostalAddress',
@@ -93,6 +101,7 @@ export const localBusinessSchema = {
       addressRegion: 'NJ',
       postalCode: '08053',
       addressCountry: 'US',
+      geo: { '@type': 'GeoCoordinates', latitude: 39.8923, longitude: -74.9205 },
     },
     {
       '@type': 'PostalAddress',
@@ -101,19 +110,35 @@ export const localBusinessSchema = {
       addressRegion: 'NJ',
       postalCode: '07020',
       addressCountry: 'US',
+      geo: { '@type': 'GeoCoordinates', latitude: 40.8248, longitude: -74.0003 },
     },
   ],
   areaServed: {
     '@type': 'State',
     name: 'New Jersey',
   },
-  priceRange: '$$',
-  openingHoursSpecification: {
-    '@type': 'OpeningHoursSpecification',
-    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-    opens: '09:00',
-    closes: '18:00',
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '5',
+    bestRating: '5',
+    worstRating: '1',
+    ratingCount: '760',
   },
+  priceRange: '$$',
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '10:00',
+      closes: '18:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Saturday', 'Sunday'],
+      opens: '00:00',
+      closes: '00:00',
+    },
+  ],
   sameAs: [
     'https://www.facebook.com/capitalmotorcars/',
     'https://www.instagram.com/capitalmotorcars/',
@@ -126,7 +151,7 @@ export const localBusinessSchema = {
 export const autoDealerSchema = {
   '@context': 'https://schema.org',
   '@type': 'AutoDealer',
-  '@id': 'https://capitalmotorcars.com/#auto-dealer',
+  '@id': 'https://www.capitalmotorcars.com/#auto-dealer',
   name: 'Capital Motor Cars',
   url: SITE_URL,
   image: `${SITE_URL}/shared-img.png?v=2`,
@@ -197,7 +222,7 @@ export function createServiceSchema(service: {
     url: service.url,
     provider: {
       '@type': 'LocalBusiness',
-      '@id': 'https://capitalmotorcars.com/#organization',
+      '@id': 'https://www.capitalmotorcars.com/#organization',
       name: 'Capital Motor Cars',
     },
     areaServed: {
@@ -270,9 +295,9 @@ export function createWebPageSchema(page: {
     url: page.url,
     isPartOf: {
       '@type': 'WebSite',
-      '@id': 'https://capitalmotorcars.com/#website',
+      '@id': 'https://www.capitalmotorcars.com/#website',
       name: 'Capital Motor Cars',
-      url: 'https://capitalmotorcars.com',
+      url: 'https://www.capitalmotorcars.com',
     },
   };
 }
@@ -341,5 +366,50 @@ export function createLocalCarBrokerSchema(local: {
       name: 'Capital Motor Cars',
       url: SITE_URL,
     },
+  };
+}
+
+export function createHowToSchema(howTo: {
+  name: string;
+  description: string;
+  steps: { name: string; text: string }[];
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: howTo.name,
+    description: howTo.description,
+    step: howTo.steps.map((step, index) => ({
+      '@type': 'HowToStep',
+      position: index + 1,
+      name: step.name,
+      text: step.text,
+    })),
+  };
+}
+
+export function createPersonSchema(person: {
+  name: string;
+  jobTitle: string;
+  description: string;
+  image?: string;
+  email?: string;
+  sameAs?: string[];
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: person.name,
+    jobTitle: person.jobTitle,
+    description: person.description,
+    image: person.image,
+    email: person.email,
+    worksFor: {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      name: 'Capital Motor Cars',
+      url: SITE_URL,
+    },
+    sameAs: person.sameAs,
   };
 }

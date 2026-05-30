@@ -26,6 +26,7 @@ export function ServiceCard({
   return (
     <Link
       to={href}
+      aria-label={`Learn more about ${title}`}
       className={cn(
         'group block transition-all duration-300 min-h-[44px] glass-card-theme service-card-hover hover:ring-2 hover:ring-accent/20 hover:ring-offset-2 dark:hover:ring-offset-[hsl(0_0%_4%)]',
         isCore ? 'p-7' : 'p-6'

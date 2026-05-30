@@ -77,17 +77,17 @@ const schemas = [
   createWebPageSchema({
     name: 'BMW Car Lease | BMW Car Lease NJ & US Deals',
     description: 'Looking for the ultimate BMW car lease? Discover premium BMW car lease NJ and BMW car lease US specials with Capital Motor Cars. We negotiate the best money factors and lease structures.',
-    url: 'https://capitalmotorcars.com/bmw-car-lease',
+    url: 'https://www.capitalmotorcars.com/bmw-car-lease',
   }),
   createServiceSchema({
     name: 'BMW Auto Leasing Services',
     description: 'Premium auto leasing services specializing in BMWs. Whether you need a local BMW car lease NJ option or the best BMW car lease US wide, we optimize money factors and provide the best direct lease terms.',
-    url: 'https://capitalmotorcars.com/bmw-car-lease',
+    url: 'https://www.capitalmotorcars.com/bmw-car-lease',
   }),
   createFaqSchema(faqs),
   createBreadcrumbSchema([
-    { name: 'Home', url: 'https://capitalmotorcars.com/' },
-    { name: 'BMW Car Lease', url: 'https://capitalmotorcars.com/bmw-car-lease' },
+    { name: 'Home', url: 'https://www.capitalmotorcars.com/' },
+    { name: 'BMW Car Lease', url: 'https://www.capitalmotorcars.com/bmw-car-lease' },
   ]),
 ];
 
@@ -109,6 +109,7 @@ export default function BmwCarLeasePage() {
           'Capital Motor Cars'
         ]}
         ogType="website"
+        ogImage="https://www.capitalmotorcars.com/shared-img.png"
       />
       <JsonLd data={schemas} />
 

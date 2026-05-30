@@ -51,17 +51,17 @@ const schemas = [
   createWebPageSchema({
     name: 'Car Leasing Springfield NJ',
     description: 'Bypass the Route 22 dealerships. Get wholesale broker lease deals in Springfield, NJ from Capital Motor Cars with direct home delivery.',
-    url: 'https://capitalmotorcars.com/car-leasing-springfield-nj',
+    url: 'https://www.capitalmotorcars.com/car-leasing-springfield-nj',
   }),
   createServiceSchema({
     name: 'Car Leasing Springfield NJ',
     description: 'Bypass the Route 22 dealerships. Get wholesale broker lease deals in Springfield, NJ from Capital Motor Cars with direct home delivery.',
-    url: 'https://capitalmotorcars.com/car-leasing-springfield-nj',
+    url: 'https://www.capitalmotorcars.com/car-leasing-springfield-nj',
   }),
   createFaqSchema(faqs),
   createBreadcrumbSchema([
-    { name: 'Home', url: 'https://capitalmotorcars.com/' },
-    { name: 'Car Leasing Springfield NJ', url: 'https://capitalmotorcars.com/car-leasing-springfield-nj' },
+    { name: 'Home', url: 'https://www.capitalmotorcars.com/' },
+    { name: 'Car Leasing Springfield NJ', url: 'https://www.capitalmotorcars.com/car-leasing-springfield-nj' },
   ]),
 ];
 
@@ -74,6 +74,7 @@ export default function CarLeasingSpringfieldNJPage() {
         canonicalPath="/car-leasing-springfield-nj"
         seoKeywords={['car leasing Springfield NJ', 'Springfield NJ car leasing', 'car lease Springfield NJ', 'lease a car near Springfield', 'auto broker Springfield NJ', 'Capital Motor Cars Springfield']}
         ogType="website"
+        ogImage="https://www.capitalmotorcars.com/shared-img.png"
       />
       <JsonLd data={schemas} />
 

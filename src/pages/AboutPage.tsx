@@ -1,6 +1,6 @@
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
-import { JsonLd, organizationSchema } from '@/components/JsonLd';
+import { JsonLd, organizationSchema, createPersonSchema } from '@/components/JsonLd';
 import { aboutPageLinks } from '@/components/ui/RelatedLinks';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { cn } from '@/lib/utils';
@@ -63,10 +63,20 @@ export default function AboutPage() {
         title="About Us | Capital Motor Cars | Our Story & Mission"
         description="Car leasing and auto broker experts in New Jersey and New York from Capital Motor Cars. Learn about our story, team, and process."
         seoKeywords={['about Capital Motor Cars', 'car leasing company New Jersey', 'auto broker New York', 'car leasing experts NJ', 'Capital Motor Cars team']}
-        ogImage="/src/assets/hero-bg.jpg"
+        ogImage="https://www.capitalmotorcars.com/og/hero-bg.jpg"
         canonicalPath="/about"
       />
-      <JsonLd data={organizationSchema} />
+      <JsonLd data={[
+        organizationSchema,
+        createPersonSchema({
+          name: 'Christopher Amico',
+          jobTitle: 'President & CEO',
+          description: 'Christopher Amico is the President and CEO of Capital Motor Cars, a premier auto broker and leasing company serving New Jersey and New York. With a background at Mercedes-Benz and consulting experience with BMW North America, he brings over 30 years of automotive industry expertise.',
+          image: 'https://www.capitalmotorcars.com/logo.png',
+          email: 'camico@capitalmotorcars.com',
+          sameAs: ['https://www.linkedin.com/company/capital-motor-cars/'],
+        }),
+      ]} />
 
       <section className="pt-16 lg:pt-20 ">
         <div id="about" className="relative h-full flex flex-col">
@@ -115,13 +125,13 @@ export default function AboutPage() {
                 alt="About Capital Motor Cars"
                 className="w-16 h-16 md:w-28 md:h-28 object-cover object-center "
               />
-              <motion.h2
+              <motion.h1
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.2 }}
                 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center pb-2 md:pb-4 xl:pb-6"
               >
                 {renderSEOHeading("About Capital Motor Cars | Top Auto Broker New Jersey & New York")}
-              </motion.h2>
+              </motion.h1>
               <motion.p
                 {...fadeInUp}
                 transition={{ ...fadeInUp.transition, delay: 0.3 }}
