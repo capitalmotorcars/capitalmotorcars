@@ -567,6 +567,13 @@ export function CreditApplicationForm({
           setSubmitError(getSubmitErrorMessage(res, json));
           return;
         }
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'credit_app_submit', {
+            event_category: 'engagement',
+            event_label: 'Personal Credit Application Submit',
+            value: 1
+          });
+        }
         setIsSuccess(true);
         reset();
         setCurrentStep(1);

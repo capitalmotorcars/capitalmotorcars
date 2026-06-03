@@ -97,14 +97,6 @@
       "status": 410
     },
     {
-      "src": "^/toyota-camry-reliability/?$",
-      "status": 410
-    },
-    {
-      "src": "^/toyota-camry-reliability/2/?$",
-      "status": 410
-    },
-    {
       "src": "^/category/(.*)$",
       "status": 410
     },
