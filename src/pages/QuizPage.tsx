@@ -454,6 +454,13 @@ export default function QuizPage() {
     const finalResult = calculateQuizResult(answers, availableVehicles);
     setResult(finalResult);
     setIsCompleted(true);
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'quiz_complete', {
+        event_category: 'engagement',
+        event_label: 'Lease Quiz Completed',
+        value: 1
+      });
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 

@@ -437,6 +437,13 @@ export function ContactForm({
         reset();
         setExteriorFiles([]);
         setInteriorFiles([]);
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'trade_in_submit', {
+            event_category: 'engagement',
+            event_label: 'Trade-in Evaluation Request',
+            value: 1
+          });
+        }
         if (onSubmitSuccess) onSubmitSuccess();
         return;
       }
@@ -484,6 +491,13 @@ export function ContactForm({
       setSuccessWasTradeIn(false);
       setIsSuccess(true);
       reset();
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'lead_submit', {
+          event_category: 'engagement',
+          event_label: `Contact Form Inquiry - ${data.service || 'general'}`,
+          value: 1
+        });
+      }
       if (onSubmitSuccess) {
         onSubmitSuccess();
       }

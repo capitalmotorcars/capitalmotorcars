@@ -171,6 +171,13 @@ export function TradeInValueForm() {
         setSubmitError(getSubmitErrorMessage(res, json));
         return;
       }
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'trade_in_submit', {
+          event_category: 'engagement',
+          event_label: 'Trade-in Value Form Submit',
+          value: 1
+        });
+      }
       setIsSuccess(true);
       reset();
       setExteriorFiles([]);

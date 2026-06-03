@@ -35,6 +35,7 @@ const CarLeasingTrentonNJPage = lazy(() => import("./pages/local/CarLeasingTrent
 const CarLeasingEdgewaterNJPage = lazy(() => import("./pages/local/CarLeasingEdgewaterNJPage"));
 const CarLeasingMarltonNJPage = lazy(() => import("./pages/local/CarLeasingMarltonNJPage"));
 const CarLeasingSpringfieldNJPage = lazy(() => import("./pages/local/CarLeasingSpringfieldNJPage"));
+const CarLeasingParamusNJPage = lazy(() => import("./pages/local/CarLeasingParamusNJPage"));
 const BmwCarLeasePage = lazy(() => import("./pages/local/BmwCarLeasePage"));
 const ChevySuburbanLeasePage = lazy(() => import("./pages/local/ChevySuburbanLeasePage"));
 
@@ -122,6 +123,7 @@ const App = () => (
                 <Route path="/car-leasing-edgewater-nj" element={<CarLeasingEdgewaterNJPage />} />
                 <Route path="/car-leasing-marlton-nj" element={<CarLeasingMarltonNJPage />} />
                 <Route path="/car-leasing-springfield-nj" element={<CarLeasingSpringfieldNJPage />} />
+                <Route path="/car-leasing-paramus-nj" element={<CarLeasingParamusNJPage />} />
 
                 {/* Static Blog Routes */}
                 {blogSlugs.map((slug) => (

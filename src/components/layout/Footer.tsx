@@ -44,6 +44,7 @@ const footerLinks = {
     { href: '/car-leasing-edgewater-nj', label: 'Car Leasing Edgewater NJ' },
     { href: '/car-leasing-marlton-nj', label: 'Car Leasing Marlton NJ' },
     { href: '/car-leasing-springfield-nj', label: 'Car Leasing Springfield NJ' },
+    { href: '/car-leasing-paramus-nj', label: 'Car Leasing Paramus NJ' },
   ],
   legal: [
     { href: '/privacy-policy', label: 'Privacy Policy' },
