@@ -12,6 +12,7 @@ import {
   Sparkles,
   Star,
   Store,
+  Waves,
 } from 'lucide-react';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
