@@ -36,6 +36,7 @@ const CarLeasingEdgewaterNJPage = lazy(() => import("./pages/local/CarLeasingEdg
 const CarLeasingMarltonNJPage = lazy(() => import("./pages/local/CarLeasingMarltonNJPage"));
 const CarLeasingSpringfieldNJPage = lazy(() => import("./pages/local/CarLeasingSpringfieldNJPage"));
 const CarLeasingParamusNJPage = lazy(() => import("./pages/local/CarLeasingParamusNJPage"));
+const CarLeasingHobokenNJPage = lazy(() => import("./pages/local/CarLeasingHobokenNJPage"));
 const BmwCarLeasePage = lazy(() => import("./pages/local/BmwCarLeasePage"));
 const ChevySuburbanLeasePage = lazy(() => import("./pages/local/ChevySuburbanLeasePage"));
 
@@ -83,7 +84,11 @@ const blogSlugs = [
   'audi-a3-reliability-guide',
   'what-does-a-zero-down-lease-really-mean',
   'choosing-a-car-for-a-college-student-read-this-first',
-  'toyota-camry-reliability'
+  'toyota-camry-reliability',
+  'how-to-lease-a-car-new-jersey-new-york',
+  'best-suv-lease-deals-new-jersey',
+  'ev-lease-specials-new-jersey',
+  'bmw-lease-specials-new-jersey'
 ];
 
 const App = () => (
@@ -124,6 +129,7 @@ const App = () => (
                 <Route path="/car-leasing-marlton-nj" element={<CarLeasingMarltonNJPage />} />
                 <Route path="/car-leasing-springfield-nj" element={<CarLeasingSpringfieldNJPage />} />
                 <Route path="/car-leasing-paramus-nj" element={<CarLeasingParamusNJPage />} />
+                <Route path="/car-leasing-hoboken-nj" element={<CarLeasingHobokenNJPage />} />
 
                 {/* Static Blog Routes */}
                 {blogSlugs.map((slug) => (
