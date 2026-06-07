@@ -24,6 +24,9 @@ export function BlogCard({ post, className, isFeatured }: { post: BlogPost; clas
                             src={post.cover_image_url}
                             alt={post.title}
                             className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                            loading={isFeatured ? undefined : "lazy"}
+                            decoding="async"
+                            fetchPriority={isFeatured ? "high" : "auto"}
                         />
                     ) : (
                         <div className="w-full h-full bg-slate-800/10 flex items-center justify-center text-muted-foreground/40">

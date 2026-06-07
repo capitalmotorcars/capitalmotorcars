@@ -304,6 +304,8 @@ export function VehicleTypesCarousel({
                     alt={`${prevVehicleData.name} Lease Deal in New Jersey & New York - Capital Motor Cars`}
                     title={`${prevVehicleData.name} Lease Deal in New Jersey & New York - Capital Motor Cars`}
                     className="w-full h-auto object-contain"
+                    loading="lazy"
+                    decoding="async"
                   />
                 )}
               </div>
@@ -325,6 +327,8 @@ export function VehicleTypesCarousel({
                     alt={`${currentVehicle.name} Lease Deal in New Jersey & New York - Capital Motor Cars`}
                     title={`${currentVehicle.name} Lease Deal in New Jersey & New York - Capital Motor Cars`}
                     className="w-full h-auto object-contain drop-shadow-2xl"
+                    loading="lazy"
+                    decoding="async"
                   />
                 )}
               </div>
@@ -352,6 +356,8 @@ export function VehicleTypesCarousel({
                     alt={`${nextVehicleData.name} Lease Deal in New Jersey & New York - Capital Motor Cars`}
                     title={`${nextVehicleData.name} Lease Deal in New Jersey & New York - Capital Motor Cars`}
                     className="w-full h-auto object-contain"
+                    loading="lazy"
+                    decoding="async"
                   />
                 )}
               </div>
