@@ -464,6 +464,7 @@ export default function BlogPostPage() {
                       src={post.cover_image_url}
                       alt={post.title}
                       className="w-full h-auto object-cover aspect-video"
+                      fetchPriority="high"
                     />
                   </div>
                 )}

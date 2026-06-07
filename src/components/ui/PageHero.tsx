@@ -182,6 +182,7 @@ export function PageHero({
                 alt={heroImageAlt}
                 className="w-[400px] xl:w-[480px] h-auto object-contain drop-shadow-2xl animate-car-drive-in transition-transform duration-200 ease-out"
                 style={{ transform: `translateY(${parallaxOffset}px)` }}
+                fetchPriority="high"
               />
             </div>
           )}
