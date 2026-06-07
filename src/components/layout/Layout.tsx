@@ -14,7 +14,7 @@ export function Layout({ children, breadcrumbItems }: LayoutProps) {
   const resolvedBreadcrumbs = breadcrumbItems || createBreadcrumbItemsFromPath(location.pathname);
 
   return (
-    <div className="min-h-screen flex flex-col  overflow-x-hidden">
+    <div className="min-h-screen flex flex-col overflow-x-clip">
       <JsonLd data={createBreadcrumbSchema(resolvedBreadcrumbs)} />
       <Header />
       <main className="flex-1 bg-white dark:bg-white/[0.02] ">

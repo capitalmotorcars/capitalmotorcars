@@ -88,7 +88,8 @@ const blogSlugs = [
   'how-to-lease-a-car-new-jersey-new-york',
   'best-suv-lease-deals-new-jersey',
   'ev-lease-specials-new-jersey',
-  'bmw-lease-specials-new-jersey'
+  'bmw-lease-specials-new-jersey',
+  'best-car-lease-deals-june-2026'
 ];
 
 const App = () => (

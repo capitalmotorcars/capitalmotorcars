@@ -223,7 +223,7 @@
 
   html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
+    overflow-x: clip;
     @apply bg-muted dark:bg-[hsl(0_0%_4%)];
   }
 
@@ -233,7 +233,7 @@
     font-size: 1rem;
     line-height: 1.5;
     font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   h1,
