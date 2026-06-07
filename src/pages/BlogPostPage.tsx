@@ -427,7 +427,7 @@ export default function BlogPostPage() {
 
       <section className="pt-32 pb-20">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex flex-col lg:flex-row items-start gap-12">
+          <div className="flex flex-col lg:flex-row gap-12 relative">
             {/* Main Content */}
             <div className="lg:w-2/3">
               <Button asChild variant="ghost" className="mb-6 -ml-4 text-muted-foreground hover:bg-black/5 dark:hover:bg-white/5">
@@ -508,42 +508,41 @@ export default function BlogPostPage() {
             </div>
 
             {/* Sidebar */}
-            <aside className="lg:w-1/3 space-y-12">
-              {/* Recent Posts Sidebar Section */}
-              <div className="sticky top-32 space-y-8">
-                <div className="p-8 rounded-[2rem] border border-accent/10 bg-accent/[0.02] shadow-sm">
-                  <h2 className="text-2xl font-black text-foreground tracking-tight mb-6">
-                    Recent Stories
-                  </h2>
-                  <div className="space-y-6">
-                    {recentPosts.map((rPost) => (
-                      <Link
-                        key={rPost.id}
-                        to={`/${rPost.slug}`}
-                        className="group block space-y-2"
-                      >
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-accent/70">
-                          {formatDate(rPost.published_at)}
-                        </span>
-                        <h3 className="text-[17px] font-bold text-foreground leading-snug group-hover:text-accent transition-colors">
-                          {rPost.title}
-                        </h3>
-                        <div className="h-px w-full bg-accent/5 mt-4" />
-                      </Link>
-                    ))}
-                  </div>
-                  <Button asChild variant="link" className="mt-6 p-0 text-accent font-bold hover:no-underline flex items-center gap-2">
-                    <Link to="/blog">
-                      View all posts
-                      <ChevronRight className="w-4 h-4" />
+            <aside className="lg:w-1/3 space-y-8">
+              {/* Recent Posts — scrolls normally */}
+              <div className="p-8 rounded-[2rem] border border-accent/10 bg-accent/[0.02] shadow-sm">
+                <h2 className="text-2xl font-black text-foreground tracking-tight mb-6">
+                  Recent Stories
+                </h2>
+                <div className="space-y-6">
+                  {recentPosts.slice(0, 4).map((rPost) => (
+                    <Link
+                      key={rPost.id}
+                      to={`/${rPost.slug}`}
+                      className="group block space-y-2"
+                    >
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-accent/70">
+                        {formatDate(rPost.published_at)}
+                      </span>
+                      <h3 className="text-[17px] font-bold text-foreground leading-snug group-hover:text-accent transition-colors">
+                        {rPost.title}
+                      </h3>
+                      <div className="h-px w-full bg-accent/5 mt-4" />
                     </Link>
-                  </Button>
+                  ))}
                 </div>
+                <Button asChild variant="link" className="mt-6 p-0 text-accent font-bold hover:no-underline flex items-center gap-2">
+                  <Link to="/blog">
+                    View all posts
+                    <ChevronRight className="w-4 h-4" />
+                  </Link>
+                </Button>
+              </div>
 
-                {/* Schedule a Call / CTA Sidebar Section */}
-                <div className="relative group overflow-hidden p-1 rounded-[2.5rem] bg-gradient-to-br from-accent via-accent to-blue-600 shadow-2xl shadow-accent/30">
+              {/* Schedule a Call — sticky so it stays visible while scrolling */}
+              <div className="sticky top-28">
+                <div className="relative overflow-hidden p-1 rounded-[2.5rem] bg-gradient-to-br from-accent via-accent to-blue-600 shadow-2xl shadow-accent/30">
                   <div className="relative p-8 rounded-[2.3rem] bg-accent/10 backdrop-blur-sm border border-white/20">
-                    {/* Decorative Elements */}
                     <div className="absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-3xl" />
                     <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-blue-400/20 rounded-full blur-3xl" />
 
@@ -551,23 +550,23 @@ export default function BlogPostPage() {
                       <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-xl">
                         <Phone className="w-7 h-7 text-accent animate-pulse" />
                       </div>
-                      
+
                       <h2 className="text-3xl font-black text-white tracking-tight mb-4 leading-tight">
                         Ready for Your <br />
                         <span className="text-white/70">Next Upgrade?</span>
                       </h2>
-                      
+
                       <p className="text-white/90 text-[15px] leading-relaxed mb-8 font-medium">
-                        Get a custom quote in minutes. We handle the negotiation so you get the best lease deals in NJ & NY.
+                        Get a custom quote in minutes. We handle the negotiation so you get the best lease deals in NJ &amp; NY.
                       </p>
-                      
+
                       <Button asChild className="w-full bg-white text-accent hover:bg-white/95 font-black text-lg py-8 rounded-2xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] transition-all hover:scale-[1.03] active:scale-[0.97] group">
                         <Link to="/contact" className="flex items-center justify-center gap-3">
                           Schedule a Call
                           <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                         </Link>
                       </Button>
-                      
+
                       <div className="mt-6 flex items-center justify-center gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
                         <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">
@@ -579,6 +578,7 @@ export default function BlogPostPage() {
                 </div>
               </div>
             </aside>
+
           </div>
         </div>
       </section>

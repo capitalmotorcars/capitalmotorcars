@@ -11,6 +11,7 @@ export interface BlogPost {
     seo_keywords?: string;
     display_order: number;
     is_active: boolean;
+    is_featured?: boolean;
     published_at?: string | null;
     created_at: string;
     updated_at: string;
@@ -27,6 +28,7 @@ export interface BlogPostFormData {
     seo_description?: string;
     seo_keywords?: string;
     is_active?: boolean;
+    is_featured?: boolean;
     published_at?: string | null;
 }
 

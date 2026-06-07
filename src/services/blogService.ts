@@ -15,7 +15,15 @@ function normalizeKeywords(input?: string) {
  * Get all active blog posts (public)
  */
 export async function getActiveBlogPosts(): Promise<ApiResponse<BlogPost[]>> {
-    const fallbackData = MOCK_BLOGS.filter(p => p.is_active);
+    const fallbackData = MOCK_BLOGS
+        .filter(p => p.is_active)
+        .sort((a, b) => {
+            // Featured posts first, then newest first
+            if ((b.is_featured ? 1 : 0) !== (a.is_featured ? 1 : 0)) {
+                return (b.is_featured ? 1 : 0) - (a.is_featured ? 1 : 0);
+            }
+            return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+        });
     
     if (!isSupabaseConfigured) {
         return { success: true, data: fallbackData };
@@ -28,7 +36,8 @@ export async function getActiveBlogPosts(): Promise<ApiResponse<BlogPost[]>> {
             .select('*')
             .eq('is_active', true)
             .or(`published_at.is.null,published_at.lte.${nowIso}`)
-            .order('display_order', { ascending: true });
+            .order('is_featured', { ascending: false, nullsFirst: false })
+            .order('created_at', { ascending: false });
 
         if (error) {
             console.error('Supabase error:', error);
@@ -54,7 +63,8 @@ export async function getAllBlogPosts(): Promise<ApiResponse<BlogPost[]>> {
         const { data, error } = await supabase
             .from('blog_posts')
             .select('*')
-            .order('display_order', { ascending: true });
+            .order('is_featured', { ascending: false, nullsFirst: false })
+            .order('created_at', { ascending: false });
 
         if (error) {
             return { success: false, error: error.message };

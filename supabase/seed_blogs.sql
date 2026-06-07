@@ -79,7 +79,7 @@ The traditional dealership experience is designed to make you tired so you will 
   1,
   true,
   '2026-04-01T10:00:00Z',
-  '2026-03-25T10:00:00Z',
+  '2026-03-30T10:00:00Z',
   '2026-04-01T10:00:00Z'
 ),
 (
@@ -140,9 +140,9 @@ The dealership model is built around retail pressure. The broker model is built 
   'auto broker New Jersey reviews, car leasing broker vs dealership NJ, fleet pricing car lease NJ, how do auto brokers work NJ',
   2,
   true,
-  '2026-04-10T10:00:00Z',
-  '2026-04-05T10:00:00Z',
-  '2026-04-10T10:00:00Z'
+  '2026-04-04T10:00:00Z',
+  '2026-04-02T10:00:00Z',
+  '2026-04-04T10:00:00Z'
 ),
 (
   'Can You Lease a Car with Bad Credit in NJ? (Yes, Here is Exactly How)',
@@ -198,9 +198,9 @@ Do not let one dealership tell you the answer is no. The lender, the vehicle, an
   'lease car with 580 credit score NJ, subprime auto lease New Jersey 2026, FICO auto score lease approval NJ, no credit check car lease NJ, bad credit car lease Newark NJ',
   3,
   true,
-  '2026-04-18T10:00:00Z',
-  '2026-04-14T10:00:00Z',
-  '2026-04-18T10:00:00Z'
+  '2026-04-07T10:00:00Z',
+  '2026-04-05T10:00:00Z',
+  '2026-04-07T10:00:00Z'
 ),
 (
   'How to Lease a Car in NJ/NY: A Step-by-Step Guide for 2026',
@@ -254,9 +254,9 @@ Leasing a car in NJ or NY does not have to be a stressful, day-long ordeal. By u
   'how to lease a car NJ 2026, car lease process New York, auto lease broker NJ, money factor calculation lease, zero down lease deals NJ',
   20,
   true,
-  '2026-06-07T10:00:00Z',
-  '2026-06-05T10:00:00Z',
-  '2026-06-07T10:00:00Z'
+  '2026-05-28T10:00:00Z',
+  '2026-05-26T10:00:00Z',
+  '2026-05-28T10:00:00Z'
 ),
 (
   'Best SUV Lease Deals for Families in NJ (2026 Comparison)',
@@ -312,9 +312,9 @@ Browse our current family SUV specials today and let Capital Motor Cars deliver 
   'best SUV lease deals NJ 2026, family SUV lease specials New Jersey, BMW X5 lease NJ, Mercedes GLE lease specials, EV SUV tax exemption NJ',
   21,
   true,
-  '2026-06-07T10:00:00Z',
-  '2026-06-05T10:00:00Z',
-  '2026-06-07T10:00:00Z'
+  '2026-05-31T10:00:00Z',
+  '2026-05-29T10:00:00Z',
+  '2026-05-31T10:00:00Z'
 ),
 (
   'The Ultimate Guide to EV Leasing in NJ (2026 Tax Rules & Savings)',
@@ -354,9 +354,9 @@ Browse our current EV lease specials today and calculate your family''s savings.
   'EV lease specials NJ, NJ EV lease tax credit 2026, electric car leasing New Jersey, zero sales tax EV NJ, Tesla lease deals NJ',
   22,
   true,
-  '2026-06-07T10:00:00Z',
-  '2026-06-05T10:00:00Z',
-  '2026-06-07T10:00:00Z'
+  '2026-06-03T10:00:00Z',
+  '2026-06-01T10:00:00Z',
+  '2026-06-03T10:00:00Z'
 ),
 (
   'BMW Lease Specials NJ: Sourcing Fleet Pricing & Loyalty Credits',
@@ -396,9 +396,9 @@ Browse our current BMW lease specials and experience the simpler, modern way to 
   'BMW lease deals NJ, BMW lease specials NJ, BMW X5 lease New Jersey, BMW loyalty credit lease, auto broker BMW NJ',
   23,
   true,
-  '2026-06-07T10:00:00Z',
-  '2026-06-05T10:00:00Z',
-  '2026-06-07T10:00:00Z'
+  '2026-06-06T10:00:00Z',
+  '2026-06-04T10:00:00Z',
+  '2026-06-06T10:00:00Z'
 )
 ON CONFLICT (slug) DO UPDATE SET
   title = EXCLUDED.title,

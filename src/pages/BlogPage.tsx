@@ -23,6 +23,10 @@ export default function BlogPage() {
         loadPosts();
     }, []);
 
+    // Explicit featured post as hero; all others in grid (already sorted newest-first by service)
+    const featuredPost = posts.find(p => p.is_featured) ?? posts[0];
+    const gridPosts = posts.filter(p => p !== featuredPost);
+
     return (
         <Layout>
             <SEO
@@ -55,16 +59,18 @@ export default function BlogPage() {
                         <div className="mt-10 text-muted-foreground">No posts available yet.</div>
                     ) : (
                         <div className="mt-10 space-y-12 md:space-y-16">
-                            {/* Featured Post */}
-                            <div className="relative group">
-                                <BlogCard post={posts[0]} className="!bg-transparent !border-none !shadow-none p-0 overflow-visible" isFeatured />
-                            </div>
+                            {/* Featured Post Hero */}
+                            {featuredPost && (
+                                <div className="relative group">
+                                    <BlogCard post={featuredPost} className="!bg-transparent !border-none !shadow-none p-0 overflow-visible" isFeatured />
+                                </div>
+                            )}
 
                             <div className="h-px w-full bg-border/40" />
 
-                            {/* Remaining Posts Grid */}
+                            {/* Remaining Posts Grid — sorted newest first */}
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                {posts.slice(1).map((post) => (
+                                {gridPosts.map((post) => (
                                     <BlogCard key={post.id} post={post} />
                                 ))}
                             </div>

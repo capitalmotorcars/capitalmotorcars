@@ -86,7 +86,7 @@ The traditional dealership experience is designed to make you tired so you will 
     display_order: 1,
     is_active: true,
     published_at: '2026-04-01T10:00:00Z',
-    created_at: '2026-03-25T10:00:00Z',
+    created_at: '2026-03-30T10:00:00Z',
     updated_at: '2026-04-01T10:00:00Z',
   },
   {
@@ -152,9 +152,9 @@ The dealership model is built around retail pressure. The broker model is built 
       'auto broker New Jersey reviews, car leasing broker vs dealership NJ, fleet pricing car lease NJ, how do auto brokers work NJ',
     display_order: 2,
     is_active: true,
-    published_at: '2026-04-10T10:00:00Z',
-    created_at: '2026-04-05T10:00:00Z',
-    updated_at: '2026-04-10T10:00:00Z',
+    published_at: '2026-04-04T10:00:00Z',
+    created_at: '2026-04-02T10:00:00Z',
+    updated_at: '2026-04-04T10:00:00Z',
   },
   {
     id: '33333333-3333-3333-3333-333333333333',
@@ -215,9 +215,9 @@ Do not let one dealership tell you the answer is no. The lender, the vehicle, an
       'lease car with 580 credit score NJ, subprime auto lease New Jersey 2026, FICO auto score lease approval NJ, no credit check car lease NJ, bad credit car lease Newark NJ',
     display_order: 3,
     is_active: true,
-    published_at: '2026-04-18T10:00:00Z',
-    created_at: '2026-04-14T10:00:00Z',
-    updated_at: '2026-04-18T10:00:00Z',
+    published_at: '2026-04-07T10:00:00Z',
+    created_at: '2026-04-05T10:00:00Z',
+    updated_at: '2026-04-07T10:00:00Z',
   },
   {
     id: '44444444-4444-4444-4444-444444444444',
@@ -282,9 +282,9 @@ Browse our actual zero down specials and stop falling for the dealership down pa
     seo_keywords: 'sign and drive car lease NJ 2026, zero down lease specials New Jersey, zero down luxury lease NJ, no money down car lease NJ, true sign and drive vs zero down NJ',
     display_order: 4,
     is_active: true,
-    published_at: '2026-05-04T10:00:00Z',
-    created_at: '2026-05-02T10:00:00Z',
-    updated_at: '2026-05-04T10:00:00Z',
+    published_at: '2026-04-10T10:00:00Z',
+    created_at: '2026-04-08T10:00:00Z',
+    updated_at: '2026-04-10T10:00:00Z',
   },
   {
     id: '55555555-5555-5555-5555-555555555555',
@@ -337,9 +337,9 @@ Browse our Luxury Portfolio and let us precisely structure your next upgrade.`,
     seo_keywords: 'BMW lease deals NJ 2026, Mercedes lease specials New Jersey, Porsche Taycan lease NJ, luxury SUV lease New Jersey, business car lease NJ LLC, Section 179 car lease NJ 2026',
     display_order: 5,
     is_active: true,
-    published_at: '2026-05-11T10:00:00Z',
-    created_at: '2026-05-08T10:00:00Z',
-    updated_at: '2026-05-11T10:00:00Z',
+    published_at: '2026-04-13T10:00:00Z',
+    created_at: '2026-04-11T10:00:00Z',
+    updated_at: '2026-04-13T10:00:00Z',
   },
   {
     id: '66666666-6666-6666-6666-666666666666',
@@ -432,9 +432,9 @@ Contact Capital Motor Cars today to consult with our commercial fleet division a
       'lease a car under business name, how to lease a car through business LLC, business auto lease tax write off, LLC car leasing requirements NJ, Section 179 vehicle lease',
     display_order: 7,
     is_active: true,
-    published_at: '2026-05-24T10:00:00Z',
-    created_at: '2026-05-22T10:00:00Z',
-    updated_at: '2026-05-24T10:00:00Z',
+    published_at: '2026-04-16T10:00:00Z',
+    created_at: '2026-04-14T10:00:00Z',
+    updated_at: '2026-04-16T10:00:00Z',
   },
   {
     id: '77777777-7777-7777-7777-777777777777',
@@ -497,9 +497,9 @@ Contact our lease-end advisory team today to plan a smooth transition.`,
     seo_keywords: 'car lease return process NJ, lease end options New Jersey, avoid lease turn in fees NJ, excess wear and tear car lease, car lease disposition fee NJ',
     display_order: 6,
     is_active: true,
-    published_at: '2026-05-18T10:00:00Z',
-    created_at: '2026-05-16T10:00:00Z',
-    updated_at: '2026-05-18T10:00:00Z',
+    published_at: '2026-04-19T10:00:00Z',
+    created_at: '2026-04-17T10:00:00Z',
+    updated_at: '2026-04-19T10:00:00Z',
   },
   {
     id: '11111111-1111-1111-1111-222222222222',
@@ -539,9 +539,9 @@ Consult with your accountant to review your specific situation and structure you
     seo_keywords: 'business car lease tax write off, write off leased vehicle LLC, corporate auto lease tax deduction, actual expense method vs standard mileage lease',
     display_order: 8,
     is_active: true,
-    published_at: '2026-05-25T10:00:00Z',
-    created_at: '2026-05-23T10:00:00Z',
-    updated_at: '2026-05-25T10:00:00Z',
+    published_at: '2026-04-22T10:00:00Z',
+    created_at: '2026-04-20T10:00:00Z',
+    updated_at: '2026-04-22T10:00:00Z',
   },
   {
     id: '11111111-1111-1111-1111-333333333333',
@@ -576,9 +576,9 @@ Leasing a new Volvo S60 is an excellent way to enjoy the car while avoiding out-
     seo_keywords: 'Volvo S60 reliability, Volvo S60 years to avoid, S60 maintenance cost, common Volvo S60 problems, luxury sedan reliability',
     display_order: 9,
     is_active: true,
-    published_at: '2026-05-25T10:00:00Z',
-    created_at: '2026-05-23T10:00:00Z',
-    updated_at: '2026-05-25T10:00:00Z',
+    published_at: '2026-04-25T10:00:00Z',
+    created_at: '2026-04-23T10:00:00Z',
+    updated_at: '2026-04-25T10:00:00Z',
   },
   {
     id: '11111111-1111-1111-1111-444444444444',
@@ -612,9 +612,9 @@ To compare lease deals accurately, always ask the leasing agent for a comprehens
     seo_keywords: 'sales tax on leased car, calculate car lease tax NJ, upfront sales tax lease, EV tax exemption New Jersey, car leasing tax explanation',
     display_order: 10,
     is_active: true,
-    published_at: '2026-05-25T10:00:00Z',
-    created_at: '2026-05-23T10:00:00Z',
-    updated_at: '2026-05-25T10:00:00Z',
+    published_at: '2026-04-28T10:00:00Z',
+    created_at: '2026-04-26T10:00:00Z',
+    updated_at: '2026-04-28T10:00:00Z',
   },
   {
     id: '11111111-1111-1111-1111-555555555555',
@@ -650,9 +650,9 @@ If you want to skip the showroom negotiations entirely, using an auto broker is 
     seo_keywords: 'how to negotiate a car lease, negotiate capitalized cost lease, convert money factor to interest rate, avoid dealer add ons car lease',
     display_order: 11,
     is_active: true,
-    published_at: '2026-05-25T10:00:00Z',
-    created_at: '2026-05-23T10:00:00Z',
-    updated_at: '2026-05-25T10:00:00Z',
+    published_at: '2026-05-01T10:00:00Z',
+    created_at: '2026-04-29T10:00:00Z',
+    updated_at: '2026-05-01T10:00:00Z',
   },
   {
     id: '11111111-1111-1111-1111-666666666666',
@@ -694,9 +694,9 @@ However, when you lease, the bank receives the credit and can pass it directly t
     seo_keywords: 'compare gas vs hybrid vs EV, hybrid car benefits, electric vehicle leasing credit, pros and cons of electric cars',
     display_order: 12,
     is_active: true,
-    published_at: '2026-05-25T10:00:00Z',
-    created_at: '2026-05-23T10:00:00Z',
-    updated_at: '2026-05-25T10:00:00Z',
+    published_at: '2026-05-04T10:00:00Z',
+    created_at: '2026-05-02T10:00:00Z',
+    updated_at: '2026-05-04T10:00:00Z',
   },
   {
     id: '11111111-1111-1111-1111-777777777777',
@@ -730,9 +730,9 @@ If you are looking for a vehicle with exceptionally low ownership costs and prov
     seo_keywords: 'Toyota Prius reliability, Prius hybrid battery lifespan, e CVT transmission durability, Prius brake pad wear, low maintenance cars',
     display_order: 13,
     is_active: true,
-    published_at: '2026-05-25T10:00:00Z',
-    created_at: '2026-05-23T10:00:00Z',
-    updated_at: '2026-05-25T10:00:00Z',
+    published_at: '2026-05-07T10:00:00Z',
+    created_at: '2026-05-05T10:00:00Z',
+    updated_at: '2026-05-07T10:00:00Z',
   },
   {
     id: '11111111-1111-1111-1111-888888888888',
@@ -766,9 +766,9 @@ This versatility makes the hatchback the ultimate daily utility vehicle for city
     seo_keywords: 'best hatchback cars 2026, hatchback vs compact SUV cargo, Civic hatchback review, premium hatchbacks New Jersey, utility cars',
     display_order: 14,
     is_active: true,
-    published_at: '2026-05-25T10:00:00Z',
-    created_at: '2026-05-23T10:00:00Z',
-    updated_at: '2026-05-25T10:00:00Z',
+    published_at: '2026-05-10T10:00:00Z',
+    created_at: '2026-05-08T10:00:00Z',
+    updated_at: '2026-05-10T10:00:00Z',
   },
   {
     id: '11111111-1111-1111-1111-999999999999',
@@ -803,9 +803,9 @@ With its excellent balance of safety, utility, and warranty backing, the Kia Sel
     seo_keywords: 'Kia Seltos reliability review, Seltos 2.0L vs 1.6T engine, Kia 10 year warranty, compact crossover safety ratings, Seltos lease value',
     display_order: 15,
     is_active: true,
-    published_at: '2026-05-25T10:00:00Z',
-    created_at: '2026-05-23T10:00:00Z',
-    updated_at: '2026-05-25T10:00:00Z',
+    published_at: '2026-05-13T10:00:00Z',
+    created_at: '2026-05-11T10:00:00Z',
+    updated_at: '2026-05-13T10:00:00Z',
   },
   {
     id: '11111111-1111-1111-1111-aaaaaaaaaaaa',
@@ -838,9 +838,9 @@ If you love the style and performance of the Audi A3 but want to avoid long-term
     seo_keywords: 'Audi A3 reliability, Audi A3 maintenance cost, 2.0T engine carbon buildup, DSG transmission service, Audi A3 lease specials',
     display_order: 16,
     is_active: true,
-    published_at: '2026-05-25T10:00:00Z',
-    created_at: '2026-05-23T10:00:00Z',
-    updated_at: '2026-05-25T10:00:00Z',
+    published_at: '2026-05-16T10:00:00Z',
+    created_at: '2026-05-14T10:00:00Z',
+    updated_at: '2026-05-16T10:00:00Z',
   },
   {
     id: '11111111-1111-1111-1111-bbbbbbbbbbbb',
@@ -876,9 +876,9 @@ By choosing a zero down lease structure, you protect your capital and let the in
     seo_keywords: 'zero down lease meaning, sign and drive lease explained, upfront lease fees, total loss car lease down payment risk',
     display_order: 17,
     is_active: true,
-    published_at: '2026-05-25T10:00:00Z',
-    created_at: '2026-05-23T10:00:00Z',
-    updated_at: '2026-05-25T10:00:00Z',
+    published_at: '2026-05-19T10:00:00Z',
+    created_at: '2026-05-17T10:00:00Z',
+    updated_at: '2026-05-19T10:00:00Z',
   },
   {
     id: '11111111-1111-1111-1111-cccccccccccc',
@@ -911,9 +911,9 @@ Evaluate your budget and driving requirements, and choose a highly rated, fuel-e
     seo_keywords: 'best car for college student, safe student cars, cheap maintenance cars, lease vs buy used student car',
     display_order: 18,
     is_active: true,
-    published_at: '2026-05-25T10:00:00Z',
-    created_at: '2026-05-23T10:00:00Z',
-    updated_at: '2026-05-25T10:00:00Z',
+    published_at: '2026-05-22T10:00:00Z',
+    created_at: '2026-05-20T10:00:00Z',
+    updated_at: '2026-05-22T10:00:00Z',
   },
   {
     id: '11111111-1111-1111-1111-dddddddddddd',
@@ -1008,9 +1008,9 @@ Ready to upgrade? Browse our latest zero-down lease specials and let the Capital
       'how to lease a car NJ 2026, car lease process New York, auto lease broker NJ, money factor calculation lease, zero down lease deals NJ',
     display_order: 20,
     is_active: true,
-    published_at: '2026-06-07T10:00:00Z',
-    created_at: '2026-06-05T10:00:00Z',
-    updated_at: '2026-06-07T10:00:00Z',
+    published_at: '2026-05-28T10:00:00Z',
+    created_at: '2026-05-26T10:00:00Z',
+    updated_at: '2026-05-28T10:00:00Z',
   },
   {
     id: '11111111-1111-1111-1111-ffffffffffff',
@@ -1071,9 +1071,9 @@ Browse our current family SUV specials today and let Capital Motor Cars deliver 
       'best SUV lease deals NJ 2026, family SUV lease specials New Jersey, BMW X5 lease NJ, Mercedes GLE lease specials, EV SUV tax exemption NJ',
     display_order: 21,
     is_active: true,
-    published_at: '2026-06-07T10:00:00Z',
-    created_at: '2026-06-05T10:00:00Z',
-    updated_at: '2026-06-07T10:00:00Z',
+    published_at: '2026-05-31T10:00:00Z',
+    created_at: '2026-05-29T10:00:00Z',
+    updated_at: '2026-05-31T10:00:00Z',
   },
   {
     id: '11111111-1111-1111-1111-e11111111111',
@@ -1118,9 +1118,9 @@ Browse our current EV lease specials today and calculate your family's savings.`
       'EV lease specials NJ, NJ EV lease tax credit 2026, electric car leasing New Jersey, zero sales tax EV NJ, Tesla lease deals NJ',
     display_order: 22,
     is_active: true,
-    published_at: '2026-06-07T10:00:00Z',
-    created_at: '2026-06-05T10:00:00Z',
-    updated_at: '2026-06-07T10:00:00Z',
+    published_at: '2026-06-03T10:00:00Z',
+    created_at: '2026-06-01T10:00:00Z',
+    updated_at: '2026-06-03T10:00:00Z',
   },
   {
     id: '11111111-1111-1111-1111-f11111111111',
@@ -1165,8 +1165,180 @@ Browse our current BMW lease specials and experience the simpler, modern way to 
       'BMW lease deals NJ, BMW lease specials NJ, BMW X5 lease New Jersey, BMW loyalty credit lease, auto broker BMW NJ',
     display_order: 23,
     is_active: true,
+    published_at: '2026-06-06T10:00:00Z',
+    created_at: '2026-06-04T10:00:00Z',
+    updated_at: '2026-06-06T10:00:00Z',
+  },
+  {
+    id: '11111111-1111-1111-1111-d11111111111',
+    title: "Best Car Lease Deals for June 2026: The Northeast's Top Models Right Now",
+    slug: 'best-car-lease-deals-june-2026',
+    excerpt:
+      'June is the single best month to lock in a car lease in New Jersey and New York. Manufacturer Q2 targets, regional factory cash, and dealer volume pressure all converge to create deals that do not exist any other time of year. Here are the 15 vehicles dominating the Northeast lease market right now.',
+    content: `There is a reason experienced lessees in New Jersey and New York circle June on their calendars every single year. June is the last month of the second quarter, which means every manufacturer and every dealership in the Tri-State area is under enormous pressure to hit their Q2 delivery quotas. That pressure translates directly into better deals for you.
+
+When a manufacturer needs to move another 5,000 units before June 30, they do not lower the sticker price. Instead, they inject money into the lease program. They increase the residual value on specific models, which reduces the depreciation you pay. They lower the money factor, which cuts the interest cost built into your monthly payment. And they release regional lease cash that applies only to customers in states like New Jersey and New York.
+
+At Capital Motor Cars, we monitor these programs daily. This guide breaks down the 15 vehicles currently dominating the Northeast lease market and explains exactly why each one represents a compelling opportunity in June 2026.
+
+### Why June 2026 Is a Once-a-Year Opportunity
+
+Before we get into the vehicles, let us explain the mechanics of what makes this month special.
+
+Every quarter, manufacturers set sales targets for their dealer networks. When March 31 approaches, or June 30, or September 30, any dealer who is behind on their targets becomes highly motivated to move inventory. They will negotiate harder, pass along manufacturer-funded incentives, and sometimes waive fees they would never touch in February.
+
+In June specifically, you also have the benefit of the summer selling season just beginning. New model-year inventory for 2027 vehicles starts arriving in August and September. Dealers want to reduce their current-year stock before those new arrivals take up floor space and lot space. That creates additional pressure that benefits you as a shopper.
+
+For the Northeast in particular, the regional advertising associations for most major brands publish specific lease support that applies only to New Jersey, New York, and Connecticut residents. These regional deals are often significantly more aggressive than what is advertised nationally.
+
+The window is real, and it closes on June 30. Here is what you should be looking at.
+
+### Category 1: The Everyday Family Crossovers
+
+These are the vehicles that dominate the roads of Bergen County, Morris County, Monmouth County, and Long Island. Their combination of reliability, practicality, and manufacturer-supported lease programs makes them the most popular choices in the Northeast.
+
+#### 1. Toyota RAV4
+The RAV4 has been the best-selling SUV in America for years, and its lease program reflects that demand. Because Toyota Financial Services wants to maintain loyalty in the highly competitive compact SUV segment, they consistently support the RAV4 with competitive residual settings. The model's genuine long-term reliability means the banks are confident projecting a high residual, which directly reduces what you pay each month.
+
+The RAV4 is also an excellent choice if you live in a suburban New Jersey town with variable winter weather. Its available AWD system and ground clearance handle snowy conditions on routes like Route 46 and Route 9 without any drama whatsoever. For families in towns like Parsippany, Bridgewater, and Cherry Hill, the RAV4 is a practical, stress-free lease.
+
+#### 2. Honda CR-V
+Honda's loyalty and conquest programs are among the most generous in the industry. If you currently own or lease a vehicle from a competing brand, Honda frequently offers conquest cash that can be applied to lower your capitalized cost upfront. This means your monthly payment is lower before any negotiation even begins.
+
+The CR-V's interior is one of the most practical in its class. The rear cargo area is genuinely cavernous, and the back seat slides forward and reclines, making it more versatile than anything at a similar price point. For families in Edison, Woodbridge, or Nassau County who need a vehicle that handles weekend Costco runs and school pickups with equal ease, the CR-V belongs on your shortlist.
+
+#### 3. Kia Sportage
+The Kia Sportage received a significant technology refresh for 2026, and that update has made it one of the most talked-about vehicles in the lease market right now. The standard panoramic curved display is genuinely impressive and puts many luxury vehicles to shame. Kia has been actively running regional incentive programs in the Northeast to support the Sportage's new model launch.
+
+The Sportage also benefits from Kia's class-leading 10-year, 100,000-mile powertrain warranty, which provides peace of mind throughout the entire lease term and beyond. For shoppers who want a modern, technology-forward interior without a luxury price tag, the Sportage is hard to beat in June.
+
+#### 4. Hyundai Tucson
+The Hyundai Tucson has quietly become one of the best lease values in the compact crossover segment. Hyundai Motor Finance runs aggressive regional programs in New Jersey and New York, and the Tucson's competitive residual values mean the math works exceptionally well this month.
+
+Dealerships like Paramus Hyundai and Franklin Sussex Hyundai have been posting strong incentive packages throughout June. The Tucson also comes standard with Hyundai's BlueLink connected car system, a driver-awareness monitor, and a comprehensive suite of safety features that would cost thousands extra on a luxury vehicle.
+
+#### 5. Subaru Forester
+For residents of northern New Jersey towns like Vernon, Sparta, or Jefferson, the Subaru Forester is practically a community institution. Subaru's standard Symmetrical All-Wheel Drive on every single trim level is a genuine differentiator, and the Forester's best-in-class maximum cargo volume makes it one of the most practical small SUVs available.
+
+Subaru runs straightforward, transparent lease programs, and the Forester's historically low ownership costs give lenders confidence in its residual value. Open Road Subaru in East Brunswick and other regional dealers consistently carry strong Forester lease offers throughout the summer months.
+
+### Category 2: The Three-Row and Full-Size Haulers
+
+When you need to move seven people or tow a boat to Sandy Hook or Lake Hopatcong, you need something bigger. These vehicles handle everything New Jersey family life can throw at them.
+
+#### 6. Toyota Highlander
+The Toyota Highlander is the benchmark for the three-row family SUV segment in the Northeast. Its combination of Toyota reliability, a smooth and refined hybrid drivetrain option, and genuinely comfortable third-row seating makes it one of the most sought-after vehicles in suburban New Jersey and Long Island.
+
+Toyota Financial Services has been supporting the Highlander with competitive lease terms as the summer selling season begins. The Highlander Hybrid in particular is an outstanding lease candidate because its lower fuel costs are a genuine benefit to commuters in high-traffic corridors like the Turnpike and the Garden State Parkway.
+
+#### 7. Jeep Grand Cherokee L
+Stellantis runs some of the most aggressive regional lease programs in the Northeast market, and the Grand Cherokee L is often the beneficiary. The L variant, which is the extended three-row version, gives Jeep buyers genuine third-row utility without sacrificing the rugged capability and premium interior that makes the Grand Cherokee brand so appealing.
+
+New Jersey's network of Chrysler, Dodge, Jeep dealers in places like Ramsey, Princeton, and Freehold frequently runs deals that include significant manufacturer cash support. The Grand Cherokee L is particularly popular among families upgrading from a two-row compact SUV who need that extra row for growing kids.
+
+#### 8. Chevrolet Tahoe
+The Chevrolet Tahoe is the vehicle of choice for families who genuinely need maximum passenger and cargo capacity. It seats nine, offers a class-leading maximum towing capacity, and the interior is genuinely premium in the higher trim levels. General Motors has been supporting fleet and retail lease programs on full-size SUVs throughout 2026.
+
+Dealerships like Lester Glenn Chevrolet in central New Jersey and Malouf Chevrolet in North Plainfield carry strong Tahoe inventories and regularly work with business clients who need full-size utility for large families or client transport.
+
+### Category 3: The Electric Vehicle Surge
+
+New Jersey continues to be one of the best states in the country for EV leasing. The state's Charge Up New Jersey program offers eligible shoppers point-of-sale rebates on qualifying battery-electric vehicles. Combined with aggressive manufacturer lease cash being applied to EVs across the board, June 2026 is a particularly active month for electric vehicle leasing in the Garden State.
+
+#### 9. Tesla Model Y
+The Tesla Model Y remains the most popular electric vehicle in the Northeast by a significant margin. Its blend of real-world range, a dense Supercharger network across New Jersey and New York, and a sophisticated over-the-air software update system that continuously improves the driving experience makes it the default EV lease for many shoppers.
+
+The Model Y's strong residual values reflect its dominant market position. Tesla also periodically releases end-of-quarter delivery incentives that align perfectly with the June 30 deadline. For shoppers in Hoboken, Jersey City, Montclair, and Brooklyn who have access to home charging, the Model Y is an extremely compelling lease option.
+
+#### 10. Hyundai IONIQ 5
+The IONIQ 5 is one of the most visually striking vehicles on the road in 2026, and its 800-volt electrical architecture enables ultra-fast charging speeds that no comparable vehicle in its class can match. Hyundai has been applying significant manufacturer lease cash to the IONIQ 5 to support its electric vehicle adoption goals, making the payment structure extremely competitive.
+
+The IONIQ 5's V2L (Vehicle-to-Load) capability, which allows you to power external devices directly from the car's battery, is a genuinely practical feature for families who spend time at sporting events, camping trips in the Delaware Water Gap, or outdoor activities at the Jersey Shore.
+
+#### 11. Kia EV9
+The Kia EV9 is the most exciting three-row family SUV in the electric vehicle space, and its arrival in the Northeast market has generated significant consumer interest. The EV9 combines a premium, tech-forward interior with genuine three-row utility and strong range, making it a legitimate alternative to gas-powered luxury three-row SUVs.
+
+New Jersey's Charge Up rebate program can apply to the EV9 for eligible buyers, and Kia has been supporting the model with lease marketing incentives designed to accelerate adoption. For families in affluent suburban communities like Short Hills, Rumson, or Westfield who are ready to make the transition to all-electric family transportation, the EV9 deserves serious consideration.
+
+#### 12. Jeep Wrangler 4xe
+The Jeep Wrangler 4xe is the plug-in hybrid variant of the most iconic off-road vehicle in American automotive history, and its lease program has been notably strong throughout 2026. Stellantis applies substantial manufacturer support to the 4xe because it helps them meet fleet emissions standards while satisfying Jeep's core buyer base who want both capability and efficiency.
+
+The 4xe delivers an all-electric range that covers most daily commutes in New Jersey without burning a drop of gasoline, while the full hybrid powertrain ensures you never experience range anxiety on longer trips to upstate New York or the Poconos. For shoppers who want Jeep capability without the fuel cost, the 4xe is uniquely positioned.
+
+### Category 4: Luxury Vehicles with Exceptional Lease Math
+
+These vehicles represent the pinnacle of the Tri-State leasing market. Thanks to high manufacturer-set residuals, loyalty programs, and regional lease cash, many of these luxury models lease for less than you would expect.
+
+#### 13. BMW X3 and X5
+BMW Financial Services sets some of the highest residual values in the automotive leasing industry. The reasoning is straightforward: BMWs hold their value exceptionally well in the pre-owned market, and lenders know they can recover strong auction prices at lease-end. That confidence in residual value translates directly into lower monthly payments for lessees.
+
+BMW also runs a Loyalty Program that is among the most generous in the luxury segment. If any BMW is currently leased or financed in your household, you qualify for loyalty cash that reduces your capitalized cost. BMW Financial will also frequently waive your remaining payments if you are within a few months of your current lease end, allowing you to upgrade into a 2026 model right now without penalty.
+
+The X3 is the ideal choice for singles and couples in Newark, Hoboken, and the borough neighborhoods of Brooklyn and Queens, where a compact footprint is essential for urban parking. The X5 is the preferred choice for families in Bergen County and Monmouth County who want maximum interior space with the BMW driving character.
+
+#### 14. Mercedes-Benz GLC and GLE
+Mercedes-Benz is actively running its Lease Loyalty Accelerator Program in June 2026, which provides existing Mercedes customers with payment credits when they transition into a new model. The GLC is the compact luxury crossover that dominates the parking lots of every affluent town in New Jersey, from Ridgewood to Princeton to Rumson.
+
+The GLE moves up to mid-size proportions and adds genuine rear-seat space and cargo room while maintaining the unmistakable Mercedes interior quality and the MBUX infotainment system, which remains a benchmark for luxury interface design. Both vehicles carry strong residuals and are regularly supported by regional Mercedes-Benz advertising programs that target Tri-State area shoppers specifically.
+
+#### 15. Lexus RX and Acura MDX
+The Lexus RX and Acura MDX represent the Japanese luxury alternative to European SUVs, and both offer outstanding lease value in the current market.
+
+The Lexus RX Hybrid is particularly compelling because it blends Toyota's world-class hybrid reliability record with a genuinely premium luxury interior and one of the most refined ride qualities in any vehicle at any price point. Lexus residuals are consistently high because the brand's reputation for long-term reliability is unmatched, and lenders know these vehicles hold their value exceptionally well.
+
+The Acura MDX is the three-row option in this segment and represents outstanding value for families who want genuine luxury materials, a premium audio system, and Honda's legendary powertrain reliability packaged into a full three-row configuration. Acura's regional lease programs in the Northeast have been notably aggressive throughout the spring and early summer of 2026.
+
+### The Capital Motor Cars Advantage: Skip the Showroom
+
+You have just read about 15 exceptional vehicles. Here is the most important part of this article.
+
+You do not have to spend a Saturday afternoon driving from dealership to dealership in Paramus or Route 17 trying to get quotes from salespeople who are trained to maximize their gross profit.
+
+At Capital Motor Cars, we operate as a licensed auto broker. We maintain fleet-level relationships with general managers across New Jersey and New York's largest dealer groups, including operations associated with Ray Catena, Paul Miller, Rallye, and dozens of independent stores. We go directly to the fleet inventory manager, who needs to move 100 units a month and cares far more about volume than per-vehicle margin.
+
+Here is what that means for you:
+
+**Access to Buy-Rate:** The money factor that manufacturers publish is the bank's actual cost of funds. Most dealerships mark that rate up to generate finance profit. We access the buy-rate directly, which can save you between $30 and $80 a month on a typical lease without any negotiation required.
+
+**Stacked Incentives:** Loyalty cash, conquest cash, regional advertising cash, and dealer-specific promotions can all apply simultaneously on the right deal. We know which incentives stack and which ones are mutually exclusive, and we structure every deal to maximize the total savings applied.
+
+**Driveway Delivery:** You never need to set foot in a dealership. We handle the credit application, the vehicle sourcing, the paperwork, and the delivery. Your new car arrives at your driveway, your office parking garage, or wherever is most convenient for you.
+
+**The Clock Is Running:** Every June lease incentive expires on June 30, 2026. The programs that make this month special are not available in July. If a vehicle on this list is interesting to you, now is the time to act.
+
+### Frequently Asked Questions
+
+**What makes June 2026 specifically good for leasing in NJ?**
+June marks the end of Q2, which means manufacturers are pushing hard to hit their quarterly delivery targets. This results in enhanced regional lease support, lower money factors, and increased residual values on selected models. These incentives expire on June 30.
+
+**Do I need to go to a dealership to get these deals?**
+Not when you work with Capital Motor Cars. We source from dealer fleets across New Jersey and New York and handle everything from credit approval to driveway delivery. You can complete the entire process from your home or office.
+
+**Which vehicle on this list is the best lease value right now?**
+The answer depends on your lifestyle, mileage needs, and family size. The best approach is to speak directly with our team, who can assess the current incentive programs for each model and match you with the option that delivers the most value for your specific situation.
+
+**How quickly can I get my vehicle delivered?**
+We typically complete most lease transactions within 5 to 7 business days of credit approval, depending on specific vehicle availability and trim preferences.
+
+### Book Your June Deal Before the Month Ends
+
+June 30, 2026 is the hard deadline. After that date, the Q2 incentive programs that make this month exceptional disappear and the standard July programs take their place.
+
+If any of the 15 vehicles in this guide sparked your interest, call the Capital Motor Cars team today. A brief 15-minute phone consultation is all it takes to identify the right vehicle, check current fleet inventory, and outline exactly what your deal will look like before you sign anything.
+
+The best June 2026 lease deal in New Jersey starts with a single phone call.`,
+    cover_image_url:
+      'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070&auto=format&fit=crop',
+    seo_title: 'Best Car Lease Deals June 2026 NJ & NY | Capital Motor Cars',
+    seo_description:
+      'Discover the 15 best car lease deals for June 2026 in New Jersey and New York. From Toyota RAV4 to BMW X5 and Tesla Model Y, explore what is hot in the NJ/NY lease market this month.',
+    seo_keywords:
+      'best car lease deals June 2026, June 2026 lease specials NJ, car lease deals New Jersey June, auto broker lease deals NJ NY, EV lease specials June 2026, luxury car lease NJ June 2026',
+    display_order: 24,
+    is_active: true,
+    is_featured: true,
     published_at: '2026-06-07T10:00:00Z',
-    created_at: '2026-06-05T10:00:00Z',
+    created_at: '2026-06-07T10:00:00Z',
     updated_at: '2026-06-07T10:00:00Z',
   },
 ];
