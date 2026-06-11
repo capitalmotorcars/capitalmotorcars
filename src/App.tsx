@@ -89,7 +89,9 @@ const blogSlugs = [
   'best-suv-lease-deals-new-jersey',
   'ev-lease-specials-new-jersey',
   'bmw-lease-specials-new-jersey',
-  'best-car-lease-deals-june-2026'
+  'best-car-lease-deals-june-2026',
+  'why-nj-brokers-beat-route-22-dealerships',
+  'lease-wear-and-tear-charges-nj'
 ];
 
 const App = () => (
