@@ -34,7 +34,8 @@ export function BlogCard({ post, className, isFeatured }: { post: BlogPost; clas
                         </div>
                     )}
                     <div className={cn("absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent", isFeatured ? "opacity-100" : "opacity-70")} />
-                    
+                </div>
+
                     {isFeatured && (
                         <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-14">
                             <div className="space-y-4 max-w-3xl">
@@ -57,7 +58,6 @@ export function BlogCard({ post, className, isFeatured }: { post: BlogPost; clas
                             </div>
                         </div>
                     )}
-                </div>
 
                 {!isFeatured && (
                     <div className="p-6 md:p-8 space-y-4">
