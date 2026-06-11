@@ -210,16 +210,18 @@ function BlogContent({ content }: { content: string }) {
       continue;
     }
 
-    // Section heading: short line ending with : (e.g. "Leasing is best if you:")
+    // Section heading: ## H2, ### H3, or short line ending with :
     const trimmed = line.trim();
-    const isHeading = (trimmed.endsWith(':') || (trimmed.startsWith('###') && trimmed.length < 80)) && !trimmed.startsWith('http');
-    if (isHeading) {
-      const headingText = trimmed.startsWith('###') ? trimmed.replace('###', '').trim() : trimmed;
-      const id = trimmed.startsWith('###') ? headingText.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-') : undefined;
+    const isH2 = trimmed.startsWith('## ') && trimmed.length < 120;
+    const isH3 = trimmed.startsWith('### ') && trimmed.length < 120;
+    const isColonHeading = trimmed.endsWith(':') && !trimmed.startsWith('http') && trimmed.length < 120;
+    if (isH2 || isH3 || isColonHeading) {
+      const headingText = isH2 ? trimmed.replace(/^##\s+/, '') : isH3 ? trimmed.replace(/^###\s+/, '') : trimmed;
+      const id = (isH2 || isH3) ? headingText.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-') : undefined;
       blocks.push(
-        <h3 key={key++} id={id} className="text-xl font-black text-foreground mt-10 mb-4 first:mt-0 tracking-tight scroll-mt-24">
-          {headingText}
-        </h3>
+        isH2
+          ? <h2 key={key++} id={id} className="text-2xl font-black text-foreground mt-12 mb-4 first:mt-0 tracking-tight scroll-mt-24">{renderInline(headingText)}</h2>
+          : <h3 key={key++} id={id} className="text-xl font-black text-foreground mt-10 mb-4 first:mt-0 tracking-tight scroll-mt-24">{renderInline(headingText)}</h3>
       );
       insertMidCtaIfNeeded();
       i++;
