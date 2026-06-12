@@ -475,8 +475,17 @@ export function CreditApplicationForm({
         const document2Base64 = file2 ? await fileToBase64(file2) : undefined;
         const consultantEmail = getConsultantEmail(data.consultant);
 
-        if (!consultantEmail) {
-          setSubmitError("Please select a valid consultant.");
+        const missingField =
+          !data.firstName?.trim() ? "first name" :
+          !data.lastName?.trim()  ? "last name" :
+          !data.email?.trim()     ? "email" :
+          !data.phone?.trim()     ? "phone number" :
+          !data.consultant?.trim() ? "consultant selection" :
+          !consultantEmail        ? "consultant email" :
+          null;
+
+        if (missingField) {
+          setSubmitError(`Missing required field: ${missingField}. Please go back and complete all steps.`);
           return;
         }
         const payload = {
