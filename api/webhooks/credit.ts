@@ -33,20 +33,21 @@ export default async function handler(req: Req, res: Res) {
       .json({ success: false, error: "Method not allowed" });
   }
 
-  const body = req.body as any;
+  const body = req.body as Record<string, unknown> | undefined | null;
 
-  if (!body?.Email) {
-    return res.status(400).json({
-      success: false,
-      error: "Missing applicant email",
-    });
-  }
+  const requiredFields: Array<[string, string]> = [
+    ["FirstName", "Missing applicant first name"],
+    ["LastName", "Missing applicant last name"],
+    ["Email", "Missing applicant email"],
+    ["Phone", "Missing applicant phone"],
+    ["Consultant", "Missing consultant selection"],
+    ["ConsultantEmail", "Missing consultant email"],
+  ];
 
-  if (!body?.ConsultantEmail) {
-    return res.status(400).json({
-      success: false,
-      error: "Missing consultant email",
-    });
+  for (const [field, message] of requiredFields) {
+    if (!body?.[field]) {
+      return res.status(400).json({ success: false, error: message });
+    }
   }
 
   const upstream =
