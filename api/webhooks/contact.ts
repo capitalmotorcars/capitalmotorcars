@@ -70,8 +70,21 @@ export default async function handler(req: Req, res: Res) {
   await saveSubmissionToDb('contact', req.body);
 
   const upstream = process.env.MAKE_WEBHOOK_CONTACT_URL?.trim() || DEFAULT_UPSTREAM;
+  const koraApiKey = process.env.KORA_API_KEY?.trim();
+
   try {
-    const r = await forwardJsonToWebhook(upstream, req.body);
+    const koraFetch = koraApiKey
+      ? fetch('https://api.tellkora.com/api/cmc/lead', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CMC-Api-Key': koraApiKey,
+          },
+          body: JSON.stringify(req.body),
+        }).catch(() => {})
+      : Promise.resolve();
+
+    const [r] = await Promise.all([forwardJsonToWebhook(upstream, req.body), koraFetch]);
     const text = await r.text();
     const ct = r.headers.get('content-type') ?? 'application/json';
     res.status(r.status);
