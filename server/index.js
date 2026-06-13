@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import rateLimit from 'express-rate-limit';
 import { Resend } from 'resend';
+import { createClient } from '@supabase/supabase-js';
 import { applyApiCors } from '../lib/httpCors.mjs';
 import {
   buildHtml,
@@ -10,6 +11,28 @@ import {
   sanitizeLeadFields,
 } from '../lib/sendEmailSecurity.mjs';
 import { forwardJsonToWebhook } from '../lib/webhookForward.mjs';
+
+// Initialize Supabase Client with service key
+const supabaseUrl = process.env.VITE_SUPABASE_URL;
+const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+// Safe background database saving function
+async function saveSubmissionToDb(type, payload) {
+  try {
+    console.log(`[Database] Attempting to save submission for type: ${type}`);
+    const { data, error } = await supabase
+      .from('form_submissions')
+      .insert([{ type, payload }]);
+    if (error) {
+      console.error(`[Database] Error inserting submission:`, error.message);
+    } else {
+      console.log(`[Database] Successfully saved submission:`, data);
+    }
+  } catch (err) {
+    console.error(`[Database] Uncaught error saving submission:`, err);
+  }
+}
 
 const SUBJECT = '🚗 New Lead: Capital Motor Cars';
 
@@ -69,15 +92,59 @@ async function proxyMakeWebhook(req, res, envKey, fallbackUrl) {
   }
 }
 
-app.post('/api/webhooks/contact', (req, res) =>
-  proxyMakeWebhook(req, res, 'MAKE_WEBHOOK_CONTACT_URL', DEFAULT_MAKE_CONTACT),
-);
-app.post('/api/webhooks/credit', (req, res) =>
-  proxyMakeWebhook(req, res, 'MAKE_WEBHOOK_CREDIT_URL', DEFAULT_MAKE_CREDIT),
-);
-app.post('/api/webhooks/trade-in', (req, res) =>
-  proxyMakeWebhook(req, res, 'MAKE_WEBHOOK_TRADE_IN_URL', DEFAULT_MAKE_TRADE_IN),
-);
+app.post('/api/webhooks/contact', (req, res) => {
+  saveSubmissionToDb('contact', req.body ?? {});
+  return proxyMakeWebhook(req, res, 'MAKE_WEBHOOK_CONTACT_URL', DEFAULT_MAKE_CONTACT);
+});
+
+app.post('/api/webhooks/credit', (req, res) => {
+  saveSubmissionToDb('credit', req.body ?? {});
+  return proxyMakeWebhook(req, res, 'MAKE_WEBHOOK_CREDIT_URL', DEFAULT_MAKE_CREDIT);
+});
+
+app.post('/api/webhooks/trade-in', (req, res) => {
+  saveSubmissionToDb('trade-in', req.body ?? {});
+  return proxyMakeWebhook(req, res, 'MAKE_WEBHOOK_TRADE_IN_URL', DEFAULT_MAKE_TRADE_IN);
+});
+
+app.get('/api/submissions', async (req, res) => {
+  const apiKey = req.headers['x-cmc-api-key'];
+  const expectedKey = process.env.CMC_API_KEY;
+
+  if (!expectedKey || apiKey !== expectedKey) {
+    return res.status(401).json({ success: false, error: 'Unauthorized' });
+  }
+
+  const { type, startDate, endDate } = req.query;
+
+  try {
+    let query = supabase
+      .from('form_submissions')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (type) {
+      query = query.eq('type', type);
+    }
+    if (startDate) {
+      query = query.gte('created_at', startDate);
+    }
+    if (endDate) {
+      query = query.lte('created_at', endDate);
+    }
+
+    const { data, error } = await query;
+
+    if (error) {
+      return res.status(500).json({ success: false, error: error.message });
+    }
+
+    return res.status(200).json({ success: true, data });
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : 'Internal server error';
+    return res.status(500).json({ success: false, error: msg });
+  }
+});
 
 app.post('/api/send-email', async (req, res) => {
   const apiKey = process.env.RESEND_API_KEY;
