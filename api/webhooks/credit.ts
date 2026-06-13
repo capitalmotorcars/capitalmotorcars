@@ -1,9 +1,16 @@
+import { createClient } from '@supabase/supabase-js';
 import { applyApiCors } from "../../lib/httpCors.mjs";
 import { forwardJsonToWebhook } from "../../lib/webhookForward.mjs";
-import { supabase, isSupabaseConfigured } from "../../src/lib/supabase";
+
+declare var process: { env: Record<string, string | undefined> };
 
 const DEFAULT_UPSTREAM =
   "https://hook.eu1.make.com/jmxgdt9co9e5403vopzm8witym4kg5mv";
+
+const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.VITE_SUPABASE_SERVICE_ROLE_KEY || process.env.VITE_SUPABASE_ANON_KEY;
+const supabase = createClient(supabaseUrl || '', supabaseKey || '');
+const isSupabaseConfigured = Boolean(supabaseUrl && supabaseKey);
 
 async function saveSubmissionToDb(type: string, payload: any) {
   if (!isSupabaseConfigured) {
