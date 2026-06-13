@@ -1,8 +1,26 @@
 import { applyApiCors } from "../../lib/httpCors.mjs";
 import { forwardJsonToWebhook } from "../../lib/webhookForward.mjs";
+import { supabase, isSupabaseConfigured } from "../../src/lib/supabase";
 
 const DEFAULT_UPSTREAM =
   "https://hook.eu1.make.com/jmxgdt9co9e5403vopzm8witym4kg5mv";
+
+async function saveSubmissionToDb(type: string, payload: any) {
+  if (!isSupabaseConfigured) {
+    console.warn('[Database] Missing supabase configuration environment variables.');
+    return;
+  }
+  try {
+    const { error } = await supabase.from('form_submissions').insert([{ type, payload }]);
+    if (error) {
+      console.error(`[Database] Error saving submission to Supabase:`, error.message, error.details);
+    } else {
+      console.log(`[Database] Successfully saved submission to Supabase for type: ${type}`);
+    }
+  } catch (err) {
+    console.error(`[Database] Exception saving submission:`, err);
+  }
+}
 
 type Req = {
   method?: string;
@@ -20,8 +38,8 @@ type Res = {
 
 export default async function handler(req: Req, res: Res) {
   applyApiCors(
-    req as Parameters<typeof applyApiCors>[0],
-    res as Parameters<typeof applyApiCors>[1],
+    req as any,
+    res as any,
   );
 
   if (req.method === "OPTIONS") {
@@ -50,13 +68,18 @@ export default async function handler(req: Req, res: Res) {
     }
   }
 
+  // Save to database
+  await saveSubmissionToDb('credit', req.body);
+
   const upstream =
     process.env.MAKE_WEBHOOK_CREDIT_URL?.trim() || DEFAULT_UPSTREAM;
   try {
     const r = await forwardJsonToWebhook(upstream, req.body);
     const text = await r.text();
     const ct = r.headers.get("content-type") ?? "application/json";
-    res.status(r.status).setHeader("Content-Type", ct).send(text);
+    res.status(r.status);
+    res.setHeader("Content-Type", ct);
+    res.send(text);
   } catch {
     res.status(502).json({ success: false, error: "Upstream error" });
   }
