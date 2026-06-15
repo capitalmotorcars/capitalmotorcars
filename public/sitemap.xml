@@ -706,4 +706,15 @@
     <loc>https://www.capitalmotorcars.com/vehicles/wagon</loc>
     <priority>0.85</priority>
   </url>
+
+  <url>
+    <loc>https://www.capitalmotorcars.com/car-leasing-jersey-city-nj</loc>
+    <priority>0.95</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.capitalmotorcars.com/hidden-fees-in-car-leasing-dealership-secrets</loc>
+    <priority>0.85</priority>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>

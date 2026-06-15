@@ -40,6 +40,7 @@ const CarLeasingHobokenNJPage = lazy(() => import("./pages/local/CarLeasingHobok
 const BmwCarLeasePage = lazy(() => import("./pages/local/BmwCarLeasePage"));
 const ChevySuburbanLeasePage = lazy(() => import("./pages/local/ChevySuburbanLeasePage"));
 
+const CarLeasingJerseyCityNJPage = lazy(() => import("./pages/local/CarLeasingJerseyCityNJPage"));
 // Service pages
 const CarLeasingPage = lazy(() => import("./pages/services/CarLeasingPage"));
 const FinancingPage = lazy(() => import("./pages/services/FinancingPage"));
@@ -90,6 +91,7 @@ const blogSlugs = [
   'ev-lease-specials-new-jersey',
   'bmw-lease-specials-new-jersey',
   'best-car-lease-deals-june-2026',
+  'hidden-fees-in-car-leasing-dealership-secrets',
   'why-nj-brokers-beat-route-22-dealerships',
   'lease-wear-and-tear-charges-nj'
 ];
@@ -133,6 +135,7 @@ const App = () => (
                 <Route path="/car-leasing-springfield-nj" element={<CarLeasingSpringfieldNJPage />} />
                 <Route path="/car-leasing-paramus-nj" element={<CarLeasingParamusNJPage />} />
                 <Route path="/car-leasing-hoboken-nj" element={<CarLeasingHobokenNJPage />} />
+                <Route path="/car-leasing-jersey-city-nj" element={<CarLeasingJerseyCityNJPage />} />
 
                 {/* Static Blog Routes */}
                 {blogSlugs.map((slug) => (
