@@ -47,4 +47,5 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 
+Sitemap: https://capitalmotorcars.com/sitemap.xml
 Sitemap: https://www.capitalmotorcars.com/sitemap.xml

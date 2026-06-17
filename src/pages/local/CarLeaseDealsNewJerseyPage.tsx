@@ -14,6 +14,7 @@ import {
   Star,
 } from 'lucide-react';
 import { Layout } from '@/components/layout/Layout';
+import { RelatedServices } from '@/components/services/RelatedServices';
 import { SEO } from '@/components/SEO';
 import { JsonLd, createBreadcrumbSchema, createFaqSchema, createServiceSchema, createWebPageSchema } from '@/components/JsonLd';
 import { Button } from '@/components/ui/button';
@@ -362,6 +363,7 @@ export default function CarLeaseDealsNewJerseyPage() {
           </div>
         </div>
       </section>
+    <RelatedServices />
     </Layout>
   );
 }

@@ -3,6 +3,7 @@ import { useDeals } from '@/hooks/useDeals';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { ArrowRight, Calendar, Car, CreditCard, Star } from 'lucide-react';
+import { JsonLd, createVehicleSchema } from '@/components/JsonLd';
 import { useState } from 'react';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { ContactForm } from '@/components/forms/ContactForm';
@@ -29,6 +30,7 @@ function DealCard({ deal, index, onClaim }: { deal: any; index: number; onClaim:
             transition={{ delay: index * 0.1 }}
             className="group relative h-full flex flex-col rounded-[2.5rem] border-2 border-border/60 dark:border-white/10 bg-muted/5 dark:bg-white/[0.02] overflow-hidden hover:border-accent hover:shadow-[0_0_50px_-12px_rgba(59,130,246,0.3)] transition-all duration-500"
         >
+            <JsonLd data={createVehicleSchema(deal)} />
             <div className="relative h-48 overflow-hidden">
                 <div className="absolute inset-0 bg-accent/20 mix-blend-overlay z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 {deal.image_url ? (

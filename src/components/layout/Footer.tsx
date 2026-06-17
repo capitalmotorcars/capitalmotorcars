@@ -22,6 +22,7 @@ const locations = [
 const footerLinks = {
   services: [
     { href: '/services/car-leasing', label: 'Car Leasing' },
+    { href: '/lease-calculator', label: 'Lease Calculator' },
     { href: '/services/trade-in', label: 'Trade-In' },
     { href: '/services/wear-and-tear', label: 'Wear & Tear Repair' },
     { href: '/services/wheel-repair', label: 'Wheel & Tire Repair' },
@@ -29,6 +30,8 @@ const footerLinks = {
   ],
   company: [
     { href: '/services', label: 'Services' },
+    { href: '/quiz', label: 'Find My Lease' },
+    { href: '/credit-application', label: 'Credit Application' },
     { href: '/blog', label: 'Blog' },
     { href: '/best-lease-deals-new-jersey', label: 'Best NJ Lease Deals' },
     { href: '/auto-broker-vs-dealership-new-jersey', label: 'Broker vs Dealership' },
@@ -37,15 +40,17 @@ const footerLinks = {
     { href: '/contact', label: 'Contact' },
   ],
   locations: [
-    { href: '/car-lease-deals-new-jersey', label: 'Car Lease Deals NJ' },
-    { href: '/auto-leasing-new-jersey', label: 'Auto Leasing NJ' },
-    { href: '/luxury-car-leasing-nj', label: 'Luxury Car Leasing NJ' },
-    { href: '/car-leasing-trenton-nj', label: 'Car Leasing Trenton NJ' },
-    { href: '/car-leasing-edgewater-nj', label: 'Car Leasing Edgewater NJ' },
-    { href: '/car-leasing-marlton-nj', label: 'Car Leasing Marlton NJ' },
-    { href: '/car-leasing-springfield-nj', label: 'Car Leasing Springfield NJ' },
-    { href: '/car-leasing-paramus-nj', label: 'Car Leasing Paramus NJ' },
-    { href: '/car-leasing-hoboken-nj', label: 'Car Leasing Hoboken NJ' },
+    { href: '/car-leasing-new-jersey', label: 'Car Leasing New Jersey' },
+    { href: '/car-leasing-bergen-county-nj', label: 'Bergen County' },
+    { href: '/car-leasing-hudson-county-nj', label: 'Hudson County' },
+    { href: '/car-leasing-essex-county-nj', label: 'Essex County' },
+    { href: '/car-leasing-union-county-nj', label: 'Union County' },
+    { href: '/car-leasing-middlesex-county-nj', label: 'Middlesex County' },
+    { href: '/car-leasing-morris-county-nj', label: 'Morris County' },
+    { href: '/car-leasing-monmouth-county-nj', label: 'Monmouth County' },
+    { href: '/car-leasing-springfield-nj', label: 'Springfield NJ' },
+    { href: '/car-leasing-paramus-nj', label: 'Paramus NJ' },
+    { href: '/car-leasing-hoboken-nj', label: 'Hoboken NJ' },
   ],
   legal: [
     { href: '/privacy-policy', label: 'Privacy Policy' },

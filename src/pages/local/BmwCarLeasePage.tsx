@@ -16,6 +16,7 @@ import {
   Zap,
 } from 'lucide-react';
 import { Layout } from '@/components/layout/Layout';
+import { RelatedServices } from '@/components/services/RelatedServices';
 import { SEO } from '@/components/SEO';
 import { JsonLd, createBreadcrumbSchema, createFaqSchema, createServiceSchema, createWebPageSchema } from '@/components/JsonLd';
 import { Button } from '@/components/ui/button';
@@ -305,6 +306,38 @@ export default function BmwCarLeasePage() {
 
       <SectionDividerCreative variant="diamond" />
 
+      {/* BMW Model Pages */}
+      <section className="py-12 section-bg">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center mb-10">
+            <h2 className="text-2xl md:text-4xl font-extrabold text-heading mb-4 tracking-tight">
+              Explore BMW Models in NJ
+            </h2>
+            <p className="text-section-muted">Dedicated lease guides, current money factors, and FAQ for every BMW model we carry in New Jersey.</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+            {[
+              { name: 'BMW 3 Series', path: '/bmw-3-series-lease-nj', desc: 'The benchmark compact luxury sedan.' },
+              { name: 'BMW 5 Series', path: '/bmw-5-series-lease-nj', desc: 'Executive performance for NJ.' },
+              { name: 'BMW X3', path: '/bmw-x3-lease-nj', desc: 'Most popular BMW SUV lease.' },
+              { name: 'BMW X5', path: '/bmw-x5-lease-nj', desc: 'The pinnacle BMW SUV.' },
+            ].map((model, i) => (
+              <Link
+                key={i}
+                to={model.path}
+                className="group p-6 rounded-[2rem] border-2 border-border dark:border-white/10 bg-card dark:bg-white/[0.02] hover:border-accent/40 transition-all text-center"
+              >
+                <div className="font-bold text-xl text-section mb-2 group-hover:text-accent transition-colors">{model.name}</div>
+                <p className="text-section-muted text-sm mb-4">{model.desc}</p>
+                <div className="inline-flex items-center gap-1 text-accent text-sm font-bold">
+                  View guide <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* The Capital Motor Cars Advantage */}
       <section className="py-20 lg:py-32 section-bg">
         <div className="container mx-auto px-4 lg:px-8">
@@ -435,6 +468,7 @@ export default function BmwCarLeasePage() {
           </div>
         </div>
       </section>
+    <RelatedServices />
     </Layout>
   );
 }
