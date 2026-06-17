@@ -60,14 +60,25 @@ export default async function handler(req: Req, res: Res) {
 
   const body = req.body as Record<string, unknown> | undefined | null;
 
-  const requiredFields: Array<[string, string]> = [
-    ["FirstName", "Missing applicant first name"],
-    ["LastName", "Missing applicant last name"],
-    ["Email", "Missing applicant email"],
-    ["Phone", "Missing applicant phone"],
-    ["Consultant", "Missing consultant selection"],
-    ["ConsultantEmail", "Missing consultant email"],
-  ];
+  const isBusiness = body?.VehicleOrService === "Business Credit Application";
+
+  const requiredFields: Array<[string, string]> = isBusiness
+    ? [
+        ["BusinessName", "Missing business name"],
+        ["Email", "Missing business email"],
+        ["BusinessPhone", "Missing business phone"],
+        ["PersonalGuarantorName", "Missing guarantor name"],
+        ["Consultant", "Missing consultant selection"],
+        ["ConsultantEmail", "Missing consultant email"],
+      ]
+    : [
+        ["FirstName", "Missing applicant first name"],
+        ["LastName", "Missing applicant last name"],
+        ["Email", "Missing applicant email"],
+        ["Phone", "Missing applicant phone"],
+        ["Consultant", "Missing consultant selection"],
+        ["ConsultantEmail", "Missing consultant email"],
+      ];
 
   for (const [field, message] of requiredFields) {
     if (!body?.[field]) {
