@@ -5,6 +5,9 @@ import { SEO } from '@/components/SEO';
 import { JsonLd, createServiceSchema, createFaqSchema } from '@/components/JsonLd';
 import { ServiceHero } from '@/components/services/ServiceHero';
 import { RelatedServices } from '@/components/services/RelatedServices';
+import { TrustStatsBar } from '@/components/shared/TrustStatsBar';
+import { CountyHubs } from '@/components/shared/CountyHubs';
+import { ServiceSEOBlock } from '@/components/services/ServiceSEOBlock';
 import { Button } from '@/components/ui/button';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { motion } from 'framer-motion';
@@ -95,6 +98,8 @@ export default function DetailingPage() {
         primaryAction={{ label: "Book Detail", href: "/contact" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
       />
+
+      <TrustStatsBar />
 
       {/* Why Detail With Us (Benefits Split) */}
       <section className="py-12 md:py-20 w-full overflow-hidden">
@@ -335,6 +340,25 @@ export default function DetailingPage() {
           </div>
         </div>
       </section>
+
+      <ServiceSEOBlock 
+        title="Premium Auto Detailing Without Leaving Home"
+        paragraphs={[
+          "Your time is valuable. Instead of wasting a Saturday morning sitting in a detailing shop waiting room, Capital Motor Cars brings premium detailing services directly to your driveway.",
+          "Our mobile detailing units are fully equipped with power and water. Whether you need a quick interior refresh before a road trip or a full paint correction and ceramic coating, our certified technicians deliver showroom-quality results on your schedule."
+        ]}
+        bullets={[
+          "100% Mobile: We come to your home or office",
+          "Eco-friendly, premium products used",
+          "Specialists in lease-return preparation",
+          "Flexible scheduling"
+        ]}
+        imageSrc="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=2000&auto=format&fit=crop"
+        imageAlt="Mobile auto detailing service"
+        testimonialQuote="They detailed my car right in my driveway while I worked from home. The interior looks better than the day I bought it."
+      />
+
+      <CountyHubs />
 
       <RelatedServices excludeId="detailing" />
     </Layout>

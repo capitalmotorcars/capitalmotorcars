@@ -3,6 +3,9 @@ import { SEO } from '@/components/SEO';
 import { JsonLd, createServiceSchema, createFaqSchema } from '@/components/JsonLd';
 import { ServiceHero } from '@/components/services/ServiceHero';
 import { RelatedServices } from '@/components/services/RelatedServices';
+import { TrustStatsBar } from '@/components/shared/TrustStatsBar';
+import { CountyHubs } from '@/components/shared/CountyHubs';
+import { ServiceSEOBlock } from '@/components/services/ServiceSEOBlock';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { motion } from 'framer-motion';
 import {
@@ -127,6 +130,8 @@ export default function EarlyLeaseExitPage() {
         primaryAction={{ label: 'Find My Exit Option', href: '/contact' }}
         secondaryAction={{ label: 'Call Us Now', href: 'tel:+12015095555', icon: Phone }}
       />
+
+      <TrustStatsBar />
 
       {/* 4 Exit Options */}
       <section className="py-12 md:py-20 w-full overflow-hidden border-t border-border/40">
@@ -274,6 +279,25 @@ export default function EarlyLeaseExitPage() {
           </div>
         </div>
       </section>
+
+      <ServiceSEOBlock 
+        title="The Smart Way to Exit Your Lease Early"
+        paragraphs={[
+          "Life changes, and sometimes you need to get out of your car lease before the term is up. Dealerships often make this process incredibly expensive with massive early termination penalties.",
+          "We analyze your specific situation—whether it's utilizing a lease transfer network, buying out the lease to capture equity, or trading the vehicle in. We find the most mathematically advantageous exit strategy for your specific vehicle and payoff amount."
+        ]}
+        bullets={[
+          "Zero dealership termination penalties",
+          "Comprehensive payoff analysis",
+          "Multiple exit strategies explored",
+          "Seamless transition to your next vehicle"
+        ]}
+        imageSrc="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2000&auto=format&fit=crop"
+        imageAlt="Looking over lease documents"
+        testimonialQuote="I needed a larger car for my growing family but had 14 months left on my sedan lease. Capital got me out completely clean."
+      />
+
+      <CountyHubs />
 
       <RelatedServices excludeId="early-lease-exit" />
     </Layout>

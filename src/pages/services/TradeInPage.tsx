@@ -5,6 +5,9 @@ import { SEO } from '@/components/SEO';
 import { JsonLd, createServiceSchema, createFaqSchema } from '@/components/JsonLd';
 import { ServiceHero } from '@/components/services/ServiceHero';
 import { RelatedServices } from '@/components/services/RelatedServices';
+import { TrustStatsBar } from '@/components/shared/TrustStatsBar';
+import { CountyHubs } from '@/components/shared/CountyHubs';
+import { ServiceSEOBlock } from '@/components/services/ServiceSEOBlock';
 import { Button } from '@/components/ui/button';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { motion } from 'framer-motion';
@@ -94,10 +97,12 @@ export default function TradeInPage() {
         subtitle="Get a competitive offer for your vehicle in minutes. We handle the paperwork and pickup."
         heroImage={tradeInHero}
         primaryAction={{ label: "Get Your Offer", href: "/trade-in-value" }}
-        secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
+        secondaryAction={{ label: 'Call Us Now', href: 'tel:+12015095555', icon: Phone }}
       />
 
-      {/* Why Trade With Us (Benefits Split) */}
+      <TrustStatsBar />
+
+      {/* Why Choose Repairs (Benefits Split) */}
       <section className="py-12 md:py-20 w-full overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex flex-col mb-8 md:mb-16 justify-center items-start md:items-center">
@@ -336,6 +341,25 @@ export default function TradeInPage() {
           </div>
         </div>
       </section>
+
+      <ServiceSEOBlock 
+        title="Maximize Your Trade-In Value in New Jersey"
+        paragraphs={[
+          "When you trade your vehicle at a traditional dealership, you're negotiating against professionals whose primary goal is to minimize what they pay for your car. They often bundle the trade-in value with the new car's selling price to confuse the numbers.",
+          "At Capital Motor Cars, we separate the transactions. We leverage our extensive wholesale network across NJ, NY, and PA to force buyers to compete for your vehicle. This auction-style approach consistently generates higher offers than a single dealership can provide."
+        ]}
+        bullets={[
+          "Instant equity applied to your new lease",
+          "We handle all DMV payoff paperwork",
+          "Safe, remote evaluation without visiting a dealer",
+          "We can buy out your lease even if it isn't over"
+        ]}
+        imageSrc="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2000&auto=format&fit=crop"
+        imageAlt="Professional evaluating a car for trade-in"
+        testimonialQuote="They got me $3,000 more for my Audi than the local dealer offered. Applied it right to my new lease."
+      />
+
+      <CountyHubs />
 
       <RelatedServices excludeId="trade-in" />
     </Layout>

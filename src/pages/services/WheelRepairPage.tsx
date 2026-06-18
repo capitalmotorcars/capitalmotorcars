@@ -5,6 +5,9 @@ import { SEO } from '@/components/SEO';
 import { JsonLd, createServiceSchema, createFaqSchema } from '@/components/JsonLd';
 import { ServiceHero } from '@/components/services/ServiceHero';
 import { RelatedServices } from '@/components/services/RelatedServices';
+import { TrustStatsBar } from '@/components/shared/TrustStatsBar';
+import { CountyHubs } from '@/components/shared/CountyHubs';
+import { ServiceSEOBlock } from '@/components/services/ServiceSEOBlock';
 import { Button } from '@/components/ui/button';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { motion } from 'framer-motion';
@@ -95,6 +98,8 @@ export default function WheelRepairPage() {
         primaryAction={{ label: "Book Repair", href: "/contact" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
       />
+
+      <TrustStatsBar />
 
       {/* Why Restore Wheels (Benefits Split) */}
       <section className="py-12 md:py-20 w-full overflow-hidden">
@@ -335,6 +340,25 @@ export default function WheelRepairPage() {
           </div>
         </div>
       </section>
+
+      <ServiceSEOBlock 
+        title="Expert Wheel Repair Throughout New Jersey"
+        paragraphs={[
+          "Curb rash and bent rims are an unfortunate reality of driving in New Jersey. Replacing a damaged OEM wheel can cost upwards of $1,000 at a dealership. Capital Motor Cars offers a much smarter alternative.",
+          "Our mobile wheel repair specialists come directly to you. We use state-of-the-art CNC machining and color-matching technology to repair curb damage, straighten bends, and completely restore your wheels to factory condition for a fraction of the cost."
+        ]}
+        bullets={[
+          "Mobile service at your home or office",
+          "Color matching for OEM and custom wheels",
+          "Cheaper than dealership replacement",
+          "Crucial for avoiding lease return penalties"
+        ]}
+        imageSrc="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2000&auto=format&fit=crop"
+        imageAlt="Alloy wheel repair"
+        testimonialQuote="Hit a massive pothole on the turnpike. They came to my office and fixed my bent rim in under an hour. Highly recommended!"
+      />
+
+      <CountyHubs />
 
       <RelatedServices excludeId="wheel-repair" />
     </Layout>

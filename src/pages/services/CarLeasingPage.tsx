@@ -5,6 +5,9 @@ import { SEO } from '@/components/SEO';
 import { JsonLd, createFaqSchema, createServiceSchema, createHowToSchema } from '@/components/JsonLd';
 import { ServiceHero } from '@/components/services/ServiceHero';
 import { RelatedServices } from '@/components/services/RelatedServices';
+import { TrustStatsBar } from '@/components/shared/TrustStatsBar';
+import { CountyHubs } from '@/components/shared/CountyHubs';
+import { ServiceSEOBlock } from '@/components/services/ServiceSEOBlock';
 import { Button } from '@/components/ui/button';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { motion } from 'framer-motion';
@@ -114,6 +117,8 @@ export default function CarLeasingPage() {
         primaryAction={{ label: "Start Credit Application", href: "/credit-application" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
       />
+
+      <TrustStatsBar />
 
       {/* Why Lease With Us (Benefits Split) */}
       <section className="py-12 md:py-20 w-full  overflow-hidden">
@@ -353,6 +358,25 @@ export default function CarLeasingPage() {
             </div></div>
         </div>
       </section>
+
+      <ServiceSEOBlock 
+        title="The Auto Broker Advantage in New Jersey"
+        paragraphs={[
+          "When you walk into a dealership, you are negotiating against professional salespeople whose goal is to maximize profit on the limited inventory they have on their lot.",
+          "At Capital Motor Cars, we represent you. We pit multiple dealerships against each other to drive the price down, ensuring you get the true wholesale lease price. We have access to unadvertised 'trunk money', dealer cash, and volume incentives that the general public never sees."
+        ]}
+        bullets={[
+          "Access to every make and model",
+          "We negotiate the selling price and money factor",
+          "Free home delivery across New Jersey",
+          "No pressure to buy dealership add-ons"
+        ]}
+        imageSrc="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2000&auto=format&fit=crop"
+        imageAlt="Auto broker handing over car keys"
+        testimonialQuote="They delivered my new X5 right to my office in Jersey City. I didn't have to step foot in a dealer or argue with a finance manager."
+      />
+
+      <CountyHubs />
 
       <RelatedServices excludeId="car-leasing" />
     </Layout>

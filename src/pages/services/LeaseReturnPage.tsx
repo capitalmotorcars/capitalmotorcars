@@ -4,6 +4,10 @@ import { SEO } from '@/components/SEO';
 import { JsonLd, createServiceSchema, createFaqSchema, createHowToSchema } from '@/components/JsonLd';
 import { ServiceHero } from '@/components/services/ServiceHero';
 import { RelatedServices } from '@/components/services/RelatedServices';
+import { TrustStatsBar } from '@/components/shared/TrustStatsBar';
+import { CountyHubs } from '@/components/shared/CountyHubs';
+import { ServiceSEOBlock } from '@/components/services/ServiceSEOBlock';
+import { Button } from '@/components/ui/button';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { motion } from 'framer-motion';
 import {
@@ -126,6 +130,8 @@ export default function LeaseReturnPage() {
         primaryAction={{ label: 'Start Lease Return Process', href: '/contact' }}
         secondaryAction={{ label: 'Call Us Now', href: 'tel:+12015095555', icon: Phone }}
       />
+
+      <TrustStatsBar />
 
       {/* Why Use Capital for Return */}
       <section className="py-12 md:py-20 w-full overflow-hidden">
@@ -380,6 +386,25 @@ export default function LeaseReturnPage() {
           </div>
         </div>
       </section>
+
+      <ServiceSEOBlock 
+        title="Why Returning Your Lease Through a Broker Is Better"
+        paragraphs={[
+          "When returning a lease to a traditional dealership, you face potential end-of-term fees, disposition costs, and high pressure to lease another vehicle from their limited inventory.",
+          "Capital Motor Cars handles your lease return entirely on your behalf. We assess your vehicle for equity—something many lessees don't realize they have—and we can often buy out your lease directly, putting that equity into your pocket rather than the dealer's."
+        ]}
+        bullets={[
+          "Avoid dealership disposition fees",
+          "Identify and extract hidden equity from your lease",
+          "We handle the grounded vehicle paperwork",
+          "No pressure to buy a specific brand next"
+        ]}
+        imageSrc="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2000&auto=format&fit=crop"
+        imageAlt="Handing over keys for lease return"
+        testimonialQuote="They found $2,000 of equity in my Honda CR-V lease return that the local dealer never mentioned. Incredible service."
+      />
+
+      <CountyHubs />
 
       <RelatedServices excludeId="lease-return" />
     </Layout>

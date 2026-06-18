@@ -1,8 +1,13 @@
+import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
 import { JsonLd, createServiceSchema, createFaqSchema } from '@/components/JsonLd';
 import { ServiceHero } from '@/components/services/ServiceHero';
 import { RelatedServices } from '@/components/services/RelatedServices';
+import { TrustStatsBar } from '@/components/shared/TrustStatsBar';
+import { CountyHubs } from '@/components/shared/CountyHubs';
+import { ServiceSEOBlock } from '@/components/services/ServiceSEOBlock';
+import { Button } from '@/components/ui/button';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { motion } from 'framer-motion';
 import {
@@ -121,6 +126,8 @@ export default function LeaseTransferPage() {
         primaryAction={{ label: 'Start a Lease Transfer', href: '/contact' }}
         secondaryAction={{ label: 'Call Us Now', href: 'tel:+12015095555', icon: Phone }}
       />
+
+      <TrustStatsBar />
 
       {/* Why Transfer vs Early Termination */}
       <section className="py-12 md:py-20 w-full overflow-hidden border-t border-border/40">
@@ -291,6 +298,25 @@ export default function LeaseTransferPage() {
           </div>
         </div>
       </section>
+
+      <ServiceSEOBlock 
+        title="NJ's Premier Lease Transfer Service"
+        paragraphs={[
+          "A lease transfer (or lease assumption) allows you to legally transfer your lease contract to another qualified driver. This is often the most cost-effective way to exit a lease without paying early termination fees.",
+          "Capital Motor Cars manages the entire process. We leverage our network to find qualified buyers, facilitate the credit approval through the leasing company, and handle all the complex DMV and transfer paperwork. You just hand over the keys."
+        ]}
+        bullets={[
+          "Avoid thousands in early termination fees",
+          "We find qualified buyers for you",
+          "Full management of bank transfer paperwork",
+          "Legal and secure process"
+        ]}
+        imageSrc="https://images.unsplash.com/photo-1517260739337-6799d239ce83?q=80&w=2000&auto=format&fit=crop"
+        imageAlt="Signing lease transfer documents"
+        testimonialQuote="They found someone to take over my BMW lease in less than a week. Saved me over $4,000 in early turn-in penalties."
+      />
+
+      <CountyHubs />
 
       <RelatedServices excludeId="lease-transfer" />
     </Layout>

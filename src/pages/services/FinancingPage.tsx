@@ -5,6 +5,9 @@ import { SEO } from '@/components/SEO';
 import { JsonLd, createServiceSchema, createFaqSchema } from '@/components/JsonLd';
 import { ServiceHero } from '@/components/services/ServiceHero';
 import { RelatedServices } from '@/components/services/RelatedServices';
+import { TrustStatsBar } from '@/components/shared/TrustStatsBar';
+import { CountyHubs } from '@/components/shared/CountyHubs';
+import { ServiceSEOBlock } from '@/components/services/ServiceSEOBlock';
 import { Button } from '@/components/ui/button';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { motion } from 'framer-motion';
@@ -98,6 +101,8 @@ export default function FinancingPage() {
         primaryAction={{ label: "Start New York & New Jersey Car Lease Application", href: "/contact" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
       />
+
+      <TrustStatsBar />
 
       {/* Why lease with us (Benefits Split) */}
       <section className="py-12 md:py-20 w-full  overflow-hidden">
@@ -338,6 +343,25 @@ export default function FinancingPage() {
           </div>
         </div>
       </section>
+
+      <ServiceSEOBlock 
+        title="Why Dealerships Overcharge on Financing"
+        paragraphs={[
+          "It's a poorly kept secret in the automotive industry: dealerships make more profit in the finance office than they do selling the actual car. They do this by marking up the interest rate (or money factor) above the bank's approved rate.",
+          "As an independent auto broker, Capital Motor Cars operates differently. Our relationships with major lenders and manufacturer financial services allow us to access 'Buy-Rate' pricing. We secure the exact rate the bank approved you for and pass it directly to you without a hidden markup."
+        ]}
+        bullets={[
+          "Direct access to manufacturer buy-rates",
+          "No hidden finance reserve markups",
+          "Approval network for all credit tiers",
+          "Transparent breakdown of all fees"
+        ]}
+        imageSrc="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2000&auto=format&fit=crop"
+        imageAlt="Signing auto loan documents"
+        testimonialQuote="The local dealer quoted me an 8.9% rate. Capital got me approved through the exact same bank at 5.9%. Unbelievable difference."
+      />
+
+      <CountyHubs />
 
       <RelatedServices excludeId="credit" />
     </Layout>

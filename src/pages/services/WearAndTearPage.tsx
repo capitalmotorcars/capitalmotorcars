@@ -5,6 +5,9 @@ import { SEO } from '@/components/SEO';
 import { JsonLd, createServiceSchema, createFaqSchema } from '@/components/JsonLd';
 import { ServiceHero } from '@/components/services/ServiceHero';
 import { RelatedServices } from '@/components/services/RelatedServices';
+import { TrustStatsBar } from '@/components/shared/TrustStatsBar';
+import { CountyHubs } from '@/components/shared/CountyHubs';
+import { ServiceSEOBlock } from '@/components/services/ServiceSEOBlock';
 import { Button } from '@/components/ui/button';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { motion } from 'framer-motion';
@@ -93,6 +96,8 @@ export default function WearAndTearPage() {
         primaryAction={{ label: "Start New York & New Jersey Car Lease Protection", href: "/contact" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
       />
+
+      <TrustStatsBar />
 
       {/* Why Choose Repairs (Benefits Split) */}
       <section className="py-12 md:py-20 w-full overflow-hidden">
@@ -333,6 +338,25 @@ export default function WearAndTearPage() {
           </div>
         </div>
       </section>
+
+      <ServiceSEOBlock 
+        title="Avoid Dealership Excess Wear and Tear Fees"
+        paragraphs={[
+          "When you return your lease, the leasing company's inspector will charge premium retail prices for every scratch, dent, and bald tire they find. These charges are often heavily inflated.",
+          "Our pre-inspection and repair service fixes the damage before the official inspector sees it. We use manufacturer-approved methods to repair dings, scratches, and interior damage at wholesale prices, saving you thousands on your final bill."
+        ]}
+        bullets={[
+          "Fix damage at wholesale prices",
+          "Free pre-return inspection assessment",
+          "Avoid inflated dealership repair bills",
+          "Full cosmetic repair capabilities"
+        ]}
+        imageSrc="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=2000&auto=format&fit=crop"
+        imageAlt="Car mechanic fixing bumper scratch"
+        testimonialQuote="They fixed a bumper scrape for $300 that the lease inspector would have definitely charged me $1,200 for. Lifesavers."
+      />
+
+      <CountyHubs />
 
       <RelatedServices excludeId="wear-and-tear" />
     </Layout>
