@@ -25,7 +25,7 @@ import {
 } from 'lucide-react';
 
 const essexCities = [
-  { name: 'Montclair', path: null, highlight: 'Affluent suburb, BMW and Tesla demand' },
+  { name: 'Montclair', path: null, highlight: 'Affluent suburb, BMW and BMW demand' },
   { name: 'Livingston', path: null, highlight: 'Top NJ zip code for luxury leasing' },
   { name: 'Millburn', path: null, highlight: "One of NJ's wealthiest towns" },
   { name: 'Maplewood', path: null, highlight: 'NYC commuters, EV interest growing' },
@@ -40,7 +40,6 @@ const essexBrands = [
   { name: 'Audi', path: '/audi-lease-specials-paramus' },
   { name: 'Mercedes-Benz', path: '/mercedes-benz-leasing-edgewater' },
   { name: 'Lexus', path: '/lexus-lease-deals-marlton' },
-  { name: 'Tesla', path: '/tesla-leasing-hoboken' },
 ];
 
 const essexModels = [
@@ -52,7 +51,6 @@ const essexModels = [
   { name: 'Audi Q5', path: '/audi-q5-lease-nj', badge: 'Audi' },
   { name: 'Mercedes C-Class', path: '/mercedes-c-class-lease-nj', badge: 'Mercedes' },
   { name: 'Mercedes GLE', path: '/mercedes-gle-lease-nj', badge: 'Mercedes' },
-  { name: 'Tesla Model Y', path: '/tesla-model-y-lease-nj', badge: 'Tesla' },
 ];
 
 const faqs = [
@@ -66,7 +64,7 @@ const faqs = [
   },
   {
     question: 'Is Montclair a good market for EV leasing?',
-    answer: "Yes. Montclair has an environmentally conscious community with above-average household incomes. Tesla Model Y and BMW iX leases are popular here. NJ's zero sales tax on EVs saves Montclair residents $800 to $1,500 on a 36-month lease compared to ICE vehicles.",
+    answer: "Yes. Montclair has an environmentally conscious community with above-average household incomes. BMW iX leases are popular here. NJ's zero sales tax on EVs saves Montclair residents $800 to $1,500 on a 36-month lease compared to ICE vehicles.",
   },
   {
     question: "How close is Capital Motor Cars' office to Essex County?",
@@ -103,7 +101,7 @@ export default function CarLeasingEssexCountyPage() {
     <Layout>
       <SEO
         title="Car Leasing Essex County NJ | Montclair, Livingston, Millburn | Capital Motor Cars"
-        description="Car leasing in Essex County NJ. Capital Motor Cars serves Montclair, Livingston, Millburn, Maplewood, West Orange, and all Essex County towns. BMW, Audi, Mercedes, Tesla, and more."
+        description="Car leasing in Essex County NJ. Capital Motor Cars serves Montclair, Livingston, Millburn, Maplewood, West Orange, and all Essex County towns. BMW, Audi, Mercedes, and more."
         canonicalPath="/car-leasing-essex-county-nj"
         seoKeywords={[
           'car leasing Essex County NJ',
@@ -166,7 +164,7 @@ export default function CarLeasingEssexCountyPage() {
               <span className="text-accent italic">Essex County NJ</span>
             </h1>
             <p className="text-white/70 text-lg md:text-xl mb-8 max-w-2xl">
-              Independent auto lease broker serving Montclair, Livingston, Millburn, Maplewood, West Orange, and all Essex County towns. BMW, Audi, Mercedes, Tesla, and every major brand.
+              Independent auto lease broker serving Montclair, Livingston, Millburn, Maplewood, West Orange, and all Essex County towns. BMW, Audi, Mercedes, and every major brand.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link

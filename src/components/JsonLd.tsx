@@ -151,39 +151,29 @@ export const localBusinessSchema = {
 export const autoDealerSchema = {
   '@context': 'https://schema.org',
   '@type': 'AutoDealer',
-  '@id': 'https://www.capitalmotorcars.com/#auto-dealer',
+  '@id': 'https://www.capitalmotorcars.com/#organization',
   name: 'Capital Motor Cars',
-  url: SITE_URL,
-  image: `${SITE_URL}/shared-img.png?v=2`,
+  url: 'https://www.capitalmotorcars.com/',
+  logo: 'https://www.capitalmotorcars.com/logo.png',
+  image: 'https://www.capitalmotorcars.com/og/hero-bg.jpg',
+  description: 'Capital Motor Cars is a licensed auto broker and car-leasing service serving New Jersey and New York. A dedicated personal consultant negotiates new-car lease and purchase deals (luxury, SUV, sedan) with zero-down options and free home delivery.',
   telephone: '+1-201-509-5555',
-  email: 'sales@capitalmotorcars.com',
-  priceRange: '$$',
-  makesOffered: [
-    'BMW',
-    'Mercedes-Benz',
-    'Audi',
-    'Lexus',
-    'Porsche',
-    'Toyota',
-    'Honda',
-    'Ford',
-    'Chevrolet',
-  ],
-  areaServed: [
-    {
-      '@type': 'State',
-      name: 'New Jersey',
-    },
-    {
-      '@type': 'State',
-      name: 'New York',
-    },
-  ],
-  address: localBusinessSchema.address,
-  sameAs: localBusinessSchema.sameAs,
-  parentOrganization: {
-    '@id': localBusinessSchema['@id'],
+  areaServed: ['New Jersey', 'New York'],
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '251 Morris Avenue',
+    addressLocality: 'Springfield',
+    addressRegion: 'NJ',
+    postalCode: '07081',
+    addressCountry: 'US',
   },
+  sameAs: [
+    'https://www.facebook.com/capitalmotorcars/',
+    'https://www.instagram.com/capitalmotorcars/',
+    'https://www.linkedin.com/company/capital-motor-cars/',
+    'https://x.com/capmotorcars',
+    'https://www.yelp.com/biz/capital-motor-cars-springfield',
+  ],
 };
 
 export const organizationSchema = localBusinessSchema;

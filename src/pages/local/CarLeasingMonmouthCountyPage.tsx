@@ -27,7 +27,7 @@ import {
 
 const monmouthCities = [
   { name: 'Freehold', path: null, highlight: 'County seat, high-volume mainstream and luxury market' },
-  { name: 'Red Bank', path: null, highlight: 'Affluent river town, BMW and Tesla demand' },
+  { name: 'Red Bank', path: null, highlight: 'Affluent river town, BMW and BMW demand' },
   { name: 'Rumson', path: null, highlight: "One of NJ's wealthiest towns, ultra-luxury leases" },
   { name: 'Holmdel', path: null, highlight: 'Tech executives, Tesla and BMW SUV focus' },
   { name: 'Marlboro', path: null, highlight: 'Large suburban market, Toyota and Honda volume' },
@@ -38,7 +38,6 @@ const monmouthCities = [
 
 const monmouthBrands = [
   { name: 'BMW', path: '/bmw-car-lease' },
-  { name: 'Tesla', path: '/tesla-leasing-hoboken' },
   { name: 'Audi', path: '/audi-lease-specials-paramus' },
   { name: 'Mercedes-Benz', path: '/mercedes-benz-leasing-edgewater' },
   { name: 'Toyota', path: '/toyota-rav4-lease-nj' },
@@ -47,8 +46,6 @@ const monmouthBrands = [
 const monmouthModels = [
   { name: 'BMW X3', path: '/bmw-x3-lease-nj', badge: 'BMW' },
   { name: 'BMW X5', path: '/bmw-x5-lease-nj', badge: 'BMW' },
-  { name: 'Tesla Model Y', path: '/tesla-model-y-lease-nj', badge: 'Tesla' },
-  { name: 'Tesla Model 3', path: '/tesla-model-3-lease-nj', badge: 'Tesla' },
   { name: 'Audi Q5', path: '/audi-q5-lease-nj', badge: 'Audi' },
   { name: 'Mercedes GLE', path: '/mercedes-gle-lease-nj', badge: 'Mercedes' },
   { name: 'Mercedes C-Class', path: '/mercedes-c-class-lease-nj', badge: 'Mercedes' },
@@ -104,7 +101,7 @@ export default function CarLeasingMonmouthCountyPage() {
     <Layout>
       <SEO
         title="Car Leasing Monmouth County NJ | Red Bank, Freehold, Holmdel | Capital Motor Cars"
-        description="Car leasing in Monmouth County NJ. Capital Motor Cars serves Freehold, Red Bank, Rumson, Holmdel, Marlboro, Shrewsbury, and all Monmouth County towns. BMW, Tesla, Audi, Mercedes, Toyota, and more."
+        description="Car leasing in Monmouth County NJ. Capital Motor Cars serves Freehold, Red Bank, Rumson, Holmdel, Marlboro, Shrewsbury, and all Monmouth County towns. BMW, Audi, Mercedes, Toyota, and more."
         canonicalPath="/car-leasing-monmouth-county-nj"
         seoKeywords={[
           'car leasing Monmouth County NJ',
@@ -172,7 +169,7 @@ export default function CarLeasingMonmouthCountyPage() {
               <span className="text-accent italic">Monmouth County NJ</span>
             </h1>
             <p className="text-white/70 text-lg md:text-xl mb-8 max-w-2xl">
-              Independent auto lease broker serving Freehold, Red Bank, Rumson, Holmdel, Marlboro, and all Monmouth County towns. BMW, Tesla, Audi, Mercedes, Toyota, and every major brand.
+              Independent auto lease broker serving Freehold, Red Bank, Rumson, Holmdel, Marlboro, and all Monmouth County towns. BMW, Audi, Mercedes, Toyota, and every major brand.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link to="/contact" className="inline-flex items-center gap-2 bg-accent text-white font-black uppercase tracking-wider px-8 py-4 rounded-full hover:bg-accent/80 transition-colors">
@@ -295,7 +292,7 @@ export default function CarLeasingMonmouthCountyPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {[
               { icon: DollarSign, title: 'Money Factor', desc: 'The interest rate equivalent on a lease. Multiply by 2,400 to get approximate APR. Monmouth County dealers near Freehold and Eatontown can legally mark up the manufacturer buy-rate. We always pass the buy-rate to our clients with no markup.' },
-              { icon: TrendingDown, title: 'Residual Value', desc: "The car's projected value at lease-end, set by the manufacturer. A higher residual means less depreciation to finance, which lowers your monthly payment. Tesla Model Y has posted strong residuals recently, making it particularly attractive for Holmdel and Red Bank EV shoppers." },
+              { icon: TrendingDown, title: 'Residual Value', desc: "The car's projected value at lease-end, set by the manufacturer. A higher residual means less depreciation to finance, which lowers your monthly payment. BMW models have posted strong residuals recently, making them particularly attractive for Holmdel and Red Bank EV shoppers." },
               { icon: BadgeCheck, title: 'Capitalized Cost', desc: 'The negotiated selling price of the vehicle. We submit deals to 10+ dealers across NJ simultaneously. Only the lowest selling price comes to you. Every $1,000 below MSRP saves roughly $28 per month on a 36-month lease.' },
               { icon: Car, title: 'Mileage Allowance', desc: 'Monmouth County is a car-dependent county with longer commutes than Bergen or Hudson. If you drive 15k+ miles annually, buying up to that mileage level upfront saves significantly versus paying overages at lease-end at $0.20 to $0.30 per mile.' },
             ].map((item, i) => (
@@ -345,14 +342,14 @@ export default function CarLeasingMonmouthCountyPage() {
               <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-black dark:text-white uppercase mb-6">
                 Why Monmouth County is a <span className="text-accent italic">Growing Lease Market</span>
               </h2>
-              <p className="text-muted-foreground text-lg mb-8">Monmouth County combines affluent Shore communities, major tech corridors, and a large suburban base. The mix of Tesla and BMW demand in Holmdel and Red Bank alongside high-volume Toyota and Honda leasing in Marlboro and Manalapan makes it one of NJ's most diverse county lease markets.</p>
+              <p className="text-muted-foreground text-lg mb-8">Monmouth County combines affluent Shore communities, major tech corridors, and a large suburban base. The demand for BMWs in Holmdel and Red Bank alongside high-volume Toyota and Honda leasing in Marlboro and Manalapan makes it one of NJ's most diverse county lease markets.</p>
               <Link to="/car-leasing-new-jersey" className="inline-flex items-center gap-2 text-accent font-black uppercase tracking-wider text-sm hover:gap-3 transition-all">
                 View All NJ Locations <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
             <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
-                { icon: Zap, title: 'Strong EV Demand', desc: 'Holmdel tech professionals and Red Bank affluent clients drive high Tesla Model Y and BMW iX demand. NJ 0% EV tax saves $800 to $1,500 on every 36-month lease.' },
+                { icon: Zap, title: 'Strong EV Demand', desc: 'Holmdel tech professionals and Red Bank affluent clients drive high BMW iX demand. NJ 0% EV tax saves $800 to $1,500 on every 36-month lease.' },
                 { icon: DollarSign, title: 'Affluent Shore Communities', desc: 'Rumson, Spring Lake, and Sea Girt are among NJ\'s highest net-worth communities. Ultra-luxury leases and BMW X7, Audi Q8, Mercedes S-Class requests come from this area regularly.' },
                 { icon: Car, title: 'Multi-Dealer Network Coverage', desc: 'We work with dealers across NJ, including Eatontown and Route 9 corridor dealers, to get Monmouth County clients the most competitive selling prices.' },
                 { icon: ShieldCheck, title: 'Full Transparency, Always', desc: 'Every Monmouth County quote shows the selling price, money factor, residual value, and exact monthly payment before you commit to anything.' },

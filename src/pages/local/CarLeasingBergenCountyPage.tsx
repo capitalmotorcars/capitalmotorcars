@@ -37,7 +37,6 @@ const brands = [
   { name: 'Audi (Paramus)', path: '/audi-lease-specials-paramus' },
   { name: 'Mercedes-Benz (Edgewater)', path: '/mercedes-benz-leasing-edgewater' },
   { name: 'Lexus', path: '/lexus-lease-deals-marlton' },
-  { name: 'Tesla', path: '/tesla-leasing-hoboken' },
 ];
 
 const bergenModels = [
@@ -84,7 +83,7 @@ export default function CarLeasingBergenCountyPage() {
     <Layout>
       <SEO
         title="Car Leasing Bergen County NJ | Paramus, Edgewater, Fort Lee | Capital Motor Cars"
-        description="Car leasing in Bergen County NJ. Capital Motor Cars serves Paramus, Edgewater, Hackensack, Fort Lee, Teaneck, Englewood, and all Bergen County towns. BMW, Audi, Mercedes, Tesla, and more."
+        description="Car leasing in Bergen County NJ. Capital Motor Cars serves Paramus, Edgewater, Hackensack, Fort Lee, Teaneck, Englewood, and all Bergen County towns. BMW, Audi, Mercedes, and more."
         canonicalPath="/car-leasing-bergen-county-nj"
         seoKeywords={[
           'car leasing Bergen County NJ',
@@ -147,7 +146,7 @@ export default function CarLeasingBergenCountyPage() {
               <span className="text-accent italic">Bergen County NJ</span>
             </h1>
             <p className="text-white/70 text-lg md:text-xl mb-8 max-w-2xl">
-              Independent auto lease broker serving Paramus, Edgewater, Hackensack, Fort Lee, Teaneck, Englewood, and all Bergen County towns. BMW, Mercedes, Audi, Tesla, and every major brand.
+              Independent auto lease broker serving Paramus, Edgewater, Hackensack, Fort Lee, Teaneck, Englewood, and all Bergen County towns. BMW, Mercedes, Audi, and every major brand.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link

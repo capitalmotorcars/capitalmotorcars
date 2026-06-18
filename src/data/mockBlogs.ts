@@ -36,7 +36,7 @@ In Jersey, everyone wants an SUV to handle the winter weather and the Parkway tr
 NJ is still one of the best states to lease an electric vehicle, but the rules are rapidly shifting. As of 2026, the federal $7,500 tax credit is almost always applied as a cap-cost reduction by the bank upfront. This means instant savings.
 
 - **The No Sales Tax Advantage:** Most people forget that NJ does not charge sales tax on zero-emission vehicles. On a $60,000 car, that saves you over $4,000 immediately. When you roll that into a 36-month lease, it drops your payment by over $100 per month compared to a gas car.
-- **Leading Picks:** The Tesla Model Y and Hyundai IONIQ 6 are currently the absolute math winners. You can often lease a $50,000 IONIQ for less than a $35,000 Honda Accord because the incentives are that lopsided in favor of EVs.
+- **Leading Picks:** The Hyundai IONIQ 6 are currently the absolute math winners. You can often lease a $50,000 IONIQ for less than a $35,000 Honda Accord because the incentives are that lopsided in favor of EVs.
 
 ### The Zero Down Trap
 You will see Sign and Drive ads everywhere from Paramus to Marlton. Here is what they do not tell you. Zero Down usually means $0 down payment towards the capital cost, but you still have to pay the first month, the bank fee, dealer doc fees, and the registration.
@@ -291,7 +291,7 @@ Google search results will not show you the real numbers on these premium brands
 
 - **BMW Lease Deals NJ:** BMW Financial operates with the most aggressive loyalty programs in the state. If you are already in a BMW household, they will often throw in an extra $2,000 to $4,000 in immediate incentives to keep you. The BMW X5 and X7 currently represent the best large-SUV lease math in the market.
 - **Mercedes-Benz Specials:** Mercedes is heavily subsidizing their EQ electric lineup to gain market share. You can often lease a fully loaded EQE sedan for hundreds less per month than its gas-powered E-Class equivalent.
-- **Porsche Leasing:** Porsche residuals are notoriously realistic, meaning they are very low. This makes Porsches historically expensive to lease. However, the Porsche Taycan has immense hidden lease cash specifically to compete with the Tesla Model S Plaid, making it the one Porsche that actually leases much better than it buys.
+- **Porsche Leasing:** Porsche residuals are notoriously realistic, meaning they are very low. This makes Porsches historically expensive to lease. However, the Porsche Taycan has immense hidden lease cash making it the one Porsche that actually leases much better than it buys.
 
 ### The Hidden NJ Luxury Tax Nuance
 This is critically important for 2026: If you lease a car with a sale price over $45,000 or an EPA rating under 19 mpg in New Jersey, there is a supplemental luxury tax.
@@ -1105,7 +1105,6 @@ On a standard gas vehicle lease with a $60,000 MSRP, you would pay New Jersey's 
 Manufacturers are heavily subsidizing their electric line-ups to hit fleet emissions standards, leading to aggressive lease programs. Here are the top math winners in today's market:
 
 *   **Hyundai IONIQ 5 & IONIQ 6:** Hyundai has become an EV powerhouse. Because they apply massive factory incentives on top of the $7,500 credit, you can lease an IONIQ for less than a comparable gas-powered compact sedan.
-*   **Tesla Model Y:** The best-selling EV in the world remains a top leasing candidate. Tesla's high residual values keep the lease rent low.
 *   **Kia EV9:** A spacious, award-winning 3-row family SUV. By combining the $7,500 lease credit with the NJ sales tax exemption, families can drive a premium EV9 for a monthly cost that rivals much smaller gas crossovers.
 
 ### Conclusion
@@ -1118,7 +1117,7 @@ Browse our current EV lease specials today and calculate your family's savings.`
     seo_description:
       'Understand the 2026 NJ EV lease tax credit and sales tax exemption rules. Learn how to save over $10,000 on electric vehicle leases at Capital Motor Cars.',
     seo_keywords:
-      'EV lease specials NJ, NJ EV lease tax credit 2026, electric car leasing New Jersey, zero sales tax EV NJ, Tesla lease deals NJ',
+      'EV lease specials NJ, NJ EV lease tax credit 2026, electric car leasing New Jersey, zero sales tax EV NJ,',
     display_order: 22,
     is_active: true,
     published_at: '2026-06-03T10:00:00Z',
@@ -1250,10 +1249,6 @@ Dealerships like Lester Glenn Chevrolet in central New Jersey and Malouf Chevrol
 
 New Jersey continues to be one of the best states in the country for EV leasing. The state's Charge Up New Jersey program offers eligible shoppers point-of-sale rebates on qualifying battery-electric vehicles. Combined with aggressive manufacturer lease cash being applied to EVs across the board, June 2026 is a particularly active month for electric vehicle leasing in the Garden State.
 
-#### 9. Tesla Model Y
-The Tesla Model Y remains the most popular electric vehicle in the Northeast by a significant margin. Its blend of real-world range, a dense Supercharger network across New Jersey and New York, and a sophisticated over-the-air software update system that continuously improves the driving experience makes it the default EV lease for many shoppers.
-
-The Model Y's strong residual values reflect its dominant market position. Tesla also periodically releases end-of-quarter delivery incentives that align perfectly with the June 30 deadline. For shoppers in Hoboken, Jersey City, Montclair, and Brooklyn who have access to home charging, the Model Y is an extremely compelling lease option.
 
 #### 10. Hyundai IONIQ 5
 The IONIQ 5 is one of the most visually striking vehicles on the road in 2026, and its 800-volt electrical architecture enables ultra-fast charging speeds that no comparable vehicle in its class can match. Hyundai has been applying significant manufacturer lease cash to the IONIQ 5 to support its electric vehicle adoption goals, making the payment structure extremely competitive.
@@ -1336,7 +1331,7 @@ The best June 2026 lease deal in New Jersey starts with a single phone call.`,
       'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070&auto=format&fit=crop',
     seo_title: 'Best Car Lease Deals June 2026 NJ & NY | Capital Motor Cars',
     seo_description:
-      'Discover the 15 best car lease deals for June 2026 in New Jersey and New York. From Toyota RAV4 to BMW X5 and Tesla Model Y, explore what is hot in the NJ/NY lease market this month.',
+      'Discover the 15 best car lease deals for June 2026 in New Jersey and New York. From Toyota RAV4 to BMW X5, explore what is hot in the NJ/NY lease market this month.',
     seo_keywords:
       'best car lease deals June 2026, June 2026 lease specials NJ, car lease deals New Jersey June, auto broker lease deals NJ NY, EV lease specials June 2026, luxury car lease NJ June 2026',
     display_order: 24,

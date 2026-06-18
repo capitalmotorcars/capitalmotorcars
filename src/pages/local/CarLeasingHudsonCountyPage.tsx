@@ -34,15 +34,12 @@ const hudsonCities = [
 
 const brands = [
   { name: 'BMW (Jersey City)', path: '/bmw-lease-deals-jersey-city' },
-  { name: 'Tesla (Hoboken)', path: '/tesla-leasing-hoboken' },
   { name: 'Mercedes-Benz (Edgewater)', path: '/mercedes-benz-leasing-edgewater' },
   { name: 'All BMW Leases', path: '/bmw-car-lease' },
   { name: 'Audi Leases', path: '/audi-lease-specials-paramus' },
 ];
 
 const hudsonModels = [
-  { name: 'Tesla Model 3', path: '/tesla-model-3-lease-nj', badge: 'Tesla' },
-  { name: 'Tesla Model Y', path: '/tesla-model-y-lease-nj', badge: 'Tesla' },
   { name: 'BMW 3 Series', path: '/bmw-3-series-lease-nj', badge: 'BMW' },
   { name: 'BMW X3', path: '/bmw-x3-lease-nj', badge: 'BMW' },
   { name: 'Hyundai IONIQ 6', path: '/hyundai-ioniq6-lease-nj', badge: 'Hyundai' },
@@ -69,7 +66,6 @@ const faqs = [
   },
   {
     question: 'What is the most popular lease in Hoboken right now?',
-    answer: 'Tesla Model Y and BMW 3-Series leases are consistently the most requested in Hoboken. The Tesla benefits from NJ\'s zero EV tax, which makes it significantly cheaper than in neighboring states. The BMW 3-Series remains the benchmark for compact luxury leasing in the area. We update availability monthly.',
   },
   {
     question: 'How long does the leasing process take for a Hudson County resident?',
@@ -82,14 +78,13 @@ export default function CarLeasingHudsonCountyPage() {
     <Layout>
       <SEO
         title="Car Leasing Hudson County NJ | Hoboken, Jersey City, Bayonne | Capital Motor Cars"
-        description="Car leasing in Hudson County NJ. Capital Motor Cars serves Hoboken, Jersey City, Bayonne, Secaucus, and all Hudson County towns. Tesla, BMW, Mercedes, and all major brands. NJ EV tax savings."
+        description="Car leasing in Hudson County NJ. Capital Motor Cars serves Hoboken, Jersey City, Bayonne, Secaucus, and all Hudson County towns. BMW, Mercedes, and all major brands. NJ EV tax savings."
         canonicalPath="/car-leasing-hudson-county-nj"
         seoKeywords={[
           'car leasing Hudson County NJ',
           'auto lease Hudson County New Jersey',
           'car lease Hoboken NJ',
           'car lease Jersey City NJ',
-          'Tesla lease Hudson County NJ',
           'BMW lease Jersey City NJ',
         ]}
         ogImage="https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=1200&q=60"
@@ -145,7 +140,7 @@ export default function CarLeasingHudsonCountyPage() {
               <span className="text-accent italic">Hudson County NJ</span>
             </h1>
             <p className="text-white/70 text-lg md:text-xl mb-8 max-w-2xl">
-              Independent auto lease broker serving Hoboken, Jersey City, Bayonne, Secaucus, and all Hudson County towns. NJ EV tax savings, BMW, Tesla, Mercedes, and more.
+              Independent auto lease broker serving Hoboken, Jersey City, Bayonne, Secaucus, and all Hudson County towns. NJ EV tax savings, BMW, Mercedes, and more.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
@@ -227,7 +222,7 @@ export default function CarLeasingHudsonCountyPage() {
                   'NJ zero sales tax saves $800 to $1,500 on a 36-month EV lease',
                   'Supercharger network dense from Hoboken to Bayonne',
                   'Low mileage commuters benefit most from EV lease terms',
-                  'Tesla, BMW iX, Hyundai Ioniq 6, and Mercedes EQ leases available',
+                  'BMW iX, Hyundai Ioniq 6, and Mercedes EQ leases available',
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <Zap className="w-5 h-5 text-accent shrink-0 mt-0.5" />
@@ -238,7 +233,6 @@ export default function CarLeasingHudsonCountyPage() {
             </div>
             <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
-                { icon: Car, title: 'Tesla Model Y', desc: 'Most popular EV lease in Hoboken and Jersey City. $0 NJ sales tax saves significantly over term.' },
                 { icon: ShieldCheck, title: 'BMW iX', desc: 'Premium EV with BMW loyalty credits available. Popular in the Weehawken and Port Imperial area.' },
                 { icon: DollarSign, title: 'Hyundai Ioniq 6', desc: 'Value EV lease with strong range. Popular with Bayonne and Kearny commuters.' },
                 { icon: Zap, title: 'Mercedes EQE', desc: 'Luxury EV segment growing fast in Hudson County. Ask about current MBFS support.' },
@@ -294,7 +288,7 @@ export default function CarLeasingHudsonCountyPage() {
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-black dark:text-white uppercase">
               Popular Models in <span className="text-accent italic">Hudson County</span>
             </h2>
-            <p className="mt-4 text-muted-foreground text-center max-w-2xl">Dedicated lease guides for Tesla, BMW, and top models, Hudson County's most requested leases.</p>
+            <p className="mt-4 text-muted-foreground text-center max-w-2xl">Dedicated lease guides for BMW, and top models, Hudson County's most requested leases.</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {hudsonModels.map((model, i) => (

@@ -5,6 +5,7 @@ import { JsonLd, createBreadcrumbItemsFromPath, createBreadcrumbSchema } from '@
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '@/lib/utils';
 import { LogOut, LayoutDashboard, Settings, User, Car, FileText } from 'lucide-react';
+import { SEO } from '@/components/SEO';
 
 
 interface AdminLayoutProps {
@@ -29,6 +30,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
 
     return (
         <div className="min-h-screen bg-black text-foreground overflow-x-hidden relative">
+            <SEO noindex={true} title="Admin Dashboard | Capital Motor Cars" description="Admin secure area." />
             <JsonLd data={createBreadcrumbSchema(createBreadcrumbItemsFromPath(location.pathname))} />
             {/* Ambient Background - Matching Site Theme */}
             <div

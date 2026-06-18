@@ -51,8 +51,6 @@ const middlesexModels = [
   { name: 'BMW 3 Series', path: '/bmw-3-series-lease-nj', badge: 'BMW' },
   { name: 'BMW X3', path: '/bmw-x3-lease-nj', badge: 'BMW' },
   { name: 'Mercedes C-Class', path: '/mercedes-c-class-lease-nj', badge: 'Mercedes' },
-  { name: 'Tesla Model 3', path: '/tesla-model-3-lease-nj', badge: 'Tesla' },
-  { name: 'Tesla Model Y', path: '/tesla-model-y-lease-nj', badge: 'Tesla' },
 ];
 
 const faqs = [
@@ -66,7 +64,7 @@ const faqs = [
   },
   {
     question: 'Are there good EV lease options for Middlesex County residents?',
-    answer: "Yes. Middlesex County has a growing EV charging infrastructure along Route 1 and the I-287 corridor. NJ's zero sales tax on electric vehicles saves $800 to $1,500 on a 36-month lease. Tesla Model 3, Tesla Model Y, Hyundai IONIQ 6, and BMW iX are the most requested EV leases in the Edison and Piscataway area.",
+    answer: "Yes. Middlesex County has a growing EV charging infrastructure along Route 1 and the I-287 corridor. NJ's zero sales tax on electric vehicles saves $800 to $1,500 on a 36-month lease. Hyundai IONIQ 6 and BMW iX are the most requested EV leases in the Edison and Piscataway area.",
   },
   {
     question: 'How does Capital Motor Cars handle leases for New Brunswick professionals?',
@@ -82,7 +80,7 @@ const faqs = [
   },
   {
     question: 'What brands are most popular in Edison NJ for leasing?',
-    answer: "Edison's diverse population drives demand across a wide range of brands. Toyota RAV4 and Honda CR-V are top sellers in the Route 1 and Oak Tree Road corridors. Tech workers in Piscataway and South Plainfield frequently request Tesla Model 3 and Hyundai IONIQ 6. The East Brunswick and Metuchen markets skew more toward BMW and Mercedes. We place leases across all of these segments daily.",
+    answer: "Edison's diverse population drives demand across a wide range of brands. Toyota RAV4 and Honda CR-V are top sellers in the Route 1 and Oak Tree Road corridors. Tech workers in Piscataway and South Plainfield frequently request Hyundai IONIQ 6. The East Brunswick and Metuchen markets skew more toward BMW and Mercedes. We place leases across all of these segments daily.",
   },
   {
     question: 'Can I lease a car with no credit history in Middlesex County NJ?',
@@ -103,7 +101,7 @@ export default function CarLeasingMiddlesexCountyPage() {
     <Layout>
       <SEO
         title="Car Leasing Middlesex County NJ | Edison, Woodbridge, New Brunswick | Capital Motor Cars"
-        description="Car leasing in Middlesex County NJ. Capital Motor Cars serves Edison, Woodbridge, New Brunswick, Piscataway, Old Bridge, and all Middlesex County towns. Toyota, Honda, BMW, Tesla, and more."
+        description="Car leasing in Middlesex County NJ. Capital Motor Cars serves Edison, Woodbridge, New Brunswick, Piscataway, Old Bridge, and all Middlesex County towns. Toyota, Honda, BMW, and more."
         canonicalPath="/car-leasing-middlesex-county-nj"
         seoKeywords={[
           'car leasing Middlesex County NJ',
@@ -166,7 +164,7 @@ export default function CarLeasingMiddlesexCountyPage() {
               <span className="text-accent italic">Middlesex County NJ</span>
             </h1>
             <p className="text-white/70 text-lg md:text-xl mb-8 max-w-2xl">
-              Independent auto lease broker serving Edison, Woodbridge, New Brunswick, Piscataway, Old Bridge, and all Middlesex County towns. Toyota, Honda, BMW, Tesla, and every major brand.
+              Independent auto lease broker serving Edison, Woodbridge, New Brunswick, Piscataway, Old Bridge, and all Middlesex County towns. Toyota, Honda, BMW, and every major brand.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link

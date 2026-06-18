@@ -1,51 +1,87 @@
 User-agent: Googlebot
 Allow: /
-Disallow: /admin/
+Disallow: /admin
 
 User-agent: Bingbot
 Allow: /
-Disallow: /admin/
+Disallow: /admin
 
 User-agent: Twitterbot
 Allow: /
-Disallow: /admin/
+Disallow: /admin
 
 User-agent: facebookexternalhit
 Allow: /
-Disallow: /admin/
+Disallow: /admin
 
-# AI search crawlers — allow indexing so the site can be cited
+# AI assistants / answer engines (AEO)
 User-agent: GPTBot
 Allow: /
-Disallow: /admin/
+Disallow: /admin
 
-User-agent: Google-Extended
+User-agent: ChatGPT-User
 Allow: /
-Disallow: /admin/
+Disallow: /admin
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin
 
 User-agent: PerplexityBot
 Allow: /
-Disallow: /admin/
+Disallow: /admin
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /admin
 
 User-agent: ClaudeBot
 Allow: /
-Disallow: /admin/
+Disallow: /admin
 
-User-agent: anthropic-ai
+User-agent: Claude-User
 Allow: /
-Disallow: /admin/
+Disallow: /admin
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /admin
 
 User-agent: CCBot
 Allow: /
-Disallow: /admin/
+Disallow: /admin
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /admin
+
+User-agent: Cohere-ai
+Allow: /
+Disallow: /admin
 
 User-agent: Omgilibot
 Allow: /
-Disallow: /admin/
+Disallow: /admin
+
+User-agent: Bytespider
+Allow: /
+Disallow: /admin
+
+User-agent: Diffbot
+Allow: /
+Disallow: /admin
+
+User-agent: YouBot
+Allow: /
+Disallow: /admin
 
 User-agent: *
 Allow: /
-Disallow: /admin/
+Disallow: /admin
 
 Sitemap: https://capitalmotorcars.com/sitemap.xml
 Sitemap: https://www.capitalmotorcars.com/sitemap.xml

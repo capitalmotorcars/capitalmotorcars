@@ -49,7 +49,6 @@ const brands = [
   { name: 'Mercedes-Benz', path: '/mercedes-benz-leasing-edgewater' },
   { name: 'Audi', path: '/audi-lease-specials-paramus' },
   { name: 'Lexus', path: '/lexus-lease-deals-marlton' },
-  { name: 'Tesla', path: '/tesla-leasing-hoboken' },
   { name: 'BMW (Jersey City)', path: '/bmw-lease-deals-jersey-city' },
 ];
 
@@ -63,8 +62,6 @@ const models = [
   { name: 'Mercedes GLE', path: '/mercedes-gle-lease-nj', badge: 'Mercedes' },
   { name: 'Audi A4', path: '/audi-a4-lease-nj', badge: 'Audi' },
   { name: 'Audi Q5', path: '/audi-q5-lease-nj', badge: 'Audi' },
-  { name: 'Tesla Model 3', path: '/tesla-model-3-lease-nj', badge: 'Tesla' },
-  { name: 'Tesla Model Y', path: '/tesla-model-y-lease-nj', badge: 'Tesla' },
   { name: 'Lexus RX', path: '/lexus-rx-lease-nj', badge: 'Lexus' },
   { name: 'Toyota RAV4', path: '/toyota-rav4-lease-nj', badge: 'Toyota' },
   { name: 'Honda CR-V', path: '/honda-crv-lease-nj', badge: 'Honda' },
@@ -101,7 +98,7 @@ const faqs = [
   },
   {
     question: 'Does New Jersey charge sales tax on a car lease?',
-    answer: 'Yes, NJ charges 6.625% sales tax on monthly lease payments. However, NJ has a zero sales tax exemption for fully electric vehicles, which makes EV leases significantly cheaper here than in most other states. A Tesla Model Y or BMW iX lease saves you roughly $800 to $1,500 in tax over a 36-month lease.',
+    answer: 'Yes, NJ charges 6.625% sales tax on monthly lease payments. However, NJ has a zero sales tax exemption for fully electric vehicles, which makes EV leases significantly cheaper here than in most other states. A BMW iX lease saves you roughly $800 to $1,500 in tax over a 36-month lease.',
   },
   {
     question: 'What credit score do I need to lease a car in NJ?',
@@ -113,7 +110,7 @@ const faqs = [
   },
   {
     question: 'Can Capital Motor Cars get me a lease on any brand?',
-    answer: 'We specialize in all major luxury and mainstream brands: BMW, Mercedes-Benz, Audi, Lexus, Toyota, Honda, Hyundai, Kia, Tesla, Cadillac, Volvo, Acura, Infiniti, and Genesis. If a brand has an authorized dealer network in NJ, we can source the deal.',
+    answer: 'We specialize in all major luxury and mainstream brands: BMW, Mercedes-Benz, Audi, Lexus, Toyota, Honda, Hyundai, Kia, Cadillac, Volvo, Acura, Infiniti, and Genesis. If a brand has an authorized dealer network in NJ, we can source the deal.',
   },
   {
     question: 'What cities in NJ do you serve?',
@@ -181,7 +178,7 @@ export default function CarLeasingNewJerseyPage() {
               <span className="text-accent italic">New Jersey</span>
             </h1>
             <p className="text-white/70 text-lg md:text-xl mb-8 max-w-2xl">
-              Independent lease broker serving all of NJ. Broker pricing on BMW, Mercedes, Audi, Tesla, Toyota, and more. Zero-down options. No dealership wait.
+              Independent lease broker serving all of NJ. Broker pricing on BMW, Mercedes, Audi, Toyota, and more. Zero-down options. No dealership wait.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link

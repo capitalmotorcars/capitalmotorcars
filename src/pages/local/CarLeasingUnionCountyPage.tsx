@@ -53,7 +53,6 @@ const unionModels = [
   { name: 'Audi Q5', path: '/audi-q5-lease-nj', badge: 'Audi' },
   { name: 'Toyota RAV4', path: '/toyota-rav4-lease-nj', badge: 'Toyota' },
   { name: 'Honda CR-V', path: '/honda-crv-lease-nj', badge: 'Honda' },
-  { name: 'Tesla Model Y', path: '/tesla-model-y-lease-nj', badge: 'Tesla' },
 ];
 
 const faqs = [

@@ -23,7 +23,6 @@ const CreditApplicationDataSecurityPage = lazy(() => import("./pages/CreditAppli
 const LeaseCalculatorPage = lazy(() => import("./pages/LeaseCalculatorPage"));
 const BmwX5VsAudiQ7Page = lazy(() => import("./pages/comparisons/BmwX5VsAudiQ7Page"));
 const BmwLeaseDealsJerseyCityPage = lazy(() => import("./pages/local/BmwLeaseDealsJerseyCityPage"));
-const TeslaLeasingHobokenPage = lazy(() => import("./pages/local/TeslaLeasingHobokenPage"));
 const AudiLeaseSpecialsParamusPage = lazy(() => import("./pages/local/AudiLeaseSpecialsParamusPage"));
 const MercedesBenzLeasingEdgewaterPage = lazy(() => import("./pages/local/MercedesBenzLeasingEdgewaterPage"));
 const LexusLeaseDealsMarltonPage = lazy(() => import("./pages/local/LexusLeaseDealsMarltonPage"));
@@ -51,7 +50,6 @@ const CarLeasingJerseyCityNJPage = lazy(() => import("./pages/local/CarLeasingJe
 // New comparison pages
 const BmwX5VsMercedesGLEPage = lazy(() => import("./pages/comparisons/BmwX5VsMercedesGLEPage"));
 const AudiQ5VsBmwX3Page = lazy(() => import("./pages/comparisons/AudiQ5VsBmwX3Page"));
-const TeslaModelYVsBmwIXPage = lazy(() => import("./pages/comparisons/TeslaModelYVsBmwIXPage"));
 const HondaCRVVsToyotaRAV4Page = lazy(() => import("./pages/comparisons/HondaCRVVsToyotaRAV4Page"));
 
 // New service pages
@@ -79,8 +77,6 @@ const MercedesEClassLeasePage = lazy(() => import("./pages/models/MercedesEClass
 const MercedesGleLeasePage = lazy(() => import("./pages/models/MercedesGleLeasePage"));
 const AudiA4LeasePage = lazy(() => import("./pages/models/AudiA4LeasePage"));
 const AudiQ5LeasePage = lazy(() => import("./pages/models/AudiQ5LeasePage"));
-const TeslaModel3LeasePage = lazy(() => import("./pages/models/TeslaModel3LeasePage"));
-const TeslaModelYLeasePage = lazy(() => import("./pages/models/TeslaModelYLeasePage"));
 const LexusRxLeasePage = lazy(() => import("./pages/models/LexusRxLeasePage"));
 const ToyotaRav4LeasePage = lazy(() => import("./pages/models/ToyotaRav4LeasePage"));
 const HondaCrvLeasePage = lazy(() => import("./pages/models/HondaCrvLeasePage"));
@@ -103,6 +99,7 @@ const DealsPage = lazy(() => import("./pages/admin/DealsPage"));
 const VehicleTypesPage = lazy(() => import("./pages/admin/VehicleTypesPage").then(m => ({ default: m.VehicleTypesPage })));
 const AdminLayout = lazy(() => import("./components/admin/AdminLayout").then(m => ({ default: m.AdminLayout })));
 const BlogPostsPage = lazy(() => import("./pages/admin/BlogPostsPage"));
+
 
 const queryClient = new QueryClient();
 
@@ -173,7 +170,6 @@ const App = () => (
                 <Route path="/comparisons/bmw-x5-vs-audi-q7-lease" element={<BmwX5VsAudiQ7Page />} />
                 <Route path="/comparisons/bmw-x5-vs-mercedes-gle-lease" element={<BmwX5VsMercedesGLEPage />} />
                 <Route path="/comparisons/audi-q5-vs-bmw-x3-lease" element={<AudiQ5VsBmwX3Page />} />
-                <Route path="/comparisons/tesla-model-y-vs-bmw-ix-lease" element={<TeslaModelYVsBmwIXPage />} />
                 <Route path="/comparisons/honda-cr-v-vs-toyota-rav4-lease" element={<HondaCRVVsToyotaRAV4Page />} />
                 <Route path="/credit-application" element={<CreditApplicationPage />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
@@ -198,8 +194,6 @@ const App = () => (
                 <Route path="/mercedes-gle-lease-nj" element={<MercedesGleLeasePage />} />
                 <Route path="/audi-a4-lease-nj" element={<AudiA4LeasePage />} />
                 <Route path="/audi-q5-lease-nj" element={<AudiQ5LeasePage />} />
-                <Route path="/tesla-model-3-lease-nj" element={<TeslaModel3LeasePage />} />
-                <Route path="/tesla-model-y-lease-nj" element={<TeslaModelYLeasePage />} />
                 <Route path="/lexus-rx-lease-nj" element={<LexusRxLeasePage />} />
                 <Route path="/toyota-rav4-lease-nj" element={<ToyotaRav4LeasePage />} />
                 <Route path="/honda-crv-lease-nj" element={<HondaCrvLeasePage />} />
@@ -215,7 +209,6 @@ const App = () => (
                 <Route path="/car-leasing-hoboken-nj" element={<CarLeasingHobokenNJPage />} />
                 <Route path="/car-leasing-jersey-city-nj" element={<CarLeasingJerseyCityNJPage />} />
                 <Route path="/bmw-lease-deals-jersey-city" element={<BmwLeaseDealsJerseyCityPage />} />
-                <Route path="/tesla-leasing-hoboken" element={<TeslaLeasingHobokenPage />} />
                 <Route path="/audi-lease-specials-paramus" element={<AudiLeaseSpecialsParamusPage />} />
                 <Route path="/mercedes-benz-leasing-edgewater" element={<MercedesBenzLeasingEdgewaterPage />} />
                 <Route path="/lexus-lease-deals-marlton" element={<LexusLeaseDealsMarltonPage />} />
@@ -241,6 +234,7 @@ const App = () => (
                     <AdminLayout />
                   </ProtectedRoute>
                 }>
+                  <Route index element={<Navigate to="/admin/deals" replace />} />
                   <Route path="deals" element={<DealsPage />} />
                   <Route path="vehicles" element={<VehicleTypesPage />} />
                   <Route path="blogs" element={<BlogPostsPage />} />

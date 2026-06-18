@@ -40,7 +40,7 @@ const faqs = [
   },
   {
     question: 'Does New Jersey charge sales tax on car leases?',
-    answer: 'Yes, New Jersey charges 6.625% sales tax on monthly lease payments. Unlike some states that tax the full purchase price upfront, NJ taxes are collected monthly on each payment, which is advantageous. However, New Jersey fully exempts electric vehicles from sales tax. This means if you lease a Tesla, BMW iX, Hyundai Ioniq 6, or any other qualifying EV, you pay $0 in state sales tax on the entire lease, which can save $800 to $1,500 over a 36-month term.',
+    answer: 'Yes, New Jersey charges 6.625% sales tax on monthly lease payments. Unlike some states that tax the full purchase price upfront, NJ taxes are collected monthly on each payment, which is advantageous. However, New Jersey fully exempts electric vehicles from sales tax. This means if you lease a BMW iX, Hyundai Ioniq 6, or any other qualifying EV, you pay $0 in state sales tax on the entire lease, which can save $800 to $1,500 over a 36-month term.',
   },
   {
     question: 'What is a good money factor for a car lease in 2026?',

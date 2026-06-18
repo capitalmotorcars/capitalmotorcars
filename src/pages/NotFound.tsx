@@ -29,7 +29,7 @@ const modelPages = [
   { label: 'BMW X3 Lease NJ', path: '/bmw-x3-lease-nj' },
   { label: 'Audi Q5 Lease NJ', path: '/audi-q5-lease-nj' },
   { label: 'Mercedes C-Class Lease NJ', path: '/mercedes-c-class-lease-nj' },
-  { label: 'Tesla Model Y Lease NJ', path: '/tesla-model-y-lease-nj' },
+
   { label: 'Toyota RAV4 Lease NJ', path: '/toyota-rav4-lease-nj' },
 ];
 

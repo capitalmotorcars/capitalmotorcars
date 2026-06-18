@@ -37,6 +37,7 @@ export default function LoginPage() {
             <SEO
                 title="Admin Login | Capital Motor Cars Secure Dashboard Access"
                 description="Authorized access for the Capital Motor Cars dashboard."
+                noindex={true}
             />
             <JsonLd
                 data={createBreadcrumbSchema([

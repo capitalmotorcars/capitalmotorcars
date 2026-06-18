@@ -62,7 +62,7 @@ const faqs = [
   },
   {
     question: 'Which banks allow lease transfers in NJ?',
-    answer: 'BMW Financial, Mercedes-Benz Financial, Audi Financial, Ford Motor Credit, Toyota Financial, Honda Financial, and Hyundai Motor Finance all allow lease transfers with credit approval. Tesla and some smaller captive lenders do not allow transfers. We confirm transferability before you start the process.',
+    answer: 'BMW Financial, Mercedes-Benz Financial, Audi Financial, Ford Motor Credit, Toyota Financial, Honda Financial, and Hyundai Motor Finance all allow lease transfers with credit approval. Some smaller captive lenders do not allow transfers. We confirm transferability before you start the process.',
   },
   {
     question: 'How much does a lease transfer cost?',

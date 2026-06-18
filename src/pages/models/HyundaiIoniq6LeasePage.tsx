@@ -40,11 +40,10 @@ const data: VehicleModelData = {
     },
     {
       question: 'What is the Hyundai IONIQ 6 charge port type in NJ?',
-      answer: 'The 2024+ IONIQ 6 uses NACS (North American Charging Standard, same as Tesla) with an included J1772/CCS adapter. This gives it access to Tesla Superchargers in addition to the growing NACS public network and existing CCS stations. The 2023 model uses CCS only. This is a meaningful long-term advantage in the NJ charging ecosystem.',
+      answer: 'The 2024+ IONIQ 6 uses NACS (North American Charging Standard) with an included J1772/CCS adapter. This gives it access to the growing NACS public network and existing CCS stations. The 2023 model uses CCS only. This is a meaningful long-term advantage in the NJ charging ecosystem.',
     },
   ],
   relatedComparisons: [
-    { label: 'Tesla Model Y vs BMW iX Comparison', path: '/comparisons/tesla-model-y-vs-bmw-ix-lease' },
   ],
 };
 

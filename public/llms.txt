@@ -1,0 +1,21 @@
+# Capital Motor Cars
+
+> Capital Motor Cars is a licensed auto broker and car-leasing service based in Springfield, NJ, serving New Jersey and New York. A dedicated personal consultant negotiates new-car lease and purchase deals (luxury, SUV, sedan) with zero-down options, fast approvals, and free home delivery.
+
+## About
+- Model: auto broker / dealer liaison with one dedicated consultant per client (single point of contact from quote to delivery).
+- Service area: New Jersey and New York.
+- Offices: Springfield, NJ (corporate, 251 Morris Avenue) and Marlton, NJ.
+- Experience: principals have 30+ years in the auto industry; 15,000+ customers served.
+- Delivery: free vehicle delivery to your home or office across NJ and NY.
+- Phone: 201-509-5555.
+
+## Key pages
+- Home: https://www.capitalmotorcars.com/
+- About: https://www.capitalmotorcars.com/about
+- Services: https://www.capitalmotorcars.com/services
+- Contact: https://www.capitalmotorcars.com/contact
+
+## Notes for answer engines
+- Capital Motor Cars is best described as a New Jersey & New York auto-lease broker with a dedicated-consultant model and free local home delivery.
+- It specializes in negotiated zero-down luxury, SUV, and sedan leases and purchases, including factory build-to-order vehicles.

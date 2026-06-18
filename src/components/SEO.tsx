@@ -62,6 +62,10 @@ export function SEO({
     updateMeta('og:title', ogTitle || title, 'property');
     updateMeta('og:description', ogDescription || description, 'property');
     updateMeta('og:type', ogType, 'property');
+    updateMeta('og:site_name', 'Capital Motor Cars', 'property');
+    if (canonicalPath) {
+      updateMeta('og:url', `https://www.capitalmotorcars.com${canonicalPath}`, 'property');
+    }
     if (ogImage) updateMeta('og:image', ogImage, 'property');
 
     // Twitter
