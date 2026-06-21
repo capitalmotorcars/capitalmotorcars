@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { applyApiCors } from "../../lib/httpCors.mjs";
-import { processCreditApplication } from "../../lib/processCreditApplication.mjs";
+import { processCreditApplication, validateCreditApplication } from "../../lib/processCreditApplication.mjs";
 
 declare var process: { env: Record<string, string | undefined> };
 
@@ -57,7 +57,15 @@ export default async function handler(req: Req, res: Res) {
 
   const body = req.body as Record<string, unknown> | undefined | null;
 
-  // Persist first so a submission is never lost even if email fails.
+  // Reject incomplete/forged payloads (bots POST directly to this public
+  // endpoint, bypassing the browser form) BEFORE persisting, so junk never
+  // reaches the database or generates a blank PDF email.
+  const { valid, error } = validateCreditApplication(body ?? {});
+  if (!valid) {
+    return res.status(400).json({ success: false, error });
+  }
+
+  // Persist a valid submission first so it is never lost even if email fails.
   await saveSubmissionToDb('credit', req.body);
 
   const { status, json } = await processCreditApplication(body ?? {});

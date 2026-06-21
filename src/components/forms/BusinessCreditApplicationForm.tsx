@@ -143,6 +143,13 @@ const STEPS = [
   { id: 6, label: 'Legal', icon: Shield },
 ] as const;
 
+// Vercel serverless functions reject request bodies over ~4.5MB (HTTP 413).
+// Base64 inflates bytes ~37% and two files share the budget, so cap raw bytes
+// well under the limit.
+const MAX_FILE_BYTES = 3 * 1024 * 1024; // 3 MB per file
+const MAX_TOTAL_UPLOAD_BYTES = 3 * 1024 * 1024; // 3 MB combined
+const formatMb = (bytes: number) => `${(bytes / (1024 * 1024)).toFixed(0)} MB`;
+
 function fileToBase64(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -168,6 +175,35 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [file1, setFile1] = useState<File | null>(null);
   const [file2, setFile2] = useState<File | null>(null);
+  const [fileError, setFileError] = useState<string | null>(null);
+
+  // Reject oversized uploads up front so submissions never exceed the serverless
+  // body limit (which would otherwise fail with a 413 only after submit).
+  const selectFile = (
+    slot: 1 | 2,
+    file: File | null,
+    otherFile: File | null,
+  ): void => {
+    setFileError(null);
+    const apply = (f: File | null) => (slot === 1 ? setFile1(f) : setFile2(f));
+    if (!file) {
+      apply(null);
+      return;
+    }
+    if (file.size > MAX_FILE_BYTES) {
+      setFileError(
+        `"${file.name}" is ${formatMb(file.size)}. Each file must be under ${formatMb(MAX_FILE_BYTES)}.`,
+      );
+      return;
+    }
+    if ((otherFile?.size ?? 0) + file.size > MAX_TOTAL_UPLOAD_BYTES) {
+      setFileError(
+        `Combined uploads exceed ${formatMb(MAX_TOTAL_UPLOAD_BYTES)}. Remove or shrink a file.`,
+      );
+      return;
+    }
+    apply(file);
+  };
   const formTopRef = useRef<HTMLDivElement | null>(null);
 
   const {
@@ -290,6 +326,7 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
         setCurrentStep(1);
         setFile1(null);
         setFile2(null);
+        setFileError(null);
       } catch (e) {
         setSubmitError(getSubmitErrorFromException(e));
       } finally {
@@ -1391,7 +1428,9 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
                     type="file"
                     accept=".pdf,image/*"
                     className="hidden"
-                    onChange={(e) => setFile1(e.target.files?.[0] ?? null)}
+                    onChange={(e) =>
+                      selectFile(1, e.target.files?.[0] ?? null, file2)
+                    }
                   />
                   <label
                     htmlFor="doc1"
@@ -1412,6 +1451,7 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
                             e.preventDefault();
                             e.stopPropagation();
                             setFile1(null);
+                            setFileError(null);
                             const input = document.getElementById('doc1') as HTMLInputElement;
                             if (input) input.value = '';
                           }}
@@ -1440,7 +1480,9 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
                     type="file"
                     accept=".pdf,image/*"
                     className="hidden"
-                    onChange={(e) => setFile2(e.target.files?.[0] ?? null)}
+                    onChange={(e) =>
+                      selectFile(2, e.target.files?.[0] ?? null, file1)
+                    }
                   />
                   <label
                     htmlFor="doc2"
@@ -1461,6 +1503,7 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
                             e.preventDefault();
                             e.stopPropagation();
                             setFile2(null);
+                            setFileError(null);
                             const input = document.getElementById('doc2') as HTMLInputElement;
                             if (input) input.value = '';
                           }}
@@ -1481,9 +1524,14 @@ export function BusinessCreditApplicationForm({ applicationType, setApplicationT
             </div>
             <div className="p-4 rounded-xl bg-accent/10 dark:bg-accent/5 border border-accent/20 dark:border-accent/10">
               <p className="text-xs text-muted-foreground dark:text-white/80">
-                <strong className="text-foreground dark:text-white">Tip:</strong> Accepted formats include PDF files and images (JPG, PNG). Each file can be up to about 40 MB; the server accepts large submissions so scans and phone photos go through reliably.
+                <strong className="text-foreground dark:text-white">Tip:</strong> Accepted formats include PDF files and images (JPG, PNG). Each file must be under {formatMb(MAX_FILE_BYTES)} ({formatMb(MAX_TOTAL_UPLOAD_BYTES)} combined). For large scans, compress the PDF or take a lower-resolution photo.
               </p>
             </div>
+            {fileError && (
+              <p className="text-sm text-destructive" role="alert">
+                {fileError}
+              </p>
+            )}
           </motion.div>
         )}
 

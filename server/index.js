@@ -10,7 +10,7 @@ import {
   resolveConsultantRecipients,
   sanitizeLeadFields,
 } from '../lib/sendEmailSecurity.mjs';
-import { processCreditApplication } from '../lib/processCreditApplication.mjs';
+import { processCreditApplication, validateCreditApplication } from '../lib/processCreditApplication.mjs';
 import { processLead } from '../lib/processLead.mjs';
 
 // Initialize Supabase Client with robust env variable fallback
@@ -111,6 +111,11 @@ app.post('/api/webhooks/contact', async (req, res) => {
 });
 
 app.post('/api/webhooks/credit', async (req, res) => {
+  // Reject incomplete/forged payloads before persisting (see api/webhooks/credit.ts).
+  const { valid, error } = validateCreditApplication(req.body ?? {});
+  if (!valid) {
+    return res.status(400).json({ success: false, error });
+  }
   saveSubmissionToDb('credit', req.body ?? {});
   const { status, json } = await processCreditApplication(req.body ?? {});
   return res.status(status).json(json);
