@@ -1,11 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
 import { applyApiCors } from "../../lib/httpCors.mjs";
-import { forwardJsonToWebhook } from "../../lib/webhookForward.mjs";
+import { processCreditApplication } from "../../lib/processCreditApplication.mjs";
 
 declare var process: { env: Record<string, string | undefined> };
-
-const DEFAULT_UPSTREAM =
-  "https://hook.eu1.make.com/jmxgdt9co9e5403vopzm8witym4kg5mv";
 
 const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.VITE_SUPABASE_SERVICE_ROLE_KEY || process.env.VITE_SUPABASE_ANON_KEY;
@@ -60,45 +57,9 @@ export default async function handler(req: Req, res: Res) {
 
   const body = req.body as Record<string, unknown> | undefined | null;
 
-  const isBusiness = body?.VehicleOrService === "Business Credit Application";
-
-  const requiredFields: Array<[string, string]> = isBusiness
-    ? [
-        ["BusinessName", "Missing business name"],
-        ["Email", "Missing business email"],
-        ["BusinessPhone", "Missing business phone"],
-        ["PersonalGuarantorName", "Missing guarantor name"],
-        ["Consultant", "Missing consultant selection"],
-        ["ConsultantEmail", "Missing consultant email"],
-      ]
-    : [
-        ["FirstName", "Missing applicant first name"],
-        ["LastName", "Missing applicant last name"],
-        ["Email", "Missing applicant email"],
-        ["Phone", "Missing applicant phone"],
-        ["Consultant", "Missing consultant selection"],
-        ["ConsultantEmail", "Missing consultant email"],
-      ];
-
-  for (const [field, message] of requiredFields) {
-    if (!body?.[field]) {
-      return res.status(400).json({ success: false, error: message });
-    }
-  }
-
-  // Save to database
+  // Persist first so a submission is never lost even if email fails.
   await saveSubmissionToDb('credit', req.body);
 
-  const upstream =
-    process.env.MAKE_WEBHOOK_CREDIT_URL?.trim() || DEFAULT_UPSTREAM;
-  try {
-    const r = await forwardJsonToWebhook(upstream, req.body);
-    const text = await r.text();
-    const ct = r.headers.get("content-type") ?? "application/json";
-    res.status(r.status);
-    res.setHeader("Content-Type", ct);
-    res.send(text);
-  } catch {
-    res.status(502).json({ success: false, error: "Upstream error" });
-  }
+  const { status, json } = await processCreditApplication(body ?? {});
+  return res.status(status).json(json);
 }

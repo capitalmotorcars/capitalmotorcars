@@ -1,11 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
 import { applyApiCors } from '../../lib/httpCors.mjs';
-import { forwardJsonToWebhook } from '../../lib/webhookForward.mjs';
+import { processLead } from '../../lib/processLead.mjs';
 
 declare var process: { env: Record<string, string | undefined> };
-
-const DEFAULT_UPSTREAM =
-  'https://hook.eu1.make.com/zfw7p0asc4teuk2znyk1pbbg18fv7q7b';
 
 const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.VITE_SUPABASE_SERVICE_ROLE_KEY || process.env.VITE_SUPABASE_ANON_KEY;
@@ -53,18 +50,9 @@ export default async function handler(req: Req, res: Res) {
     return res.status(405).json({ success: false, error: 'Method not allowed' });
   }
 
-  // Save to database
+  // Save to database first so a submission is never lost even if email fails.
   await saveSubmissionToDb('trade-in', req.body);
 
-  const upstream = process.env.MAKE_WEBHOOK_TRADE_IN_URL?.trim() || DEFAULT_UPSTREAM;
-  try {
-    const r = await forwardJsonToWebhook(upstream, req.body);
-    const text = await r.text();
-    const ct = r.headers.get('content-type') ?? 'application/json';
-    res.status(r.status);
-    res.setHeader('Content-Type', ct);
-    res.send(text);
-  } catch {
-    res.status(502).json({ success: false, error: 'Upstream error' });
-  }
+  const { status, json } = await processLead('trade-in', (req.body ?? {}) as Record<string, unknown>);
+  return res.status(status).json(json);
 }

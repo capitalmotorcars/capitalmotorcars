@@ -10,7 +10,8 @@ import {
   resolveConsultantRecipients,
   sanitizeLeadFields,
 } from '../lib/sendEmailSecurity.mjs';
-import { forwardJsonToWebhook } from '../lib/webhookForward.mjs';
+import { processCreditApplication } from '../lib/processCreditApplication.mjs';
+import { processLead } from '../lib/processLead.mjs';
 
 // Initialize Supabase Client with robust env variable fallback
 const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
@@ -75,36 +76,50 @@ app.use((req, res, next) => {
   next();
 });
 
-const DEFAULT_MAKE_CONTACT = 'https://hook.eu1.make.com/zfw7p0asc4teuk2znyk1pbbg18fv7q7b';
-const DEFAULT_MAKE_CREDIT = 'https://hook.eu1.make.com/jmxgdt9co9e5403vopzm8witym4kg5mv';
-const DEFAULT_MAKE_TRADE_IN = 'https://hook.eu1.make.com/zfw7p0asc4teuk2znyk1pbbg18fv7q7b';
-
-async function proxyMakeWebhook(req, res, envKey, fallbackUrl) {
-  const upstream =
-    process.env[envKey] && process.env[envKey].trim() ? process.env[envKey].trim() : fallbackUrl;
+/**
+ * Forward a lead to Kora CRM and confirm receipt. Awaited for log visibility,
+ * but never throws: Kora downtime must not break website lead capture.
+ */
+async function forwardToKora(body) {
+  const koraApiKey = process.env.KORA_API_KEY?.trim();
+  if (!koraApiKey) {
+    console.warn('[Kora] Skipped forward: KORA_API_KEY not configured.');
+    return;
+  }
   try {
-    const r = await forwardJsonToWebhook(upstream, req.body ?? {});
-    const text = await r.text();
-    const ct = r.headers.get('content-type') ?? 'application/json';
-    res.status(r.status).setHeader('Content-Type', ct).send(text);
-  } catch {
-    res.status(502).json({ success: false, error: 'Upstream error' });
+    const resp = await fetch('https://api.tellkora.com/api/cmc/lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-CMC-Api-Key': koraApiKey },
+      body: JSON.stringify(body),
+    });
+    const text = await resp.text();
+    if (resp.ok) {
+      console.log(`[Kora] Lead forwarded (status ${resp.status}): ${text}`);
+    } else {
+      console.error(`[Kora] Forward failed (status ${resp.status}): ${text}`);
+    }
+  } catch (err) {
+    console.error('[Kora] Forward threw:', err instanceof Error ? err.message : err);
   }
 }
 
-app.post('/api/webhooks/contact', (req, res) => {
+app.post('/api/webhooks/contact', async (req, res) => {
   saveSubmissionToDb('contact', req.body ?? {});
-  return proxyMakeWebhook(req, res, 'MAKE_WEBHOOK_CONTACT_URL', DEFAULT_MAKE_CONTACT);
+  await forwardToKora(req.body ?? {});
+  const { status, json } = await processLead('contact', req.body ?? {});
+  return res.status(status).json(json);
 });
 
-app.post('/api/webhooks/credit', (req, res) => {
+app.post('/api/webhooks/credit', async (req, res) => {
   saveSubmissionToDb('credit', req.body ?? {});
-  return proxyMakeWebhook(req, res, 'MAKE_WEBHOOK_CREDIT_URL', DEFAULT_MAKE_CREDIT);
+  const { status, json } = await processCreditApplication(req.body ?? {});
+  return res.status(status).json(json);
 });
 
-app.post('/api/webhooks/trade-in', (req, res) => {
+app.post('/api/webhooks/trade-in', async (req, res) => {
   saveSubmissionToDb('trade-in', req.body ?? {});
-  return proxyMakeWebhook(req, res, 'MAKE_WEBHOOK_TRADE_IN_URL', DEFAULT_MAKE_TRADE_IN);
+  const { status, json } = await processLead('trade-in', req.body ?? {});
+  return res.status(status).json(json);
 });
 
 app.get('/api/submissions', async (req, res) => {

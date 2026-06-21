@@ -5,7 +5,6 @@ import { ContactForm } from '@/components/forms/ContactForm';
 import { useSearchParams, Link } from 'react-router-dom';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
 import { contactPageLinks } from '@/components/ui/RelatedLinks';
 import { Search, ArrowRight, Phone, Mail, MapPin, FileText, Building2 } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -117,28 +116,6 @@ export default function ContactPage() {
               >
                 If you have any questions or would like to get started, fill out the form and we will respond shortly.
               </motion.p>
-
-              {/* Quiz Section */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="flex flex-col items-center gap-3 sm:gap-4"
-              >
-                <p className="text-sm sm:text-base md:text-lg xl:text-xl text-white dark:text-white text-center max-w-2xl">
-                  Find your perfect vehicle match in just 5 quick questions.
-                </p>
-                <Button
-                  asChild
-                  size="lg"
-                  className="w-full sm:w-auto h-11 sm:h-12 xl:h-14 rounded-lg xl:rounded-xl border border-accent/40 bg-accent/70 hover:bg-accent/90 hover:border-accent text-accent-foreground font-semibold xl:font-bold px-6 sm:px-8 xl:px-10 text-sm sm:text-base xl:text-lg glow-blue shadow-[0_2px_12px_hsl(214_77%_50%_/_0.25)] hover:shadow-[0_4px_18px_hsl(214_77%_55%_/_0.45)] backdrop-blur-sm"
-                >
-                  <Link to="/credit-application" className="flex items-center justify-center gap-2 xl:gap-3">
-                    Start Credit Application
-                    <Search className="w-4 h-4 xl:w-5 xl:h-5" />
-                  </Link>
-                </Button>
-              </motion.div>
             </div>
 
             {/* Contact Form Section */}

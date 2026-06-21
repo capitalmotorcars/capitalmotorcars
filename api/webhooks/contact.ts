@@ -1,11 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
 import { applyApiCors } from '../../lib/httpCors.mjs';
-import { forwardJsonToWebhook } from '../../lib/webhookForward.mjs';
+import { processLead } from '../../lib/processLead.mjs';
 
 declare var process: { env: Record<string, string | undefined> };
-
-const DEFAULT_UPSTREAM =
-  'https://hook.eu1.make.com/zfw7p0asc4teuk2znyk1pbbg18fv7q7b';
 
 const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.VITE_SUPABASE_SERVICE_ROLE_KEY || process.env.VITE_SUPABASE_ANON_KEY;
@@ -26,6 +23,34 @@ async function saveSubmissionToDb(type: string, payload: any) {
     }
   } catch (err) {
     console.error(`[Database] Exception saving submission:`, err);
+  }
+}
+
+/**
+ * Forward the lead to Kora CRM and confirm receipt. Awaited for log visibility,
+ * but never throws: Kora downtime must not break website lead capture (email +
+ * Supabase already succeeded by the time the form result is returned).
+ */
+async function forwardToKora(payload: unknown) {
+  const koraApiKey = process.env.KORA_API_KEY?.trim();
+  if (!koraApiKey) {
+    console.warn('[Kora] Skipped forward: KORA_API_KEY not configured.');
+    return;
+  }
+  try {
+    const resp = await fetch('https://api.tellkora.com/api/cmc/lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-CMC-Api-Key': koraApiKey },
+      body: JSON.stringify(payload),
+    });
+    const text = await resp.text();
+    if (resp.ok) {
+      console.log(`[Kora] Lead forwarded (status ${resp.status}): ${text}`);
+    } else {
+      console.error(`[Kora] Forward failed (status ${resp.status}): ${text}`);
+    }
+  } catch (err) {
+    console.error('[Kora] Forward threw:', err instanceof Error ? err.message : err);
   }
 }
 
@@ -58,39 +83,10 @@ export default async function handler(req: Req, res: Res) {
     return res.status(400).json({ success: false, error: 'Invalid request body' });
   }
 
-  const name = typeof body.Name === 'string' ? body.Name.trim() : '';
-  const email = typeof body.Email === 'string' ? body.Email.trim() : '';
-  const phone = typeof body.Phone === 'string' ? body.Phone.trim() : '';
-
-  if (!name || !email || !phone) {
-    return res.status(400).json({ success: false, error: 'Name, Email, and Phone are required' });
-  }
-
-  // Save to database
   await saveSubmissionToDb('contact', req.body);
 
-  const upstream = process.env.MAKE_WEBHOOK_CONTACT_URL?.trim() || DEFAULT_UPSTREAM;
-  const koraApiKey = process.env.KORA_API_KEY?.trim();
+  await forwardToKora(req.body);
 
-  try {
-    const koraFetch = koraApiKey
-      ? fetch('https://api.tellkora.com/api/cmc/lead', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-CMC-Api-Key': koraApiKey,
-          },
-          body: JSON.stringify(req.body),
-        }).catch(() => {})
-      : Promise.resolve();
-
-    const [r] = await Promise.all([forwardJsonToWebhook(upstream, req.body), koraFetch]);
-    const text = await r.text();
-    const ct = r.headers.get('content-type') ?? 'application/json';
-    res.status(r.status);
-    res.setHeader('Content-Type', ct);
-    res.send(text);
-  } catch {
-    res.status(502).json({ success: false, error: 'Upstream error' });
-  }
+  const { status, json } = await processLead('contact', body as Record<string, unknown>);
+  return res.status(status).json(json);
 }
