@@ -2,8 +2,9 @@
   "installCommand": "npm install --legacy-peer-deps",
   "functions": {
     "api/webhooks/credit.ts": {
-      "memory": 1024,
-      "maxDuration": 30
+      "memory": 2048,
+      "maxDuration": 30,
+      "includeFiles": "node_modules/@sparticuz/chromium/bin/**"
     }
   },
   "headers": [
