@@ -23,7 +23,7 @@ export default async function handler(req: Req, res: Res) {
   if (req.method === 'OPTIONS') {
     return res.status(204).end();
   }
-  if (req.method !== 'GET') {
+  if (req.method !== 'GET' && req.method !== 'DELETE') {
     return res.status(405).json({ success: false, error: 'Method not allowed' });
   }
 
@@ -45,6 +45,32 @@ export default async function handler(req: Req, res: Res) {
   const type = req.query?.type as string | undefined;
   const startDate = req.query?.startDate as string | undefined;
   const endDate = req.query?.endDate as string | undefined;
+
+  if (req.method === 'DELETE') {
+    const id = req.query?.id as string | undefined;
+    const type = req.query?.type as string | undefined;
+
+    if (!id && !type) {
+      return res.status(400).json({ success: false, error: 'Provide id or type to delete' });
+    }
+
+    try {
+      let query = supabase.from('form_submissions').delete();
+      if (id) {
+        query = query.eq('id', id);
+      } else if (type) {
+        query = query.eq('type', type);
+      }
+      const { error } = await query;
+      if (error) {
+        return res.status(500).json({ success: false, error: error.message });
+      }
+      return res.status(200).json({ success: true });
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : 'Internal server error';
+      return res.status(500).json({ success: false, error: msg });
+    }
+  }
 
   try {
     let query = supabase
