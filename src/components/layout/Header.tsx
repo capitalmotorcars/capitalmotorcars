@@ -143,6 +143,7 @@ export function Header() {
                   <Link
                     key={link.href}
                     to={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
                     className={cn(
                       'flex items-center min-h-[48px] px-4 py-3 text-sm font-medium rounded-lg transition-colors border-l-2 border-transparent -ml-0.5 pl-[18px]',
                       active
@@ -157,13 +158,13 @@ export function Header() {
             </nav>
             <div className="mt-3 pt-3 mx-2 border-t border-border dark:border-white/10 space-y-2">
               <Button asChild variant="outline" className="w-full min-h-[48px] border-accent/40 dark:border-white/40 text-accent dark:text-white font-medium">
-                <Link to="/quiz" className="flex items-center justify-center gap-2">
+                <Link to="/quiz" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-center gap-2">
                   <Search className="w-4 h-4" />
-                  Find Your Vehicle
+                  Start Quiz
                 </Link>
               </Button>
               <Button asChild className="w-full min-h-[48px] bg-accent hover:bg-accent/90 text-accent-foreground font-medium">
-                <Link to="/contact">Schedule a Call</Link>
+                <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Schedule a Call</Link>
               </Button>
             </div>
           </div>

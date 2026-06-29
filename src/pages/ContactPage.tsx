@@ -128,7 +128,7 @@ export default function ContactPage() {
                 <div className="max-w-7xl xl:max-w-[90rem] mx-auto">
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-10 xl:gap-12 mb-12 md:mb-16 xl:mb-20 lg:items-start">
                     {/* Contact Methods */}
-                    <div className="lg:col-span-1 flex flex-col lg:self-start">
+                    <div className="order-2 lg:order-1 lg:col-span-1 flex flex-col lg:self-start">
                       <h3 className="text-xl sm:text-2xl md:text-3xl xl:text-5xl  font-semibold text-black dark:text-white mb-6 md:mb-8 xl:mb-10">
                         Get in Touch
                       </h3>
@@ -162,7 +162,7 @@ export default function ContactPage() {
                     </div>
 
                     {/* Contact Form */}
-                    <div className="lg:col-span-2 flex flex-col h-full">
+                    <div className="order-1 lg:order-2 lg:col-span-2 flex flex-col h-full">
                       <h3 className="text-xl sm:text-2xl md:text-3xl xl:text-5xl  font-semibold text-black dark:text-white mb-6 md:mb-8 xl:mb-10">
                         Send us a Message
                       </h3>
