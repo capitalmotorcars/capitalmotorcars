@@ -432,6 +432,28 @@ export function createVehicleSchema(deal: {
       price: deal.monthly_price,
       priceCurrency: 'USD',
       availability: 'https://schema.org/InStock',
+      shippingDetails: {
+        '@type': 'OfferShippingDetails',
+        shippingRate: {
+          '@type': 'MonetaryAmount',
+          value: 0,
+          currency: 'USD'
+        },
+        shippingDestination: {
+          '@type': 'DefinedRegion',
+          addressCountry: 'US'
+        },
+        deliveryTime: {
+          '@type': 'ShippingDeliveryTime',
+          handlingTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 1, unitCode: 'd' },
+          transitTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 5, unitCode: 'd' }
+        }
+      },
+      hasMerchantReturnPolicy: {
+        '@type': 'MerchantReturnPolicy',
+        returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
+        description: 'Auto leases do not have a standard return policy once the contract is signed.'
+      },
       itemOffered: {
         '@type': 'Service',
         name: 'Auto Lease',
