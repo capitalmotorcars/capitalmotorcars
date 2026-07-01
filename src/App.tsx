@@ -135,7 +135,24 @@ const blogSlugs = [
   'best-car-lease-deals-june-2026',
   'hidden-fees-in-car-leasing-dealership-secrets',
   'why-nj-brokers-beat-route-22-dealerships',
-  'lease-wear-and-tear-charges-nj'
+  'lease-wear-and-tear-charges-nj',
+  'leasing-fees-explained-in-detail-everything-you-need-to-know',
+  'wheel-squeaks-when-driving',
+  'auto-leasing-cheat-codes-multiple-security-deposits',
+  'toyota-sienna-reliability-guide',
+  'the-lease-return-checklist-7-things-to-expect-when-returning-your-lease',
+  'top-5-things-most-leasing-companies-dont-want-you-to-know-about-leasing-a-car',
+  'one-pay-leasing-pros-and-cons',
+  'mazda-cx-9-reliability-detailed-review',
+  '7-upgrades-to-turn-your-suv-into-a-high-tech-dream-car',
+  'should-i-lease-a-car-as-a-pet-owner',
+  'roadside-assistance-which-automaker-does-it-best',
+  '5-tips-leasing-car-2026',
+  'bmw-x1-reliability-performance-review',
+  'bad-credit-car-lease-approval-guide',
+  'the-money-factor-do-you-know-where-your-lease-rates-come-from',
+  'car-lease-end-overview-what-to-do-when-your-lease-is-up',
+  'best-car-lease-deals-july-2026'
 ];
 
 const App = () => (

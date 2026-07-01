@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import 'dotenv/config';
-import { MOCK_BLOGS } from './mockBlogs.mjs';
+import { mockBlogs } from './mockBlogs.mjs';
 
 const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
 const supabaseServiceRoleKey =
@@ -22,9 +22,9 @@ const supabase = createClient(supabaseUrl, supabaseServiceRoleKey, {
 import crypto from 'crypto';
 
 async function main() {
-  console.log(`Preparing to upsert ${MOCK_BLOGS.length} blogs into Supabase...`);
+  console.log(`Preparing to upsert ${mockBlogs.length} blogs into Supabase...`);
 
-  const cleanedBlogs = MOCK_BLOGS.map(({ author, id, ...rest }) => ({
+  const cleanedBlogs = mockBlogs.map(({ author, id, ...rest }) => ({
     ...rest,
     id: id || crypto.randomUUID(),
   }));
