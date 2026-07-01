@@ -419,6 +419,7 @@ export function createVehicleSchema(deal: {
     '@context': 'https://schema.org',
     '@type': 'Vehicle',
     name: `${deal.year} ${deal.make} ${deal.model} ${deal.trim || ''}`.trim(),
+    description: `Lease a ${deal.year} ${deal.make} ${deal.model} for $${deal.monthly_price}/month with $${deal.down_payment} down.`,
     image: deal.image_url,
     brand: {
       '@type': 'Brand',
@@ -428,17 +429,9 @@ export function createVehicleSchema(deal: {
     itemCondition: 'https://schema.org/NewCondition',
     offers: {
       '@type': 'Offer',
-      priceSpecification: {
-        '@type': 'UnitPriceSpecification',
-        price: deal.monthly_price,
-        priceCurrency: 'USD',
-        unitCode: 'MON',
-        referenceQuantity: {
-          '@type': 'QuantitativeValue',
-          value: 1,
-          unitCode: 'MON'
-        }
-      },
+      price: deal.monthly_price,
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
       itemOffered: {
         '@type': 'Service',
         name: 'Auto Lease',
