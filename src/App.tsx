@@ -152,7 +152,17 @@ const blogSlugs = [
   'bad-credit-car-lease-approval-guide',
   'the-money-factor-do-you-know-where-your-lease-rates-come-from',
   'car-lease-end-overview-what-to-do-when-your-lease-is-up',
-  'best-car-lease-deals-july-2026'
+  'best-car-lease-deals-july-2026',
+  'is-leasing-a-car-a-scam-reddit',
+  'lease-vs-buy-reddit-2026',
+  'how-to-negotiate-a-car-lease-reddit',
+  'ev-leasing-new-jersey-guide-2026',
+  'top-5-luxury-suvs-to-lease-2026',
+  'how-to-get-out-of-a-car-lease-early',
+  'leasing-a-car-with-bad-credit-nj',
+  'why-lease-a-hybrid-car-2026',
+  'end-of-lease-options-explained',
+  'high-mileage-car-lease-guide'
 ];
 
 const App = () => (

@@ -742,11 +742,7 @@
     <priority>0.90</priority>
     <changefreq>weekly</changefreq>
   </url>
-  <url>
-    <loc>https://www.capitalmotorcars.com/tesla-leasing-hoboken</loc>
-    <priority>0.90</priority>
-    <changefreq>weekly</changefreq>
-  </url>
+  
   <url>
     <loc>https://www.capitalmotorcars.com/comparisons/bmw-x5-vs-audi-q7-lease</loc>
     <priority>0.80</priority>
@@ -767,11 +763,7 @@
     <priority>0.80</priority>
     <changefreq>monthly</changefreq>
   </url>
-  <url>
-    <loc>https://www.capitalmotorcars.com/comparisons/tesla-model-y-vs-bmw-ix-lease</loc>
-    <priority>0.80</priority>
-    <changefreq>monthly</changefreq>
-  </url>
+  
   <url>
     <loc>https://www.capitalmotorcars.com/comparisons/honda-cr-v-vs-toyota-rav4-lease</loc>
     <priority>0.80</priority>
@@ -877,16 +869,8 @@
     <priority>0.88</priority>
     <changefreq>weekly</changefreq>
   </url>
-  <url>
-    <loc>https://www.capitalmotorcars.com/tesla-model-3-lease-nj</loc>
-    <priority>0.88</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://www.capitalmotorcars.com/tesla-model-y-lease-nj</loc>
-    <priority>0.88</priority>
-    <changefreq>weekly</changefreq>
-  </url>
+  
+  
   <url>
     <loc>https://www.capitalmotorcars.com/lexus-rx-lease-nj</loc>
     <priority>0.88</priority>

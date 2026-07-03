@@ -2267,7 +2267,7 @@ The answer is simple: MSDs do not make the dealership any money. In fact, they a
 If you have five or six thousand dollars sitting in a standard savings account earning minimal interest, you are losing money to inflation. By utilizing that cash as Multiple Security Deposits on your next luxury car lease, you can slash your monthly payment, bypass expensive interest charges, and guarantee a double-digit return on your capital. 
 
 At Capital Motor Cars, our brokers specialize in complex lease structuring. We have the advanced software required to calculate the exact ROI of an MSD structure down to the penny. We force the banks to give you the lowest possible base Money Factor, and then we apply the MSD cheat code to drop it even further. Contact our team today and let us build a perfectly optimized lease structure for your next vehicle.`,
-    cover_image_url: 'https://images.unsplash.com/photo-1579621970588-a3f5ce599d6d?q=80&w=2000&auto=format&fit=crop',
+    cover_image_url: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2000&auto=format&fit=crop',
     seo_title: 'Multiple Security Deposits (MSD) Car Lease Explained',
     seo_description: 'Learn the math behind Multiple Security Deposits (MSDs). Discover how to lower your lease interest rate and guarantee a massive return on investment.',
     seo_keywords: 'multiple security deposits car lease, MSD lease math, how MSDs lower money factor, bmw lease msd, lexus multiple security deposits',
