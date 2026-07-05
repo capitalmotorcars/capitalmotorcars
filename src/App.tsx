@@ -101,6 +101,45 @@ const AdminLayout = lazy(() => import("./components/admin/AdminLayout").then(m =
 const BlogPostsPage = lazy(() => import("./pages/admin/BlogPostsPage"));
 
 
+const BMWBrandPage = lazy(() => import('./pages/brands/BMWBrandPage'));
+const MercedesBenzBrandPage = lazy(() => import('./pages/brands/MercedesBenzBrandPage'));
+const AudiBrandPage = lazy(() => import('./pages/brands/AudiBrandPage'));
+const LexusBrandPage = lazy(() => import('./pages/brands/LexusBrandPage'));
+const PorscheBrandPage = lazy(() => import('./pages/brands/PorscheBrandPage'));
+const AcuraBrandPage = lazy(() => import('./pages/brands/AcuraBrandPage'));
+const AlfaRomeoBrandPage = lazy(() => import('./pages/brands/AlfaRomeoBrandPage'));
+const AstonMartinBrandPage = lazy(() => import('./pages/brands/AstonMartinBrandPage'));
+const BentleyBrandPage = lazy(() => import('./pages/brands/BentleyBrandPage'));
+const CadillacBrandPage = lazy(() => import('./pages/brands/CadillacBrandPage'));
+const InfinitiBrandPage = lazy(() => import('./pages/brands/InfinitiBrandPage'));
+const JaguarBrandPage = lazy(() => import('./pages/brands/JaguarBrandPage'));
+const LamborghiniBrandPage = lazy(() => import('./pages/brands/LamborghiniBrandPage'));
+const LandRoverBrandPage = lazy(() => import('./pages/brands/LandRoverBrandPage'));
+const LincolnBrandPage = lazy(() => import('./pages/brands/LincolnBrandPage'));
+const MaseratiBrandPage = lazy(() => import('./pages/brands/MaseratiBrandPage'));
+const VolvoBrandPage = lazy(() => import('./pages/brands/VolvoBrandPage'));
+const ToyotaBrandPage = lazy(() => import('./pages/brands/ToyotaBrandPage'));
+const HondaBrandPage = lazy(() => import('./pages/brands/HondaBrandPage'));
+const FordBrandPage = lazy(() => import('./pages/brands/FordBrandPage'));
+const ChevroletBrandPage = lazy(() => import('./pages/brands/ChevroletBrandPage'));
+const VolkswagenBrandPage = lazy(() => import('./pages/brands/VolkswagenBrandPage'));
+const HyundaiBrandPage = lazy(() => import('./pages/brands/HyundaiBrandPage'));
+const KiaBrandPage = lazy(() => import('./pages/brands/KiaBrandPage'));
+const NissanBrandPage = lazy(() => import('./pages/brands/NissanBrandPage'));
+const BuickBrandPage = lazy(() => import('./pages/brands/BuickBrandPage'));
+const ChryslerBrandPage = lazy(() => import('./pages/brands/ChryslerBrandPage'));
+const DodgeBrandPage = lazy(() => import('./pages/brands/DodgeBrandPage'));
+const FiatBrandPage = lazy(() => import('./pages/brands/FiatBrandPage'));
+const GenesisBrandPage = lazy(() => import('./pages/brands/GenesisBrandPage'));
+const GMCBrandPage = lazy(() => import('./pages/brands/GMCBrandPage'));
+const JeepBrandPage = lazy(() => import('./pages/brands/JeepBrandPage'));
+const MazdaBrandPage = lazy(() => import('./pages/brands/MazdaBrandPage'));
+const MiniBrandPage = lazy(() => import('./pages/brands/MiniBrandPage'));
+const MitsubishiBrandPage = lazy(() => import('./pages/brands/MitsubishiBrandPage'));
+const RamBrandPage = lazy(() => import('./pages/brands/RamBrandPage'));
+const SubaruBrandPage = lazy(() => import('./pages/brands/SubaruBrandPage'));
+const CarKeyReplacementPage = lazy(() => import("./pages/services/CarKeyReplacementPage"));
+
 const queryClient = new QueryClient();
 
 const legacyRedirects = [
@@ -162,7 +201,16 @@ const blogSlugs = [
   'leasing-a-car-with-bad-credit-nj',
   'why-lease-a-hybrid-car-2026',
   'end-of-lease-options-explained',
-  'high-mileage-car-lease-guide'
+  'high-mileage-car-lease-guide',
+  'car-skidding-in-winter',
+  'road-trip-2026-the-ultimate-packing-guide',
+  'audi-a4-reliability-long-term-performance-and-durability',
+  'got-bad-credit-heres-how-to-get-approved-for-a-car-lease',
+  'returning-your-lease-car-to-the-dealership-how-to-prepare-and-what-you-need-to-know',
+  'car-key-not-working-in-ignition',
+  'are-jeeps-reliable',
+  'hyundai-sonata-reliability',
+  'negotiate-the-best-car-lease-deal'
 ];
 
 const App = () => (
@@ -189,6 +237,44 @@ const App = () => (
                 <Route path="/services/lease-return" element={<LeaseReturnPage />} />
                 <Route path="/services/lease-transfer" element={<LeaseTransferPage />} />
                 <Route path="/services/early-lease-exit" element={<EarlyLeaseExitPage />} />
+                <Route path="/services/car-key-replacement" element={<CarKeyReplacementPage />} />
+                <Route path="/brand/bmw" element={<BMWBrandPage />} />
+                <Route path="/brand/mercedes-benz" element={<MercedesBenzBrandPage />} />
+                <Route path="/brand/audi" element={<AudiBrandPage />} />
+                <Route path="/brand/lexus" element={<LexusBrandPage />} />
+                <Route path="/brand/porsche" element={<PorscheBrandPage />} />
+                <Route path="/brand/acura" element={<AcuraBrandPage />} />
+                <Route path="/brand/alfa-romeo" element={<AlfaRomeoBrandPage />} />
+                <Route path="/brand/aston-martin" element={<AstonMartinBrandPage />} />
+                <Route path="/brand/bentley" element={<BentleyBrandPage />} />
+                <Route path="/brand/cadillac" element={<CadillacBrandPage />} />
+                <Route path="/brand/infiniti" element={<InfinitiBrandPage />} />
+                <Route path="/brand/jaguar" element={<JaguarBrandPage />} />
+                <Route path="/brand/lamborghini" element={<LamborghiniBrandPage />} />
+                <Route path="/brand/land-rover" element={<LandRoverBrandPage />} />
+                <Route path="/brand/lincoln" element={<LincolnBrandPage />} />
+                <Route path="/brand/maserati" element={<MaseratiBrandPage />} />
+                <Route path="/brand/volvo" element={<VolvoBrandPage />} />
+                <Route path="/brand/toyota" element={<ToyotaBrandPage />} />
+                <Route path="/brand/honda" element={<HondaBrandPage />} />
+                <Route path="/brand/ford" element={<FordBrandPage />} />
+                <Route path="/brand/chevrolet" element={<ChevroletBrandPage />} />
+                <Route path="/brand/volkswagen" element={<VolkswagenBrandPage />} />
+                <Route path="/brand/hyundai" element={<HyundaiBrandPage />} />
+                <Route path="/brand/kia" element={<KiaBrandPage />} />
+                <Route path="/brand/nissan" element={<NissanBrandPage />} />
+                <Route path="/brand/buick" element={<BuickBrandPage />} />
+                <Route path="/brand/chrysler" element={<ChryslerBrandPage />} />
+                <Route path="/brand/dodge" element={<DodgeBrandPage />} />
+                <Route path="/brand/fiat" element={<FiatBrandPage />} />
+                <Route path="/brand/genesis" element={<GenesisBrandPage />} />
+                <Route path="/brand/gmc" element={<GMCBrandPage />} />
+                <Route path="/brand/jeep" element={<JeepBrandPage />} />
+                <Route path="/brand/mazda" element={<MazdaBrandPage />} />
+                <Route path="/brand/mini" element={<MiniBrandPage />} />
+                <Route path="/brand/mitsubishi" element={<MitsubishiBrandPage />} />
+                <Route path="/brand/ram" element={<RamBrandPage />} />
+                <Route path="/brand/subaru" element={<SubaruBrandPage />} />
                 <Route path="/brands" element={<BrandsPage />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/contact" element={<ContactPage />} />

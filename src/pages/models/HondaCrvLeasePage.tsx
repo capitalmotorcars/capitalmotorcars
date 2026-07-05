@@ -6,7 +6,7 @@ const data: VehicleModelData = {
   model: 'CR-V',
   fullName: 'Honda CR-V',
   slug: 'honda-crv-lease-nj',
-  heroImage: 'https://images.unsplash.com/photo-1606220588913-b3aacb4d2f37?auto=format&fit=crop&w=1600&q=80',
+  heroImage: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1600&q=80',
   category: 'Compact SUV',
   isEV: false,
   msrpStart: 31600,

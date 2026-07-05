@@ -23,7 +23,7 @@ const data: ComparisonData = {
   vehicle2: {
     make: 'Toyota',
     model: 'RAV4 XLE AWD',
-    image: 'https://images.unsplash.com/photo-1621007947382-cc34a621113e?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=2070&auto=format&fit=crop',
     price: 329,
     horsepower: 203,
     mpg: '27 / 35 MPG',

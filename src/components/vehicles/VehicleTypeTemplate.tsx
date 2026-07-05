@@ -214,7 +214,7 @@ interface VehicleTypeTemplateProps {
 }
 
 export function VehicleTypeTemplate({ vehicle }: VehicleTypeTemplateProps) {
-  console.log(vehicle.fuelTypes);
+
   const { data: vehicles } = useVehicleTypes();
   const navigate = useNavigate();
   const { ref: heroRef, isRevealed: heroRevealed } = useScrollReveal();

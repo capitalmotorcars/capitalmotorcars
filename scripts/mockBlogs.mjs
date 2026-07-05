@@ -2230,7 +2230,7 @@ The answer is simple: MSDs do not make the dealership any money. In fact, they a
 If you have five or six thousand dollars sitting in a standard savings account earning minimal interest, you are losing money to inflation. By utilizing that cash as Multiple Security Deposits on your next luxury car lease, you can slash your monthly payment, bypass expensive interest charges, and guarantee a double-digit return on your capital. 
 
 At Capital Motor Cars, our brokers specialize in complex lease structuring. We have the advanced software required to calculate the exact ROI of an MSD structure down to the penny. We force the banks to give you the lowest possible base Money Factor, and then we apply the MSD cheat code to drop it even further. Contact our team today and let us build a perfectly optimized lease structure for your next vehicle.`,
-    cover_image_url: "https://images.unsplash.com/photo-1579621970588-a3f5ce599d6d?q=80&w=2000&auto=format&fit=crop",
+    cover_image_url: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2000&auto=format&fit=crop",
     seo_title: "Multiple Security Deposits (MSD) Car Lease Explained",
     seo_description: "Learn the math behind Multiple Security Deposits (MSDs). Discover how to lower your lease interest rate and guarantee a massive return on investment.",
     seo_keywords: "multiple security deposits car lease, MSD lease math, how MSDs lower money factor, bmw lease msd, lexus multiple security deposits",
@@ -2289,7 +2289,7 @@ Whether you want to lease a brand new Sienna to capture the high residual value,
 **Q: How long do the hybrid batteries last?**
 A: Toyota hybrid batteries are exceptionally well engineered. Under normal driving conditions, you can expect the high voltage battery pack to last between 150,000 and 200,000 miles. Furthermore, Toyota provides a ten year or 150,000 mile warranty on the hybrid battery pack, guaranteeing you total peace of mind for the duration of a standard auto lease.
 `,
-    cover_image_url: "https://images.unsplash.com/photo-1621007947382-cc34a621113e?q=80&w=2000&auto=format&fit=crop",
+    cover_image_url: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=2000&auto=format&fit=crop",
     seo_title: "Toyota Sienna Reliability 2026 | Hybrid Battery Lifespan",
     seo_description: "Is the hybrid Toyota Sienna reliable? We review the mechanical longevity of the 2.5L engine, the eCVT transmission, and the 150k mile battery warranty.",
     seo_keywords: "toyota sienna reliability, toyota hybrid battery lifespan, sienna ecvt transmission, toyota sienna hybrid problems, best minivan to lease",
@@ -2352,7 +2352,7 @@ A: No, you do not need a full tank of gas. However, the low fuel light should no
 **Q: What happens if I lost one of the key fobs?**
 A: You will be charged heavily for a missing key fob. Modern smart keys often cost between $300 and $600 to replace and program. It is almost always cheaper to find an automotive locksmith to create a replacement key before your final inspection rather than paying the bank's penalty fee.
 `,
-    cover_image_url: "https://images.unsplash.com/photo-1574347713437-080ab02cc727?q=80&w=2000&auto=format&fit=crop",
+    cover_image_url: "https://images.unsplash.com/photo-1503376712394-6f921ea6247d?q=80&w=2000&auto=format&fit=crop",
     seo_title: "Car Lease Return Checklist | Avoid Hidden Penalties",
     seo_description: "Don't pay surprise fees when returning your leased car. Follow our 7-step checklist covering tire tread depth, scratch limits, and pre-inspections.",
     seo_keywords: "car lease return checklist, lease return inspection, autoVIN lease inspection, lease return tire tread requirement, car lease disposition fee",

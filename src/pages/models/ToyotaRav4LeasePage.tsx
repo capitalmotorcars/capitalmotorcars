@@ -6,7 +6,7 @@ const data: VehicleModelData = {
   model: 'RAV4',
   fullName: 'Toyota RAV4',
   slug: 'toyota-rav4-lease-nj',
-  heroImage: 'https://images.unsplash.com/photo-1621244282569-c3b92ed1e56e?auto=format&fit=crop&w=1600&q=80',
+  heroImage: 'https://images.unsplash.com/photo-1550355291-bbee04a92028?auto=format&fit=crop&w=1600&q=80',
   category: 'Compact SUV',
   isEV: false,
   msrpStart: 29000,

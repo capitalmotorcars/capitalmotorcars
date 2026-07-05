@@ -6,7 +6,7 @@ const data: VehicleModelData = {
   model: 'IONIQ 6',
   fullName: 'Hyundai IONIQ 6',
   slug: 'hyundai-ioniq6-lease-nj',
-  heroImage: 'https://images.unsplash.com/photo-1671729449948-c20eabe29cdb?auto=format&fit=crop&w=1600&q=80',
+  heroImage: 'https://images.unsplash.com/photo-1503377235941-5c4400135188?auto=format&fit=crop&w=1600&q=80',
   category: 'Electric Sedan',
   isEV: true,
   msrpStart: 38615,

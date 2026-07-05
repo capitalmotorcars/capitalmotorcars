@@ -7,8 +7,7 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { renderSEOHeading } from '@/utils/seoUtils';
-import { ArrowRight, X } from 'lucide-react';
-import * as Dialog from '@radix-ui/react-dialog';
+import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import bg1 from '@/assets/background-mercedes.jpeg';
 import bg2 from '@/assets/background-audi.jpg';
@@ -100,7 +99,6 @@ const fadeInUp = {
 
 export default function BrandsPage() {
   const [activeCategory, setActiveCategory] = useState<BrandCategory>('luxury');
-  const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
   const { ref, isRevealed } = useScrollReveal();
 
   const filteredBrands = getFilteredBrands(activeCategory);
@@ -272,81 +270,24 @@ export default function BrandsPage() {
                   {/* Brands Grid */}
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4  gap-4 sm:gap-6 md:gap-8 xl:gap-10 mb-12 md:mb-16 xl:mb-20">
                     {filteredBrands.map((brand) => (
-                      <Dialog.Root key={brand.name} open={selectedBrand === brand.name} onOpenChange={(open) => setSelectedBrand(open ? brand.name : null)}>
-                        <Dialog.Trigger asChild>
-                          <button
-                            className="group flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 xl:p-10 rounded-xl border-2 border-border dark:border-white/10 bg-card dark:bg-white/[0.04] hover:border-accent hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.4)] transition-all duration-500 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                          >
-                            <div className="flex items-center justify-center p-4 sm:p-6 mb-3 sm:mb-4 rounded-lg bg-muted dark:bg-white/10 w-full max-w-[160px] sm:max-w-[180px] md:max-w-[200px] xl:max-w-[220px] min-h-[100px] sm:min-h-[120px] md:min-h-[140px] xl:min-h-[160px] group-hover:bg-accent/10 transition-colors">
-                              <img
-                                src={brand.logo}
-                                alt={brand.name}
-                                loading="lazy"
-                                decoding="async"
-                                className="h-12 sm:h-16 md:h-20 xl:h-24 w-auto object-contain transition-transform group-hover:scale-110"
-                              />
-                            </div>
-                            <span className="text-sm sm:text-base md:text-lg xl:text-xl font-semibold text-foreground group-hover:text-accent transition-colors text-center">
-                              {brand.name}
-                            </span>
-                          </button>
-                        </Dialog.Trigger>
-                        <Dialog.Portal>
-                          <Dialog.Overlay asChild>
-                            <motion.div
-                              className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              transition={dialogFadeTransition}
-                            />
-                          </Dialog.Overlay>
-                          <Dialog.Content asChild>
-                            <motion.div
-                              className="fixed inset-0 z-50 flex items-center justify-center p-4"
-                              initial={{ opacity: 0, y: 24 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={dialogFadeTransition}
-                              onClick={(e) => e.target === e.currentTarget && setSelectedBrand(null)}
-                            >
-                              <div className={cn(dialogPanelClass, 'w-full max-w-lg p-6 md:p-8')}>
-                                <div className="flex items-start gap-4 mb-4">
-                                  <div className="flex items-center justify-center shrink-0">
-                                    <img
-                                      src={brand.logo}
-                                      alt={brand.name}
-                                      className="h-16 w-16 md:h-20 md:w-20 object-contain"
-                                    />
-                                  </div>
-                                  <div className="min-w-0 flex-1">
-                                    <h3 className="text-xl md:text-2xl font-semibold text-foreground">{brand.name}</h3>
-                                    <p className="text-sm md:text-base text-muted-foreground mt-1">
-                                      {brand.category === 'luxury' ? 'Luxury Brand' : 'Popular Brand'}
-                                    </p>
-                                  </div>
-                                  <Dialog.Close asChild>
-                                    <button type="button" className="shrink-0 rounded-lg p-2 text-muted-foreground hover:bg-muted hover:text-foreground" aria-label="Close">
-                                      <X className="h-5 w-5" />
-                                    </button>
-                                  </Dialog.Close>
-                                </div>
-                                <p className="text-muted-foreground leading-relaxed mb-6">
-                                  Interested in leasing a {brand.name} vehicle? Contact us to learn about current availability and special offers.
-                                </p>
-                                <Button
-                                  asChild
-                                  size="lg"
-                                  className="w-full h-12 rounded-xl border border-accent/40 bg-accent hover:bg-accent/90 hover:border-accent text-accent-foreground font-semibold px-6 shadow-lg shadow-accent/30 hover:shadow-xl hover:shadow-accent/40 transition-all"
-                                >
-                                  <Link to="/contact" className="flex items-center justify-center gap-2" onClick={() => setSelectedBrand(null)}>
-                                    Contact Us
-                                    <ArrowRight className="w-5 h-5" />
-                                  </Link>
-                                </Button>
-                              </div>
-                            </motion.div>
-                          </Dialog.Content>
-                        </Dialog.Portal>
-                      </Dialog.Root>
+                      <Link
+                        key={brand.name}
+                        to={`/brand/${brand.name.toLowerCase().replace(/[-\s]/g, '-')}`}
+                        className="group flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 xl:p-10 rounded-xl border-2 border-border dark:border-white/10 bg-card dark:bg-white/[0.04] hover:border-accent hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.4)] transition-all duration-500 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                      >
+                        <div className="flex items-center justify-center p-4 sm:p-6 mb-3 sm:mb-4 rounded-lg bg-muted dark:bg-white/10 w-full max-w-[160px] sm:max-w-[180px] md:max-w-[200px] xl:max-w-[220px] min-h-[100px] sm:min-h-[120px] md:min-h-[140px] xl:min-h-[160px] group-hover:bg-accent/10 transition-colors">
+                          <img
+                            src={brand.logo}
+                            alt={brand.name}
+                            loading="lazy"
+                            decoding="async"
+                            className="h-12 sm:h-16 md:h-20 xl:h-24 w-auto object-contain transition-transform group-hover:scale-110"
+                          />
+                        </div>
+                        <span className="text-sm sm:text-base md:text-lg xl:text-xl font-semibold text-foreground group-hover:text-accent transition-colors text-center">
+                          {brand.name}
+                        </span>
+                      </Link>
                     ))}
                   </div>
 
