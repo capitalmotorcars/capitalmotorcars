@@ -216,7 +216,7 @@ export function LocalLandingPageTemplate({
                     src={heroImage}
                     alt={heroImageAlt}
                     className="h-[260px] w-full object-cover sm:h-[340px] lg:h-[460px]"
-                    fetchPriority="high"
+                    fetchpriority="high"
                   />
                 </div>
 

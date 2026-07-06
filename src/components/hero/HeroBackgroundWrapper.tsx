@@ -31,7 +31,7 @@ export function HeroBackgroundWrapper({ children }: HeroBackgroundWrapperProps) 
           height={1080}
           loading="eager"
           decoding="async"
-          fetchPriority="high"
+          fetchpriority="high"
           className="absolute inset-0 w-full h-full object-cover opacity-70 dark:opacity-45"
           style={{ transform: 'none', willChange: 'auto' }}
         />
@@ -49,7 +49,7 @@ export function HeroBackgroundWrapper({ children }: HeroBackgroundWrapperProps) 
           height={1080}
           loading="eager"
           decoding="async"
-          fetchPriority="high"
+          fetchpriority="high"
           className="absolute inset-0 w-full h-full object-cover opacity-75 dark:opacity-45 transition-transform duration-200 ease-out"
         // style={{ transform: `translateY(${parallaxOffset}px) scale(1.10)` }}
         />

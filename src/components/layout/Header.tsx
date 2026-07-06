@@ -66,7 +66,7 @@ export function Header() {
               alt="Capital Motor Cars"
               loading="eager"
               decoding="async"
-              fetchPriority="high"
+              fetchpriority="high"
               className="h-10 sm:h-12 md:h-14 w-auto transition-all duration-300"
             />
           </Link>

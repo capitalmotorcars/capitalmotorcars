@@ -148,6 +148,16 @@ const legacyRedirects = [
 ];
 
 const blogSlugs = [
+  'bmw-x5-reliability-guide',
+  'porsche-macan-maintenance-costs',
+  'mercedes-gle-reliability-issues',
+  'lexus-rx350-reliability-guide',
+  'range-rover-sport-reliability',
+  'jeep-grand-cherokee-reliability',
+  'honda-crv-maintenance-costs',
+  'ford-explorer-reliability-issues',
+  'chevy-silverado-1500-reliability',
+  'vw-tiguan-maintenance-guide',
   'best-lease-deals-new-jersey',
   'auto-broker-vs-dealership-new-jersey',
   'bad-credit-car-lease-new-jersey',
