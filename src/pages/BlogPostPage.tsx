@@ -51,8 +51,57 @@ function sanitizeMarkdownHref(raw: string): string | null {
   return null;
 }
 
+const BRAND_LINKS: Record<string, string> = {
+  'BMW': '/brand/bmw',
+  'Porsche': '/brand/porsche',
+  'Mercedes-Benz': '/brand/mercedes-benz',
+  'Mercedes': '/brand/mercedes-benz',
+  'Lexus': '/brand/lexus',
+  'Land Rover': '/brand/land-rover',
+  'Range Rover': '/brand/land-rover',
+  'Jeep': '/brand/jeep',
+  'Honda': '/brand/honda',
+  'Ford': '/brand/ford',
+  'Chevrolet': '/brand/chevrolet',
+  'Chevy': '/brand/chevrolet',
+  'Volkswagen': '/brand/volkswagen',
+  'VW': '/brand/volkswagen',
+  'Audi': '/brand/audi'
+};
+
+function linkBrandsInText(text: string, linkedBrands: Set<string>): ReactNode {
+  const unlinked = Object.keys(BRAND_LINKS).filter(k => !linkedBrands.has(BRAND_LINKS[k]));
+  if (unlinked.length === 0) return text;
+
+  // Sort by length descending so "Mercedes-Benz" matches before "Mercedes"
+  unlinked.sort((a, b) => b.length - a.length);
+
+  const regex = new RegExp(`\\b(${unlinked.join('|')})\\b`, 'i');
+  const match = text.match(regex);
+  if (!match) return text;
+
+  const matchedText = match[1];
+  const canonicalKey = unlinked.find(k => k.toLowerCase() === matchedText.toLowerCase())!;
+  const slug = BRAND_LINKS[canonicalKey];
+
+  linkedBrands.add(slug);
+
+  const prefix = text.slice(0, match.index);
+  const suffix = text.slice((match.index || 0) + matchedText.length);
+
+  return (
+    <>
+      {prefix}
+      <Link to={slug} className="text-accent underline underline-offset-4 font-bold hover:text-accent/80 transition-colors">
+        {matchedText}
+      </Link>
+      {linkBrandsInText(suffix, linkedBrands)}
+    </>
+  );
+}
+
 /** Renders **bold** text and [links](/url) */
-function renderInline(text: string) {
+function renderInline(text: string, linkedBrands?: Set<string>) {
   // Matches [text](url) or **bold**
   const parts = text.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g);
   
@@ -96,6 +145,10 @@ function renderInline(text: string) {
           </a>
         );
       }
+    }
+    
+    if (linkedBrands && part.length > 0) {
+      return <span key={idx}>{linkBrandsInText(part, linkedBrands)}</span>;
     }
     
     return part;
@@ -172,6 +225,7 @@ function BlogTableOfContents({ content }: { content: string }) {
 function BlogContent({ content }: { content: string }) {
   const lines = content.split('\n');
   const blocks: ReactNode[] = [];
+  const linkedBrands = new Set<string>();
   let i = 0;
   let key = 0;
   let insertedMidCta = false;
@@ -202,7 +256,7 @@ function BlogContent({ content }: { content: string }) {
       blocks.push(
         <ul key={key++} className="list-disc pl-6 space-y-2 my-4 text-muted-foreground leading-relaxed">
           {items.map((item, j) => (
-            <li key={j}>{renderInline(item)}</li>
+            <li key={j}>{renderInline(item, linkedBrands)}</li>
           ))}
         </ul>
       );
@@ -257,7 +311,7 @@ function BlogContent({ content }: { content: string }) {
                 <tr key={rIdx} className="border-b border-accent/5 last:border-0 hover:bg-black/[0.01] dark:hover:bg-white/[0.01] transition-colors">
                   {row.map((cell, cIdx) => (
                     <td key={cIdx} className="p-4 text-sm text-muted-foreground whitespace-nowrap">
-                      {renderInline(cell)}
+                      {renderInline(cell, linkedBrands)}
                     </td>
                   ))}
                 </tr>
@@ -284,7 +338,7 @@ function BlogContent({ content }: { content: string }) {
     if (paraLines.length > 0) {
       blocks.push(
         <p key={key++} className="text-muted-foreground leading-[1.8] mb-6 text-[17px] text-justify">
-          {renderInline(paraLines.join('\n'))}
+          {renderInline(paraLines.join('\n'), linkedBrands)}
         </p>
       );
       insertMidCtaIfNeeded();

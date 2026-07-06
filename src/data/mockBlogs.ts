@@ -3778,8 +3778,7 @@ Negotiating a great lease requires preparation, discipline, and a willingness to
     created_at: '2026-07-20T10:00:00Z',
     updated_at: '2026-07-20T10:00:00Z',
     author: 'Capital Motor Cars Team'
-  }
-
+  },
   {
     id: crypto.randomUUID(),
     slug: 'bmw-x5-reliability-guide',
