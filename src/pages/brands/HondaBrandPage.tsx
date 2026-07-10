@@ -13,7 +13,7 @@ export default function HondaBrandPage() {
     <Layout>
       <SEO
         title="2026 Honda Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Honda in NJ & NY — CR-V, Pilot, Accord, and Civic zero down specials. Reliable Japanese engineering at broker pricing."
+        description="Lease a 2026 Honda in NJ & NY - CR-V, Pilot, Accord, and Civic zero down specials. Reliable Japanese engineering at broker pricing."
         seoKeywords={['2026 Honda lease deals NJ', 'Honda lease specials NY', 'zero down Honda lease', 'Honda broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/2023_Honda_Accord_LX%2C_front_left%2C_07-13-2023.jpg/1280px-2023_Honda_Accord_LX%2C_front_left%2C_07-13-2023.jpg"
         canonicalPath="/brand/honda"
@@ -31,7 +31,7 @@ export default function HondaBrandPage() {
         badge="Best Value"
         title="2026 Honda Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Honda in NJ & NY — CR-V, Pilot, Accord, and Civic zero down specials. Reliable Japanese engineering at broker pricing."
+        subtitle="Lease a 2026 Honda in NJ & NY - CR-V, Pilot, Accord, and Civic zero down specials. Reliable Japanese engineering at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/2023_Honda_Accord_LX%2C_front_left%2C_07-13-2023.jpg/1280px-2023_Honda_Accord_LX%2C_front_left%2C_07-13-2023.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -56,12 +56,12 @@ export default function HondaBrandPage() {
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">VTEC Engineering</h3>
-              <p className="text-muted-foreground">Honda's i-VTEC technology delivers sports car engine response with exceptional fuel efficiency — a uniquely Honda combination found on no other brand.</p>
+              <p className="text-muted-foreground">Honda's i-VTEC technology delivers sports car engine response with exceptional fuel efficiency - a uniquely Honda combination found on no other brand.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <CheckCircle2 className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Practical Innovation</h3>
-              <p className="text-muted-foreground">Honda's Magic Seat system and thoughtful interior packaging consistently maximize usable space — delivering class-leading passenger and cargo room.</p>
+              <p className="text-muted-foreground">Honda's Magic Seat system and thoughtful interior packaging consistently maximize usable space - delivering class-leading passenger and cargo room.</p>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function HondaBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Honda</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Soichiro Honda founded Honda Motor Co. in 1948 with the belief that technology exists to serve people. His first product was a repurposed military surplus engine on a bicycle. From there, Honda pioneered CVCC engines that met US emissions standards without a catalytic converter, invented VTEC variable valve timing, and built the NSX — a supercar that set new benchmarks for everyday usability.
+                Soichiro Honda founded Honda Motor Co. in 1948 with the belief that technology exists to serve people. His first product was a repurposed military surplus engine on a bicycle. From there, Honda pioneered CVCC engines that met US emissions standards without a catalytic converter, invented VTEC variable valve timing, and built the NSX - a supercar that set new benchmarks for everyday usability.
               </p>
             </div>
           </div>
@@ -126,7 +126,7 @@ export default function HondaBrandPage() {
             </div>
             <h2 className="text-3xl font-black uppercase mb-6 relative z-10">Why Lease a Honda?</h2>
             <p className="text-xl text-muted-foreground relative z-10 leading-relaxed">
-              Honda Financial Services provides competitive lease rates, and Honda's exceptional reliability ratings produce strong residual values — keeping monthly payments lower than many competitors. The CR-V and Accord consistently offer outstanding lease value in the NJ market.
+              Honda Financial Services provides competitive lease rates, and Honda's exceptional reliability ratings produce strong residual values - keeping monthly payments lower than many competitors. The CR-V and Accord consistently offer outstanding lease value in the NJ market.
             </p>
           </div>
         </div>
@@ -145,7 +145,7 @@ export default function HondaBrandPage() {
                 What Honda models are best for leasing in NJ?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Honda CR-V and Accord consistently offer the best lease value in NJ — competitive monthly payments, strong reliability, generous cargo space, and excellent fuel economy for NJ commutes.
+                The Honda CR-V and Accord consistently offer the best lease value in NJ - competitive monthly payments, strong reliability, generous cargo space, and excellent fuel economy for NJ commutes.
               </AccordionContent>
             </AccordionItem>
             
@@ -154,7 +154,7 @@ export default function HondaBrandPage() {
                 Does Honda offer hybrid lease options?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Yes — the Honda CR-V Hybrid, Accord Hybrid, and Pilot Hybrid all offer lease options. Hybrids provide better fuel economy for NJ commuting with minimal range anxiety.
+                Yes - the Honda CR-V Hybrid, Accord Hybrid, and Pilot Hybrid all offer lease options. Hybrids provide better fuel economy for NJ commuting with minimal range anxiety.
               </AccordionContent>
             </AccordionItem>
             
@@ -163,7 +163,7 @@ export default function HondaBrandPage() {
                 Is Honda Sensing standard on all models?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Yes — Honda Sensing is now standard on virtually every Honda model sold in the US, making Honda one of the best safety value propositions in the market.
+                Yes - Honda Sensing is now standard on virtually every Honda model sold in the US, making Honda one of the best safety value propositions in the market.
               </AccordionContent>
             </AccordionItem>
             

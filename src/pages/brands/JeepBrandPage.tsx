@@ -13,7 +13,7 @@ export default function JeepBrandPage() {
     <Layout>
       <SEO
         title="2026 Jeep Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Jeep in NJ & NY — Wrangler, Grand Cherokee, and Gladiator zero down specials. America's off-road icon at broker pricing."
+        description="Lease a 2026 Jeep in NJ & NY - Wrangler, Grand Cherokee, and Gladiator zero down specials. America's off-road icon at broker pricing."
         seoKeywords={['2026 Jeep lease deals NJ', 'Jeep lease specials NY', 'zero down Jeep lease', 'Jeep broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2018_Jeep_Wrangler_Sahara_Unlimited_Multijet_2.1_Front.jpg/1280px-2018_Jeep_Wrangler_Sahara_Unlimited_Multijet_2.1_Front.jpg"
         canonicalPath="/brand/jeep"
@@ -31,7 +31,7 @@ export default function JeepBrandPage() {
         badge="Best Value"
         title="2026 Jeep Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Jeep in NJ & NY — Wrangler, Grand Cherokee, and Gladiator zero down specials. America's off-road icon at broker pricing."
+        subtitle="Lease a 2026 Jeep in NJ & NY - Wrangler, Grand Cherokee, and Gladiator zero down specials. America's off-road icon at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2018_Jeep_Wrangler_Sahara_Unlimited_Multijet_2.1_Front.jpg/1280px-2018_Jeep_Wrangler_Sahara_Unlimited_Multijet_2.1_Front.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -45,18 +45,18 @@ export default function JeepBrandPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">Go Anywhere. Do Anything.</h2>
-            <p className="text-lg text-muted-foreground">Jeep builds the world's most iconic off-road vehicles — from the Wrangler that defined the breed to the luxurious Grand Cherokee L. Whether conquering NJ mountain trails or navigating Manhattan streets, Jeep's legendary Trail Rated® capability is always available when you need it.</p>
+            <p className="text-lg text-muted-foreground">Jeep builds the world's most iconic off-road vehicles - from the Wrangler that defined the breed to the luxurious Grand Cherokee L. Whether conquering NJ mountain trails or navigating Manhattan streets, Jeep's legendary Trail Rated® capability is always available when you need it.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <ShieldCheck className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Trail Rated® Certification</h3>
-              <p className="text-muted-foreground">Jeep's Trail Rated badge means a vehicle has been proven in traction, water fording, maneuverability, articulation, and ground clearance — a real-world off-road guarantee.</p>
+              <p className="text-muted-foreground">Jeep's Trail Rated badge means a vehicle has been proven in traction, water fording, maneuverability, articulation, and ground clearance - a real-world off-road guarantee.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Selec-Terrain™ System</h3>
-              <p className="text-muted-foreground">One dial selects Auto, Sand, Snow, Mud, or Rock mode — automatically configuring throttle, transmission, AWD torque split, and stability control for any surface.</p>
+              <p className="text-muted-foreground">One dial selects Auto, Sand, Snow, Mud, or Rock mode - automatically configuring throttle, transmission, AWD torque split, and stability control for any surface.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <CheckCircle2 className="w-12 h-12 text-accent mb-4" />
@@ -83,7 +83,7 @@ export default function JeepBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Jeep</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Jeep's origin story is the most patriotic in automotive history: in 1940, the US Army needed a reconnaissance vehicle in 49 days. Willys-Overland delivered the MB Jeep — and the brand has never looked back. The Wrangler is the only production vehicle in continuous development tracing directly to that original WWII Jeep. The Jeep name means freedom to millions worldwide — it's been called the most recognized vehicle silhouette on earth.
+                Jeep's origin story is the most patriotic in automotive history: in 1940, the US Army needed a reconnaissance vehicle in 49 days. Willys-Overland delivered the MB Jeep - and the brand has never looked back. The Wrangler is the only production vehicle in continuous development tracing directly to that original WWII Jeep. The Jeep name means freedom to millions worldwide - it's been called the most recognized vehicle silhouette on earth.
               </p>
             </div>
           </div>
@@ -126,7 +126,7 @@ export default function JeepBrandPage() {
             </div>
             <h2 className="text-3xl font-black uppercase mb-6 relative z-10">Why Lease a Jeep?</h2>
             <p className="text-xl text-muted-foreground relative z-10 leading-relaxed">
-              Jeep Wrangler values are extremely stable — Wranglers hold 60%+ of their value after 3 years, making lease residuals very favorable. The 4xe PHEV Wrangler and Grand Cherokee qualify for EV lease credits through Chrysler Capital, further reducing monthly payments. Jeep leases reward buyers who want to upgrade capability with each new generation.
+              Jeep Wrangler values are extremely stable - Wranglers hold 60%+ of their value after 3 years, making lease residuals very favorable. The 4xe PHEV Wrangler and Grand Cherokee qualify for EV lease credits through Chrysler Capital, further reducing monthly payments. Jeep leases reward buyers who want to upgrade capability with each new generation.
             </p>
           </div>
         </div>
@@ -145,7 +145,7 @@ export default function JeepBrandPage() {
                 Can I remove the Jeep Wrangler's doors and roof?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Yes — the Wrangler is uniquely engineered for removable doors and tops. You can convert to a full open-air experience legally on public roads — a feature literally no other vehicle offers.
+                Yes - the Wrangler is uniquely engineered for removable doors and tops. You can convert to a full open-air experience legally on public roads - a feature literally no other vehicle offers.
               </AccordionContent>
             </AccordionItem>
             
@@ -154,7 +154,7 @@ export default function JeepBrandPage() {
                 Is the Jeep Grand Cherokee good for NJ families?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Grand Cherokee L offers 3-row seating for 7, a best-in-class interior quality upgrade with the Summit Reserve trim, and available McIntosh audio — making it an outstanding family SUV for NJ roads.
+                The Grand Cherokee L offers 3-row seating for 7, a best-in-class interior quality upgrade with the Summit Reserve trim, and available McIntosh audio - making it an outstanding family SUV for NJ roads.
               </AccordionContent>
             </AccordionItem>
             
@@ -163,7 +163,7 @@ export default function JeepBrandPage() {
                 Does the Jeep Wrangler 4xe qualify for EV credits on a lease?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Yes — the Wrangler 4xe PHEV qualifies for applicable EV lease incentives through Chrysler Capital, significantly reducing the monthly payment on America's most iconic off-road vehicle.
+                Yes - the Wrangler 4xe PHEV qualifies for applicable EV lease incentives through Chrysler Capital, significantly reducing the monthly payment on America's most iconic off-road vehicle.
               </AccordionContent>
             </AccordionItem>
             

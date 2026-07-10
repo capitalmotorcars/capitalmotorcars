@@ -281,9 +281,9 @@ export function BrandCityLandingTemplate({ brand, city, slug, heroImage, seoKeyw
             </div>
             {[
               { aspect: 'Monthly payment', lease: 'Lower: pay only depreciation', buy: 'Higher: full MSRP financed' },
-              { aspect: 'Upfront cost', lease: 'First month + security deposit', buy: '10–20% down payment' },
+              { aspect: 'Upfront cost', lease: 'First month + security deposit', buy: '10-20% down payment' },
               { aspect: 'End-of-term options', lease: 'Return, buy, or upgrade easily', buy: 'Must sell or trade a used car' },
-              { aspect: 'Mileage', lease: '10k–15k/yr (customizable)', buy: 'Unlimited but affects resale value' },
+              { aspect: 'Mileage', lease: '10k-15k/yr (customizable)', buy: 'Unlimited but affects resale value' },
               { aspect: 'Warranty coverage', lease: 'Factory warranty covers full term', buy: 'Warranty expires mid-ownership' },
               { aspect: 'Latest technology', lease: 'New model every 3 years', buy: 'Same model until you sell it' },
             ].map((row, i) => (

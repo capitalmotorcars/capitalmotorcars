@@ -83,7 +83,7 @@ export default function MercedesBenzBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Mercedes-Benz</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                As the inventor of the modern automobile in 1886, Mercedes-Benz represents the pinnacle of engineering excellence and safety innovation. Karl Benz's Patent Motorcar was the foundation of a legacy that now spans the C-Class, GLE, and S-Class — each a benchmark in their respective segments. Their relentless 'The Best or Nothing' motto drives every design and engineering decision.
+                As the inventor of the modern automobile in 1886, Mercedes-Benz represents the pinnacle of engineering excellence and safety innovation. Karl Benz's Patent Motorcar was the foundation of a legacy that now spans the C-Class, GLE, and S-Class - each a benchmark in their respective segments. Their relentless 'The Best or Nothing' motto drives every design and engineering decision.
               </p>
             </div>
           </div>
@@ -145,7 +145,7 @@ export default function MercedesBenzBrandPage() {
                 Is a down payment required for a Mercedes-Benz lease?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                No! Capital Motor Cars can structure a true zero-down lease where only your first month's payment and DMV fees are due at signing — no large cash outlay needed.
+                No! Capital Motor Cars can structure a true zero-down lease where only your first month's payment and DMV fees are due at signing - no large cash outlay needed.
               </AccordionContent>
             </AccordionItem>
             

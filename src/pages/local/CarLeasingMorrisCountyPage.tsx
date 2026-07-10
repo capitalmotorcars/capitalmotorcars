@@ -71,15 +71,15 @@ const faqs = [
   },
   {
     question: 'What credit score do I need to lease a BMW or Audi in Morris County NJ?',
-    answer: 'BMW Financial Services and Audi Financial Services both use tiered credit approval. A score of 720+ typically qualifies for Tier 1 pricing (best money factor). Scores of 680–720 are usually approved at a slightly higher rate. We review your profile and recommend the brand and program most likely to approve you at the best available terms.',
+    answer: 'BMW Financial Services and Audi Financial Services both use tiered credit approval. A score of 720+ typically qualifies for Tier 1 pricing (best money factor). Scores of 680-720 are usually approved at a slightly higher rate. We review your profile and recommend the brand and program most likely to approve you at the best available terms.',
   },
   {
     question: 'Can corporate employees in Parsippany get fleet lease pricing?',
-    answer: 'Certain manufacturers offer corporate or affinity programs for employees of partner companies. We check eligibility for BMW CCA, Audi Conquest, and Mercedes Corporate programs as part of every quote. Eligible Parsippany corporate clients can sometimes save $50–$150 per month versus standard lease programs.',
+    answer: 'Certain manufacturers offer corporate or affinity programs for employees of partner companies. We check eligibility for BMW CCA, Audi Conquest, and Mercedes Corporate programs as part of every quote. Eligible Parsippany corporate clients can sometimes save $50-$150 per month versus standard lease programs.',
   },
   {
     question: 'What is the money factor and how does it affect my Morris County lease?',
-    answer: 'The money factor is the interest rate analog for a lease. Multiply by 2,400 to get the approximate APR equivalent. Manufacturers publish a buy-rate each month; dealers can legally mark it up by 0.001 or more, which adds $30–$60 to your monthly payment invisibly. Capital Motor Cars always uses the published buy-rate for Morris County clients.',
+    answer: 'The money factor is the interest rate analog for a lease. Multiply by 2,400 to get the approximate APR equivalent. Manufacturers publish a buy-rate each month; dealers can legally mark it up by 0.001 or more, which adds $30-$60 to your monthly payment invisibly. Capital Motor Cars always uses the published buy-rate for Morris County clients.',
   },
   {
     question: 'What are the most popular leases in Chatham and Madison NJ?',
@@ -383,9 +383,9 @@ export default function CarLeasingMorrisCountyPage() {
             </div>
             {[
               { aspect: 'Monthly payment', lease: 'Lower: pay only depreciation', buy: 'Higher: full MSRP financed' },
-              { aspect: 'Upfront cost', lease: 'First month + security deposit', buy: '10–20% down payment' },
+              { aspect: 'Upfront cost', lease: 'First month + security deposit', buy: '10-20% down payment' },
               { aspect: 'End-of-term options', lease: 'Return, buy, or upgrade easily', buy: 'Must sell or trade a used car' },
-              { aspect: 'Mileage', lease: '10k–15k/yr (customizable)', buy: 'Unlimited but affects resale value' },
+              { aspect: 'Mileage', lease: '10k-15k/yr (customizable)', buy: 'Unlimited but affects resale value' },
               { aspect: 'Warranty coverage', lease: 'Factory warranty covers full term', buy: 'Warranty expires mid-ownership' },
               { aspect: 'Latest technology', lease: 'New model every 3 years', buy: 'Same model until you sell it' },
             ].map((row, i) => (

@@ -13,7 +13,7 @@ export default function FiatBrandPage() {
     <Layout>
       <SEO
         title="2026 Fiat Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Fiat in NJ & NY — 500e and 500X zero down specials. Italian city car style at broker pricing."
+        description="Lease a 2026 Fiat in NJ & NY - 500e and 500X zero down specials. Italian city car style at broker pricing."
         seoKeywords={['2026 Fiat lease deals NJ', 'Fiat lease specials NY', 'zero down Fiat lease', 'Fiat broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Fiat_500_%282007%29_02.JPG/1280px-Fiat_500_%282007%29_02.JPG"
         canonicalPath="/brand/fiat"
@@ -31,7 +31,7 @@ export default function FiatBrandPage() {
         badge="Best Value"
         title="2026 Fiat Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Fiat in NJ & NY — 500e and 500X zero down specials. Italian city car style at broker pricing."
+        subtitle="Lease a 2026 Fiat in NJ & NY - 500e and 500X zero down specials. Italian city car style at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Fiat_500_%282007%29_02.JPG/1280px-Fiat_500_%282007%29_02.JPG"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -45,7 +45,7 @@ export default function FiatBrandPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">La Dolce Vita on Wheels</h2>
-            <p className="text-lg text-muted-foreground">Fiat brings Italian charm and efficiency to city driving. The fully-electric 500e is a design icon reimagined for the EV era — stylish, compact, and ideal for NJ & NY urban environments. Capital Motor Cars provides Fiat lease specials for those who want Italian character with practical city credentials.</p>
+            <p className="text-lg text-muted-foreground">Fiat brings Italian charm and efficiency to city driving. The fully-electric 500e is a design icon reimagined for the EV era - stylish, compact, and ideal for NJ & NY urban environments. Capital Motor Cars provides Fiat lease specials for those who want Italian character with practical city credentials.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
@@ -56,7 +56,7 @@ export default function FiatBrandPage() {
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">All-Electric 500e</h3>
-              <p className="text-muted-foreground">The new 500e delivers 149 miles of range and 117hp — perfect for NJ urban commutes — with Level 2 charging capability for overnight home charging.</p>
+              <p className="text-muted-foreground">The new 500e delivers 149 miles of range and 117hp - perfect for NJ urban commutes - with Level 2 charging capability for overnight home charging.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <CheckCircle2 className="w-12 h-12 text-accent mb-4" />
@@ -83,7 +83,7 @@ export default function FiatBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Fiat</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Fabbrica Italiana Automobili Torino (FIAT) was founded in Turin in 1899 by a group of investors including Giovanni Agnelli. The 1957 Fiat 500 'Cinquecento' motorized post-war Italy — becoming a cultural symbol alongside Vespas and Audrey Hepburn. Over 3.8 million original 500s were built. The modern 500 launched in 2007 captured that same iconic spirit, and the all-electric 500e continues the tradition with zero-emission modern technology.
+                Fabbrica Italiana Automobili Torino (FIAT) was founded in Turin in 1899 by a group of investors including Giovanni Agnelli. The 1957 Fiat 500 'Cinquecento' motorized post-war Italy - becoming a cultural symbol alongside Vespas and Audrey Hepburn. Over 3.8 million original 500s were built. The modern 500 launched in 2007 captured that same iconic spirit, and the all-electric 500e continues the tradition with zero-emission modern technology.
               </p>
             </div>
           </div>
@@ -126,7 +126,7 @@ export default function FiatBrandPage() {
             </div>
             <h2 className="text-3xl font-black uppercase mb-6 relative z-10">Why Lease a Fiat?</h2>
             <p className="text-xl text-muted-foreground relative z-10 leading-relaxed">
-              The Fiat 500e is ideally suited to leasing — EVs benefit most from lease structures (through EV credits and predictable operating costs), the 500e's Italian charm is best enjoyed fresh and under warranty, and Stellantis Financial provides accessible lease payments on this stylish city car.
+              The Fiat 500e is ideally suited to leasing - EVs benefit most from lease structures (through EV credits and predictable operating costs), the 500e's Italian charm is best enjoyed fresh and under warranty, and Stellantis Financial provides accessible lease payments on this stylish city car.
             </p>
           </div>
         </div>
@@ -145,7 +145,7 @@ export default function FiatBrandPage() {
                 How far can the Fiat 500e travel on a charge?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Fiat 500e offers approximately 149 miles of EPA-rated range — perfect for NJ & NY city driving, commuting, and weekend errands without range anxiety.
+                The Fiat 500e offers approximately 149 miles of EPA-rated range - perfect for NJ & NY city driving, commuting, and weekend errands without range anxiety.
               </AccordionContent>
             </AccordionItem>
             
@@ -154,7 +154,7 @@ export default function FiatBrandPage() {
                 Is the Fiat 500e practical for NJ driving?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The 500e is ideal for urban NJ driving — compact enough for city parking, stylish enough to turn heads, and electric enough to avoid the Garden State Parkway gas stops.
+                The 500e is ideal for urban NJ driving - compact enough for city parking, stylish enough to turn heads, and electric enough to avoid the Garden State Parkway gas stops.
               </AccordionContent>
             </AccordionItem>
             
@@ -163,7 +163,7 @@ export default function FiatBrandPage() {
                 Can I charge a Fiat 500e at home?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Yes — the 500e supports Level 2 AC charging, restoring full range overnight on a standard 240V home charger. Public DC fast charging provides additional flexibility.
+                Yes - the 500e supports Level 2 AC charging, restoring full range overnight on a standard 240V home charger. Public DC fast charging provides additional flexibility.
               </AccordionContent>
             </AccordionItem>
             

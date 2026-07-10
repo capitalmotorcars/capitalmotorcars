@@ -68,7 +68,7 @@ export function TrustBadgesGrid({
       className={cn(
         /* overflow-x-clip: grid minmax(0,1fr) + wide PNGs can still subpixel-overflow at narrow xl widths */
         'grid w-full min-w-0 max-w-full overflow-x-clip',
-        /* lg–xl: 3×2 avoids squeezing six wide tiles into ~1000px; xl+: single row */
+        /* lg-xl: 3×2 avoids squeezing six wide tiles into ~1000px; xl+: single row */
         isStrip
           ? 'grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-8 xl:grid-cols-6 xl:gap-x-2 xl:gap-y-6 2xl:gap-x-4'
           : 'grid-cols-2 gap-x-2 gap-y-8 sm:grid-cols-3 sm:gap-x-4 lg:grid-cols-3 lg:gap-x-3 lg:gap-y-7 xl:grid-cols-6 xl:gap-x-1.5 xl:gap-y-6 2xl:gap-x-2.5',

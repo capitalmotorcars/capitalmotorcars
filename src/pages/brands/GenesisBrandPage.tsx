@@ -13,7 +13,7 @@ export default function GenesisBrandPage() {
     <Layout>
       <SEO
         title="2026 Genesis Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Genesis in NJ & NY — GV80, GV70, G80, and Electrified GV80 zero down specials. Korea's ultra-luxury brand at broker pricing."
+        description="Lease a 2026 Genesis in NJ & NY - GV80, GV70, G80, and Electrified GV80 zero down specials. Korea's ultra-luxury brand at broker pricing."
         seoKeywords={['2026 Genesis lease deals NJ', 'Genesis lease specials NY', 'zero down Genesis lease', 'Genesis broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Genesis_G80_IAA_2021_1X7A0229.jpg/1280px-Genesis_G80_IAA_2021_1X7A0229.jpg"
         canonicalPath="/brand/genesis"
@@ -31,7 +31,7 @@ export default function GenesisBrandPage() {
         badge="Best Value"
         title="2026 Genesis Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Genesis in NJ & NY — GV80, GV70, G80, and Electrified GV80 zero down specials. Korea's ultra-luxury brand at broker pricing."
+        subtitle="Lease a 2026 Genesis in NJ & NY - GV80, GV70, G80, and Electrified GV80 zero down specials. Korea's ultra-luxury brand at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Genesis_G80_IAA_2021_1X7A0229.jpg/1280px-Genesis_G80_IAA_2021_1X7A0229.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -45,23 +45,23 @@ export default function GenesisBrandPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">Luxury Evolved. Details Matter.</h2>
-            <p className="text-lg text-muted-foreground">Genesis is Hyundai's ultra-luxury brand — and it's winning industry awards at a pace that embarrasses older European rivals. The GV80, GV70, and G80 offer legitimate luxury at prices well below BMW and Mercedes, while the Electrified GV80 is arguably the world's most beautiful electric SUV.</p>
+            <p className="text-lg text-muted-foreground">Genesis is Hyundai's ultra-luxury brand - and it's winning industry awards at a pace that embarrasses older European rivals. The GV80, GV70, and G80 offer legitimate luxury at prices well below BMW and Mercedes, while the Electrified GV80 is arguably the world's most beautiful electric SUV.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <ShieldCheck className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Two Lines Design</h3>
-              <p className="text-muted-foreground">Genesis's 'Two Lines' design language creates a cohesive, dramatic visual identity — the crest grille and quad-beam lights are instantly recognizable from any distance.</p>
+              <p className="text-muted-foreground">Genesis's 'Two Lines' design language creates a cohesive, dramatic visual identity - the crest grille and quad-beam lights are instantly recognizable from any distance.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Complimentary Service</h3>
-              <p className="text-muted-foreground">Genesis at Home picks up your vehicle for service and returns it — with a complimentary loaner. No dealership waits, ever.</p>
+              <p className="text-muted-foreground">Genesis at Home picks up your vehicle for service and returns it - with a complimentary loaner. No dealership waits, ever.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <CheckCircle2 className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Genesis Digital Key 2</h3>
-              <p className="text-muted-foreground">Ultra-wideband Digital Key 2 allows hands-free approach-and-go without removing your phone — a level of technology typically reserved for $100,000+ vehicles.</p>
+              <p className="text-muted-foreground">Ultra-wideband Digital Key 2 allows hands-free approach-and-go without removing your phone - a level of technology typically reserved for $100,000+ vehicles.</p>
             </div>
           </div>
         </div>
@@ -126,7 +126,7 @@ export default function GenesisBrandPage() {
             </div>
             <h2 className="text-3xl font-black uppercase mb-6 relative z-10">Why Lease a Genesis?</h2>
             <p className="text-xl text-muted-foreground relative z-10 leading-relaxed">
-              Genesis offers some of the best lease values in the luxury segment — Hyundai Motor Finance provides competitive money factors, while Genesis's complimentary maintenance program (10 years/unlimited miles for annual service) makes the total cost of lease ownership extremely compelling compared to BMW and Mercedes.
+              Genesis offers some of the best lease values in the luxury segment - Hyundai Motor Finance provides competitive money factors, while Genesis's complimentary maintenance program (10 years/unlimited miles for annual service) makes the total cost of lease ownership extremely compelling compared to BMW and Mercedes.
             </p>
           </div>
         </div>
@@ -145,7 +145,7 @@ export default function GenesisBrandPage() {
                 How does the Genesis GV80 compare to a BMW X5?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The GV80 matches the X5 on space, offers a more dramatic design, provides standard complimentary maintenance, and typically leases for $150-200 less per month — making it outstanding luxury lease value.
+                The GV80 matches the X5 on space, offers a more dramatic design, provides standard complimentary maintenance, and typically leases for $150-200 less per month - making it outstanding luxury lease value.
               </AccordionContent>
             </AccordionItem>
             
@@ -154,7 +154,7 @@ export default function GenesisBrandPage() {
                 What is Genesis complimentary maintenance?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Genesis provides 3 years of complimentary scheduled maintenance including oil changes and tire rotations — plus their unique valet pickup service where they collect and return your vehicle.
+                Genesis provides 3 years of complimentary scheduled maintenance including oil changes and tire rotations - plus their unique valet pickup service where they collect and return your vehicle.
               </AccordionContent>
             </AccordionItem>
             

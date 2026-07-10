@@ -13,7 +13,7 @@ export default function MaseratiBrandPage() {
     <Layout>
       <SEO
         title="2026 Maserati Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Maserati in NJ & NY — Ghibli, Levante, and Grecale zero down specials. Italian grand touring at broker pricing."
+        description="Lease a 2026 Maserati in NJ & NY - Ghibli, Levante, and Grecale zero down specials. Italian grand touring at broker pricing."
         seoKeywords={['2026 Maserati lease deals NJ', 'Maserati lease specials NY', 'zero down Maserati lease', 'Maserati broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Maserati_GranTurismo_Trofeo_1X7A0828.jpg/1280px-Maserati_GranTurismo_Trofeo_1X7A0828.jpg"
         canonicalPath="/brand/maserati"
@@ -31,7 +31,7 @@ export default function MaseratiBrandPage() {
         badge="Best Value"
         title="2026 Maserati Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Maserati in NJ & NY — Ghibli, Levante, and Grecale zero down specials. Italian grand touring at broker pricing."
+        subtitle="Lease a 2026 Maserati in NJ & NY - Ghibli, Levante, and Grecale zero down specials. Italian grand touring at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Maserati_GranTurismo_Trofeo_1X7A0828.jpg/1280px-Maserati_GranTurismo_Trofeo_1X7A0828.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -45,13 +45,13 @@ export default function MaseratiBrandPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">Excellence Through Passion</h2>
-            <p className="text-lg text-muted-foreground">Maserati creates grand touring automobiles of exceptional character — Italian design, Ferrari-connected V6 engines, and a heritage stretching back to 1914 Bologna. The Ghibli, Levante, and new Grecale provide distinctive Italian alternatives to German luxury with captivating personality.</p>
+            <p className="text-lg text-muted-foreground">Maserati creates grand touring automobiles of exceptional character - Italian design, Ferrari-connected V6 engines, and a heritage stretching back to 1914 Bologna. The Ghibli, Levante, and new Grecale provide distinctive Italian alternatives to German luxury with captivating personality.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <ShieldCheck className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Ferrari-Built Engines</h3>
-              <p className="text-muted-foreground">The Maserati Nettuno twin-turbo V6 was developed alongside Ferrari — delivering 490hp with a unique pre-chamber combustion system derived from Formula 1.</p>
+              <p className="text-muted-foreground">The Maserati Nettuno twin-turbo V6 was developed alongside Ferrari - delivering 490hp with a unique pre-chamber combustion system derived from Formula 1.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
@@ -61,7 +61,7 @@ export default function MaseratiBrandPage() {
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <CheckCircle2 className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Sonus Faber Audio</h3>
-              <p className="text-muted-foreground">Maserati's optional Sonus Faber audio system is developed by Italy's finest high-fidelity loudspeaker manufacturer — an audiophile experience on wheels.</p>
+              <p className="text-muted-foreground">Maserati's optional Sonus Faber audio system is developed by Italy's finest high-fidelity loudspeaker manufacturer - an audiophile experience on wheels.</p>
             </div>
           </div>
         </div>
@@ -126,7 +126,7 @@ export default function MaseratiBrandPage() {
             </div>
             <h2 className="text-3xl font-black uppercase mb-6 relative z-10">Why Lease a Maserati?</h2>
             <p className="text-xl text-muted-foreground relative z-10 leading-relaxed">
-              Maserati offers attractive lease incentives through Stellantis Financial — the Grecale and Ghibli particularly benefit from aggressive money factors and competitive residuals. Italian vehicles can have higher maintenance costs, making leasing under warranty the financially prudent choice for NJ & NY drivers.
+              Maserati offers attractive lease incentives through Stellantis Financial - the Grecale and Ghibli particularly benefit from aggressive money factors and competitive residuals. Italian vehicles can have higher maintenance costs, making leasing under warranty the financially prudent choice for NJ & NY drivers.
             </p>
           </div>
         </div>
@@ -154,7 +154,7 @@ export default function MaseratiBrandPage() {
                 How does the Maserati Levante compare to a Porsche Cayenne?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Levante offers more dramatic Italian styling and a more sonorous soundtrack. The Cayenne leads on technology integration and driver engagement. Both are excellent — the choice comes down to character preference.
+                The Levante offers more dramatic Italian styling and a more sonorous soundtrack. The Cayenne leads on technology integration and driver engagement. Both are excellent - the choice comes down to character preference.
               </AccordionContent>
             </AccordionItem>
             

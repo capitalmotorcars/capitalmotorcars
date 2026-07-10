@@ -13,7 +13,7 @@ export default function ChryslerBrandPage() {
     <Layout>
       <SEO
         title="2026 Chrysler Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Chrysler in NJ & NY — Pacifica and Voyager zero down specials. America's most capable minivan at broker pricing."
+        description="Lease a 2026 Chrysler in NJ & NY - Pacifica and Voyager zero down specials. America's most capable minivan at broker pricing."
         seoKeywords={['2026 Chrysler lease deals NJ', 'Chrysler lease specials NY', 'zero down Chrysler lease', 'Chrysler broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/2016_Chrysler_300_Limited_AWD_front_4.22.19.jpg/1280px-2016_Chrysler_300_Limited_AWD_front_4.22.19.jpg"
         canonicalPath="/brand/chrysler"
@@ -31,7 +31,7 @@ export default function ChryslerBrandPage() {
         badge="Best Value"
         title="2026 Chrysler Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Chrysler in NJ & NY — Pacifica and Voyager zero down specials. America's most capable minivan at broker pricing."
+        subtitle="Lease a 2026 Chrysler in NJ & NY - Pacifica and Voyager zero down specials. America's most capable minivan at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/2016_Chrysler_300_Limited_AWD_front_4.22.19.jpg/1280px-2016_Chrysler_300_Limited_AWD_front_4.22.19.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -45,7 +45,7 @@ export default function ChryslerBrandPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">American Innovation on the Road</h2>
-            <p className="text-lg text-muted-foreground">Chrysler invented the modern minivan in 1984 and continues to build the most capable people-movers in America. The Chrysler Pacifica PHEV — the world's only plug-in hybrid minivan — combines family practicality with fuel-saving technology for NJ & NY families.</p>
+            <p className="text-lg text-muted-foreground">Chrysler invented the modern minivan in 1984 and continues to build the most capable people-movers in America. The Chrysler Pacifica PHEV - the world's only plug-in hybrid minivan - combines family practicality with fuel-saving technology for NJ & NY families.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
@@ -56,12 +56,12 @@ export default function ChryslerBrandPage() {
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Stow 'n Go® Seating</h3>
-              <p className="text-muted-foreground">Chrysler's patented Stow 'n Go system folds all second and third row seats flat into the floor in seconds — no removal required — creating 140.5 cubic feet of cargo space.</p>
+              <p className="text-muted-foreground">Chrysler's patented Stow 'n Go system folds all second and third row seats flat into the floor in seconds - no removal required - creating 140.5 cubic feet of cargo space.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <CheckCircle2 className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Pacifica Hybrid PHEV</h3>
-              <p className="text-muted-foreground">The Pacifica Hybrid is the world's only plug-in hybrid minivan — delivering 32 miles of pure electric range for NJ school runs before gas engine engagement.</p>
+              <p className="text-muted-foreground">The Pacifica Hybrid is the world's only plug-in hybrid minivan - delivering 32 miles of pure electric range for NJ school runs before gas engine engagement.</p>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function ChryslerBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Chrysler</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Walter Chrysler founded Chrysler Corporation in 1925 from the remnants of the Maxwell Motor Company. Chrysler introduced the first minivan — the Dodge Caravan and Plymouth Voyager — in 1984, creating an entirely new vehicle segment. The Chrysler 300 of 2005 revived the brand's American muscle identity. Today, Chrysler focuses exclusively on the Pacifica minivan — continuing its minivan heritage with plug-in hybrid technology.
+                Walter Chrysler founded Chrysler Corporation in 1925 from the remnants of the Maxwell Motor Company. Chrysler introduced the first minivan - the Dodge Caravan and Plymouth Voyager - in 1984, creating an entirely new vehicle segment. The Chrysler 300 of 2005 revived the brand's American muscle identity. Today, Chrysler focuses exclusively on the Pacifica minivan - continuing its minivan heritage with plug-in hybrid technology.
               </p>
             </div>
           </div>
@@ -126,7 +126,7 @@ export default function ChryslerBrandPage() {
             </div>
             <h2 className="text-3xl font-black uppercase mb-6 relative z-10">Why Lease a Chrysler?</h2>
             <p className="text-xl text-muted-foreground relative z-10 leading-relaxed">
-              Chrysler Capital provides competitive lease incentives on the Pacifica — particularly the Hybrid PHEV, which qualifies for EV lease credits. Minivans command strong residual values due to sustained demand, making Pacifica leases financially attractive for NJ families who need maximum passenger and cargo capacity.
+              Chrysler Capital provides competitive lease incentives on the Pacifica - particularly the Hybrid PHEV, which qualifies for EV lease credits. Minivans command strong residual values due to sustained demand, making Pacifica leases financially attractive for NJ families who need maximum passenger and cargo capacity.
             </p>
           </div>
         </div>
@@ -145,7 +145,7 @@ export default function ChryslerBrandPage() {
                 Is the Chrysler Pacifica the best minivan?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Pacifica is widely considered the top minivan — it offers Stow 'n Go™ seating, a PHEV option, panoramic sunroof, and Uconnect 5 technology that the Toyota Sienna and Honda Odyssey cannot fully match.
+                The Pacifica is widely considered the top minivan - it offers Stow 'n Go™ seating, a PHEV option, panoramic sunroof, and Uconnect 5 technology that the Toyota Sienna and Honda Odyssey cannot fully match.
               </AccordionContent>
             </AccordionItem>
             
@@ -154,7 +154,7 @@ export default function ChryslerBrandPage() {
                 How many miles of electric range does the Pacifica Hybrid get?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Pacifica Hybrid delivers 32 miles of all-electric range — enough for most NJ school runs, commutes, and errands on electricity alone before the gasoline engine engages.
+                The Pacifica Hybrid delivers 32 miles of all-electric range - enough for most NJ school runs, commutes, and errands on electricity alone before the gasoline engine engages.
               </AccordionContent>
             </AccordionItem>
             
@@ -163,7 +163,7 @@ export default function ChryslerBrandPage() {
                 Can I lease a Chrysler Pacifica with zero down?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Yes — Chrysler Capital frequently offers zero-drive-off specials on the Pacifica. Contact Capital Motor Cars for current lease specials applicable in NJ & NY.
+                Yes - Chrysler Capital frequently offers zero-drive-off specials on the Pacifica. Contact Capital Motor Cars for current lease specials applicable in NJ & NY.
               </AccordionContent>
             </AccordionItem>
             

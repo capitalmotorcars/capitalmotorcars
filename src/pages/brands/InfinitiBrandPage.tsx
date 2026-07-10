@@ -13,7 +13,7 @@ export default function InfinitiBrandPage() {
     <Layout>
       <SEO
         title="2026 Infiniti Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Infiniti in NJ & NY — QX50, QX60, and Q50 zero down specials. Japanese luxury performance at broker pricing."
+        description="Lease a 2026 Infiniti in NJ & NY - QX50, QX60, and Q50 zero down specials. Japanese luxury performance at broker pricing."
         seoKeywords={['2026 Infiniti lease deals NJ', 'Infiniti lease specials NY', 'zero down Infiniti lease', 'Infiniti broker NJ']}
         ogImage="https://images.unsplash.com/photo-1503376712394-6f921ea6247d?auto=format&fit=crop&w=1600&q=80"
         canonicalPath="/brand/infiniti"
@@ -31,7 +31,7 @@ export default function InfinitiBrandPage() {
         badge="Best Value"
         title="2026 Infiniti Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Infiniti in NJ & NY — QX50, QX60, and Q50 zero down specials. Japanese luxury performance at broker pricing."
+        subtitle="Lease a 2026 Infiniti in NJ & NY - QX50, QX60, and Q50 zero down specials. Japanese luxury performance at broker pricing."
         heroImage="https://images.unsplash.com/photo-1503376712394-6f921ea6247d?auto=format&fit=crop&w=1600&q=80"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -45,13 +45,13 @@ export default function InfinitiBrandPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">Empowering Your Performance</h2>
-            <p className="text-lg text-muted-foreground">Infiniti delivers a unique blend of Japanese craftsmanship and performance-inspired luxury. The QX50 with its revolutionary VC-Turbo engine, and the QX60 three-row SUV, offer exceptional value in the luxury segment — particularly through Capital Motor Cars' broker pricing in NJ & NY.</p>
+            <p className="text-lg text-muted-foreground">Infiniti delivers a unique blend of Japanese craftsmanship and performance-inspired luxury. The QX50 with its revolutionary VC-Turbo engine, and the QX60 three-row SUV, offer exceptional value in the luxury segment - particularly through Capital Motor Cars' broker pricing in NJ & NY.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <ShieldCheck className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">VC-Turbo Engine</h3>
-              <p className="text-muted-foreground">Infiniti's Variable Compression Turbo engine is the world's first in production — continuously optimizing compression ratio for power or efficiency as you drive.</p>
+              <p className="text-muted-foreground">Infiniti's Variable Compression Turbo engine is the world's first in production - continuously optimizing compression ratio for power or efficiency as you drive.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
@@ -126,7 +126,7 @@ export default function InfinitiBrandPage() {
             </div>
             <h2 className="text-3xl font-black uppercase mb-6 relative z-10">Why Lease a Infiniti?</h2>
             <p className="text-xl text-muted-foreground relative z-10 leading-relaxed">
-              Infiniti offers some of the most aggressive lease incentives in the luxury segment — Nissan Motor Acceptance Corporation frequently provides sub-prime money factors and high residual values on QX50 and QX60 models, making the monthly payment surprisingly competitive against mainstream SUVs while offering genuine luxury features.
+              Infiniti offers some of the most aggressive lease incentives in the luxury segment - Nissan Motor Acceptance Corporation frequently provides sub-prime money factors and high residual values on QX50 and QX60 models, making the monthly payment surprisingly competitive against mainstream SUVs while offering genuine luxury features.
             </p>
           </div>
         </div>
@@ -145,7 +145,7 @@ export default function InfinitiBrandPage() {
                 How does the Infiniti QX50 VC-Turbo engine work?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The VC-Turbo varies its compression ratio between 8:1 (high power) and 14:1 (maximum efficiency) using a patented multi-link mechanism — delivering both sports car power and hybrid-like fuel economy.
+                The VC-Turbo varies its compression ratio between 8:1 (high power) and 14:1 (maximum efficiency) using a patented multi-link mechanism - delivering both sports car power and hybrid-like fuel economy.
               </AccordionContent>
             </AccordionItem>
             
@@ -154,7 +154,7 @@ export default function InfinitiBrandPage() {
                 Is the Infiniti QX60 good for NJ families?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The QX60 offers 3-row seating, a spacious 82.8 cubic feet of cargo space, and ProPILOT Assist for stress-free NJ highway commuting — making it one of our most popular family lease options.
+                The QX60 offers 3-row seating, a spacious 82.8 cubic feet of cargo space, and ProPILOT Assist for stress-free NJ highway commuting - making it one of our most popular family lease options.
               </AccordionContent>
             </AccordionItem>
             

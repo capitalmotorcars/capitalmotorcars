@@ -456,9 +456,9 @@ Commercial auto lenders look at business applications with a strict financial le
 - **Business Longevity (The 2-Year Rule):** Businesses that have been active and profitable for more than two years are considered low-risk. If your LLC is less than 2 years old, the lender will almost certainly require a Personal Guarantee.
 - **The Personal Guarantee (PG) Explanation:**
   A Personal Guarantee is a legal promise by the business owner to pay the lease if the business fails. For small business owners and new LLCs, a PG is mandatory.
-  - **Pros:** It allows young companies to get vehicles they otherwise wouldn't qualify for.
-  - **Cons:** You are personally liable for the remaining lease value in the event of default, and the bank will run a hard inquiry on your personal credit report.
-  - **Note:** As long as payments are made on time, the lease debt will not report to your personal credit report, leaving your personal debt-to-income (DTI) ratio clean.
+ - **Pros:** It allows young companies to get vehicles they otherwise wouldn't qualify for.
+ - **Cons:** You are personally liable for the remaining lease value in the event of default, and the bank will run a hard inquiry on your personal credit report.
+ - **Note:** As long as payments are made on time, the lease debt will not report to your personal credit report, leaving your personal debt-to-income (DTI) ratio clean.
 
 ### Step-by-Step Guide to Applying for a Corporate Lease
 To ensure you structure your corporate lease correctly and secure the best rates, follow this step-by-step framework:
@@ -3168,7 +3168,7 @@ This is the most dangerous scenario, where all four tires lose traction simultan
 **How to Recover:**
 * **Look for an out.** Find a snowbank or a clear patch of shoulder.
 * **Shift to neutral (if manual) or ease off the gas (if automatic).** 
-* **Let the ABS do its job.** If your car is equipped with Anti-lock Braking Systems (ABS), which almost all modern leased vehicles are, press the brake pedal firmly and hold it down. You will feel a violent vibration in the pedal—this is normal. Do not pump the brakes; let the computer pulse them for you while you attempt to steer to safety.
+* **Let the ABS do its job.** If your car is equipped with Anti-lock Braking Systems (ABS), which almost all modern leased vehicles are, press the brake pedal firmly and hold it down. You will feel a violent vibration in the pedal - this is normal. Do not pump the brakes; let the computer pulse them for you while you attempt to steer to safety.
 
 ## Preventative Measures: How to Avoid Skidding Entirely
 
@@ -3663,7 +3663,7 @@ If you are looking at a modern Sonata (the current DN8 generation, heavily refre
 The modern Sonata is powered by the "Smartstream" family of engines, which have proven to be dramatically more reliable.
 
 ### The 2.5L Naturally Aspirated Engine
-This is the base engine found in most standard Sonata trims (SE, SEL). By avoiding turbochargers, this engine is mechanically simple and robust. It utilizes both direct injection (for power) and multi-port injection (which prevents carbon buildup on the intake valves—a common issue in modern engines). Long-term data shows this 2.5L engine easily surpassing 150,000 miles with basic oil changes.
+This is the base engine found in most standard Sonata trims (SE, SEL). By avoiding turbochargers, this engine is mechanically simple and robust. It utilizes both direct injection (for power) and multi-port injection (which prevents carbon buildup on the intake valves - a common issue in modern engines). Long-term data shows this 2.5L engine easily surpassing 150,000 miles with basic oil changes.
 
 ### The 2.5L Turbo (Sonata N-Line)
 If you opt for the high-performance Sonata N-Line, you get a 290-horsepower turbocharged version of the Smartstream engine. While inherently more complex due to the turbocharger, it has proven highly durable. However, because it produces significantly more heat and pressure, strict adherence to synthetic oil change intervals (every 5,000 miles) is absolutely mandatory to prevent turbo failure.
@@ -3998,7 +3998,7 @@ Older RX 350s suffer from low-resolution screens, awful trackpad interfaces, ter
 
 **Leasing New:** For the all-new 2023+ generation, Lexus finally abandoned the trackpad and introduced a stunning, massive touchscreen interface. The entire interior was modernized. By leasing a new Lexus RX, you get the absolute state-of-the-art technology, beautiful modern styling, and zero maintenance worries. 
 
-Because Lexuses hold their value so well, their lease residuals are incredibly high—which translates to **very low monthly lease payments**. 
+Because Lexuses hold their value so well, their lease residuals are incredibly high - which translates to **very low monthly lease payments**. 
 
 Why pay high interest rates to finance a used, outdated SUV when you can lease a brand-new tech-forward Lexus for a similar monthly payment? Check out our [Lexus Lease Deals](/brand/lexus) today.`
   },
@@ -4276,7 +4276,7 @@ The massive panoramic sunroof on the Tiguan is a beautiful feature, but the drai
 
 **Buying Used:** Buying a used German vehicle requires diligence. If you buy a used Tiguan, you must ensure the previous owner changed the Haldex fluid and used the correct synthetic oil. The older the Tiguan gets, the more you will pay in routine maintenance compared to a RAV4 or CR-V.
 
-**Leasing New:** The Tiguan is a phenomenal vehicle to lease. You get the premium, heavy vault-like feel of a German SUV, an incredibly spacious interior, and cutting-edge tech—all without worrying about 40k mile major services or carbon buildup. 
+**Leasing New:** The Tiguan is a phenomenal vehicle to lease. You get the premium, heavy vault-like feel of a German SUV, an incredibly spacious interior, and cutting-edge tech - all without worrying about 40k mile major services or carbon buildup. 
 
 Leasing allows you to enjoy European engineering at a fixed, affordable monthly price. Browse our current [Volkswagen Lease Deals](/brand/volkswagen) to find your perfect Tiguan.`
   },

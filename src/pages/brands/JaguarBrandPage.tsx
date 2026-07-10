@@ -13,7 +13,7 @@ export default function JaguarBrandPage() {
     <Layout>
       <SEO
         title="2026 Jaguar Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Jaguar in NJ & NY — F-Pace, E-Pace, and I-Pace zero down specials. British performance luxury at broker pricing."
+        description="Lease a 2026 Jaguar in NJ & NY - F-Pace, E-Pace, and I-Pace zero down specials. British performance luxury at broker pricing."
         seoKeywords={['2026 Jaguar lease deals NJ', 'Jaguar lease specials NY', 'zero down Jaguar lease', 'Jaguar broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/2017_Jaguar_F-Type_V6_R-Dynamic_Automatic_3.0_Front.jpg/1280px-2017_Jaguar_F-Type_V6_R-Dynamic_Automatic_3.0_Front.jpg"
         canonicalPath="/brand/jaguar"
@@ -31,7 +31,7 @@ export default function JaguarBrandPage() {
         badge="Best Value"
         title="2026 Jaguar Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Jaguar in NJ & NY — F-Pace, E-Pace, and I-Pace zero down specials. British performance luxury at broker pricing."
+        subtitle="Lease a 2026 Jaguar in NJ & NY - F-Pace, E-Pace, and I-Pace zero down specials. British performance luxury at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/2017_Jaguar_F-Type_V6_R-Dynamic_Automatic_3.0_Front.jpg/1280px-2017_Jaguar_F-Type_V6_R-Dynamic_Automatic_3.0_Front.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -51,12 +51,12 @@ export default function JaguarBrandPage() {
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <ShieldCheck className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Jaguar Design DNA</h3>
-              <p className="text-muted-foreground">Every Jaguar carries the brand's unbroken design thread — powerful haunches, a low roofline, and the iconic leaper bonnet badge.</p>
+              <p className="text-muted-foreground">Every Jaguar carries the brand's unbroken design thread - powerful haunches, a low roofline, and the iconic leaper bonnet badge.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">All-Aluminum Architecture</h3>
-              <p className="text-muted-foreground">Jaguar's riveted and bonded all-aluminum body is lighter and more rigid than steel — improving agility, efficiency, and crash protection simultaneously.</p>
+              <p className="text-muted-foreground">Jaguar's riveted and bonded all-aluminum body is lighter and more rigid than steel - improving agility, efficiency, and crash protection simultaneously.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <CheckCircle2 className="w-12 h-12 text-accent mb-4" />
@@ -83,7 +83,7 @@ export default function JaguarBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Jaguar</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                William Lyons founded SS Cars Limited in 1922, renaming it Jaguar after WWII. The XK120, E-Type, and XJ6 built Jaguar's reputation for beautiful, fast automobiles. The E-Type — called 'the most beautiful car ever made' by Enzo Ferrari — defines automotive design history. Today, Jaguar's I-Pace electric SUV won World Car of the Year 2019, proving the cat can hunt in a new era.
+                William Lyons founded SS Cars Limited in 1922, renaming it Jaguar after WWII. The XK120, E-Type, and XJ6 built Jaguar's reputation for beautiful, fast automobiles. The E-Type - called 'the most beautiful car ever made' by Enzo Ferrari - defines automotive design history. Today, Jaguar's I-Pace electric SUV won World Car of the Year 2019, proving the cat can hunt in a new era.
               </p>
             </div>
           </div>
@@ -163,7 +163,7 @@ export default function JaguarBrandPage() {
                 What warranty does Jaguar offer on leases?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Jaguar provides a 5-year/60,000-mile powertrain warranty and a 3-year/36,000-mile comprehensive warranty — covering your entire 36-month lease with full protection.
+                Jaguar provides a 5-year/60,000-mile powertrain warranty and a 3-year/36,000-mile comprehensive warranty - covering your entire 36-month lease with full protection.
               </AccordionContent>
             </AccordionItem>
             

@@ -13,7 +13,7 @@ export default function VolvoBrandPage() {
     <Layout>
       <SEO
         title="2026 Volvo Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Volvo in NJ & NY — XC90, XC60, and EX90 zero down specials. Swedish safety and luxury at broker pricing."
+        description="Lease a 2026 Volvo in NJ & NY - XC90, XC60, and EX90 zero down specials. Swedish safety and luxury at broker pricing."
         seoKeywords={['2026 Volvo lease deals NJ', 'Volvo lease specials NY', 'zero down Volvo lease', 'Volvo broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Volvo_XC90_T8_AWD_Plug-in_Hybrid_Plus_%28II%2C_2._Facelift%29_%E2%80%93_f_03102025.jpg/1280px-Volvo_XC90_T8_AWD_Plug-in_Hybrid_Plus_%28II%2C_2._Facelift%29_%E2%80%93_f_03102025.jpg"
         canonicalPath="/brand/volvo"
@@ -31,7 +31,7 @@ export default function VolvoBrandPage() {
         badge="Best Value"
         title="2026 Volvo Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Volvo in NJ & NY — XC90, XC60, and EX90 zero down specials. Swedish safety and luxury at broker pricing."
+        subtitle="Lease a 2026 Volvo in NJ & NY - XC90, XC60, and EX90 zero down specials. Swedish safety and luxury at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Volvo_XC90_T8_AWD_Plug-in_Hybrid_Plus_%28II%2C_2._Facelift%29_%E2%80%93_f_03102025.jpg/1280px-Volvo_XC90_T8_AWD_Plug-in_Hybrid_Plus_%28II%2C_2._Facelift%29_%E2%80%93_f_03102025.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -45,13 +45,13 @@ export default function VolvoBrandPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">Designed Around You</h2>
-            <p className="text-lg text-muted-foreground">Volvo builds the world's safest cars — but never at the expense of Scandinavian design elegance or driving pleasure. The XC90, XC60, and electric EX90 combine genuine safety leadership with beautiful Swedish minimalism and competitive lease payments.</p>
+            <p className="text-lg text-muted-foreground">Volvo builds the world's safest cars - but never at the expense of Scandinavian design elegance or driving pleasure. The XC90, XC60, and electric EX90 combine genuine safety leadership with beautiful Swedish minimalism and competitive lease payments.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <ShieldCheck className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Safety Leadership</h3>
-              <p className="text-muted-foreground">Volvo has pledged that no one should be killed or seriously injured in a new Volvo by 2020 — their crash test results consistently lead the industry.</p>
+              <p className="text-muted-foreground">Volvo has pledged that no one should be killed or seriously injured in a new Volvo by 2020 - their crash test results consistently lead the industry.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
@@ -61,7 +61,7 @@ export default function VolvoBrandPage() {
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <CheckCircle2 className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Pilot Assist</h3>
-              <p className="text-muted-foreground">Volvo's semi-autonomous Pilot Assist handles steering, acceleration, and braking on well-marked roads — one of the smoothest systems in the market.</p>
+              <p className="text-muted-foreground">Volvo's semi-autonomous Pilot Assist handles steering, acceleration, and braking on well-marked roads - one of the smoothest systems in the market.</p>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function VolvoBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Volvo</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Founded in Gothenburg, Sweden in 1927, Volvo's founding principle was safety — a commitment evidenced by their invention of the three-point seatbelt in 1959. Rather than patent it, Volvo made the invention freely available to all automakers, saving an estimated one million lives. Today, Volvo is owned by Geely and leads the transition to full electrification with the EX90 and C40 Recharge.
+                Founded in Gothenburg, Sweden in 1927, Volvo's founding principle was safety - a commitment evidenced by their invention of the three-point seatbelt in 1959. Rather than patent it, Volvo made the invention freely available to all automakers, saving an estimated one million lives. Today, Volvo is owned by Geely and leads the transition to full electrification with the EX90 and C40 Recharge.
               </p>
             </div>
           </div>
@@ -145,7 +145,7 @@ export default function VolvoBrandPage() {
                 Which Volvo SUV is best for NJ families?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Volvo XC90 Recharge PHEV is our top recommendation — 7 seats, 35 miles of electric range for NJ commutes, class-leading safety ratings, and a stunning Scandinavian interior.
+                The Volvo XC90 Recharge PHEV is our top recommendation - 7 seats, 35 miles of electric range for NJ commutes, class-leading safety ratings, and a stunning Scandinavian interior.
               </AccordionContent>
             </AccordionItem>
             

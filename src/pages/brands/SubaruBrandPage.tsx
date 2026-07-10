@@ -13,7 +13,7 @@ export default function SubaruBrandPage() {
     <Layout>
       <SEO
         title="2026 Subaru Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Subaru in NJ & NY — Outback, Forester, Crosstrek, and Solterra zero down specials. AWD in every model at broker pricing."
+        description="Lease a 2026 Subaru in NJ & NY - Outback, Forester, Crosstrek, and Solterra zero down specials. AWD in every model at broker pricing."
         seoKeywords={['2026 Subaru lease deals NJ', 'Subaru lease specials NY', 'zero down Subaru lease', 'Subaru broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/2026_Subaru_Outback_Wilderness%2C_front_left%2C_05-24-2026.jpg/1280px-2026_Subaru_Outback_Wilderness%2C_front_left%2C_05-24-2026.jpg"
         canonicalPath="/brand/subaru"
@@ -31,7 +31,7 @@ export default function SubaruBrandPage() {
         badge="Best Value"
         title="2026 Subaru Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Subaru in NJ & NY — Outback, Forester, Crosstrek, and Solterra zero down specials. AWD in every model at broker pricing."
+        subtitle="Lease a 2026 Subaru in NJ & NY - Outback, Forester, Crosstrek, and Solterra zero down specials. AWD in every model at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/2026_Subaru_Outback_Wilderness%2C_front_left%2C_05-24-2026.jpg/1280px-2026_Subaru_Outback_Wilderness%2C_front_left%2C_05-24-2026.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -45,18 +45,18 @@ export default function SubaruBrandPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">Love. It's What Makes a Subaru, a Subaru.</h2>
-            <p className="text-lg text-muted-foreground">Subaru is the only mainstream automaker to offer standard all-wheel drive on every single vehicle they sell — a unique advantage for NJ winters. The Outback, Forester, and Crosstrek combine rugged capability with exceptional reliability and Capital Motor Cars' competitive broker lease pricing.</p>
+            <p className="text-lg text-muted-foreground">Subaru is the only mainstream automaker to offer standard all-wheel drive on every single vehicle they sell - a unique advantage for NJ winters. The Outback, Forester, and Crosstrek combine rugged capability with exceptional reliability and Capital Motor Cars' competitive broker lease pricing.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <ShieldCheck className="w-12 h-12 text-accent mb-4" />
-              <h3 className="text-xl font-bold mb-4">Symmetrical AWD — Standard</h3>
-              <p className="text-muted-foreground">Subaru's Symmetrical All-Wheel Drive is standard on every model — providing superior traction on NJ snow, ice, and wet roads with no extra cost or decision required.</p>
+              <h3 className="text-xl font-bold mb-4">Symmetrical AWD - Standard</h3>
+              <p className="text-muted-foreground">Subaru's Symmetrical All-Wheel Drive is standard on every model - providing superior traction on NJ snow, ice, and wet roads with no extra cost or decision required.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">EyeSight® Driver Assist</h3>
-              <p className="text-muted-foreground">Subaru's camera-based EyeSight suite provides Pre-Collision Braking, Adaptive Cruise, Lane Centering, and Sway Warning — standard on most trim levels.</p>
+              <p className="text-muted-foreground">Subaru's camera-based EyeSight suite provides Pre-Collision Braking, Adaptive Cruise, Lane Centering, and Sway Warning - standard on most trim levels.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <CheckCircle2 className="w-12 h-12 text-accent mb-4" />
@@ -83,7 +83,7 @@ export default function SubaruBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Subaru</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Fuji Heavy Industries (renamed Subaru Corporation in 2017) built Japan's first aircraft engine in 1918 before pivoting to automobiles. The six-star Pleiades constellation in the Subaru logo represents the companies that merged to form Fuji Heavy Industries. Subaru's horizontal BOXER engine and symmetrical AWD philosophy — developed in the 1970s — remain defining brand attributes. Subaru's 4 World Rally Championship victories with the iconic Impreza WRX cemented their performance AWD reputation globally.
+                Fuji Heavy Industries (renamed Subaru Corporation in 2017) built Japan's first aircraft engine in 1918 before pivoting to automobiles. The six-star Pleiades constellation in the Subaru logo represents the companies that merged to form Fuji Heavy Industries. Subaru's horizontal BOXER engine and symmetrical AWD philosophy - developed in the 1970s - remain defining brand attributes. Subaru's 4 World Rally Championship victories with the iconic Impreza WRX cemented their performance AWD reputation globally.
               </p>
             </div>
           </div>
@@ -126,7 +126,7 @@ export default function SubaruBrandPage() {
             </div>
             <h2 className="text-3xl font-black uppercase mb-6 relative z-10">Why Lease a Subaru?</h2>
             <p className="text-xl text-muted-foreground relative z-10 leading-relaxed">
-              Subaru Financial Services provides competitive lease rates, and Subaru's strong used-car values — driven by the brand's loyal owner base and AWD desirability — create favorable residuals. Subaru's standard AWD on every vehicle means lessees in NJ get maximum capability without model selection complexity.
+              Subaru Financial Services provides competitive lease rates, and Subaru's strong used-car values - driven by the brand's loyal owner base and AWD desirability - create favorable residuals. Subaru's standard AWD on every vehicle means lessees in NJ get maximum capability without model selection complexity.
             </p>
           </div>
         </div>
@@ -145,7 +145,7 @@ export default function SubaruBrandPage() {
                 Is a Subaru Outback good for NJ winters?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Outback is arguably the ideal NJ winter vehicle — standard Symmetrical AWD, X-Mode off-road traction control, 8.7" ground clearance, and EyeSight safety technology. It handles NJ snowstorms without drama.
+                The Outback is arguably the ideal NJ winter vehicle - standard Symmetrical AWD, X-Mode off-road traction control, 8.7" ground clearance, and EyeSight safety technology. It handles NJ snowstorms without drama.
               </AccordionContent>
             </AccordionItem>
             

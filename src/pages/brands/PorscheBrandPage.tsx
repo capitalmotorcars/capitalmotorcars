@@ -13,7 +13,7 @@ export default function PorscheBrandPage() {
     <Layout>
       <SEO
         title="2026 Porsche Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Porsche in NJ & NY — broker pricing on the Cayenne, Macan, Taycan, and 911. Zero down options available."
+        description="Lease a 2026 Porsche in NJ & NY - broker pricing on the Cayenne, Macan, Taycan, and 911. Zero down options available."
         seoKeywords={['2026 Porsche lease deals NJ', 'Porsche lease specials NY', 'zero down Porsche lease', 'Porsche broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Porsche_911_No_1000000%2C_70_Years_Porsche_Sports_Car%2C_Berlin_%281X7A3888%29.jpg/1280px-Porsche_911_No_1000000%2C_70_Years_Porsche_Sports_Car%2C_Berlin_%281X7A3888%29.jpg"
         canonicalPath="/brand/porsche"
@@ -31,7 +31,7 @@ export default function PorscheBrandPage() {
         badge="Best Value"
         title="2026 Porsche Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Porsche in NJ & NY — broker pricing on the Cayenne, Macan, Taycan, and 911. Zero down options available."
+        subtitle="Lease a 2026 Porsche in NJ & NY - broker pricing on the Cayenne, Macan, Taycan, and 911. Zero down options available."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Porsche_911_No_1000000%2C_70_Years_Porsche_Sports_Car%2C_Berlin_%281X7A3888%29.jpg/1280px-Porsche_911_No_1000000%2C_70_Years_Porsche_Sports_Car%2C_Berlin_%281X7A3888%29.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -51,7 +51,7 @@ export default function PorscheBrandPage() {
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <ShieldCheck className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Motorsport Heritage</h3>
-              <p className="text-muted-foreground">24 Hours of Le Mans, Formula E, and the Nürburgring — Porsche's racing pedigree flows directly into every production model.</p>
+              <p className="text-muted-foreground">24 Hours of Le Mans, Formula E, and the Nürburgring - Porsche's racing pedigree flows directly into every production model.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
@@ -83,7 +83,7 @@ export default function PorscheBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Porsche</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Ferdinand Porsche founded the company in 1931, and his grandson Ferry Porsche created the iconic 356 in 1948. The 911, launched in 1963, became the definitive sports car — rear-engined, air-cooled, and unmistakable. Today, the Taycan EV has proven Porsche can electrify without sacrificing soul, setting lap records at Nürburgring and breaking the Nürburgring EV record.
+                Ferdinand Porsche founded the company in 1931, and his grandson Ferry Porsche created the iconic 356 in 1948. The 911, launched in 1963, became the definitive sports car - rear-engined, air-cooled, and unmistakable. Today, the Taycan EV has proven Porsche can electrify without sacrificing soul, setting lap records at Nürburgring and breaking the Nürburgring EV record.
               </p>
             </div>
           </div>
@@ -163,7 +163,7 @@ export default function PorscheBrandPage() {
                 Does the Porsche Taycan qualify for EV tax credits?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Yes — Taycan leases from Porsche Financial are typically eligible for the $7,500 federal EV credit applied as a cap cost reduction, significantly lowering your payment.
+                Yes - Taycan leases from Porsche Financial are typically eligible for the $7,500 federal EV credit applied as a cap cost reduction, significantly lowering your payment.
               </AccordionContent>
             </AccordionItem>
             

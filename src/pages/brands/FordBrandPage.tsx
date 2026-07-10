@@ -13,7 +13,7 @@ export default function FordBrandPage() {
     <Layout>
       <SEO
         title="2026 Ford Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Ford in NJ & NY — Explorer, Mustang, Escape, and F-150 zero down specials. American innovation at broker pricing."
+        description="Lease a 2026 Ford in NJ & NY - Explorer, Mustang, Escape, and F-150 zero down specials. American innovation at broker pricing."
         seoKeywords={['2026 Ford lease deals NJ', 'Ford lease specials NY', 'zero down Ford lease', 'Ford broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Ford_Mustang_VII_GT_Rutesheimer_Autoschau_2025_DSC_9234.jpg/1280px-Ford_Mustang_VII_GT_Rutesheimer_Autoschau_2025_DSC_9234.jpg"
         canonicalPath="/brand/ford"
@@ -31,7 +31,7 @@ export default function FordBrandPage() {
         badge="Best Value"
         title="2026 Ford Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Ford in NJ & NY — Explorer, Mustang, Escape, and F-150 zero down specials. American innovation at broker pricing."
+        subtitle="Lease a 2026 Ford in NJ & NY - Explorer, Mustang, Escape, and F-150 zero down specials. American innovation at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Ford_Mustang_VII_GT_Rutesheimer_Autoschau_2025_DSC_9234.jpg/1280px-Ford_Mustang_VII_GT_Rutesheimer_Autoschau_2025_DSC_9234.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -45,7 +45,7 @@ export default function FordBrandPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">Built Ford Tough. Built for You.</h2>
-            <p className="text-lg text-muted-foreground">Ford builds America's most iconic vehicles — from the Mustang sports car to the F-150 pickup and Explorer SUV. Ford's performance heritage and American manufacturing excellence make every model a compelling lease choice through Capital Motor Cars in NJ & NY.</p>
+            <p className="text-lg text-muted-foreground">Ford builds America's most iconic vehicles - from the Mustang sports car to the F-150 pickup and Explorer SUV. Ford's performance heritage and American manufacturing excellence make every model a compelling lease choice through Capital Motor Cars in NJ & NY.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
@@ -61,7 +61,7 @@ export default function FordBrandPage() {
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <CheckCircle2 className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">PowerBoost Hybrid F-150</h3>
-              <p className="text-muted-foreground">The F-150 PowerBoost generates 7,200W of on-board power — enough to run job site tools, home appliances, or tailgate essentials for days.</p>
+              <p className="text-muted-foreground">The F-150 PowerBoost generates 7,200W of on-board power - enough to run job site tools, home appliances, or tailgate essentials for days.</p>
             </div>
           </div>
         </div>
@@ -145,7 +145,7 @@ export default function FordBrandPage() {
                 Is the Ford Mustang Mach-E a good electric lease?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Mach-E qualifies for the $7,500 federal EV credit on leases, delivers up to 312 miles of range, and provides genuinely exciting performance — making it an outstanding EV lease value.
+                The Mach-E qualifies for the $7,500 federal EV credit on leases, delivers up to 312 miles of range, and provides genuinely exciting performance - making it an outstanding EV lease value.
               </AccordionContent>
             </AccordionItem>
             
@@ -154,7 +154,7 @@ export default function FordBrandPage() {
                 What makes the Ford Explorer a good family lease?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Ford Explorer offers 7-seat capacity, 152.7 cubic feet total cargo space, BlueCruise hands-free driving, and the most comprehensive active safety suite in its class — ideal for NJ families.
+                The Ford Explorer offers 7-seat capacity, 152.7 cubic feet total cargo space, BlueCruise hands-free driving, and the most comprehensive active safety suite in its class - ideal for NJ families.
               </AccordionContent>
             </AccordionItem>
             

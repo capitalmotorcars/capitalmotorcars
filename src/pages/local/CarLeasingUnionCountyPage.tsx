@@ -82,7 +82,7 @@ const faqs = [
   },
   {
     question: 'What credit score do I need to lease a BMW or Mercedes in Union County NJ?',
-    answer: 'BMW Financial Services and Mercedes-Benz Financial Services both use tiered credit approval. Tier 1 (best money factor) typically requires 720+. Scores of 680–720 are usually approved at a slightly higher money factor. We review your credit profile and recommend the brand and tier most likely to approve you at the best rate, without triggering unnecessary hard inquiries.',
+    answer: 'BMW Financial Services and Mercedes-Benz Financial Services both use tiered credit approval. Tier 1 (best money factor) typically requires 720+. Scores of 680-720 are usually approved at a slightly higher money factor. We review your credit profile and recommend the brand and tier most likely to approve you at the best rate, without triggering unnecessary hard inquiries.',
   },
   {
     question: 'Can I get a zero-down car lease in Union County NJ?',
@@ -94,7 +94,7 @@ const faqs = [
   },
   {
     question: 'Should I lease or buy a car in Union County NJ?',
-    answer: "For most Union County residents who switch vehicles every 2–3 years, leasing wins on total cost. You pay only for the depreciation during your ownership period, your payment is covered by the factory warranty, and you avoid the hassle of selling or trading a depreciating asset. Buying makes more sense if you keep vehicles 7+ years, drive very high mileage (25k+/year), or plan significant modifications.",
+    answer: "For most Union County residents who switch vehicles every 2-3 years, leasing wins on total cost. You pay only for the depreciation during your ownership period, your payment is covered by the factory warranty, and you avoid the hassle of selling or trading a depreciating asset. Buying makes more sense if you keep vehicles 7+ years, drive very high mileage (25k+/year), or plan significant modifications.",
   },
 ];
 
@@ -342,10 +342,10 @@ export default function CarLeasingUnionCountyPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {[
-              { icon: DollarSign, title: 'Money Factor', desc: 'The lease equivalent of an interest rate, expressed as a small decimal (e.g., 0.00125). Multiply by 2,400 to get approximate APR. Dealers can legally mark it up; we always use the published buy-rate, saving Union County clients $20–$60/month.' },
+              { icon: DollarSign, title: 'Money Factor', desc: 'The lease equivalent of an interest rate, expressed as a small decimal (e.g., 0.00125). Multiply by 2,400 to get approximate APR. Dealers can legally mark it up; we always use the published buy-rate, saving Union County clients $20-$60/month.' },
               { icon: TrendingDown, title: 'Residual Value', desc: "The car's projected value at end of term, set by the manufacturer as a percentage of MSRP. A higher residual means a lower payment. BMW X3, Audi Q5, and Honda CR-V have historically strong residuals, a key reason they're Union County favorites." },
               { icon: BadgeCheck, title: 'Capitalized Cost', desc: 'The negotiated selling price of the vehicle, which directly lowers your monthly payment. Our Springfield team submits to 10+ dealers simultaneously, Westfield, Summit, and Cranford clients benefit from the widest negotiation pool in the region.' },
-              { icon: Car, title: 'Mileage Allowance', desc: 'Standard leases offer 10k or 12k miles per year. Union Township commuters averaging 15k–20k per year often benefit from a custom mileage package upfront, the cost per mile at signing is far lower than paying overages at lease-end.' },
+              { icon: Car, title: 'Mileage Allowance', desc: 'Standard leases offer 10k or 12k miles per year. Union Township commuters averaging 15k-20k per year often benefit from a custom mileage package upfront, the cost per mile at signing is far lower than paying overages at lease-end.' },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -446,9 +446,9 @@ export default function CarLeasingUnionCountyPage() {
             </div>
             {[
               { aspect: 'Monthly payment', lease: 'Lower: you pay only depreciation', buy: 'Higher: full MSRP financed' },
-              { aspect: 'Upfront cost', lease: 'First month + security deposit', buy: '10–20% down payment required' },
+              { aspect: 'Upfront cost', lease: 'First month + security deposit', buy: '10-20% down payment required' },
               { aspect: 'End-of-term options', lease: 'Return, buy, or upgrade easily', buy: 'Must sell/trade a depreciating asset' },
-              { aspect: 'Mileage', lease: '10k–15k/yr (customizable)', buy: 'Unlimited but reduces resale value' },
+              { aspect: 'Mileage', lease: '10k-15k/yr (customizable)', buy: 'Unlimited but reduces resale value' },
               { aspect: 'Warranty coverage', lease: 'Factory warranty covers full term', buy: 'Warranty expires mid-ownership' },
               { aspect: 'Latest technology', lease: 'New model every 3 years', buy: 'Same model until you sell it' },
             ].map((row, i) => (

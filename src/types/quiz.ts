@@ -102,8 +102,8 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
         question: 'Typical number of passengers',
         answers: [
             { id: '1', label: '1 person', icon: User, scoring: { 'Performance & Fun': 2, 'Daily Comfort': 1 } },
-            { id: '2-3', label: '2–3 people', icon: Users, scoring: { 'Daily Comfort': 2 } },
-            { id: '4-5', label: '4–5 people', icon: Users, scoring: { 'Family & Practical': 3 } },
+            { id: '2-3', label: '2-3 people', icon: Users, scoring: { 'Daily Comfort': 2 } },
+            { id: '4-5', label: '4-5 people', icon: Users, scoring: { 'Family & Practical': 3 } },
             { id: '6+', label: '6+ people', icon: Users, scoring: { 'Work & Utility': 3, 'Family & Practical': 1 } },
         ],
     },
