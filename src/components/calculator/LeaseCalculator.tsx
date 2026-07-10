@@ -1,10 +1,20 @@
 import { useState, useMemo } from 'react';
-import { Calculator, DollarSign, Zap, Info } from 'lucide-react';
+import { useSearchParams } from 'react-router-dom';
+import { Calculator, DollarSign, Zap, Info, Car } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Slider } from '@/components/ui/slider';
 import { Switch } from '@/components/ui/switch';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Button } from '@/components/ui/button';
+import { ContactForm } from '@/components/forms/ContactForm';
+import { Mail } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 import { cn } from '@/lib/utils';
 
 const TERM_OPTIONS = [24, 27, 30, 36, 39, 42, 48];
@@ -24,9 +34,16 @@ function fmtDecimal(n: number, places = 2) {
 }
 
 export function LeaseCalculator() {
+  const [searchParams] = useSearchParams();
+  const make = searchParams.get('make');
+  const model = searchParams.get('model');
+  const initialMsrp = Number(searchParams.get('msrp')) || 50000;
+  const initialPrice = Number(searchParams.get('price')) || initialMsrp * 0.96;
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
   // Vehicle
-  const [msrp, setMsrp] = useState(50000);
-  const [sellingPrice, setSellingPrice] = useState(48000);
+  const [msrp, setMsrp] = useState(initialMsrp);
+  const [sellingPrice, setSellingPrice] = useState(initialPrice);
 
   // Terms
   const [months, setMonths] = useState(36);
@@ -111,6 +128,18 @@ export function LeaseCalculator() {
 
           {/* ── Inputs ── */}
           <div className="p-6 md:p-8 space-y-7 lg:border-r lg:border-border/30">
+
+            {make && model && (
+              <div className="bg-accent/10 border border-accent/20 rounded-2xl p-4 flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
+                  <Car className="w-5 h-5 text-accent" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-foreground">Calculating {make} {model}</h3>
+                  <p className="text-xs text-muted-foreground mt-0.5">Customize your exact lease terms below.</p>
+                </div>
+              </div>
+            )}
 
             {/* Vehicle */}
             <InputSection title="Vehicle">
@@ -331,6 +360,43 @@ export function LeaseCalculator() {
                 </div>
               )}
             </div>
+
+            <div className="pt-4">
+              <Button
+                onClick={() => setIsModalOpen(true)}
+                className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-black uppercase tracking-widest h-14 rounded-xl shadow-[0_10px_40px_-10px_rgba(59,130,246,0.5)]"
+              >
+                <Mail className="w-5 h-5 mr-2" />
+                Send Me This Quote
+              </Button>
+            </div>
+
+            <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+              <DialogContent className="sm:max-w-[425px] rounded-[2rem] p-0 overflow-hidden bg-background border-border/10">
+                <div className="bg-accent/5 p-6 border-b border-border/10 text-center">
+                  <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Mail className="w-6 h-6 text-accent" />
+                  </div>
+                  <DialogTitle className="text-2xl font-black uppercase tracking-tight text-foreground mb-2">
+                    Save Your Quote
+                  </DialogTitle>
+                  <DialogDescription className="text-muted-foreground font-medium">
+                    Enter your details below and one of our expert brokers will email you this exact breakdown of {fmtDollar(calc.totalMonthly)}/month with {fmtDollar(calc.totalDue)} due at signing to help you lock in this price.
+                  </DialogDescription>
+                </div>
+                <div className="p-6">
+                  <ContactForm 
+                    source="contact"
+                    initialValues={{ 
+                      message: `Please send me the breakdown for my lease calculator quote${make && model ? ` for the ${make} ${model}` : ''}:\n\nMSRP: $${msrp}\nSelling Price: $${sellingPrice}\nTerm: ${months} months\nMiles: ${annualMiles}/yr\nMonthly: ${fmtDollar(calc.totalMonthly)}\nDue at Signing: ${fmtDollar(calc.totalDue)}`
+                    }}
+                    hideServiceField={true}
+                    showVehicleField={false}
+                    onSubmitSuccess={() => setIsModalOpen(false)}
+                  />
+                </div>
+              </DialogContent>
+            </Dialog>
 
             <div className="mt-auto p-3.5 bg-background/60 rounded-2xl border border-border/40">
               <p className="text-[11px] text-muted-foreground leading-relaxed">

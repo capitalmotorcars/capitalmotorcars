@@ -34,8 +34,8 @@ const bergenCities = [
 
 const brands = [
   { name: 'BMW', path: '/bmw-car-lease' },
-  { name: 'Audi (Paramus)', path: '/audi-lease-specials-paramus' },
-  { name: 'Mercedes-Benz (Edgewater)', path: '/mercedes-benz-leasing-edgewater' },
+  { name: 'Audi (Paramus)', path: '/audi-lease-deals-paramus' },
+  { name: 'Mercedes-Benz (Edgewater)', path: '/mercedes-benz-lease-deals-edgewater' },
   { name: 'Lexus', path: '/lexus-lease-deals-marlton' },
 ];
 

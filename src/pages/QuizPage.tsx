@@ -29,6 +29,7 @@ function QuizResults({ result, answers, setIsCompleted, setCurrentQuestionIndex 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showVehicleDetails, setShowVehicleDetails] = useState(false);
+  const [isUnlocked, setIsUnlocked] = useState(false);
 
   const handleContactClick = (vehicle: any) => {
     setSelectedVehicle(vehicle);
@@ -143,29 +144,8 @@ function QuizResults({ result, answers, setIsCompleted, setCurrentQuestionIndex 
             </motion.div>
           </div>
         </div>
-      ) : (
+      ) : result.needsBudgetAdjustment ? (
         <div className="max-w-6xl mx-auto py-12 md:py-24 px-4">
-          <div className="text-center mb-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-3 block">
-              Your Perfect Match
-            </span>
-            <h2 className="text-2xl md:text-4xl font-black tracking-tighter text-foreground uppercase mb-6">
-              Everything points to <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-600">
-                {result.intent}
-              </span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Based on your lifestyle and preferences, we've curated the top three 2026 models that define {result.intent.toLowerCase()}.
-            </p>
-          </motion.div>
-        </div>
-
-        {result.needsBudgetAdjustment ? (
           <div className="text-center py-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -200,7 +180,50 @@ function QuizResults({ result, answers, setIsCompleted, setCurrentQuestionIndex 
               </Button>
             </motion.div>
           </div>
-        ) : (
+        </div>
+      ) : !isUnlocked ? (
+        <div className="max-w-2xl mx-auto py-12 md:py-24 px-4 text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
+               <CheckCircle2 className="w-8 h-8 text-accent" />
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-foreground uppercase mb-4">
+              We found <span className="text-accent">{result.vehicles.length}</span> Perfect Matches!
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8">
+              Where should we send your customized vehicle recommendations and current lease specials?
+            </p>
+            <div className="bg-muted/5 border border-border/10 rounded-[2rem] p-8 text-left shadow-lg">
+               <ContactForm 
+                 source="quiz_result"
+                 initialValues={{ message: `I took the vehicle matchmaker quiz. My intent is ${result.intent}.` }}
+                 hideServiceField={true} 
+                 onSubmitSuccess={() => setIsUnlocked(true)}
+               />
+            </div>
+          </motion.div>
+        </div>
+      ) : (
+        <div className="max-w-6xl mx-auto py-12 md:py-24 px-4">
+          <div className="text-center mb-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-3 block">
+                Your Perfect Match
+              </span>
+              <h2 className="text-2xl md:text-4xl font-black tracking-tighter text-foreground uppercase mb-6">
+                Everything points to <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-600">
+                  {result.intent}
+                </span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                Based on your lifestyle and preferences, we've curated the top three 2026 models that define {result.intent.toLowerCase()}.
+              </p>
+            </motion.div>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {result.vehicles.map((vehicle, index) => (
             <motion.div
@@ -275,9 +298,7 @@ function QuizResults({ result, answers, setIsCompleted, setCurrentQuestionIndex 
             </motion.div>
           ))}
           </div>
-        )}
-
-      </div>
+        </div>
       )}
         
       {!result.needsBudgetAdjustment && !showVehicleDetails && (

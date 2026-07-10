@@ -41,7 +41,7 @@ const middlesexBrands = [
   { name: 'Honda', path: '/honda-crv-lease-nj' },
   { name: 'BMW', path: '/bmw-car-lease' },
   { name: 'Hyundai', path: '/hyundai-ioniq6-lease-nj' },
-  { name: 'Mercedes-Benz', path: '/mercedes-benz-leasing-edgewater' },
+  { name: 'Mercedes-Benz', path: '/mercedes-benz-lease-deals-edgewater' },
 ];
 
 const middlesexModels = [

@@ -8,6 +8,7 @@ import logo from '@/assets/logo-main.png';
 
 const desktopNavLinks = [
   { href: '/', label: 'Home' },
+  { href: '/deals', label: 'Specials' },
   { href: '/services', label: 'Services' },
   { href: '/brands', label: 'Brands' },
   { href: '/blog', label: 'Blog' },
@@ -17,6 +18,7 @@ const desktopNavLinks = [
 
 const mobileNavLinks = [
   { href: '/', label: 'Home' },
+  { href: '/deals', label: 'Specials' },
   { href: '/services', label: 'Services' },
   { href: '/brands', label: 'Brands' },
   { href: '/blog', label: 'Blog' },

@@ -46,8 +46,8 @@ const counties = [
 
 const brands = [
   { name: 'BMW', path: '/bmw-car-lease' },
-  { name: 'Mercedes-Benz', path: '/mercedes-benz-leasing-edgewater' },
-  { name: 'Audi', path: '/audi-lease-specials-paramus' },
+  { name: 'Mercedes-Benz', path: '/mercedes-benz-lease-deals-edgewater' },
+  { name: 'Audi', path: '/audi-lease-deals-paramus' },
   { name: 'Lexus', path: '/lexus-lease-deals-marlton' },
   { name: 'BMW (Jersey City)', path: '/bmw-lease-deals-jersey-city' },
 ];

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { getCityData } from '@/data/cityData';
 import { ArrowRight, MapPin, Sparkles, ShieldCheck, Clock, CheckCircle2, Star, Car, DollarSign, BadgeCheck, Phone, TrendingDown, Check, X } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Layout } from '@/components/layout/Layout';
@@ -35,6 +36,8 @@ export interface BrandCityLandingProps {
 }
 
 export function BrandCityLandingTemplate({ brand, city, slug, heroImage, seoKeywords, description, popularModels }: BrandCityLandingProps) {
+  const citySlug = city.toLowerCase().replace(/\s+/g, '-');
+  const cityData = getCityData(citySlug);
   const faqs = [
     {
       question: `What ${brand} models can I lease through Capital Motor Cars in ${city}?`,
@@ -135,6 +138,43 @@ export function BrandCityLandingTemplate({ brand, city, slug, heroImage, seoKeyw
           { stat: 'Free', label: `${city} Delivery` },
         ]} 
       />
+
+      {/* Unique City Context Block */}
+      {cityData && (
+        <section className="py-12 md:py-16 border-t border-border/40 bg-muted/5">
+          <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
+            <div className="grid md:grid-cols-2 gap-10 items-start">
+              <div>
+                <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-3 block">About {city}</span>
+                <h2 className="text-2xl md:text-3xl font-black tracking-tight text-foreground mb-4">
+                  {brand} Leasing in <span className="text-accent">{city}, NJ</span>
+                </h2>
+                <p className="text-muted-foreground leading-relaxed mb-4 text-[16px]">{cityData.intro}</p>
+                <p className="text-muted-foreground leading-relaxed text-[15px] border-l-2 border-accent/40 pl-4 italic">{cityData.driveContext}</p>
+              </div>
+              <div className="space-y-5">
+                <div className="p-6 rounded-2xl border border-accent/20 bg-accent/[0.03]">
+                  <h3 className="font-black text-foreground mb-2 flex items-center gap-2">
+                    <MapPin className="w-4 h-4 text-accent" /> Areas We Serve Near {city}
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-3">We deliver to {city} and all surrounding towns in {cityData.county}:</p>
+                  <div className="flex flex-wrap gap-2">
+                    {cityData.nearbyCities.map((c) => (
+                      <span key={c} className="text-xs px-3 py-1.5 rounded-full bg-accent/10 text-accent font-semibold border border-accent/20">{c}</span>
+                    ))}
+                  </div>
+                </div>
+                <div className="p-6 rounded-2xl border border-border/60 bg-muted/5">
+                  <h3 className="font-black text-foreground mb-2 flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 text-accent" /> {city} Market Insight
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{cityData.marketNote}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* How It Works */}
       <section className="py-12 md:py-20 border-t border-border/40 section-bg">

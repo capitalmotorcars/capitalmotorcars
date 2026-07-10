@@ -38,8 +38,8 @@ const unionCities = [
 
 const unionBrands = [
   { name: 'BMW', path: '/bmw-car-lease' },
-  { name: 'Mercedes-Benz', path: '/mercedes-benz-leasing-edgewater' },
-  { name: 'Audi', path: '/audi-lease-specials-paramus' },
+  { name: 'Mercedes-Benz', path: '/mercedes-benz-lease-deals-edgewater' },
+  { name: 'Audi', path: '/audi-lease-deals-paramus' },
   { name: 'Toyota', path: '/toyota-rav4-lease-nj' },
   { name: 'Honda', path: '/honda-crv-lease-nj' },
 ];

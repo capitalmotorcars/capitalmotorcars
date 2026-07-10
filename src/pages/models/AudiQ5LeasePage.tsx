@@ -46,7 +46,7 @@ const data: VehicleModelData = {
   relatedComparisons: [
     { label: 'BMW X3 vs Audi Q5 Comparison', path: '/comparisons/audi-q5-vs-bmw-x3-lease' },
   ],
-  relatedBrandPage: { label: 'Audi Lease Specials Paramus NJ', path: '/audi-lease-specials-paramus' },
+  relatedBrandPage: { label: 'Audi Lease Deals Paramus NJ', path: '/audi-lease-deals-paramus' },
 };
 
 export default function AudiQ5LeasePage() {

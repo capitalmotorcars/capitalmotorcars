@@ -355,6 +355,55 @@ function BlogContent({ content }: { content: string }) {
   return <div className="blog-body">{blocks}</div>;
 }
 
+function extractFAQSchema(content: string) {
+  const lines = content.split('\n');
+  const faqs = [];
+  
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (line.startsWith('### ') || line.startsWith('## ') || (line.endsWith(':') && line.length < 120 && !line.startsWith('http'))) {
+      const question = line.replace(/^###\s+/, '').replace(/^##\s+/, '').replace(/:$/, '');
+      
+      let j = i + 1;
+      const answerLines = [];
+      while (j < lines.length) {
+        const nextLine = lines[j].trim();
+        if (nextLine.startsWith('###') || nextLine.startsWith('##') || nextLine.endsWith(':')) {
+           break;
+        }
+        if (nextLine !== '') {
+           answerLines.push(nextLine);
+        } else if (answerLines.length > 0) {
+           break;
+        }
+        j++;
+      }
+      
+      if (answerLines.length > 0) {
+         const text = answerLines.join(' ').replace(/\*\*/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/\|/g, '');
+         if (text.length > 10) {
+           faqs.push({
+             "@type": "Question",
+             "name": question,
+             "acceptedAnswer": {
+               "@type": "Answer",
+               "text": text
+             }
+           });
+         }
+      }
+    }
+  }
+
+  if (faqs.length === 0) return null;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs
+  };
+}
+
 export default function BlogPostPage() {
   const { slug: urlSlug } = useParams();
   const location = useLocation();
@@ -421,6 +470,8 @@ export default function BlogPostPage() {
   // Sidebar posts (recent, excluding current)
   const recentPosts = allPosts.filter(p => p.id !== post.id).slice(0, 5);
 
+  const faqSchema = extractFAQSchema(post.content);
+
   return (
     <Layout
       breadcrumbItems={[
@@ -456,6 +507,7 @@ export default function BlogPostPage() {
             description: 'The Capital Motor Cars editorial team consists of automotive leasing experts with over 30 years of combined industry experience, covering car leasing, financing, and vehicle services in New Jersey and New York.',
             sameAs: ['https://www.capitalmotorcars.com/about'],
           }),
+          ...(faqSchema ? [faqSchema] : []),
           ...(post.slug.startsWith('car-leasing-') ? [
             {
               '@context': 'https://schema.org',

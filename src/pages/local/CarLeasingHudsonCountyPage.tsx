@@ -34,9 +34,9 @@ const hudsonCities = [
 
 const brands = [
   { name: 'BMW (Jersey City)', path: '/bmw-lease-deals-jersey-city' },
-  { name: 'Mercedes-Benz (Edgewater)', path: '/mercedes-benz-leasing-edgewater' },
+  { name: 'Mercedes-Benz (Edgewater)', path: '/mercedes-benz-lease-deals-edgewater' },
   { name: 'All BMW Leases', path: '/bmw-car-lease' },
-  { name: 'Audi Leases', path: '/audi-lease-specials-paramus' },
+  { name: 'Audi Leases', path: '/audi-lease-deals-paramus' },
 ];
 
 const hudsonModels = [

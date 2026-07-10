@@ -29,6 +29,7 @@ const footerLinks = {
     { href: '/services/detailing', label: 'Car Detailing' },
   ],
   company: [
+    { href: '/deals', label: 'Live Deals' },
     { href: '/services', label: 'Services' },
     { href: '/quiz', label: 'Find My Lease' },
     { href: '/credit-application', label: 'Credit Application' },
@@ -40,6 +41,7 @@ const footerLinks = {
     { href: '/contact', label: 'Contact' },
   ],
   locations: [
+    { href: '/locations', label: 'All Areas Served' },
     { href: '/car-leasing-new-jersey', label: 'Car Leasing New Jersey' },
     { href: '/car-leasing-bergen-county-nj', label: 'Bergen County' },
     { href: '/car-leasing-hudson-county-nj', label: 'Hudson County' },

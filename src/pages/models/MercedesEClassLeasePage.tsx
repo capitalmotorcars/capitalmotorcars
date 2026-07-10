@@ -46,7 +46,7 @@ const data: VehicleModelData = {
   relatedComparisons: [
     { label: 'BMW X5 vs Mercedes GLE Comparison', path: '/comparisons/bmw-x5-vs-mercedes-gle-lease' },
   ],
-  relatedBrandPage: { label: 'Mercedes-Benz Leasing Edgewater NJ', path: '/mercedes-benz-leasing-edgewater' },
+  relatedBrandPage: { label: 'Mercedes-Benz Lease Deals Edgewater NJ', path: '/mercedes-benz-lease-deals-edgewater' },
 };
 
 export default function MercedesEClassLeasePage() {
