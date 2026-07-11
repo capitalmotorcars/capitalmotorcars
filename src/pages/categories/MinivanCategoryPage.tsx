@@ -31,7 +31,7 @@ export default function MinivanCategoryPage() {
         highlightedTitle=""
         subtitle="The ultimate family transporters. Discover aggressive lease specials on the safest and most spacious vehicles on the road."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/2021_Honda_Odyssey_Elite_Front.jpg/1280px-2021_Honda_Odyssey_Elite_Front.jpg"
-        primaryAction={{ label: "View Specials", href: "/deals" }}
+        primaryAction={{ label: "Contact Us", href: "/contact" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
       />
       

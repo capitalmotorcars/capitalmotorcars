@@ -122,7 +122,6 @@ export function BrandCityLandingTemplate({ brand, city, slug, heroImage, seoKeyw
               </Button>
             </MagneticButton>
             <Button size="lg" variant="outline" className="h-14 px-8 border-white/20 text-white hover:bg-white/10 backdrop-blur-sm text-base w-full sm:w-auto" asChild>
-              <Link to="/deals">View All Live Deals</Link>
             </Button>
           </div>
         </div>

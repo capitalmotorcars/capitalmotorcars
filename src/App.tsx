@@ -21,7 +21,6 @@ const ContactPage = lazy(() => import("./pages/ContactPage"));
 const CreditApplicationPage = lazy(() => import("./pages/CreditApplicationPage"));
 const CreditApplicationDataSecurityPage = lazy(() => import("./pages/CreditApplicationDataSecurityPage"));
 const LeaseCalculatorPage = lazy(() => import("./pages/LeaseCalculatorPage"));
-const PublicDealsPage = lazy(() => import("./pages/DealsPage"));
 const HTMLSitemapPage = lazy(() => import("./pages/HTMLSitemapPage"));
 
 // Category Pages
@@ -495,7 +494,6 @@ const App = () => (
                 <Route path="/brand/subaru" element={<SubaruBrandPage />} />
                 <Route path="/brands" element={<BrandsPage />} />
                 <Route path="/about" element={<AboutPage />} />
-                <Route path="/deals" element={<PublicDealsPage />} />
                 <Route path="/sitemap" element={<HTMLSitemapPage />} />
                 <Route path="/locations" element={<HTMLSitemapPage />} />
                 <Route path="/suv-lease-deals" element={<SUVCategoryPage />} />

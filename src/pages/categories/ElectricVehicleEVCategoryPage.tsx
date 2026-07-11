@@ -31,7 +31,7 @@ export default function ElectricVehicleEVCategoryPage() {
         highlightedTitle=""
         subtitle="Capitalize on massive EV tax credits. We pass the $7,500 federal tax credit directly to you for rock-bottom monthly payments."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Tesla_Model_Y_1.jpg/1280px-Tesla_Model_Y_1.jpg"
-        primaryAction={{ label: "View Specials", href: "/deals" }}
+        primaryAction={{ label: "Contact Us", href: "/contact" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
       />
       

@@ -31,7 +31,7 @@ export default function SUVCategoryPage() {
         highlightedTitle=""
         subtitle="From spacious 3-row family haulers to ultra-luxury performance crossovers. Let us negotiate the best zero down SUV lease for you."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/2019_BMW_X5_M50d_Automatic_3.0.jpg/1280px-2019_BMW_X5_M50d_Automatic_3.0.jpg"
-        primaryAction={{ label: "View Specials", href: "/deals" }}
+        primaryAction={{ label: "Contact Us", href: "/contact" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
       />
       

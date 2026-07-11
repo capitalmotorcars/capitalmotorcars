@@ -31,7 +31,7 @@ export default function TruckCategoryPage() {
         highlightedTitle=""
         subtitle="Tough, capable, and aggressively priced. Find the perfect pickup truck lease for work or play."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/2021_Ford_F-150_XLT_Front.jpg/1280px-2021_Ford_F-150_XLT_Front.jpg"
-        primaryAction={{ label: "View Specials", href: "/deals" }}
+        primaryAction={{ label: "Contact Us", href: "/contact" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
       />
       

@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { JsonLd, createBreadcrumbItemsFromPath, createBreadcrumbSchema, BreadcrumbItem } from '@/components/JsonLd';
-import { ExitIntentModal } from './ExitIntentModal';
+
 
 
 interface LayoutProps {
@@ -23,7 +23,7 @@ export function Layout({ children, breadcrumbItems }: LayoutProps) {
         {children}
       </main>
       <Footer />
-      <ExitIntentModal />
+
 
     </div>
   );

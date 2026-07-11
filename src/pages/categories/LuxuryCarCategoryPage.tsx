@@ -31,7 +31,7 @@ export default function LuxuryCarCategoryPage() {
         highlightedTitle=""
         subtitle="Experience the pinnacle of automotive engineering. We negotiate exclusive lease rates on the world's most prestigious brands."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/2021_Mercedes-Benz_S_580_4MATIC_Front.jpg/1280px-2021_Mercedes-Benz_S_580_4MATIC_Front.jpg"
-        primaryAction={{ label: "View Specials", href: "/deals" }}
+        primaryAction={{ label: "Contact Us", href: "/contact" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
       />
       

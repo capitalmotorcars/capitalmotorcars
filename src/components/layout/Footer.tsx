@@ -29,7 +29,6 @@ const footerLinks = {
     { href: '/services/detailing', label: 'Car Detailing' },
   ],
   company: [
-    { href: '/deals', label: 'Live Deals' },
     { href: '/services', label: 'Services' },
     { href: '/quiz', label: 'Find My Lease' },
     { href: '/credit-application', label: 'Credit Application' },

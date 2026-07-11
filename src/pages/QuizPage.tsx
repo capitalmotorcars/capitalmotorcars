@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
-import { ChevronLeft, ChevronRight, Star, ArrowRight, CheckCircle2, DollarSign } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Star, ArrowRight, CheckCircle2, DollarSign, Lock } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'motion/react';
 import { QUIZ_QUESTIONS, IntentResult } from '@/types/quiz';
@@ -181,31 +181,9 @@ function QuizResults({ result, answers, setIsCompleted, setCurrentQuestionIndex 
             </motion.div>
           </div>
         </div>
-      ) : !isUnlocked ? (
-        <div className="max-w-2xl mx-auto py-12 md:py-24 px-4 text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
-               <CheckCircle2 className="w-8 h-8 text-accent" />
-            </div>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-foreground uppercase mb-4">
-              We found <span className="text-accent">{result.vehicles.length}</span> Perfect Matches!
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              Where should we send your customized vehicle recommendations and current lease specials?
-            </p>
-            <div className="bg-muted/5 border border-border/10 rounded-[2rem] p-8 text-left shadow-lg">
-               <ContactForm 
-                 source="quiz_result"
-                 initialValues={{ message: `I took the vehicle matchmaker quiz. My intent is ${result.intent}.` }}
-                 hideServiceField={true} 
-                 onSubmitSuccess={() => setIsUnlocked(true)}
-               />
-            </div>
-          </motion.div>
-        </div>
       ) : (
-        <div className="max-w-6xl mx-auto py-12 md:py-24 px-4">
-          <div className="text-center mb-8">
+        <div className="max-w-7xl mx-auto py-12 md:py-24 px-4">
+          <div className="text-center mb-12">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -220,83 +198,184 @@ function QuizResults({ result, answers, setIsCompleted, setCurrentQuestionIndex 
                 </span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                Based on your lifestyle and preferences, we've curated the top three 2026 models that define {result.intent.toLowerCase()}.
+                Based on your lifestyle and preferences, we've curated the top {result.vehicles.length} models that define {result.intent.toLowerCase()}.
               </p>
             </motion.div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {result.vehicles.map((vehicle, index) => (
-            <motion.div
-              key={vehicle.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className={cn(
-                "group relative flex flex-col rounded-[2.5rem] border-2 bg-muted/5 dark:bg-white/[0.02] overflow-hidden transition-all duration-500",
-                index === 0
-                  ? "border-accent shadow-[0_0_50px_-12px_rgba(59,130,246,0.3)] scale-105 z-10"
-                  : "border-border/60 dark:border-white/10 hover:border-accent/40"
-              )}
-            >
-              {index === 0 && (
-                <div className="absolute top-4 right-4 z-20">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accent text-accent-foreground text-[10px] font-bold uppercase tracking-widest shadow-xl">
-                    <Star className="w-3 h-3 fill-current" />
-                    Recommended
-                  </span>
-                </div>
-              )}
 
-              <div className="p-8 md:p-10 flex flex-col h-full gap-4">
-                <div>
-                  <span className="text-xs font-bold text-accent uppercase tracking-widest mb-2 block">{vehicle.year} {vehicle.brand}</span>
-                  <h3 className="text-2xl font-black text-foreground tracking-tight leading-none group-hover:text-accent transition-colors duration-300">
-                    {vehicle.name}
-                  </h3>
-                  {vehicle.startingPrice && (
-                    <div className="flex items-baseline gap-1 mt-3">
-                      <span className="text-2xl font-bold text-accent">${vehicle.startingPrice}</span>
-                      <span className="text-sm text-muted-foreground font-medium">/month</span>
+          <div className={cn("grid gap-8 items-stretch", isUnlocked ? "grid-cols-1 md:grid-cols-3" : "grid-cols-1 max-w-4xl mx-auto w-full")}>
+            {result.vehicles.map((vehicle, index) => {
+              if (!isUnlocked && index > 0) return null;
+
+              if (!isUnlocked && index === 0) {
+                // Full width horizontal card
+                return (
+                  <motion.div
+                    key={vehicle.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="group relative flex flex-col md:flex-row items-center rounded-[2.5rem] border-2 border-accent shadow-[0_0_50px_-12px_rgba(59,130,246,0.3)] bg-muted/5 dark:bg-white/[0.02] overflow-hidden transition-all duration-500 z-10 w-full"
+                  >
+                    <div className="absolute top-4 left-4 z-20">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accent text-accent-foreground text-[10px] font-bold uppercase tracking-widest shadow-xl">
+                        <Star className="w-3 h-3 fill-current" />
+                        Top Match
+                      </span>
+                    </div>
+
+                    <div className="w-full md:w-1/2 p-6 md:p-8 relative flex items-center justify-center min-h-[250px] md:min-h-[300px] pt-16 md:pt-8">
+                      {vehicle.image && (
+                        <img src={vehicle.image} alt="" className="w-full h-auto max-w-[90%] object-contain scale-105 group-hover:scale-110 transition-transform duration-500 drop-shadow-2xl" />
+                      )}
+                    </div>
+
+                    <div className="w-full md:w-1/2 p-6 md:p-8 flex flex-col h-full bg-background/50 border-t md:border-t-0 md:border-l border-border/20">
+                      <div>
+                        <span className="text-xs font-bold text-accent uppercase tracking-widest mb-1.5 block">{vehicle.year} {vehicle.brand}</span>
+                        <h3 className="text-2xl md:text-3xl font-black text-foreground tracking-tight leading-none group-hover:text-accent transition-colors duration-300">
+                          {vehicle.name}
+                        </h3>
+                        {vehicle.startingPrice && (
+                          <div className="flex items-baseline gap-1 mt-3 mb-5">
+                            <span className="text-3xl font-black text-accent">${vehicle.startingPrice}</span>
+                            <span className="text-sm text-muted-foreground font-medium">/month</span>
+                          </div>
+                        )}
+                        <p className="text-sm text-muted-foreground leading-relaxed font-medium italic mb-6">
+                          "{vehicle.whyFits}"
+                        </p>
+                      </div>
+
+                      <div className="space-y-3 mb-8">
+                        {vehicle.highlights.map((highlight) => (
+                          <div key={highlight} className="flex items-center gap-3">
+                            <div className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                            <span className="text-sm font-bold text-foreground/80 uppercase tracking-wide">{highlight}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="flex flex-col sm:flex-row gap-3 mt-auto">
+                        <Button
+                          onClick={() => navigate(`/vehicles/${vehicle.slug}`)}
+                          className="flex-1 h-12 rounded-xl bg-accent hover:bg-accent/90 text-accent-foreground font-black tracking-wide uppercase text-xs shadow-lg shadow-accent/20 transition-all"
+                        >
+                          View Details <ArrowRight className="ml-2 w-4 h-4" />
+                        </Button>
+                        <Button
+                          variant="outline"
+                          onClick={() => handleContactClick(vehicle)}
+                          className="flex-1 h-12 rounded-xl border-border/50 hover:bg-muted/50 font-bold tracking-wide uppercase text-xs"
+                        >
+                          Contact Us
+                        </Button>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              }
+
+              return (
+                <motion.div
+                  key={vehicle.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className={cn(
+                    "group relative flex flex-col rounded-[2.5rem] border-2 bg-muted/5 dark:bg-white/[0.02] overflow-hidden transition-all duration-500",
+                    index === 0
+                      ? "border-accent shadow-[0_0_50px_-12px_rgba(59,130,246,0.3)] md:scale-105 z-10"
+                      : "border-border/60 dark:border-white/10 hover:border-accent/40 h-full"
+                  )}
+                >
+                  {index === 0 && (
+                    <div className="absolute top-4 right-4 z-20">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accent text-accent-foreground text-[10px] font-bold uppercase tracking-widest shadow-xl">
+                        <Star className="w-3 h-3 fill-current" />
+                        Top Match
+                      </span>
                     </div>
                   )}
-                  {vehicle.image && (
-                    <div className="relative transition-opacity opacity-80 group-hover:opacity-100">
-                      <img src={vehicle.image} alt="" className="w-full h-full object-contain scale-110 group-hover:scale-125 transition-all duration-300" />
-                    </div>
-                  )}
-                  <p className="text-sm text-muted-foreground mt-4 leading-relaxed font-medium italic">
-                    "{vehicle.whyFits}"
-                  </p>
-                </div>
 
-                <div className="space-y-3 flex-1">
-                  {vehicle.highlights.map((highlight) => (
-                    <div key={highlight} className="flex items-center gap-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-accent" />
-                      <span className="text-sm font-bold text-foreground/80 uppercase tracking-wide">{highlight}</span>
+                  <div className="p-8 md:p-10 flex flex-col h-full gap-4">
+                    <div>
+                      <span className="text-xs font-bold text-accent uppercase tracking-widest mb-2 block">{vehicle.year} {vehicle.brand}</span>
+                      <h3 className="text-2xl font-black text-foreground tracking-tight leading-none group-hover:text-accent transition-colors duration-300">
+                        {vehicle.name}
+                      </h3>
+                      {vehicle.startingPrice && (
+                        <div className="flex items-baseline gap-1 mt-3">
+                          <span className="text-2xl font-bold text-accent">${vehicle.startingPrice}</span>
+                          <span className="text-sm text-muted-foreground font-medium">/month</span>
+                        </div>
+                      )}
+                      {vehicle.image && (
+                        <div className="relative transition-opacity opacity-80 group-hover:opacity-100 mt-4">
+                          <img src={vehicle.image} alt="" className="w-full h-full object-contain scale-110 group-hover:scale-125 transition-all duration-300" />
+                        </div>
+                      )}
+                      <p className="text-sm text-muted-foreground mt-8 leading-relaxed font-medium italic">
+                        "{vehicle.whyFits}"
+                      </p>
                     </div>
-                  ))}
-                </div>
 
-                <div className="flex flex-col gap-3 pt-6 border-t border-border/50">
-                  <Button
-                    onClick={() => navigate(`/vehicles/${vehicle.slug}`)}
-                    className="w-full h-12 rounded-xl bg-accent hover:bg-accent/90 text-accent-foreground font-black tracking-wide uppercase text-xs shadow-lg shadow-accent/20 transition-all"
-                  >
-                    View Details <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
-                  <Button
-                    variant="outline"
-                    onClick={() => handleContactClick(vehicle)}
-                    className="w-full h-12 rounded-xl border-border/50 hover:bg-muted/50 font-bold tracking-wide uppercase text-[10px]"
-                  >
-                    Contact Us
-                  </Button>
+                    <div className="space-y-3 flex-1 mt-6">
+                      {vehicle.highlights.map((highlight) => (
+                        <div key={highlight} className="flex items-center gap-3">
+                          <div className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                          <span className="text-sm font-bold text-foreground/80 uppercase tracking-wide">{highlight}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="flex flex-col gap-3 pt-6 mt-6 border-t border-border/50">
+                      <Button
+                        onClick={() => navigate(`/vehicles/${vehicle.slug}`)}
+                        className="w-full h-12 rounded-xl bg-accent hover:bg-accent/90 text-accent-foreground font-black tracking-wide uppercase text-xs shadow-lg shadow-accent/20 transition-all"
+                      >
+                        View Details <ArrowRight className="ml-2 w-4 h-4" />
+                      </Button>
+                      <Button
+                        variant="outline"
+                        onClick={() => handleContactClick(vehicle)}
+                        className="w-full h-12 rounded-xl border-border/50 hover:bg-muted/50 font-bold tracking-wide uppercase text-[10px]"
+                      >
+                        Contact Us
+                      </Button>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+
+            {!isUnlocked && result.vehicles.length > 1 && (
+              <div className="w-full flex items-center justify-center mt-4">
+                <div className="w-full max-w-2xl">
+                  <div className="bg-background/95 dark:bg-black/80 backdrop-blur-xl border border-accent/30 rounded-[2rem] p-8 md:p-10 text-center shadow-2xl relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent pointer-events-none" />
+                    <div className="relative z-10">
+                      <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner border border-accent/20">
+                        <Lock className="w-7 h-7 text-accent" />
+                      </div>
+                      <h3 className="text-2xl font-black tracking-tighter text-foreground uppercase mb-3">
+                        Unlock More Results
+                      </h3>
+                      <p className="text-sm text-muted-foreground mb-8 leading-relaxed">
+                        Enter your details below to instantly unlock your {result.vehicles.length - 1} runner-up matches and see exclusive unadvertised specials.
+                      </p>
+                      <div className="text-left">
+                        <ContactForm 
+                          source="quiz_result_hybrid"
+                          initialValues={{ message: `I took the vehicle matchmaker quiz. My intent is ${result.intent}. I want to unlock all my matches.` }}
+                          hideServiceField={true} 
+                          onSubmitSuccess={() => setIsUnlocked(true)}
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-
-            </motion.div>
-          ))}
+            )}
           </div>
         </div>
       )}
