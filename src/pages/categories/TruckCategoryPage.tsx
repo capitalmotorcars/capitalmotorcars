@@ -1,89 +1,62 @@
-import { Layout } from '@/components/layout/Layout';
-import { SEO } from '@/components/SEO';
-import { JsonLd, createWebPageSchema } from '@/components/JsonLd';
-import { ServiceHero } from '@/components/services/ServiceHero';
-import { TrustStatsBar } from '@/components/shared/TrustStatsBar';
-import { ContactForm } from '@/components/forms/ContactForm';
-import { Phone, ArrowRight, ShieldCheck, CheckCircle2, Zap, Landmark, BadgeDollarSign } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { CategoryLandingTemplate } from '@/components/local/CategoryLandingTemplate';
+import { BadgeDollarSign, ShieldCheck, Landmark } from 'lucide-react';
+import { VehicleType } from '@/types/vehicle';
 
 export default function TruckCategoryPage() {
+  const benefits = [
+    {
+      title: "Commercial & Personal",
+      description: "Whether you need a heavy-duty work truck for your business or a comfortable daily driver, we have the perfect lease.",
+      icon: ShieldCheck
+    },
+    {
+      title: "Business Tax Write-Offs",
+      description: "Leasing a truck for your business can provide significant tax advantages and deductions. Consult your accountant to maximize these benefits.",
+      icon: Landmark
+    },
+    {
+      title: "Zero Down Capabilities",
+      description: "Keep your capital free for your business or personal life with our flexible, sign-and-drive truck lease options.",
+      icon: BadgeDollarSign
+    }
+  ];
+
+  const faqs = [
+    {
+      question: "Can I lease a truck for my business?",
+      answer: "Absolutely. Commercial truck leasing is very popular. You can lease vehicles under your business name, which often provides excellent tax write-offs and keeps your fleet up to date."
+    },
+    {
+      question: "What are the most popular trucks to lease?",
+      answer: "The RAM 1500, Ford F-150, Chevy Silverado, and GMC Sierra are our most requested trucks. We can source any cab size, bed length, and trim level."
+    },
+    {
+      question: "Are truck leases more expensive than car leases?",
+      answer: "Not necessarily. Trucks actually hold their resale value (residual value) incredibly well. Because you only pay for the depreciation during the lease, high residual values often result in very attractive monthly lease payments."
+    },
+    {
+      question: "Can I customize a leased truck?",
+      answer: "Minor, reversible modifications (like a bed liner or tonneau cover) are usually fine, but heavy modifications (like lift kits) are generally restricted by the leasing company. Ask your broker for details."
+    }
+  ];
+
+  // Logic to filter vehicles for the "Popular Models" section
+  const filterTrucks = (vehicle: VehicleType) => {
+    return vehicle.bodyStyle?.toLowerCase() === 'truck' || vehicle.displayCategory?.toLowerCase() === 'truck';
+  };
+
   return (
-    <Layout>
-      <SEO
-        title="Truck Lease Deals NJ & NY | Zero Down Pickup Specials"
-        description="Aggressive truck lease deals in New Jersey and New York. Lease a Ford F-150, RAM 1500, or Chevy Silverado with zero down."
-        seoKeywords={["Truck lease deals NJ","pickup truck lease specials NY","zero down truck lease","Ford F-150 lease deals","RAM 1500 lease deals"]}
-        ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/2021_Ford_F-150_XLT_Front.jpg/1280px-2021_Ford_F-150_XLT_Front.jpg"
-        canonicalPath="/truck-lease-deals"
-      />
-      <JsonLd data={[
-        createWebPageSchema({
-          name: "Truck Lease Deals NJ & NY | Zero Down Pickup Specials",
-          description: "Aggressive truck lease deals in New Jersey and New York. Lease a Ford F-150, RAM 1500, or Chevy Silverado with zero down.",
-          url: "https://www.capitalmotorcars.com/truck-lease-deals"
-        })
-      ]} />
-
-      <ServiceHero
-        badge="Top Deals"
-        title="Truck Lease Deals"
-        highlightedTitle=""
-        subtitle="Tough, capable, and aggressively priced. Find the perfect pickup truck lease for work or play."
-        heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/2021_Ford_F-150_XLT_Front.jpg/1280px-2021_Ford_F-150_XLT_Front.jpg"
-        primaryAction={{ label: "Contact Us", href: "/contact" }}
-        secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
-      />
-      
-      <TrustStatsBar />
-
-      <section className="py-16 bg-muted/10">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">Lease Your Next Workhorse</h2>
-            <p className="text-lg text-muted-foreground">Whether you need towing capacity for the job site or a luxurious crew cab for the family, our truck lease deals offer unmatched value.</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-background rounded-3xl p-8 border border-border/50 text-center">
-              <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <BadgeDollarSign className="w-8 h-8 text-accent" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Zero Down Options</h3>
-              <p className="text-muted-foreground">Keep your cash in your pocket with our sign and drive lease programs.</p>
-            </div>
-            <div className="bg-background rounded-3xl p-8 border border-border/50 text-center">
-              <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <ShieldCheck className="w-8 h-8 text-accent" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Full Warranty</h3>
-              <p className="text-muted-foreground">Drive with peace of mind knowing your vehicle is covered for the duration of the lease.</p>
-            </div>
-            <div className="bg-background rounded-3xl p-8 border border-border/50 text-center">
-              <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <CheckCircle2 className="w-8 h-8 text-accent" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Door-to-Door Delivery</h3>
-              <p className="text-muted-foreground">We handle the paperwork and deliver your new Truck right to your driveway.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="container mx-auto px-4 max-w-4xl text-center">
-          <h2 className="text-3xl md:text-5xl font-black uppercase mb-6">Ready to Lease a Truck?</h2>
-          <p className="text-lg text-muted-foreground mb-10">
-            Tell us exactly what you're looking for, and our brokers will find the perfect match at the lowest price possible.
-          </p>
-          <div className="bg-muted/5 rounded-[3rem] p-8 md:p-12 border-2 border-border/10 shadow-2xl relative overflow-hidden text-left">
-            <ContactForm 
-              source="category_page"
-              hideServiceField={true}
-              initialValues={{ message: 'I am interested in leasing a Truck. Please contact me with your best zero down lease deals.' }}
-            />
-          </div>
-        </div>
-      </section>
-    </Layout>
+    <CategoryLandingTemplate
+      categoryName="Truck"
+      seoTitle="Truck Lease Deals NJ & NY | Zero Down Pickup Specials"
+      seoDescription="Find aggressive zero down truck lease deals in New Jersey and New York. Lease a Ford F-150, RAM 1500, or Chevy Silverado with flexible terms."
+      seoKeywords={["truck lease deals NJ", "pickup truck lease", "zero down truck lease", "commercial truck lease"]}
+      canonicalPath="/truck-lease-deals"
+      heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/2019_Ram_1500_Laramie_Crew_Cab_4x4_5.7L_front_4.27.18.jpg/1280px-2019_Ram_1500_Laramie_Crew_Cab_4x4_5.7L_front_4.27.18.jpg"
+      heroSubtitle="From heavy-duty commercial workhorses to luxury daily drivers. Let us negotiate the best zero down truck lease for you."
+      benefits={benefits}
+      faqs={faqs}
+      vehicleFilterMatch={filterTrucks}
+    />
   );
 }

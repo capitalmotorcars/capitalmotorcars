@@ -1,89 +1,62 @@
-import { Layout } from '@/components/layout/Layout';
-import { SEO } from '@/components/SEO';
-import { JsonLd, createWebPageSchema } from '@/components/JsonLd';
-import { ServiceHero } from '@/components/services/ServiceHero';
-import { TrustStatsBar } from '@/components/shared/TrustStatsBar';
-import { ContactForm } from '@/components/forms/ContactForm';
-import { Phone, ArrowRight, ShieldCheck, CheckCircle2, Zap, Landmark, BadgeDollarSign } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { CategoryLandingTemplate } from '@/components/local/CategoryLandingTemplate';
+import { BadgeDollarSign, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { VehicleType } from '@/types/vehicle';
 
 export default function MinivanCategoryPage() {
+  const benefits = [
+    {
+      title: "Ultimate Family Vehicle",
+      description: "Nothing beats a minivan for family road trips, school runs, and grocery hauls. Enjoy sliding doors, rear entertainment, and maximum cargo space.",
+      icon: ShieldCheck
+    },
+    {
+      title: "Zero Down Family Budgeting",
+      description: "Keep your family's savings intact with our zero down sign and drive lease programs, allowing for a predictable, low monthly payment.",
+      icon: BadgeDollarSign
+    },
+    {
+      title: "Door-to-Door Delivery",
+      description: "Don't spend your weekend dragging kids to a dealership. We negotiate the price and deliver the new minivan right to your driveway.",
+      icon: CheckCircle2
+    }
+  ];
+
+  const faqs = [
+    {
+      question: "Are minivans still popular to lease?",
+      answer: "Absolutely. While SUVs are popular, the minivan remains the undisputed king of passenger comfort and interior volume. Models like the Honda Odyssey and Chrysler Pacifica are highly requested."
+    },
+    {
+      question: "Can I lease a hybrid minivan?",
+      answer: "Yes! The Chrysler Pacifica Plug-in Hybrid and the Toyota Sienna (which is exclusively hybrid) are incredibly popular leases that offer massive savings on gas."
+    },
+    {
+      question: "What is the best minivan for a large family?",
+      answer: "The Honda Odyssey, Toyota Sienna, Chrysler Pacifica, and Kia Carnival all offer fantastic 7 or 8 passenger seating. Our brokers can help you decide which model has the exact features your family needs."
+    },
+    {
+      question: "Do minivans come with rear-seat entertainment systems?",
+      answer: "Yes, many higher trims offer built-in rear entertainment (DVD/Blu-ray or streaming screens). Let us know this is a priority, and we will source the exact trim level for you."
+    }
+  ];
+
+  // Logic to filter vehicles for the "Popular Models" section
+  const filterMinivans = (vehicle: VehicleType) => {
+    return vehicle.bodyStyle?.toLowerCase() === 'minivan' || vehicle.displayCategory?.toLowerCase() === 'minivan';
+  };
+
   return (
-    <Layout>
-      <SEO
-        title="Minivan Lease Deals NJ & NY | Family Vehicle Specials"
-        description="Find the best minivan lease deals in New Jersey and New York. Zero down leases on the Honda Odyssey, Toyota Sienna, and Chrysler Pacifica."
-        seoKeywords={["Minivan lease deals NJ","family car lease specials NY","zero down minivan lease","Honda Odyssey lease","Toyota Sienna lease"]}
-        ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/2021_Honda_Odyssey_Elite_Front.jpg/1280px-2021_Honda_Odyssey_Elite_Front.jpg"
-        canonicalPath="/minivan-lease-deals"
-      />
-      <JsonLd data={[
-        createWebPageSchema({
-          name: "Minivan Lease Deals NJ & NY | Family Vehicle Specials",
-          description: "Find the best minivan lease deals in New Jersey and New York. Zero down leases on the Honda Odyssey, Toyota Sienna, and Chrysler Pacifica.",
-          url: "https://www.capitalmotorcars.com/minivan-lease-deals"
-        })
-      ]} />
-
-      <ServiceHero
-        badge="Top Deals"
-        title="Minivan Lease Deals"
-        highlightedTitle=""
-        subtitle="The ultimate family transporters. Discover aggressive lease specials on the safest and most spacious vehicles on the road."
-        heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/2021_Honda_Odyssey_Elite_Front.jpg/1280px-2021_Honda_Odyssey_Elite_Front.jpg"
-        primaryAction={{ label: "Contact Us", href: "/contact" }}
-        secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
-      />
-      
-      <TrustStatsBar />
-
-      <section className="py-16 bg-muted/10">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">Designed for the Modern Family</h2>
-            <p className="text-lg text-muted-foreground">Minivans offer unmatched practicality, sliding doors, and entertainment systems. Secure an affordable monthly payment for your family's next adventure.</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-background rounded-3xl p-8 border border-border/50 text-center">
-              <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <BadgeDollarSign className="w-8 h-8 text-accent" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Zero Down Options</h3>
-              <p className="text-muted-foreground">Keep your cash in your pocket with our sign and drive lease programs.</p>
-            </div>
-            <div className="bg-background rounded-3xl p-8 border border-border/50 text-center">
-              <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <ShieldCheck className="w-8 h-8 text-accent" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Full Warranty</h3>
-              <p className="text-muted-foreground">Drive with peace of mind knowing your vehicle is covered for the duration of the lease.</p>
-            </div>
-            <div className="bg-background rounded-3xl p-8 border border-border/50 text-center">
-              <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <CheckCircle2 className="w-8 h-8 text-accent" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Door-to-Door Delivery</h3>
-              <p className="text-muted-foreground">We handle the paperwork and deliver your new Minivan right to your driveway.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="container mx-auto px-4 max-w-4xl text-center">
-          <h2 className="text-3xl md:text-5xl font-black uppercase mb-6">Ready to Lease a Minivan?</h2>
-          <p className="text-lg text-muted-foreground mb-10">
-            Tell us exactly what you're looking for, and our brokers will find the perfect match at the lowest price possible.
-          </p>
-          <div className="bg-muted/5 rounded-[3rem] p-8 md:p-12 border-2 border-border/10 shadow-2xl relative overflow-hidden text-left">
-            <ContactForm 
-              source="category_page"
-              hideServiceField={true}
-              initialValues={{ message: 'I am interested in leasing a Minivan. Please contact me with your best zero down lease deals.' }}
-            />
-          </div>
-        </div>
-      </section>
-    </Layout>
+    <CategoryLandingTemplate
+      categoryName="Minivan"
+      seoTitle="Minivan Lease Deals NJ & NY | Zero Down Family Specials"
+      seoDescription="Find the best zero down minivan lease deals in New Jersey and New York. Lease a Honda Odyssey, Toyota Sienna, or Chrysler Pacifica with flexible terms."
+      seoKeywords={["minivan lease deals NJ", "Honda Odyssey lease NJ", "zero down minivan lease", "family car lease specials"]}
+      canonicalPath="/minivan-lease-deals"
+      heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/2021_Toyota_Sienna_XLE_Hybrid_AWD%2C_front_12.18.20.jpg/1280px-2021_Toyota_Sienna_XLE_Hybrid_AWD%2C_front_12.18.20.jpg"
+      heroSubtitle="Maximize space, comfort, and safety for your family. Let our expert brokers find the absolute best zero down minivan lease for you."
+      benefits={benefits}
+      faqs={faqs}
+      vehicleFilterMatch={filterMinivans}
+    />
   );
 }
