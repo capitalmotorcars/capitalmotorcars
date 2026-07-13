@@ -13,7 +13,7 @@ export default function VolkswagenBrandPage() {
     <Layout>
       <SEO
         title="2026 Volkswagen Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Volkswagen in NJ & NY — Tiguan, Atlas, Jetta, and ID.4 zero down specials. German engineering for everyone at broker pricing."
+        description="Lease a 2026 Volkswagen in NJ & NY - Tiguan, Atlas, Jetta, and ID.4 zero down specials. German engineering for everyone at broker pricing."
         seoKeywords={['2026 Volkswagen lease deals NJ', 'Volkswagen lease specials NY', 'zero down Volkswagen lease', 'Volkswagen broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/2020_Volkswagen_Golf_Style_1.5_Front.jpg/1280px-2020_Volkswagen_Golf_Style_1.5_Front.jpg"
         canonicalPath="/brand/volkswagen"
@@ -31,7 +31,7 @@ export default function VolkswagenBrandPage() {
         badge="Best Value"
         title="2026 Volkswagen Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Volkswagen in NJ & NY — Tiguan, Atlas, Jetta, and ID.4 zero down specials. German engineering for everyone at broker pricing."
+        subtitle="Lease a 2026 Volkswagen in NJ & NY - Tiguan, Atlas, Jetta, and ID.4 zero down specials. German engineering for everyone at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/2020_Volkswagen_Golf_Style_1.5_Front.jpg/1280px-2020_Volkswagen_Golf_Style_1.5_Front.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -44,19 +44,19 @@ export default function VolkswagenBrandPage() {
       <section className="py-16 bg-muted/10">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">Das Auto — German Engineering for All</h2>
-            <p className="text-lg text-muted-foreground">Volkswagen democratizes German engineering — providing precision-built vehicles with sophisticated chassis dynamics at approachable prices. The Tiguan, Atlas, and ID.4 electric offer class-leading interior quality and driving refinement for NJ & NY drivers on any budget.</p>
+            <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">Das Auto - German Engineering for All</h2>
+            <p className="text-lg text-muted-foreground">Volkswagen democratizes German engineering - providing precision-built vehicles with sophisticated chassis dynamics at approachable prices. The Tiguan, Atlas, and ID.4 electric offer class-leading interior quality and driving refinement for NJ & NY drivers on any budget.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <ShieldCheck className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">MQB Platform Excellence</h3>
-              <p className="text-muted-foreground">Volkswagen's Modular Transverse Matrix platform underpins everything from the Jetta to the Tiguan — delivering consistent German chassis sophistication across the lineup.</p>
+              <p className="text-muted-foreground">Volkswagen's Modular Transverse Matrix platform underpins everything from the Jetta to the Tiguan - delivering consistent German chassis sophistication across the lineup.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Premium Interior Quality</h3>
-              <p className="text-muted-foreground">VW's interiors consistently outclass competitors at the same price point — soft-touch materials, solid assembly, and logical layouts set the standard.</p>
+              <p className="text-muted-foreground">VW's interiors consistently outclass competitors at the same price point - soft-touch materials, solid assembly, and logical layouts set the standard.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <CheckCircle2 className="w-12 h-12 text-accent mb-4" />
@@ -83,7 +83,7 @@ export default function VolkswagenBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Volkswagen</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Volkswagen was founded in 1937 in Germany with the mission of creating a 'people's car' (Volkswagen in German). Ferdinand Porsche designed the original Beetle — which became the world's best-selling car of all time with 21.5 million units produced. The Golf, launched in 1974, created the modern compact hatchback segment. Today, VW's ID.4 and ID.Buzz electric vehicles lead the brand's global electrification push.
+                Volkswagen was founded in 1937 in Germany with the mission of creating a 'people's car' (Volkswagen in German). Ferdinand Porsche designed the original Beetle - which became the world's best-selling car of all time with 21.5 million units produced. The Golf, launched in 1974, created the modern compact hatchback segment. Today, VW's ID.4 and ID.Buzz electric vehicles lead the brand's global electrification push.
               </p>
             </div>
           </div>
@@ -145,7 +145,7 @@ export default function VolkswagenBrandPage() {
                 Is the VW Tiguan good for NJ families?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Tiguan offers 3-row optional seating (7 passengers), a large panoramic sunroof, and class-leading rear seat legroom — making it one of the best compact SUV values for NJ families.
+                The Tiguan offers 3-row optional seating (7 passengers), a large panoramic sunroof, and class-leading rear seat legroom - making it one of the best compact SUV values for NJ families.
               </AccordionContent>
             </AccordionItem>
             
@@ -154,7 +154,7 @@ export default function VolkswagenBrandPage() {
                 Does the VW ID.4 qualify for EV tax credits?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Yes — the ID.4 qualifies for the full $7,500 federal EV credit applied directly to your lease, significantly reducing monthly payments on this capable 250-mile range electric SUV.
+                Yes - the ID.4 qualifies for the full $7,500 federal EV credit applied directly to your lease, significantly reducing monthly payments on this capable 250-mile range electric SUV.
               </AccordionContent>
             </AccordionItem>
             

@@ -71,7 +71,7 @@ export function VehicleModelLandingTemplate({ data }: { data: VehicleModelData }
 
   const personas = isEV
     ? [
-        { icon: TrendingDown, title: 'The Smart Commuter', desc: `You drive 25–50 miles a day and are tired of gas station detours. The ${fullName} charges overnight and costs a fraction per mile. NJ 0% sales tax makes the numbers work.` },
+        { icon: TrendingDown, title: 'The Smart Commuter', desc: `You drive 25-50 miles a day and are tired of gas station detours. The ${fullName} charges overnight and costs a fraction per mile. NJ 0% sales tax makes the numbers work.` },
         { icon: Star, title: 'The Eco-Luxury Seeker', desc: `You want premium materials, silent acceleration, and the latest technology, without a combustion engine. The ${fullName} delivers all of it with zero tailpipe emissions.` },
         { icon: Users, title: 'The Forward-Looking Family', desc: `You want to future-proof your commute and set the right example. The ${fullName} fits car seats, handles school runs, and earns NJ\'s EV tax exemption every month.` },
       ]
@@ -83,9 +83,9 @@ export function VehicleModelLandingTemplate({ data }: { data: VehicleModelData }
 
   const leasingVsBuyingRows = [
     { aspect: 'Monthly payment', lease: `Lower: from $${leaseStart}/mo`, buy: 'Higher: full MSRP financed' },
-    { aspect: 'Upfront cost', lease: 'First month + security deposit', buy: 'Down payment (10–20% of price)' },
-    { aspect: 'Flexibility', lease: 'Return or upgrade every 2–3 yrs', buy: 'Sell or trade a depreciating asset' },
-    { aspect: 'Mileage', lease: '10k–15k miles/yr (customizable)', buy: 'Unlimited but affects resale value' },
+    { aspect: 'Upfront cost', lease: 'First month + security deposit', buy: 'Down payment (10-20% of price)' },
+    { aspect: 'Flexibility', lease: 'Return or upgrade every 2-3 yrs', buy: 'Sell or trade a depreciating asset' },
+    { aspect: 'Mileage', lease: '10k-15k miles/yr (customizable)', buy: 'Unlimited but affects resale value' },
     { aspect: 'Maintenance', lease: 'Factory warranty covers full term', buy: 'Warranty expires; repairs your cost' },
     { aspect: 'Equity', lease: 'None. Capital stays in your pocket', buy: 'Build equity (car still depreciates)' },
     { aspect: isEV ? 'NJ EV tax' : 'NJ sales tax', lease: isEV ? '0% on every monthly payment' : '6.625% on each monthly payment', buy: isEV ? '0% applied once on full price' : '6.625% on full purchase price upfront' },
@@ -205,7 +205,7 @@ export function VehicleModelLandingTemplate({ data }: { data: VehicleModelData }
                 <div className="space-y-3">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Monthly payment</span>
-                    <span className="font-black text-foreground">${leaseStart} – ${leaseEnd}/mo</span>
+                    <span className="font-black text-foreground">${leaseStart} - ${leaseEnd}/mo</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">MSRP from</span>
@@ -389,7 +389,7 @@ export function VehicleModelLandingTemplate({ data }: { data: VehicleModelData }
             </div>
             <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
-                { icon: BadgeCheck, title: 'Buy-Rate Money Factor', desc: `We access the exact money factor published by ${make} Financial. A dealer can mark it up by 0.001 or more, that's $30–$50 extra per month you'd never know about.` },
+                { icon: BadgeCheck, title: 'Buy-Rate Money Factor', desc: `We access the exact money factor published by ${make} Financial. A dealer can mark it up by 0.001 or more, that's $30-$50 extra per month you'd never know about.` },
                 { icon: Building2, title: 'Multi-Dealer Competition', desc: `We send your deal to 10+ ${make} dealers in NJ and NY simultaneously. They compete on the selling price. The lowest number wins, you never have to negotiate.` },
                 { icon: ShieldCheck, title: 'Transparent Fee Structure', desc: 'Our fee is flat and disclosed upfront. No doc fee inflation, no paint protection add-ons, no finance reserve. What you see is what you sign.' },
                 { icon: MapPin, title: 'Lease-End Support', desc: `When your ${model} lease ends, we handle the turn-in process and secure your next vehicle before you need to return this one. No gaps, no pressure.` },
@@ -465,7 +465,7 @@ export function VehicleModelLandingTemplate({ data }: { data: VehicleModelData }
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
               {[
                 { icon: Zap, title: '0% NJ Sales Tax', desc: `NJ exempts EVs from the 6.625% sales tax. On a ${fullName} lease, that saves you $${Math.round(leaseStart * 0.06625 * 36).toLocaleString()} over 36 months compared to an equivalent ICE vehicle.` },
-                { icon: TrendingDown, title: 'Lower Running Costs', desc: `Electricity costs roughly $0.03–0.05 per mile in NJ vs $0.12–0.15 for gasoline. A typical 12k-mile year saves $1,000–$1,500 in fuel alone.` },
+                { icon: TrendingDown, title: 'Lower Running Costs', desc: `Electricity costs roughly $0.03-0.05 per mile in NJ vs $0.12-0.15 for gasoline. A typical 12k-mile year saves $1,000-$1,500 in fuel alone.` },
                 { icon: Leaf, title: 'Charging Infrastructure', desc: `NJ has an expanding public fast-charging network along the Turnpike, Garden State Pkwy, and major retail corridors. Most ${fullName} owners charge at home overnight.` },
               ].map((item, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}

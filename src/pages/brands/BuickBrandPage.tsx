@@ -13,7 +13,7 @@ export default function BuickBrandPage() {
     <Layout>
       <SEO
         title="2026 Buick Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Buick in NJ & NY — Enclave, Encore GX, and Envision zero down specials. Premium American comfort at broker pricing."
+        description="Lease a 2026 Buick in NJ & NY - Enclave, Encore GX, and Envision zero down specials. Premium American comfort at broker pricing."
         seoKeywords={['2026 Buick lease deals NJ', 'Buick lease specials NY', 'zero down Buick lease', 'Buick broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/2022_Buick_Enclave_%27Essense%27_%28facelift%29%2C_front_6.1.22.jpg/1280px-2022_Buick_Enclave_%27Essense%27_%28facelift%29%2C_front_6.1.22.jpg"
         canonicalPath="/brand/buick"
@@ -31,7 +31,7 @@ export default function BuickBrandPage() {
         badge="Best Value"
         title="2026 Buick Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Buick in NJ & NY — Enclave, Encore GX, and Envision zero down specials. Premium American comfort at broker pricing."
+        subtitle="Lease a 2026 Buick in NJ & NY - Enclave, Encore GX, and Envision zero down specials. Premium American comfort at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/2022_Buick_Enclave_%27Essense%27_%28facelift%29%2C_front_6.1.22.jpg/1280px-2022_Buick_Enclave_%27Essense%27_%28facelift%29%2C_front_6.1.22.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -45,13 +45,13 @@ export default function BuickBrandPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">Quiet Tuning. Unmatched Comfort.</h2>
-            <p className="text-lg text-muted-foreground">Buick has reinvented itself as a modern premium brand — QuietTuning noise suppression, Bose audio, and premium interiors at mainstream prices. The Enclave, Encore GX, and Envision target buyers seeking a step above Chevrolet without full luxury pricing.</p>
+            <p className="text-lg text-muted-foreground">Buick has reinvented itself as a modern premium brand - QuietTuning noise suppression, Bose audio, and premium interiors at mainstream prices. The Enclave, Encore GX, and Envision target buyers seeking a step above Chevrolet without full luxury pricing.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <ShieldCheck className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">QuietTuning®</h3>
-              <p className="text-muted-foreground">Buick's acoustic engineering — triple-sealed doors, acoustic laminated glass, and noise-canceling technology — creates one of the quietest cabins in the mainstream segment.</p>
+              <p className="text-muted-foreground">Buick's acoustic engineering - triple-sealed doors, acoustic laminated glass, and noise-canceling technology - creates one of the quietest cabins in the mainstream segment.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
@@ -83,7 +83,7 @@ export default function BuickBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Buick</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Buick is America's oldest surviving automobile brand, founded by David Dunbar Buick in 1899. Buick is also one of General Motors' founding brands — William Durant used Buick's profits to fund GM's creation in 1908. Remarkably, Buick is enormously popular in China — selling more Buicks there than in the US — making it a genuinely global premium brand with a 125-year heritage.
+                Buick is America's oldest surviving automobile brand, founded by David Dunbar Buick in 1899. Buick is also one of General Motors' founding brands - William Durant used Buick's profits to fund GM's creation in 1908. Remarkably, Buick is enormously popular in China - selling more Buicks there than in the US - making it a genuinely global premium brand with a 125-year heritage.
               </p>
             </div>
           </div>
@@ -145,7 +145,7 @@ export default function BuickBrandPage() {
                 How does a Buick Enclave compare to a Chevrolet Traverse?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Enclave shares the Traverse platform but adds QuietTuning acoustic treatment, more premium interior materials, standard driver assistance features, and exclusive design — making it the quieter, more refined choice.
+                The Enclave shares the Traverse platform but adds QuietTuning acoustic treatment, more premium interior materials, standard driver assistance features, and exclusive design - making it the quieter, more refined choice.
               </AccordionContent>
             </AccordionItem>
             
@@ -154,7 +154,7 @@ export default function BuickBrandPage() {
                 Is Buick a luxury brand?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Buick positions itself as a 'premium' brand — above mainstream Chevrolet but below luxury Cadillac. In China, Buick is perceived as a full luxury brand on par with Mercedes-Benz.
+                Buick positions itself as a 'premium' brand - above mainstream Chevrolet but below luxury Cadillac. In China, Buick is perceived as a full luxury brand on par with Mercedes-Benz.
               </AccordionContent>
             </AccordionItem>
             
@@ -163,7 +163,7 @@ export default function BuickBrandPage() {
                 What Buick models are best for leasing?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Buick Envision and Encore GX offer the best lease values in the lineup — competitive monthly payments, premium QuietTuning interiors, and GM Financial lease support.
+                The Buick Envision and Encore GX offer the best lease values in the lineup - competitive monthly payments, premium QuietTuning interiors, and GM Financial lease support.
               </AccordionContent>
             </AccordionItem>
             

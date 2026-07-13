@@ -120,7 +120,7 @@ export function CircularProcessVisualization({
               </feMerge>
             </filter>
           </defs>
-          {/* Decorative rings – grey circles, more visible */}
+          {/* Decorative rings - grey circles, more visible */}
           <circle
             cx="50"
             cy="50"
@@ -174,7 +174,7 @@ export function CircularProcessVisualization({
             className="text-muted-foreground/10 dark:text-white/15"
           />
 
-          {/* Connecting line – show line to current step on load; to hovered step when hovering */}
+          {/* Connecting line - show line to current step on load; to hovered step when hovering */}
           {STEPS.map((_, i) => {
             const pos = getStepPosition(i, STEPS.length, mainR);
             const showLine = hoveredStep !== null ? hoveredStep === i : displayStep === i;
@@ -197,7 +197,7 @@ export function CircularProcessVisualization({
             );
           })}
 
-          {/* Blue trajectory – from step 1 to current step only (arc ends at current step, not the next) */}
+          {/* Blue trajectory - from step 1 to current step only (arc ends at current step, not the next) */}
           {(() => {
             const circumference = 2 * Math.PI * mainR;
             const segmentLength = circumference / STEPS.length;
@@ -229,7 +229,7 @@ export function CircularProcessVisualization({
           })()}
         </svg>
 
-        {/* Center icon – blue border + blue icon (same as step nodes) */}
+        {/* Center icon - blue border + blue icon (same as step nodes) */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div
             className={cn(
@@ -242,7 +242,7 @@ export function CircularProcessVisualization({
           </div>
         </div>
 
-        {/* Step nodes – hover sets displayStep so lines/arc/panel transition */}
+        {/* Step nodes - hover sets displayStep so lines/arc/panel transition */}
         {STEPS.map((step, i) => {
           const pos = getStepPosition(i, STEPS.length, mainR);
           const active = displayStep === i;

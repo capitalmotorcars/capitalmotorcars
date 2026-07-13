@@ -347,7 +347,7 @@ function fileToBase64(file: File): Promise<string> {
   });
 }
 
-/** Validation for co-applicant section – used when validating step 3. */
+/** Validation for co-applicant section - used when validating step 3. */
 function isCoApplicantSectionValid(data: Partial<CreditFormData>): boolean {
   if (!data.coApplicantEnabled) return true;
   const email = data.coEmail?.trim() ?? "";

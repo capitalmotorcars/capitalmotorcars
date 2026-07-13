@@ -13,7 +13,7 @@ export default function DodgeBrandPage() {
     <Layout>
       <SEO
         title="2026 Dodge Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Dodge in NJ & NY — Charger Daytona EV, Durango, and Hornet zero down specials. American muscle performance at broker pricing."
+        description="Lease a 2026 Dodge in NJ & NY - Charger Daytona EV, Durango, and Hornet zero down specials. American muscle performance at broker pricing."
         seoKeywords={['2026 Dodge lease deals NJ', 'Dodge lease specials NY', 'zero down Dodge lease', 'Dodge broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Dodge_Challenger_SRT8_%282015%29_Hirschaid-20220709-RM-120221_%28cropped%29.jpg/1280px-Dodge_Challenger_SRT8_%282015%29_Hirschaid-20220709-RM-120221_%28cropped%29.jpg"
         canonicalPath="/brand/dodge"
@@ -31,7 +31,7 @@ export default function DodgeBrandPage() {
         badge="Best Value"
         title="2026 Dodge Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Dodge in NJ & NY — Charger Daytona EV, Durango, and Hornet zero down specials. American muscle performance at broker pricing."
+        subtitle="Lease a 2026 Dodge in NJ & NY - Charger Daytona EV, Durango, and Hornet zero down specials. American muscle performance at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Dodge_Challenger_SRT8_%282015%29_Hirschaid-20220709-RM-120221_%28cropped%29.jpg/1280px-Dodge_Challenger_SRT8_%282015%29_Hirschaid-20220709-RM-120221_%28cropped%29.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -51,17 +51,17 @@ export default function DodgeBrandPage() {
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <ShieldCheck className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Fratzonic Exhaust System</h3>
-              <p className="text-muted-foreground">The Charger Daytona EV features a patented amplified exhaust system that generates a genuine muscle car sound — even from an electric motor.</p>
+              <p className="text-muted-foreground">The Charger Daytona EV features a patented amplified exhaust system that generates a genuine muscle car sound - even from an electric motor.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Direct Connection</h3>
-              <p className="text-muted-foreground">Dodge's Direct Connection performance parts program allows over-the-air power upgrades purchased digitally — unlock more horsepower as needed.</p>
+              <p className="text-muted-foreground">Dodge's Direct Connection performance parts program allows over-the-air power upgrades purchased digitally - unlock more horsepower as needed.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <CheckCircle2 className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Supercar Performance</h3>
-              <p className="text-muted-foreground">The Charger Daytona SRT delivers 670hp and reaches 0-60mph in under 3.3 seconds — genuine supercar performance in an EV muscle car body.</p>
+              <p className="text-muted-foreground">The Charger Daytona SRT delivers 670hp and reaches 0-60mph in under 3.3 seconds - genuine supercar performance in an EV muscle car body.</p>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function DodgeBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Dodge</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Dodge was founded in 1900 by brothers Horace and John Dodge as a supplier to Ford before launching their own vehicles in 1914. The Dodge Brothers became major Ford shareholders, funding the company that would eventually become Dodge. Dodge's most legendary moment was the L.A. Police Department's adoption of the Challenger — creating the pony car. The Charger and Challenger Hellcat 797hp monsters kept HEMI V8 culture alive into the 2020s.
+                Dodge was founded in 1900 by brothers Horace and John Dodge as a supplier to Ford before launching their own vehicles in 1914. The Dodge Brothers became major Ford shareholders, funding the company that would eventually become Dodge. Dodge's most legendary moment was the L.A. Police Department's adoption of the Challenger - creating the pony car. The Charger and Challenger Hellcat 797hp monsters kept HEMI V8 culture alive into the 2020s.
               </p>
             </div>
           </div>
@@ -145,7 +145,7 @@ export default function DodgeBrandPage() {
                 Is the new Dodge Charger Daytona really an EV?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Yes — but Dodge designed it specifically to feel like a muscle car: it has a patented sound system, a physical gear selector called the eRupt selector, and available 670hp. It's the world's first electric muscle car.
+                Yes - but Dodge designed it specifically to feel like a muscle car: it has a patented sound system, a physical gear selector called the eRupt selector, and available 670hp. It's the world's first electric muscle car.
               </AccordionContent>
             </AccordionItem>
             
@@ -154,7 +154,7 @@ export default function DodgeBrandPage() {
                 Can I get a Dodge Durango R/T on a lease?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Absolutely — the Durango R/T with 360hp V8 and available 7-seat, tow-rated configuration is an excellent NJ family performance SUV with competitive Chrysler Capital lease rates.
+                Absolutely - the Durango R/T with 360hp V8 and available 7-seat, tow-rated configuration is an excellent NJ family performance SUV with competitive Chrysler Capital lease rates.
               </AccordionContent>
             </AccordionItem>
             

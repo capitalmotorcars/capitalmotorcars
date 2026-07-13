@@ -618,7 +618,7 @@ export default function BlogPostPage() {
 
             {/* Sidebar */}
             <aside className="lg:w-1/3 space-y-8">
-              {/* Recent Posts — scrolls normally */}
+              {/* Recent Posts - scrolls normally */}
               <div className="p-8 rounded-[2rem] border border-accent/10 bg-accent/[0.02] shadow-sm">
                 <h2 className="text-2xl font-black text-foreground tracking-tight mb-6">
                   Recent Stories
@@ -648,7 +648,7 @@ export default function BlogPostPage() {
                 </Button>
               </div>
 
-              {/* Schedule a Call — sticky so it stays visible while scrolling */}
+              {/* Schedule a Call - sticky so it stays visible while scrolling */}
               <div className="sticky top-28">
                 <div className="relative overflow-hidden p-1 rounded-[2.5rem] bg-gradient-to-br from-accent via-accent to-blue-600 shadow-2xl shadow-accent/30">
                   <div className="relative p-8 rounded-[2.3rem] bg-accent/10 backdrop-blur-sm border border-white/20">

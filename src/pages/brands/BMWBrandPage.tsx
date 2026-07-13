@@ -45,7 +45,7 @@ export default function BMWBrandPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">Experience The Ultimate Driving Machine</h2>
-            <p className="text-lg text-muted-foreground">BMW seamlessly blends thrilling performance with unmistakable luxury. Whether you're seeking a sporty sedan or a versatile SAV, our brokers negotiate the perfect lease for your lifestyle — with zero dealer markup.</p>
+            <p className="text-lg text-muted-foreground">BMW seamlessly blends thrilling performance with unmistakable luxury. Whether you're seeking a sporty sedan or a versatile SAV, our brokers negotiate the perfect lease for your lifestyle - with zero dealer markup.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
@@ -126,7 +126,7 @@ export default function BMWBrandPage() {
             </div>
             <h2 className="text-3xl font-black uppercase mb-6 relative z-10">Why Lease a BMW?</h2>
             <p className="text-xl text-muted-foreground relative z-10 leading-relaxed">
-              Leasing a BMW protects you from the steep depreciation typical of German luxury cars — BMWs lose 50-60% of their value in the first 3 years. By leasing, you drive a brand new model with full warranty coverage, BMW Ultimate Care maintenance included, and a predictable monthly payment with no surprise repair bills.
+              Leasing a BMW protects you from the steep depreciation typical of German luxury cars - BMWs lose 50-60% of their value in the first 3 years. By leasing, you drive a brand new model with full warranty coverage, BMW Ultimate Care maintenance included, and a predictable monthly payment with no surprise repair bills.
             </p>
           </div>
         </div>
@@ -154,7 +154,7 @@ export default function BMWBrandPage() {
                 Does BMW include maintenance with their leases?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Yes! BMW Ultimate Care covers all factory-recommended scheduled maintenance for the first 3 years or 36,000 miles — oil changes, brake fluid, and more included at no cost.
+                Yes! BMW Ultimate Care covers all factory-recommended scheduled maintenance for the first 3 years or 36,000 miles - oil changes, brake fluid, and more included at no cost.
               </AccordionContent>
             </AccordionItem>
             
@@ -163,7 +163,7 @@ export default function BMWBrandPage() {
                 Can I use multiple security deposits (MSD) on a BMW?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Yes, BMW Financial Services allows up to 7 refundable security deposits to significantly lower your money factor (interest rate) and monthly payment — a powerful money-saving strategy we use for our clients.
+                Yes, BMW Financial Services allows up to 7 refundable security deposits to significantly lower your money factor (interest rate) and monthly payment - a powerful money-saving strategy we use for our clients.
               </AccordionContent>
             </AccordionItem>
             

@@ -1,89 +1,62 @@
-import { Layout } from '@/components/layout/Layout';
-import { SEO } from '@/components/SEO';
-import { JsonLd, createWebPageSchema } from '@/components/JsonLd';
-import { ServiceHero } from '@/components/services/ServiceHero';
-import { TrustStatsBar } from '@/components/shared/TrustStatsBar';
-import { ContactForm } from '@/components/forms/ContactForm';
-import { Phone, ArrowRight, ShieldCheck, CheckCircle2, Zap, Landmark, BadgeDollarSign } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { CategoryLandingTemplate } from '@/components/local/CategoryLandingTemplate';
+import { BadgeDollarSign, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { VehicleType } from '@/types/vehicle';
 
 export default function LuxuryCarCategoryPage() {
+  const benefits = [
+    {
+      title: "White Glove Concierge",
+      description: "Experience premium service. We handle all negotiations, paperwork, and deliver your luxury vehicle directly to your estate or office.",
+      icon: CheckCircle2
+    },
+    {
+      title: "Always the Latest Tech",
+      description: "Leasing allows you to upgrade every 2-3 years, ensuring you always have the most advanced safety, performance, and luxury features.",
+      icon: ShieldCheck
+    },
+    {
+      title: "Better Cash Flow",
+      description: "Avoid tying up your capital in a depreciating asset. Leasing a luxury car often provides a significantly lower monthly payment.",
+      icon: BadgeDollarSign
+    }
+  ];
+
+  const faqs = [
+    {
+      question: "What credit score do I need to lease a luxury car?",
+      answer: "Generally, top-tier luxury leases (Tier 1 credit) require a FICO auto score of 720 or higher to qualify for the most aggressive money factors and lowest payments."
+    },
+    {
+      question: "Can I lease high-end exotics like Porsche or Bentley?",
+      answer: "Yes, we broker leases for almost all high-end luxury and exotic brands, including Porsche, Bentley, Aston Martin, and Maserati, often securing terms not available directly at dealerships."
+    },
+    {
+      question: "Are maintenance costs included in a luxury lease?",
+      answer: "This depends on the manufacturer. For example, BMW includes complimentary scheduled maintenance for 3 years/36,000 miles, making their leases extremely attractive. We can advise you on which brands offer the best maintenance programs."
+    },
+    {
+      question: "Is there a penalty for going over the mileage limit?",
+      answer: "Yes, luxury vehicles typically have a higher per-mile overage charge (often $0.25 to $0.30 per mile). We highly recommend estimating your mileage accurately upfront to negotiate a high-mileage lease if needed."
+    }
+  ];
+
+  // Logic to filter vehicles for the "Popular Models" section
+  const filterLuxury = (vehicle: VehicleType) => {
+    return vehicle.isLuxury || vehicle.displayCategory?.toLowerCase() === 'luxury';
+  };
+
   return (
-    <Layout>
-      <SEO
-        title="Luxury Car Lease Deals NJ & NY | Zero Down Specials"
-        description="Exclusive luxury car lease deals in New Jersey and New York. Lease a Mercedes-Benz, Porsche, or Range Rover with zero down."
-        seoKeywords={["Luxury car lease deals NJ","exotic car lease specials NY","zero down luxury lease","Mercedes lease deals","Porsche lease broker"]}
-        ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/2021_Mercedes-Benz_S_580_4MATIC_Front.jpg/1280px-2021_Mercedes-Benz_S_580_4MATIC_Front.jpg"
-        canonicalPath="/luxury-lease-deals"
-      />
-      <JsonLd data={[
-        createWebPageSchema({
-          name: "Luxury Car Lease Deals NJ & NY | Zero Down Specials",
-          description: "Exclusive luxury car lease deals in New Jersey and New York. Lease a Mercedes-Benz, Porsche, or Range Rover with zero down.",
-          url: "https://www.capitalmotorcars.com/luxury-lease-deals"
-        })
-      ]} />
-
-      <ServiceHero
-        badge="Top Deals"
-        title="Luxury Car Lease Deals"
-        highlightedTitle=""
-        subtitle="Experience the pinnacle of automotive engineering. We negotiate exclusive lease rates on the world's most prestigious brands."
-        heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/2021_Mercedes-Benz_S_580_4MATIC_Front.jpg/1280px-2021_Mercedes-Benz_S_580_4MATIC_Front.jpg"
-        primaryAction={{ label: "View Specials", href: "/deals" }}
-        secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
-      />
-      
-      <TrustStatsBar />
-
-      <section className="py-16 bg-muted/10">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">Uncompromising Luxury</h2>
-            <p className="text-lg text-muted-foreground">Leasing a luxury vehicle allows you to drive a higher caliber car for a lower monthly payment. We handle the negotiations so you can enjoy the ride.</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-background rounded-3xl p-8 border border-border/50 text-center">
-              <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <BadgeDollarSign className="w-8 h-8 text-accent" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Zero Down Options</h3>
-              <p className="text-muted-foreground">Keep your cash in your pocket with our sign and drive lease programs.</p>
-            </div>
-            <div className="bg-background rounded-3xl p-8 border border-border/50 text-center">
-              <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <ShieldCheck className="w-8 h-8 text-accent" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Full Warranty</h3>
-              <p className="text-muted-foreground">Drive with peace of mind knowing your vehicle is covered for the duration of the lease.</p>
-            </div>
-            <div className="bg-background rounded-3xl p-8 border border-border/50 text-center">
-              <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <CheckCircle2 className="w-8 h-8 text-accent" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Door-to-Door Delivery</h3>
-              <p className="text-muted-foreground">We handle the paperwork and deliver your new Luxury Car right to your driveway.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="container mx-auto px-4 max-w-4xl text-center">
-          <h2 className="text-3xl md:text-5xl font-black uppercase mb-6">Ready to Lease a Luxury Car?</h2>
-          <p className="text-lg text-muted-foreground mb-10">
-            Tell us exactly what you're looking for, and our brokers will find the perfect match at the lowest price possible.
-          </p>
-          <div className="bg-muted/5 rounded-[3rem] p-8 md:p-12 border-2 border-border/10 shadow-2xl relative overflow-hidden text-left">
-            <ContactForm 
-              source="category_page"
-              hideServiceField={true}
-              initialValues={{ message: 'I am interested in leasing a Luxury Car. Please contact me with your best zero down lease deals.' }}
-            />
-          </div>
-        </div>
-      </section>
-    </Layout>
+    <CategoryLandingTemplate
+      categoryName="Luxury Car"
+      seoTitle="Luxury Car Lease Deals NJ | Exotics & Premium Vehicles"
+      seoDescription="Find the best luxury car lease deals in NJ and NY. Lease premium vehicles like Porsche, BMW, Mercedes, and Audi with zero down and white-glove delivery."
+      seoKeywords={["luxury car lease deals NJ", "exotic car lease", "zero down luxury lease", "BMW lease specials", "Porsche lease specials"]}
+      canonicalPath="/luxury-car-lease-deals"
+      heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Porsche_911_Carrera_4S_992_front_view.jpg/1280px-Porsche_911_Carrera_4S_992_front_view.jpg"
+      heroSubtitle="Experience automotive excellence without the depreciation. Let our concierge team secure the best zero down lease on your next luxury vehicle."
+      benefits={benefits}
+      faqs={faqs}
+      vehicleFilterMatch={filterLuxury}
+    />
   );
 }

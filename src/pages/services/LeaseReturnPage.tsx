@@ -391,7 +391,7 @@ export default function LeaseReturnPage() {
         title="Why Returning Your Lease Through a Broker Is Better"
         paragraphs={[
           "When returning a lease to a traditional dealership, you face potential end-of-term fees, disposition costs, and high pressure to lease another vehicle from their limited inventory.",
-          "Capital Motor Cars handles your lease return entirely on your behalf. We assess your vehicle for equity—something many lessees don't realize they have—and we can often buy out your lease directly, putting that equity into your pocket rather than the dealer's."
+          "Capital Motor Cars handles your lease return entirely on your behalf. We assess your vehicle for equity - something many lessees don't realize they have - and we can often buy out your lease directly, putting that equity into your pocket rather than the dealer's."
         ]}
         bullets={[
           "Avoid dealership disposition fees",

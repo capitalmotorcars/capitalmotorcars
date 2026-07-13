@@ -13,7 +13,7 @@ export default function LexusBrandPage() {
     <Layout>
       <SEO
         title="2026 Lexus Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Lexus in NJ & NY — zero down specials on the NX, RX, ES, and more. Premium Japanese luxury at broker pricing."
+        description="Lease a 2026 Lexus in NJ & NY - zero down specials on the NX, RX, ES, and more. Premium Japanese luxury at broker pricing."
         seoKeywords={['2026 Lexus lease deals NJ', 'Lexus lease specials NY', 'zero down Lexus lease', 'Lexus broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/2023_Lexus_LC500_in_Atomic_Silver%2C_front_left.jpg/1280px-2023_Lexus_LC500_in_Atomic_Silver%2C_front_left.jpg"
         canonicalPath="/brand/lexus"
@@ -31,7 +31,7 @@ export default function LexusBrandPage() {
         badge="Best Value"
         title="2026 Lexus Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Lexus in NJ & NY — zero down specials on the NX, RX, ES, and more. Premium Japanese luxury at broker pricing."
+        subtitle="Lease a 2026 Lexus in NJ & NY - zero down specials on the NX, RX, ES, and more. Premium Japanese luxury at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/2023_Lexus_LC500_in_Atomic_Silver%2C_front_left.jpg/1280px-2023_Lexus_LC500_in_Atomic_Silver%2C_front_left.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -45,7 +45,7 @@ export default function LexusBrandPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">The Pursuit of Perfection</h2>
-            <p className="text-lg text-muted-foreground">Lexus redefines luxury with obsessive attention to detail, legendary reliability, and serene cabin refinement. Discover why thousands of NJ & NY drivers choose Lexus — and why leasing is the smartest way to drive one.</p>
+            <p className="text-lg text-muted-foreground">Lexus redefines luxury with obsessive attention to detail, legendary reliability, and serene cabin refinement. Discover why thousands of NJ & NY drivers choose Lexus - and why leasing is the smartest way to drive one.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
@@ -83,7 +83,7 @@ export default function LexusBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Lexus</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Launched in 1989 with the revolutionary LS 400, Lexus shocked the automotive world by offering S-Class levels of refinement and reliability at a lower price point. Developed in complete secrecy over 6 years, the LS 400 passed 450 quality tests — more than any car before it. Today, Lexus's F Sport performance line and electrified RX and NX SUVs continue that tradition of quiet engineering excellence.
+                Launched in 1989 with the revolutionary LS 400, Lexus shocked the automotive world by offering S-Class levels of refinement and reliability at a lower price point. Developed in complete secrecy over 6 years, the LS 400 passed 450 quality tests - more than any car before it. Today, Lexus's F Sport performance line and electrified RX and NX SUVs continue that tradition of quiet engineering excellence.
               </p>
             </div>
           </div>
@@ -126,7 +126,7 @@ export default function LexusBrandPage() {
             </div>
             <h2 className="text-3xl font-black uppercase mb-6 relative z-10">Why Lease a Lexus?</h2>
             <p className="text-xl text-muted-foreground relative z-10 leading-relaxed">
-              Lexus vehicles hold their value exceptionally well, but leasing still provides a substantial advantage — you benefit from Lexus's premium residual values to lower your monthly payment, while Toyota Financial Services backs each lease with competitive money factors. You also never worry about out-of-warranty repairs.
+              Lexus vehicles hold their value exceptionally well, but leasing still provides a substantial advantage - you benefit from Lexus's premium residual values to lower your monthly payment, while Toyota Financial Services backs each lease with competitive money factors. You also never worry about out-of-warranty repairs.
             </p>
           </div>
         </div>
@@ -163,7 +163,7 @@ export default function LexusBrandPage() {
                 Can I lease a Lexus with bad credit?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Toyota Financial Services has flexible approval programs. Contact Capital Motor Cars to review your situation privately — we work with various credit profiles.
+                Toyota Financial Services has flexible approval programs. Contact Capital Motor Cars to review your situation privately - we work with various credit profiles.
               </AccordionContent>
             </AccordionItem>
             

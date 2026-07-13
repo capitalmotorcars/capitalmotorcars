@@ -68,7 +68,7 @@ export default function BlogPage() {
 
                             <div className="h-px w-full bg-border/40" />
 
-                            {/* Remaining Posts Grid — sorted newest first */}
+                            {/* Remaining Posts Grid - sorted newest first */}
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                                 {gridPosts.map((post) => (
                                     <BlogCard key={post.id} post={post} />

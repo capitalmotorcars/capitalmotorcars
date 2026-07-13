@@ -13,7 +13,7 @@ export default function HyundaiBrandPage() {
     <Layout>
       <SEO
         title="2026 Hyundai Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Hyundai in NJ & NY — Tucson, Santa Fe, Palisade, and IONIQ 6 zero down specials. Award-winning Korean design at broker pricing."
+        description="Lease a 2026 Hyundai in NJ & NY - Tucson, Santa Fe, Palisade, and IONIQ 6 zero down specials. Award-winning Korean design at broker pricing."
         seoKeywords={['2026 Hyundai lease deals NJ', 'Hyundai lease specials NY', 'zero down Hyundai lease', 'Hyundai broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/2024_Hyundai_Sonata_SEL%2C_front_right.jpg/1280px-2024_Hyundai_Sonata_SEL%2C_front_right.jpg"
         canonicalPath="/brand/hyundai"
@@ -31,7 +31,7 @@ export default function HyundaiBrandPage() {
         badge="Best Value"
         title="2026 Hyundai Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Hyundai in NJ & NY — Tucson, Santa Fe, Palisade, and IONIQ 6 zero down specials. Award-winning Korean design at broker pricing."
+        subtitle="Lease a 2026 Hyundai in NJ & NY - Tucson, Santa Fe, Palisade, and IONIQ 6 zero down specials. Award-winning Korean design at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/2024_Hyundai_Sonata_SEL%2C_front_right.jpg/1280px-2024_Hyundai_Sonata_SEL%2C_front_right.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -51,12 +51,12 @@ export default function HyundaiBrandPage() {
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <ShieldCheck className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Hyundai SmartSense</h3>
-              <p className="text-muted-foreground">Standard on every Hyundai — Forward Collision-Avoidance Assist, Lane Keeping Assist, Driver Attention Warning, and Adaptive Cruise at zero extra cost.</p>
+              <p className="text-muted-foreground">Standard on every Hyundai - Forward Collision-Avoidance Assist, Lane Keeping Assist, Driver Attention Warning, and Adaptive Cruise at zero extra cost.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Digital Key</h3>
-              <p className="text-muted-foreground">Hyundai's Digital Key allows you to lock, unlock, start, and share your vehicle access via smartphone — an innovative feature typically reserved for luxury brands.</p>
+              <p className="text-muted-foreground">Hyundai's Digital Key allows you to lock, unlock, start, and share your vehicle access via smartphone - an innovative feature typically reserved for luxury brands.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <CheckCircle2 className="w-12 h-12 text-accent mb-4" />
@@ -126,7 +126,7 @@ export default function HyundaiBrandPage() {
             </div>
             <h2 className="text-3xl font-black uppercase mb-6 relative z-10">Why Lease a Hyundai?</h2>
             <p className="text-xl text-muted-foreground relative z-10 leading-relaxed">
-              Hyundai Motor Finance provides outstanding lease incentives — frequently offering the most competitive money factors in the mainstream segment. The IONIQ 6 and IONIQ 5 benefit from $7,500 EV lease credits, making Hyundai EVs genuinely affordable on a monthly basis. Hyundai's strong residual values further enhance lease economics.
+              Hyundai Motor Finance provides outstanding lease incentives - frequently offering the most competitive money factors in the mainstream segment. The IONIQ 6 and IONIQ 5 benefit from $7,500 EV lease credits, making Hyundai EVs genuinely affordable on a monthly basis. Hyundai's strong residual values further enhance lease economics.
             </p>
           </div>
         </div>
@@ -145,7 +145,7 @@ export default function HyundaiBrandPage() {
                 What is the best Hyundai to lease in NJ?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Hyundai Tucson Hybrid offers exceptional lease value — AWD standard, 38mpg combined, generous safety tech standard, and competitive monthly payments through Hyundai Motor Finance.
+                The Hyundai Tucson Hybrid offers exceptional lease value - AWD standard, 38mpg combined, generous safety tech standard, and competitive monthly payments through Hyundai Motor Finance.
               </AccordionContent>
             </AccordionItem>
             
@@ -154,7 +154,7 @@ export default function HyundaiBrandPage() {
                 Is the Hyundai IONIQ 6 better than a Tesla Model 3?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The IONIQ 6 offers faster 800V charging (10-80% in 18 minutes), a more spacious interior, and standard bidirectional charging for powering home devices — advantages in several practical categories.
+                The IONIQ 6 offers faster 800V charging (10-80% in 18 minutes), a more spacious interior, and standard bidirectional charging for powering home devices - advantages in several practical categories.
               </AccordionContent>
             </AccordionItem>
             
@@ -163,7 +163,7 @@ export default function HyundaiBrandPage() {
                 Does Hyundai's 10-year warranty apply during a lease?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The 5-year/60,000-mile comprehensive warranty and 10-year/100,000-mile powertrain warranty both apply — though most 36-month leases fall well within the comprehensive warranty period.
+                The 5-year/60,000-mile comprehensive warranty and 10-year/100,000-mile powertrain warranty both apply - though most 36-month leases fall well within the comprehensive warranty period.
               </AccordionContent>
             </AccordionItem>
             

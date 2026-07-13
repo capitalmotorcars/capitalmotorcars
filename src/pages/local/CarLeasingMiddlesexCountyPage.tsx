@@ -88,11 +88,11 @@ const faqs = [
   },
   {
     question: 'What is a money factor and how does it affect my lease payment in Middlesex County?',
-    answer: "The money factor is the interest rate component of your lease, expressed as a small decimal. Multiply it by 2,400 to get the approximate annual percentage rate. For example, a money factor of 0.00175 equals roughly 4.2% APR. Manufacturers publish a buy-rate money factor monthly. Dealers can mark it up, adding $20–$60 to your monthly payment without telling you. Capital Motor Cars always uses the buy-rate for Middlesex County clients.",
+    answer: "The money factor is the interest rate component of your lease, expressed as a small decimal. Multiply it by 2,400 to get the approximate annual percentage rate. For example, a money factor of 0.00175 equals roughly 4.2% APR. Manufacturers publish a buy-rate money factor monthly. Dealers can mark it up, adding $20-$60 to your monthly payment without telling you. Capital Motor Cars always uses the buy-rate for Middlesex County clients.",
   },
   {
     question: 'How long does the leasing process take in Middlesex County NJ?',
-    answer: "Most in-stock leases are completed in 3 to 7 business days. The timeline is: Day 1, you contact us and tell us what you want. Day 1–2, we pull live pricing from our dealer network. Day 2–3, you review and approve your chosen deal. Day 3–7, paperwork is processed and the vehicle is scheduled for delivery to your Middlesex County address. Custom orders or hard-to-find configurations may take 4 to 8 weeks depending on manufacturer allocation.",
+    answer: "Most in-stock leases are completed in 3 to 7 business days. The timeline is: Day 1, you contact us and tell us what you want. Day 1-2, we pull live pricing from our dealer network. Day 2-3, you review and approve your chosen deal. Day 3-7, paperwork is processed and the vehicle is scheduled for delivery to your Middlesex County address. Custom orders or hard-to-find configurations may take 4 to 8 weeks depending on manufacturer allocation.",
   },
 ];
 
@@ -273,7 +273,7 @@ export default function CarLeasingMiddlesexCountyPage() {
             {[
               { icon: Phone, title: 'Contact Us', desc: 'Tell us the vehicle, your preferred monthly budget, and how many miles you drive per year. A quick form or five-minute call gets it started.' },
               { icon: DollarSign, title: 'We Pull Live Pricing', desc: 'We access the current manufacturer money factor and residual value, then submit to our dealer network across NJ. Not estimates, live numbers.' },
-              { icon: BadgeCheck, title: 'You Review Options', desc: 'We bring you 2–3 offers with full transparency: selling price, money factor, residual, and exact monthly payment. No pressure, no guessing.' },
+              { icon: BadgeCheck, title: 'You Review Options', desc: 'We bring you 2-3 offers with full transparency: selling price, money factor, residual, and exact monthly payment. No pressure, no guessing.' },
               { icon: Car, title: 'Free Delivery to Middlesex', desc: 'We handle all paperwork and schedule free delivery to Edison, Woodbridge, New Brunswick, or anywhere else in Middlesex County.' },
             ].map((step, i) => (
               <motion.div
@@ -310,8 +310,8 @@ export default function CarLeasingMiddlesexCountyPage() {
             {[
               { icon: DollarSign, title: 'Money Factor', desc: "The interest rate equivalent of your lease, expressed as a small decimal. For a Toyota RAV4 or Honda CR-V, a money factor of 0.00100 translates to roughly 2.4% APR. Dealers in the Edison and Woodbridge area can mark it up without disclosure. We don't." },
               { icon: TrendingDown, title: 'Residual Value', desc: "The percentage of MSRP the manufacturer guarantees the car is worth at lease-end. A Toyota RAV4 with a 58% residual costs less per month than a competitor at 50%, even if the MSRP is higher. We check residuals across brands to find the best deal for your budget." },
-              { icon: BadgeCheck, title: 'Capitalized Cost', desc: 'The negotiated selling price of the car. Every dollar below MSRP you negotiate lowers your monthly payment, approximately $28 per month per $1,000 on a 36-month lease. Our dealer competition in the Route 1 corridor routinely achieves $1,000–$3,000 under invoice.' },
-              { icon: Car, title: 'Mileage Allowance', desc: "High-mileage Middlesex County commuters (Edison to NYC via NJ Transit is common, but many drive to Newark or Woodbridge) should consider buying up to 15k miles annually upfront. At $0.25/mile for overages at lease-end, paying upfront is typically 40–60% cheaper." },
+              { icon: BadgeCheck, title: 'Capitalized Cost', desc: 'The negotiated selling price of the car. Every dollar below MSRP you negotiate lowers your monthly payment, approximately $28 per month per $1,000 on a 36-month lease. Our dealer competition in the Route 1 corridor routinely achieves $1,000-$3,000 under invoice.' },
+              { icon: Car, title: 'Mileage Allowance', desc: "High-mileage Middlesex County commuters (Edison to NYC via NJ Transit is common, but many drive to Newark or Woodbridge) should consider buying up to 15k miles annually upfront. At $0.25/mile for overages at lease-end, paying upfront is typically 40-60% cheaper." },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -412,9 +412,9 @@ export default function CarLeasingMiddlesexCountyPage() {
             </div>
             {[
               { aspect: 'Monthly payment', lease: 'Lower: you pay only depreciation', buy: 'Higher: full MSRP financed' },
-              { aspect: 'Upfront cost', lease: 'First month + security deposit', buy: '10–20% down payment' },
+              { aspect: 'Upfront cost', lease: 'First month + security deposit', buy: '10-20% down payment' },
               { aspect: 'End-of-term options', lease: 'Return, buy, or upgrade easily', buy: 'Must sell or trade a depreciating asset' },
-              { aspect: 'Mileage', lease: '10k–15k/yr (customizable)', buy: 'Unlimited but lowers resale value' },
+              { aspect: 'Mileage', lease: '10k-15k/yr (customizable)', buy: 'Unlimited but lowers resale value' },
               { aspect: 'Warranty coverage', lease: 'Factory warranty covers full term', buy: 'Warranty expires mid-ownership' },
               { aspect: 'Latest technology', lease: 'New model every 3 years', buy: 'Same model until you sell it' },
             ].map((row, i) => (

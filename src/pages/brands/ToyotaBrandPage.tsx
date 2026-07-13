@@ -13,7 +13,7 @@ export default function ToyotaBrandPage() {
     <Layout>
       <SEO
         title="2026 Toyota Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Toyota in NJ & NY — Camry, RAV4, Highlander, and Prius zero down specials. Japan's most reliable cars at broker pricing."
+        description="Lease a 2026 Toyota in NJ & NY - Camry, RAV4, Highlander, and Prius zero down specials. Japan's most reliable cars at broker pricing."
         seoKeywords={['2026 Toyota lease deals NJ', 'Toyota lease specials NY', 'zero down Toyota lease', 'Toyota broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/2018_Toyota_Camry_%28ASV70R%29_Ascent_sedan_%282018-08-27%29_01.jpg/1280px-2018_Toyota_Camry_%28ASV70R%29_Ascent_sedan_%282018-08-27%29_01.jpg"
         canonicalPath="/brand/toyota"
@@ -31,7 +31,7 @@ export default function ToyotaBrandPage() {
         badge="Best Value"
         title="2026 Toyota Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Toyota in NJ & NY — Camry, RAV4, Highlander, and Prius zero down specials. Japan's most reliable cars at broker pricing."
+        subtitle="Lease a 2026 Toyota in NJ & NY - Camry, RAV4, Highlander, and Prius zero down specials. Japan's most reliable cars at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/2018_Toyota_Camry_%28ASV70R%29_Ascent_sedan_%282018-08-27%29_01.jpg/1280px-2018_Toyota_Camry_%28ASV70R%29_Ascent_sedan_%282018-08-27%29_01.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -45,23 +45,23 @@ export default function ToyotaBrandPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">Moving Forward, Always</h2>
-            <p className="text-lg text-muted-foreground">Toyota builds the world's most reliable vehicles and pioneered hybrid technology with the Prius. The RAV4, Camry, and Highlander are consistently among America's best-selling vehicles — and for good reason. Capital Motor Cars provides Toyota lease specials across the full lineup in NJ & NY.</p>
+            <p className="text-lg text-muted-foreground">Toyota builds the world's most reliable vehicles and pioneered hybrid technology with the Prius. The RAV4, Camry, and Highlander are consistently among America's best-selling vehicles - and for good reason. Capital Motor Cars provides Toyota lease specials across the full lineup in NJ & NY.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <ShieldCheck className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Toyota Safety Sense™</h3>
-              <p className="text-muted-foreground">Standard on every Toyota — Pre-Collision System with Pedestrian Detection, Lane Departure Alert, and Adaptive Cruise Control at no extra charge.</p>
+              <p className="text-muted-foreground">Standard on every Toyota - Pre-Collision System with Pedestrian Detection, Lane Departure Alert, and Adaptive Cruise Control at no extra charge.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Hybrid Leadership</h3>
-              <p className="text-muted-foreground">Toyota invented the mass-market hybrid with the Prius in 1997 — today, 70% of Toyota's lineup offers an electrified option for superior NJ fuel economy.</p>
+              <p className="text-muted-foreground">Toyota invented the mass-market hybrid with the Prius in 1997 - today, 70% of Toyota's lineup offers an electrified option for superior NJ fuel economy.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <CheckCircle2 className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">JD Power Reliability</h3>
-              <p className="text-muted-foreground">Toyota and Lexus consistently occupy the top positions in JD Power reliability studies — meaning fewer dealer visits and lower lifetime ownership costs.</p>
+              <p className="text-muted-foreground">Toyota and Lexus consistently occupy the top positions in JD Power reliability studies - meaning fewer dealer visits and lower lifetime ownership costs.</p>
             </div>
           </div>
         </div>
@@ -126,7 +126,7 @@ export default function ToyotaBrandPage() {
             </div>
             <h2 className="text-3xl font-black uppercase mb-6 relative z-10">Why Lease a Toyota?</h2>
             <p className="text-xl text-muted-foreground relative z-10 leading-relaxed">
-              Toyota Financial Services consistently offers competitive lease incentives on the RAV4, Camry, and Highlander — making Toyota leases among the most value-driven in the market. Toyota's legendary reliability actually helps residual values, keeping monthly payments lower than comparable competitive brands.
+              Toyota Financial Services consistently offers competitive lease incentives on the RAV4, Camry, and Highlander - making Toyota leases among the most value-driven in the market. Toyota's legendary reliability actually helps residual values, keeping monthly payments lower than comparable competitive brands.
             </p>
           </div>
         </div>
@@ -145,7 +145,7 @@ export default function ToyotaBrandPage() {
                 What is Toyota Safety Sense and is it standard?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Toyota Safety Sense is a suite of active safety features — including Pre-Collision braking, Lane Departure Alert, and Adaptive Cruise — standard on every new Toyota at no additional cost.
+                Toyota Safety Sense is a suite of active safety features - including Pre-Collision braking, Lane Departure Alert, and Adaptive Cruise - standard on every new Toyota at no additional cost.
               </AccordionContent>
             </AccordionItem>
             
@@ -154,7 +154,7 @@ export default function ToyotaBrandPage() {
                 Is the Toyota RAV4 Hybrid worth leasing in NJ?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The RAV4 Hybrid delivers 40mpg combined, standard AWD, and Toyota's legendary reliability — making it one of our most popular and financially sensible lease choices in NJ.
+                The RAV4 Hybrid delivers 40mpg combined, standard AWD, and Toyota's legendary reliability - making it one of our most popular and financially sensible lease choices in NJ.
               </AccordionContent>
             </AccordionItem>
             

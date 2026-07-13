@@ -13,7 +13,7 @@ export default function KiaBrandPage() {
     <Layout>
       <SEO
         title="2026 Kia Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Kia in NJ & NY — Telluride, Sportage, EV6, and Sorento zero down specials. Award-winning design at broker pricing."
+        description="Lease a 2026 Kia in NJ & NY - Telluride, Sportage, EV6, and Sorento zero down specials. Award-winning design at broker pricing."
         seoKeywords={['2026 Kia lease deals NJ', 'Kia lease specials NY', 'zero down Kia lease', 'Kia broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/2022_Kia_Telluride_EX_%28facelift%29%2C_front_4.16.23.jpg/1280px-2022_Kia_Telluride_EX_%28facelift%29%2C_front_4.16.23.jpg"
         canonicalPath="/brand/kia"
@@ -31,7 +31,7 @@ export default function KiaBrandPage() {
         badge="Best Value"
         title="2026 Kia Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Kia in NJ & NY — Telluride, Sportage, EV6, and Sorento zero down specials. Award-winning design at broker pricing."
+        subtitle="Lease a 2026 Kia in NJ & NY - Telluride, Sportage, EV6, and Sorento zero down specials. Award-winning design at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/2022_Kia_Telluride_EX_%28facelift%29%2C_front_4.16.23.jpg/1280px-2022_Kia_Telluride_EX_%28facelift%29%2C_front_4.16.23.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -45,13 +45,13 @@ export default function KiaBrandPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">Movement That Inspires</h2>
-            <p className="text-lg text-muted-foreground">Kia has become one of the world's most design-forward automakers — the Telluride won MotorTrend SUV of the Year and the EV6 won World Car of the Year. Capital Motor Cars offers exceptional Kia lease specials throughout NJ & NY with zero-down options.</p>
+            <p className="text-lg text-muted-foreground">Kia has become one of the world's most design-forward automakers - the Telluride won MotorTrend SUV of the Year and the EV6 won World Car of the Year. Capital Motor Cars offers exceptional Kia lease specials throughout NJ & NY with zero-down options.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <ShieldCheck className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Award-Winning Design</h3>
-              <p className="text-muted-foreground">Kia's 'Opposites United' design language has earned multiple prestigious design awards — the Telluride and EV6 are widely considered the best-looking in their segments.</p>
+              <p className="text-muted-foreground">Kia's 'Opposites United' design language has earned multiple prestigious design awards - the Telluride and EV6 are widely considered the best-looking in their segments.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
@@ -61,7 +61,7 @@ export default function KiaBrandPage() {
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <CheckCircle2 className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">800V Ultra-Fast Charging</h3>
-              <p className="text-muted-foreground">The Kia EV6 and EV9 use 800V architecture — enabling 10-80% charging in just 18 minutes at DC fast chargers, making long trips practical.</p>
+              <p className="text-muted-foreground">The Kia EV6 and EV9 use 800V architecture - enabling 10-80% charging in just 18 minutes at DC fast chargers, making long trips practical.</p>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function KiaBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Kia</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Kia was founded in 1944 as a manufacturer of steel tubing before evolving into Korea's oldest vehicle manufacturer. After partnering with Hyundai in 1998, Kia underwent a dramatic transformation under Chief Design Officer Peter Schreyer — the former Audi designer behind the TT. Today, Kia's Telluride winning consecutive MotorTrend SUV of the Year awards and EV6 taking World Car of the Year 2022 proves the brand's genuine arrival at the global top tier.
+                Kia was founded in 1944 as a manufacturer of steel tubing before evolving into Korea's oldest vehicle manufacturer. After partnering with Hyundai in 1998, Kia underwent a dramatic transformation under Chief Design Officer Peter Schreyer - the former Audi designer behind the TT. Today, Kia's Telluride winning consecutive MotorTrend SUV of the Year awards and EV6 taking World Car of the Year 2022 proves the brand's genuine arrival at the global top tier.
               </p>
             </div>
           </div>
@@ -126,7 +126,7 @@ export default function KiaBrandPage() {
             </div>
             <h2 className="text-3xl font-black uppercase mb-6 relative z-10">Why Lease a Kia?</h2>
             <p className="text-xl text-muted-foreground relative z-10 leading-relaxed">
-              Kia Finance America provides some of the most competitive lease money factors in the mainstream segment, combined with strong residual values on the Telluride and Sportage. EV6 leases benefit from $7,500 EV credits — making this World Car of the Year winner surprisingly affordable on a monthly basis.
+              Kia Finance America provides some of the most competitive lease money factors in the mainstream segment, combined with strong residual values on the Telluride and Sportage. EV6 leases benefit from $7,500 EV credits - making this World Car of the Year winner surprisingly affordable on a monthly basis.
             </p>
           </div>
         </div>
@@ -145,7 +145,7 @@ export default function KiaBrandPage() {
                 Why did the Kia Telluride win MotorTrend SUV of the Year?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Telluride offers full-size SUV interior space in a mid-size footprint, best-in-class rear seat room, standard 8-inch touchscreen, and exceptional build quality — all at a price that undercuts the Ford Explorer.
+                The Telluride offers full-size SUV interior space in a mid-size footprint, best-in-class rear seat room, standard 8-inch touchscreen, and exceptional build quality - all at a price that undercuts the Ford Explorer.
               </AccordionContent>
             </AccordionItem>
             
@@ -154,7 +154,7 @@ export default function KiaBrandPage() {
                 How fast does the Kia EV6 charge?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                With 800V architecture, the EV6 charges from 10-80% in approximately 18 minutes on a 350kW DC fast charger — enabling long NJ/NY road trips with minimal charging stops.
+                With 800V architecture, the EV6 charges from 10-80% in approximately 18 minutes on a 350kW DC fast charger - enabling long NJ/NY road trips with minimal charging stops.
               </AccordionContent>
             </AccordionItem>
             
@@ -163,7 +163,7 @@ export default function KiaBrandPage() {
                 Does Kia's warranty apply to leased vehicles?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Yes — Kia's 5-year/60,000-mile comprehensive warranty and 10-year/100,000-mile powertrain warranty both apply to leased vehicles, providing excellent protection throughout your term.
+                Yes - Kia's 5-year/60,000-mile comprehensive warranty and 10-year/100,000-mile powertrain warranty both apply to leased vehicles, providing excellent protection throughout your term.
               </AccordionContent>
             </AccordionItem>
             

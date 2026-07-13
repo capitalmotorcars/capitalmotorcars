@@ -13,7 +13,7 @@ export default function NissanBrandPage() {
     <Layout>
       <SEO
         title="2026 Nissan Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Nissan in NJ & NY — Altima, Rogue, Pathfinder, and Ariya zero down specials. Japanese reliability at broker pricing."
+        description="Lease a 2026 Nissan in NJ & NY - Altima, Rogue, Pathfinder, and Ariya zero down specials. Japanese reliability at broker pricing."
         seoKeywords={['2026 Nissan lease deals NJ', 'Nissan lease specials NY', 'zero down Nissan lease', 'Nissan broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/2009-2010_Nissan_GT-R_%28R35%29_coupe_01.jpg/1280px-2009-2010_Nissan_GT-R_%28R35%29_coupe_01.jpg"
         canonicalPath="/brand/nissan"
@@ -31,7 +31,7 @@ export default function NissanBrandPage() {
         badge="Best Value"
         title="2026 Nissan Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Nissan in NJ & NY — Altima, Rogue, Pathfinder, and Ariya zero down specials. Japanese reliability at broker pricing."
+        subtitle="Lease a 2026 Nissan in NJ & NY - Altima, Rogue, Pathfinder, and Ariya zero down specials. Japanese reliability at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/2009-2010_Nissan_GT-R_%28R35%29_coupe_01.jpg/1280px-2009-2010_Nissan_GT-R_%28R35%29_coupe_01.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -51,7 +51,7 @@ export default function NissanBrandPage() {
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <ShieldCheck className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">ProPILOT Assist 2.0</h3>
-              <p className="text-muted-foreground">Nissan's hands-on highway driving system maintains lane centering, safe following distance, and even changes lanes with driver confirmation — standard on several models.</p>
+              <p className="text-muted-foreground">Nissan's hands-on highway driving system maintains lane centering, safe following distance, and even changes lanes with driver confirmation - standard on several models.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
@@ -83,7 +83,7 @@ export default function NissanBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Nissan</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Founded in Japan in 1933, Nissan has deep motorsport roots — the Nissan GT-R has held multiple Nürburgring records, and Nissan won Le Mans class victories. The 2011 LEAF became the world's first mass-market EV, selling over 500,000 units globally. Today, Nissan's Ariya electric SUV and Z sports car signal the brand's continued commitment to exciting, accessible technology.
+                Founded in Japan in 1933, Nissan has deep motorsport roots - the Nissan GT-R has held multiple Nürburgring records, and Nissan won Le Mans class victories. The 2011 LEAF became the world's first mass-market EV, selling over 500,000 units globally. Today, Nissan's Ariya electric SUV and Z sports car signal the brand's continued commitment to exciting, accessible technology.
               </p>
             </div>
           </div>
@@ -126,7 +126,7 @@ export default function NissanBrandPage() {
             </div>
             <h2 className="text-3xl font-black uppercase mb-6 relative z-10">Why Lease a Nissan?</h2>
             <p className="text-xl text-muted-foreground relative z-10 leading-relaxed">
-              Nissan Motor Acceptance Corporation frequently offers competitive lease incentives on the Rogue and Altima — two of the most popular vehicles in NJ. The Ariya EV qualifies for EV lease credits, making Nissan's electric transition accessible at mainstream price points.
+              Nissan Motor Acceptance Corporation frequently offers competitive lease incentives on the Rogue and Altima - two of the most popular vehicles in NJ. The Ariya EV qualifies for EV lease credits, making Nissan's electric transition accessible at mainstream price points.
             </p>
           </div>
         </div>
@@ -145,7 +145,7 @@ export default function NissanBrandPage() {
                 Is the Nissan Rogue good for NJ families?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Rogue is one of NJ's most popular lease choices — offering ProPILOT Assist, a large cargo area, and tri-zone automatic climate control at a competitive monthly payment through Nissan Motor Acceptance.
+                The Rogue is one of NJ's most popular lease choices - offering ProPILOT Assist, a large cargo area, and tri-zone automatic climate control at a competitive monthly payment through Nissan Motor Acceptance.
               </AccordionContent>
             </AccordionItem>
             
@@ -154,7 +154,7 @@ export default function NissanBrandPage() {
                 What makes the Nissan GT-R special?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The GT-R 'Godzilla' produces 565hp from a twin-turbo V6 with a dual-clutch transmission and sophisticated AWD — enabling 0-60mph in 2.7 seconds. It remains one of the world's greatest performance bargains.
+                The GT-R 'Godzilla' produces 565hp from a twin-turbo V6 with a dual-clutch transmission and sophisticated AWD - enabling 0-60mph in 2.7 seconds. It remains one of the world's greatest performance bargains.
               </AccordionContent>
             </AccordionItem>
             
@@ -163,7 +163,7 @@ export default function NissanBrandPage() {
                 Does the Nissan Ariya qualify for EV credits?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Yes — the Ariya qualifies for EV lease incentives. The Ariya's 300-mile range and bi-directional charging capability make it an excellent electric SUV choice for NJ drivers.
+                Yes - the Ariya qualifies for EV lease incentives. The Ariya's 300-mile range and bi-directional charging capability make it an excellent electric SUV choice for NJ drivers.
               </AccordionContent>
             </AccordionItem>
             

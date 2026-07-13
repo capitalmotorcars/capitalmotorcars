@@ -13,7 +13,7 @@ export default function ChevroletBrandPage() {
     <Layout>
       <SEO
         title="2026 Chevrolet Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Chevrolet in NJ & NY — Equinox, Silverado, Blazer, and Corvette zero down specials. American performance at broker pricing."
+        description="Lease a 2026 Chevrolet in NJ & NY - Equinox, Silverado, Blazer, and Corvette zero down specials. American performance at broker pricing."
         seoKeywords={['2026 Chevrolet lease deals NJ', 'Chevrolet lease specials NY', 'zero down Chevrolet lease', 'Chevrolet broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/2021_Chevrolet_Corvette_C8.jpg/1280px-2021_Chevrolet_Corvette_C8.jpg"
         canonicalPath="/brand/chevrolet"
@@ -31,7 +31,7 @@ export default function ChevroletBrandPage() {
         badge="Best Value"
         title="2026 Chevrolet Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Chevrolet in NJ & NY — Equinox, Silverado, Blazer, and Corvette zero down specials. American performance at broker pricing."
+        subtitle="Lease a 2026 Chevrolet in NJ & NY - Equinox, Silverado, Blazer, and Corvette zero down specials. American performance at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/2021_Chevrolet_Corvette_C8.jpg/1280px-2021_Chevrolet_Corvette_C8.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -45,7 +45,7 @@ export default function ChevroletBrandPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">Find New Roads</h2>
-            <p className="text-lg text-muted-foreground">Chevrolet builds America's most diverse vehicle lineup — from the Corvette supercar to the Silverado pickup and Equinox SUV. Value, performance, and American durability define every Chevrolet. Capital Motor Cars provides competitive Chevrolet lease specials throughout NJ & NY.</p>
+            <p className="text-lg text-muted-foreground">Chevrolet builds America's most diverse vehicle lineup - from the Corvette supercar to the Silverado pickup and Equinox SUV. Value, performance, and American durability define every Chevrolet. Capital Motor Cars provides competitive Chevrolet lease specials throughout NJ & NY.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
@@ -61,7 +61,7 @@ export default function ChevroletBrandPage() {
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <CheckCircle2 className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Duramax Diesel Power</h3>
-              <p className="text-muted-foreground">Available Duramax 3.0L diesel in the Silverado provides 460lb-ft of torque and 33mpg highway — outstanding efficiency for a full-size truck.</p>
+              <p className="text-muted-foreground">Available Duramax 3.0L diesel in the Silverado provides 460lb-ft of torque and 33mpg highway - outstanding efficiency for a full-size truck.</p>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function ChevroletBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Chevrolet</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Louis Chevrolet and William Durant co-founded Chevrolet in 1911 specifically to challenge Ford's Model T. The iconic Bowtie logo has become one of the world's most recognized automotive badges. Chevrolet introduced the Corvette in 1953 — America's only true sports car — and the Camaro in 1966. Today, the electric Silverado EV and Equinox EV signal Chevrolet's mainstream electrification leadership.
+                Louis Chevrolet and William Durant co-founded Chevrolet in 1911 specifically to challenge Ford's Model T. The iconic Bowtie logo has become one of the world's most recognized automotive badges. Chevrolet introduced the Corvette in 1953 - America's only true sports car - and the Camaro in 1966. Today, the electric Silverado EV and Equinox EV signal Chevrolet's mainstream electrification leadership.
               </p>
             </div>
           </div>
@@ -145,7 +145,7 @@ export default function ChevroletBrandPage() {
                 Is the Chevy Equinox EV a good lease deal?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Equinox EV is exceptional lease value — starting around $34,995, qualifying for a $7,500 EV lease credit, and delivering 300 miles of range. It's our most requested EV lease in NJ.
+                The Equinox EV is exceptional lease value - starting around $34,995, qualifying for a $7,500 EV lease credit, and delivering 300 miles of range. It's our most requested EV lease in NJ.
               </AccordionContent>
             </AccordionItem>
             
@@ -154,7 +154,7 @@ export default function ChevroletBrandPage() {
                 What makes the Chevy Corvette C8 special?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The C8 moved the Corvette to a mid-engine layout for the first time — enabling 0-60mph in 2.9 seconds from a naturally aspirated V8, at a price that undercuts most European sports cars by $50,000.
+                The C8 moved the Corvette to a mid-engine layout for the first time - enabling 0-60mph in 2.9 seconds from a naturally aspirated V8, at a price that undercuts most European sports cars by $50,000.
               </AccordionContent>
             </AccordionItem>
             

@@ -13,7 +13,7 @@ export default function LincolnBrandPage() {
     <Layout>
       <SEO
         title="2026 Lincoln Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Lincoln in NJ & NY — Navigator, Aviator, and Nautilus zero down specials. American quiet luxury at broker pricing."
+        description="Lease a 2026 Lincoln in NJ & NY - Navigator, Aviator, and Nautilus zero down specials. American quiet luxury at broker pricing."
         seoKeywords={['2026 Lincoln lease deals NJ', 'Lincoln lease specials NY', 'zero down Lincoln lease', 'Lincoln broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/2019_Lincoln_Navigator_%27Reserve%27%2C_front_8.29.20.jpg/1280px-2019_Lincoln_Navigator_%27Reserve%27%2C_front_8.29.20.jpg"
         canonicalPath="/brand/lincoln"
@@ -31,7 +31,7 @@ export default function LincolnBrandPage() {
         badge="Best Value"
         title="2026 Lincoln Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Lincoln in NJ & NY — Navigator, Aviator, and Nautilus zero down specials. American quiet luxury at broker pricing."
+        subtitle="Lease a 2026 Lincoln in NJ & NY - Navigator, Aviator, and Nautilus zero down specials. American quiet luxury at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/2019_Lincoln_Navigator_%27Reserve%27%2C_front_8.29.20.jpg/1280px-2019_Lincoln_Navigator_%27Reserve%27%2C_front_8.29.20.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -45,7 +45,7 @@ export default function LincolnBrandPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">Quiet Luxury. Serious Performance.</h2>
-            <p className="text-lg text-muted-foreground">Lincoln has reinvented American luxury — replacing chrome excess with thoughtful design, sanctuary-like cabins, and effortless power. The Navigator, Aviator, and Nautilus offer a uniquely calm, American take on premium SUV ownership with competitive lease payments through Capital Motor Cars.</p>
+            <p className="text-lg text-muted-foreground">Lincoln has reinvented American luxury - replacing chrome excess with thoughtful design, sanctuary-like cabins, and effortless power. The Navigator, Aviator, and Nautilus offer a uniquely calm, American take on premium SUV ownership with competitive lease payments through Capital Motor Cars.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
@@ -83,7 +83,7 @@ export default function LincolnBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Lincoln</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Lincoln was founded in 1917 and acquired by Ford Motor Company in 1922. Named after Abraham Lincoln, the brand has been the preferred transportation of US Presidents — the iconic Lincoln Continental served as the Presidential State Car for decades. Today, Lincoln's 'quiet luxury' philosophy, personalized delivery experiences, and sanctuary cabin design create a distinctly American luxury alternative to German excess.
+                Lincoln was founded in 1917 and acquired by Ford Motor Company in 1922. Named after Abraham Lincoln, the brand has been the preferred transportation of US Presidents - the iconic Lincoln Continental served as the Presidential State Car for decades. Today, Lincoln's 'quiet luxury' philosophy, personalized delivery experiences, and sanctuary cabin design create a distinctly American luxury alternative to German excess.
               </p>
             </div>
           </div>
@@ -126,7 +126,7 @@ export default function LincolnBrandPage() {
             </div>
             <h2 className="text-3xl font-black uppercase mb-6 relative z-10">Why Lease a Lincoln?</h2>
             <p className="text-xl text-muted-foreground relative z-10 leading-relaxed">
-              Lincoln offers some of the strongest Ford Motor Credit lease incentives in the luxury segment — particularly on the Aviator and Nautilus. Competitive residual values and attractive money factors make Lincoln leases exceptionally value-driven compared to European equivalents with similar features.
+              Lincoln offers some of the strongest Ford Motor Credit lease incentives in the luxury segment - particularly on the Aviator and Nautilus. Competitive residual values and attractive money factors make Lincoln leases exceptionally value-driven compared to European equivalents with similar features.
             </p>
           </div>
         </div>
@@ -163,7 +163,7 @@ export default function LincolnBrandPage() {
                 Is the Lincoln Aviator plug-in hybrid worth leasing?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Aviator Grand Touring PHEV qualifies for EV incentives and delivers 494hp with 21 miles of electric range — making it an exceptional lease option combining luxury, performance, and efficiency.
+                The Aviator Grand Touring PHEV qualifies for EV incentives and delivers 494hp with 21 miles of electric range - making it an exceptional lease option combining luxury, performance, and efficiency.
               </AccordionContent>
             </AccordionItem>
             

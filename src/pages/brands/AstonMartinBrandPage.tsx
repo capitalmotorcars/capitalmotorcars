@@ -13,7 +13,7 @@ export default function AstonMartinBrandPage() {
     <Layout>
       <SEO
         title="2026 Aston Martin Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Aston Martin in NJ & NY — exclusive DB12 and Vantage specials. Hand-built British luxury at broker pricing."
+        description="Lease a 2026 Aston Martin in NJ & NY - exclusive DB12 and Vantage specials. Hand-built British luxury at broker pricing."
         seoKeywords={['2026 Aston Martin lease deals NJ', 'Aston Martin lease specials NY', 'zero down Aston Martin lease', 'Aston Martin broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/2018_Aston_Martin_DB11_V8_Automatic_4.0_Front.jpg/1280px-2018_Aston_Martin_DB11_V8_Automatic_4.0_Front.jpg"
         canonicalPath="/brand/aston-martin"
@@ -31,7 +31,7 @@ export default function AstonMartinBrandPage() {
         badge="Best Value"
         title="2026 Aston Martin Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Aston Martin in NJ & NY — exclusive DB12 and Vantage specials. Hand-built British luxury at broker pricing."
+        subtitle="Lease a 2026 Aston Martin in NJ & NY - exclusive DB12 and Vantage specials. Hand-built British luxury at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/2018_Aston_Martin_DB11_V8_Automatic_4.0_Front.jpg/1280px-2018_Aston_Martin_DB11_V8_Automatic_4.0_Front.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -45,13 +45,13 @@ export default function AstonMartinBrandPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">A Work of Art With a Soul</h2>
-            <p className="text-lg text-muted-foreground">Aston Martin is one of the world's most exclusive automotive brands. The DB12, Vantage, and DBX707 are hand-built in Gaydon, England — combining British artisanship with blistering performance. Capital Motor Cars provides access to these exclusive vehicles with curated lease structures.</p>
+            <p className="text-lg text-muted-foreground">Aston Martin is one of the world's most exclusive automotive brands. The DB12, Vantage, and DBX707 are hand-built in Gaydon, England - combining British artisanship with blistering performance. Capital Motor Cars provides access to these exclusive vehicles with curated lease structures.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <ShieldCheck className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Hand-Built Excellence</h3>
-              <p className="text-muted-foreground">Every Aston Martin is assembled by hand in Gaydon, England — with each engine signed by the technician who built it.</p>
+              <p className="text-muted-foreground">Every Aston Martin is assembled by hand in Gaydon, England - with each engine signed by the technician who built it.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
@@ -83,7 +83,7 @@ export default function AstonMartinBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Aston Martin</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Founded in 1913 by Lionel Martin and Robert Bamford, Aston Martin became a byword for British grand touring excellence. The brand's James Bond association — spanning 60+ years from the DB5 — makes Aston Martin the world's most cinematic automotive brand. Today, the Valhalla hypercar and DBX707 prove Aston Martin's relevance across every segment.
+                Founded in 1913 by Lionel Martin and Robert Bamford, Aston Martin became a byword for British grand touring excellence. The brand's James Bond association - spanning 60+ years from the DB5 - makes Aston Martin the world's most cinematic automotive brand. Today, the Valhalla hypercar and DBX707 prove Aston Martin's relevance across every segment.
               </p>
             </div>
           </div>
@@ -163,7 +163,7 @@ export default function AstonMartinBrandPage() {
                 Can I lease an Aston Martin DBX707?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Yes — the DBX707, the world's most powerful luxury SUV, can be structured on a lease. Contact Capital Motor Cars for personalized pricing on this exclusive vehicle.
+                Yes - the DBX707, the world's most powerful luxury SUV, can be structured on a lease. Contact Capital Motor Cars for personalized pricing on this exclusive vehicle.
               </AccordionContent>
             </AccordionItem>
             
