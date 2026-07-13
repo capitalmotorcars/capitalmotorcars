@@ -13,7 +13,7 @@ export default function AlfaRomeoBrandPage() {
     <Layout>
       <SEO
         title="2026 Alfa Romeo Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Alfa Romeo in NJ & NY — Giulia and Stelvio zero down specials. Italian passion meets performance at broker pricing."
+        description="Lease a 2026 Alfa Romeo in NJ & NY - Giulia and Stelvio zero down specials. Italian passion meets performance at broker pricing."
         seoKeywords={['2026 Alfa Romeo lease deals NJ', 'Alfa Romeo lease specials NY', 'zero down Alfa Romeo lease', 'Alfa Romeo broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Alfa_952_26.06.19_JM_%281%29_%28cropped%29.jpg/1280px-Alfa_952_26.06.19_JM_%281%29_%28cropped%29.jpg"
         canonicalPath="/brand/alfa-romeo"
@@ -31,7 +31,7 @@ export default function AlfaRomeoBrandPage() {
         badge="Best Value"
         title="2026 Alfa Romeo Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Alfa Romeo in NJ & NY — Giulia and Stelvio zero down specials. Italian passion meets performance at broker pricing."
+        subtitle="Lease a 2026 Alfa Romeo in NJ & NY - Giulia and Stelvio zero down specials. Italian passion meets performance at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Alfa_952_26.06.19_JM_%281%29_%28cropped%29.jpg/1280px-Alfa_952_26.06.19_JM_%281%29_%28cropped%29.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -45,7 +45,7 @@ export default function AlfaRomeoBrandPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">La Meccanica delle Emozioni</h2>
-            <p className="text-lg text-muted-foreground">Alfa Romeo builds cars that ignite emotion — Italian design mastery paired with genuine rear-wheel-drive performance. The Giulia and Stelvio offer a uniquely passionate driving experience with competitive lease payments through Capital Motor Cars.</p>
+            <p className="text-lg text-muted-foreground">Alfa Romeo builds cars that ignite emotion - Italian design mastery paired with genuine rear-wheel-drive performance. The Giulia and Stelvio offer a uniquely passionate driving experience with competitive lease payments through Capital Motor Cars.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
@@ -56,12 +56,12 @@ export default function AlfaRomeoBrandPage() {
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">RWD Platform</h3>
-              <p className="text-muted-foreground">The Giulia and Stelvio share a rear-wheel-drive Giorgio platform — the same DNA as genuine Italian sports cars.</p>
+              <p className="text-muted-foreground">The Giulia and Stelvio share a rear-wheel-drive Giorgio platform - the same DNA as genuine Italian sports cars.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <CheckCircle2 className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Alfa DNA Pro</h3>
-              <p className="text-muted-foreground">Three driving modes — Dynamic, Natural, and Advanced Efficiency — transform the car's character at the push of a button.</p>
+              <p className="text-muted-foreground">Three driving modes - Dynamic, Natural, and Advanced Efficiency - transform the car's character at the push of a button.</p>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function AlfaRomeoBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Alfa Romeo</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Founded in Milan in 1910, Alfa Romeo has a race-winning history that predates Ferrari. Enzo Ferrari himself drove Alfas before founding his own brand. The brand's soul lives in the 8C Competizione, the Montreal, and now the Giulia Quadrifoglio — which set the Nürburgring sedan record at 7:32. Every Alfa Romeo sold today carries that unbroken thread of Italian passion.
+                Founded in Milan in 1910, Alfa Romeo has a race-winning history that predates Ferrari. Enzo Ferrari himself drove Alfas before founding his own brand. The brand's soul lives in the 8C Competizione, the Montreal, and now the Giulia Quadrifoglio - which set the Nürburgring sedan record at 7:32. Every Alfa Romeo sold today carries that unbroken thread of Italian passion.
               </p>
             </div>
           </div>
@@ -154,7 +154,7 @@ export default function AlfaRomeoBrandPage() {
                 What is the Alfa Romeo Stelvio like compared to a BMW X3?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Stelvio shares BMW's exact wheelbase and is built on a rear-wheel-drive platform — it corners more sharply and has more Italian character. For drivers, it's the more exciting choice.
+                The Stelvio shares BMW's exact wheelbase and is built on a rear-wheel-drive platform - it corners more sharply and has more Italian character. For drivers, it's the more exciting choice.
               </AccordionContent>
             </AccordionItem>
             

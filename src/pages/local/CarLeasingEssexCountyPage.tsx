@@ -80,7 +80,7 @@ const faqs = [
   },
   {
     question: 'What is the money factor on a car lease in Essex County NJ?',
-    answer: 'The money factor is the interest rate equivalent on a lease, expressed as a small decimal (e.g., 0.00125). Multiply it by 2400 to get the approximate APR equivalent. Manufacturers publish a "buy-rate" money factor each month. Dealers are allowed to mark it up, Capital Motor Cars always uses the buy-rate and never adds a dealer markup, saving Essex County clients $20–$60 per month.',
+    answer: 'The money factor is the interest rate equivalent on a lease, expressed as a small decimal (e.g., 0.00125). Multiply it by 2400 to get the approximate APR equivalent. Manufacturers publish a "buy-rate" money factor each month. Dealers are allowed to mark it up, Capital Motor Cars always uses the buy-rate and never adds a dealer markup, saving Essex County clients $20-$60 per month.',
   },
   {
     question: 'Can I lease a car in Essex County with bad credit?',
@@ -311,7 +311,7 @@ export default function CarLeasingEssexCountyPage() {
               { icon: DollarSign, title: 'Money Factor', desc: 'The lease equivalent of an interest rate. Multiply by 2,400 to get the approximate APR. Manufacturers publish a buy-rate, dealers can legally mark it up. We always use the buy-rate.' },
               { icon: TrendingDown, title: 'Residual Value', desc: "The car's projected value at the end of the lease term, set by the manufacturer. Higher residual = lower monthly payment. Luxury SUVs and EVs often have strong residuals." },
               { icon: BadgeCheck, title: 'Capitalized Cost', desc: 'The negotiated selling price of the vehicle. Lower cap cost = lower monthly payment. This is where dealer negotiation matters most, and where we save Essex County clients the most money.' },
-              { icon: Car, title: 'Mileage Allowance', desc: 'Standard leases are 10,000 or 12,000 miles per year. NYC commuters often choose 10k to keep payments lower. Going over the allowance triggers a per-mile charge at lease end, typically $0.20–$0.30/mile.' },
+              { icon: Car, title: 'Mileage Allowance', desc: 'Standard leases are 10,000 or 12,000 miles per year. NYC commuters often choose 10k to keep payments lower. Going over the allowance triggers a per-mile charge at lease end, typically $0.20-$0.30/mile.' },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -412,9 +412,9 @@ export default function CarLeasingEssexCountyPage() {
             </div>
             {[
               { aspect: 'Monthly payment', lease: 'Lower: you pay only depreciation', buy: 'Higher: full MSRP financed' },
-              { aspect: 'Upfront cost', lease: 'First month + security deposit', buy: '10–20% down payment' },
-              { aspect: 'Flexibility', lease: 'Return or upgrade every 2–3 yrs', buy: 'Must sell or trade-in' },
-              { aspect: 'Mileage', lease: '10k–15k/yr (customizable)', buy: 'Unlimited but affects resale value' },
+              { aspect: 'Upfront cost', lease: 'First month + security deposit', buy: '10-20% down payment' },
+              { aspect: 'Flexibility', lease: 'Return or upgrade every 2-3 yrs', buy: 'Must sell or trade-in' },
+              { aspect: 'Mileage', lease: '10k-15k/yr (customizable)', buy: 'Unlimited but affects resale value' },
               { aspect: 'Maintenance', lease: 'Full warranty covers entire term', buy: 'Warranty expires; costs yours' },
               { aspect: 'Technology', lease: 'New model with latest tech always', buy: 'Same model until you sell' },
             ].map((row, i) => (

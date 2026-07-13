@@ -13,7 +13,7 @@ export default function AcuraBrandPage() {
     <Layout>
       <SEO
         title="2026 Acura Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Acura in NJ & NY — MDX, RDX, and TLX zero down specials. Honda reliability with luxury performance at broker prices."
+        description="Lease a 2026 Acura in NJ & NY - MDX, RDX, and TLX zero down specials. Honda reliability with luxury performance at broker prices."
         seoKeywords={['2026 Acura lease deals NJ', 'Acura lease specials NY', 'zero down Acura lease', 'Acura broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/AcuraNSX-05-cropped.jpg/1280px-AcuraNSX-05-cropped.jpg"
         canonicalPath="/brand/acura"
@@ -31,7 +31,7 @@ export default function AcuraBrandPage() {
         badge="Best Value"
         title="2026 Acura Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Acura in NJ & NY — MDX, RDX, and TLX zero down specials. Honda reliability with luxury performance at broker prices."
+        subtitle="Lease a 2026 Acura in NJ & NY - MDX, RDX, and TLX zero down specials. Honda reliability with luxury performance at broker prices."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/AcuraNSX-05-cropped.jpg/1280px-AcuraNSX-05-cropped.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -45,7 +45,7 @@ export default function AcuraBrandPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">Precision Crafted Performance</h2>
-            <p className="text-lg text-muted-foreground">Acura delivers the perfect fusion of Japanese reliability and genuine performance luxury. The MDX and RDX are among the most value-packed leases in NJ & NY — and our broker pricing makes them even more accessible.</p>
+            <p className="text-lg text-muted-foreground">Acura delivers the perfect fusion of Japanese reliability and genuine performance luxury. The MDX and RDX are among the most value-packed leases in NJ & NY - and our broker pricing makes them even more accessible.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
@@ -56,7 +56,7 @@ export default function AcuraBrandPage() {
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">ELS Studio Audio</h3>
-              <p className="text-muted-foreground">Concert-hall acoustic design brought to your cabin — the ELS Studio 3D sound system is a benchmark in its class.</p>
+              <p className="text-muted-foreground">Concert-hall acoustic design brought to your cabin - the ELS Studio 3D sound system is a benchmark in its class.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <CheckCircle2 className="w-12 h-12 text-accent mb-4" />
@@ -83,7 +83,7 @@ export default function AcuraBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Acura</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Acura was launched by Honda in 1986 as North America's first Japanese luxury brand — beating Lexus and Infiniti to market by three years. The original Legend and Integra set benchmarks for performance and value. Today, the NSX supercar demonstrates Acura's capability at the absolute limit, while the MDX remains America's best-selling three-row luxury SUV.
+                Acura was launched by Honda in 1986 as North America's first Japanese luxury brand - beating Lexus and Infiniti to market by three years. The original Legend and Integra set benchmarks for performance and value. Today, the NSX supercar demonstrates Acura's capability at the absolute limit, while the MDX remains America's best-selling three-row luxury SUV.
               </p>
             </div>
           </div>
@@ -145,7 +145,7 @@ export default function AcuraBrandPage() {
                 How does Acura SH-AWD compare to other AWD systems?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Unlike passive AWD systems, Acura's SH-AWD actively torques power between each rear wheel independently — this enables true rear-biased handling that no other system in the class can match.
+                Unlike passive AWD systems, Acura's SH-AWD actively torques power between each rear wheel independently - this enables true rear-biased handling that no other system in the class can match.
               </AccordionContent>
             </AccordionItem>
             

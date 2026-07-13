@@ -13,7 +13,7 @@ export default function MazdaBrandPage() {
     <Layout>
       <SEO
         title="2026 Mazda Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Mazda in NJ & NY — CX-5, CX-50, Mazda3, and CX-90 zero down specials. Japanese premium design at broker pricing."
+        description="Lease a 2026 Mazda in NJ & NY - CX-5, CX-50, Mazda3, and CX-90 zero down specials. Japanese premium design at broker pricing."
         seoKeywords={['2026 Mazda lease deals NJ', 'Mazda lease specials NY', 'zero down Mazda lease', 'Mazda broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Mazda_Roadster_%28MX-5%29_by_Negawa_Bridge_%28cropped%29.jpg/1280px-Mazda_Roadster_%28MX-5%29_by_Negawa_Bridge_%28cropped%29.jpg"
         canonicalPath="/brand/mazda"
@@ -31,7 +31,7 @@ export default function MazdaBrandPage() {
         badge="Best Value"
         title="2026 Mazda Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Mazda in NJ & NY — CX-5, CX-50, Mazda3, and CX-90 zero down specials. Japanese premium design at broker pricing."
+        subtitle="Lease a 2026 Mazda in NJ & NY - CX-5, CX-50, Mazda3, and CX-90 zero down specials. Japanese premium design at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Mazda_Roadster_%28MX-5%29_by_Negawa_Bridge_%28cropped%29.jpg/1280px-Mazda_Roadster_%28MX-5%29_by_Negawa_Bridge_%28cropped%29.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -45,23 +45,23 @@ export default function MazdaBrandPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">Zoom-Zoom. Elevated.</h2>
-            <p className="text-lg text-muted-foreground">Mazda builds the most driver-focused mainstream vehicles in the world — Kodo design philosophy, SkyActiv engineering, and a commitment to handling purity that no other mainstream brand matches. The CX-5, CX-50, and Mazda3 are consistently rated among the best in their segments.</p>
+            <p className="text-lg text-muted-foreground">Mazda builds the most driver-focused mainstream vehicles in the world - Kodo design philosophy, SkyActiv engineering, and a commitment to handling purity that no other mainstream brand matches. The CX-5, CX-50, and Mazda3 are consistently rated among the best in their segments.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <ShieldCheck className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Kodo Design Philosophy</h3>
-              <p className="text-muted-foreground">Mazda's 'Soul of Motion' design language creates dramatically sculptural surfaces that catch light dynamically — producing a premium aesthetic that punches well above the price class.</p>
+              <p className="text-muted-foreground">Mazda's 'Soul of Motion' design language creates dramatically sculptural surfaces that catch light dynamically - producing a premium aesthetic that punches well above the price class.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">SkyActiv Technology</h3>
-              <p className="text-muted-foreground">Mazda's SkyActiv engine technology extracts maximum efficiency and performance from traditional combustion — delivering class-leading fuel economy without hybrid complexity.</p>
+              <p className="text-muted-foreground">Mazda's SkyActiv engine technology extracts maximum efficiency and performance from traditional combustion - delivering class-leading fuel economy without hybrid complexity.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <CheckCircle2 className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">G-Vectoring Control Plus</h3>
-              <p className="text-muted-foreground">Mazda's chassis control system subtly adjusts torque during cornering to improve steering feel and stability — creating the most natural handling in the mainstream segment.</p>
+              <p className="text-muted-foreground">Mazda's chassis control system subtly adjusts torque during cornering to improve steering feel and stability - creating the most natural handling in the mainstream segment.</p>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function MazdaBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Mazda</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Mazda was founded in 1920 in Hiroshima, Japan, initially manufacturing machine tools before pivoting to vehicles. Mazda is the only automaker to have successfully commercialized the rotary engine — the Wankel RX-7 and RX-8 are legendary for their unique character. The Mazda Miata (MX-5), launched in 1989, is the world's best-selling sports car with over 1.3 million units sold — proving that driver enjoyment is a universal constant.
+                Mazda was founded in 1920 in Hiroshima, Japan, initially manufacturing machine tools before pivoting to vehicles. Mazda is the only automaker to have successfully commercialized the rotary engine - the Wankel RX-7 and RX-8 are legendary for their unique character. The Mazda Miata (MX-5), launched in 1989, is the world's best-selling sports car with over 1.3 million units sold - proving that driver enjoyment is a universal constant.
               </p>
             </div>
           </div>
@@ -126,7 +126,7 @@ export default function MazdaBrandPage() {
             </div>
             <h2 className="text-3xl font-black uppercase mb-6 relative z-10">Why Lease a Mazda?</h2>
             <p className="text-xl text-muted-foreground relative z-10 leading-relaxed">
-              Mazda Financial Services provides competitive lease rates on the CX-5 and CX-50 — two vehicles with excellent residual values due to Mazda's strong quality perception and low volume production approach. Mazda leases offer a premium brand experience at mainstream price points, making the effective value proposition exceptional.
+              Mazda Financial Services provides competitive lease rates on the CX-5 and CX-50 - two vehicles with excellent residual values due to Mazda's strong quality perception and low volume production approach. Mazda leases offer a premium brand experience at mainstream price points, making the effective value proposition exceptional.
             </p>
           </div>
         </div>
@@ -154,7 +154,7 @@ export default function MazdaBrandPage() {
                 What is the Mazda Miata like to lease?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Miata is pure driving joy in a lease — lightweight, precise steering, a perfect 50/50 weight balance, and available retractable hardtop (RF). It's the cheapest way to lease a true sports car.
+                The Miata is pure driving joy in a lease - lightweight, precise steering, a perfect 50/50 weight balance, and available retractable hardtop (RF). It's the cheapest way to lease a true sports car.
               </AccordionContent>
             </AccordionItem>
             
@@ -163,7 +163,7 @@ export default function MazdaBrandPage() {
                 Is Mazda as reliable as Toyota and Honda?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Yes — Mazda consistently ranks among the top 3 most reliable brands in JD Power studies, often beating Toyota and Honda. Mazda's engineering focus on simplicity translates directly to reliability.
+                Yes - Mazda consistently ranks among the top 3 most reliable brands in JD Power studies, often beating Toyota and Honda. Mazda's engineering focus on simplicity translates directly to reliability.
               </AccordionContent>
             </AccordionItem>
             

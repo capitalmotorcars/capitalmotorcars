@@ -13,7 +13,7 @@ export default function RamBrandPage() {
     <Layout>
       <SEO
         title="2026 Ram Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Ram in NJ & NY — Ram 1500, 2500, and ProMaster zero down specials. America's most refined trucks at broker pricing."
+        description="Lease a 2026 Ram in NJ & NY - Ram 1500, 2500, and ProMaster zero down specials. America's most refined trucks at broker pricing."
         seoKeywords={['2026 Ram lease deals NJ', 'Ram lease specials NY', 'zero down Ram lease', 'Ram broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/2017_Ram_1500_Express_Crew_Cab%2C_front_left%2C_09-02-2022.jpg/1280px-2017_Ram_1500_Express_Crew_Cab%2C_front_left%2C_09-02-2022.jpg"
         canonicalPath="/brand/ram"
@@ -31,7 +31,7 @@ export default function RamBrandPage() {
         badge="Best Value"
         title="2026 Ram Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Ram in NJ & NY — Ram 1500, 2500, and ProMaster zero down specials. America's most refined trucks at broker pricing."
+        subtitle="Lease a 2026 Ram in NJ & NY - Ram 1500, 2500, and ProMaster zero down specials. America's most refined trucks at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/2017_Ram_1500_Express_Crew_Cab%2C_front_left%2C_09-02-2022.jpg/1280px-2017_Ram_1500_Express_Crew_Cab%2C_front_left%2C_09-02-2022.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -45,13 +45,13 @@ export default function RamBrandPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">Guts. Glory. Ram.</h2>
-            <p className="text-lg text-muted-foreground">Ram builds America's most refined full-size trucks — with class-leading payload, towing, and interior quality that left competitors scrambling to catch up. The Ram 1500, available in TRX performance and 1500 REL luxury form, redefines what a truck can be for NJ & NY drivers.</p>
+            <p className="text-lg text-muted-foreground">Ram builds America's most refined full-size trucks - with class-leading payload, towing, and interior quality that left competitors scrambling to catch up. The Ram 1500, available in TRX performance and 1500 REL luxury form, redefines what a truck can be for NJ & NY drivers.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <ShieldCheck className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Air Suspension</h3>
-              <p className="text-muted-foreground">Ram 1500's available four-corner air suspension provides a car-like ride, adjustable ride height for towing, and automatic leveling — features no other full-size truck offers.</p>
+              <p className="text-muted-foreground">Ram 1500's available four-corner air suspension provides a car-like ride, adjustable ride height for towing, and automatic leveling - features no other full-size truck offers.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
@@ -83,7 +83,7 @@ export default function RamBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Ram</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Ram trucks were produced under Dodge branding from 1981 until Chrysler separated Ram into its own brand in 2010 — recognizing the truck's premium positioning versus other Dodge vehicles. The Ram name references the 1930s Dodge Ram hood ornament. Today, Ram 1500 consistently battles Ford F-150 for America's best-selling truck title, with the TRX's 702hp supercharged HEMI V8 making it the world's most powerful production truck.
+                Ram trucks were produced under Dodge branding from 1981 until Chrysler separated Ram into its own brand in 2010 - recognizing the truck's premium positioning versus other Dodge vehicles. The Ram name references the 1930s Dodge Ram hood ornament. Today, Ram 1500 consistently battles Ford F-150 for America's best-selling truck title, with the TRX's 702hp supercharged HEMI V8 making it the world's most powerful production truck.
               </p>
             </div>
           </div>
@@ -126,7 +126,7 @@ export default function RamBrandPage() {
             </div>
             <h2 className="text-3xl font-black uppercase mb-6 relative z-10">Why Lease a Ram?</h2>
             <p className="text-xl text-muted-foreground relative z-10 leading-relaxed">
-              Chrysler Capital provides competitive Ram 1500 lease incentives, and Ram's strong residual values — driven by sustained demand for premium trucks — enable competitive monthly payments. Truck lessees benefit from accessing Ram's rapidly improving technology (eTorque hybrid, air suspension improvements) with each new lease cycle.
+              Chrysler Capital provides competitive Ram 1500 lease incentives, and Ram's strong residual values - driven by sustained demand for premium trucks - enable competitive monthly payments. Truck lessees benefit from accessing Ram's rapidly improving technology (eTorque hybrid, air suspension improvements) with each new lease cycle.
             </p>
           </div>
         </div>
@@ -154,7 +154,7 @@ export default function RamBrandPage() {
                 What is the Ram 1500 TRX?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The TRX is a 702hp supercharged V8 off-road performance truck — it accelerates 0-60mph in 4.5 seconds and can jump 10+ feet while maintaining full suspension control. It's the Hellcat of trucks.
+                The TRX is a 702hp supercharged V8 off-road performance truck - it accelerates 0-60mph in 4.5 seconds and can jump 10+ feet while maintaining full suspension control. It's the Hellcat of trucks.
               </AccordionContent>
             </AccordionItem>
             
@@ -163,7 +163,7 @@ export default function RamBrandPage() {
                 Can I tow my boat with a leased Ram 1500?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Yes — the Ram 1500 is rated to tow up to 12,750 lbs with proper configuration. Confirm your specific trim's tow rating with Capital Motor Cars when structuring your lease.
+                Yes - the Ram 1500 is rated to tow up to 12,750 lbs with proper configuration. Confirm your specific trim's tow rating with Capital Motor Cars when structuring your lease.
               </AccordionContent>
             </AccordionItem>
             

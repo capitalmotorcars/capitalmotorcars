@@ -13,7 +13,7 @@ export default function LandRoverBrandPage() {
     <Layout>
       <SEO
         title="2026 Land Rover Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Land Rover in NJ & NY — Range Rover, Defender, and Discovery zero down specials. British off-road luxury at broker pricing."
+        description="Lease a 2026 Land Rover in NJ & NY - Range Rover, Defender, and Discovery zero down specials. British off-road luxury at broker pricing."
         seoKeywords={['2026 Land Rover lease deals NJ', 'Land Rover lease specials NY', 'zero down Land Rover lease', 'Land Rover broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/2022_Land_Rover_Range_Rover_SE_P440e_AWD_Automatic_3.0_Front.jpg/1280px-2022_Land_Rover_Range_Rover_SE_P440e_AWD_Automatic_3.0_Front.jpg"
         canonicalPath="/brand/land-rover"
@@ -31,7 +31,7 @@ export default function LandRoverBrandPage() {
         badge="Best Value"
         title="2026 Land Rover Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Land Rover in NJ & NY — Range Rover, Defender, and Discovery zero down specials. British off-road luxury at broker pricing."
+        subtitle="Lease a 2026 Land Rover in NJ & NY - Range Rover, Defender, and Discovery zero down specials. British off-road luxury at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/2022_Land_Rover_Range_Rover_SE_P440e_AWD_Automatic_3.0_Front.jpg/1280px-2022_Land_Rover_Range_Rover_SE_P440e_AWD_Automatic_3.0_Front.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -45,7 +45,7 @@ export default function LandRoverBrandPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">Above and Beyond</h2>
-            <p className="text-lg text-muted-foreground">Land Rover builds the world's most capable luxury off-road vehicles. The Range Rover, Defender, and Discovery combine genuine terrain capability with sumptuous British interiors — creating SUVs with no equal. Capital Motor Cars provides broker pricing across the full Land Rover lineup.</p>
+            <p className="text-lg text-muted-foreground">Land Rover builds the world's most capable luxury off-road vehicles. The Range Rover, Defender, and Discovery combine genuine terrain capability with sumptuous British interiors - creating SUVs with no equal. Capital Motor Cars provides broker pricing across the full Land Rover lineup.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
@@ -83,7 +83,7 @@ export default function LandRoverBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Land Rover</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                The original Land Rover debuted at the Amsterdam Motor Show in 1948 — inspired by the Willys Jeep, but designed for British farmers. It was so capable that the British military adopted it extensively. The Range Rover of 1970 created an entirely new luxury SUV segment. Today, Land Rover's Defender revival and the all-electric Range Rover prove the brand remains at the cutting edge of premium off-road innovation.
+                The original Land Rover debuted at the Amsterdam Motor Show in 1948 - inspired by the Willys Jeep, but designed for British farmers. It was so capable that the British military adopted it extensively. The Range Rover of 1970 created an entirely new luxury SUV segment. Today, Land Rover's Defender revival and the all-electric Range Rover prove the brand remains at the cutting edge of premium off-road innovation.
               </p>
             </div>
           </div>
@@ -145,7 +145,7 @@ export default function LandRoverBrandPage() {
                 Is the Range Rover Evoque good for NJ commuting?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Evoque is an ideal NJ commuter — compact enough for city parking, capable in snow, and offering premium Range Rover interior quality at the most accessible price point in the lineup.
+                The Evoque is an ideal NJ commuter - compact enough for city parking, capable in snow, and offering premium Range Rover interior quality at the most accessible price point in the lineup.
               </AccordionContent>
             </AccordionItem>
             
@@ -154,7 +154,7 @@ export default function LandRoverBrandPage() {
                 Can a Land Rover Defender really go off-road?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Yes — the new Defender is one of the most capable off-road vehicles ever built, with optional Wade Sensing, Terrain Response 2, and configurable air suspension. It can ford 35.4" of water.
+                Yes - the new Defender is one of the most capable off-road vehicles ever built, with optional Wade Sensing, Terrain Response 2, and configurable air suspension. It can ford 35.4" of water.
               </AccordionContent>
             </AccordionItem>
             
@@ -163,7 +163,7 @@ export default function LandRoverBrandPage() {
                 What are the most popular Land Rover lease models in NJ?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Range Rover Evoque and Range Rover Sport are our most requested Land Rover leases in NJ — offering the right balance of practicality, luxury, and competitive monthly payments.
+                The Range Rover Evoque and Range Rover Sport are our most requested Land Rover leases in NJ - offering the right balance of practicality, luxury, and competitive monthly payments.
               </AccordionContent>
             </AccordionItem>
             

@@ -13,7 +13,7 @@ export default function LamborghiniBrandPage() {
     <Layout>
       <SEO
         title="2026 Lamborghini Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Lamborghini in NJ & NY — Urus, Huracán, and Revuelto specials. Italian supercar performance at broker pricing."
+        description="Lease a 2026 Lamborghini in NJ & NY - Urus, Huracán, and Revuelto specials. Italian supercar performance at broker pricing."
         seoKeywords={['2026 Lamborghini lease deals NJ', 'Lamborghini lease specials NY', 'zero down Lamborghini lease', 'Lamborghini broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Lamborghini_Aventador_S_%2844554%29.jpg/1280px-Lamborghini_Aventador_S_%2844554%29.jpg"
         canonicalPath="/brand/lamborghini"
@@ -31,7 +31,7 @@ export default function LamborghiniBrandPage() {
         badge="Best Value"
         title="2026 Lamborghini Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Lamborghini in NJ & NY — Urus, Huracán, and Revuelto specials. Italian supercar performance at broker pricing."
+        subtitle="Lease a 2026 Lamborghini in NJ & NY - Urus, Huracán, and Revuelto specials. Italian supercar performance at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Lamborghini_Aventador_S_%2844554%29.jpg/1280px-Lamborghini_Aventador_S_%2844554%29.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -56,12 +56,12 @@ export default function LamborghiniBrandPage() {
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Carbon Fiber Chassis</h3>
-              <p className="text-muted-foreground">Lamborghini pioneered carbon fiber monocoque construction in production cars — creating chassis that are simultaneously lighter and stronger than steel or aluminum.</p>
+              <p className="text-muted-foreground">Lamborghini pioneered carbon fiber monocoque construction in production cars - creating chassis that are simultaneously lighter and stronger than steel or aluminum.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <CheckCircle2 className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Scissor Doors</h3>
-              <p className="text-muted-foreground">Lamborghini's iconic scissor door design — introduced on the Countach in 1974 — remains a signature that defines the brand's theatrical character.</p>
+              <p className="text-muted-foreground">Lamborghini's iconic scissor door design - introduced on the Countach in 1974 - remains a signature that defines the brand's theatrical character.</p>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function LamborghiniBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Lamborghini</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Ferruccio Lamborghini founded the company in 1963 after a legendary dispute with Enzo Ferrari over clutch quality. His response was to build a better sports car — the 350 GT. The Miura of 1966 invented the mid-engine supercar layout that Ferrari and Porsche would later copy. Today, the Lamborghini Revuelto hybrid V12 produces 1,001hp, continuing the brand's tradition of automotive extremism.
+                Ferruccio Lamborghini founded the company in 1963 after a legendary dispute with Enzo Ferrari over clutch quality. His response was to build a better sports car - the 350 GT. The Miura of 1966 invented the mid-engine supercar layout that Ferrari and Porsche would later copy. Today, the Lamborghini Revuelto hybrid V12 produces 1,001hp, continuing the brand's tradition of automotive extremism.
               </p>
             </div>
           </div>
@@ -126,7 +126,7 @@ export default function LamborghiniBrandPage() {
             </div>
             <h2 className="text-3xl font-black uppercase mb-6 relative z-10">Why Lease a Lamborghini?</h2>
             <p className="text-xl text-muted-foreground relative z-10 leading-relaxed">
-              Lamborghinis depreciate significantly — the Urus loses 35-40% in 3 years, while the Huracán drops 45-50%. Leasing captures the most exciting ownership window (0-36 months) with full factory warranty, while protecting you from the steepest depreciation cliff. Our broker network secures some of the most competitive structures available on these exotic vehicles.
+              Lamborghinis depreciate significantly - the Urus loses 35-40% in 3 years, while the Huracán drops 45-50%. Leasing captures the most exciting ownership window (0-36 months) with full factory warranty, while protecting you from the steepest depreciation cliff. Our broker network secures some of the most competitive structures available on these exotic vehicles.
             </p>
           </div>
         </div>
@@ -145,7 +145,7 @@ export default function LamborghiniBrandPage() {
                 Can the Lamborghini Urus be a daily driver in NJ?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Absolutely. The Urus is designed for daily usability — it fits in standard parking garages, offers 600 miles of range per tank, seats 5, and handles NJ winters with its available rear-wheel steering and all-terrain mode.
+                Absolutely. The Urus is designed for daily usability - it fits in standard parking garages, offers 600 miles of range per tank, seats 5, and handles NJ winters with its available rear-wheel steering and all-terrain mode.
               </AccordionContent>
             </AccordionItem>
             
@@ -163,7 +163,7 @@ export default function LamborghiniBrandPage() {
                 How fast is the Lamborghini Huracán?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Huracán Tecnica reaches 0-62mph in 3.2 seconds with a 202mph top speed — powered by a 5.2L naturally aspirated V10 producing 631hp.
+                The Huracán Tecnica reaches 0-62mph in 3.2 seconds with a 202mph top speed - powered by a 5.2L naturally aspirated V10 producing 631hp.
               </AccordionContent>
             </AccordionItem>
             

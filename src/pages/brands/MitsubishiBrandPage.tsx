@@ -13,7 +13,7 @@ export default function MitsubishiBrandPage() {
     <Layout>
       <SEO
         title="2026 Mitsubishi Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Mitsubishi in NJ & NY — Eclipse Cross, Outlander, and Outlander PHEV zero down specials. AWD innovation at broker pricing."
+        description="Lease a 2026 Mitsubishi in NJ & NY - Eclipse Cross, Outlander, and Outlander PHEV zero down specials. AWD innovation at broker pricing."
         seoKeywords={['2026 Mitsubishi lease deals NJ', 'Mitsubishi lease specials NY', 'zero down Mitsubishi lease', 'Mitsubishi broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/2017-04-02_Mitsubishi_Lancer_Evolution_X_MR_SST_14_%282%29.jpg/1280px-2017-04-02_Mitsubishi_Lancer_Evolution_X_MR_SST_14_%282%29.jpg"
         canonicalPath="/brand/mitsubishi"
@@ -31,7 +31,7 @@ export default function MitsubishiBrandPage() {
         badge="Best Value"
         title="2026 Mitsubishi Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Mitsubishi in NJ & NY — Eclipse Cross, Outlander, and Outlander PHEV zero down specials. AWD innovation at broker pricing."
+        subtitle="Lease a 2026 Mitsubishi in NJ & NY - Eclipse Cross, Outlander, and Outlander PHEV zero down specials. AWD innovation at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/2017-04-02_Mitsubishi_Lancer_Evolution_X_MR_SST_14_%282%29.jpg/1280px-2017-04-02_Mitsubishi_Lancer_Evolution_X_MR_SST_14_%282%29.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -45,7 +45,7 @@ export default function MitsubishiBrandPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">Drive Your Ambition</h2>
-            <p className="text-lg text-muted-foreground">Mitsubishi builds reliable, AWD-focused vehicles with standout value. The Outlander PHEV is a remarkable achievement — the world's first and bestselling plug-in hybrid SUV, offering 38 miles of electric range, all-wheel drive, and spacious 3-row packaging at a price that redefines EV affordability.</p>
+            <p className="text-lg text-muted-foreground">Mitsubishi builds reliable, AWD-focused vehicles with standout value. The Outlander PHEV is a remarkable achievement - the world's first and bestselling plug-in hybrid SUV, offering 38 miles of electric range, all-wheel drive, and spacious 3-row packaging at a price that redefines EV affordability.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
@@ -56,7 +56,7 @@ export default function MitsubishiBrandPage() {
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Outlander PHEV</h3>
-              <p className="text-muted-foreground">The Outlander PHEV delivers 38 miles of all-electric range with a 3.8-mile EV range on battery only — reducing fuel costs dramatically for NJ commuters.</p>
+              <p className="text-muted-foreground">The Outlander PHEV delivers 38 miles of all-electric range with a 3.8-mile EV range on battery only - reducing fuel costs dramatically for NJ commuters.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <CheckCircle2 className="w-12 h-12 text-accent mb-4" />
@@ -83,7 +83,7 @@ export default function MitsubishiBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Mitsubishi</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Mitsubishi Motors was spun off from Mitsubishi Heavy Industries in 1970, though the company's roots go back to 1917. The legendary Mitsubishi Lancer Evolution — rally car turned street legend — won 4 World Rally Championships and remains one of motorsport history's most celebrated performance cars. The Outlander PHEV, launched in 2013 and updated through 2024, pioneered the plug-in hybrid SUV segment that every major automaker has since followed.
+                Mitsubishi Motors was spun off from Mitsubishi Heavy Industries in 1970, though the company's roots go back to 1917. The legendary Mitsubishi Lancer Evolution - rally car turned street legend - won 4 World Rally Championships and remains one of motorsport history's most celebrated performance cars. The Outlander PHEV, launched in 2013 and updated through 2024, pioneered the plug-in hybrid SUV segment that every major automaker has since followed.
               </p>
             </div>
           </div>
@@ -145,7 +145,7 @@ export default function MitsubishiBrandPage() {
                 What is Mitsubishi's warranty and does it apply to leases?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Mitsubishi's industry-leading 10-year/100,000-mile powertrain warranty applies to original owners — leases receive the 5-year/60,000-mile comprehensive warranty, which covers your entire 36-month term.
+                Mitsubishi's industry-leading 10-year/100,000-mile powertrain warranty applies to original owners - leases receive the 5-year/60,000-mile comprehensive warranty, which covers your entire 36-month term.
               </AccordionContent>
             </AccordionItem>
             
@@ -163,7 +163,7 @@ export default function MitsubishiBrandPage() {
                 Is the Mitsubishi Eclipse Cross good in NJ snow?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Eclipse Cross with S-AWC super all-wheel control is an excellent choice for NJ winter driving — its electronic AWD torque vectoring provides stability that passive AWD systems cannot match.
+                The Eclipse Cross with S-AWC super all-wheel control is an excellent choice for NJ winter driving - its electronic AWD torque vectoring provides stability that passive AWD systems cannot match.
               </AccordionContent>
             </AccordionItem>
             

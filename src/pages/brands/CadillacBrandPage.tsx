@@ -13,7 +13,7 @@ export default function CadillacBrandPage() {
     <Layout>
       <SEO
         title="2026 Cadillac Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Cadillac in NJ & NY — Escalade, XT5, and Lyriq zero down specials. American luxury at its finest with broker pricing."
+        description="Lease a 2026 Cadillac in NJ & NY - Escalade, XT5, and Lyriq zero down specials. American luxury at its finest with broker pricing."
         seoKeywords={['2026 Cadillac lease deals NJ', 'Cadillac lease specials NY', 'zero down Cadillac lease', 'Cadillac broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/2021_Cadillac_Escalade_ESV_4WD_Premium_Luxury_in_Satin_Steel_Metallic%2C_front_right.jpg/1280px-2021_Cadillac_Escalade_ESV_4WD_Premium_Luxury_in_Satin_Steel_Metallic%2C_front_right.jpg"
         canonicalPath="/brand/cadillac"
@@ -31,7 +31,7 @@ export default function CadillacBrandPage() {
         badge="Best Value"
         title="2026 Cadillac Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Cadillac in NJ & NY — Escalade, XT5, and Lyriq zero down specials. American luxury at its finest with broker pricing."
+        subtitle="Lease a 2026 Cadillac in NJ & NY - Escalade, XT5, and Lyriq zero down specials. American luxury at its finest with broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/2021_Cadillac_Escalade_ESV_4WD_Premium_Luxury_in_Satin_Steel_Metallic%2C_front_right.jpg/1280px-2021_Cadillac_Escalade_ESV_4WD_Premium_Luxury_in_Satin_Steel_Metallic%2C_front_right.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -45,13 +45,13 @@ export default function CadillacBrandPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">American Luxury Reimagined</h2>
-            <p className="text-lg text-muted-foreground">Cadillac represents the pinnacle of American automotive luxury — combining bold Art & Science design with advanced technology including Super Cruise hands-free driving. The Escalade, XT5, and electric Lyriq offer an unmatched combination of presence and technology.</p>
+            <p className="text-lg text-muted-foreground">Cadillac represents the pinnacle of American automotive luxury - combining bold Art & Science design with advanced technology including Super Cruise hands-free driving. The Escalade, XT5, and electric Lyriq offer an unmatched combination of presence and technology.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <ShieldCheck className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Super Cruise™</h3>
-              <p className="text-muted-foreground">Cadillac's hands-free driving technology is the industry's first true hands-free system — available on 200,000+ miles of compatible North American highways.</p>
+              <p className="text-muted-foreground">Cadillac's hands-free driving technology is the industry's first true hands-free system - available on 200,000+ miles of compatible North American highways.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
@@ -145,7 +145,7 @@ export default function CadillacBrandPage() {
                 What makes Cadillac Super Cruise different from Tesla Autopilot?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                Super Cruise uses LiDAR-mapped roads combined with eye-tracking technology to confirm driver attention — making it genuinely hands-free on compatible highways in a way most competitors cannot match.
+                Super Cruise uses LiDAR-mapped roads combined with eye-tracking technology to confirm driver attention - making it genuinely hands-free on compatible highways in a way most competitors cannot match.
               </AccordionContent>
             </AccordionItem>
             
@@ -154,7 +154,7 @@ export default function CadillacBrandPage() {
                 Is the Cadillac Lyriq a good lease option?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Lyriq is an excellent lease vehicle — it qualifies for the $7,500 federal EV credit applied to the lease, significantly reducing monthly payments on this stunning electric SUV.
+                The Lyriq is an excellent lease vehicle - it qualifies for the $7,500 federal EV credit applied to the lease, significantly reducing monthly payments on this stunning electric SUV.
               </AccordionContent>
             </AccordionItem>
             

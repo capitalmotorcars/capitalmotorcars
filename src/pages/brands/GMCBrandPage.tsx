@@ -13,7 +13,7 @@ export default function GMCBrandPage() {
     <Layout>
       <SEO
         title="2026 GMC Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 GMC in NJ & NY — Sierra, Yukon, Terrain, and Hummer EV zero down specials. Professional-grade trucks and SUVs at broker pricing."
+        description="Lease a 2026 GMC in NJ & NY - Sierra, Yukon, Terrain, and Hummer EV zero down specials. Professional-grade trucks and SUVs at broker pricing."
         seoKeywords={['2026 GMC lease deals NJ', 'GMC lease specials NY', 'zero down GMC lease', 'GMC broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/2022_Chevrolet_Silverado_2500HD_High_Country%2C_Front_Left%2C_11-21-2021.jpg/1280px-2022_Chevrolet_Silverado_2500HD_High_Country%2C_Front_Left%2C_11-21-2021.jpg"
         canonicalPath="/brand/gmc"
@@ -31,7 +31,7 @@ export default function GMCBrandPage() {
         badge="Best Value"
         title="2026 GMC Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 GMC in NJ & NY — Sierra, Yukon, Terrain, and Hummer EV zero down specials. Professional-grade trucks and SUVs at broker pricing."
+        subtitle="Lease a 2026 GMC in NJ & NY - Sierra, Yukon, Terrain, and Hummer EV zero down specials. Professional-grade trucks and SUVs at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/2022_Chevrolet_Silverado_2500HD_High_Country%2C_Front_Left%2C_11-21-2021.jpg/1280px-2022_Chevrolet_Silverado_2500HD_High_Country%2C_Front_Left%2C_11-21-2021.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -51,17 +51,17 @@ export default function GMCBrandPage() {
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <ShieldCheck className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">CarbonPro Carbon Fiber Bed</h3>
-              <p className="text-muted-foreground">GMC Sierra's available CarbonPro carbon fiber bed is lighter than steel, 10x stronger, and resistant to dents, corrosion, and UV damage — a professional-grade innovation.</p>
+              <p className="text-muted-foreground">GMC Sierra's available CarbonPro carbon fiber bed is lighter than steel, 10x stronger, and resistant to dents, corrosion, and UV damage - a professional-grade innovation.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">MultiPro Tailgate</h3>
-              <p className="text-muted-foreground">GMC's 6-function MultiPro Tailgate transforms loading, unloading, and tailgating — with integrated step, inner gate, and load-stopper configurations.</p>
+              <p className="text-muted-foreground">GMC's 6-function MultiPro Tailgate transforms loading, unloading, and tailgating - with integrated step, inner gate, and load-stopper configurations.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <CheckCircle2 className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Hummer EV Watts to Freedom</h3>
-              <p className="text-muted-foreground">The GMC Hummer EV's Watts to Freedom launch mode unleashes all 1,000hp in 3 seconds — the most powerful electric pickup truck ever built.</p>
+              <p className="text-muted-foreground">The GMC Hummer EV's Watts to Freedom launch mode unleashes all 1,000hp in 3 seconds - the most powerful electric pickup truck ever built.</p>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function GMCBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">GMC</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                GMC traces its roots to Rapid Motor Vehicle Company, founded in 1901. GMC became General Motors Truck Company in 1911 — over a century of professional-grade commercial vehicle expertise. GMC's distinctive approach positions trucks and SUVs as premium alternatives to Chevrolet siblings, with unique features like MultiPro Tailgate, CarbonPro bed, and the revolutionary Hummer EV establishing GMC as an innovation leader in the truck segment.
+                GMC traces its roots to Rapid Motor Vehicle Company, founded in 1901. GMC became General Motors Truck Company in 1911 - over a century of professional-grade commercial vehicle expertise. GMC's distinctive approach positions trucks and SUVs as premium alternatives to Chevrolet siblings, with unique features like MultiPro Tailgate, CarbonPro bed, and the revolutionary Hummer EV establishing GMC as an innovation leader in the truck segment.
               </p>
             </div>
           </div>
@@ -145,7 +145,7 @@ export default function GMCBrandPage() {
                 What is the difference between GMC Sierra and Chevy Silverado?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Sierra offers GMC-exclusive features: MultiPro tailgate, CarbonPro carbon fiber bed option, ProGrade trailering technology, and more premium interior materials — commanding a $2,000-5,000 premium over the Silverado.
+                The Sierra offers GMC-exclusive features: MultiPro tailgate, CarbonPro carbon fiber bed option, ProGrade trailering technology, and more premium interior materials - commanding a $2,000-5,000 premium over the Silverado.
               </AccordionContent>
             </AccordionItem>
             
@@ -163,7 +163,7 @@ export default function GMCBrandPage() {
                 What GMC models are best for leasing in NJ?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The GMC Terrain is our most popular GMC lease in NJ — competitive payments through GM Financial, good fuel economy, and all the professional-grade styling GMC is known for.
+                The GMC Terrain is our most popular GMC lease in NJ - competitive payments through GM Financial, good fuel economy, and all the professional-grade styling GMC is known for.
               </AccordionContent>
             </AccordionItem>
             

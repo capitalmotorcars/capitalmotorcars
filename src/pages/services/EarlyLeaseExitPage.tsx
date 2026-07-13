@@ -284,7 +284,7 @@ export default function EarlyLeaseExitPage() {
         title="The Smart Way to Exit Your Lease Early"
         paragraphs={[
           "Life changes, and sometimes you need to get out of your car lease before the term is up. Dealerships often make this process incredibly expensive with massive early termination penalties.",
-          "We analyze your specific situation—whether it's utilizing a lease transfer network, buying out the lease to capture equity, or trading the vehicle in. We find the most mathematically advantageous exit strategy for your specific vehicle and payoff amount."
+          "We analyze your specific situation - whether it's utilizing a lease transfer network, buying out the lease to capture equity, or trading the vehicle in. We find the most mathematically advantageous exit strategy for your specific vehicle and payoff amount."
         ]}
         bullets={[
           "Zero dealership termination penalties",

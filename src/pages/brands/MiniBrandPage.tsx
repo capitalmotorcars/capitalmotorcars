@@ -13,7 +13,7 @@ export default function MiniBrandPage() {
     <Layout>
       <SEO
         title="2026 Mini Lease Deals NJ & NY | Zero Down Specials"
-        description="Lease a 2026 Mini in NJ & NY — Cooper, Clubman, and Countryman zero down specials. British icon reimagined for modern driving at broker pricing."
+        description="Lease a 2026 Mini in NJ & NY - Cooper, Clubman, and Countryman zero down specials. British icon reimagined for modern driving at broker pricing."
         seoKeywords={['2026 Mini lease deals NJ', 'Mini lease specials NY', 'zero down Mini lease', 'Mini broker NJ']}
         ogImage="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Mini_Hatch_%28J01%29_Ditzingen_Mobil_IMG_9772_%28cropped%29.jpg/1280px-Mini_Hatch_%28J01%29_Ditzingen_Mobil_IMG_9772_%28cropped%29.jpg"
         canonicalPath="/brand/mini"
@@ -31,7 +31,7 @@ export default function MiniBrandPage() {
         badge="Best Value"
         title="2026 Mini Lease Deals"
         highlightedTitle=""
-        subtitle="Lease a 2026 Mini in NJ & NY — Cooper, Clubman, and Countryman zero down specials. British icon reimagined for modern driving at broker pricing."
+        subtitle="Lease a 2026 Mini in NJ & NY - Cooper, Clubman, and Countryman zero down specials. British icon reimagined for modern driving at broker pricing."
         heroImage="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Mini_Hatch_%28J01%29_Ditzingen_Mobil_IMG_9772_%28cropped%29.jpg/1280px-Mini_Hatch_%28J01%29_Ditzingen_Mobil_IMG_9772_%28cropped%29.jpg"
         primaryAction={{ label: "View SUVs", href: "/vehicles/suv" }}
         secondaryAction={{ label: "Call Us", href: "tel:+12015095555", icon: Phone }}
@@ -45,7 +45,7 @@ export default function MiniBrandPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">Just a Little Bit Brilliant</h2>
-            <p className="text-lg text-muted-foreground">Mini is perhaps the world's most distinctive automotive brand — instantly recognizable, inherently fun, and available in more configurations than any other small car. The Mini Cooper, Countryman, and new electric Mini are perfectly suited to NJ & NY urban and suburban driving.</p>
+            <p className="text-lg text-muted-foreground">Mini is perhaps the world's most distinctive automotive brand - instantly recognizable, inherently fun, and available in more configurations than any other small car. The Mini Cooper, Countryman, and new electric Mini are perfectly suited to NJ & NY urban and suburban driving.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
@@ -61,7 +61,7 @@ export default function MiniBrandPage() {
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <CheckCircle2 className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">Iconic British Design</h3>
-              <p className="text-muted-foreground">The original Mini's 1959 DNA lives on in every modern model — round headlights, a circular center display, and toggle switches that reference the classic original.</p>
+              <p className="text-muted-foreground">The original Mini's 1959 DNA lives on in every modern model - round headlights, a circular center display, and toggle switches that reference the classic original.</p>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function MiniBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Mini</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Sir Alec Issigonis designed the original Mini in 1959 as a response to the Suez oil crisis — creating the most space-efficient car ever built at the time. The transversely-mounted engine and front-wheel drive layout Issigonis invented is now used by virtually every small car worldwide. The Monte Carlo Rally victories in 1964, 1965, and 1967 established Mini as a performance icon. BMW acquired the brand in 1994 and relaunched it in 2001 to global acclaim.
+                Sir Alec Issigonis designed the original Mini in 1959 as a response to the Suez oil crisis - creating the most space-efficient car ever built at the time. The transversely-mounted engine and front-wheel drive layout Issigonis invented is now used by virtually every small car worldwide. The Monte Carlo Rally victories in 1964, 1965, and 1967 established Mini as a performance icon. BMW acquired the brand in 1994 and relaunched it in 2001 to global acclaim.
               </p>
             </div>
           </div>
@@ -126,7 +126,7 @@ export default function MiniBrandPage() {
             </div>
             <h2 className="text-3xl font-black uppercase mb-6 relative z-10">Why Lease a Mini?</h2>
             <p className="text-xl text-muted-foreground relative z-10 leading-relaxed">
-              Mini Financial Services provides competitive lease rates, and Mini's BMW Group connection means strong build quality and reliable residual values. Mini's inherently fun character is best experienced fresh and under warranty — leasing allows you to rotate between the Cooper, Countryman, or new electric Mini Hardtop with each lease cycle.
+              Mini Financial Services provides competitive lease rates, and Mini's BMW Group connection means strong build quality and reliable residual values. Mini's inherently fun character is best experienced fresh and under warranty - leasing allows you to rotate between the Cooper, Countryman, or new electric Mini Hardtop with each lease cycle.
             </p>
           </div>
         </div>
@@ -145,7 +145,7 @@ export default function MiniBrandPage() {
                 Is the Mini Cooper good for NJ city driving?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Mini is arguably perfect for NJ city driving — its small footprint makes parking effortless, the go-kart handling navigates tight streets with joy, and available JCW performance means highway fun on the way home.
+                The Mini is arguably perfect for NJ city driving - its small footprint makes parking effortless, the go-kart handling navigates tight streets with joy, and available JCW performance means highway fun on the way home.
               </AccordionContent>
             </AccordionItem>
             
@@ -154,7 +154,7 @@ export default function MiniBrandPage() {
                 Is the new electric Mini Hardtop worth leasing?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base">
-                The Mini Cooper SE delivers 114 miles of urban range — sufficient for most NJ city commutes — with Mini's signature go-kart handling now instant-on electric. An outstanding urban EV lease option.
+                The Mini Cooper SE delivers 114 miles of urban range - sufficient for most NJ city commutes - with Mini's signature go-kart handling now instant-on electric. An outstanding urban EV lease option.
               </AccordionContent>
             </AccordionItem>
             

@@ -51,7 +51,7 @@ export default function AudiBrandPage() {
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <ShieldCheck className="w-12 h-12 text-accent mb-4" />
               <h3 className="text-xl font-bold mb-4">quattro® All-Wheel Drive</h3>
-              <p className="text-muted-foreground">Tackle Northeast winters with confidence using Audi's legendary, proactive AWD system — standard on most models.</p>
+              <p className="text-muted-foreground">Tackle Northeast winters with confidence using Audi's legendary, proactive AWD system - standard on most models.</p>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center flex flex-col items-center hover:border-accent transition-colors">
               <Zap className="w-12 h-12 text-accent mb-4" />
@@ -83,7 +83,7 @@ export default function AudiBrandPage() {
               </div>
               <h2 className="text-3xl font-black uppercase mb-6">The <span className="text-accent italic">Audi</span> Legacy</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Audi's 'Vorsprung durch Technik' (Advantage through Technology) philosophy has driven revolutionary milestones including the 1980 Quattro AWD system, the all-aluminum space frame, and the current e-tron electric lineup. With roots in the Auto Union racing tradition, Audi consistently leads in technology adoption — from virtual cockpits to Level 2+ driver assistance.
+                Audi's 'Vorsprung durch Technik' (Advantage through Technology) philosophy has driven revolutionary milestones including the 1980 Quattro AWD system, the all-aluminum space frame, and the current e-tron electric lineup. With roots in the Auto Union racing tradition, Audi consistently leads in technology adoption - from virtual cockpits to Level 2+ driver assistance.
               </p>
             </div>
           </div>
