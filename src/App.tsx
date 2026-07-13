@@ -427,7 +427,9 @@ const blogSlugs = [
   'car-key-not-working-in-ignition',
   'are-jeeps-reliable',
   'hyundai-sonata-reliability',
-  'negotiate-the-best-car-lease-deal'
+  'negotiate-the-best-car-lease-deal',
+  'zero-down-car-lease-deals-no-money-down',
+  'should-i-pay-invoice-price-for-a-new-car'
 ];
 
 const App = () => (
