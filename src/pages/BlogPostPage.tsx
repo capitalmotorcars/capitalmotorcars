@@ -264,6 +264,24 @@ function BlogContent({ content }: { content: string }) {
       continue;
     }
 
+    // Numbered list (lines starting with 1. 2. 3.)
+    if (/^\d+\.\s+/.test(line)) {
+      const items: string[] = [];
+      while (i < lines.length && /^\d+\.\s+/.test(lines[i])) {
+        items.push(lines[i].replace(/^\d+\.\s+/, '').trim());
+        i++;
+      }
+      blocks.push(
+        <ol key={key++} className="list-decimal pl-6 space-y-3 my-6 text-muted-foreground leading-relaxed">
+          {items.map((item, j) => (
+            <li key={j} className="pl-1">{renderInline(item, linkedBrands)}</li>
+          ))}
+        </ol>
+      );
+      insertMidCtaIfNeeded();
+      continue;
+    }
+
     // Section heading: ## H2, ### H3, or short line ending with :
     const trimmed = line.trim();
     const isH2 = trimmed.startsWith('## ') && trimmed.length < 120;
@@ -330,6 +348,7 @@ function BlogContent({ content }: { content: string }) {
       const l = lines[i];
       if (l.trim() === '') break;
       if (/^[-*]\s+/.test(l)) break;
+      if (/^\d+\.\s+/.test(l)) break;
       if (l.trim().startsWith('|')) break;
       if ((l.trim().endsWith(':') || l.trim().startsWith('###')) && l.trim().length < 80) break;
       paraLines.push(l);
@@ -566,10 +585,10 @@ export default function BlogPostPage() {
                   )}
                 </div>
 
-                {post.cover_image_url && (
+                {(post.cover_image_url || (post as any).featured_image) && (
                   <div className="overflow-hidden rounded-[2.5rem] border border-white/10 shadow-2xl shadow-accent/5">
                     <img
-                      src={post.cover_image_url}
+                      src={post.cover_image_url || (post as any).featured_image}
                       alt={post.title}
                       className="w-full h-auto object-cover aspect-video"
                       fetchpriority="high"
