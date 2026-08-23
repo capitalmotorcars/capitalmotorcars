@@ -73,7 +73,7 @@ export default function AlfaRomeoBrandPage() {
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-1/2">
               <div className="aspect-video rounded-3xl overflow-hidden bg-muted">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Alfa_952_26.06.19_JM_%281%29_%28cropped%29.jpg/1280px-Alfa_952_26.06.19_JM_%281%29_%28cropped%29.jpg" alt="Alfa Romeo Heritage" className="w-full h-full object-cover" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Alfa_952_26.06.19_JM_%281%29_%28cropped%29.jpg/1280px-Alfa_952_26.06.19_JM_%281%29_%28cropped%29.jpg" alt="Alfa Romeo Heritage" className="w-full h-full object-cover"  loading="lazy" decoding="async" />
               </div>
             </div>
             <div className="md:w-1/2">

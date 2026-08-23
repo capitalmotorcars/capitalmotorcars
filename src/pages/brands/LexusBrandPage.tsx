@@ -73,7 +73,7 @@ export default function LexusBrandPage() {
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-1/2">
               <div className="aspect-video rounded-3xl overflow-hidden bg-muted">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/2023_Lexus_LC500_in_Atomic_Silver%2C_front_left.jpg/1280px-2023_Lexus_LC500_in_Atomic_Silver%2C_front_left.jpg" alt="Lexus Heritage" className="w-full h-full object-cover" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/2023_Lexus_LC500_in_Atomic_Silver%2C_front_left.jpg/1280px-2023_Lexus_LC500_in_Atomic_Silver%2C_front_left.jpg" alt="Lexus Heritage" className="w-full h-full object-cover"  loading="lazy" decoding="async" />
               </div>
             </div>
             <div className="md:w-1/2">

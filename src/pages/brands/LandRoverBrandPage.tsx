@@ -73,7 +73,7 @@ export default function LandRoverBrandPage() {
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-1/2">
               <div className="aspect-video rounded-3xl overflow-hidden bg-muted">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/2022_Land_Rover_Range_Rover_SE_P440e_AWD_Automatic_3.0_Front.jpg/1280px-2022_Land_Rover_Range_Rover_SE_P440e_AWD_Automatic_3.0_Front.jpg" alt="Land Rover Heritage" className="w-full h-full object-cover" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/2022_Land_Rover_Range_Rover_SE_P440e_AWD_Automatic_3.0_Front.jpg/1280px-2022_Land_Rover_Range_Rover_SE_P440e_AWD_Automatic_3.0_Front.jpg" alt="Land Rover Heritage" className="w-full h-full object-cover"  loading="lazy" decoding="async" />
               </div>
             </div>
             <div className="md:w-1/2">

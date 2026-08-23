@@ -73,7 +73,7 @@ export default function MiniBrandPage() {
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-1/2">
               <div className="aspect-video rounded-3xl overflow-hidden bg-muted">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Mini_Hatch_%28J01%29_Ditzingen_Mobil_IMG_9772_%28cropped%29.jpg/1280px-Mini_Hatch_%28J01%29_Ditzingen_Mobil_IMG_9772_%28cropped%29.jpg" alt="Mini Heritage" className="w-full h-full object-cover" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Mini_Hatch_%28J01%29_Ditzingen_Mobil_IMG_9772_%28cropped%29.jpg/1280px-Mini_Hatch_%28J01%29_Ditzingen_Mobil_IMG_9772_%28cropped%29.jpg" alt="Mini Heritage" className="w-full h-full object-cover"  loading="lazy" decoding="async" />
               </div>
             </div>
             <div className="md:w-1/2">

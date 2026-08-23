@@ -217,7 +217,7 @@ export function LocalLandingPageTemplate({
                     alt={heroImageAlt}
                     className="h-[260px] w-full object-cover sm:h-[340px] lg:h-[460px]"
                     fetchpriority="high"
-                  />
+                   loading="lazy" decoding="async" />
                 </div>
 
                 <div className="mt-4 grid grid-cols-3 gap-3">

@@ -73,7 +73,7 @@ export default function VolvoBrandPage() {
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-1/2">
               <div className="aspect-video rounded-3xl overflow-hidden bg-muted">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Volvo_XC90_T8_AWD_Plug-in_Hybrid_Plus_%28II%2C_2._Facelift%29_%E2%80%93_f_03102025.jpg/1280px-Volvo_XC90_T8_AWD_Plug-in_Hybrid_Plus_%28II%2C_2._Facelift%29_%E2%80%93_f_03102025.jpg" alt="Volvo Heritage" className="w-full h-full object-cover" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Volvo_XC90_T8_AWD_Plug-in_Hybrid_Plus_%28II%2C_2._Facelift%29_%E2%80%93_f_03102025.jpg/1280px-Volvo_XC90_T8_AWD_Plug-in_Hybrid_Plus_%28II%2C_2._Facelift%29_%E2%80%93_f_03102025.jpg" alt="Volvo Heritage" className="w-full h-full object-cover"  loading="lazy" decoding="async" />
               </div>
             </div>
             <div className="md:w-1/2">

@@ -73,7 +73,7 @@ export default function FiatBrandPage() {
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-1/2">
               <div className="aspect-video rounded-3xl overflow-hidden bg-muted">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Fiat_500_%282007%29_02.JPG/1280px-Fiat_500_%282007%29_02.JPG" alt="Fiat Heritage" className="w-full h-full object-cover" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Fiat_500_%282007%29_02.JPG/1280px-Fiat_500_%282007%29_02.JPG" alt="Fiat Heritage" className="w-full h-full object-cover"  loading="lazy" decoding="async" />
               </div>
             </div>
             <div className="md:w-1/2">

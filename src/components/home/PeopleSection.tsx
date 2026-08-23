@@ -155,7 +155,7 @@ export function PeopleSection({ homePageOnly = false, padding }: PeopleSectionPr
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <img src={founder.image} alt="" className="h-20 w-20 md:h-24 md:w-24 rounded-full object-cover ring-2 ring-border shadow-md transition-all duration-300 group-hover:ring-accent/50" />
+                <img src={founder.image} alt={`${founder.name} - ${founder.role} at Capital Motor Cars`} loading="lazy" decoding="async" className="h-20 w-20 md:h-24 md:w-24 rounded-full object-cover ring-2 ring-border shadow-md transition-all duration-300 group-hover:ring-accent/50" />
                 <p className="mt-3 text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wider transition-all duration-300 group-hover:text-foreground/80">Founder</p>
                 <h3 className="mt-1 text-base md:text-lg font-semibold text-foreground transition-all duration-300 group-hover:font-bold group-hover:text-accent">{founder.name}</h3>
                 <p className="mt-0.5 text-sm md:text-base text-muted-foreground transition-all duration-300 group-hover:text-foreground/90">{founder.role}</p>
@@ -184,7 +184,7 @@ export function PeopleSection({ homePageOnly = false, padding }: PeopleSectionPr
                 >
                   <div className={cn(dialogPanelClass, 'w-full max-w-lg p-6 md:p-8')}>
                     <div className="flex items-start gap-4">
-                      <img src={founder.image} alt="" className="h-20 w-20 md:h-24 md:w-24 shrink-0 rounded-full object-cover ring-2 ring-border" />
+                      <img src={founder.image} alt={`${founder.name} - ${founder.role}`} loading="lazy" decoding="async" className="h-20 w-20 md:h-24 md:w-24 shrink-0 rounded-full object-cover ring-2 ring-border" />
                       <div className="min-w-0 flex-1">
                         <p className="text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wider">A Note from Our Founder</p>
                         <h3 className="text-xl md:text-2xl font-semibold text-foreground">{founder.name}</h3>
@@ -237,7 +237,7 @@ export function PeopleSection({ homePageOnly = false, padding }: PeopleSectionPr
                         whileTap={{ scale: 0.98 }}
                       >
                         {person.image ? (
-                          <img src={person.image} alt="" className="h-20 w-20 md:h-24 md:w-24 rounded-full object-cover ring-2 ring-border shadow-md transition-all duration-300 group-hover:ring-accent/50" />
+                          <img src={person.image} alt={`${person.name} - ${person.role} at Capital Motor Cars`} loading="lazy" decoding="async" className="h-20 w-20 md:h-24 md:w-24 rounded-full object-cover ring-2 ring-border shadow-md transition-all duration-300 group-hover:ring-accent/50" />
                         ) : (
                           <div className="flex h-20 w-20 md:h-24 md:w-24 shrink-0 items-center justify-center rounded-full bg-muted ring-2 ring-border shadow-md text-muted-foreground transition-all duration-300 group-hover:ring-accent/50">
                             <UserCircle className="h-10 w-10 md:h-12 md:w-12" aria-hidden />
@@ -271,7 +271,7 @@ export function PeopleSection({ homePageOnly = false, padding }: PeopleSectionPr
                           <div className={cn(dialogPanelClass, 'w-full max-w-lg p-6 md:p-8')}>
                             <div className="flex items-start gap-4">
                               {person.image ? (
-                                <img src={person.image} alt="" className="h-20 w-20 md:h-24 md:w-24 shrink-0 rounded-full object-cover ring-2 ring-border" />
+                                <img src={person.image} alt={`${person.name} - ${person.role}`} loading="lazy" decoding="async" className="h-20 w-20 md:h-24 md:w-24 shrink-0 rounded-full object-cover ring-2 ring-border" />
                               ) : (
                                 <div className="flex h-20 w-20 md:h-24 md:w-24 shrink-0 items-center justify-center rounded-full bg-muted ring-2 ring-border text-muted-foreground">
                                   <UserCircle className="h-10 w-10 md:h-12 md:w-12" aria-hidden />
@@ -329,7 +329,7 @@ export function PeopleSection({ homePageOnly = false, padding }: PeopleSectionPr
                       whileTap={{ scale: 0.98 }}
                     >
                       {person.image ? (
-                        <img src={person.image} alt="" className="h-20 w-20 md:h-24 md:w-24 rounded-full object-cover ring-2 ring-border shadow-md transition-all duration-300 group-hover:ring-accent/50" />
+                        <img src={person.image} alt={`${person.name} - ${person.role} at Capital Motor Cars`} loading="lazy" decoding="async" className="h-20 w-20 md:h-24 md:w-24 rounded-full object-cover ring-2 ring-border shadow-md transition-all duration-300 group-hover:ring-accent/50" />
                       ) : (
                         <div className="flex h-20 w-20 md:h-24 md:w-24 shrink-0 items-center justify-center rounded-full bg-muted ring-2 ring-border shadow-md text-muted-foreground transition-all duration-300 group-hover:ring-accent/50">
                           <UserCircle className="h-10 w-10 md:h-12 md:w-12" aria-hidden />
@@ -363,7 +363,7 @@ export function PeopleSection({ homePageOnly = false, padding }: PeopleSectionPr
                         <div className={cn(dialogPanelClass, 'w-full max-w-lg p-6 md:p-8')}>
                           <div className="flex items-start gap-4">
                             {person.image ? (
-                              <img src={person.image} alt="" className="h-20 w-20 md:h-24 md:w-24 shrink-0 rounded-full object-cover ring-2 ring-border" />
+                              <img src={person.image} alt={`${person.name} - ${person.role}`} loading="lazy" decoding="async" className="h-20 w-20 md:h-24 md:w-24 shrink-0 rounded-full object-cover ring-2 ring-border" />
                             ) : (
                               <div className="flex h-20 w-20 md:h-24 md:w-24 shrink-0 items-center justify-center rounded-full bg-muted ring-2 ring-border text-muted-foreground">
                                 <UserCircle className="h-10 w-10 md:h-12 md:w-12" aria-hidden />

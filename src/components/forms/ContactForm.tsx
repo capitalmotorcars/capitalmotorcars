@@ -707,7 +707,7 @@ export function ContactForm({
                 <div className="mt-2 flex flex-wrap gap-2">
                   {exteriorFiles.map((f, i) => (
                     <div key={i} className="relative group">
-                      <img src={URL.createObjectURL(f)} alt="" className="w-14 h-14 object-cover rounded-lg border" />
+                      <img src={URL.createObjectURL(f)} alt={`Vehicle exterior upload photo ${i + 1}`} loading="lazy" decoding="async" className="w-14 h-14 object-cover rounded-lg border" />
                       <button
                         type="button"
                         onClick={() => setExteriorFiles((prev) => prev.filter((_, idx) => idx !== i))}
@@ -745,7 +745,7 @@ export function ContactForm({
                 <div className="mt-2 flex flex-wrap gap-2">
                   {interiorFiles.map((f, i) => (
                     <div key={i} className="relative group">
-                      <img src={URL.createObjectURL(f)} alt="" className="w-14 h-14 object-cover rounded-lg border" />
+                      <img src={URL.createObjectURL(f)} alt={`Vehicle interior upload photo ${i + 1}`} loading="lazy" decoding="async" className="w-14 h-14 object-cover rounded-lg border" />
                       <button
                         type="button"
                         onClick={() => setInteriorFiles((prev) => prev.filter((_, idx) => idx !== i))}

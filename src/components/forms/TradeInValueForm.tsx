@@ -313,7 +313,7 @@ export function TradeInValueForm() {
             <div className="mt-2 flex flex-wrap gap-2">
               {exteriorFiles.map((f, i) => (
                 <div key={i} className="relative group">
-                  <img src={URL.createObjectURL(f)} alt="" className="w-16 h-16 object-cover rounded-lg border" />
+                  <img src={URL.createObjectURL(f)} alt={`Trade-in exterior photo upload ${i + 1}`} loading="lazy" decoding="async" className="w-16 h-16 object-cover rounded-lg border" />
                   <button
                     type="button"
                     onClick={() => removeFile(exteriorFiles, setExteriorFiles, i)}
@@ -351,7 +351,7 @@ export function TradeInValueForm() {
             <div className="mt-2 flex flex-wrap gap-2">
               {interiorFiles.map((f, i) => (
                 <div key={i} className="relative group">
-                  <img src={URL.createObjectURL(f)} alt="" className="w-16 h-16 object-cover rounded-lg border" />
+                  <img src={URL.createObjectURL(f)} alt={`Trade-in interior photo upload ${i + 1}`} loading="lazy" decoding="async" className="w-16 h-16 object-cover rounded-lg border" />
                   <button
                     type="button"
                     onClick={() => removeFile(interiorFiles, setInteriorFiles, i)}

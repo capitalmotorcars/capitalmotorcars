@@ -85,9 +85,10 @@ export function HeroSection() {
                       <img
                         key={i}
                         src={src}
-                        alt=""
+                        alt={`Capital Motor Cars verified client ${i + 1}`}
                         className="w-8 h-8  md:w-12 md:h-12 xl:w-14 xl:h-14 rounded-full border-2 sm:border-[3px] xl:border-4 border-background dark:border-[hsl(0_0%_3%)] object-cover"
                         loading="lazy"
+                        decoding="async"
                       />
                     ))}
                   </div>
@@ -191,9 +192,10 @@ export function HeroSection() {
                   <img
                     key={i}
                     src={src}
-                    alt=""
+                    alt={`Capital Motor Cars verified client ${i + 1}`}
                     className="w-8 h-8  md:w-12 md:h-12 rounded-full border-2 sm:border-[3px] border-background dark:border-[hsl(0_0%_3%)] object-cover"
                     loading="lazy"
+                    decoding="async"
                   />
                 ))}
               </div>

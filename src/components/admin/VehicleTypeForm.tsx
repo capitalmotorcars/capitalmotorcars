@@ -389,7 +389,7 @@ export function VehicleTypeForm({ vehicleType, onSubmit, onCancel, isLoading }: 
 
                                 >
                                     {imagePreview ? (
-                                        <img src={imagePreview} alt="Preview" className="absolute inset-0 w-full h-full object-cover" />
+                                        <img src={imagePreview} alt="Preview" className="absolute inset-0 w-full h-full object-cover"  loading="lazy" decoding="async" />
                                     ) : (
                                         <div className="text-center p-4">
                                             <UploadCloud className="w-8 h-8 mx-auto mb-2 text-muted-foreground" />

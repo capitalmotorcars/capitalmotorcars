@@ -181,7 +181,7 @@ export default function ChevySuburbanLeasePage() {
                     src="https://upload.wikimedia.org/wikipedia/commons/b/bc/2021_Chevrolet_Suburban_High_Country_Front_View_%28United_States%29.png"
                     alt="Chevy Suburban Lease"
                     className="h-[400px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
+                   loading="lazy" decoding="async" />
                   <div className="absolute bottom-6 left-6 z-20">
                     <div className="inline-flex items-center gap-2 rounded-full bg-accent/20 border border-accent/30 backdrop-blur-md px-3 py-1.5 text-xs font-black uppercase tracking-widest text-white mb-3">
                       <Sparkles className="h-3 w-3 text-accent" /> Fleet Special
@@ -262,7 +262,7 @@ export default function ChevySuburbanLeasePage() {
                     src={trim.image}
                     alt={trim.name}
                     className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                  />
+                   loading="lazy" decoding="async" />
                   <div className="absolute top-6 right-6">
                     <div className="bg-background/90 dark:bg-black/80 backdrop-blur-md text-section font-bold px-4 py-2 rounded-full border border-border dark:border-white/10 shadow-sm">
                       Est. Starting <span className="text-accent">${trim.price}</span>/mo

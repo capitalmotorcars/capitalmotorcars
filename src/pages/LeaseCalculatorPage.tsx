@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Calculator, DollarSign, Percent, Car, ShieldCheck, Zap } from 'lucide-react';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
-import { JsonLd, createBreadcrumbSchema, createFaqSchema, createHowToSchema, createWebPageSchema } from '@/components/JsonLd';
+import { JsonLd, createBreadcrumbSchema, createWebPageSchema } from '@/components/JsonLd';
 import { LeaseCalculator } from '@/components/calculator/LeaseCalculator';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { motion } from 'framer-motion';
@@ -130,12 +130,6 @@ export default function LeaseCalculatorPage() {
             { name: 'Home', url: 'https://www.capitalmotorcars.com' },
             { name: 'Lease Calculator', url: 'https://www.capitalmotorcars.com/lease-calculator' },
           ]),
-          createFaqSchema(faqs),
-          createHowToSchema({
-            name: 'How to Calculate a Car Lease Payment in NJ',
-            description: 'Step-by-step guide to using the Capital Motor Cars lease calculator to find your exact monthly payment, due at signing, and total lease cost.',
-            steps: howToSteps,
-          }),
         ]}
       />
 

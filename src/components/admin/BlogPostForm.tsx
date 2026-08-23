@@ -290,7 +290,7 @@ export function BlogPostForm({ post, onSubmit, onCancel, isLoading }: BlogPostFo
                                         src={imagePreview}
                                         alt="Preview"
                                         className="absolute inset-0 w-full h-full object-cover"
-                                    />
+                                     loading="lazy" decoding="async" />
                                     <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                                         <p className="text-white font-bold text-sm">Click to Change</p>
                                     </div>

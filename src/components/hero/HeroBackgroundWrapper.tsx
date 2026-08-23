@@ -26,7 +26,7 @@ export function HeroBackgroundWrapper({ children }: HeroBackgroundWrapperProps) 
       >
         <img
           src={heroBg}
-          alt=""
+          alt="Capital Motor Cars Luxury Showroom and Vehicle Delivery"
           width={1920}
           height={1080}
           loading="eager"
@@ -44,7 +44,7 @@ export function HeroBackgroundWrapper({ children }: HeroBackgroundWrapperProps) 
       >
         <img
           src={heroBg}
-          alt=""
+          alt="Capital Motor Cars Luxury Showroom and Vehicle Delivery"
           width={1920}
           height={1080}
           loading="eager"

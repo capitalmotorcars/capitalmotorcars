@@ -98,7 +98,7 @@ export function BrandCityLandingTemplate({ brand, city, slug, heroImage, seoKeyw
             src={heroImage} 
             alt={`${brand} driving in ${city}`} 
             className="w-full h-full object-cover"
-          />
+           loading="lazy" decoding="async" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30" />
           <div className="absolute inset-0 bg-black/40" />
         </div>
@@ -341,7 +341,7 @@ export function BrandCityLandingTemplate({ brand, city, slug, heroImage, seoKeyw
                 src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2000&auto=format&fit=crop" 
                 alt="Auto broker handing over keys" 
                 className="relative rounded-[3rem] border border-white/10 shadow-2xl object-cover h-[500px] w-full"
-              />
+               loading="lazy" decoding="async" />
               
               <div className="absolute -bottom-6 -left-6 bg-card p-6 rounded-2xl border border-border/50 shadow-xl max-w-[250px]">
                 <div className="flex gap-1 mb-2">

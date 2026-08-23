@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
-import { JsonLd, createServiceSchema, createFaqSchema, createHowToSchema } from '@/components/JsonLd';
+import { JsonLd, createServiceSchema } from '@/components/JsonLd';
 import { ServiceHero } from '@/components/services/ServiceHero';
 import { RelatedServices } from '@/components/services/RelatedServices';
 import { TrustStatsBar } from '@/components/shared/TrustStatsBar';
@@ -111,12 +111,6 @@ export default function LeaseReturnPage() {
             name: 'Car Lease Return Service NJ',
             description: 'Pre-return inspection, fee review, and repair coordination so NJ drivers return their leased vehicle without surprise charges.',
             url: 'https://www.capitalmotorcars.com/services/lease-return',
-          }),
-          createFaqSchema(faqs),
-          createHowToSchema({
-            name: 'How to Return a Leased Car in NJ Without Surprise Fees',
-            description: 'A step-by-step guide to returning your leased vehicle in New Jersey while minimizing disposition fees, wear and tear charges, and excess mileage costs.',
-            steps: returnSteps.map((s) => ({ name: s.title, text: s.description })),
           }),
         ]}
       />

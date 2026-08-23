@@ -104,7 +104,7 @@ function SortableDealCard({ deal, onEdit, onDelete, onToggleStatus, isDragEnable
                                 src={deal.image_url}
                                 alt={`${deal.make} ${deal.model}`}
                                 className="w-full h-full object-cover"
-                            />
+                             loading="lazy" decoding="async" />
                         ) : (
                             <div className="w-full h-full flex items-center justify-center text-muted-foreground/20">
                                 <Sparkles className="w-6 h-6 sm:w-8 sm:h-8" />

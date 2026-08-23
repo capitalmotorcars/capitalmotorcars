@@ -91,7 +91,7 @@ export function ComparisonTemplate({ data }: { data: ComparisonData }) {
             {/* Vehicle 1 */}
             <div className="bg-card dark:bg-white/[0.02] border border-border/50 dark:border-white/10 rounded-3xl overflow-hidden shadow-2xl">
               <div className="h-64 overflow-hidden relative">
-                <img src={data.vehicle1.image} alt={`\${data.vehicle1.make} \${data.vehicle1.model}`} className="w-full h-full object-cover" />
+                <img src={data.vehicle1.image} alt={`\${data.vehicle1.make} \${data.vehicle1.model}`} className="w-full h-full object-cover"  loading="lazy" decoding="async" />
                 <div className="absolute bottom-4 left-4">
                   <span className="bg-black/80 backdrop-blur text-white px-4 py-2 rounded-xl font-bold text-xl">
                     {data.vehicle1.make} {data.vehicle1.model}
@@ -130,7 +130,7 @@ export function ComparisonTemplate({ data }: { data: ComparisonData }) {
             {/* Vehicle 2 */}
             <div className="bg-card dark:bg-white/[0.02] border border-border/50 dark:border-white/10 rounded-3xl overflow-hidden shadow-2xl">
               <div className="h-64 overflow-hidden relative">
-                <img src={data.vehicle2.image} alt={`\${data.vehicle2.make} \${data.vehicle2.model}`} className="w-full h-full object-cover" />
+                <img src={data.vehicle2.image} alt={`\${data.vehicle2.make} \${data.vehicle2.model}`} className="w-full h-full object-cover"  loading="lazy" decoding="async" />
                 <div className="absolute bottom-4 left-4">
                   <span className="bg-black/80 backdrop-blur text-white px-4 py-2 rounded-xl font-bold text-xl">
                     {data.vehicle2.make} {data.vehicle2.model}

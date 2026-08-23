@@ -122,7 +122,7 @@ export function CategoryLandingTemplate({
                     )}
                     {vehicle.image && (
                       <div className="relative h-48 mt-4 group-hover:scale-105 transition-transform duration-500">
-                        <img src={vehicle.image} alt={vehicle.name} className="w-full h-full object-contain" />
+                        <img src={vehicle.image} alt={vehicle.name} className="w-full h-full object-contain"  loading="lazy" decoding="async" />
                       </div>
                     )}
                   </div>

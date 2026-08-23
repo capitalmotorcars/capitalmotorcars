@@ -152,7 +152,7 @@ export default function CarLeasingJerseyCityNJPage() {
                     src={carLeaseImage}
                     alt="Car leasing in Jersey City New Jersey"
                     className="h-[200px] w-full object-cover sm:h-[250px] lg:h-[270px]"
-                  />
+                   loading="lazy" decoding="async" />
                 </div>
 
                 <div className="mt-3 grid gap-3 sm:grid-cols-2">

@@ -40,7 +40,7 @@ function VehicleCard({ vehicle, index, currentSlug }: { vehicle: any; index: num
                         src={vehicle.image}
                         alt={vehicle.vehicleName}
                         className="w-full h-full object-cover p-4 transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
-                    />
+                     loading="lazy" decoding="async" />
                 ) : (
                     <div className="w-full h-full flex items-center justify-center">
                         <Car className="w-12 h-12 text-accent/20" />

@@ -84,7 +84,7 @@ function QuizResults({ result, answers, setIsCompleted, setCurrentQuestionIndex 
                     src={selectedVehicle.image} 
                     alt={`${selectedVehicle.year} ${selectedVehicle.brand} ${selectedVehicle.name}`}
                     className="w-full h-full object-cover"
-                  />
+                   loading="lazy" decoding="async" />
                 </div>
               )}
             </motion.div>
@@ -225,7 +225,7 @@ function QuizResults({ result, answers, setIsCompleted, setCurrentQuestionIndex 
 
                     <div className="w-full md:w-1/2 p-6 md:p-8 relative flex items-center justify-center min-h-[250px] md:min-h-[300px] pt-16 md:pt-8">
                       {vehicle.image && (
-                        <img src={vehicle.image} alt="" className="w-full h-auto max-w-[90%] object-contain scale-105 group-hover:scale-110 transition-transform duration-500 drop-shadow-2xl" />
+                        <img src={vehicle.image} alt={`${vehicle.year} ${vehicle.brand} ${vehicle.name} Top Match`} loading="lazy" decoding="async" className="w-full h-auto max-w-[90%] object-contain scale-105 group-hover:scale-110 transition-transform duration-500 drop-shadow-2xl" />
                       )}
                     </div>
 
@@ -311,7 +311,7 @@ function QuizResults({ result, answers, setIsCompleted, setCurrentQuestionIndex 
                       )}
                       {vehicle.image && (
                         <div className="relative transition-opacity opacity-80 group-hover:opacity-100 mt-4">
-                          <img src={vehicle.image} alt="" className="w-full h-full object-contain scale-110 group-hover:scale-125 transition-all duration-300" />
+                          <img src={vehicle.image} alt={`${vehicle.year} ${vehicle.brand} ${vehicle.name} Car Lease Option`} loading="lazy" decoding="async" className="w-full h-full object-contain scale-110 group-hover:scale-125 transition-all duration-300" />
                         </div>
                       )}
                       <p className="text-sm text-muted-foreground mt-8 leading-relaxed font-medium italic">

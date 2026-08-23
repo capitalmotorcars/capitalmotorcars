@@ -185,7 +185,7 @@ export default function BmwCarLeasePage() {
                     src={featuredBmwVehicles[0].image}
                     alt="BMW X5 M60i Leasing"
                     className="h-[400px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
+                   loading="lazy" decoding="async" />
                   <div className="absolute bottom-6 left-6 z-20">
                     <div className="inline-flex items-center gap-2 rounded-full bg-accent/20 border border-accent/30 backdrop-blur-md px-3 py-1.5 text-xs font-black uppercase tracking-widest text-white mb-3">
                       <Sparkles className="h-3 w-3 text-accent" /> Featured Build
@@ -267,7 +267,7 @@ export default function BmwCarLeasePage() {
                     src={vehicle.image} 
                     alt={vehicle.name} 
                     className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                  />
+                   loading="lazy" decoding="async" />
                   <div className="absolute top-6 right-6">
                     <div className="bg-background/90 dark:bg-black/80 backdrop-blur-md text-section font-bold px-4 py-2 rounded-full border border-border dark:border-white/10 shadow-sm">
                       Starting est. <span className="text-accent">${vehicle.price}</span>/mo
@@ -380,7 +380,7 @@ export default function BmwCarLeasePage() {
                   src={luxuryLeasingImage} 
                   alt="Capital Motor Cars Luxury Experience" 
                   className="w-full h-full object-cover min-h-[500px]"
-                />
+                 loading="lazy" decoding="async" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-10">
                   <div className="glass-card-theme border-none bg-black/40 backdrop-blur-xl p-6 rounded-2xl w-full">
                     <div className="flex items-center gap-4">

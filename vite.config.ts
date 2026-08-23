@@ -26,6 +26,7 @@ export default defineConfig(({ mode }) => ({
       output: {
         manualChunks: {
           'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          'vendor-icons': ['lucide-react'],
           'vendor-radix': [
             '@radix-ui/react-dialog',
             '@radix-ui/react-accordion',
@@ -39,6 +40,7 @@ export default defineConfig(({ mode }) => ({
           'vendor-query': ['@tanstack/react-query'],
         },
       },
+      chunkSizeWarningLimit: 1000,
     },
   },
 }));

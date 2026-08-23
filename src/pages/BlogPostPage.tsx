@@ -1,13 +1,14 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { Link, useParams, useLocation, useNavigate } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
-import { JsonLd, createArticleSchema, createPersonSchema } from '@/components/JsonLd';
+import { JsonLd, createArticleSchema, createPersonSchema, createFaqSchema, createBreadcrumbSchema } from '@/components/JsonLd';
 import { SEO } from '@/components/SEO';
 import { getBlogPostBySlug, getActiveBlogPosts } from '@/services/blogService';
 import type { BlogPost } from '@/types/blog';
 import { Button } from '@/components/ui/button';
-import { Calendar, ArrowLeft, ArrowRight, Phone, Search, ChevronRight } from 'lucide-react';
+import { Calendar, ArrowLeft, ArrowRight, Phone, Search, ChevronRight, CheckCircle2, ShieldCheck, Award, UserCheck, Sparkles } from 'lucide-react';
 import NotFound from '@/pages/NotFound';
+import founderImage from '@/assets/team-chris.jpg';
 
 const BLOG_REFRESH_DATE = new Date('2026-04-01T00:00:00Z');
 const BLOG_REFRESH_LABEL = 'Last Updated: April 2026';
@@ -49,6 +50,24 @@ function sanitizeMarkdownHref(raw: string): string | null {
     return null;
   }
   return null;
+}
+
+function extractFaqsFromMarkdown(markdown?: string): { question: string; answer: string }[] {
+  if (!markdown) return [];
+  const faqs: { question: string; answer: string }[] = [];
+  const regex = /###\s+([^\n\?]+\?)\s*\n+([\s\S]*?)(?=(?:###|\n##|$))/g;
+  let match;
+  while ((match = regex.exec(markdown)) !== null) {
+    const question = match[1].trim();
+    const answer = match[2]
+      .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1')
+      .replace(/[*_`#]/g, '')
+      .trim();
+    if (question && answer && answer.length > 15) {
+      faqs.push({ question, answer });
+    }
+  }
+  return faqs;
 }
 
 const BRAND_LINKS: Record<string, string> = {
@@ -241,7 +260,8 @@ function BlogContent({ content }: { content: string }) {
 
   while (i < lines.length) {
     const line = lines[i];
-    if (line.trim() === '') {
+    const trimmed = line.trim();
+    if (trimmed === '') {
       i++;
       continue;
     }
@@ -282,8 +302,34 @@ function BlogContent({ content }: { content: string }) {
       continue;
     }
 
+    // Horizontal rule divider (---, ***, ___)
+    const isHorizontalRule = /^(\s*[-*_]\s*){3,}$/.test(trimmed);
+    if (isHorizontalRule) {
+      blocks.push(
+        <hr key={key++} className="my-10 border-t border-border/60" />
+      );
+      insertMidCtaIfNeeded();
+      i++;
+      continue;
+    }
+
+    // Blockquote (> text)
+    if (/^>\s+/.test(line)) {
+      const quoteLines: string[] = [];
+      while (i < lines.length && /^>\s+/.test(lines[i])) {
+        quoteLines.push(lines[i].replace(/^>\s+/, '').trim());
+        i++;
+      }
+      blocks.push(
+        <blockquote key={key++} className="border-l-4 border-accent pl-6 py-2 my-6 italic text-foreground/90 bg-accent/[0.02] rounded-r-2xl">
+          {renderInline(quoteLines.join(' '), linkedBrands)}
+        </blockquote>
+      );
+      insertMidCtaIfNeeded();
+      continue;
+    }
+
     // Section heading: ## H2, ### H3, or short line ending with :
-    const trimmed = line.trim();
     const isH2 = trimmed.startsWith('## ') && trimmed.length < 120;
     const isH3 = trimmed.startsWith('### ') && trimmed.length < 120;
     const isColonHeading = trimmed.endsWith(':') && !trimmed.startsWith('http') && trimmed.length < 120;
@@ -350,6 +396,8 @@ function BlogContent({ content }: { content: string }) {
       if (/^[-*]\s+/.test(l)) break;
       if (/^\d+\.\s+/.test(l)) break;
       if (l.trim().startsWith('|')) break;
+      if (/^(\s*[-*_]\s*){3,}$/.test(l.trim())) break;
+      if (/^>\s+/.test(l)) break;
       if ((l.trim().endsWith(':') || l.trim().startsWith('###')) && l.trim().length < 80) break;
       paraLines.push(l);
       i++;
@@ -518,15 +566,26 @@ export default function BlogPostPage() {
             image: post.cover_image_url,
             publishedAt: post.published_at || post.created_at,
             modifiedAt: post.updated_at,
-            authorName: 'Capital Motor Cars Editorial Team',
+            authorName: 'Christopher Amico',
           }),
           createPersonSchema({
-            name: 'Capital Motor Cars Editorial Team',
-            jobTitle: 'Automotive Leasing Specialists',
-            description: 'The Capital Motor Cars editorial team consists of automotive leasing experts with over 30 years of combined industry experience, covering car leasing, financing, and vehicle services in New Jersey and New York.',
-            sameAs: ['https://www.capitalmotorcars.com/about'],
+            name: 'Christopher Amico',
+            jobTitle: 'President & CEO | Automotive Specialist',
+            description: 'Christopher Amico has over 30 years of automotive industry expertise with corporate Mercedes-Benz experience and BMW North America consulting. He leads Capital Motor Cars with a focus on transparent pricing, wholesale fleet lease negotiation, and consumer advocacy.',
+            image: 'https://www.capitalmotorcars.com/logo.png',
+            sameAs: [
+              'https://www.linkedin.com/company/capital-motor-cars/',
+              'https://www.capitalmotorcars.com/about'
+            ],
           }),
-          ...(faqSchema ? [faqSchema] : []),
+          createBreadcrumbSchema([
+            { name: 'Home', url: 'https://www.capitalmotorcars.com/' },
+            { name: 'Blog', url: 'https://www.capitalmotorcars.com/blog' },
+            { name: post.title, url: `https://www.capitalmotorcars.com/${post.slug}` },
+          ]),
+          ...(extractFaqsFromMarkdown(post.content).length > 0 ? [
+            createFaqSchema(extractFaqsFromMarkdown(post.content))
+          ] : []),
           ...(post.slug.startsWith('car-leasing-') ? [
             {
               '@context': 'https://schema.org',
@@ -565,6 +624,32 @@ export default function BlogPostPage() {
               </Button>
 
               <div className="space-y-8">
+                {/* E-E-A-T Editorial Review Badge */}
+                <div className="rounded-2xl border border-accent/20 bg-accent/[0.03] p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={founderImage}
+                      alt="Christopher Amico - President & CEO"
+                      className="w-11 h-11 rounded-full object-cover ring-2 ring-accent/30 shrink-0"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div className="text-left">
+                      <div className="flex items-center gap-1.5 text-xs font-bold text-foreground">
+                        <span>Reviewed by Christopher Amico</span>
+                        <ShieldCheck className="w-3.5 h-3.5 text-accent" />
+                      </div>
+                      <p className="text-[11px] text-muted-foreground">President & CEO • 30+ Years Automotive Experience</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 self-stretch sm:self-auto justify-between sm:justify-end border-t sm:border-t-0 pt-2 sm:pt-0 border-accent/10">
+                    <div className="flex items-center gap-1.5 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full">
+                      <CheckCircle2 className="w-3 h-3" />
+                      <span>Fact-Checked Active Lease Terms</span>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-accent">
                     <Calendar className="w-3.5 h-3.5" />
@@ -592,12 +677,112 @@ export default function BlogPostPage() {
                       alt={post.title}
                       className="w-full h-auto object-cover aspect-video"
                       fetchpriority="high"
-                    />
+                     loading="lazy" decoding="async" />
                   </div>
                 )}
 
                 <div className="prose prose-lg dark:prose-invert max-w-none">
                   <BlogContent content={post.content} />
+                </div>
+
+                {/* Interactive Lead Magnet Conversion Card */}
+                <div className="mt-12 overflow-hidden rounded-3xl border-2 border-accent/30 bg-gradient-to-br from-card via-card to-accent/5 p-6 md:p-8 shadow-xl">
+                  <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-6 border-b border-border/60">
+                    <div>
+                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-bold tracking-wide uppercase mb-3">
+                        <Sparkles className="w-3.5 h-3.5" />
+                        Wholesale Auto Concierge
+                      </div>
+                      <h3 className="text-2xl md:text-3xl font-black text-foreground tracking-tight">
+                        Skip the Dealership. Get True Wholesale Fleet Pricing.
+                      </h3>
+                      <p className="text-sm md:text-base text-muted-foreground mt-2 max-w-xl">
+                        Lock in direct captive bank buy-rates with zero hidden fees and 15-minute doorstep delivery to your home or office in NJ &amp; NY.
+                      </p>
+                    </div>
+                    <div className="shrink-0 flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                      <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-white font-bold rounded-2xl shadow-lg px-6 py-6 text-base">
+                        <Link to="/contact" className="flex items-center gap-2">
+                          <span>Get Free Custom Quote</span>
+                          <ArrowRight className="w-4 h-4" />
+                        </Link>
+                      </Button>
+                      <Button asChild variant="outline" size="lg" className="border-accent/30 hover:bg-accent/10 font-bold rounded-2xl px-6 py-6 text-base">
+                        <a href="tel:2015095555" className="flex items-center gap-2">
+                          <Phone className="w-4 h-4 text-accent" />
+                          <span>(201) 509-5555</span>
+                        </a>
+                      </Button>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 text-xs">
+                    <Link to="/lease-calculator" className="p-4 rounded-2xl bg-accent/[0.03] border border-border/60 hover:border-accent/40 hover:bg-accent/[0.08] transition-all flex flex-col gap-1.5 group">
+                      <span className="font-bold text-foreground text-sm flex items-center justify-between">
+                        <span>🧮 Lease Calculator</span>
+                        <ChevronRight className="w-3.5 h-3.5 text-accent transition-transform group-hover:translate-x-1" />
+                      </span>
+                      <span className="text-muted-foreground">Calculate monthly payments with custom Money Factors and true $0 down.</span>
+                    </Link>
+                    <Link to="/trade-in-value" className="p-4 rounded-2xl bg-accent/[0.03] border border-border/60 hover:border-accent/40 hover:bg-accent/[0.08] transition-all flex flex-col gap-1.5 group">
+                      <span className="font-bold text-foreground text-sm flex items-center justify-between">
+                        <span>💰 Check Lease Equity</span>
+                        <ChevronRight className="w-3.5 h-3.5 text-accent transition-transform group-hover:translate-x-1" />
+                      </span>
+                      <span className="text-muted-foreground">Extract positive cash equity from your current vehicle tax-free.</span>
+                    </Link>
+                    <Link to="/credit-application" className="p-4 rounded-2xl bg-accent/[0.03] border border-border/60 hover:border-accent/40 hover:bg-accent/[0.08] transition-all flex flex-col gap-1.5 group">
+                      <span className="font-bold text-foreground text-sm flex items-center justify-between">
+                        <span>⚡ 2-Min Pre-Approval</span>
+                        <ChevronRight className="w-3.5 h-3.5 text-accent transition-transform group-hover:translate-x-1" />
+                      </span>
+                      <span className="text-muted-foreground">Soft-pull pre-qualification with zero impact to your credit score.</span>
+                    </Link>
+                  </div>
+                </div>
+
+                {/* E-E-A-T Author & Editorial Review Box */}
+                <div className="mt-12 rounded-3xl border border-accent/20 bg-card p-6 md:p-8 shadow-lg">
+                  <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+                    <img
+                      src={founderImage}
+                      alt="Christopher Amico"
+                      className="w-20 h-20 md:w-24 md:h-24 rounded-2xl object-cover ring-2 ring-accent/40 shadow-md shrink-0"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h3 className="text-xl font-bold text-foreground">Christopher Amico</h3>
+                        <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-accent/10 text-accent">
+                          President & CEO
+                        </span>
+                      </div>
+                      <p className="text-xs text-muted-foreground mt-0.5 font-medium">
+                        30+ Years Automotive Industry Expertise • Former Mercedes-Benz Corporate & BMW NA Consultant
+                      </p>
+                      <p className="text-sm text-foreground/80 mt-3 leading-relaxed">
+                        Christopher founded Capital Motor Cars with one founding obligation: complete transparency and zero dealership games. He leads a concierge team of automotive specialists providing wholesale fleet pricing, true bank buy-rate financing, and white-glove doorstep delivery across New Jersey and New York.
+                      </p>
+                      <div className="flex flex-wrap items-center gap-4 mt-4 text-xs font-semibold text-accent">
+                        <Link to="/about" className="hover:underline flex items-center gap-1">
+                          <span>About Our Team</span>
+                          <ChevronRight className="w-3 h-3" />
+                        </Link>
+                        <a
+                          href="https://www.linkedin.com/company/capital-motor-cars/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:underline"
+                        >
+                          LinkedIn Profile
+                        </a>
+                        <Link to="/contact" className="hover:underline">
+                          Speak with an Auto Consultant
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Next/Prev Navigation */}
@@ -710,6 +895,24 @@ export default function BlogPostPage() {
           </div>
         </div>
       </section>
+
+      {/* Mobile Sticky Floating Lead Capture Bar */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-t border-border/60 p-3 shadow-2xl">
+        <div className="flex items-center gap-2 max-w-lg mx-auto">
+          <Button asChild variant="outline" className="flex-1 rounded-xl py-5 border-accent/40 text-xs font-bold shadow-sm">
+            <a href="tel:2015095555" className="flex items-center justify-center gap-1.5">
+              <Phone className="w-3.5 h-3.5 text-accent" />
+              <span>Call Broker</span>
+            </a>
+          </Button>
+          <Button asChild className="flex-1 rounded-xl py-5 bg-accent hover:bg-accent/90 text-white text-xs font-bold shadow-md">
+            <Link to="/contact" className="flex items-center justify-center gap-1.5">
+              <span>Get Wholesale Quote</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </Button>
+        </div>
+      </div>
     </Layout>
   );
 }

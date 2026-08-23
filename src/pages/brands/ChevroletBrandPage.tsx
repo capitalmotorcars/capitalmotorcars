@@ -73,7 +73,7 @@ export default function ChevroletBrandPage() {
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-1/2">
               <div className="aspect-video rounded-3xl overflow-hidden bg-muted">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/2021_Chevrolet_Corvette_C8.jpg/1280px-2021_Chevrolet_Corvette_C8.jpg" alt="Chevrolet Heritage" className="w-full h-full object-cover" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/2021_Chevrolet_Corvette_C8.jpg/1280px-2021_Chevrolet_Corvette_C8.jpg" alt="Chevrolet Heritage" className="w-full h-full object-cover"  loading="lazy" decoding="async" />
               </div>
             </div>
             <div className="md:w-1/2">

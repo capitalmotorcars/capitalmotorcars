@@ -47,7 +47,7 @@ export function ServiceSEOBlock({
               src={imageSrc} 
               alt={imageAlt} 
               className="relative rounded-[3rem] border border-white/10 shadow-2xl object-cover h-[500px] w-full"
-            />
+             loading="lazy" decoding="async" />
             
             {testimonialQuote && (
               <div className="absolute -bottom-6 -left-6 bg-card p-6 rounded-2xl border border-border/50 shadow-xl max-w-[250px]">

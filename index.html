@@ -84,56 +84,119 @@
   <meta name="apple-mobile-web-app-title" content="Capital Motor Cars">
   <link rel="apple-touch-icon" href="https://www.capitalmotorcars.com/logo.png">
   
+  <link rel="canonical" href="https://www.capitalmotorcars.com/">
+  
   <link rel="icon" type="image/png" href="https://www.capitalmotorcars.com/logo.png">
 
   <!-- Structured data for better SEO -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "AutomotiveBusiness",
-    "name": "Capital Motor Cars",
-    "description": "Capital Motor Cars helps you lease, finance, and take care of your vehicle with a clear process and personal support. No stress, no games.",
-    "url": "https://www.capitalmotorcars.com",
-    "telephone": "+1-201-509-5555",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+1-201-509-5555",
-      "contactType": "customer service",
-      "areaServed": ["US-NJ", "US-NY"],
-      "availableLanguage": "en"
-    },
-    "logo": {
-      "@type": "ImageObject",
-      "contentUrl": "https://www.capitalmotorcars.com/logo.png",
-      "creditText": "Capital Motor Cars",
-      "copyrightNotice": "© Capital Motor Cars. All rights reserved.",
-      "creator": {
-        "@type": "Organization",
-        "name": "Capital Motor Cars"
+    "@graph": [
+      {
+        "@type": "AutomotiveBusiness",
+        "@id": "https://www.capitalmotorcars.com/#organization",
+        "name": "Capital Motor Cars",
+        "description": "Capital Motor Cars helps you lease, finance, and take care of your vehicle with a clear process, wholesale fleet pricing, and personal consultant support across New Jersey and New York. No stress, no dealership games.",
+        "url": "https://www.capitalmotorcars.com",
+        "telephone": "+1-201-509-5555",
+        "email": "info@capitalmotorcars.com",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "251 Morris Avenue",
+          "addressLocality": "Springfield Township",
+          "addressRegion": "NJ",
+          "postalCode": "07081",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 40.6939,
+          "longitude": -74.3252
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "10:00",
+            "closes": "18:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Saturday", "Sunday"],
+            "opens": "00:00",
+            "closes": "00:00"
+          }
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "760"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+1-201-509-5555",
+          "contactType": "customer service",
+          "areaServed": ["US-NJ", "US-NY"],
+          "availableLanguage": "en"
+        },
+        "logo": {
+          "@type": "ImageObject",
+          "contentUrl": "https://www.capitalmotorcars.com/logo.png",
+          "url": "https://www.capitalmotorcars.com/logo.png",
+          "creditText": "Capital Motor Cars",
+          "copyrightNotice": "© Capital Motor Cars. All rights reserved.",
+          "creator": {
+            "@type": "Organization",
+            "name": "Capital Motor Cars"
+          },
+          "acquireLicensePage": "https://www.capitalmotorcars.com/contact"
+        },
+        "image": {
+          "@type": "ImageObject",
+          "contentUrl": "https://www.capitalmotorcars.com/shared-img.png",
+          "url": "https://www.capitalmotorcars.com/shared-img.png",
+          "creditText": "Capital Motor Cars",
+          "copyrightNotice": "© Capital Motor Cars. All rights reserved.",
+          "creator": {
+            "@type": "Organization",
+            "name": "Capital Motor Cars"
+          },
+          "acquireLicensePage": "https://www.capitalmotorcars.com/contact"
+        },
+        "sameAs": [
+          "https://www.instagram.com/capitalmotorcars",
+          "https://www.facebook.com/capitalmotorcars/",
+          "https://www.linkedin.com/company/capital-motor-cars/",
+          "https://x.com/capmotorcars",
+          "https://www.yelp.com/biz/capital-motor-cars-springfield"
+        ]
       },
-      "acquireLicensePage": "https://www.capitalmotorcars.com/contact"
-    },
-    "image": {
-      "@type": "ImageObject",
-      "contentUrl": "https://www.capitalmotorcars.com/shared-img.png",
-      "creditText": "Capital Motor Cars",
-      "copyrightNotice": "© Capital Motor Cars. All rights reserved.",
-      "creator": {
-        "@type": "Organization",
-        "name": "Capital Motor Cars"
-      },
-      "acquireLicensePage": "https://www.capitalmotorcars.com/contact"
-    },
-    "sameAs": [
-      "https://www.instagram.com/capitalmotorcars",
-      "https://www.facebook.com/capitalmotorcars/"
+      {
+        "@type": "WebSite",
+        "@id": "https://www.capitalmotorcars.com/#website",
+        "url": "https://www.capitalmotorcars.com/",
+        "name": "Capital Motor Cars",
+        "description": "Car Leasing & Auto Broker Concierge in New Jersey & New York",
+        "publisher": {
+          "@id": "https://www.capitalmotorcars.com/#organization"
+        },
+        "inLanguage": "en-US",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://www.capitalmotorcars.com/blog?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
     ]
   }
   </script>
 </head>
 
 <body>
-  <h1 style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;">Capital Motor Cars | Car Leasing Made Easy</h1>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 </body>

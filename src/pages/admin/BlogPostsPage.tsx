@@ -98,7 +98,7 @@ function SortableBlogCard({
                                 src={post.cover_image_url}
                                 alt={post.title}
                                 className="w-full h-full object-cover"
-                            />
+                             loading="lazy" decoding="async" />
                         ) : (
                             <div className="w-full h-full flex items-center justify-center text-muted-foreground/20">
                                 <FileText className="w-6 h-6 sm:w-8 sm:h-8" />
