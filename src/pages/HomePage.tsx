@@ -11,7 +11,7 @@ import { TestimonialsSection } from '@/components/home/TestimonialsSection';
 import { VehicleTypesCarousel } from '@/components/home/VehicleTypesCarousel';
 import { WhatWeDoSection } from '@/components/home/WhatWeDoSection';
 import { WhyUsAndExperienceSection } from '@/components/home/WhyUsAndExperienceSection';
-import { JsonLd, autoDealerSchema, createFaqSchema, createSiteNavigationSchema, localBusinessSchema, websiteSchema } from '@/components/JsonLd';
+import { JsonLd, createFaqSchema, createSiteNavigationSchema } from '@/components/JsonLd';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
 import { SectionDividerCreative } from '@/components/ui/SectionDividerCreative';
@@ -59,7 +59,7 @@ export default function HomePage() {
         ogImage="https://www.capitalmotorcars.com/og/hero-bg.jpg"
         canonicalPath="/"
       />
-      <JsonLd data={[websiteSchema, localBusinessSchema, autoDealerSchema, homepageFaqSchema, ...primaryNavigationSchema]} />
+      <JsonLd data={[homepageFaqSchema, ...primaryNavigationSchema]} />
       <ScrollTriggeredQuizDialog />
       <HeroBackgroundWrapper>
         <HeroSection />

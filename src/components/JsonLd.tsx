@@ -117,13 +117,6 @@ export const localBusinessSchema = {
     '@type': 'State',
     name: 'New Jersey',
   },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '5',
-    bestRating: '5',
-    worstRating: '1',
-    ratingCount: '760',
-  },
   priceRange: '$$',
   openingHoursSpecification: [
     {
