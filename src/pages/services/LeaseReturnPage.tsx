@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
-import { JsonLd, createServiceSchema } from '@/components/JsonLd';
+import { JsonLd, createServiceSchema, createFaqSchema } from '@/components/JsonLd';
 import { ServiceHero } from '@/components/services/ServiceHero';
 import { RelatedServices } from '@/components/services/RelatedServices';
 import { TrustStatsBar } from '@/components/shared/TrustStatsBar';
@@ -112,6 +112,7 @@ export default function LeaseReturnPage() {
             description: 'Pre-return inspection, fee review, and repair coordination so NJ drivers return their leased vehicle without surprise charges.',
             url: 'https://www.capitalmotorcars.com/services/lease-return',
           }),
+          createFaqSchema(faqs),
         ]}
       />
 

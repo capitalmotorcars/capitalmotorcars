@@ -313,6 +313,31 @@ export default function CarLeaseDealsNewJerseyPage() {
         </div>
       </section>
 
+      {/* Featured September 2026 Lease Specials Banner */}
+      <section className="py-12 bg-accent/5 border-y border-accent/20">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-8 rounded-3xl bg-card border border-accent/30 shadow-xl">
+            <div className="space-y-2">
+              <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-accent/20 text-accent">
+                September 2026 Update
+              </span>
+              <h2 className="text-2xl md:text-3xl font-black text-foreground">
+                Top September & Labor Day 2026 Lease Specials Live
+              </h2>
+              <p className="text-muted-foreground max-w-xl text-sm md:text-base leading-relaxed">
+                Take advantage of 2026 model-year clearance cash, subvented manufacturer money factors, and zero-down specials across BMW, Mercedes-Benz, Audi, Porsche, and Kia.
+              </p>
+            </div>
+            <Button asChild size="lg" className="shrink-0 bg-accent hover:bg-accent/90 text-accent-foreground font-bold">
+              <Link to="/top-september-2026-car-lease-deals" className="inline-flex items-center gap-2">
+                Explore September Specials
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       <section className="py-16 lg:py-20 section-bg">
         <div className="container mx-auto px-4 lg:px-8">
           <SectionHeading

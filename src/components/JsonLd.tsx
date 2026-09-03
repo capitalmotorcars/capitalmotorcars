@@ -138,6 +138,8 @@ export const localBusinessSchema = {
     'https://www.linkedin.com/company/capital-motor-cars/',
     'https://www.x.com/capmotorcars',
     'https://www.yelp.com/biz/capital-motor-cars-springfield',
+    'https://www.bbb.org/us/nj/springfield/profile/auto-broker/capital-motor-cars-0221-90184491',
+    'https://www.crunchbase.com/organization/capital-motor-cars',
   ],
 };
 

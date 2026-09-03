@@ -437,7 +437,8 @@ const blogSlugs = [
   'hyundai-ioniq-5-kia-ev9-lease-deals-nj',
   'car-leasing-with-bad-credit-nj',
   'high-mileage-car-lease-options-nj',
-  'doorstep-car-delivery-concierge-nj-ny'
+  'doorstep-car-delivery-concierge-nj-ny',
+  'top-september-2026-car-lease-deals'
 ];
 
 const App = () => (
