@@ -130,7 +130,7 @@ function extractFaqsFromContent(content) {
 // 1. Load blog dictionary from mockBlogs.ts using esbuild
 let blogMap = new Map();
 try {
-  const js = execSync("npx esbuild src/data/mockBlogs.ts --format=cjs").toString();
+  const js = execSync("npx esbuild src/data/mockBlogs.ts --format=cjs", { maxBuffer: 25 * 1024 * 1024 }).toString();
   const mod = { exports: {} };
   const fn = new Function("module", "exports", js);
   fn(mod, mod.exports);
@@ -200,8 +200,8 @@ const curatedMeta = {
     description: "Expert automotive advice, model reliability reviews, lease vs buy comparisons, and monthly car lease deal breakdowns.",
   },
   "car-lease-deals-new-jersey": {
-    title: "Best Car Lease Deals in New Jersey | Capital Motor Cars",
-    description: "Explore verified top car lease deals and monthly specials across New Jersey. Zero down payment options with free doorstep delivery.",
+    title: "Best Car Lease Deals in New Jersey (2026 Specials) | $0 Down | Capital Motor Cars",
+    description: "Explore the best 2026 car lease deals in New Jersey with $0 down payment options, pre-negotiated wholesale fleet pricing, and free doorstep delivery across NJ.",
   },
 };
 
@@ -262,10 +262,21 @@ for (const routePath of allRoutes) {
   // Build semantic pre-rendered body HTML & JSON-LD
   let semanticBody = "";
   let routeSchemaJson = null;
-
   if (isBlog && blogData) {
     const renderedContent = renderMarkdownToHtml(blogData.content);
     const faqs = extractFaqsFromContent(blogData.content);
+    const isProblemArticle = /reliability|squeak|problem|issue|repair|maintenance|broken|fault|noise|defect|key|lock|bearing|transmission|hybrid|battery|engine/i.test(blogData.slug + " " + blogData.title + " " + (blogData.seo_keywords || ""));
+    const repairCardHtml = isProblemArticle ? `
+      <aside aria-label="Repair to Lease Upgrade" class="my-12 p-8 rounded-3xl border-2 border-accent/30 bg-card/60 shadow-xl">
+        <span class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-accent text-white mb-3">Smart Ownership Upgrade</span>
+        <h3 class="text-2xl md:text-3xl font-black text-foreground mb-3">Tired of Repair Bills &amp; Mechanical Headaches?</h3>
+        <p class="text-muted-foreground text-base leading-relaxed mb-6">Don&apos;t pour thousands into aging parts, brake overhauls, or transmission diagnostics. Trade in your vehicle at top market value—even with existing squeaks or issues—and drive a brand-new 2026 vehicle with <strong>$0 down</strong> and <strong>complete factory warranty coverage</strong>.</p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/trade-in-value" class="inline-block bg-accent text-white font-bold px-6 py-3 rounded-xl hover:bg-accent/90">Value Your Trade-In &amp; Get Lease Quote &rarr;</a>
+          <a href="/car-lease-deals-new-jersey" class="inline-block border border-accent/30 text-foreground font-bold px-6 py-3 rounded-xl hover:bg-accent/10">Browse NJ Lease Specials</a>
+          <a href="tel:12015095555" class="inline-block text-accent font-bold py-3 px-2">Call (201) 509-5555</a>
+        </div>
+      </aside>` : "";
 
     semanticBody = `
 <div id="root">
@@ -286,6 +297,7 @@ for (const routePath of allRoutes) {
       <div class="prose dark:prose-invert max-w-none text-foreground">
         ${renderedContent}
       </div>
+      ${repairCardHtml}
       <footer class="mt-16 p-6 rounded-2xl border border-accent/20 bg-card">
         <h3 class="text-lg font-bold">About the Author: Christopher Amico</h3>
         <p class="text-sm text-muted-foreground mt-1">Christopher Amico has over 30 years of automotive industry experience, including corporate background at Mercedes-Benz and consulting for BMW North America. He founded Capital Motor Cars to bring transparent wholesale fleet pricing, true bank buy-rate financing, and zero dealership games to car leasing in New Jersey and New York.</p>

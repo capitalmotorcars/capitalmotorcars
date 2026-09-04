@@ -71,8 +71,8 @@ export default function CarLeaseDealsNewJerseyPage() {
   return (
     <Layout>
       <SEO
-        title="Best Car Lease Deals in New Jersey | Capital Motor Cars"
-        description="Looking for the best car lease deals in New Jersey? Capital Motor Cars helps you compare vehicles, negotiate terms, and secure the perfect auto lease."
+        title="Best Car Lease Deals in New Jersey (2026 Specials) | $0 Down | Capital Motor Cars"
+        description="Explore the best 2026 car lease deals in New Jersey with $0 down payment options, pre-negotiated wholesale fleet pricing, and free doorstep delivery across NJ."
         canonicalPath="/car-lease-deals-new-jersey"
         seoKeywords={['car lease deals New Jersey', 'New Jersey car lease deals', 'lease specials NJ', 'zero down lease NJ', 'best lease deals NJ', 'Capital Motor Cars']}
         ogType="website"

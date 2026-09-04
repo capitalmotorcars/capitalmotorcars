@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ProtectedRoute } from "./components/auth/ProtectedRoute";
+import { blogSlugs } from "./data/blogSlugs";
 
 // Eagerly loaded: homepage (critical path) + NotFound (needed for every miss)
 import HomePage from "./pages/HomePage";
@@ -352,98 +353,6 @@ const queryClient = new QueryClient();
 const legacyRedirects = [
   { from: "/get-started", to: "/quiz" },
   { from: "/ignite", to: "/" }
-];
-
-const blogSlugs = [
-  'top-august-2026-car-lease-deals',
-  'mazda-cx-50-reliability',
-  'delray-beach-car-lease-deals',
-  'top-memorial-day-car-lease-deals-2026',
-  'redesigned-bmw-3-series-lease-guide',
-  'chevrolet-traverse-reliability-review',
-  'gas-vs-hybrid-vs-electric-cars-comparison-2026',
-  'lease-car-driving-tips',
-  'leasing-cars-tax-benefits-guide',
-  'audi-a3-reliability-guide',
-  'eight-best-crossovers-to-lease-with-zero-down',
-  'how-to-keep-your-car-clean-and-protect-resale-value',
-  'toyota-sequoia-reliability-guide',
-  'kia-rio-reliability-review',
-  'are-jaguars-good-cars-reliability-analysis',
-  'leasing-fees-explained-everything-you-need-to-know',
-  'mazda-cx-5-reliability-guide',
-  'volvo-s60-reliability-review',
-  'leasing-a-luxury-car-guide-2026',
-  'favorite-new-car-debuts-2026',
-  'wear-and-tear-charges-in-leased-cars',
-  'toyota-sienna-reliability-guide',
-  'honda-civic-sport-review-and-lease-guide',
-  'coolest-concept-cars-shaping-the-future',
-  'sales-taxes-demystified-car-lease-payments',
-  '2026-ram-1500-pickup-truck-lease-review',
-  'concierge-auto-delivery-service-guide',
-  'who-decides-the-safest-cars-of-the-year',
-  'safest-suvs-for-families-2026',
-  'online-leasing-vs-the-dealership-full-breakdown',
-  'bmw-x3-lease-deals-and-reliability-review',
-  'mercedes-benz-c300-lease-guide-2026',
-  'audi-q7-reliability-and-lease-guide',
-  'kia-telluride-reliability-and-lease-deals-2026',
-  'ford-f150-lightning-electric-truck-lease-2026',
-  'honda-accord-hybrid-reliability-guide-2026',
-  'lexus-rx-500h-f-sport-lease-review-2026',
-  'nissan-rogue-reliability-analysis-2026',
-  'subaru-forester-reliability-guide-2026',
-  'chevy-blazer-ev-lease-deals-2026',
-  'cadillac-lyriq-electric-luxury-suv-lease-2026',
-  'jeep-compass-reliability-review-2026',
-  'volkswagen-atlas-3-row-suv-lease-guide-2026',
-  'gmc-yukon-denali-luxury-suv-lease-2026',
-  'acura-rdx-sh-awd-reliability-review-2026',
-  'genesis-gv70-luxury-crossover-lease-2026',
-  'hyundai-ioniq-5-ev-lease-deals-2026',
-  'korean-car-brands-lease-guide',
-  'subvented-car-lease',
-  'best-towing-capacity-trucks-leasing',
-  'whats-due-at-lease-signing-a-comprehensive-guide',
-  'lease-car-bad-credit',
-  'tips-on-how-to-not-get-scammed-when-leasing-a-car',
-  'are-kia-souls-good-cars',
-  'accident-with-a-lease-car-follow-these-steps-asap',
-  'one-pay-leasing-pros-and-cons',
-  'should-you-lease-a-sedan-in-2026',
-  'the-ultimate-auto-leasing-glossary',
-  'four-hot-fourth-of-july-zero-down-lease-deals',
-  'best-suv-lease-deals-2026',
-  'how-to-calculate-lease-money-factor-nj',
-  'auto-broker-vs-dealership-cost-comparison-nj',
-  'what-does-a-zero-down-lease-really-mean',
-  'nj-ev-sales-tax-exemption-explained',
-  'federal-ev-lease-tax-credit-loophole-nj',
-  'how-to-exit-car-lease-early-nj',
-  'how-to-cash-in-lease-equity-nj',
-  'car-lease-return-checklist-fees',
-  'trade-in-leased-car-negative-equity',
-  'best-luxury-suv-lease-deals-nj',
-  'avoid-dealership-hidden-fees-lease',
-  'bmw-lease-deals-bergen-county-nj',
-  'mercedes-benz-lease-deals-essex-county-nj',
-  'porsche-macan-cayenne-lease-deals-nj',
-  'audi-q5-q7-lease-specials-nj',
-  'genesis-gv70-gv80-lease-guide-nj',
-  'short-term-car-leasing-nj-12-24-months',
-  'business-car-leasing-tax-deductions-nj',
-  'best-electric-suv-lease-deals-nj',
-  'hyundai-ioniq-5-kia-ev9-lease-deals-nj',
-  'car-leasing-with-bad-credit-nj',
-  'high-mileage-car-lease-options-nj',
-  'doorstep-car-delivery-concierge-nj-ny',
-  'top-september-2026-car-lease-deals',
-  'cars-for-lease-broker-nyc',
-  'signature-auto-group-vs-capital-motor-cars-nyc',
-  'how-to-lease-a-car-in-nyc',
-  'ny-sales-tax-car-lease-calculation-guide',
-  'does-carmax-lease-cars'
 ];
 
 const App = () => (
@@ -798,6 +707,9 @@ const App = () => (
                   <Route key={from} path={from} element={<Navigate to={to} replace />} />,
                   <Route key={`${from}/`} path={`${from}/`} element={<Navigate to={to} replace />} />
                 ])}
+
+                {/* Dynamic Fallback Blog Route for all indexed and new blog posts */}
+                <Route path="/:slug" element={<BlogPostPage />} />
 
                 <Route path="*" element={<NotFound />} />
               </Routes>

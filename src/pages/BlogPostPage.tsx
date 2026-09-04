@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Calendar, ArrowLeft, ArrowRight, Phone, Search, ChevronRight, CheckCircle2, ShieldCheck, Award, UserCheck, Sparkles } from 'lucide-react';
 import NotFound from '@/pages/NotFound';
 import founderImage from '@/assets/team-chris.jpg';
+import { RepairToLeaseCta } from '@/components/blog/RepairToLeaseCta';
 
 const BLOG_REFRESH_DATE = new Date('2026-04-01T00:00:00Z');
 const BLOG_REFRESH_LABEL = 'Last Updated: April 2026';
@@ -684,6 +685,12 @@ export default function BlogPostPage() {
                 <div className="prose prose-lg dark:prose-invert max-w-none">
                   <BlogContent content={post.content} />
                 </div>
+
+                {/reliability|squeak|problem|issue|repair|maintenance|broken|fault|noise|defect|key|lock|bearing|transmission|hybrid|battery|engine/i.test(
+                  (post.slug || '') + ' ' + (post.title || '') + ' ' + (post.seo_keywords || '')
+                ) && (
+                  <RepairToLeaseCta />
+                )}
 
                 {/* Interactive Lead Magnet Conversion Card */}
                 <div className="mt-12 overflow-hidden rounded-3xl border-2 border-accent/30 bg-gradient-to-br from-card via-card to-accent/5 p-6 md:p-8 shadow-xl">
