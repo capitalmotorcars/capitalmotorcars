@@ -276,5 +276,10 @@ export const blogSlugs: string[] = [
   "trade-ins-and-payoffs-find-the-financially-smart-way-to-end-a-lease-early",
   "bent-rim-repair-cost",
   "bmw-x7-reliability",
-  "are-car-brokers-legit-how-auto-brokers-work-and-is-it-safe"
+  "are-car-brokers-legit-how-auto-brokers-work-and-is-it-safe",
+  "car-key-not-working-in-ignition",
+  "are-jeeps-reliable",
+  "hyundai-sonata-reliability",
+  "audi-a4-reliability-long-term-performance-and-durability",
+  "car-skidding-in-winter"
 ];

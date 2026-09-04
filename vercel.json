@@ -93,16 +93,22 @@
       "permanent": true
     },
     {
-      "source": "/services/financing",
-      "destination": "https://www.capitalmotorcars.com/services/credit",
+      "source": "/got-bad-credit-heres-how-to-get-approved-for-a-car-lease",
+      "destination": "https://www.capitalmotorcars.com/bad-credit-car-lease-new-jersey",
+      "permanent": true
+    },
+    {
+      "source": "/returning-your-lease-car-to-the-dealership-how-to-prepare-and-what-you-need-to-know",
+      "destination": "https://www.capitalmotorcars.com/lease-return-process-explained-new-jersey",
+      "permanent": true
+    },
+    {
+      "source": "/negotiate-the-best-car-lease-deal",
+      "destination": "https://www.capitalmotorcars.com/how-to-negotiate-a-lease-deal",
       "permanent": true
     }
   ],
   "routes": [
-    {
-      "src": "^/mazda-cx-50-reliability/?$",
-      "status": 410
-    },
     {
       "src": "^/category/(.*)$",
       "status": 410
