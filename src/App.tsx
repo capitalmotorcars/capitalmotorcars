@@ -438,7 +438,12 @@ const blogSlugs = [
   'car-leasing-with-bad-credit-nj',
   'high-mileage-car-lease-options-nj',
   'doorstep-car-delivery-concierge-nj-ny',
-  'top-september-2026-car-lease-deals'
+  'top-september-2026-car-lease-deals',
+  'cars-for-lease-broker-nyc',
+  'signature-auto-group-vs-capital-motor-cars-nyc',
+  'how-to-lease-a-car-in-nyc',
+  'ny-sales-tax-car-lease-calculation-guide',
+  'does-carmax-lease-cars'
 ];
 
 const App = () => (
