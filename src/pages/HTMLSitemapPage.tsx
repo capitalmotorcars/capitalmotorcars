@@ -28,6 +28,30 @@ export default function HTMLSitemapPage() {
         <div className="max-w-6xl mx-auto">
 
           <div className="mb-12">
+            <h2 className="text-2xl font-bold mb-6 pb-2 border-b border-border/50">Featured Automotive Guides &amp; Lease Insights</h2>
+            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <li><Link to="/car-key-not-working-in-ignition" className="text-muted-foreground hover:text-accent transition-colors font-medium">Car Key Not Working in Ignition: Causes &amp; Fixes</Link></li>
+              <li><Link to="/are-jeeps-reliable" className="text-muted-foreground hover:text-accent transition-colors font-medium">Are Jeeps Reliable? Comprehensive Long-Term Guide</Link></li>
+              <li><Link to="/audi-a4-reliability-by-year" className="text-muted-foreground hover:text-accent transition-colors font-medium">Audi A4 Reliability by Year: What to Avoid</Link></li>
+              <li><Link to="/hyundai-sonata-reliability" className="text-muted-foreground hover:text-accent transition-colors font-medium">Hyundai Sonata Reliability &amp; Powertrain Guide</Link></li>
+              <li><Link to="/mazda-cx-50-reliability" className="text-muted-foreground hover:text-accent transition-colors font-medium">Mazda CX-50 Reliability &amp; Review</Link></li>
+              <li><Link to="/mercedes-gle-reliability-issues" className="text-muted-foreground hover:text-accent transition-colors font-medium">Mercedes-Benz GLE Common Issues &amp; Repair Bills</Link></li>
+              <li><Link to="/chevy-silverado-1500-reliability" className="text-muted-foreground hover:text-accent transition-colors font-medium">Chevy Silverado 1500 V8 Reliability</Link></li>
+              <li><Link to="/bmw-x5-reliability-guide" className="text-muted-foreground hover:text-accent transition-colors font-medium">BMW X5 Reliability &amp; Ownership Costs</Link></li>
+              <li><Link to="/jeep-grand-cherokee-reliability" className="text-muted-foreground hover:text-accent transition-colors font-medium">Jeep Grand Cherokee Reliability Review</Link></li>
+              <li><Link to="/ford-explorer-reliability-issues" className="text-muted-foreground hover:text-accent transition-colors font-medium">Ford Explorer Common Problems &amp; Fixes</Link></li>
+              <li><Link to="/lexus-rx350-reliability-guide" className="text-muted-foreground hover:text-accent transition-colors font-medium">Lexus RX 350 Reliability &amp; Lease Guide</Link></li>
+              <li><Link to="/honda-crv-maintenance-costs" className="text-muted-foreground hover:text-accent transition-colors font-medium">Honda CR-V Maintenance &amp; Repair Costs</Link></li>
+              <li><Link to="/vw-tiguan-maintenance-guide" className="text-muted-foreground hover:text-accent transition-colors font-medium">Volkswagen Tiguan Reliability &amp; Maintenance</Link></li>
+              <li><Link to="/porsche-macan-maintenance-costs" className="text-muted-foreground hover:text-accent transition-colors font-medium">Porsche Macan Maintenance &amp; Ownership Costs</Link></li>
+              <li><Link to="/car-lease-deals-new-jersey" className="text-accent hover:underline font-bold">Best Car Lease Deals in New Jersey 2026</Link></li>
+              <li><Link to="/lease-calculator" className="text-accent hover:underline font-bold">Car Lease Payment Calculator</Link></li>
+              <li><Link to="/trade-in-value" className="text-accent hover:underline font-bold">Instant Trade-In Equity Appraisal</Link></li>
+              <li><Link to="/blog" className="text-accent hover:underline font-bold">Browse Complete Automotive Blog Archive &rarr;</Link></li>
+            </ul>
+          </div>
+
+          <div className="mb-12">
             <h2 className="text-2xl font-bold mb-6 pb-2 border-b border-border/50">BMW Lease Deals by City</h2>
             <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 <li><Link to="/bmw-lease-deals-paramus" className="text-muted-foreground hover:text-accent transition-colors">Paramus, NJ</Link></li>

@@ -145,6 +145,19 @@ try {
   console.warn("Could not load mockBlogs via esbuild:", e.message);
 }
 
+const allBlogList = Array.from(blogMap.values());
+
+function getRelatedBlogs(currentSlug, currentCategory) {
+  const others = allBlogList.filter(b => b.slug !== currentSlug);
+  const sameCat = others.filter(b => b.category && b.category.toLowerCase() === (currentCategory || "").toLowerCase());
+  const diffCat = others.filter(b => !b.category || b.category.toLowerCase() !== (currentCategory || "").toLowerCase());
+  const selected = [...sameCat.slice(0, 4)];
+  if (selected.length < 4) {
+    selected.push(...diffCat.slice(0, 4 - selected.length));
+  }
+  return selected;
+}
+
 // Curated overrides for standard static pages
 const curatedMeta = {
   "": {
@@ -278,6 +291,33 @@ for (const routePath of allRoutes) {
         </div>
       </aside>` : "";
 
+    const relatedBlogs = getRelatedBlogs(blogData.slug, blogData.category);
+    const relatedHtml = `
+      <section aria-label="Related Automotive Guides &amp; Lease Deals" class="mt-12 pt-8 border-t border-accent/20">
+        <h3 class="text-2xl font-black text-foreground mb-6">Related Automotive Guides &amp; Lease Specials</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+          ${relatedBlogs.map(rb => `
+            <a href="/${rb.slug}" class="block p-5 rounded-2xl border border-accent/20 bg-card hover:border-accent transition-all group">
+              <span class="text-xs font-bold uppercase tracking-wider text-accent">${escapeHtml(rb.category || "Automotive Guide")}</span>
+              <h4 class="font-bold text-foreground text-lg mt-1 group-hover:text-accent transition-colors">${escapeHtml(rb.title)}</h4>
+              <p class="text-xs text-muted-foreground mt-2 line-clamp-2">${escapeHtml(rb.excerpt || "")}</p>
+            </a>
+          `).join("")}
+        </div>
+        <div class="p-6 rounded-2xl bg-muted/40 border border-accent/10">
+          <h4 class="text-base font-bold text-foreground mb-2">Explore Capital Motor Cars Key Resources:</h4>
+          <div class="flex flex-wrap gap-4 text-sm font-semibold">
+            <a href="/car-lease-deals-new-jersey" class="text-accent hover:underline">Best NJ Lease Deals &rarr;</a>
+            <a href="/lease-calculator" class="text-accent hover:underline">Car Lease Calculator &rarr;</a>
+            <a href="/trade-in-value" class="text-accent hover:underline">Instant Trade-In Appraisal &rarr;</a>
+            <a href="/auto-broker-vs-dealership-new-jersey" class="text-accent hover:underline">Auto Broker vs Dealership &rarr;</a>
+            <a href="/bad-credit-car-lease-new-jersey" class="text-accent hover:underline">Bad Credit Auto Leasing &rarr;</a>
+            <a href="/cars-for-lease-broker-nyc" class="text-accent hover:underline">NYC Auto Broker Concierge &rarr;</a>
+            <a href="/blog" class="text-accent hover:underline">Browse All 310+ Automotive Guides &rarr;</a>
+          </div>
+        </div>
+      </section>`;
+
     semanticBody = `
 <div id="root">
   <main class="min-h-screen bg-background text-foreground">
@@ -298,6 +338,7 @@ for (const routePath of allRoutes) {
         ${renderedContent}
       </div>
       ${repairCardHtml}
+      ${relatedHtml}
       <footer class="mt-16 p-6 rounded-2xl border border-accent/20 bg-card">
         <h3 class="text-lg font-bold">About the Author: Christopher Amico</h3>
         <p class="text-sm text-muted-foreground mt-1">Christopher Amico has over 30 years of automotive industry experience, including corporate background at Mercedes-Benz and consulting for BMW North America. He founded Capital Motor Cars to bring transparent wholesale fleet pricing, true bank buy-rate financing, and zero dealership games to car leasing in New Jersey and New York.</p>
