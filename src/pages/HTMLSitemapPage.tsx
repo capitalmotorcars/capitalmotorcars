@@ -7,9 +7,9 @@ export default function HTMLSitemapPage() {
   return (
     <Layout>
       <SEO
-        title="HTML Sitemap & Locations | Capital Motor Cars"
+        title="Locations & Areas We Serve | Capital Motor Cars"
         description="Browse all the areas we serve in New Jersey and New York. Find specific brand lease deals in your exact city."
-        canonicalPath="/sitemap"
+        canonicalPath="/locations"
       />
       
       <div className="bg-muted/10 border-b border-border/30 pt-32 pb-16">

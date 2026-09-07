@@ -422,7 +422,7 @@ const App = () => (
                 <Route path="/brand/subaru" element={<SubaruBrandPage />} />
                 <Route path="/brands" element={<BrandsPage />} />
                 <Route path="/about" element={<AboutPage />} />
-                <Route path="/sitemap" element={<HTMLSitemapPage />} />
+                <Route path="/sitemap" element={<Navigate to="/locations" replace />} />
                 <Route path="/locations" element={<HTMLSitemapPage />} />
                 <Route path="/suv-lease-deals" element={<SUVCategoryPage />} />
                 <Route path="/ev-lease-deals" element={<ElectricVehicleEVCategoryPage />} />
