@@ -1,5 +1,6 @@
 {
   "installCommand": "npm install --legacy-peer-deps",
+  "trailingSlash": false,
   "functions": {
     "api/webhooks/credit.ts": {
       "memory": 1024,
@@ -90,21 +91,6 @@
     {
       "source": "/about-us",
       "destination": "https://www.capitalmotorcars.com/about",
-      "permanent": true
-    },
-    {
-      "source": "/got-bad-credit-heres-how-to-get-approved-for-a-car-lease",
-      "destination": "https://www.capitalmotorcars.com/bad-credit-car-lease-new-jersey",
-      "permanent": true
-    },
-    {
-      "source": "/returning-your-lease-car-to-the-dealership-how-to-prepare-and-what-you-need-to-know",
-      "destination": "https://www.capitalmotorcars.com/lease-return-process-explained-new-jersey",
-      "permanent": true
-    },
-    {
-      "source": "/negotiate-the-best-car-lease-deal",
-      "destination": "https://www.capitalmotorcars.com/how-to-negotiate-a-lease-deal",
       "permanent": true
     },
     {

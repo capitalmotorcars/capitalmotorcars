@@ -32,6 +32,21 @@ function formatSlugToTitle(slug) {
   return parts.map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(" ");
 }
 
+function buildSeoTitle(rawTitle) {
+  if (!rawTitle) return "Capital Motor Cars";
+  const clean = rawTitle.trim();
+  if (clean.includes("Capital Motor Cars") || clean.includes("CMC")) {
+    return clean;
+  }
+  if (clean.length <= 42) {
+    return `${clean} | Capital Motor Cars`;
+  }
+  if (clean.length <= 53) {
+    return `${clean} | CMC`;
+  }
+  return clean;
+}
+
 function renderMarkdownToHtml(markdown) {
   if (!markdown) return "";
   const lines = markdown.split("\n");
@@ -220,8 +235,9 @@ const curatedMeta = {
 
 // Add all blogs into curatedMeta
 for (const [slug, blog] of blogMap.entries()) {
+  const baseTitle = blog.seo_title || blog.title;
   curatedMeta[slug] = {
-    title: `${blog.seo_title || blog.title} | Capital Motor Cars`,
+    title: buildSeoTitle(baseTitle),
     description: (blog.seo_description || blog.excerpt || blog.title).slice(0, 160),
     isBlog: true,
     blogData: blog
@@ -244,7 +260,7 @@ for (const routePath of allRoutes) {
   fs.mkdirSync(targetDir, { recursive: true });
 
   const canonicalUrl = `https://www.capitalmotorcars.com/${routePath}`;
-  let title = `${formatSlugToTitle(routePath)} | Capital Motor Cars`;
+  let title = buildSeoTitle(formatSlugToTitle(routePath));
   let description = `Explore the best lease deals, zero-markup pricing, and free doorstep delivery on ${formatSlugToTitle(routePath)} with Capital Motor Cars.`;
   let isBlog = false;
   let blogData = null;
@@ -357,7 +373,7 @@ for (const routePath of allRoutes) {
         "description": blogData.excerpt || blogData.seo_description || description,
         "url": canonicalUrl,
         "datePublished": blogData.published_at || "2026-08-01T00:00:00Z",
-        "dateModified": "2026-09-03T00:00:00Z",
+        "dateModified": blogData.updated_at || blogData.published_at || "2026-09-14T00:00:00Z",
         "mainEntityOfPage": canonicalUrl,
         "author": {
           "@type": "Person",
