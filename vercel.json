@@ -222,6 +222,11 @@
       "source": "/tesla-model-y-reliability",
       "destination": "https://www.capitalmotorcars.com/car-lease-deals-new-jersey",
       "permanent": true
+    },
+    {
+      "source": "/signature-auto-group-vs-capital-motor-cars-nyc",
+      "destination": "https://www.capitalmotorcars.com/cars-for-lease-broker-nyc",
+      "permanent": true
     }
   ],
   "routes": [
