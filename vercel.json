@@ -97,6 +97,131 @@
       "source": "/sitemap",
       "destination": "https://www.capitalmotorcars.com/locations",
       "permanent": true
+    },
+    {
+      "source": "/blog/:slug",
+      "destination": "https://www.capitalmotorcars.com/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/services/financing",
+      "destination": "https://www.capitalmotorcars.com/financing",
+      "permanent": true
+    },
+    {
+      "source": "/locations/springfield-nj",
+      "destination": "https://www.capitalmotorcars.com/car-leasing-springfield-nj",
+      "permanent": true
+    },
+    {
+      "source": "/deals",
+      "destination": "https://www.capitalmotorcars.com/car-lease-deals-new-jersey",
+      "permanent": true
+    },
+    {
+      "source": "/vehicles/mercedes-e350",
+      "destination": "https://www.capitalmotorcars.com/brand/mercedes-benz",
+      "permanent": true
+    },
+    {
+      "source": "/vehicles/mercedes-amg",
+      "destination": "https://www.capitalmotorcars.com/brand/mercedes-benz",
+      "permanent": true
+    },
+    {
+      "source": "/best-hatchback-cars/feed",
+      "destination": "https://www.capitalmotorcars.com/best-hatchback-cars",
+      "permanent": true
+    },
+    {
+      "source": "/mazda-cx-5-reliability/feed",
+      "destination": "https://www.capitalmotorcars.com/mazda-cx-5-reliability",
+      "permanent": true
+    },
+    {
+      "source": "/buying-guides/volvo-s60-reliability",
+      "destination": "https://www.capitalmotorcars.com/volvo-s60-reliability",
+      "permanent": true
+    },
+    {
+      "source": "/mazda/cx-9/reliability-detailed-review",
+      "destination": "https://www.capitalmotorcars.com/mazda-cx-9-reliability",
+      "permanent": true
+    },
+    {
+      "source": "/zero-down-car-leasing-no-money-down",
+      "destination": "https://www.capitalmotorcars.com/zero-down-car-lease-deals-no-money-down",
+      "permanent": true
+    },
+    {
+      "source": "/lectric-vs-gas-car-lease-deals",
+      "destination": "https://www.capitalmotorcars.com/electric-vs-gas-car-lease-deals",
+      "permanent": true
+    },
+    {
+      "source": "/audi-lease-specials-paramus",
+      "destination": "https://www.capitalmotorcars.com/audi-lease-deals-paramus",
+      "permanent": true
+    },
+    {
+      "source": "/road-trip-2019-the-ultimate-packing-guide",
+      "destination": "https://www.capitalmotorcars.com/road-trip-2026-the-ultimate-packing-guide",
+      "permanent": true
+    },
+    {
+      "source": "/5-coolest-concept-cars-of-2018",
+      "destination": "https://www.capitalmotorcars.com/coolest-concept-cars-shaping-the-future",
+      "permanent": true
+    },
+    {
+      "source": "/7-most-exciting-high-tech-car-features-to-look-out-for-in-2018",
+      "destination": "https://www.capitalmotorcars.com/most-exciting-high-tech-car-features",
+      "permanent": true
+    },
+    {
+      "source": "/full-speed-into-2019-6-new-years-resolutions-for-drivers",
+      "destination": "https://www.capitalmotorcars.com/full-speed-into-2026-6-new-years-resolutions-for-drivers",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-keep-your-car-clean",
+      "destination": "https://www.capitalmotorcars.com/how-to-keep-your-car-clean-and-protect-resale-value",
+      "permanent": true
+    },
+    {
+      "source": "/our-5-favorite-cars-that-debuted-in-2019",
+      "destination": "https://www.capitalmotorcars.com/favorite-new-car-debuts-2026",
+      "permanent": true
+    },
+    {
+      "source": "/best-suv-lease-2018",
+      "destination": "https://www.capitalmotorcars.com/best-suv-lease-deals-2026",
+      "permanent": true
+    },
+    {
+      "source": "/comparisons/tesla-model-y-vs-bmw-ix-lease",
+      "destination": "https://www.capitalmotorcars.com/brand/bmw",
+      "permanent": true
+    },
+    {
+      "source": "/tesla-model-y-lease-nj",
+      "destination": "https://www.capitalmotorcars.com/car-lease-deals-new-jersey",
+      "permanent": true
+    },
+    {
+      "source": "/tesla-model-3-lease-nj",
+      "destination": "https://www.capitalmotorcars.com/car-lease-deals-new-jersey",
+      "permanent": true
+    },
+    {
+      "source": "/tesla-leasing-hoboken",
+      "destination": "https://www.capitalmotorcars.com/car-leasing-hoboken-nj",
+      "permanent": true
+    },
+    {
+      "source": "/tesla-model-y-reliability",
+      "destination": "https://www.capitalmotorcars.com/car-lease-deals-new-jersey",
+      "permanent": true
     }
   ],
   "routes": [
