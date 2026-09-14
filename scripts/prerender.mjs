@@ -288,6 +288,12 @@ for (const routePath of allRoutes) {
   pageHtml = pageHtml.replace(/<meta\s+name=["']twitter:title["'][^>]*>/i, `<meta name="twitter:title" content="${escapeHtml(title)}">`);
   pageHtml = pageHtml.replace(/<meta\s+name=["']twitter:description["'][^>]*>/i, `<meta name="twitter:description" content="${escapeHtml(description)}">`);
 
+  const pageImage = (isBlog && blogData && (blogData.cover_image_url || blogData.featured_image))
+    ? (blogData.cover_image_url || blogData.featured_image)
+    : "https://www.capitalmotorcars.com/shared-img.png?v=2";
+  pageHtml = pageHtml.replace(/<meta\s+property=["']og:image["'][^>]*>/i, `<meta property="og:image" content="${escapeHtml(pageImage)}">`);
+  pageHtml = pageHtml.replace(/<meta\s+name=["']twitter:image["'][^>]*>/i, `<meta name="twitter:image" content="${escapeHtml(pageImage)}">`);
+
   // Build semantic pre-rendered body HTML & JSON-LD
   let semanticBody = "";
   let routeSchemaJson = null;
@@ -349,6 +355,10 @@ for (const routePath of allRoutes) {
           <time datetime="${blogData.published_at || "2026-08-01"}">${new Date(blogData.published_at || "2026-08-01").toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</time>
         </div>
         ${blogData.excerpt ? `<p class="text-lg text-muted-foreground leading-relaxed italic border-l-4 border-accent pl-4 py-1 mb-8">${escapeHtml(blogData.excerpt)}</p>` : ""}
+        ${blogData.cover_image_url ? `
+        <figure class="mb-8 overflow-hidden rounded-3xl border border-white/10 shadow-2xl">
+          <img src="${escapeHtml(blogData.cover_image_url)}" alt="${escapeHtml(blogData.title)}" class="w-full h-auto object-cover aspect-video" fetchpriority="high" loading="lazy" decoding="async" />
+        </figure>` : ""}
       </header>
       <div class="prose dark:prose-invert max-w-none text-foreground">
         ${renderedContent}
