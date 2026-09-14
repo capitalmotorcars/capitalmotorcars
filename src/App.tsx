@@ -355,7 +355,8 @@ const legacyRedirects = [
   { from: "/ignite", to: "/" },
   { from: "/got-bad-credit-heres-how-to-get-approved-for-a-car-lease", to: "/bad-credit-car-lease-new-jersey" },
   { from: "/returning-your-lease-car-to-the-dealership-how-to-prepare-and-what-you-need-to-know", to: "/lease-return-process-explained-new-jersey" },
-  { from: "/negotiate-the-best-car-lease-deal", to: "/how-to-negotiate-a-lease-deal" }
+  { from: "/negotiate-the-best-car-lease-deal", to: "/how-to-negotiate-a-lease-deal" },
+  { from: "/signature-auto-group-vs-capital-motor-cars-nyc", to: "/cars-for-lease-broker-nyc" }
 ];
 
 const App = () => (
