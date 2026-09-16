@@ -305,7 +305,7 @@ for (const routePath of allRoutes) {
       <aside aria-label="Repair to Lease Upgrade" class="my-12 p-8 rounded-3xl border-2 border-accent/30 bg-card/60 shadow-xl">
         <span class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-accent text-white mb-3">Smart Ownership Upgrade</span>
         <h3 class="text-2xl md:text-3xl font-black text-foreground mb-3">Tired of Repair Bills &amp; Mechanical Headaches?</h3>
-        <p class="text-muted-foreground text-base leading-relaxed mb-6">Don&apos;t pour thousands into aging parts, brake overhauls, or transmission diagnostics. Trade in your vehicle at top market value—even with existing squeaks or issues—and drive a brand-new 2026 vehicle with <strong>$0 down</strong> and <strong>complete factory warranty coverage</strong>.</p>
+        <p class="text-muted-foreground text-base leading-relaxed mb-6">Don&apos;t pour thousands into aging parts, brake overhauls, or transmission diagnostics. Trade in your vehicle at top market value, even with existing squeaks or issues, and drive a brand-new 2026 vehicle with <strong>$0 down</strong> and <strong>complete factory warranty coverage</strong>.</p>
         <div class="flex flex-wrap gap-4">
           <a href="/trade-in-value" class="inline-block bg-accent text-white font-bold px-6 py-3 rounded-xl hover:bg-accent/90">Value Your Trade-In &amp; Get Lease Quote &rarr;</a>
           <a href="/car-lease-deals-new-jersey" class="inline-block border border-accent/30 text-foreground font-bold px-6 py-3 rounded-xl hover:bg-accent/10">Browse NJ Lease Specials</a>

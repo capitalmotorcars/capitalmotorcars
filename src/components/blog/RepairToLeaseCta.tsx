@@ -33,7 +33,7 @@ export function RepairToLeaseCta({ vehicleModel, className = '' }: RepairToLease
       </h3>
 
       <p className="mt-3 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
-        Don&apos;t pour thousands into aging parts, brake overhauls, or transmission diagnostics. Trade in {modelText} at top market value—even with existing squeaks or issues—and drive a brand-new 2026 vehicle with <strong>$0 down</strong> and <strong>complete factory warranty coverage</strong>.
+        Don&apos;t pour thousands into aging parts, brake overhauls, or transmission diagnostics. Trade in {modelText} at top market value, even with existing squeaks or issues, and drive a brand-new 2026 vehicle with <strong>$0 down</strong> and <strong>complete factory warranty coverage</strong>.
       </p>
 
       {/* Value prop matrix */}
