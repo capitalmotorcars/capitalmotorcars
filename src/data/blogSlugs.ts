@@ -322,5 +322,8 @@ export const blogSlugs: string[] = [
   "top-5-suvs-of-2019-to-plow-through-winter-with",
   "4-best-zero-down-lease-deals-of-april-2019",
   "best-zero-down-lease-deals-of-june-2018",
-  "best-lease-deals-of-2018-top-cars-to-lease-in-5-categories"
+  "best-lease-deals-of-2018-top-cars-to-lease-in-5-categories",
+  "how-to-keep-your-car-clean",
+  "our-5-favorite-cars-that-debuted-in-2019",
+  "best-suv-lease-2018"
 ];

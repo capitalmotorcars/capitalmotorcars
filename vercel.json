@@ -11,10 +11,22 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
         {
           "key": "Permissions-Policy",
           "value": "camera=(), microphone=(), geolocation=()"
@@ -181,21 +193,6 @@
     {
       "source": "/full-speed-into-2019-6-new-years-resolutions-for-drivers",
       "destination": "https://www.capitalmotorcars.com/full-speed-into-2026-6-new-years-resolutions-for-drivers",
-      "permanent": true
-    },
-    {
-      "source": "/how-to-keep-your-car-clean",
-      "destination": "https://www.capitalmotorcars.com/how-to-keep-your-car-clean-and-protect-resale-value",
-      "permanent": true
-    },
-    {
-      "source": "/our-5-favorite-cars-that-debuted-in-2019",
-      "destination": "https://www.capitalmotorcars.com/favorite-new-car-debuts-2026",
-      "permanent": true
-    },
-    {
-      "source": "/best-suv-lease-2018",
-      "destination": "https://www.capitalmotorcars.com/best-suv-lease-deals-2026",
       "permanent": true
     },
     {
