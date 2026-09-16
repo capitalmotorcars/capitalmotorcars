@@ -325,5 +325,15 @@ export const blogSlugs: string[] = [
   "best-lease-deals-of-2018-top-cars-to-lease-in-5-categories",
   "how-to-keep-your-car-clean",
   "our-5-favorite-cars-that-debuted-in-2019",
-  "best-suv-lease-2018"
+  "best-suv-lease-2018",
+  "toyota-grand-highlander-lease-deals-and-review",
+  "lexus-tx-350-lease-deals-and-reliability-review",
+  "infiniti-qx50-lease-deals-and-reliability-review",
+  "mazda-cx-90-lease-deals-and-reliability-review",
+  "subaru-crosstrek-reliability-and-lease-deals",
+  "hyundai-santa-fe-redesign-reliability-and-lease-guide",
+  "honda-passport-lease-deals-and-reliability-review",
+  "bmw-i4-gran-coupe-lease-deals-and-review",
+  "audi-q3-lease-deals-and-reliability-review",
+  "volvo-xc60-lease-deals-and-reliability-review"
 ];
