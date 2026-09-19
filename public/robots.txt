@@ -94,6 +94,18 @@ Disallow: /admin
 User-agent: *
 Allow: /
 Disallow: /admin
+# Stop crawl budget waste on legacy WordPress parameters & dead directories
+Disallow: /*?*nocache*
+Disallow: /*?*jet_blog_ajax*
+Disallow: /*?*e-page-*
+Disallow: /wp-content/
+Disallow: /wp-includes/
+Disallow: /wp-json/
+Disallow: /tag/
+Disallow: /author/
+Disallow: /inventory/
+Disallow: /*/feed
+Disallow: /*/trackback
 
 Sitemap: https://www.capitalmotorcars.com/sitemap.xml
 # LLM Knowledge Corpus: https://www.capitalmotorcars.com/llms.txt

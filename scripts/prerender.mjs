@@ -28,8 +28,9 @@ function escapeHtml(text) {
 
 function formatSlugToTitle(slug) {
   if (!slug) return "Capital Motor Cars";
-  const parts = slug.replace(/^car-leasing-/, "").replace(/-nj$/, "").split("-");
-  return parts.map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(" ");
+  const acronyms = { bmw: "BMW", gmc: "GMC", suv: "SUV", nj: "NJ", ev: "EV", ny: "NY", amg: "AMG" };
+  const parts = slug.replace(/^vehicles\//, "").replace(/^car-leasing-/, "").replace(/-nj$/, "").split("-");
+  return parts.map(p => acronyms[p.toLowerCase()] || (p.charAt(0).toUpperCase() + p.slice(1))).join(" ");
 }
 
 function buildSeoTitle(rawTitle) {
@@ -231,6 +232,10 @@ const curatedMeta = {
     title: "Best Car Lease Deals in New Jersey (2026 Specials) | $0 Down | Capital Motor Cars",
     description: "Explore the best 2026 car lease deals in New Jersey with $0 down payment options, pre-negotiated wholesale fleet pricing, and free doorstep delivery across NJ.",
   },
+  "quiz": {
+    title: "Car Lease Matchmaker Quiz | Capital Motor Cars",
+    description: "Take our 2-minute interactive car lease quiz to find the perfect vehicle matching your budget, lifestyle, and driving preferences in New Jersey.",
+  },
 };
 
 // Add all blogs into curatedMeta
@@ -276,6 +281,10 @@ for (const routePath of allRoutes) {
   } else if (routePath.startsWith("car-leasing-")) {
     title = `Car Leasing in ${formatSlugToTitle(routePath)}, NJ | Capital Motor Cars Auto Broker`;
     description = `Stress-free car leasing and auto broker concierge in ${formatSlugToTitle(routePath)}, New Jersey. Wholesale fleet pricing and home delivery.`;
+  } else if (routePath.startsWith("vehicles/")) {
+    const modelName = formatSlugToTitle(routePath);
+    title = `${modelName} Lease Deals NJ | $0 Down Specials | Capital Motor Cars`;
+    description = `Compare 2026 ${modelName} lease specials in New Jersey with $0 down options, pre-negotiated wholesale fleet pricing, and doorstep delivery with Capital Motor Cars.`;
   }
 
   let pageHtml = baseIndexHtml;
@@ -514,6 +523,178 @@ for (const routePath of allRoutes) {
           "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.capitalmotorcars.com/" },
             { "@type": "ListItem", "position": 2, "name": cityName, "item": canonicalUrl }
+          ]
+        }
+      ]
+    };
+  } else if (routePath.startsWith("vehicles/")) {
+    const modelName = formatSlugToTitle(routePath);
+    const brandName = modelName.split(" ")[0];
+    semanticBody = `
+<div id="root">
+  <main class="min-h-screen bg-background text-foreground">
+    <section class="max-w-4xl mx-auto px-4 py-12">
+      <nav aria-label="Breadcrumb" class="text-sm text-muted-foreground mb-4">
+        <a href="/" class="hover:underline">Home</a> &gt; <a href="/brands" class="hover:underline">Vehicles</a> &gt; <span>${escapeHtml(modelName)}</span>
+      </nav>
+      <h1 class="text-3xl md:text-5xl font-black text-foreground tracking-tight mb-4">${escapeHtml(title)}</h1>
+      <p class="text-lg text-muted-foreground leading-relaxed mb-8">${escapeHtml(description)}</p>
+
+      <div class="p-6 rounded-2xl border border-accent/20 bg-card mb-8">
+        <h2 class="text-xl font-bold mb-3">2026 ${escapeHtml(modelName)} Lease Overview &amp; NJ Specials</h2>
+        <p class="text-muted-foreground leading-relaxed mb-4">Looking to lease a new ${escapeHtml(modelName)} in New Jersey? Capital Motor Cars provides pre-negotiated wholesale fleet pricing, flexible lease term options (24 to 48 months), true $0 down payment lease structures, and complimentary doorstep delivery throughout New Jersey, New York, and Pennsylvania.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 text-sm">
+          <div class="p-4 rounded-xl bg-background/50 border border-border">
+            <h3 class="font-bold text-foreground mb-1">Wholesale Fleet Pricing</h3>
+            <p class="text-muted-foreground">Access pre-negotiated inventory from dealer networks across the Tri-State area with zero hidden fees or dealer markups.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-background/50 border border-border">
+            <h3 class="font-bold text-foreground mb-1">True $0 Down Payment</h3>
+            <p class="text-muted-foreground">Customize your lease with zero capital reduction down payment. Pay only upfront taxes and fees at signing.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-background/50 border border-border">
+            <h3 class="font-bold text-foreground mb-1">Doorstep Concierge Delivery</h3>
+            <p class="text-muted-foreground">Skip the dealership floor. We handle paperwork digitally and deliver your new ${escapeHtml(modelName)} directly to your home or office.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-background/50 border border-border">
+            <h3 class="font-bold text-foreground mb-1">Trade-In Equity Extraction</h3>
+            <p class="text-muted-foreground">Roll positive lease equity from your existing car directly into your new ${escapeHtml(modelName)} lease or receive a cash check.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-6 rounded-2xl border border-border bg-card mb-8">
+        <h2 class="text-xl font-bold mb-4">Frequently Asked Questions</h2>
+        <div class="space-y-4 text-sm text-muted-foreground">
+          <div>
+            <h3 class="font-semibold text-foreground mb-1">Can I lease a ${escapeHtml(modelName)} with $0 down?</h3>
+            <p>Yes. Capital Motor Cars offers true $0 down lease options on the ${escapeHtml(modelName)}. You only cover initial drive-off fees such as registration, first month payment, and bank acquisition fees.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-foreground mb-1">How does leasing through an auto broker work?</h3>
+            <p>As an independent auto broker with over 30 years of industry experience, Capital Motor Cars negotiates directly with authorized manufacturer dealer networks on your behalf to secure wholesale rates.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-foreground mb-1">Can I trade in my existing lease early?</h3>
+            <p>Yes. We appraise your current vehicle, calculate positive equity or payoff amounts, and manage the entire lease-return or trade-in process on your behalf.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-4">
+        <a href="/contact" class="inline-block px-6 py-3 rounded-xl bg-primary text-primary-foreground font-bold">Request a ${escapeHtml(modelName)} Quote</a>
+        <a href="tel:+12015095555" class="inline-block px-6 py-3 rounded-xl border border-border text-foreground font-bold hover:bg-accent/10">Call (201) 509-5555</a>
+      </div>
+    </section>
+  </main>
+</div>`;
+
+    routeSchemaJson = {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Product",
+          "@id": `${canonicalUrl}#product`,
+          "name": `${modelName} Lease`,
+          "description": description,
+          "brand": {
+            "@type": "Brand",
+            "name": brandName
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "USD",
+            "price": "0",
+            "offerCount": "1",
+            "seller": {
+              "@id": "https://www.capitalmotorcars.com/#organization"
+            },
+            "availability": "https://schema.org/InStock",
+            "url": canonicalUrl
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": `${canonicalUrl}#faq`,
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": `Can I lease a ${modelName} with $0 down?`,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": `Yes. Capital Motor Cars offers true $0 down lease options on the ${modelName}. You only cover initial drive-off fees such as registration, first month payment, and bank acquisition fees.`
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does leasing through an auto broker work?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "As an independent auto broker with over 30 years of industry experience, Capital Motor Cars negotiates directly with authorized manufacturer dealer networks on your behalf to secure wholesale rates."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I trade in my existing lease early?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. We appraise your current vehicle, calculate positive equity or payoff amounts, and manage the entire lease-return or trade-in process on your behalf."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.capitalmotorcars.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Vehicles", "item": "https://www.capitalmotorcars.com/brands" },
+            { "@type": "ListItem", "position": 3, "name": modelName, "item": canonicalUrl }
+          ]
+        }
+      ]
+    };
+  } else if (routePath === "quiz") {
+    semanticBody = `
+<div id="root">
+  <main class="min-h-screen bg-background text-foreground">
+    <section class="max-w-4xl mx-auto px-4 py-12">
+      <nav aria-label="Breadcrumb" class="text-sm text-muted-foreground mb-4">
+        <a href="/" class="hover:underline">Home</a> &gt; <span>Car Lease Quiz</span>
+      </nav>
+      <h1 class="text-3xl md:text-5xl font-black text-foreground tracking-tight mb-4">${escapeHtml(title)}</h1>
+      <p class="text-lg text-muted-foreground leading-relaxed mb-8">${escapeHtml(description)}</p>
+      <div class="p-6 rounded-2xl border border-accent/20 bg-card mb-8">
+        <h2 class="text-xl font-bold mb-3">Find Your Ideal Car Lease in Under 2 Minutes</h2>
+        <p class="text-muted-foreground leading-relaxed mb-4">Our interactive quiz matches your specific budget, preferred body style (SUV, Sedan, Electric, Hybrid, Truck, Luxury), annual mileage, and desired upfront payment with pre-negotiated wholesale lease specials available across New Jersey.</p>
+        <ul class="list-disc pl-6 space-y-2 text-muted-foreground">
+          <li>Customized recommendations from 30+ auto manufacturers</li>
+          <li>Accurate monthly budget estimates with true $0 down options</li>
+          <li>Direct access to fleet concierge pricing with zero retail markup</li>
+        </ul>
+      </div>
+      <p><a href="/quiz" class="inline-block px-6 py-3 rounded-xl bg-primary text-primary-foreground font-bold">Start Car Lease Quiz</a> or call <a href="tel:+12015095555" class="font-bold">(201) 509-5555</a></p>
+    </section>
+  </main>
+</div>`;
+
+    routeSchemaJson = {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": `${canonicalUrl}#app`,
+          "name": "Capital Motor Cars Lease Matchmaker Quiz",
+          "applicationCategory": "AutomotiveApplication",
+          "description": description,
+          "operatingSystem": "All",
+          "provider": { "@id": "https://www.capitalmotorcars.com/#organization" },
+          "url": canonicalUrl
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.capitalmotorcars.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Car Lease Quiz", "item": canonicalUrl }
           ]
         }
       ]
