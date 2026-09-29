@@ -16,7 +16,6 @@ import derekImage from '@/assets/team-derek.jpg';
 import rickyImage from '@/assets/team-ricky.jpg';
 import bobbyImage from '@/assets/team-bobby-kaufman.jpg';
 import sarahImage from '@/assets/team-sarah-flynn.jpg';
-import michaelVImage from '@/assets/team-michael-van-houten.jpg';
 import jeffreyHImage from '@/assets/team-jeffrey-horn.jpg';
 import danielLImage from '@/assets/team-daniel-lehrer.jpg';
 import markinDImage from '@/assets/team-markin-cruz.jpg';
@@ -26,7 +25,7 @@ import logoImage from '@/assets/logo.png';
 type Person = {
   name: string;
   role: string;
-  image: string;
+  image?: string;
   bio: string;
   email?: string;
 };
@@ -53,7 +52,7 @@ const team: Person[] = [
   { name: 'Derek Anton', role: 'Business Development Director', image: derekImage, bio: "With more than a decade at BMW NA and a lifelong love for cars, I'm driven to inspire my team to consistently provide an exceptional customer experience.", email: 'derek@capitalmotorcars.com' },
   { name: 'Rafael Frias', role: 'Automotive Consultant', image: logoImage, bio: "Rafael Frias is a seasoned automotive consultant with extensive experience working with top brands such as Chrysler, Dodge, Jeep, and Ram. Known for his strong industry knowledge and client-first approach, Rafael helps customers navigate the car-buying process with confidence. His deep product expertise and personalized guidance make him a reliable and trusted partner in finding the right vehicle.", email: 'rafael@capitalmotorcars.com' },
   { name: 'Sarah Flynn', role: 'Automotive Consultant', image: sarahImage, bio: "As an automotive consultant, I've built my reputation on delivering more than just vehicles. I offer clarity, confidence, and a white-glove experience for clients who value their time and want to avoid the typical dealership runaround. I entered the industry early, driven and ambitious, and grew my business through results and referrals. I've worked with clients ranging from first-time lessees to C-suite executives, always operating with transparency and a strong work ethic. Now pursuing my MBA at Rutgers, I'm focused on scaling more strategically, strengthening my financial expertise, and helping elevate the standard of the industry.", email: 'sarah@capitalmotorcars.com' },
-  { name: 'Michael Van Houten', role: 'Automotive Consultant', image: michaelVImage, bio: "Driven by dedication and determination, I'm committed to delivering an elevated level of service to every client. With over 12 years of experience in the automotive industry, I handle the process from start to finish, ensuring nothing is overlooked. Outside of work, I'm a proud father of three daughters, a little league coach, and an avid weekend fisherman. Those same values of commitment and reliability guide my role as a trusted member of the Capitol Motor Cars team.", email: 'mvanhouten@capitalmotorcars.com' },
+  { name: 'Chris Case', role: 'Automotive Consultant', bio: "Dedicated to delivering a seamless car leasing experience with honest advice, personalized service, and a commitment to helping clients find the perfect vehicle at the best possible price." },
   { name: 'Jeffrey Horn', role: 'Automotive Consultant', image: jeffreyHImage, bio: "With over 10 years of experience in the industry, I focus on building lasting relationships that keep my clients smiling, especially knowing I'll be seeing them again every few years.", email: 'jeffrey@capitalmotorcars.com' },
   { name: 'Daniel Jay Lehrer', role: 'Automotive Consultant', image: danielLImage, bio: "My philosophy is simple: lead with passion and honesty, and deliver a first-class level of service that builds lasting relationships with my clients.", email: 'dlehrer@capitalmotorcars.com' },
   { name: 'Markin De La Cruz', role: 'Automotive Consultant', image: markinDImage, bio: "I pride myself on making sure that each team member is an extension of myself. I truly believe that awesome relationships with customers lead to excellent service.", email: 'mark@capitalmotorcars.com' },
@@ -110,12 +109,12 @@ export function PeopleSection({ homePageOnly = false, padding }: PeopleSectionPr
 
   // Filter team members if homePageOnly is true
   const sortedTeam = [...team].sort((a, b) => {
-    const aHasLogo = a.image === logoImage;
-    const bHasLogo = b.image === logoImage;
+    const aHasNoPhoto = !a.image || a.image === logoImage;
+    const bHasNoPhoto = !b.image || b.image === logoImage;
 
-    // If a has a logo and b doesn't, move a down (return 1)
-    // If a doesn't and b does, move a up (return -1)
-    return aHasLogo === bHasLogo ? 0 : aHasLogo ? 1 : -1;
+    // If a has no photo and b has photo, move a down (return 1)
+    // If a has photo and b has no photo, move a up (return -1)
+    return aHasNoPhoto === bHasNoPhoto ? 0 : aHasNoPhoto ? 1 : -1;
   });
 
   // Now use sortedTeam for your filtering and pagination
