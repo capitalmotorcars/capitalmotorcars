@@ -12,7 +12,7 @@ import {
 } from '../lib/sendEmailSecurity.mjs';
 import { processCreditApplication, validateCreditApplication } from '../lib/processCreditApplication.mjs';
 import { processLead } from '../lib/processLead.mjs';
-import { withClientGeo } from '../lib/clientGeo.mjs';
+import { withClientGeo, withGeoInMessage } from '../lib/clientGeo.mjs';
 
 // Initialize Supabase Client with robust env variable fallback
 const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
@@ -107,7 +107,7 @@ async function forwardToKora(body) {
 app.post('/api/webhooks/contact', async (req, res) => {
   const lead = withClientGeo(req.body, req.headers);
   saveSubmissionToDb('contact', lead);
-  await forwardToKora(lead);
+  await forwardToKora(withGeoInMessage(lead));
   const { status, json } = await processLead('contact', lead);
   return res.status(status).json(json);
 });

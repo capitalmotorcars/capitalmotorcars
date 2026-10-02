@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 import { applyApiCors } from '../../lib/httpCors.mjs';
 import { processLead } from '../../lib/processLead.mjs';
-import { withClientGeo } from '../../lib/clientGeo.mjs';
+import { withClientGeo, withGeoInMessage } from '../../lib/clientGeo.mjs';
 
 declare var process: { env: Record<string, string | undefined> };
 
@@ -88,7 +88,7 @@ export default async function handler(req: Req, res: Res) {
 
   await saveSubmissionToDb('contact', lead);
 
-  await forwardToKora(lead);
+  await forwardToKora(withGeoInMessage(lead));
 
   const { status, json } = await processLead('contact', lead);
   return res.status(status).json(json);
