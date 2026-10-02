@@ -12,6 +12,7 @@ import {
 } from '../lib/sendEmailSecurity.mjs';
 import { processCreditApplication, validateCreditApplication } from '../lib/processCreditApplication.mjs';
 import { processLead } from '../lib/processLead.mjs';
+import { withClientGeo } from '../lib/clientGeo.mjs';
 
 // Initialize Supabase Client with robust env variable fallback
 const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
@@ -104,9 +105,10 @@ async function forwardToKora(body) {
 }
 
 app.post('/api/webhooks/contact', async (req, res) => {
-  saveSubmissionToDb('contact', req.body ?? {});
-  await forwardToKora(req.body ?? {});
-  const { status, json } = await processLead('contact', req.body ?? {});
+  const lead = withClientGeo(req.body, req.headers);
+  saveSubmissionToDb('contact', lead);
+  await forwardToKora(lead);
+  const { status, json } = await processLead('contact', lead);
   return res.status(status).json(json);
 });
 
@@ -122,8 +124,9 @@ app.post('/api/webhooks/credit', async (req, res) => {
 });
 
 app.post('/api/webhooks/trade-in', async (req, res) => {
-  saveSubmissionToDb('trade-in', req.body ?? {});
-  const { status, json } = await processLead('trade-in', req.body ?? {});
+  const lead = withClientGeo(req.body, req.headers);
+  saveSubmissionToDb('trade-in', lead);
+  const { status, json } = await processLead('trade-in', lead);
   return res.status(status).json(json);
 });
 
