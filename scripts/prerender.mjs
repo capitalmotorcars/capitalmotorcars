@@ -50,7 +50,8 @@ function buildSeoTitle(rawTitle) {
 
 function renderMarkdownToHtml(markdown) {
   if (!markdown) return "";
-  const lines = markdown.split("\n");
+  const normalized = markdown.replace(/\\n/g, "\n");
+  const lines = normalized.split("\n");
   let html = "";
   let tableRows = [];
   let listItems = [];

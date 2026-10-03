@@ -55,10 +55,11 @@ function sanitizeMarkdownHref(raw: string): string | null {
 
 function extractFaqsFromMarkdown(markdown?: string): { question: string; answer: string }[] {
   if (!markdown) return [];
+  const normalized = markdown.replace(/\\n/g, '\n');
   const faqs: { question: string; answer: string }[] = [];
   const regex = /###\s+([^\n\?]+\?)\s*\n+([\s\S]*?)(?=(?:###|\n##|$))/g;
   let match;
-  while ((match = regex.exec(markdown)) !== null) {
+  while ((match = regex.exec(normalized)) !== null) {
     const question = match[1].trim();
     const answer = match[2]
       .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1')
@@ -214,7 +215,8 @@ function BlogCtaBlock({ variant }: { variant: 'mid' | 'end' }) {
 }
 
 function BlogTableOfContents({ content }: { content: string }) {
-  const headings = content
+  const normalized = (content || '').replace(/\\n/g, '\n');
+  const headings = normalized
     .split('\n')
     .filter((line) => line.trim().startsWith('###'))
     .map((line) => line.replace('###', '').trim());
@@ -243,7 +245,8 @@ function BlogTableOfContents({ content }: { content: string }) {
 
 /** Renders plain text with section headings and bullet lists styled properly */
 function BlogContent({ content }: { content: string }) {
-  const lines = content.split('\n');
+  const normalized = (content || '').replace(/\\n/g, '\n');
+  const lines = normalized.split('\n');
   const blocks: ReactNode[] = [];
   const linkedBrands = new Set<string>();
   let i = 0;
@@ -405,7 +408,7 @@ function BlogContent({ content }: { content: string }) {
     }
     if (paraLines.length > 0) {
       blocks.push(
-        <p key={key++} className="text-muted-foreground leading-[1.8] mb-6 text-[17px] text-justify">
+        <p key={key++} className="text-muted-foreground leading-[1.8] mb-6 text-[17px] text-left">
           {renderInline(paraLines.join('\n'), linkedBrands)}
         </p>
       );
@@ -424,7 +427,8 @@ function BlogContent({ content }: { content: string }) {
 }
 
 function extractFAQSchema(content: string) {
-  const lines = content.split('\n');
+  const normalized = (content || '').replace(/\\n/g, '\n');
+  const lines = normalized.split('\n');
   const faqs = [];
   
   for (let i = 0; i < lines.length; i++) {
