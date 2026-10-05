@@ -132,7 +132,7 @@ function TestimonialCard({
               </div>
               <p className="mt-4 text-muted-foreground leading-relaxed whitespace-pre-line">{quote}</p>
               <a
-                href="https://share.google/uNNUZv8Ot02uvLzbd"
+                href="https://www.google.com/maps/place/Capital+Motor+Cars/@40.711126,-74.3121501,17z/data=!4m8!3m7!1s0x89c3ae77e0e1e011:0x703671ec4629582b!8m2!3d40.711126!4d-74.3121501!9m1!1b1!16s%2Fg%2F11bw4qxc8f?entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-muted/80 dark:bg-white/10 border border-border dark:border-white/10 text-foreground dark:text-white hover:bg-muted dark:hover:bg-white/15 transition-colors"

@@ -19,13 +19,11 @@ export function HeroSection() {
 
   const animate = heroAnimated ? 'animate-in' : '';
 
+  const GOOGLE_REVIEWS_URL =
+    'https://www.google.com/maps/place/Capital+Motor+Cars/@40.711126,-74.3121501,17z/data=!4m8!3m7!1s0x89c3ae77e0e1e011:0x703671ec4629582b!8m2!3d40.711126!4d-74.3121501!9m1!1b1!16s%2Fg%2F11bw4qxc8f?entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D';
+
   const scrollToNext = () => {
     document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const scrollToTestimonials = (e: React.MouseEvent) => {
-    e.preventDefault();
-    document.getElementById('what-our-clients-say')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -74,10 +72,11 @@ export function HeroSection() {
               </div>
 
               {/* Customers & Google Reviews - Show below buttons on mobile, above brands on desktop */}
-              <button
-                type="button"
-                onClick={scrollToTestimonials}
-                className={`flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-5 hero-animate cursor-pointer hover:opacity-80 transition-opacity pt-4 sm:hidden bg-transparent border-0 p-0 ${animate}`}
+              <a
+                href={GOOGLE_REVIEWS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-5 hero-animate cursor-pointer hover:opacity-80 transition-opacity pt-4 sm:hidden ${animate}`}
               >
                 <div className="flex items-center gap-3 sm:gap-4">
                   <div className="flex -space-x-2 sm:-space-x-3">
@@ -106,7 +105,7 @@ export function HeroSection() {
                   <span className="text-accent">★★★★★</span>
                   5/5 on Google
                 </span>
-              </button>
+              </a>
             </div>
           </div>
 
@@ -181,10 +180,11 @@ export function HeroSection() {
 
           </div>
           {/* Customers & Google Reviews - Show above brands on desktop */}
-          <button
-            type="button"
-            onClick={scrollToTestimonials}
-            className={`hidden sm:flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-5 xl:gap-6 hero-animate cursor-pointer hover:opacity-80 transition-opacity bg-transparent border-0 p-0 ${animate}`}
+          <a
+            href={GOOGLE_REVIEWS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`hidden sm:flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-5 xl:gap-6 hero-animate cursor-pointer hover:opacity-80 transition-opacity ${animate}`}
           >
             <div className="flex items-center gap-3 sm:gap-4 xl:gap-5">
               <div className="flex -space-x-2 sm:-space-x-3 xl:-space-x-4">
@@ -213,7 +213,7 @@ export function HeroSection() {
               <span className="text-accent">★★★★★</span>
               5/5 on Google
             </span>
-          </button>
+          </a>
         </div>
 
       </div>
