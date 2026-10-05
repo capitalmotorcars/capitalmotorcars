@@ -3,6 +3,7 @@ import { HeroSection } from '@/components/hero/HeroSection';
 import { FAQSection } from '@/components/home/FAQSection';
 import { FinalCTASection } from '@/components/home/FinalCTASection';
 import { HowItWorksSection } from '@/components/home/HowItWorksSection';
+import { LeaseDealsSection } from '@/components/home/LeaseDealsSection';
 import { PeopleSection } from '@/components/home/PeopleSection';
 import { ScrollTriggeredQuizDialog } from '@/components/home/ScrollTriggeredQuizDialog';
 import { SecurityTrustStrip } from '@/components/home/SecurityTrustStrip';
@@ -64,6 +65,7 @@ export default function HomePage() {
         <HeroSection />
       </HeroBackgroundWrapper>
 
+      <LeaseDealsSection />
       <SectionDividerCreative variant="dot" />
       <HowItWorksSection transparentBackground />
 
