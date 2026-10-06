@@ -1,137 +1,6 @@
 import { supabase } from '@/lib/supabase';
 import type { LeaseDeal, DealFormData, ApiResponse } from '@/types/deals';
 
-export const fallbackDeals: LeaseDeal[] = [
-  {
-    id: 'deal-sep-bmw-330i',
-    make: 'BMW',
-    model: '330i xDrive',
-    year: 2026,
-    trim: 'Sedan AWD',
-    monthly_price: 489,
-    down_payment: 0,
-    lease_term: 36,
-    highlights: 'Curved display, M Sport styling, premium audio, heated seats, and ambient lighting.',
-    image_url: '/deals/bmw-330i.png',
-    display_order: 1,
-    is_active: true,
-    created_at: '2026-09-01T08:00:00.000Z',
-    updated_at: '2026-09-01T08:00:00.000Z',
-  },
-  {
-    id: 'deal-sep-benz-c300',
-    make: 'Mercedes-Benz',
-    model: 'C300 4MATIC',
-    year: 2026,
-    trim: 'Executive Sedan',
-    monthly_price: 519,
-    down_payment: 0,
-    lease_term: 36,
-    highlights: '4MATIC all-wheel drive, panoramic sunroof, MBUX navigation, and driver assistance suite.',
-    image_url: '/deals/mercedes-c300.png',
-    display_order: 2,
-    is_active: true,
-    created_at: '2026-09-01T08:00:00.000Z',
-    updated_at: '2026-09-01T08:00:00.000Z',
-  },
-  {
-    id: 'deal-sep-audi-q5',
-    make: 'Audi',
-    model: 'Q5 45 TFSI',
-    year: 2026,
-    trim: 'Quattro Premium Plus',
-    monthly_price: 539,
-    down_payment: 0,
-    lease_term: 36,
-    highlights: 'Quattro all-wheel drive, virtual cockpit plus, leather seating, and Bang & Olufsen sound.',
-    image_url: '/deals/audi-q5.png',
-    display_order: 3,
-    is_active: true,
-    created_at: '2026-09-01T08:00:00.000Z',
-    updated_at: '2026-09-01T08:00:00.000Z',
-  },
-  {
-    id: 'deal-sep-porsche-macan',
-    make: 'Porsche',
-    model: 'Macan',
-    year: 2026,
-    trim: 'All-Wheel Drive',
-    monthly_price: 799,
-    down_payment: 0,
-    lease_term: 39,
-    highlights: 'Sport Chrono package, 20-inch alloy wheels, Porsche communication management, and AWD.',
-    image_url: '/deals/porsche-macan.png',
-    display_order: 4,
-    is_active: true,
-    created_at: '2026-09-01T08:00:00.000Z',
-    updated_at: '2026-09-01T08:00:00.000Z',
-  },
-  {
-    id: 'deal-sep-genesis-gv70',
-    make: 'Genesis',
-    model: 'GV70 2.5T',
-    year: 2026,
-    trim: 'Select AWD',
-    monthly_price: 479,
-    down_payment: 0,
-    lease_term: 36,
-    highlights: '300-hp turbocharged powertrain, 14.5-inch navigation, heated seats, and premium leatherette.',
-    image_url: '/deals/genesis-gv70.png',
-    display_order: 5,
-    is_active: true,
-    created_at: '2026-09-01T08:00:00.000Z',
-    updated_at: '2026-09-01T08:00:00.000Z',
-  },
-  {
-    id: 'deal-sep-kia-telluride',
-    make: 'Kia',
-    model: 'Telluride EX',
-    year: 2026,
-    trim: 'AWD 8-Passenger',
-    monthly_price: 439,
-    down_payment: 0,
-    lease_term: 36,
-    highlights: '3-row family SUV, smart power liftgate, highway driving assist, and heated front seats.',
-    image_url: '/deals/kia-telluride.png',
-    display_order: 6,
-    is_active: true,
-    created_at: '2026-09-01T08:00:00.000Z',
-    updated_at: '2026-09-01T08:00:00.000Z',
-  },
-  {
-    id: 'deal-sep-hyundai-ioniq5',
-    make: 'Hyundai',
-    model: 'IONIQ 5 SEL',
-    year: 2026,
-    trim: 'AWD Electric',
-    monthly_price: 299,
-    down_payment: 0,
-    lease_term: 24,
-    highlights: 'Ultra-fast 800V DC fast charging, zero emissions, digital instrument cluster, and AWD.',
-    image_url: '/deals/hyundai-ioniq5.png',
-    display_order: 7,
-    is_active: true,
-    created_at: '2026-09-01T08:00:00.000Z',
-    updated_at: '2026-09-01T08:00:00.000Z',
-  },
-  {
-    id: 'deal-sep-lexus-rx350',
-    make: 'Lexus',
-    model: 'RX 350',
-    year: 2026,
-    trim: 'Premium AWD',
-    monthly_price: 569,
-    down_payment: 0,
-    lease_term: 36,
-    highlights: 'Wireless Apple CarPlay, NuLuxe interior, ultra-smooth whisper-quiet ride, and Lexus Safety System+.',
-    image_url: '/deals/lexus-rx350.png',
-    display_order: 8,
-    is_active: true,
-    created_at: '2026-09-01T08:00:00.000Z',
-    updated_at: '2026-09-01T08:00:00.000Z',
-  },
-];
-
 /**
  * Get all active deals (public)
  */
@@ -143,15 +12,18 @@ export async function getActiveDeals(): Promise<ApiResponse<LeaseDeal[]>> {
             .eq('is_active', true)
             .order('display_order', { ascending: true });
 
-        if (error || !data || data.length === 0) {
-            return { success: true, data: fallbackDeals };
+        if (error) {
+            console.error('Error fetching active deals from Supabase:', error);
+            return { success: false, error: error.message, data: [] };
         }
 
-        return { success: true, data };
+        return { success: true, data: data || [] };
     } catch (err) {
+        console.error('Unexpected error fetching active deals:', err);
         return {
-            success: true,
-            data: fallbackDeals,
+            success: false,
+            error: err instanceof Error ? err.message : 'Failed to fetch deals',
+            data: [],
         };
     }
 }
