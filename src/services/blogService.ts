@@ -11,11 +11,20 @@ function normalizeKeywords(input?: string) {
         .join(', ');
 }
 
+const BLOG_SUMMARY_COLUMNS = 'id, title, slug, excerpt, cover_image_url, seo_title, seo_description, seo_keywords, display_order, is_active, published_at, created_at, updated_at, is_featured';
+
+export interface GetActiveBlogPostsOptions {
+    limit?: number;
+}
+
 /**
- * Get all active blog posts (public)
+ * Get active blog posts (public)
+ * Queries summary fields only to prevent excessive egress bandwidth.
  */
-export async function getActiveBlogPosts(): Promise<ApiResponse<BlogPost[]>> {
-    const fallbackData = mockBlogs
+export async function getActiveBlogPosts(options?: number | GetActiveBlogPostsOptions): Promise<ApiResponse<BlogPost[]>> {
+    const limitCount = typeof options === 'number' ? options : options?.limit;
+
+    let fallbackData = mockBlogs
         .filter(p => p.is_active)
         .sort((a, b) => {
             // Featured posts first, then newest first
@@ -24,6 +33,10 @@ export async function getActiveBlogPosts(): Promise<ApiResponse<BlogPost[]>> {
             }
             return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
         });
+
+    if (limitCount && limitCount > 0) {
+        fallbackData = fallbackData.slice(0, limitCount);
+    }
     
     if (!isSupabaseConfigured) {
         return { success: true, data: fallbackData };
@@ -31,25 +44,37 @@ export async function getActiveBlogPosts(): Promise<ApiResponse<BlogPost[]>> {
 
     try {
         const nowIso = new Date().toISOString();
-        const { data, error } = await supabase
+        let query = supabase
             .from('blog_posts')
-            .select('*')
+            .select(BLOG_SUMMARY_COLUMNS)
             .eq('is_active', true)
             .or(`published_at.is.null,published_at.lte.${nowIso}`)
             .order('is_featured', { ascending: false, nullsFirst: false })
             .order('created_at', { ascending: false });
+
+        if (limitCount && limitCount > 0) {
+            query = query.limit(limitCount);
+        }
+
+        const { data, error } = await query;
 
         if (error) {
             console.error('Supabase error:', error);
             return { success: true, data: fallbackData };
         }
 
-        // If Supabase returns nothing, show the mock blogs so the user can see the new content
+        // If Supabase returns nothing, show the mock blogs so the user can see the content
         if (!data || data.length === 0) {
             return { success: true, data: fallbackData };
         }
 
-        return { success: true, data };
+        const posts: BlogPost[] = data.map((p) => ({
+            ...p,
+            content: (p as any).content || p.excerpt || '',
+            author: (p as any).author || 'Christopher Amico'
+        }));
+
+        return { success: true, data: posts };
     } catch (err) {
         return { success: true, data: fallbackData };
     }

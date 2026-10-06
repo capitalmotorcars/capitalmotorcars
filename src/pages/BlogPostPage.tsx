@@ -495,7 +495,7 @@ export default function BlogPostPage() {
 
       const [postResult, allPostsResult] = await Promise.all([
         getBlogPostBySlug(actualSlug),
-        getActiveBlogPosts()
+        getActiveBlogPosts(6)
       ]);
 
       if (postResult.success && postResult.data) {

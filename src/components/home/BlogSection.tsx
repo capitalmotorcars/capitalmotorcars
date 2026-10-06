@@ -12,7 +12,7 @@ export function BlogSection() {
 
     useEffect(() => {
         async function loadPosts() {
-            const result = await getActiveBlogPosts();
+            const result = await getActiveBlogPosts(3);
             if (result.success && result.data) {
                 setPosts(result.data);
             }
