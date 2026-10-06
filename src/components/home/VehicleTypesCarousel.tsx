@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, ArrowRight, Search } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { cn } from '@/lib/utils';
-import { getAllVehicleTypes } from '@/services/vehicleTypeService';
+import { getHeroVehicleTypes } from '@/services/vehicleTypeService';
 import type { VehicleType } from '@/types/vehicle';
 import { Button } from '@/components/ui/button';
 import bg1 from '@/assets/brand-backgrounds/bg-1.jpeg';
@@ -63,7 +63,7 @@ export function VehicleTypesCarousel({
 
   useEffect(() => {
     async function load() {
-      const res = await getAllVehicleTypes();
+      const res = await getHeroVehicleTypes();
       if (res.success && res.data) {
         setAllVehicles(res.data);
       } else {

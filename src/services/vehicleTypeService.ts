@@ -48,6 +48,56 @@ export async function getAllVehicleTypes() {
     return { success: true, data: mappedData };
 }
 
+const HERO_VEHICLE_COLUMNS = 'id, slug, name, body_style, image_url, vehicle_name, starting_price, fuel_economy, passenger_capacity, cargo_space, performance, is_luxury, show_in_hero, sort_order, display_category, badge, year';
+
+/**
+ * Get hero vehicle types for the homepage carousel.
+ * Only queries vehicles configured to show in hero and omits heavy specs/features JSON.
+ */
+export async function getHeroVehicleTypes() {
+    const { data, error } = await supabase
+        .from('vehicle_types')
+        .select(HERO_VEHICLE_COLUMNS)
+        .eq('show_in_hero', true)
+        .order('sort_order', { ascending: true });
+
+    if (error) {
+        console.error('Error fetching hero vehicle types:', error);
+        return { success: false, error: error.message, data: [] };
+    }
+
+    const mappedData: VehicleType[] = (data || []).map((row) => ({
+        id: row.id,
+        slug: row.slug,
+        name: row.name,
+        bodyStyle: row.body_style,
+        image: row.image_url,
+        vehicleName: row.vehicle_name,
+        description: null,
+        highlights: [],
+        idealFor: [],
+        popularBrands: [],
+        features: [],
+        badge: row.badge,
+        startingPrice: row.starting_price,
+        fuelTypes: [],
+        drivetrain: [],
+        passengerCapacity: row.passenger_capacity,
+        cargoSpace: row.cargo_space,
+        performance: row.performance,
+        fuelEconomy: row.fuel_economy,
+        metaTitle: null,
+        metaDescription: null,
+        isLuxury: row.is_luxury,
+        showInHero: row.show_in_hero,
+        sortOrder: row.sort_order,
+        displayCategory: row.display_category,
+        year: row.year,
+    }));
+
+    return { success: true, data: mappedData };
+}
+
 export async function getVehicleTypeBySlug(slug: string) {
     const { data, error } = await supabase
         .from('vehicle_types')
