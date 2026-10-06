@@ -30,13 +30,13 @@ function DealCard({ deal, onClaim }: { deal: any; onClaim: (deal: any) => void }
         >
             <JsonLd data={createVehicleSchema(deal)} />
             {/* Image Container */}
-            <div className="relative h-56 overflow-hidden">
-                <div className="absolute inset-0 bg-accent/20 mix-blend-overlay z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative h-56 overflow-hidden flex items-center justify-center bg-gradient-to-b from-muted/30 to-transparent">
+                <div className="absolute inset-0 bg-accent/10 mix-blend-overlay z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                 {deal.image_url ? (
                     <img
                         src={deal.image_url}
                         alt={`${deal.make} ${deal.model}`}
-                        className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
+                        className="w-full h-full object-contain p-2 transform group-hover:scale-105 transition-transform duration-700 ease-in-out"
                         loading="lazy"
                         decoding="async"
                     />
