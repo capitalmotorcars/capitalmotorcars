@@ -1,10 +1,14 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
 import { JsonLd, createWebPageSchema } from '@/components/JsonLd';
 import { BlogCard } from '@/components/blog/BlogCard';
-import { getActiveBlogPosts } from '@/services/blogService';
+import {
+  getPaginatedBlogPosts,
+  BLOG_CATEGORIES,
+  type BlogCategory
+} from '@/services/blogService';
 import type { BlogPost } from '@/types/blog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -17,53 +21,9 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination';
-import { Search, X, Sparkles, BookOpen } from 'lucide-react';
+import { Search, X, BookOpen } from 'lucide-react';
 
 const POSTS_PER_PAGE = 12;
-
-const CATEGORIES = [
-  'All Articles',
-  'Leasing Guides',
-  'Reliability & Reviews',
-  'Problems & Maintenance',
-  'Electric & Hybrid',
-  'SUVs & Trucks'
-] as const;
-
-type Category = typeof CATEGORIES[number];
-
-function matchesCategory(post: BlogPost, cat: Category): boolean {
-  if (cat === 'All Articles') return true;
-  const text = (post.title + ' ' + post.slug + ' ' + (post.seo_keywords || '') + ' ' + (post.excerpt || '')).toLowerCase();
-  
-  if (cat === 'Leasing Guides') {
-    return /lease|leasing|broker|tax|credit|money factor|down payment|sign and drive|contract/i.test(text);
-  }
-  if (cat === 'Reliability & Reviews') {
-    return /reliability|review|dependability|reliable|good cars|longevity/i.test(text);
-  }
-  if (cat === 'Problems & Maintenance') {
-    return /squeak|problem|issue|repair|maintenance|broken|fault|noise|key|ignition|skidding|wear/i.test(text);
-  }
-  if (cat === 'Electric & Hybrid') {
-    return /ev|electric|hybrid|ioniq|blazer ev|battery|plug-in|lyriq|phev/i.test(text);
-  }
-  if (cat === 'SUVs & Trucks') {
-    return /suv|crossover|truck|f150|ram|silverado|traverse|telluride|atlas|grand cherokee|wrangler|cx-5|cx-9|sienna/i.test(text);
-  }
-  return true;
-}
-
-function matchesSearch(post: BlogPost, query: string): boolean {
-  if (!query.trim()) return true;
-  const q = query.toLowerCase().trim();
-  return (
-    post.title.toLowerCase().includes(q) ||
-    post.slug.toLowerCase().includes(q) ||
-    (post.excerpt ? post.excerpt.toLowerCase().includes(q) : false) ||
-    (post.seo_keywords ? post.seo_keywords.toLowerCase().includes(q) : false)
-  );
-}
 
 function getPageNumbers(current: number, total: number): (number | 'ellipsis')[] {
   if (total <= 7) {
@@ -83,48 +43,56 @@ function getPageNumbers(current: number, total: number): (number | 'ellipsis')[]
 
 export default function BlogPage() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [featuredPost, setFeaturedPost] = useState<BlogPost | null>(null);
+  const [totalCount, setTotalCount] = useState<number>(0);
   const [loading, setLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<Category>('All Articles');
+  const [debouncedSearch, setDebouncedSearch] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<BlogCategory>('All Articles');
+
+  // Debounce search input
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(searchQuery);
+    }, 350);
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
 
   // Read current page from URL query
   const rawPage = parseInt(searchParams.get('page') || '1', 10);
   const currentPage = Number.isNaN(rawPage) || rawPage < 1 ? 1 : rawPage;
 
   useEffect(() => {
-    async function loadPosts() {
-      const result = await getActiveBlogPosts();
+    async function loadData() {
+      setLoading(true);
+      const result = await getPaginatedBlogPosts({
+        page: currentPage,
+        pageSize: POSTS_PER_PAGE,
+        category: selectedCategory,
+        search: debouncedSearch,
+      });
+
       if (result.success && result.data) {
-        setPosts(result.data);
+        setPosts(result.data.posts);
+        setTotalCount(result.data.totalCount);
+        setFeaturedPost(result.data.featuredPost);
+      } else {
+        setPosts([]);
+        setTotalCount(0);
+        setFeaturedPost(null);
       }
       setLoading(false);
     }
-    loadPosts();
-  }, []);
 
-  // Featured post: displayed as hero only on Page 1 when no search/category filter is active
-  const featuredPost = useMemo(() => {
-    return posts.find((p) => p.is_featured) ?? posts[0];
-  }, [posts]);
-
-  // Filtered post list
-  const filteredPosts = useMemo(() => {
-    return posts.filter((post) => {
-      // Exclude featured hero on Page 1 if no active filter
-      const isHero = currentPage === 1 && !searchQuery && selectedCategory === 'All Articles' && post.id === featuredPost?.id;
-      if (isHero) return false;
-      return matchesCategory(post, selectedCategory) && matchesSearch(post, searchQuery);
-    });
-  }, [posts, searchQuery, selectedCategory, currentPage, featuredPost]);
+    loadData();
+  }, [currentPage, selectedCategory, debouncedSearch]);
 
   // Calculate pagination
-  const totalPages = Math.max(1, Math.ceil(filteredPosts.length / POSTS_PER_PAGE));
+  const totalPages = Math.max(1, Math.ceil(totalCount / POSTS_PER_PAGE));
   const safeCurrentPage = Math.min(currentPage, totalPages);
-
   const startIndex = (safeCurrentPage - 1) * POSTS_PER_PAGE;
-  const paginatedPosts = filteredPosts.slice(startIndex, startIndex + POSTS_PER_PAGE);
 
   const handlePageChange = (newPage: number) => {
     const targetPage = Math.max(1, Math.min(newPage, totalPages));
@@ -144,7 +112,7 @@ export default function BlogPage() {
     }
   };
 
-  const handleCategorySelect = (cat: Category) => {
+  const handleCategorySelect = (cat: BlogCategory) => {
     setSelectedCategory(cat);
     const nextParams = new URLSearchParams(searchParams);
     nextParams.delete('page');
@@ -162,6 +130,7 @@ export default function BlogPage() {
 
   const clearFilters = () => {
     setSearchQuery('');
+    setDebouncedSearch('');
     setSelectedCategory('All Articles');
     const nextParams = new URLSearchParams(searchParams);
     nextParams.delete('page');
@@ -233,7 +202,7 @@ export default function BlogPage() {
 
             {/* Category Filter Pills */}
             <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
-              {CATEGORIES.map((cat) => {
+              {BLOG_CATEGORIES.map((cat) => {
                 const isActive = selectedCategory === cat;
                 return (
                   <button
@@ -257,12 +226,17 @@ export default function BlogPage() {
               <div className="w-8 h-8 border-2 border-accent border-t-transparent rounded-full animate-spin" />
               <span>Loading articles...</span>
             </div>
-          ) : posts.length === 0 ? (
-            <div className="py-20 text-center text-muted-foreground">No posts available yet.</div>
+          ) : posts.length === 0 && !featuredPost ? (
+            <div className="py-16 text-center rounded-3xl border border-dashed border-border/60 p-8 max-w-xl mx-auto">
+              <p className="text-base text-muted-foreground mb-4">No articles found matching your criteria.</p>
+              <Button onClick={clearFilters} variant="outline" className="rounded-xl">
+                Reset Search &amp; Show All
+              </Button>
+            </div>
           ) : (
             <div className="space-y-12 md:space-y-16">
               {/* Featured Post Hero - Only on Page 1 with no active search/category filter */}
-              {safeCurrentPage === 1 && !searchQuery && selectedCategory === 'All Articles' && featuredPost && (
+              {safeCurrentPage === 1 && !debouncedSearch && selectedCategory === 'All Articles' && featuredPost && (
                 <div className="relative group">
                   <BlogCard
                     post={featuredPost}
@@ -276,17 +250,17 @@ export default function BlogPage() {
               {/* Grid Header Info */}
               <div id="blog-grid" className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
                 <div className="text-sm text-muted-foreground font-medium">
-                  Showing <strong className="text-foreground">{filteredPosts.length > 0 ? startIndex + 1 : 0}</strong>–<strong className="text-foreground">{Math.min(startIndex + POSTS_PER_PAGE, filteredPosts.length)}</strong> of{' '}
-                  <strong className="text-foreground">{filteredPosts.length}</strong> articles
+                  Showing <strong className="text-foreground">{totalCount > 0 ? startIndex + 1 : 0}</strong>–<strong className="text-foreground">{Math.min(startIndex + POSTS_PER_PAGE, totalCount)}</strong> of{' '}
+                  <strong className="text-foreground">{totalCount}</strong> articles
                   {selectedCategory !== 'All Articles' && (
                     <span> in <span className="text-accent font-semibold">{selectedCategory}</span></span>
                   )}
-                  {searchQuery && (
-                    <span> matching &quot;<span className="text-foreground font-semibold">{searchQuery}</span>&quot;</span>
+                  {debouncedSearch && (
+                    <span> matching &quot;<span className="text-foreground font-semibold">{debouncedSearch}</span>&quot;</span>
                   )}
                 </div>
 
-                {(searchQuery || selectedCategory !== 'All Articles') && (
+                {(debouncedSearch || selectedCategory !== 'All Articles') && (
                   <Button
                     variant="ghost"
                     size="sm"
@@ -299,7 +273,7 @@ export default function BlogPage() {
               </div>
 
               {/* Paginated Grid */}
-              {paginatedPosts.length === 0 ? (
+              {posts.length === 0 ? (
                 <div className="py-16 text-center rounded-3xl border border-dashed border-border/60 p-8">
                   <p className="text-base text-muted-foreground mb-4">No articles found matching your criteria.</p>
                   <Button onClick={clearFilters} variant="outline" className="rounded-xl">
@@ -308,7 +282,7 @@ export default function BlogPage() {
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {paginatedPosts.map((post) => (
+                  {posts.map((post) => (
                     <BlogCard key={post.id} post={post} />
                   ))}
                 </div>

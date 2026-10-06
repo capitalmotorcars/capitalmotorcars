@@ -80,6 +80,181 @@ export async function getActiveBlogPosts(options?: number | GetActiveBlogPostsOp
     }
 }
 
+export const BLOG_CATEGORIES = [
+    'All Articles',
+    'Leasing Guides',
+    'Reliability & Reviews',
+    'Problems & Maintenance',
+    'Electric & Hybrid',
+    'SUVs & Trucks'
+] as const;
+
+export type BlogCategory = typeof BLOG_CATEGORIES[number];
+
+export const CATEGORY_KEYWORDS: Record<string, string[]> = {
+    'Leasing Guides': ['lease', 'leasing', 'broker', 'tax', 'credit', 'money factor', 'down payment', 'sign and drive', 'contract'],
+    'Reliability & Reviews': ['reliability', 'review', 'dependability', 'reliable', 'good cars', 'longevity'],
+    'Problems & Maintenance': ['squeak', 'problem', 'issue', 'repair', 'maintenance', 'broken', 'fault', 'noise', 'key', 'ignition', 'skidding', 'wear'],
+    'Electric & Hybrid': ['ev', 'electric', 'hybrid', 'ioniq', 'blazer ev', 'battery', 'plug-in', 'lyriq', 'phev'],
+    'SUVs & Trucks': ['suv', 'crossover', 'truck', 'f150', 'ram', 'silverado', 'traverse', 'telluride', 'atlas', 'grand cherokee', 'wrangler', 'cx-5', 'cx-9', 'sienna'],
+};
+
+export interface GetPaginatedBlogPostsParams {
+    page?: number;
+    pageSize?: number;
+    category?: string;
+    search?: string;
+}
+
+export interface PaginatedBlogPostsResult {
+    posts: BlogPost[];
+    totalCount: number;
+    featuredPost: BlogPost | null;
+}
+
+/**
+ * Get paginated blog posts with database-level search and category filtering.
+ * Only retrieves the requested page slice (e.g. 12 rows) to minimize egress.
+ */
+export async function getPaginatedBlogPosts({
+    page = 1,
+    pageSize = 12,
+    category = 'All Articles',
+    search = '',
+}: GetPaginatedBlogPostsParams = {}): Promise<ApiResponse<PaginatedBlogPostsResult>> {
+    const isDefaultPage1 = page === 1 && !search.trim() && category === 'All Articles';
+    const isDefaultLater = page > 1 && !search.trim() && category === 'All Articles';
+
+    let from: number;
+    let to: number;
+    if (isDefaultPage1) {
+        from = 0;
+        to = pageSize;
+    } else if (isDefaultLater) {
+        from = 1 + (page - 1) * pageSize;
+        to = from + pageSize - 1;
+    } else {
+        from = (page - 1) * pageSize;
+        to = from + pageSize - 1;
+    }
+
+    if (!isSupabaseConfigured) {
+        let filtered = mockBlogs.filter(p => p.is_active);
+        if (category && category !== 'All Articles' && CATEGORY_KEYWORDS[category]) {
+            const keywords = CATEGORY_KEYWORDS[category];
+            filtered = filtered.filter(p => {
+                const text = (p.title + ' ' + p.slug + ' ' + (p.seo_keywords || '') + ' ' + (p.excerpt || '')).toLowerCase();
+                return keywords.some(k => text.includes(k.toLowerCase()));
+            });
+        }
+        const trimmed = search.trim().toLowerCase();
+        if (trimmed) {
+            filtered = filtered.filter(p => {
+                const text = (p.title + ' ' + p.slug + ' ' + (p.seo_keywords || '') + ' ' + (p.excerpt || '')).toLowerCase();
+                return text.includes(trimmed);
+            });
+        }
+        const total = filtered.length;
+        if (isDefaultPage1 && filtered.length > 0) {
+            return {
+                success: true,
+                data: {
+                    featuredPost: filtered[0],
+                    posts: filtered.slice(1, pageSize + 1),
+                    totalCount: Math.max(0, total - 1)
+                }
+            };
+        }
+        return {
+            success: true,
+            data: {
+                featuredPost: null,
+                posts: filtered.slice(from, to + 1),
+                totalCount: isDefaultLater ? Math.max(0, total - 1) : total
+            }
+        };
+    }
+
+    try {
+        const nowIso = new Date().toISOString();
+        let query = supabase
+            .from('blog_posts')
+            .select(BLOG_SUMMARY_COLUMNS, { count: 'exact' })
+            .eq('is_active', true)
+            .or(`published_at.is.null,published_at.lte.${nowIso}`);
+
+        if (category && category !== 'All Articles' && CATEGORY_KEYWORDS[category]) {
+            const clauses: string[] = [];
+            for (const w of CATEGORY_KEYWORDS[category]) {
+                clauses.push(`title.ilike.%${w}%`);
+                clauses.push(`slug.ilike.%${w}%`);
+                clauses.push(`excerpt.ilike.%${w}%`);
+                clauses.push(`seo_keywords.ilike.%${w}%`);
+            }
+            query = query.or(clauses.join(','));
+        }
+
+        const trimmedSearch = search.trim();
+        if (trimmedSearch) {
+            const s = trimmedSearch.replace(/[,%]/g, ' ');
+            const searchClauses = [
+                `title.ilike.%${s}%`,
+                `slug.ilike.%${s}%`,
+                `excerpt.ilike.%${s}%`,
+                `seo_keywords.ilike.%${s}%`
+            ].join(',');
+            query = query.or(searchClauses);
+        }
+
+        query = query
+            .order('is_featured', { ascending: false, nullsFirst: false })
+            .order('created_at', { ascending: false })
+            .order('id', { ascending: true })
+            .range(from, to);
+
+        const { data, count, error } = await query;
+        if (error) {
+            console.error('Supabase error in getPaginatedBlogPosts:', error);
+            return { success: false, error: error.message };
+        }
+
+        const mapRow = (p: any): BlogPost => ({
+            ...p,
+            content: p.content || p.excerpt || '',
+            author: p.author || 'Christopher Amico'
+        });
+
+        const total = count || 0;
+        const mapped = (data || []).map(mapRow);
+
+        if (isDefaultPage1 && mapped.length > 0) {
+            return {
+                success: true,
+                data: {
+                    featuredPost: mapped[0],
+                    posts: mapped.slice(1),
+                    totalCount: Math.max(0, total - 1)
+                }
+            };
+        }
+
+        return {
+            success: true,
+            data: {
+                featuredPost: null,
+                posts: mapped,
+                totalCount: isDefaultLater ? Math.max(0, total - 1) : total
+            }
+        };
+    } catch (err) {
+        console.error('Error fetching paginated blog posts:', err);
+        return {
+            success: false,
+            error: err instanceof Error ? err.message : 'Failed to fetch posts'
+        };
+    }
+}
+
 /**
  * Get all blog posts including inactive (admin only)
  */
