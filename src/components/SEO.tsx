@@ -66,13 +66,19 @@ export function SEO({
     if (canonicalPath) {
       updateMeta('og:url', `https://www.capitalmotorcars.com${canonicalPath}`, 'property');
     }
-    if (ogImage) updateMeta('og:image', ogImage, 'property');
+    const absoluteOgImage = ogImage
+      ? ogImage.startsWith('http')
+        ? ogImage
+        : `https://www.capitalmotorcars.com${ogImage.startsWith('/') ? '' : '/'}${ogImage}`
+      : undefined;
+
+    if (absoluteOgImage) updateMeta('og:image', absoluteOgImage, 'property');
 
     // Twitter
     updateMeta('twitter:card', twitterCard);
     updateMeta('twitter:title', ogTitle || title);
     updateMeta('twitter:description', ogDescription || description);
-    if (ogImage) updateMeta('twitter:image', ogImage);
+    if (absoluteOgImage) updateMeta('twitter:image', absoluteOgImage);
 
     // Canonical URL
     let linkCanonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;

@@ -544,6 +544,12 @@ export default function BlogPostPage() {
 
   const faqSchema = extractFAQSchema(post.content);
 
+  const fullImageUrl = post.cover_image_url
+    ? post.cover_image_url.startsWith('http')
+      ? post.cover_image_url
+      : `https://www.capitalmotorcars.com${post.cover_image_url.startsWith('/') ? '' : '/'}${post.cover_image_url}`
+    : undefined;
+
   return (
     <Layout
       breadcrumbItems={[
@@ -559,7 +565,7 @@ export default function BlogPostPage() {
         seoKeywords={parseKeywords(post.seo_keywords)}
         ogTitle={post.seo_title || post.title}
         ogDescription={post.seo_description || post.excerpt || post.title}
-        ogImage={post.cover_image_url}
+        ogImage={fullImageUrl}
         ogType="article"
       />
       <JsonLd
@@ -568,7 +574,7 @@ export default function BlogPostPage() {
             headline: post.seo_title || post.title,
             description: post.seo_description || post.excerpt || 'Capital Motor Cars blog post',
             url: `https://www.capitalmotorcars.com/${post.slug}`,
-            image: post.cover_image_url,
+            image: fullImageUrl,
             publishedAt: post.published_at || post.created_at,
             modifiedAt: post.updated_at,
             authorName: 'Christopher Amico',
@@ -598,7 +604,7 @@ export default function BlogPostPage() {
               name: post.title,
               description: post.seo_description || post.excerpt,
               url: `https://www.capitalmotorcars.com/${post.slug}`,
-              image: post.cover_image_url,
+              image: fullImageUrl,
               telephone: '+1-201-509-5555',
               priceRange: '$$',
               address: {
