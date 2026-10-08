@@ -99,19 +99,22 @@ export default function MercedesBenzBrandPage() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center hover:border-accent transition-colors">
-              <h3 className="text-xl font-bold mb-4">Mercedes-Benz SUVs</h3>
-              <p className="text-muted-foreground mb-6">Spacious, capable, and commanding. The perfect choice for families and adventure seekers.</p>
-              <Link to="/vehicles/suv" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Lease Specials <ArrowRight className="w-4 h-4" /></Link>
+              <h3 className="text-xl font-bold mb-2">Mercedes-Benz GLE</h3>
+              <p className="text-sm font-semibold text-accent mb-3">From $849/mo • Midsize Luxury SUV</p>
+              <p className="text-muted-foreground mb-6 text-sm">Spacious refinement, standard 4MATIC all-wheel drive, dual 12.3-inch displays, and commanding road presence.</p>
+              <Link to="/mercedes-gle-lease-nj" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">GLE Lease Deals <ArrowRight className="w-4 h-4" /></Link>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center hover:border-accent transition-colors">
-              <h3 className="text-xl font-bold mb-4">Mercedes-Benz Sedans</h3>
-              <p className="text-muted-foreground mb-6">Sleek, efficient, and comfortable. Ideal for daily commuting and city driving.</p>
-              <Link to="/vehicles/sedan" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Lease Specials <ArrowRight className="w-4 h-4" /></Link>
+              <h3 className="text-xl font-bold mb-2">Mercedes-Benz C-Class</h3>
+              <p className="text-sm font-semibold text-accent mb-3">From $549/mo • Compact Luxury Sedan</p>
+              <p className="text-muted-foreground mb-6 text-sm">S-Class inspired interior elegance, portrait touchscreen, and fuel-efficient mild hybrid power for daily commuting.</p>
+              <Link to="/mercedes-c-class-lease-nj" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">C-Class Lease Deals <ArrowRight className="w-4 h-4" /></Link>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center hover:border-accent transition-colors">
-              <h3 className="text-xl font-bold mb-4">Mercedes-Benz Trucks/Crossovers</h3>
-              <p className="text-muted-foreground mb-6">Versatile and robust vehicles designed for utility and everyday practicality.</p>
-              <Link to="/vehicles/truck" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Lease Specials <ArrowRight className="w-4 h-4" /></Link>
+              <h3 className="text-xl font-bold mb-2">Mercedes-Benz E-Class</h3>
+              <p className="text-sm font-semibold text-accent mb-3">From $749/mo • Executive Luxury Sedan</p>
+              <p className="text-muted-foreground mb-6 text-sm">The hallmark executive sedan with optional Superscreen, third-party app integration, and acoustic comfort package.</p>
+              <Link to="/mercedes-e-class-lease-nj" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">E-Class Lease Deals <ArrowRight className="w-4 h-4" /></Link>
             </div>
           </div>
         </div>

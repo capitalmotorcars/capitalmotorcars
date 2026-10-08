@@ -99,19 +99,22 @@ export default function AudiBrandPage() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center hover:border-accent transition-colors">
-              <h3 className="text-xl font-bold mb-4">Audi SUVs</h3>
-              <p className="text-muted-foreground mb-6">Spacious, capable, and commanding. The perfect choice for families and adventure seekers.</p>
-              <Link to="/vehicles/suv" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Lease Specials <ArrowRight className="w-4 h-4" /></Link>
+              <h3 className="text-xl font-bold mb-2">Audi Q7</h3>
+              <p className="text-sm font-semibold text-accent mb-3">From $789/mo • 3-Row Luxury SUV</p>
+              <p className="text-muted-foreground mb-6 text-sm">Sophisticated 3-row family luxury with legendary quattro all-wheel drive, Virtual Cockpit Plus, and top safety ratings.</p>
+              <Link to="/audi-q7-lease-nj" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Audi Q7 Lease Deals <ArrowRight className="w-4 h-4" /></Link>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center hover:border-accent transition-colors">
-              <h3 className="text-xl font-bold mb-4">Audi Sedans</h3>
-              <p className="text-muted-foreground mb-6">Sleek, efficient, and comfortable. Ideal for daily commuting and city driving.</p>
-              <Link to="/vehicles/sedan" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Lease Specials <ArrowRight className="w-4 h-4" /></Link>
+              <h3 className="text-xl font-bold mb-2">Audi Q5</h3>
+              <p className="text-sm font-semibold text-accent mb-3">From $589/mo • Compact Luxury SUV</p>
+              <p className="text-muted-foreground mb-6 text-sm">The best-selling Audi crossover with premium interior finishes, ultra all-wheel drive technology, and high residual values.</p>
+              <Link to="/audi-q5-lease-nj" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Audi Q5 Lease Deals <ArrowRight className="w-4 h-4" /></Link>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center hover:border-accent transition-colors">
-              <h3 className="text-xl font-bold mb-4">Audi Trucks/Crossovers</h3>
-              <p className="text-muted-foreground mb-6">Versatile and robust vehicles designed for utility and everyday practicality.</p>
-              <Link to="/vehicles/truck" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Lease Specials <ArrowRight className="w-4 h-4" /></Link>
+              <h3 className="text-xl font-bold mb-2">Audi A4</h3>
+              <p className="text-sm font-semibold text-accent mb-3">From $499/mo • Luxury Sport Sedan</p>
+              <p className="text-muted-foreground mb-6 text-sm">Precision German engineering paired with standard quattro traction and an exceptionally refined tri-state commute.</p>
+              <Link to="/audi-a4-lease-nj" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Audi A4 Lease Deals <ArrowRight className="w-4 h-4" /></Link>
             </div>
           </div>
         </div>

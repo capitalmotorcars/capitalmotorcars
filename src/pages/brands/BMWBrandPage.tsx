@@ -99,19 +99,22 @@ export default function BMWBrandPage() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center hover:border-accent transition-colors">
-              <h3 className="text-xl font-bold mb-4">BMW SUVs</h3>
-              <p className="text-muted-foreground mb-6">Spacious, capable, and commanding. The perfect choice for families and adventure seekers.</p>
-              <Link to="/vehicles/suv" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Lease Specials <ArrowRight className="w-4 h-4" /></Link>
+              <h3 className="text-xl font-bold mb-2">BMW X5</h3>
+              <p className="text-sm font-semibold text-accent mb-3">From $849/mo • Midsize Luxury SUV</p>
+              <p className="text-muted-foreground mb-6 text-sm">Executive refinement with standard xDrive all-wheel drive, spacious cargo capacity, and strong 58% captive residuals.</p>
+              <Link to="/bmw-x5-lease-nj" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">BMW X5 Lease Deals <ArrowRight className="w-4 h-4" /></Link>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center hover:border-accent transition-colors">
-              <h3 className="text-xl font-bold mb-4">BMW Sedans</h3>
-              <p className="text-muted-foreground mb-6">Sleek, efficient, and comfortable. Ideal for daily commuting and city driving.</p>
-              <Link to="/vehicles/sedan" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Lease Specials <ArrowRight className="w-4 h-4" /></Link>
+              <h3 className="text-xl font-bold mb-2">BMW X7</h3>
+              <p className="text-sm font-semibold text-accent mb-3">From $1,099/mo • 3-Row Flagship Luxury SUV</p>
+              <p className="text-muted-foreground mb-6 text-sm">Full-size luxury with three rows of standard seating, dual 14.9-inch curved display, and executive highway comfort.</p>
+              <Link to="/bmw-x7-lease-nj" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">BMW X7 Lease Deals <ArrowRight className="w-4 h-4" /></Link>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center hover:border-accent transition-colors">
-              <h3 className="text-xl font-bold mb-4">BMW Trucks/Crossovers</h3>
-              <p className="text-muted-foreground mb-6">Versatile and robust vehicles designed for utility and everyday practicality.</p>
-              <Link to="/vehicles/truck" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Lease Specials <ArrowRight className="w-4 h-4" /></Link>
+              <h3 className="text-xl font-bold mb-2">BMW 3 Series</h3>
+              <p className="text-sm font-semibold text-accent mb-3">From $549/mo • Compact Luxury Sports Sedan</p>
+              <p className="text-muted-foreground mb-6 text-sm">The benchmark sports sedan featuring balanced 50:50 weight distribution, agile handling, and competitive lease structures.</p>
+              <Link to="/bmw-3-series-lease-nj" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">BMW 3 Series Deals <ArrowRight className="w-4 h-4" /></Link>
             </div>
           </div>
         </div>

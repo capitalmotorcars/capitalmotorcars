@@ -99,19 +99,22 @@ export default function CadillacBrandPage() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center hover:border-accent transition-colors">
-              <h3 className="text-xl font-bold mb-4">Cadillac SUVs</h3>
-              <p className="text-muted-foreground mb-6">Spacious, capable, and commanding. The perfect choice for families and adventure seekers.</p>
-              <Link to="/vehicles/suv" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Lease Specials <ArrowRight className="w-4 h-4" /></Link>
+              <h3 className="text-xl font-bold mb-2">Cadillac Escalade</h3>
+              <p className="text-sm font-semibold text-accent mb-3">From $1,299/mo • Full-Size Luxury SUV</p>
+              <p className="text-muted-foreground mb-6 text-sm">The pinnacle of American luxury. Curved 55-inch total diagonal display, Super Cruise hands-free driving, and iconic presence.</p>
+              <Link to="/cadillac-escalade-lease-nj" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Escalade Lease Deals <ArrowRight className="w-4 h-4" /></Link>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center hover:border-accent transition-colors">
-              <h3 className="text-xl font-bold mb-4">Cadillac Sedans</h3>
-              <p className="text-muted-foreground mb-6">Sleek, efficient, and comfortable. Ideal for daily commuting and city driving.</p>
-              <Link to="/vehicles/sedan" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Lease Specials <ArrowRight className="w-4 h-4" /></Link>
+              <h3 className="text-xl font-bold mb-2">Cadillac Lyriq</h3>
+              <p className="text-sm font-semibold text-accent mb-3">From $569/mo • All-Electric Luxury SUV</p>
+              <p className="text-muted-foreground mb-6 text-sm">Ultium battery architecture offering over 300 miles of range and 100% New Jersey zero-emissions sales tax exemption savings.</p>
+              <Link to="/vehicles/suv" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Lyriq Lease Specials <ArrowRight className="w-4 h-4" /></Link>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center hover:border-accent transition-colors">
-              <h3 className="text-xl font-bold mb-4">Cadillac Trucks/Crossovers</h3>
-              <p className="text-muted-foreground mb-6">Versatile and robust vehicles designed for utility and everyday practicality.</p>
-              <Link to="/vehicles/truck" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Lease Specials <ArrowRight className="w-4 h-4" /></Link>
+              <h3 className="text-xl font-bold mb-2">Cadillac CT5</h3>
+              <p className="text-sm font-semibold text-accent mb-3">From $519/mo • Midsize Luxury Sedan</p>
+              <p className="text-muted-foreground mb-6 text-sm">Athletic rear-wheel drive chassis dynamics, standard 33-inch LED display, and tailored executive lease pricing.</p>
+              <Link to="/vehicles/sedan" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">CT5 Lease Specials <ArrowRight className="w-4 h-4" /></Link>
             </div>
           </div>
         </div>

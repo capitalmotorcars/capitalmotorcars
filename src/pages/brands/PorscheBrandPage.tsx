@@ -99,19 +99,22 @@ export default function PorscheBrandPage() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center hover:border-accent transition-colors">
-              <h3 className="text-xl font-bold mb-4">Porsche SUVs</h3>
-              <p className="text-muted-foreground mb-6">Spacious, capable, and commanding. The perfect choice for families and adventure seekers.</p>
-              <Link to="/vehicles/suv" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Lease Specials <ArrowRight className="w-4 h-4" /></Link>
+              <h3 className="text-xl font-bold mb-2">Porsche Macan</h3>
+              <p className="text-sm font-semibold text-accent mb-3">From $799/mo • Compact Luxury SUV</p>
+              <p className="text-muted-foreground mb-6 text-sm">Sports car dynamics with everyday crossover utility. High 63% residual values keep lease payments competitive.</p>
+              <Link to="/porsche-macan-lease-nj" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Macan Lease Deals <ArrowRight className="w-4 h-4" /></Link>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center hover:border-accent transition-colors">
-              <h3 className="text-xl font-bold mb-4">Porsche Sedans</h3>
-              <p className="text-muted-foreground mb-6">Sleek, efficient, and comfortable. Ideal for daily commuting and city driving.</p>
-              <Link to="/vehicles/sedan" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Lease Specials <ArrowRight className="w-4 h-4" /></Link>
+              <h3 className="text-xl font-bold mb-2">Porsche Cayenne</h3>
+              <p className="text-sm font-semibold text-accent mb-3">From $1,049/mo • Midsize Luxury SUV</p>
+              <p className="text-muted-foreground mb-6 text-sm">The gold standard in executive performance SUVs with available E-Hybrid NJ sales tax exemption advantages.</p>
+              <Link to="/porsche-cayenne-lease-nj" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Cayenne Lease Deals <ArrowRight className="w-4 h-4" /></Link>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center hover:border-accent transition-colors">
-              <h3 className="text-xl font-bold mb-4">Porsche Trucks/Crossovers</h3>
-              <p className="text-muted-foreground mb-6">Versatile and robust vehicles designed for utility and everyday practicality.</p>
-              <Link to="/vehicles/truck" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Lease Specials <ArrowRight className="w-4 h-4" /></Link>
+              <h3 className="text-xl font-bold mb-2">Porsche 911 Carrera</h3>
+              <p className="text-sm font-semibold text-accent mb-3">From $1,799/mo • Iconic Sports Coupe</p>
+              <p className="text-muted-foreground mb-6 text-sm">The definitive rear-engine sports car. Structured captive leasing protects capital while enjoying legendary performance.</p>
+              <Link to="/porsche-911-lease-guide-residuals-money-factor" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">911 Lease Guide <ArrowRight className="w-4 h-4" /></Link>
             </div>
           </div>
         </div>

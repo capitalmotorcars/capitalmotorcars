@@ -99,19 +99,22 @@ export default function LandRoverBrandPage() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center hover:border-accent transition-colors">
-              <h3 className="text-xl font-bold mb-4">Land Rover SUVs</h3>
-              <p className="text-muted-foreground mb-6">Spacious, capable, and commanding. The perfect choice for families and adventure seekers.</p>
-              <Link to="/vehicles/suv" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Lease Specials <ArrowRight className="w-4 h-4" /></Link>
+              <h3 className="text-xl font-bold mb-2">Defender 110</h3>
+              <p className="text-sm font-semibold text-accent mb-3">From $889/mo • Adventure Luxury SUV</p>
+              <p className="text-muted-foreground mb-6 text-sm">Rugged British styling meets modern luxury. Strong 65% residual values make Defender one of the most compelling leases in New Jersey.</p>
+              <Link to="/land-rover-defender-lease-nj" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Defender Lease Deals <ArrowRight className="w-4 h-4" /></Link>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center hover:border-accent transition-colors">
-              <h3 className="text-xl font-bold mb-4">Land Rover Sedans</h3>
-              <p className="text-muted-foreground mb-6">Sleek, efficient, and comfortable. Ideal for daily commuting and city driving.</p>
-              <Link to="/vehicles/sedan" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Lease Specials <ArrowRight className="w-4 h-4" /></Link>
+              <h3 className="text-xl font-bold mb-2">Range Rover Sport</h3>
+              <p className="text-sm font-semibold text-accent mb-3">From $1,299/mo • Performance Luxury SUV</p>
+              <p className="text-muted-foreground mb-6 text-sm">Dynamic air suspension, commanding presence, and serene cabin quietness for tri-state luxury driving.</p>
+              <Link to="/range-rover-sport-lease-nj" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Range Rover Sport Deals <ArrowRight className="w-4 h-4" /></Link>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center hover:border-accent transition-colors">
-              <h3 className="text-xl font-bold mb-4">Land Rover Trucks/Crossovers</h3>
-              <p className="text-muted-foreground mb-6">Versatile and robust vehicles designed for utility and everyday practicality.</p>
-              <Link to="/vehicles/truck" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Lease Specials <ArrowRight className="w-4 h-4" /></Link>
+              <h3 className="text-xl font-bold mb-2">Range Rover Velar</h3>
+              <p className="text-sm font-semibold text-accent mb-3">From $799/mo • Avant-Garde Luxury SUV</p>
+              <p className="text-muted-foreground mb-6 text-sm">Striking reductive exterior design, flush door handles, and advanced Pivi Pro infotainment for effortless elegance.</p>
+              <Link to="/vehicles/suv" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Velar Lease Specials <ArrowRight className="w-4 h-4" /></Link>
             </div>
           </div>
         </div>

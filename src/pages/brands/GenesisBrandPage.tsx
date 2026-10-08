@@ -99,19 +99,22 @@ export default function GenesisBrandPage() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center hover:border-accent transition-colors">
-              <h3 className="text-xl font-bold mb-4">Genesis SUVs</h3>
-              <p className="text-muted-foreground mb-6">Spacious, capable, and commanding. The perfect choice for families and adventure seekers.</p>
-              <Link to="/vehicles/suv" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Lease Specials <ArrowRight className="w-4 h-4" /></Link>
+              <h3 className="text-xl font-bold mb-2">Genesis GV70</h3>
+              <p className="text-sm font-semibold text-accent mb-3">From $589/mo • Compact Luxury SUV</p>
+              <p className="text-muted-foreground mb-6 text-sm">Athletic Korean luxury styling, standard all-wheel drive, dual-screen cockpit, and 10-year warranty peace of mind.</p>
+              <Link to="/genesis-gv70-lease-nj" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">GV70 Lease Deals <ArrowRight className="w-4 h-4" /></Link>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center hover:border-accent transition-colors">
-              <h3 className="text-xl font-bold mb-4">Genesis Sedans</h3>
-              <p className="text-muted-foreground mb-6">Sleek, efficient, and comfortable. Ideal for daily commuting and city driving.</p>
-              <Link to="/vehicles/sedan" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Lease Specials <ArrowRight className="w-4 h-4" /></Link>
+              <h3 className="text-xl font-bold mb-2">Genesis GV80</h3>
+              <p className="text-sm font-semibold text-accent mb-3">From $779/mo • Midsize Luxury SUV</p>
+              <p className="text-muted-foreground mb-6 text-sm">Flagship sophistication with expansive 27-inch OLED instrument panel, whisper-quiet cabin acoustics, and high residual value.</p>
+              <Link to="/genesis-gv80-lease-nj" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">GV80 Lease Deals <ArrowRight className="w-4 h-4" /></Link>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center hover:border-accent transition-colors">
-              <h3 className="text-xl font-bold mb-4">Genesis Trucks/Crossovers</h3>
-              <p className="text-muted-foreground mb-6">Versatile and robust vehicles designed for utility and everyday practicality.</p>
-              <Link to="/vehicles/truck" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Lease Specials <ArrowRight className="w-4 h-4" /></Link>
+              <h3 className="text-xl font-bold mb-2">Genesis G70</h3>
+              <p className="text-sm font-semibold text-accent mb-3">From $469/mo • Luxury Sport Sedan</p>
+              <p className="text-muted-foreground mb-6 text-sm">Dynamic rear-wheel-biased luxury sedan with Brembo braking, 300 hp standard turbo engine, and aggressive lease rates.</p>
+              <Link to="/vehicles/sedan" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">G70 Lease Specials <ArrowRight className="w-4 h-4" /></Link>
             </div>
           </div>
         </div>
