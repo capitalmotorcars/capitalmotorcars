@@ -289,6 +289,14 @@ const LexusRxLeasePage = lazy(() => import("./pages/models/LexusRxLeasePage"));
 const ToyotaRav4LeasePage = lazy(() => import("./pages/models/ToyotaRav4LeasePage"));
 const HondaCrvLeasePage = lazy(() => import("./pages/models/HondaCrvLeasePage"));
 const HyundaiIoniq6LeasePage = lazy(() => import("./pages/models/HyundaiIoniq6LeasePage"));
+const PorscheMacanLeasePage = lazy(() => import("./pages/models/PorscheMacanLeasePage"));
+const PorscheCayenneLeasePage = lazy(() => import("./pages/models/PorscheCayenneLeasePage"));
+const LandRoverDefenderLeasePage = lazy(() => import("./pages/models/LandRoverDefenderLeasePage"));
+const BmwX7LeasePage = lazy(() => import("./pages/models/BmwX7LeasePage"));
+const AudiQ7LeasePage = lazy(() => import("./pages/models/AudiQ7LeasePage"));
+const GenesisGv70LeasePage = lazy(() => import("./pages/models/GenesisGv70LeasePage"));
+const GenesisGv80LeasePage = lazy(() => import("./pages/models/GenesisGv80LeasePage"));
+const CadillacEscaladeLeasePage = lazy(() => import("./pages/models/CadillacEscaladeLeasePage"));
 
 // Service pages
 const CarLeasingPage = lazy(() => import("./pages/services/CarLeasingPage"));
