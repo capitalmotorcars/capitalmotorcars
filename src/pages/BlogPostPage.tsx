@@ -692,6 +692,22 @@ export default function BlogPostPage() {
                   </div>
                 )}
 
+                {/* AI Overview / Quick Answer Callout Box */}
+                {(post.excerpt || post.seo_description) && (
+                  <section
+                    aria-label="Key Takeaways & Quick Summary"
+                    className="rounded-3xl border-2 border-accent/25 bg-accent/[0.04] p-6 sm:p-7 shadow-sm relative overflow-hidden"
+                  >
+                    <div className="flex items-center gap-2 text-accent font-black text-xs sm:text-sm uppercase tracking-wider mb-3">
+                      <Sparkles className="w-4 h-4 text-accent" />
+                      <span>Key Takeaways &amp; Quick Answer</span>
+                    </div>
+                    <p className="text-base sm:text-lg text-foreground font-semibold leading-relaxed">
+                      {post.excerpt || post.seo_description}
+                    </p>
+                  </section>
+                )}
+
                 <div className="prose prose-lg dark:prose-invert max-w-none">
                   <BlogContent content={post.content} />
                 </div>

@@ -93,6 +93,21 @@ export function SEO({
       linkCanonical.remove();
     }
 
+    // Alternate Markdown Link for AI/LLM Scrapers (Articles/Blogs)
+    let linkMarkdown = document.querySelector('link[rel="alternate"][type="text/markdown"]') as HTMLLinkElement | null;
+    if (ogType === 'article' && canonicalPath) {
+      if (!linkMarkdown) {
+        linkMarkdown = document.createElement('link');
+        linkMarkdown.setAttribute('rel', 'alternate');
+        linkMarkdown.setAttribute('type', 'text/markdown');
+        document.head.appendChild(linkMarkdown);
+      }
+      linkMarkdown.title = 'Markdown Content';
+      linkMarkdown.href = `https://www.capitalmotorcars.com${canonicalPath}.md`;
+    } else if (linkMarkdown) {
+      linkMarkdown.remove();
+    }
+
     // Keywords (optional)
     let metaKeywords = document.querySelector('meta[name="keywords"]');
     if (seoKeywords?.length) {

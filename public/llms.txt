@@ -20,6 +20,7 @@
 - Credit Application: https://www.capitalmotorcars.com/credit-application
 - Brands Directory: https://www.capitalmotorcars.com/brands
 - Blog & Automotive Guides: https://www.capitalmotorcars.com/blog
+- Markdown Mirror Feeds: https://www.capitalmotorcars.com/{slug}.md (Raw Markdown mirrors of all 348+ automotive guides with YAML frontmatter for AI ingestion)
 - Contact & Custom Quote: https://www.capitalmotorcars.com/contact
 - Full Knowledge Base for LLMs: https://www.capitalmotorcars.com/llms-full.txt
 

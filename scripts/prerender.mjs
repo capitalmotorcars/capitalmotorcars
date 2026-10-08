@@ -369,6 +369,14 @@ for (const routePath of allRoutes) {
         <figure class="mb-8 overflow-hidden rounded-3xl border border-white/10 shadow-2xl">
           <img src="${escapeHtml(blogData.cover_image_url)}" alt="${escapeHtml(blogData.title)}" class="w-full h-auto object-cover aspect-video" fetchpriority="high" loading="lazy" decoding="async" />
         </figure>` : ""}
+        ${(blogData.excerpt || blogData.seo_description) ? `
+        <section aria-label="Key Takeaways &amp; Quick Summary" class="my-8 p-6 sm:p-7 rounded-3xl border-2 border-accent/25 bg-accent/[0.04] shadow-sm">
+          <div class="flex items-center gap-2 text-accent font-black text-xs sm:text-sm uppercase tracking-wider mb-2">
+            <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            <span>Key Takeaways &amp; Quick Answer</span>
+          </div>
+          <p class="text-base sm:text-lg text-foreground font-semibold leading-relaxed">${escapeHtml(blogData.excerpt || blogData.seo_description)}</p>
+        </section>` : ""}
       </header>
       <div class="prose dark:prose-invert max-w-none text-foreground">
         ${renderedContent}
@@ -711,6 +719,34 @@ for (const routePath of allRoutes) {
   if (routeSchemaJson) {
     const schemaTag = `\n  <script type="application/ld+json">\n${JSON.stringify(routeSchemaJson, null, 2)}\n  </script>\n</head>`;
     pageHtml = pageHtml.replace(/<\/head>/i, schemaTag);
+  }
+
+  // Inject alternate markdown link for blogs and write markdown mirror
+  if (isBlog && blogData) {
+    const mdTag = `  <link rel="alternate" type="text/markdown" href="${canonicalUrl}.md" title="Markdown Content" />\n</head>`;
+    pageHtml = pageHtml.replace(/<\/head>/i, mdTag);
+
+    const mdContent = `---
+title: "${(blogData.title || "").replace(/"/g, '\\"')}"
+description: "${(blogData.seo_description || blogData.excerpt || "").replace(/"/g, '\\"')}"
+canonical: "${canonicalUrl}"
+author: "Christopher Amico"
+published: "${blogData.published_at || blogData.created_at || "2026-08-01"}"
+updated: "${blogData.updated_at || "2026-10-08"}"
+---
+
+# ${blogData.title}
+
+> **Quick Summary & Key Takeaways:** ${blogData.excerpt || blogData.seo_description || ""}
+
+${blogData.content}
+
+---
+*Published by [Capital Motor Cars](https://www.capitalmotorcars.com) - 251 Morris Ave, Springfield Township, NJ 07081. Phone: (201) 509-5555*
+`;
+    // Write both at root dist/slug.md and in targetDir/index.md
+    fs.writeFileSync(path.join(distDir, `${blogData.slug}.md`), mdContent, "utf-8");
+    fs.writeFileSync(path.join(targetDir, "index.md"), mdContent, "utf-8");
   }
 
   fs.writeFileSync(path.join(targetDir, "index.html"), pageHtml, "utf-8");
