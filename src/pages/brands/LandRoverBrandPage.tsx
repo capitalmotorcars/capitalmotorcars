@@ -108,7 +108,7 @@ export default function LandRoverBrandPage() {
               <h3 className="text-xl font-bold mb-2">Range Rover Sport</h3>
               <p className="text-sm font-semibold text-accent mb-3">From $1,299/mo • Performance Luxury SUV</p>
               <p className="text-muted-foreground mb-6 text-sm">Dynamic air suspension, commanding presence, and serene cabin quietness for tri-state luxury driving.</p>
-              <Link to="/range-rover-sport-lease-nj" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Range Rover Sport Deals <ArrowRight className="w-4 h-4" /></Link>
+              <Link to="/vehicles/suv" className="text-accent font-bold hover:underline flex items-center justify-center gap-2">Range Rover Sport Deals <ArrowRight className="w-4 h-4" /></Link>
             </div>
             <div className="p-8 rounded-3xl bg-card border border-border/50 text-center hover:border-accent transition-colors">
               <h3 className="text-xl font-bold mb-2">Range Rover Velar</h3>

@@ -663,15 +663,23 @@ const App = () => (
                 <Route path="/bmw-5-series-lease-nj" element={<Bmw5SeriesLeasePage />} />
                 <Route path="/bmw-x3-lease-nj" element={<BmwX3LeasePage />} />
                 <Route path="/bmw-x5-lease-nj" element={<BmwX5LeasePage />} />
+                <Route path="/bmw-x7-lease-nj" element={<BmwX7LeasePage />} />
                 <Route path="/mercedes-c-class-lease-nj" element={<MercedesCClassLeasePage />} />
                 <Route path="/mercedes-e-class-lease-nj" element={<MercedesEClassLeasePage />} />
                 <Route path="/mercedes-gle-lease-nj" element={<MercedesGleLeasePage />} />
                 <Route path="/audi-a4-lease-nj" element={<AudiA4LeasePage />} />
                 <Route path="/audi-q5-lease-nj" element={<AudiQ5LeasePage />} />
+                <Route path="/audi-q7-lease-nj" element={<AudiQ7LeasePage />} />
                 <Route path="/lexus-rx-lease-nj" element={<LexusRxLeasePage />} />
                 <Route path="/toyota-rav4-lease-nj" element={<ToyotaRav4LeasePage />} />
                 <Route path="/honda-crv-lease-nj" element={<HondaCrvLeasePage />} />
                 <Route path="/hyundai-ioniq6-lease-nj" element={<HyundaiIoniq6LeasePage />} />
+                <Route path="/porsche-macan-lease-nj" element={<PorscheMacanLeasePage />} />
+                <Route path="/porsche-cayenne-lease-nj" element={<PorscheCayenneLeasePage />} />
+                <Route path="/land-rover-defender-lease-nj" element={<LandRoverDefenderLeasePage />} />
+                <Route path="/genesis-gv70-lease-nj" element={<GenesisGv70LeasePage />} />
+                <Route path="/genesis-gv80-lease-nj" element={<GenesisGv80LeasePage />} />
+                <Route path="/cadillac-escalade-lease-nj" element={<CadillacEscaladeLeasePage />} />
                 <Route path="/car-lease-deals-new-jersey" element={<CarLeaseDealsNewJerseyPage />} />
                 <Route path="/auto-leasing-new-jersey" element={<AutoLeasingNewJerseyPage />} />
                 <Route path="/luxury-car-leasing-nj" element={<LuxuryCarLeasingNJPage />} />
