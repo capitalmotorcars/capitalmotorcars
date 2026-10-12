@@ -2,6 +2,8 @@ import { createClient } from '@supabase/supabase-js';
 import { applyApiCors } from '../../lib/httpCors.mjs';
 import { processLead } from '../../lib/processLead.mjs';
 import { withClientGeo, withGeoInMessage } from '../../lib/clientGeo.mjs';
+import { syncLeadToSheet } from '../../lib/sheetSync.mjs';
+
 
 declare var process: { env: Record<string, string | undefined> };
 
@@ -87,8 +89,10 @@ export default async function handler(req: Req, res: Res) {
   const lead = withClientGeo(body, req.headers);
 
   await saveSubmissionToDb('contact', lead);
+  await syncLeadToSheet('contact', lead);
 
   await forwardToKora(withGeoInMessage(lead));
+
 
   const { status, json } = await processLead('contact', lead);
   return res.status(status).json(json);

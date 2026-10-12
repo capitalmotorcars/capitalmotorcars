@@ -13,6 +13,9 @@ import {
 import { processCreditApplication, validateCreditApplication } from '../lib/processCreditApplication.mjs';
 import { processLead } from '../lib/processLead.mjs';
 import { withClientGeo, withGeoInMessage } from '../lib/clientGeo.mjs';
+import { syncLeadToSheet, extractLeadsForSheet, formatDateTime } from '../lib/sheetSync.mjs';
+
+
 
 // Initialize Supabase Client with robust env variable fallback
 const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
@@ -107,7 +110,9 @@ async function forwardToKora(body) {
 app.post('/api/webhooks/contact', async (req, res) => {
   const lead = withClientGeo(req.body, req.headers);
   saveSubmissionToDb('contact', lead);
+  await syncLeadToSheet('contact', lead);
   await forwardToKora(withGeoInMessage(lead));
+
   const { status, json } = await processLead('contact', lead);
   return res.status(status).json(json);
 });
@@ -119,6 +124,7 @@ app.post('/api/webhooks/credit', async (req, res) => {
     return res.status(400).json({ success: false, error });
   }
   saveSubmissionToDb('credit', req.body ?? {});
+  await syncLeadToSheet('credit', req.body ?? {});
   const { status, json } = await processCreditApplication(req.body ?? {});
   return res.status(status).json(json);
 });
@@ -126,9 +132,11 @@ app.post('/api/webhooks/credit', async (req, res) => {
 app.post('/api/webhooks/trade-in', async (req, res) => {
   const lead = withClientGeo(req.body, req.headers);
   saveSubmissionToDb('trade-in', lead);
+  await syncLeadToSheet('trade-in', lead);
   const { status, json } = await processLead('trade-in', lead);
   return res.status(status).json(json);
 });
+
 
 app.get('/api/submissions', async (req, res) => {
   const apiKey = req.headers['x-cmc-api-key'];
@@ -168,6 +176,73 @@ app.get('/api/submissions', async (req, res) => {
     return res.status(500).json({ success: false, error: msg });
   }
 });
+
+app.get('/api/export-leads', async (req, res) => {
+  const apiKey = req.headers['x-cmc-api-key'] || req.query.key;
+  const expectedKey = process.env.CMC_API_KEY;
+
+  if (expectedKey && apiKey !== expectedKey) {
+    return res.status(401).json({ success: false, error: 'Unauthorized' });
+  }
+
+  const type = req.query.type || 'credit';
+  const format = req.query.format || 'csv';
+
+  try {
+    let query = supabase
+      .from('form_submissions')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (type && type !== 'all') {
+      query = query.eq('type', type);
+    }
+
+    const { data, error } = await query;
+    if (error) {
+      return res.status(500).json({ success: false, error: error.message });
+    }
+
+    const rows = [];
+    for (const sub of (data || [])) {
+      const extracted = extractLeadsForSheet(sub.type, sub.payload);
+      for (const item of extracted) {
+        rows.push({
+          firstName: item.firstName,
+          email: item.email,
+          type: item.submissionType,
+          date: formatDateTime(sub.created_at || item.submittedAt),
+
+        });
+      }
+    }
+
+    if (format === 'json') {
+      return res.status(200).json({ success: true, count: rows.length, leads: rows });
+    }
+
+    const csvHeader = 'First Name,Email,Submission Type,Date Submitted\r\n';
+    const csvRows = rows
+      .map((r) => {
+        const cleanFirst = `"${(r.firstName || '').replace(/"/g, '""')}"`;
+        const cleanEmail = `"${(r.email || '').replace(/"/g, '""')}"`;
+        const cleanType = `"${(r.type || '').replace(/"/g, '""')}"`;
+        const cleanDate = `"${(r.date || '').replace(/"/g, '""')}"`;
+        return `${cleanFirst},${cleanEmail},${cleanType},${cleanDate}`;
+      })
+      .join('\r\n');
+
+    const csvContent = '\uFEFF' + csvHeader + csvRows;
+
+    res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+    res.setHeader('Content-Disposition', 'attachment; filename="capital_motor_cars_leads.csv"');
+    return res.status(200).send(csvContent);
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : 'Internal server error';
+    return res.status(500).json({ success: false, error: msg });
+  }
+});
+
 
 app.post('/api/send-email', async (req, res) => {
   const apiKey = process.env.RESEND_API_KEY;

@@ -2,6 +2,8 @@ import { createClient } from '@supabase/supabase-js';
 import { applyApiCors } from '../../lib/httpCors.mjs';
 import { processLead } from '../../lib/processLead.mjs';
 import { withClientGeo } from '../../lib/clientGeo.mjs';
+import { syncLeadToSheet } from '../../lib/sheetSync.mjs';
+
 
 declare var process: { env: Record<string, string | undefined> };
 
@@ -54,6 +56,8 @@ export default async function handler(req: Req, res: Res) {
   // Save to database first so a submission is never lost even if email fails.
   const lead = withClientGeo(req.body as Record<string, unknown> | undefined, req.headers);
   await saveSubmissionToDb('trade-in', lead);
+  await syncLeadToSheet('trade-in', lead);
+
 
   const { status, json } = await processLead('trade-in', lead);
   return res.status(status).json(json);

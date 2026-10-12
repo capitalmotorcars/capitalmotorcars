@@ -27,3 +27,7 @@ dist-ssr
 
 .agent
 scratch/
+
+# Lead exports
+credit_applications.csv
+credit_applications.xlsx
