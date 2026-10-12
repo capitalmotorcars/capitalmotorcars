@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams, Navigate } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
 import { EventLeadModal } from '@/components/forms/EventLeadModal';
@@ -21,8 +21,28 @@ import {
 } from 'lucide-react';
 
 export default function ThanksForVisitingPage() {
+  const [searchParams] = useSearchParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedVehicle, setSelectedVehicle] = useState<string | null>(null);
   const { data: deals, isLoading } = useDeals();
+
+  // Guard against direct typing or search engine crawlers:
+  // Requires query parameter present on the QR code (e.g. ?src=qr or ?event=...)
+  const isAuthorizedFromQr =
+    searchParams.get('src') === 'qr' ||
+    searchParams.get('source') === 'qr' ||
+    searchParams.get('qr') !== null ||
+    searchParams.get('event') !== null ||
+    searchParams.get('ref') === 'event';
+
+  if (!isAuthorizedFromQr) {
+    return <Navigate to="/" replace />;
+  }
+
+  const handleOpenGeneralModal = () => {
+    setSelectedVehicle(null);
+    setIsModalOpen(true);
+  };
 
   return (
     <Layout>
@@ -34,10 +54,15 @@ export default function ThanksForVisitingPage() {
       />
 
       {/* Lead Generation Modal */}
-      <EventLeadModal open={isModalOpen} onOpenChange={setIsModalOpen} />
+      <EventLeadModal
+        open={isModalOpen}
+        onOpenChange={setIsModalOpen}
+        selectedVehicle={selectedVehicle}
+        onClearVehicle={() => setSelectedVehicle(null)}
+      />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-12 pb-16 md:pt-20 md:pb-24 bg-gradient-to-b from-muted/30 via-background to-background border-b border-border/40">
+      <section className="relative overflow-hidden pt-32 pb-16 sm:pt-36 md:pt-40 md:pb-24 bg-gradient-to-b from-muted/30 via-background to-background border-b border-border/40">
         {/* Ambient background glow */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-accent/15 blur-[120px] rounded-full pointer-events-none -z-10" />
 
@@ -87,7 +112,7 @@ export default function ThanksForVisitingPage() {
 
               {/* Primary Modal Trigger */}
               <Button
-                onClick={() => setIsModalOpen(true)}
+                onClick={handleOpenGeneralModal}
                 size="lg"
                 className="w-full sm:w-auto h-14 px-8 rounded-2xl bg-accent hover:bg-accent/90 text-white font-bold text-base uppercase tracking-wider shadow-xl shadow-accent/25 flex items-center justify-center gap-2 group transform active:scale-95 transition-all"
               >
@@ -100,7 +125,7 @@ export default function ThanksForVisitingPage() {
           {/* Dual Action / Call Options */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-xl mx-auto">
             <Button
-              onClick={() => setIsModalOpen(true)}
+              onClick={handleOpenGeneralModal}
               className="w-full sm:w-auto h-12 px-6 rounded-xl bg-accent hover:bg-accent/90 text-white font-bold text-sm uppercase tracking-wider shadow-md"
             >
               Fill Out Voucher Form
@@ -224,7 +249,11 @@ export default function ThanksForVisitingPage() {
 
                     {/* Claim Towards this car CTA */}
                     <Button
-                      onClick={() => setIsModalOpen(true)}
+                      onClick={() => {
+                        const vehicleName = `${deal.year} ${deal.make} ${deal.model}${deal.trim ? ' ' + deal.trim : ''} ($${deal.monthly_price}/mo)`;
+                        setSelectedVehicle(vehicleName);
+                        setIsModalOpen(true);
+                      }}
                       className="w-full h-11 rounded-xl bg-accent hover:bg-accent/90 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5"
                     >
                       <Gift className="w-3.5 h-3.5" />
@@ -242,7 +271,7 @@ export default function ThanksForVisitingPage() {
               <p className="text-sm text-muted-foreground">
                 Whether you're looking for BMW, Mercedes, Audi, Toyota, Lexus, Jeep, or EV options, we negotiate the lowest monthly payments with zero hassle.
               </p>
-              <Button onClick={() => setIsModalOpen(true)} className="rounded-xl">
+              <Button onClick={handleOpenGeneralModal} className="rounded-xl">
                 Claim $500 On Any Vehicle
               </Button>
             </div>

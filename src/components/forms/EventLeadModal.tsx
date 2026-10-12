@@ -17,8 +17,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { CheckCircle2, Gift, Loader2, Phone, Sparkles, Tag } from 'lucide-react';
+import { CheckCircle2, Gift, Loader2, Phone, Sparkles, Tag, Car } from 'lucide-react';
 import { WEBHOOK_CONTACT_PATH } from '@/lib/webhook';
+import { useEffect } from 'react';
 
 const formatPhoneNumber = (value: string) => {
   const digits = value.replace(/\D/g, '');
@@ -30,6 +31,8 @@ const formatPhoneNumber = (value: string) => {
 interface EventLeadModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  selectedVehicle?: string | null;
+  onClearVehicle?: () => void;
 }
 
 const INTENT_OPTIONS = [
@@ -39,7 +42,7 @@ const INTENT_OPTIONS = [
   { value: 'Other', label: 'Other' },
 ];
 
-export function EventLeadModal({ open, onOpenChange }: EventLeadModalProps) {
+export function EventLeadModal({ open, onOpenChange, selectedVehicle, onClearVehicle }: EventLeadModalProps) {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
@@ -49,6 +52,13 @@ export function EventLeadModal({ open, onOpenChange }: EventLeadModalProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  // Auto-fill intent to "Looking to lease/finance" when a vehicle is explicitly selected
+  useEffect(() => {
+    if (selectedVehicle && !intent) {
+      setIntent('Looking to lease/finance');
+    }
+  }, [selectedVehicle, intent]);
 
   const resetForm = () => {
     setName('');
@@ -102,20 +112,26 @@ export function EventLeadModal({ open, onOpenChange }: EventLeadModalProps) {
     try {
       const messageContent = [
         `Event Lead: Claimed $500 Discount Voucher (Promo: CMC-EVENT500)`,
+        selectedVehicle ? `Selected Vehicle: ${selectedVehicle}` : '',
         `Goal / Intent: ${intent}`,
         intent === 'Other' && otherNotes.trim() ? `Additional Details: ${otherNotes.trim()}` : '',
       ]
         .filter(Boolean)
         .join(' | ');
 
+      const leadType = selectedVehicle
+        ? `Event Lead ($500 Voucher - ${selectedVehicle})`
+        : 'Event Lead ($500 Voucher)';
+
       const payload = {
-        Type: 'Event Lead ($500 Voucher)',
+        Type: leadType,
         Source: 'event_qr',
         Name: cleanName,
         Phone: cleanPhone,
         Email: cleanEmail,
         Service: 'Event Promotion ($500 Discount)',
-        Vehicle: intent,
+        Vehicle: selectedVehicle || intent || 'N/A',
+        SelectedVehicle: selectedVehicle || undefined,
         Intent: intent,
         OtherDetails: otherNotes.trim() || undefined,
         PromoCode: 'CMC-EVENT500',
@@ -162,6 +178,28 @@ export function EventLeadModal({ open, onOpenChange }: EventLeadModalProps) {
                 Thank you for visiting us! Fill out your details below to activate your <strong className="text-foreground">$500 discount voucher</strong> valid on any car lease or purchase.
               </DialogDescription>
             </DialogHeader>
+
+            {/* Selected Vehicle Deal Preview Banner */}
+            {selectedVehicle && (
+              <div className="p-3.5 rounded-2xl bg-accent/10 border border-accent/25 flex items-center justify-between gap-3 mt-3">
+                <div className="flex items-center gap-2.5">
+                  <Car className="w-5 h-5 text-accent shrink-0" />
+                  <div>
+                    <div className="text-[10px] uppercase tracking-wider text-accent font-bold">Selected Vehicle Deal</div>
+                    <div className="text-sm font-bold text-foreground">{selectedVehicle}</div>
+                  </div>
+                </div>
+                {onClearVehicle && (
+                  <button
+                    type="button"
+                    onClick={onClearVehicle}
+                    className="text-xs text-muted-foreground hover:text-foreground underline transition-colors"
+                  >
+                    Change
+                  </button>
+                )}
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="mt-4 space-y-4">
               {errorMessage && (
@@ -330,6 +368,11 @@ export function EventLeadModal({ open, onOpenChange }: EventLeadModalProps) {
               <div className="text-[11px] text-muted-foreground mt-1">
                 Value: $500 Off Any Lease or Finance
               </div>
+              {selectedVehicle && (
+                <div className="text-xs text-accent font-bold mt-2 pt-2 border-t border-border/40">
+                  Target Vehicle: {selectedVehicle}
+                </div>
+              )}
             </div>
 
             {/* Actions */}
