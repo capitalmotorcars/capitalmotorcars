@@ -224,6 +224,31 @@
       "source": "/signature-auto-group-vs-capital-motor-cars-nyc",
       "destination": "https://www.capitalmotorcars.com/cars-for-lease-broker-nyc",
       "permanent": true
+    },
+    {
+      "source": "/one-pay-lease",
+      "destination": "https://www.capitalmotorcars.com/single-pay-car-lease-guide-money-factor-savings",
+      "permanent": true
+    },
+    {
+      "source": "/one-pay-lease-deals",
+      "destination": "https://www.capitalmotorcars.com/single-pay-car-lease-guide-money-factor-savings",
+      "permanent": true
+    },
+    {
+      "source": "/zero-down-car-lease",
+      "destination": "https://www.capitalmotorcars.com/what-does-a-zero-down-lease-really-mean",
+      "permanent": true
+    },
+    {
+      "source": "/0-down-lease",
+      "destination": "https://www.capitalmotorcars.com/what-does-a-zero-down-lease-really-mean",
+      "permanent": true
+    },
+    {
+      "source": "/kia-seltos-reliability",
+      "destination": "https://www.capitalmotorcars.com/kia-seltos-reliability-detailed-review",
+      "permanent": true
     }
   ],
   "routes": [
