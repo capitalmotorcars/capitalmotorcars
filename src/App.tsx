@@ -364,7 +364,12 @@ const legacyRedirects = [
   { from: "/got-bad-credit-heres-how-to-get-approved-for-a-car-lease", to: "/bad-credit-car-lease-new-jersey" },
   { from: "/returning-your-lease-car-to-the-dealership-how-to-prepare-and-what-you-need-to-know", to: "/lease-return-process-explained-new-jersey" },
   { from: "/negotiate-the-best-car-lease-deal", to: "/how-to-negotiate-a-lease-deal" },
-  { from: "/signature-auto-group-vs-capital-motor-cars-nyc", to: "/cars-for-lease-broker-nyc" }
+  { from: "/signature-auto-group-vs-capital-motor-cars-nyc", to: "/cars-for-lease-broker-nyc" },
+  { from: "/one-pay-lease", to: "/single-pay-car-lease-guide-money-factor-savings" },
+  { from: "/one-pay-lease-deals", to: "/single-pay-car-lease-guide-money-factor-savings" },
+  { from: "/zero-down-car-lease", to: "/what-does-a-zero-down-lease-really-mean" },
+  { from: "/0-down-lease", to: "/what-does-a-zero-down-lease-really-mean" },
+  { from: "/kia-seltos-reliability", to: "/kia-seltos-reliability-detailed-review" }
 ];
 
 const App = () => (
