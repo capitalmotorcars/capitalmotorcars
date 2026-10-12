@@ -50,7 +50,7 @@
 
 ### 4. Passage-Level Citability & BLUF (Bottom Line Up Front)
 - **The Issue:** 60 out of 83 blog guides lack an executive summary or "Key Takeaways" box at the top of the article.
-- **Why It Matters:** **~44% of AI citations come from the first 30% of a page** (SE Ranking 2026 AI Citation Study). Answer engines look for concise 134–167 word self-contained definition blocks immediately following question headings.
+- **Why It Matters:** **~44% of AI citations come from the first 30% of a page** (SE Ranking 2026 AI Citation Study). Answer engines look for concise 134 to 167 word self-contained definition blocks immediately following question headings.
 - **The Fix:** Add a formatted `### 🔑 Key Takeaways` executive summary box and answer-first definitions ("What is...", "In New Jersey, a zero-down lease means...") to all legacy blog guides.
 
 ---

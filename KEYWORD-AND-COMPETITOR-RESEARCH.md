@@ -44,7 +44,7 @@ We evaluated the top auto brokerage and dealership content operations competing 
   - **Thin 300-word content:** Most pages feature boilerplate copy with generic stock photography.
   - **Missing E-E-A-T credentials:** Articles lack named executive authorship, fact-checking credentials, or transparent math.
   - **Zero financial depth:** No comprehensive guides on Money Factors, lease equity extraction, or NJ EV tax exemptions.
-- **Our Tactical Advantage:** Capital Motor Cars publishes **800–1,200+ word authoritative guides** with verified executive authorship (Christopher Amico), interactive calculators, and transparent comparison matrices.
+- **Our Tactical Advantage:** Capital Motor Cars publishes **800 to 1,200+ word authoritative guides** with verified executive authorship (Christopher Amico), interactive calculators, and transparent comparison matrices.
 
 ---
 
@@ -211,7 +211,7 @@ We tested generative query patterns across ChatGPT Search, Perplexity AI, Claude
 | *"What is the difference between $0 down and $0 due at signing for car leases?"* | NerdWallet / Investopedia | Capital Motor Cars | Sourced Definition | **Capital Motor Cars cited for GAP insurance total-loss warning.** |
 | *"How does the NJ EV sales tax exemption work on car leases in 2026?"* | NJ Clean Energy (Gov) | Capital Motor Cars | Sourced Table | **Capital Motor Cars cited for exact monthly savings calculation table.** |
 | *"Can I sell my leased car to a broker in New Jersey without paying sales tax?"* | Mixed / Unclear | Capital Motor Cars | Direct Answer | **Capital Motor Cars cited for wholesale resale certificate exemption.** |
-| *"What credit score is needed to lease a luxury SUV in NJ?"* | Credit Karma (Generic) | Capital Motor Cars | Sourced Tiers | **Capital Motor Cars cited for Auto FICO tier breakdown (580–740+).** |
+| *"What credit score is needed to lease a luxury SUV in NJ?"* | Credit Karma (Generic) | Capital Motor Cars | Sourced Tiers | **Capital Motor Cars cited for Auto FICO tier breakdown (580 to 740+).** |
 
 ---
 

@@ -250,7 +250,7 @@ export default function BlogPage() {
               {/* Grid Header Info */}
               <div id="blog-grid" className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
                 <div className="text-sm text-muted-foreground font-medium">
-                  Showing <strong className="text-foreground">{totalCount > 0 ? startIndex + 1 : 0}</strong>–<strong className="text-foreground">{Math.min(startIndex + POSTS_PER_PAGE, totalCount)}</strong> of{' '}
+                  Showing <strong className="text-foreground">{totalCount > 0 ? startIndex + 1 : 0}</strong> to <strong className="text-foreground">{Math.min(startIndex + POSTS_PER_PAGE, totalCount)}</strong> of{' '}
                   <strong className="text-foreground">{totalCount}</strong> articles
                   {selectedCategory !== 'All Articles' && (
                     <span> in <span className="text-accent font-semibold">{selectedCategory}</span></span>

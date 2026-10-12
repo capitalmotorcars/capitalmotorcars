@@ -720,7 +720,7 @@
   }
 }
 
-/* ========== How It Works diagram – smooth transitions (data-active + CSS vars) ========== */
+/* ========== How It Works diagram: smooth transitions (data-active + CSS vars) ========== */
 .hiw-line {
   stroke-width: 0.08;
   stroke-dasharray: 1 1.5;
@@ -742,7 +742,7 @@
   stroke: hsl(var(--accent) / 0.80);
 }
 
-/* Center circle – blue border + blue icon (same as step nodes) */
+/* Center circle: blue border + blue icon (same as step nodes) */
 .hiw-center-icon {
   border-color: hsl(var(--accent));
 }

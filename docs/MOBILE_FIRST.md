@@ -14,7 +14,7 @@ This document summarizes the mobile-first approach used across the Capital Motor
 
 ### Where Breakpoints Are Used
 
-| Area | Base (320–430px) | md (≥768px) | lg (≥1024px) |
+| Area | Base (320 to 430px) | md (≥768px) | lg (≥1024px) |
 |------|-------------------|-------------|--------------|
 | **Hero** | Single column, stacked CTAs, centered text, “How It Works” infographic below | Same column; optional spacing tweaks | Same; larger type and infographic container |
 | **Header** | Hamburger menu; logo left, CTA in drawer | - | Horizontal nav + “Schedule a Call” button |
@@ -53,29 +53,29 @@ Run through these viewports and checks before release:
 
 **Per viewport, verify**
 
-1. **No horizontal overflow** – No scrollbar on the page; no content clipped or extending past the right edge.
-2. **No overlapping text** – Headlines, body, and labels don’t overlap each other or UI elements.
-3. **No clipped buttons** – CTAs and nav items are fully visible and tappable (min 44×44px).
-4. **Grids and carousels** – Service grid, vehicle types, and brand carousels layout correctly; no broken or overflowing tiles.
-5. **Primary CTA** – “Get Started” / “Schedule a Call” (or equivalent) is visible above the fold or early in the flow and is clearly tappable.
-6. **Forms** – Contact and Credit Application: inputs are full-width where intended, labels above fields, submit button full-width and at least 44px tall; no tiny or clipped fields.
+1. **No horizontal overflow**  to  No scrollbar on the page; no content clipped or extending past the right edge.
+2. **No overlapping text**  to  Headlines, body, and labels don’t overlap each other or UI elements.
+3. **No clipped buttons**  to  CTAs and nav items are fully visible and tappable (min 44×44px).
+4. **Grids and carousels**  to  Service grid, vehicle types, and brand carousels layout correctly; no broken or overflowing tiles.
+5. **Primary CTA**  to  “Get Started” / “Schedule a Call” (or equivalent) is visible above the fold or early in the flow and is clearly tappable.
+6. **Forms**  to  Contact and Credit Application: inputs are full-width where intended, labels above fields, submit button full-width and at least 44px tall; no tiny or clipped fields.
 
 **Pages and flows**
 
-- **Home** – Hero, “How It Works,” and at least one CTA; scroll to one carousel and one content block.
-- **Services** – Category pills, service cards, and at least one “Learn more” flow.
-- **Contact** – Page hero, form in a single column, submit and (if applicable) success state.
+- **Home**  to  Hero, “How It Works,” and at least one CTA; scroll to one carousel and one content block.
+- **Services**  to  Category pills, service cards, and at least one “Learn more” flow.
+- **Contact**  to  Page hero, form in a single column, submit and (if applicable) success state.
 
 ---
 
 ## Structured Visual Descriptions (Mobile)
 
-These describe the intended mobile layout for key screens. Use them for design review or to compare against screenshots taken at 320px–430px.
+These describe the intended mobile layout for key screens. Use them for design review or to compare against screenshots taken at 320px to 430px.
 
 ### Home (mobile)
 
 - **Hero**: Full-width dark section. Headline and subtext centered; headline can wrap to multiple lines. Social proof (avatars + “X+ happy customers”) below the headline. Two CTAs stacked: primary “Get Started” (or similar), secondary “How it works” (or link). No second column; single vertical stack.
-- **How It Works**: Directly below hero content, inside a card-style container. Linear steps (e.g. 1–5) with short labels; optional car icon or visual on the active step. No side-by-side layout; steps read top-to-bottom or in a compact horizontal strip that doesn’t overflow.
+- **How It Works**: Directly below hero content, inside a card-style container. Linear steps (e.g. 1 to 5) with short labels; optional car icon or visual on the active step. No side-by-side layout; steps read top-to-bottom or in a compact horizontal strip that doesn’t overflow.
 - **Below the fold**: Subsequent sections (e.g. vehicle types, brands, what we do) in single column or horizontal carousel with safe horizontal padding (16px). No horizontal page scroll.
 
 ### Services / Offer (mobile)

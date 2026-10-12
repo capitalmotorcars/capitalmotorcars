@@ -17,10 +17,10 @@
 ### B. Money Factor (Interest Rate) Markup
 - **Customer Quote Pattern:** *"Dealer gave me a monthly payment that was $95 higher than the lease calculator. Found out they marked up the bank buy-rate Money Factor from 0.00185 to 0.00245 for pure dealership profit."*
 - **Trigger:** Dealerships quietly padding interest rates without disclosing the underlying bank buy-rate.
-- **Capital Motor Cars Solution:** Absolute transparency — client gets the direct captive bank buy-rate with zero hidden APR inflation.
+- **Capital Motor Cars Solution:** Absolute transparency :  client gets the direct captive bank buy-rate with zero hidden APR inflation.
 
 ### C. Skepticism of Up-Front Broker Retainer Fees
-- **Customer Quote Pattern:** *"Some brokers demand a $500–$1,000 non-refundable upfront fee before even showing you a confirmed inventory allocation."*
+- **Customer Quote Pattern:** *"Some brokers demand a $500 to $1,000 non-refundable upfront fee before even showing you a confirmed inventory allocation."*
 - **Trigger:** Fear of paying an intermediary who fails to deliver the promised vehicle.
 - **Capital Motor Cars Solution:** Dedicated concierge consultants, transparent quoting before any commitment, and direct fleet allocation access.
 

@@ -15,7 +15,7 @@ Most automotive leasing blogs publish generic fluff ("How to wash your car", "Wh
 This strategy pivots 100% of Capital Motor Cars' content architecture to **High-Intent Commercial & Financial Problem-Solving**. We target consumers actively preparing to sign a new car lease, negotiate a deal, exit an existing vehicle, or calculate monthly payments in New Jersey and New York.
 
 ### The Capital Motor Cars Unfair Advantage:
-1. **True Bank Buy-Rate Transparency:** Dealerships quietly mark up the Money Factor (interest rate) by 100–200 bps for pure profit. Capital Motor Cars delivers direct bank wholesale rates with zero hidden markups.
+1. **True Bank Buy-Rate Transparency:** Dealerships quietly mark up the Money Factor (interest rate) by 100 to 200 bps for pure profit. Capital Motor Cars delivers direct bank wholesale rates with zero hidden markups.
 2. **Zero Dealership Games / No Showroom Fatigue:** Eliminates the 4-hour high-pressure finance office negotiation. Paperwork is pre-signed digitally and finalized in 15 minutes at the customer's driveway.
 3. **Wholesale Fleet Allocation Access:** Direct relationships with manufacturer fleet departments across BMW, Mercedes-Benz, Porsche, Audi, Range Rover, Genesis, Toyota, and Kia.
 4. **White-Glove Doorstep Delivery:** Vehicles delivered directly to homes and offices throughout New Jersey and New York.
@@ -55,7 +55,7 @@ We evaluated the top auto leasing competitor content engines in the NY/NJ tri-st
 - **Conversion Path:** Use Lease Calculator $\rightarrow$ Read Buy-Rate Money Factor Guide $\rightarrow$ Submit Credit Application.
 
 ### 🔄 Persona 3: The Lease-End Transitioner ("The Exiter")
-- **Profile:** Driver with 3–6 months left on an existing lease facing disposition fees, excess mileage, or minor wear and tear.
+- **Profile:** Driver with 3 to 6 months left on an existing lease facing disposition fees, excess mileage, or minor wear and tear.
 - **Leasing Interest:** Seamless lease return, early exit, or equity rollover into a new model.
 - **Core Pain Point:** Terrified of surprise $1,200 lease return penalty fees from captive finance inspectors.
 - **Trigger Query:** *"how to get out of car lease early NJ"*, *"car lease return checklist without fees"*, *"lease equity trade in estimate"*.
@@ -151,7 +151,7 @@ We evaluated the top auto leasing competitor content engines in the NY/NJ tri-st
 
 ## 5. AI Search & Generative Engine Optimization (GEO) Strategy
 
-AI Search engines (ChatGPT Search, Perplexity, Google AI Overviews, Claude) do not rank pages by keyword density — they cite sources with **high passage citability, unambiguous entity definitions, and verifiable mathematical data**.
+AI Search engines (ChatGPT Search, Perplexity, Google AI Overviews, Claude) do not rank pages by keyword density :  they cite sources with **high passage citability, unambiguous entity definitions, and verifiable mathematical data**.
 
 ### How We Optimize Content for AI Citations:
 1. **Self-Contained "Key Takeaway" Definition Blocks:** Every article starts with a clean summary box containing direct, authoritative definitions (e.g. *"A car broker is a licensed automotive concierge who negotiates wholesale fleet lease pricing directly with captive lenders..."*).

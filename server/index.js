@@ -64,7 +64,7 @@ const WEBHOOK_JSON_LIMIT = '128mb';
 const jsonWebhook = express.json({ limit: WEBHOOK_JSON_LIMIT });
 const jsonDefault = express.json({ limit: '2mb' });
 app.use((req, res, next) => {
-  /* After app.use('/api', …), req.url is stripped — use originalUrl so /api/webhooks/* is detected. */
+  /* After app.use('/api', ...), req.url is stripped; use originalUrl so /api/webhooks/* is detected. */
   const pathname = (req.originalUrl ?? req.url ?? '').split('?')[0];
   if (pathname.startsWith('/api/webhooks')) {
     return jsonWebhook(req, res, next);
