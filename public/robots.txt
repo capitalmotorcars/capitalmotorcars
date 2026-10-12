@@ -1,10 +1,12 @@
 User-agent: Googlebot
 Allow: /
 Disallow: /admin
+Disallow: /thanksforvisiting
 
 User-agent: Bingbot
 Allow: /
 Disallow: /admin
+Disallow: /thanksforvisiting
 
 User-agent: Twitterbot
 Allow: /
@@ -94,6 +96,7 @@ Disallow: /admin
 User-agent: *
 Allow: /
 Disallow: /admin
+Disallow: /thanksforvisiting
 # Stop crawl budget waste on legacy WordPress parameters & dead directories
 Disallow: /*?*nocache*
 Disallow: /*?*jet_blog_ajax*

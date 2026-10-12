@@ -124,6 +124,22 @@ describe('sheetSync', () => {
       expect(leads[0].lastName).toBe('');
       delete process.env.SYNC_CONTACT_LEADS;
     });
+
+    it('always extracts event leads from QR code without requiring sync env vars', () => {
+      delete process.env.SYNC_CONTACT_LEADS;
+      delete process.env.SYNC_ALL_LEADS;
+      const payload = {
+        Source: 'event_qr',
+        Type: 'Event Lead ($500 Voucher)',
+        Name: 'Diana Prince',
+        Email: 'diana@themyscira.com',
+      };
+      const leads = extractLeadsForSheet('contact', payload);
+      expect(leads).toHaveLength(1);
+      expect(leads[0].firstName).toBe('Diana Prince');
+      expect(leads[0].email).toBe('diana@themyscira.com');
+      expect(leads[0].submissionType).toBe('Event Lead ($500 Voucher)');
+    });
   });
 
   describe('syncLeadToSheet', () => {

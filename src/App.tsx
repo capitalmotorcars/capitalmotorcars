@@ -40,6 +40,7 @@ const QuizPage = lazy(() => import("./pages/QuizPage"));
 const BlogPage = lazy(() => import("./pages/BlogPage"));
 const BlogPostPage = lazy(() => import("./pages/BlogPostPage"));
 const TradeInValuePage = lazy(() => import("./pages/TradeInValuePage"));
+const ThanksForVisitingPage = lazy(() => import("./pages/ThanksForVisitingPage"));
 
 // Local pages
 const CarLeaseDealsNewJerseyPage = lazy(() => import("./pages/local/CarLeaseDealsNewJerseyPage"));
@@ -732,6 +733,8 @@ const App = () => (
                   <Route key={from} path={from} element={<Navigate to={to} replace />} />,
                   <Route key={`${from}/`} path={`${from}/`} element={<Navigate to={to} replace />} />
                 ])}
+
+                <Route path="/thanksforvisiting" element={<ThanksForVisitingPage />} />
 
                 {/* Dynamic Fallback Blog Route for all indexed and new blog posts */}
                 <Route path="/:slug" element={<BlogPostPage />} />
