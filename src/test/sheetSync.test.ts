@@ -44,11 +44,12 @@ describe('sheetSync', () => {
       const leads = extractLeadsForSheet('credit', payload);
       expect(leads).toHaveLength(1);
       expect(leads[0].firstName).toBe('Tony');
+      expect(leads[0].lastName).toBe('Stark');
       expect(leads[0].email).toBe('tony@stark.com');
       expect(leads[0].submissionType).toBe('Personal Credit Application');
     });
 
-    it('extracts personal credit application with co-applicant', () => {
+    it('extracts only main applicant from personal credit application', () => {
       const payload = {
         VehicleOrService: 'Credit Application',
         FirstName: 'Peter',
@@ -60,12 +61,24 @@ describe('sheetSync', () => {
         CoEmail: 'mj@watson.com',
       };
       const leads = extractLeadsForSheet('credit', payload);
-      expect(leads).toHaveLength(2);
+      expect(leads).toHaveLength(1);
       expect(leads[0].firstName).toBe('Peter');
+      expect(leads[0].lastName).toBe('Parker');
       expect(leads[0].email).toBe('peter@dailybugle.com');
-      expect(leads[1].firstName).toBe('Mary');
-      expect(leads[1].email).toBe('mj@watson.com');
-      expect(leads[1].submissionType).toBe('Personal Credit Application (Co-Applicant)');
+      expect(leads[0].submissionType).toBe('Personal Credit Application');
+    });
+
+    it('keeps full name in firstName when lastName is not provided', () => {
+      const payload = {
+        VehicleOrService: 'Credit Application',
+        Name: 'Natasha Romanoff',
+        Email: 'natasha@avengers.com',
+      };
+      const leads = extractLeadsForSheet('credit', payload);
+      expect(leads).toHaveLength(1);
+      expect(leads[0].firstName).toBe('Natasha Romanoff');
+      expect(leads[0].lastName).toBe('');
+      expect(leads[0].email).toBe('natasha@avengers.com');
     });
 
     it('extracts business credit application with personal guarantor', () => {
@@ -77,11 +90,11 @@ describe('sheetSync', () => {
         PersonalGuarantorEmail: 'bruce@wayne.com',
       };
       const leads = extractLeadsForSheet('credit', payload);
-      expect(leads.length).toBeGreaterThanOrEqual(1);
-      const guarantor = leads.find((l) => l.submissionType.includes('Guarantor'));
-      expect(guarantor).toBeDefined();
-      expect(guarantor?.firstName).toBe('Bruce');
-      expect(guarantor?.email).toBe('bruce@wayne.com');
+      expect(leads).toHaveLength(1);
+      expect(leads[0].firstName).toBe('Bruce Wayne');
+      expect(leads[0].lastName).toBe('');
+      expect(leads[0].email).toBe('bruce@wayne.com');
+      expect(leads[0].submissionType).toBe('Business Credit Application');
     });
 
     it('extracts trade-in evaluation (PDF lead)', () => {
@@ -93,13 +106,13 @@ describe('sheetSync', () => {
       };
       const leads = extractLeadsForSheet('trade-in', payload);
       expect(leads).toHaveLength(1);
-      expect(leads[0].firstName).toBe('Clark');
+      expect(leads[0].firstName).toBe('Clark Kent');
+      expect(leads[0].lastName).toBe('');
       expect(leads[0].email).toBe('clark@dailyplanet.com');
       expect(leads[0].submissionType).toBe('Trade-In Valuation (PDF)');
     });
 
     it('extracts contact lead only when SYNC_CONTACT_LEADS or SYNC_ALL_LEADS is enabled', () => {
-
       delete process.env.SYNC_CONTACT_LEADS;
       delete process.env.SYNC_ALL_LEADS;
       expect(extractLeadsForSheet('contact', { Name: 'Barry Allen', Email: 'barry@centralcity.com' })).toEqual([]);
@@ -107,7 +120,8 @@ describe('sheetSync', () => {
       process.env.SYNC_CONTACT_LEADS = 'true';
       const leads = extractLeadsForSheet('contact', { Name: 'Barry Allen', Email: 'barry@centralcity.com' });
       expect(leads).toHaveLength(1);
-      expect(leads[0].firstName).toBe('Barry');
+      expect(leads[0].firstName).toBe('Barry Allen');
+      expect(leads[0].lastName).toBe('');
       delete process.env.SYNC_CONTACT_LEADS;
     });
   });
@@ -116,7 +130,6 @@ describe('sheetSync', () => {
     it('returns success safely when webhook URL is not set', async () => {
       process.env.GOOGLE_SHEET_WEBHOOK_URL = '';
       const res = await syncLeadToSheet('credit', {
-
         FirstName: 'Bruce',
         Email: 'bruce@test.com',
       });
@@ -149,8 +162,10 @@ describe('sheetSync', () => {
         expect(res.syncedCount).toBe(1);
         expect(capturedBody).toBeDefined();
         expect(capturedBody.firstName).toBe('Diana');
+        expect(capturedBody.lastName).toBe('Prince');
         expect(capturedBody.email).toBe('diana@themyscira.com');
         expect(capturedBody['First Name']).toBe('Diana');
+        expect(capturedBody['Last Name']).toBe('Prince');
         expect(capturedBody['Email']).toBe('diana@themyscira.com');
       } finally {
         globalThis.fetch = originalFetch;

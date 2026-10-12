@@ -1,6 +1,6 @@
 # Google Sheet & Excel Integration Guide for Credit Applications
 
-This system automatically stores the **First Name** and **Email** of all people who submit Credit Applications or PDF forms on the Capital Motor Cars website.
+This system automatically stores the **First Name**, **Last Name**, and **Email** of all people who submit Credit Applications or PDF forms on the Capital Motor Cars website.
 
 ---
 
@@ -13,9 +13,10 @@ Follow these steps to connect your Google Sheet:
 2. Name it (e.g., **Capital Motor Cars - Credit Applications**).
 3. In Row 1, add these column headers:
    - **A1**: `First Name`
-   - **B1**: `Email`
-   - **C1**: `Submission Type`
-   - **D1**: `Date Submitted`
+   - **B1**: `Last Name`
+   - **C1**: `Email`
+   - **D1**: `Submission Type`
+   - **E1**: `Date Submitted`
 
 ---
 
@@ -36,15 +37,21 @@ function doPost(e) {
     }
 
     var firstName = data.firstName || data["First Name"] || "";
+    var lastName = data.lastName || data["Last Name"] || "";
     var email = data.email || data["Email"] || "";
     var submissionType = data.submissionType || data["Submission Type"] || "Credit Application";
-    var date = data.submittedAt || data["Submitted At"] || new Date().toISOString();
+    var date = data.submittedAt || data["Submitted At"] || data.date || data["Date"] || new Date().toISOString();
 
-    // Append to sheet
-    sheet.appendRow([firstName, email, submissionType, date]);
+    // Append to sheet: [First Name, Last Name, Email, Submission Type, Date Submitted]
+    sheet.appendRow([firstName, lastName, email, submissionType, date]);
 
     return ContentService
-      .createTextOutput(JSON.stringify({ status: "success", firstName: firstName, email: email }))
+      .createTextOutput(JSON.stringify({
+        status: "success",
+        firstName: firstName,
+        lastName: lastName,
+        email: email
+      }))
       .setMimeType(ContentService.MimeType.JSON);
   } catch (err) {
     return ContentService
@@ -65,7 +72,7 @@ function doGet(e) {
 ---
 
 ### Step 3: Deploy as Web App
-1. Click **Deploy** (top right) → **New deployment**.
+1. Click **Deploy** (top right) → **New deployment** (or **Manage deployments** > ✏️ **Edit** > **New version** if you already have one deployed).
 2. Click the gear icon ⚙️ next to "Select type" and choose **Web app**.
 3. Set the configuration:
    - **Description**: `Credit Leads Webhook`
@@ -77,8 +84,10 @@ function doGet(e) {
 
 ---
 
-### Step 4: Add the URL to Environment Variables
-Add the copied URL to your `.env` file and to **Vercel** (`Settings > Environment Variables`):
+### Step 4: Webhook Configuration
+The webhook URL is pre-configured directly in code (`lib/sheetSync.mjs`), so live leads will automatically sync without needing environment variables.
+
+If you ever deploy a new Apps Script URL, you can optionally override it in `.env` and **Vercel** (`Settings > Environment Variables`):
 
 ```bash
 GOOGLE_SHEET_WEBHOOK_URL="https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec"
@@ -86,10 +95,10 @@ GOOGLE_SHEET_WEBHOOK_URL="https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/
 
 From now on, whenever anyone submits:
 - **Personal Credit Application** (captures applicant and co-applicant)
-- **Business Credit Application** (captures guarantor first name & email)
+- **Business Credit Application** (captures guarantor first & last name & email)
 - **Trade-In Valuation Form** (generates printable lead PDF)
 
-Their **First Name** and **Email** will automatically be appended as a new row in your Google Sheet in real time.
+Their **First Name**, **Last Name**, and **Email** will automatically be appended as a new row in your Google Sheet in real time.
 
 ---
 
