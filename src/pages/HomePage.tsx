@@ -41,12 +41,14 @@ const homepageFaqSchema = createFaqSchema([
 ]);
 
 const primaryNavigationSchema = createSiteNavigationSchema([
-  { name: 'Home', url: 'https://www.capitalmotorcars.com/' },
-  { name: 'Services', url: 'https://www.capitalmotorcars.com/services' },
-  { name: 'Brands', url: 'https://www.capitalmotorcars.com/brands' },
+  { name: 'Car Lease Deals NJ', url: 'https://www.capitalmotorcars.com/car-lease-deals-new-jersey' },
+  { name: 'Auto Leasing New Jersey', url: 'https://www.capitalmotorcars.com/auto-leasing-new-jersey' },
+  { name: 'Car Brands', url: 'https://www.capitalmotorcars.com/brands' },
+  { name: 'Lease Calculator', url: 'https://www.capitalmotorcars.com/lease-calculator' },
+  { name: 'Trade-In Value', url: 'https://www.capitalmotorcars.com/trade-in-value' },
   { name: 'Blog', url: 'https://www.capitalmotorcars.com/blog' },
-  { name: 'About', url: 'https://www.capitalmotorcars.com/about' },
-  { name: 'Contact', url: 'https://www.capitalmotorcars.com/contact' },
+  { name: 'About Us', url: 'https://www.capitalmotorcars.com/about' },
+  { name: 'Contact & Locations', url: 'https://www.capitalmotorcars.com/contact' },
 ]);
 
 export default function HomePage() {

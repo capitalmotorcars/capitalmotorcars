@@ -175,6 +175,11 @@
         "@id": "https://www.capitalmotorcars.com/#website",
         "url": "https://www.capitalmotorcars.com/",
         "name": "Capital Motor Cars",
+        "alternateName": [
+          "Capital Motor Cars NJ",
+          "CMC Car Leasing",
+          "CapitalMotorCars"
+        ],
         "description": "Car Leasing & Auto Broker Concierge in New Jersey & New York",
         "publisher": {
           "@id": "https://www.capitalmotorcars.com/#organization"
@@ -182,9 +187,68 @@
         "inLanguage": "en-US",
         "potentialAction": {
           "@type": "SearchAction",
-          "target": "https://www.capitalmotorcars.com/blog?q={search_term_string}",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://www.capitalmotorcars.com/blog?search={search_term_string}"
+          },
           "query-input": "required name=search_term_string"
         }
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://www.capitalmotorcars.com/#sitenavigation",
+        "name": "Main Site Navigation",
+        "itemListElement": [
+          {
+            "@type": "SiteNavigationElement",
+            "position": 1,
+            "name": "Car Lease Deals NJ",
+            "description": "Best 2026 car lease deals and specials in New Jersey with $0 down options and free delivery.",
+            "url": "https://www.capitalmotorcars.com/car-lease-deals-new-jersey"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 2,
+            "name": "Auto Leasing New Jersey",
+            "description": "Licensed car lease broker in New Jersey providing wholesale fleet pricing and personal concierge.",
+            "url": "https://www.capitalmotorcars.com/auto-leasing-new-jersey"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 3,
+            "name": "Car Brands",
+            "description": "Explore lease specials across all luxury and popular automotive brands including BMW, Mercedes, Audi, and Porsche.",
+            "url": "https://www.capitalmotorcars.com/brands"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 4,
+            "name": "Lease Calculator",
+            "description": "Calculate monthly car lease payments, money factors, residuals, and New Jersey sales tax savings.",
+            "url": "https://www.capitalmotorcars.com/lease-calculator"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 5,
+            "name": "Trade-In Value",
+            "description": "Appraise your current vehicle and extract equity to roll into a brand-new lease with zero out of pocket.",
+            "url": "https://www.capitalmotorcars.com/trade-in-value"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 6,
+            "name": "About Us",
+            "description": "Learn about Capital Motor Cars, our team, and our transparent concierge auto leasing model.",
+            "url": "https://www.capitalmotorcars.com/about"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 7,
+            "name": "Contact & Locations",
+            "description": "Contact our auto leasing consultants in Springfield and Marlton, New Jersey.",
+            "url": "https://www.capitalmotorcars.com/contact"
+          }
+        ]
       }
     ]
   }

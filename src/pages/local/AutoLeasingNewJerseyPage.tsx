@@ -29,36 +29,36 @@ import autoLeasingImage from '@/assets/hero-bg.jpg';
 
 const faqs = [
   {
-    question: 'What does auto leasing New Jersey usually include?',
-    answer: 'It can include starting a new lease, replacing your current vehicle, handling a trade-in, or planning a move out of an existing lease. The main goal is to find the right vehicle and the right terms for your situation.',
+    question: 'What does a licensed car lease broker do in New Jersey?',
+    answer: 'A licensed car lease broker acts as your independent automotive concierge. We bypass retail dealership sales floors by tapping into regional wholesale fleet allocations and captive finance buy-rates. We negotiate your vehicle price, eliminate dealer add-on fees, handle credit approvals, and arrange doorstep delivery directly to your home or office.',
   },
   {
-    question: 'Can you help with trade-ins, lease renewals, and upgrades?',
-    answer: 'Yes. We can help if you are trading in a vehicle, coming to the end of a lease, or moving into something larger or newer.',
+    question: 'Is it cheaper to use a car lease broker or go directly to a dealership in NJ?',
+    answer: 'Using a broker is typically significantly cheaper. Dealerships rely on high retail markups and inflated interest rates (Money Factor markups) to generate profit. Because Capital Motor Cars moves large monthly vehicle volumes across 30+ manufacturers, we access wholesale fleet discounts and pass captive lender buy-rates directly to you, saving clients an average of $2,000 to $5,000 over their lease term.',
   },
   {
-    question: 'How is car leasing different from buying in New Jersey?',
-    answer: 'Leasing usually works best for drivers who want a newer vehicle, lower monthly payments, and the option to change cars every few years. Buying may make more sense if long-term ownership matters more than flexibility.',
+    question: 'How do car lease brokers get paid in New Jersey?',
+    answer: 'Capital Motor Cars is compensated through automotive wholesale fleet volume allowances from participating dealer partners rather than marking up your retail lease terms. You receive fully itemized lease agreements directly from the manufacturer captive bank (such as BMW Financial Services, Mercedes-Benz Financial, or Porsche Financial Services) with zero hidden fees.',
   },
   {
-    question: 'Can this help if I am searching for a lease near me?',
-    answer: 'Yes. If you are searching lease a car near me, you can compare vehicles in New Jersey and move toward a quote here.',
+    question: 'Can a car lease broker help me get a true $0 down lease in NJ?',
+    answer: 'Yes. We specialize in true zero down (sign and drive) leases where your initial out-of-pocket payment covers only standard government fees (first month payment, state registration, and acquisition fees) or rolls everything entirely into the monthly payments with zero dollars paid at signing.',
   },
   {
-    question: 'What information helps speed up the leasing process?',
-    answer: 'It helps to know your target payment, the type of vehicle you want, your estimated mileage, and whether you have a trade-in or a current lease. That makes the search much faster and keeps the options more accurate.',
+    question: 'Where does Capital Motor Cars deliver leased vehicles in New Jersey?',
+    answer: 'We provide free white-glove doorstep delivery across all 21 New Jersey counties, including Bergen, Essex, Morris, Union, Hudson, Monmouth, Middlesex, Somerset, and Ocean counties, as well as New York and Pennsylvania.',
   },
 ];
 
 const schemas = [
   createWebPageSchema({
-    name: 'Auto Leasing New Jersey',
-    description: 'Auto leasing New Jersey with clear service-led messaging for new leases, upgrades, and a faster quote path.',
+    name: 'Licensed Car Lease Broker NJ | Capital Motor Cars',
+    description: 'Work with New Jersey trusted licensed car lease broker. Skip dealership markups with wholesale fleet rates, $0 down lease options, and free doorstep delivery across NJ.',
     url: 'https://www.capitalmotorcars.com/auto-leasing-new-jersey',
   }),
   createServiceSchema({
-    name: 'Auto Leasing New Jersey',
-    description: 'Auto leasing New Jersey with clear service-led messaging for new leases, upgrades, and a faster quote path.',
+    name: 'Car Lease Broker & Auto Leasing New Jersey',
+    description: 'Full-service auto leasing and licensed car broker solutions across New Jersey, offering pre-negotiated wholesale fleet rates, $0 down lease structures, and doorstep vehicle delivery.',
     url: 'https://www.capitalmotorcars.com/auto-leasing-new-jersey',
   }),
   createFaqSchema(faqs),
@@ -72,10 +72,19 @@ export default function AutoLeasingNewJerseyPage() {
   return (
     <Layout>
       <SEO
-        title="Premier Auto Leasing in New Jersey | Capital Motor Cars"
-        description="Experience stress-free auto leasing in New Jersey. We handle new leases, upgrades, and trade-ins, providing a faster and easier car quote flow."
+        title="Licensed Car Lease Broker NJ | Capital Motor Cars | New Jersey Auto Leasing"
+        description="Work with New Jersey's trusted licensed car lease broker. Skip dealership markups with wholesale fleet rates, $0 down lease options, and free doorstep delivery across NJ."
         canonicalPath="/auto-leasing-new-jersey"
-        seoKeywords={['auto leasing New Jersey', 'New Jersey auto leasing', 'auto lease NJ', 'lease broker NJ', 'auto lease broker New Jersey', 'Capital Motor Cars']}
+        seoKeywords={[
+          'car lease broker NJ',
+          'licensed car lease broker New Jersey',
+          'auto leasing New Jersey',
+          'auto broker NJ',
+          'car leasing broker near me',
+          'best car lease deals NJ',
+          'zero down lease NJ',
+          'Capital Motor Cars',
+        ]}
         ogType="website"
         ogImage="https://www.capitalmotorcars.com/shared-img.png"
       />
@@ -97,30 +106,30 @@ export default function AutoLeasingNewJerseyPage() {
               <div className="mb-4 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-white/70">
                 <Link to="/" className="hover:text-white transition-colors">Home</Link>
                 <span className="text-white/30">/</span>
-                <span>Auto Leasing New Jersey</span>
+                <span>Car Lease Broker NJ</span>
               </div>
 
-              <h1 className="mt-5 text-3xl sm:text-4xl md:text-5xl lg:text-[3.7rem] font-extrabold leading-tight tracking-tight">
-                <span className="text-gradient-heading-dark">Auto Leasing New Jersey</span>
+              <h1 className="mt-5 text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold leading-tight tracking-tight">
+                <span className="text-gradient-heading-dark">Licensed Car Lease Broker NJ</span>
               </h1>
 
               <p className="mt-4 max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed text-white/80">
-                Start with your current vehicle, your timing, and the kind of upgrade you want, then narrow the right next lease with less back and forth.
+                Skip dealership markups, inflated interest rates, and four-hour showroom visits. Capital Motor Cars negotiates directly with captive automotive lenders to secure wholesale fleet lease pricing, true $0 down structures, and free doorstep delivery across New Jersey.
               </p>
 
               <div className="mt-7 flex flex-col sm:flex-row gap-3">
                 <MagneticButton strength={0.35} className="w-full sm:w-auto">
                   <Button asChild size="lg" className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-accent-foreground font-semibold glow-blue">
                     <Link to="/contact" className="inline-flex items-center gap-2">
-                      Get Started
+                      Get a Custom Lease Quote
                       <Phone className="h-4 w-4" />
                     </Link>
                   </Button>
                 </MagneticButton>
                 <MagneticButton strength={0.25} className="w-full sm:w-auto">
                   <Button asChild size="lg" variant="ghost" className="w-full sm:w-auto border border-white/20 bg-white/[0.05] text-white hover:bg-white/[0.1] hover:text-white">
-                    <Link to="/services/car-leasing" className="inline-flex items-center gap-2">
-                      View Leasing Service
+                    <Link to="/car-lease-deals-new-jersey" className="inline-flex items-center gap-2">
+                      View NJ Lease Specials
                       <ArrowRight className="h-4 w-4" />
                     </Link>
                   </Button>
@@ -129,9 +138,9 @@ export default function AutoLeasingNewJerseyPage() {
 
               <div className="mt-8 grid gap-3 sm:grid-cols-3">
                 {[
-                  'Start from your current situation',
-                  'Compare replacement options',
-                  'Move ahead with less back and forth',
+                  'Wholesale Fleet Volume Pricing',
+                  'True $0 Down Sign & Drive Options',
+                  'Free Doorstep Delivery Across NJ',
                 ].map((item, index) => {
                   const icons = [SearchCheck, RefreshCcw, Clock3];
                   const Icon = icons[index];
@@ -179,6 +188,57 @@ export default function AutoLeasingNewJerseyPage() {
                   ))}
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Broker vs Dealership Comparison Section */}
+      <section className="py-16 lg:py-20 section-bg-alt">
+        <div className="container mx-auto px-4 lg:px-8">
+          <SectionHeading
+            title="Car Lease Broker vs Traditional Dealership in NJ"
+            subtitle="Understand why thousands of New Jersey drivers choose a licensed auto lease broker over the traditional dealership showroom experience."
+          />
+
+          <div className="mt-10 overflow-hidden rounded-2xl border border-border dark:border-white/10 bg-card dark:bg-white/[0.03] shadow-lg">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-sm">
+                <thead>
+                  <tr className="border-b border-border dark:border-white/10 bg-muted/50 dark:bg-white/[0.05]">
+                    <th className="p-4 md:p-5 font-bold text-foreground">Leasing Factor</th>
+                    <th className="p-4 md:p-5 font-bold text-destructive">Traditional Dealership</th>
+                    <th className="p-4 md:p-5 font-bold text-accent">Capital Motor Cars (Broker)</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border dark:divide-white/10">
+                  <tr>
+                    <td className="p-4 md:p-5 font-semibold text-foreground">Negotiation & Time</td>
+                    <td className="p-4 md:p-5 text-muted-foreground">4 to 6 hours trapped in the showroom negotiating back and forth with sales managers.</td>
+                    <td className="p-4 md:p-5 text-foreground font-medium bg-accent/5">100% remote digital quote in 15 minutes. No showroom visits required.</td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 md:p-5 font-semibold text-foreground">Pricing & Money Factor</td>
+                    <td className="p-4 md:p-5 text-muted-foreground">Dealerships often mark up the captive bank Money Factor interest rate for back-end profit.</td>
+                    <td className="p-4 md:p-5 text-foreground font-medium bg-accent/5">Direct captive bank buy-rates with pre-negotiated wholesale volume fleet discounts.</td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 md:p-5 font-semibold text-foreground">Dealer Fees & Add-Ons</td>
+                    <td className="p-4 md:p-5 text-muted-foreground">$1,200 to $1,800 in surprise mandatory fees (VIN etching, nitrogen tires, doc fees, protection packages).</td>
+                    <td className="p-4 md:p-5 text-foreground font-medium bg-accent/5">Zero mandatory dealer add-on fees. Clean, transparent lease contract itemization.</td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 md:p-5 font-semibold text-foreground">Inventory Selection</td>
+                    <td className="p-4 md:p-5 text-muted-foreground">Limited to one brand and motivated to push whatever stale inventory sits on their lot.</td>
+                    <td className="p-4 md:p-5 text-foreground font-medium bg-accent/5">Unbiased access to 30+ manufacturers. Cross-shop BMW, Audi, Mercedes, and Porsche objectively.</td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 md:p-5 font-semibold text-foreground">Vehicle Delivery</td>
+                    <td className="p-4 md:p-5 text-muted-foreground">Requires driving to the dealership lot to wait for final finance detailing and paperwork.</td>
+                    <td className="p-4 md:p-5 text-foreground font-medium bg-accent/5">Free white-glove doorstep delivery to your home or office anywhere in New Jersey.</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -313,11 +373,47 @@ export default function AutoLeasingNewJerseyPage() {
         </div>
       </section>
 
+      {/* Popular Leased Models in New Jersey */}
       <section className="py-16 lg:py-20 section-bg">
         <div className="container mx-auto px-4 lg:px-8">
           <SectionHeading
-            title="Frequently Asked Questions"
-            subtitle="Answers to common questions about lease timing, upgrades, trade-ins, and getting started in New Jersey."
+            title="Popular Luxury Lease Specials in New Jersey"
+            subtitle="Explore our most requested programmatic lease packages with $0 down options and free doorstep delivery across NJ."
+          />
+
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { name: 'Porsche Macan', path: '/porsche-macan-lease-nj', desc: 'Compact luxury performance SUV' },
+              { name: 'Porsche Cayenne', path: '/porsche-cayenne-lease-nj', desc: 'Mid-size flagship luxury SUV' },
+              { name: 'BMW X7', path: '/bmw-x7-lease-nj', desc: 'Full-size 3-row executive luxury SUV' },
+              { name: 'Audi Q7', path: '/audi-q7-lease-nj', desc: 'Premium 3-row family SUV with Quattro AWD' },
+              { name: 'Land Rover Defender', path: '/land-rover-defender-lease-nj', desc: 'Iconic luxury off-road capability' },
+              { name: 'Genesis GV70', path: '/genesis-gv70-lease-nj', desc: 'High-value sport luxury crossover' },
+              { name: 'Genesis GV80', path: '/genesis-gv80-lease-nj', desc: 'Executive luxury mid-size SUV' },
+              { name: 'Cadillac Escalade', path: '/cadillac-escalade-lease-nj', desc: 'American luxury flagship 3-row SUV' },
+            ].map((model) => (
+              <Link
+                key={model.name}
+                to={model.path}
+                className="group glass-card-theme p-5 rounded-2xl border border-border dark:border-white/10 hover:border-accent transition-all duration-300"
+              >
+                <div className="flex items-center justify-between">
+                  <h3 className="font-bold text-lg text-foreground group-hover:text-accent transition-colors">{model.name}</h3>
+                  <ArrowRight className="h-4 w-4 text-accent transition-transform group-hover:translate-x-1" />
+                </div>
+                <p className="mt-2 text-xs text-muted-foreground">{model.desc}</p>
+                <span className="mt-3 inline-block text-xs font-semibold text-accent">$0 Down NJ Specials Available</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 lg:py-20 section-bg-alt">
+        <div className="container mx-auto px-4 lg:px-8">
+          <SectionHeading
+            title="Frequently Asked Questions: Car Lease Broker NJ"
+            subtitle="Answers to common questions about working with a licensed auto lease broker, pricing, and doorstep delivery in New Jersey."
           />
 
           <div className="max-w-4xl mx-auto glass-card-theme p-3 sm:p-4 md:p-6">

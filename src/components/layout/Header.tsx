@@ -8,8 +8,10 @@ import logo from '@/assets/logo-main.png';
 
 const desktopNavLinks = [
   { href: '/', label: 'Home' },
+  { href: '/car-lease-deals-new-jersey', label: 'Deals' },
   { href: '/services', label: 'Services' },
   { href: '/brands', label: 'Brands' },
+  { href: '/lease-calculator', label: 'Calculator' },
   { href: '/blog', label: 'Blog' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
@@ -17,8 +19,10 @@ const desktopNavLinks = [
 
 const mobileNavLinks = [
   { href: '/', label: 'Home' },
+  { href: '/car-lease-deals-new-jersey', label: 'Car Lease Deals' },
   { href: '/services', label: 'Services' },
   { href: '/brands', label: 'Brands' },
+  { href: '/lease-calculator', label: 'Lease Calculator' },
   { href: '/blog', label: 'Blog' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },

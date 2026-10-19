@@ -31,3 +31,4 @@ scratch/
 # Lead exports
 credit_applications.csv
 credit_applications.xlsx
+scripts/gsc-data.json

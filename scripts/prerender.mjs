@@ -233,6 +233,10 @@ const curatedMeta = {
     title: "Best Car Lease Deals in New Jersey (2026 Specials) | $0 Down | Capital Motor Cars",
     description: "Explore the best 2026 car lease deals in New Jersey with $0 down payment options, pre-negotiated wholesale fleet pricing, and free doorstep delivery across NJ.",
   },
+  "auto-leasing-new-jersey": {
+    title: "Licensed Car Lease Broker NJ | Capital Motor Cars | New Jersey Auto Leasing",
+    description: "Work with New Jersey's trusted licensed car lease broker. Skip dealership markups with wholesale fleet rates, $0 down lease options, and free doorstep delivery across NJ.",
+  },
   "quiz": {
     title: "Car Lease Matchmaker Quiz | Capital Motor Cars",
     description: "Take our 2-minute interactive car lease quiz to find the perfect vehicle matching your budget, lifestyle, and driving preferences in New Jersey.",
