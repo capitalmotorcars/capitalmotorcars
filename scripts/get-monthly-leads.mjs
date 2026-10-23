@@ -64,6 +64,110 @@ function parseDateRange(inputMonth, customStart, customEnd) {
   };
 }
 
+export function classifyLead(payload) {
+  const p = payload || {};
+  const msg = (p.Message || p.message || '').trim();
+  const lowerMsg = msg.toLowerCase();
+  const name = (p.Name || p.name || '').trim();
+
+  if (!msg) {
+    return {
+      category: 'INCOMPLETE',
+      isRealLead: false,
+      note: 'No message provided (blank inquiry)',
+    };
+  }
+
+  // Bot Spam / Gibberish detection
+  if (/^[a-zA-Z0-9]{12,}$/.test(msg) && !msg.includes(' ')) {
+    return {
+      category: 'BOT SPAM',
+      isRealLead: false,
+      note: 'Automated bot spam (random gibberish string)',
+    };
+  }
+
+  // Solicitor / Sales pitch detections
+  if (lowerMsg.includes('brokerscar.com') || (lowerMsg.includes('domain') && lowerMsg.includes('for sale'))) {
+    return {
+      category: 'NOT A LEAD (Solicitor)',
+      isRealLead: false,
+      note: 'Domain broker trying to sell brokerscar.com',
+    };
+  }
+  if (lowerMsg.includes('pays pos') || lowerMsg.includes('credit card processing') || lowerMsg.includes('point of sale')) {
+    return {
+      category: 'NOT A LEAD (Solicitor)',
+      isRealLead: false,
+      note: 'Merchant services sales pitch (selling credit card POS processing)',
+    };
+  }
+  if (lowerMsg.includes('jadetrade') || lowerMsg.includes('get more customers') || lowerMsg.includes('paid website services') || lowerMsg.includes('cal.com')) {
+    return {
+      category: 'NOT A LEAD (Solicitor)',
+      isRealLead: false,
+      note: 'Agency sales pitch (selling paid marketing / website services)',
+    };
+  }
+  if (lowerMsg.includes('field sales') || lowerMsg.includes('customers in germany') || lowerMsg.includes('b2b sales')) {
+    return {
+      category: 'NOT A LEAD (Solicitor)',
+      isRealLead: false,
+      note: 'B2B sales agency pitching outsourced sales services in Germany',
+    };
+  }
+  if (lowerMsg.includes('procurement manager') || lowerMsg.includes('united-metaltek') || lowerMsg.includes('materials and equipment')) {
+    return {
+      category: 'NOT A LEAD (Solicitor)',
+      isRealLead: false,
+      note: 'Industrial supply chain solicitation',
+    };
+  }
+  if (lowerMsg.includes('baker botts') || lowerMsg.includes('potential business opportunity') || lowerMsg.includes('formal inquiry to initiate')) {
+    return {
+      category: 'NOT A LEAD (Business Pitch)',
+      isRealLead: false,
+      note: 'Law firm outreach for business opportunity / corporate inquiry',
+    };
+  }
+
+  // Real Automotive Leasing Leads
+  if (
+    lowerMsg.includes('lease') ||
+    lowerMsg.includes('car') ||
+    lowerMsg.includes('quote') ||
+    lowerMsg.includes('suv') ||
+    lowerMsg.includes('mazda') ||
+    lowerMsg.includes('lexus') ||
+    lowerMsg.includes('mercedes') ||
+    lowerMsg.includes('audi') ||
+    lowerMsg.includes('bmw') ||
+    lowerMsg.includes('volvo') ||
+    lowerMsg.includes('kia') ||
+    lowerMsg.includes('hyundai') ||
+    lowerMsg.includes('infiniti') ||
+    lowerMsg.includes('down') ||
+    lowerMsg.includes('payment')
+  ) {
+    // Generate a concise human-readable summary of what they want
+    let intentNote = msg.replace(/\n+/g, ' ');
+    if (intentNote.length > 95) {
+      intentNote = intentNote.slice(0, 92) + '...';
+    }
+    return {
+      category: 'REAL LEAD',
+      isRealLead: true,
+      note: intentNote,
+    };
+  }
+
+  return {
+    category: 'GENERAL INQUIRY',
+    isRealLead: true,
+    note: msg.slice(0, 80).replace(/\n+/g, ' '),
+  };
+}
+
 export async function fetchMonthlyLeads({
   month = null,
   start = null,
@@ -102,6 +206,7 @@ export async function fetchMonthlyLeads({
 
     // Primary deduplication key: email, or phone, or full name
     const dedupeKey = email ? `email:${email}` : phone ? `phone:${phone}` : `name:${name.toLowerCase()}`;
+    const classification = classifyLead(p);
 
     const leadRecord = {
       id: item.id,
@@ -111,7 +216,8 @@ export async function fetchMonthlyLeads({
       location,
       submissionDate: item.created_at,
       type: item.type,
-      messageSnippet: message ? message.slice(0, 60).replace(/\n/g, ' ') : '',
+      message,
+      classification,
     };
 
     if (seen.has(dedupeKey)) {
@@ -122,12 +228,17 @@ export async function fetchMonthlyLeads({
     }
   }
 
+  const realLeadsCount = uniqueLeads.filter((l) => l.classification.isRealLead).length;
+  const nonLeadsCount = uniqueLeads.filter((l) => !l.classification.isRealLead).length;
+
   return {
     range,
     type,
     totalRaw: (data || []).length,
     totalUnique: uniqueLeads.length,
     totalDuplicates: duplicateLeads.length,
+    realLeadsCount,
+    nonLeadsCount,
     uniqueLeads,
     duplicateLeads,
   };
@@ -135,15 +246,17 @@ export async function fetchMonthlyLeads({
 
 function printReport(result) {
   console.log('\n============================================================');
-  console.log(`  CAPITAL MOTOR CARS - MONTHLY LEAD AUDIT`);
+  console.log('  CAPITAL MOTOR CARS - MONTHLY LEAD & INTENT AUDIT');
   console.log('============================================================');
   console.log(`Period:         \x1b[36m${result.range.label}\x1b[0m`);
   console.log(`Type Filter:    \x1b[33m${result.type}\x1b[0m`);
   console.log(`Date Range:     ${result.range.startDate.slice(0, 10)} to ${result.range.endDate.slice(0, 10)}`);
   console.log('------------------------------------------------------------');
-  console.log(`Total Raw Submissions:   \x1b[1m${result.totalRaw}\x1b[0m`);
-  console.log(`Duplicates Removed:      \x1b[31m${result.totalDuplicates}\x1b[0m`);
-  console.log(`Total Unique Leads:      \x1b[32m\x1b[1m${result.totalUnique}\x1b[0m`);
+  console.log(`Total Raw Submissions:       \x1b[1m${result.totalRaw}\x1b[0m`);
+  console.log(`Duplicates Removed:          \x1b[31m${result.totalDuplicates}\x1b[0m`);
+  console.log(`Total Unique Contacts:       \x1b[1m${result.totalUnique}\x1b[0m`);
+  console.log(`  -> Genuine Customer Leads: \x1b[32m\x1b[1m${result.realLeadsCount}\x1b[0m`);
+  console.log(`  -> Solicitors / Bot Spam:  \x1b[33m\x1b[1m${result.nonLeadsCount}\x1b[0m`);
   console.log('============================================================\n');
 
   if (result.uniqueLeads.length === 0) {
@@ -151,7 +264,7 @@ function printReport(result) {
     return;
   }
 
-  console.log('\x1b[32m--- UNIQUE LEADS (' + result.totalUnique + ') ---\x1b[0m');
+  console.log('\x1b[1m--- LEAD BREAKDOWN & INTENT NOTES ---\x1b[0m');
   result.uniqueLeads.forEach((lead, i) => {
     const num = String(i + 1).padStart(2, ' ');
     const date = new Date(lead.submissionDate).toLocaleDateString('en-US', {
@@ -159,17 +272,22 @@ function printReport(result) {
       day: 'numeric',
       year: 'numeric',
     });
-    console.log(`${num}. \x1b[1m${lead.name}\x1b[0m`);
-    console.log(`    Email:    ${lead.email}`);
-    console.log(`    Phone:    ${lead.phone}`);
-    console.log(`    Date:     ${date} (${lead.submissionDate})`);
+
+    const isReal = lead.classification.isRealLead;
+    const catColor = isReal ? '\x1b[32m' : '\x1b[33m';
+    const tag = `[${lead.classification.category}]`;
+
+    console.log(`${num}. \x1b[1m${lead.name}\x1b[0m - ${catColor}${tag}\x1b[0m`);
+    console.log(`    Date:     ${date} | Phone: ${lead.phone} | Email: ${lead.email}`);
     if (lead.location && lead.location !== 'N/A') {
       console.log(`    Location: ${lead.location}`);
     }
+    console.log(`    \x1b[36mNote / Request:\x1b[0m ${lead.classification.note}`);
+    console.log('');
   });
 
   if (result.duplicateLeads.length > 0) {
-    console.log('\n\x1b[31m--- DUPLICATES REMOVED (' + result.totalDuplicates + ') ---\x1b[0m');
+    console.log('\x1b[31m--- DUPLICATES REMOVED (' + result.totalDuplicates + ') ---\x1b[0m');
     result.duplicateLeads.forEach((dup, i) => {
       const num = String(i + 1).padStart(2, ' ');
       console.log(`${num}. ${dup.name} (${dup.email}) - Submitted at ${dup.submissionDate.slice(0, 10)}`);
@@ -212,7 +330,6 @@ async function runCli() {
     return;
   }
 
-  // If no arguments passed, prompt interactively
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
@@ -233,7 +350,6 @@ async function runCli() {
   });
 }
 
-// Only run CLI when invoked directly from command line
 if (process.argv[1]?.endsWith('get-monthly-leads.mjs')) {
   runCli().catch((err) => {
     console.error('\x1b[31m[Error]\x1b[0m', err.message);
