@@ -12,6 +12,7 @@
     "preview": "vite preview",
     "seed:blogs": "node scripts/seed-blogs.mjs",
     "export:leads": "node scripts/export-leads.mjs",
+    "leads": "node scripts/get-monthly-leads.mjs",
     "test": "vitest run",
     "test:watch": "vitest"
   },
