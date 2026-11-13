@@ -55,9 +55,9 @@ export default function HomePage() {
   return (
     <Layout>
       <SEO
-        title="Capital Motor Cars | Premier Auto Broker & Car Leasing in NJ & NY"
-        description="Experience stress-free car leasing with Capital Motor Cars. We negotiate the best auto lease deals with zero down, fast approvals, and free delivery across NJ and NY."
-        seoKeywords={['car leasing NJ', 'auto leasing New Jersey', 'car leasing in New Jersey', 'auto broker NJ', 'best car lease deals NJ', 'zero down car lease', 'Capital Motor Cars']}
+        title="Car Leasing & Auto Broker NJ | Capital Motor Cars | $0 Down Deals"
+        description="Top-rated New Jersey auto broker and car leasing concierge. 5.0 stars across 780+ verified Google reviews. Wholesale lease deals, $0 down options, and doorstep delivery across NJ & NY."
+        seoKeywords={['car leasing NJ', 'auto broker NJ', 'auto leasing New Jersey', 'car lease deals NJ', 'best car lease deals NJ', 'zero down car lease', 'Capital Motor Cars']}
         ogImage="https://www.capitalmotorcars.com/og/hero-bg.jpg"
         canonicalPath="/"
       />

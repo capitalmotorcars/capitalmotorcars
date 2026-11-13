@@ -93,6 +93,8 @@ export const blogSlugs: string[] = [
   "car-leasing-with-bad-credit-nj",
   "high-mileage-car-lease-options-nj",
   "doorstep-car-delivery-concierge-nj-ny",
+  "top-november-2026-car-lease-deals",
+  "top-october-2026-car-lease-deals",
   "top-september-2026-car-lease-deals",
   "cars-for-lease-broker-nyc",
   "how-to-lease-a-car-in-nyc",
