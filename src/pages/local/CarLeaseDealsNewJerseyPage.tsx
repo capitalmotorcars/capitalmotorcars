@@ -24,6 +24,7 @@ import { SectionDividerCreative } from '@/components/ui/SectionDividerCreative';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import carLeaseImage from '@/assets/car-leasing.jpg';
+import { blogSlugs } from '@/data/blogSlugs';
 
 
 const faqs = [
@@ -68,6 +69,15 @@ const schemas = [
 ];
 
 export default function CarLeaseDealsNewJerseyPage() {
+  const currentDate = new Date();
+  const currentMonth = currentDate.toLocaleString('en-US', { month: 'long' });
+  const currentYear = currentDate.getFullYear();
+  const monthlySlug = `top-${currentMonth.toLowerCase()}-${currentYear}-car-lease-deals`;
+  const hasMonthlyPost = blogSlugs.includes(monthlySlug);
+  const dealLink = hasMonthlyPost ? `/${monthlySlug}` : '/deals';
+  const dealBadge = `${currentMonth} ${currentYear} Update`;
+  const dealTitle = `Top ${currentMonth} ${currentYear} Lease Specials Live`;
+
   return (
     <Layout>
       <SEO
@@ -313,24 +323,24 @@ export default function CarLeaseDealsNewJerseyPage() {
         </div>
       </section>
 
-      {/* Featured November 2026 Lease Specials Banner */}
+      {/* Dynamic Monthly Lease Specials Banner */}
       <section className="py-12 bg-accent/5 border-y border-accent/20">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-8 rounded-3xl bg-card border border-accent/30 shadow-xl">
             <div className="space-y-2">
               <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-accent/20 text-accent">
-                November 2026 Update
+                {dealBadge}
               </span>
               <h2 className="text-2xl md:text-3xl font-black text-foreground">
-                Top November & Black Friday 2026 Lease Specials Live
+                {dealTitle}
               </h2>
               <p className="text-muted-foreground max-w-xl text-sm md:text-base leading-relaxed">
-                Take advantage of year-end Black Friday clearance cash, subvented manufacturer money factors, and zero-down specials across Acura, BMW, Mercedes-Benz, Audi, Porsche, and Lexus.
+                Take advantage of current model year factory lease incentives, subvented manufacturer money factors, and zero down specials across Acura, BMW, Mercedes-Benz, Audi, Porsche, and Lexus with white glove doorstep delivery.
               </p>
             </div>
             <Button asChild size="lg" className="shrink-0 bg-accent hover:bg-accent/90 text-accent-foreground font-bold">
-              <Link to="/top-november-2026-car-lease-deals" className="inline-flex items-center gap-2">
-                Explore November Specials
+              <Link to={dealLink} className="inline-flex items-center gap-2">
+                Explore {currentMonth} Specials
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </Button>

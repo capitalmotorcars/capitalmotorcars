@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { MagneticButton } from '@/components/ui/MagneticButton';
@@ -6,9 +7,12 @@ import { ArrowRight, ChevronDown, Sparkles, SearchCheckIcon } from 'lucide-react
 import { renderSEOHeading } from '@/utils/seoUtils';
 import { Marquee } from '@/components/ui/Marquee';
 import { brands, BrandCard } from '@/components/home/BrandsCarousel';
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+import { ContactForm } from '@/components/forms/ContactForm';
 
 export function HeroSection() {
   const heroAnimated = useHeroAnimation();
+  const [isQuoteDialogOpen, setIsQuoteDialogOpen] = useState(false);
 
   const avatars = [
     'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face',
@@ -58,15 +62,15 @@ export function HeroSection() {
                 </MagneticButton>
                 <MagneticButton strength={0.35} className="w-full sm:w-auto min-w-0">
                   <Button
-                    asChild
+                    onClick={() => setIsQuoteDialogOpen(true)}
                     variant="ghost"
                     size="lg"
-                    className="w-full sm:w-auto h-11 sm:h-12 xl:h-14 rounded-lg xl:rounded-xl border border-white/50 hover:border-white/80 hover:text-white/80 bg-white/20 dark:bg-white/[0.06] text-white/90 dark:text-white/90 hover:bg-white/15 dark:hover:bg-white/10 font-medium xl:font-semibold px-6 xl:px-10 text-sm sm:text-base xl:text-lg shadow-md shadow-black/5 dark:shadow-black/20 backdrop-blur-sm hover:shadow-lg hover:shadow-black/10 dark:hover:shadow-black/30"
+                    className="w-full sm:w-auto h-11 sm:h-12 xl:h-14 rounded-lg xl:rounded-xl border border-white/50 hover:border-white/80 hover:text-white/80 bg-white/20 dark:bg-white/[0.06] text-white/90 dark:text-white/90 hover:bg-white/15 dark:hover:bg-white/10 font-medium xl:font-semibold px-6 xl:px-10 text-sm sm:text-base xl:text-lg shadow-md shadow-black/5 dark:shadow-black/20 backdrop-blur-sm hover:shadow-lg hover:shadow-black/10 dark:hover:shadow-black/30 cursor-pointer"
                   >
-                    <Link to="/services" className="flex items-center gap-2 xl:gap-3">
-                      Explore services
+                    <span className="flex items-center gap-2 xl:gap-3">
+                      Free Quote in Minutes
                       <SearchCheckIcon className=" w-4 h-4 xl:w-5 xl:h-5" />
-                    </Link>
+                    </span>
                   </Button>
                 </MagneticButton>
               </div>
@@ -229,6 +233,28 @@ export function HeroSection() {
       </button>
 
 
+      {/* Free Quote Dialog Modal */}
+      <Dialog open={isQuoteDialogOpen} onOpenChange={setIsQuoteDialogOpen}>
+        <DialogContent className="max-w-2xl p-0 overflow-hidden border-none bg-transparent">
+          <div className="relative bg-background p-6 md:p-10 rounded-[2.5rem] border-2 border-border shadow-2xl overflow-y-auto max-h-[90vh]">
+            <div className="text-center mb-8">
+              <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-2 block">
+                Instant Lease Quote
+              </span>
+              <DialogTitle className="text-3xl md:text-4xl font-black tracking-tight text-foreground uppercase mb-2">
+                Free Quote in <span className="text-accent italic">Minutes</span>
+              </DialogTitle>
+              <DialogDescription className="text-base text-muted-foreground leading-relaxed">
+                Tell us what vehicle or monthly budget you have in mind. Our Springfield NJ broker team will return a transparent wholesale lease quote with zero showroom markups.
+              </DialogDescription>
+            </div>
+            <ContactForm
+              source="hero_free_quote_dialog"
+              compact
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }

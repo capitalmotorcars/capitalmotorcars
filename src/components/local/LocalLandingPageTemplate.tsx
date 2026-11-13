@@ -269,7 +269,7 @@ export function LocalLandingPageTemplate({
                   <Link to="/contact">Talk to Our Team</Link>
                 </Button>
                 <Button asChild variant="outline" className="font-semibold">
-                  <Link to="/services">Explore Services</Link>
+                  <Link to="/contact">Free Quote in Minutes</Link>
                 </Button>
               </div>
             </div>

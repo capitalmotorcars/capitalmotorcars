@@ -209,7 +209,7 @@ interface ContactFormProps {
   initialValues?: Partial<ContactFormData>;
   hideServiceField?: boolean;
   showVehicleField?: boolean;
-  source?: 'contact' | 'service' | 'vehicle' | 'vehicle_dialog' | 'quiz_result';
+  source?: 'contact' | 'service' | 'vehicle' | 'vehicle_dialog' | 'quiz_result' | 'hero_free_quote_dialog' | string;
   vehicleName?: string;
   serviceTitle?: string;
   onSubmitSuccess?: () => void;
