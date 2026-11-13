@@ -318,15 +318,16 @@ export function ContactForm({
     }
   }, [isSuccess, onAutoClose, autoCloseAfterMs]);
 
-  // Scroll to form when landing with trade-in from URL
+  // Scroll to form when landing with trade-in from URL (dedicated contact page only)
   useEffect(() => {
-    if (tradeInFromUrl) {
+    if (tradeInFromUrl && !compact && source === 'contact') {
       scrollToFormContent();
     }
-  }, [tradeInFromUrl]);
+  }, [tradeInFromUrl, compact, source]);
 
-  // Sync URL with trade-in selection so shared links work
+  // Sync URL with trade-in selection so shared links work (dedicated contact page only)
   useEffect(() => {
+    if (compact || source !== 'contact') return;
     const params = new URLSearchParams(searchParams);
     const hasTradeIn = selectedService === 'trade-in';
     const urlHasTradeIn = getTradeInFromUrl(params);
@@ -339,7 +340,7 @@ export function ContactForm({
       if (params.get('service') === 'trade-in') params.delete('service');
       setSearchParams(params, { replace: true });
     }
-  }, [selectedService, searchParams, setSearchParams]);
+  }, [selectedService, searchParams, setSearchParams, compact, source]);
 
   const handleSuggestionSelect = (value: string) => {
     const suggestion = messageSuggestions.find(s => s.value === value);
@@ -353,7 +354,6 @@ export function ContactForm({
         setValue('message', suggestion.fullText, { shouldValidate: false });
         setValue('messageSuggestion', value, { shouldValidate: false });
       }
-      scrollToFormContent();
     }
   };
 
@@ -584,7 +584,6 @@ export function ContactForm({
               value={selectedService}
               onValueChange={(value) => {
                 setValue('service', value);
-                scrollToFormContent();
               }}
             >
               <SelectTrigger className="h-11 border-input/60 focus:border-accent focus:ring-2 focus:ring-accent/20">
