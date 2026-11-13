@@ -392,7 +392,8 @@ export function LeaseCalculator() {
                     }}
                     hideServiceField={true}
                     showVehicleField={false}
-                    onSubmitSuccess={() => setIsModalOpen(false)}
+                    autoCloseAfterMs={3000}
+                    onAutoClose={() => setIsModalOpen(false)}
                   />
                 </div>
               </DialogContent>

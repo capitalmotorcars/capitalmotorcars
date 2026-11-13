@@ -213,6 +213,8 @@ interface ContactFormProps {
   vehicleName?: string;
   serviceTitle?: string;
   onSubmitSuccess?: () => void;
+  autoCloseAfterMs?: number;
+  onAutoClose?: () => void;
 }
 
 const formatPhoneNumber = (value: string) => {
@@ -246,6 +248,8 @@ export function ContactForm({
   vehicleName,
   serviceTitle,
   onSubmitSuccess,
+  autoCloseAfterMs = 3000,
+  onAutoClose,
 }: ContactFormProps) {
   const [searchParams, setSearchParams] = useSearchParams();
   const tradeInFromUrl = getTradeInFromUrl(searchParams);
@@ -305,16 +309,14 @@ export function ContactForm({
   const { ref: phoneRef, onChange: onPhoneChange, ...phoneRegister } = register('phone');
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess && onAutoClose) {
       const timer = setTimeout(() => {
-        setIsSuccess(false);
-        setSuccessWasTradeIn(false);
-        reset();
-      }, 6000);
+        onAutoClose();
+      }, autoCloseAfterMs);
 
       return () => clearTimeout(timer);
     }
-  }, [isSuccess, reset]);
+  }, [isSuccess, onAutoClose, autoCloseAfterMs]);
 
   // Scroll to form when landing with trade-in from URL
   useEffect(() => {

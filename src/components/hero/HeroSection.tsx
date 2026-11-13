@@ -248,10 +248,15 @@ export function HeroSection() {
                 Tell us what vehicle or monthly budget you have in mind. Our Springfield NJ broker team will return a transparent wholesale lease quote with zero showroom markups.
               </DialogDescription>
             </div>
-            <ContactForm
-              source="hero_free_quote_dialog"
-              compact
-            />
+            {isQuoteDialogOpen && (
+              <ContactForm
+                key={isQuoteDialogOpen ? 'open' : 'closed'}
+                source="hero_free_quote_dialog"
+                compact
+                autoCloseAfterMs={3000}
+                onAutoClose={() => setIsQuoteDialogOpen(false)}
+              />
+            )}
           </div>
         </DialogContent>
       </Dialog>
