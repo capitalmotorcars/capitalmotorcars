@@ -11,6 +11,7 @@ import {
   sanitizeLeadFields,
 } from '../lib/sendEmailSecurity.mjs';
 import { processCreditApplication, validateCreditApplication } from '../lib/processCreditApplication.mjs';
+import { forwardCreditToKora } from '../lib/forwardCreditToKora.mjs';
 import { processLead } from '../lib/processLead.mjs';
 import { withClientGeo, withGeoInMessage } from '../lib/clientGeo.mjs';
 import { syncLeadToSheet, extractLeadsForSheet, formatDateTime } from '../lib/sheetSync.mjs';
@@ -125,7 +126,9 @@ app.post('/api/webhooks/credit', async (req, res) => {
   }
   saveSubmissionToDb('credit', req.body ?? {});
   await syncLeadToSheet('credit', req.body ?? {});
+  const koraSync = forwardCreditToKora(req.body ?? {});
   const { status, json } = await processCreditApplication(req.body ?? {});
+  await koraSync;
   return res.status(status).json(json);
 });
 

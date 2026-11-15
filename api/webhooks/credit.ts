@@ -2,6 +2,7 @@ import { createClient } from '@supabase/supabase-js';
 import { applyApiCors } from "../../lib/httpCors.mjs";
 import { processCreditApplication, validateCreditApplication } from "../../lib/processCreditApplication.mjs";
 import { syncLeadToSheet } from "../../lib/sheetSync.mjs";
+import { forwardCreditToKora } from "../../lib/forwardCreditToKora.mjs";
 
 
 declare var process: { env: Record<string, string | undefined> };
@@ -74,6 +75,10 @@ export default async function handler(req: Req, res: Res) {
   await syncLeadToSheet('credit', body ?? {});
 
 
+  // Kora CRM sync runs alongside the email and never throws, so it can neither
+  // delay nor break the consultant email or the applicant's response.
+  const koraSync = forwardCreditToKora(body ?? {});
   const { status, json } = await processCreditApplication(body ?? {});
+  await koraSync;
   return res.status(status).json(json);
 }
