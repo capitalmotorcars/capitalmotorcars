@@ -36,9 +36,18 @@ This log tracks the daily publication of the 60 conquest articles from [CAPITAL_
 
 ---
 
+### Article 3 (Published: Nov 16, 2026 - Live in Advance)
+* **Title:** Is Buying Out Your Car Lease Worth It? [2026 Math Calculator & Rates]
+* **Slug:** `is-buying-out-your-car-lease-worth-it-2026`
+* **Live URL:** [https://www.capitalmotorcars.com/is-buying-out-your-car-lease-worth-it-2026](file:///Users/suresh/bricks/capitalmotorcars/dist/is-buying-out-your-car-lease-worth-it-2026/index.html)
+* **Supabase ID:** `0d52bae9-6ada-4075-93eb-2a1877550d62`
+* **Key Topics:** 2026 Buyout Math Decision Matrix across 4 vehicles (Honda CR-V, BMW 330i, Hyundai Ioniq 5, Toyota RAV4 Hybrid), the 7.5% to 9.5% used car interest rate factor, NJ/NY state sales tax implications, avoiding $1,200 to $2,500 dealership doc and recertification markups.
+
+---
+
 ## Upcoming Queue (Next 5 Days)
-* **Nov 16 (Tomorrow) - Article 3:** `is-buying-out-your-car-lease-worth-it-2026` (*Is Buying Out Your Car Lease Worth It? [2026 Math Calculator & Rates]*)
 * **Nov 17 - Article 4:** `car-lease-residual-value-calculation-guide` (*How Is Lease Residual Value Calculated? [ALG Benchmark Formula]*)
 * **Nov 18 - Article 5:** `can-you-lease-personal-car-to-your-business-rules` (*Can You Lease Your Personal Car to Your Business? [IRS Self-Rental Rules]*)
 * **Nov 19 - Article 6:** `how-to-assume-a-car-lease-guide` (*Assuming a Car Lease: Transfer Fees, Timelines & Rules [Complete Guide]*)
 * **Nov 20 - Article 7:** `swapalease-vs-leasetrader-vs-broker-comparison` (*Swapalease vs LeaseTrader vs Auto Broker [Which Is Best in 2026?]*)
+* **Nov 21 - Article 8:** `car-lease-insurance-requirements-nj-ny` (*Car Lease Insurance Requirements in NJ & NY [100/300/50 Coverage Limits]*)

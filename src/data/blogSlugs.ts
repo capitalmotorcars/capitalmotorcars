@@ -1,4 +1,5 @@
 export const blogSlugs: string[] = [
+  "is-buying-out-your-car-lease-worth-it-2026",
   "selling-a-leased-car-third-party-buyout-rules",
   "what-credit-score-is-needed-to-lease-a-car-2026",
   "single-pay-car-lease-guide-money-factor-savings",
