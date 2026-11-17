@@ -1,4 +1,5 @@
 export const blogSlugs: string[] = [
+  "car-lease-residual-value-calculation-guide",
   "is-buying-out-your-car-lease-worth-it-2026",
   "selling-a-leased-car-third-party-buyout-rules",
   "what-credit-score-is-needed-to-lease-a-car-2026",

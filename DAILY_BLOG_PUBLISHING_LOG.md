@@ -45,9 +45,18 @@ This log tracks the daily publication of the 60 conquest articles from [CAPITAL_
 
 ---
 
+### Article 4 (Published: Nov 17, 2026 - Today)
+* **Title:** How Is Lease Residual Value Calculated? [ALG Benchmark Formula]
+* **Slug:** `car-lease-residual-value-calculation-guide`
+* **Live URL:** [https://www.capitalmotorcars.com/car-lease-residual-value-calculation-guide](file:///Users/suresh/bricks/capitalmotorcars/dist/car-lease-residual-value-calculation-guide/index.html)
+* **Supabase ID:** `b2085443-7133-4eeb-b037-bc320b1da799`
+* **Key Topics:** Automotive Lease Guide (ALG) actuarial calculations, 2026 Residual Value Impact Matrix on a $50,000 vehicle (50% to 65% residuals), why every 1% bump in residual saves ~$14/month ($500+ over a 36-month lease), captive residual subvention, mileage allowance adjustments (7.5k to 15k/yr), and why residual applies to MSRP rather than the discounted dealer selling price.
+
+---
+
 ## Upcoming Queue (Next 5 Days)
-* **Nov 17 - Article 4:** `car-lease-residual-value-calculation-guide` (*How Is Lease Residual Value Calculated? [ALG Benchmark Formula]*)
 * **Nov 18 - Article 5:** `can-you-lease-personal-car-to-your-business-rules` (*Can You Lease Your Personal Car to Your Business? [IRS Self-Rental Rules]*)
 * **Nov 19 - Article 6:** `how-to-assume-a-car-lease-guide` (*Assuming a Car Lease: Transfer Fees, Timelines & Rules [Complete Guide]*)
 * **Nov 20 - Article 7:** `swapalease-vs-leasetrader-vs-broker-comparison` (*Swapalease vs LeaseTrader vs Auto Broker [Which Is Best in 2026?]*)
 * **Nov 21 - Article 8:** `car-lease-insurance-requirements-nj-ny` (*Car Lease Insurance Requirements in NJ & NY [100/300/50 Coverage Limits]*)
+* **Nov 22 - Article 9:** `cheapest-luxury-cars-to-lease-under-600` (*Cheapest Luxury Cars to Lease Under $600/Month [2026 Edition]*)
