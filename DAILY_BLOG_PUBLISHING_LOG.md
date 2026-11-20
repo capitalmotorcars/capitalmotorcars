@@ -45,7 +45,7 @@ This log tracks the daily publication of the 60 conquest articles from [CAPITAL_
 
 ---
 
-### Article 4 (Published: Nov 17, 2026 - Today)
+### Article 4 (Published: Nov 17, 2026)
 * **Title:** How Is Lease Residual Value Calculated? [ALG Benchmark Formula]
 * **Slug:** `car-lease-residual-value-calculation-guide`
 * **Live URL:** [https://www.capitalmotorcars.com/car-lease-residual-value-calculation-guide](file:///Users/suresh/bricks/capitalmotorcars/dist/car-lease-residual-value-calculation-guide/index.html)
@@ -54,9 +54,24 @@ This log tracks the daily publication of the 60 conquest articles from [CAPITAL_
 
 ---
 
+### Article 5 (Published: Nov 18, 2026)
+* **Title:** Can You Lease Your Personal Car to Your Business? [IRS Self-Rental Rules]
+* **Slug:** `can-you-lease-personal-car-to-your-business-rules`
+* **Live URL:** [https://www.capitalmotorcars.com/can-you-lease-personal-car-to-your-business-rules](file:///Users/suresh/bricks/capitalmotorcars/dist/can-you-lease-personal-car-to-your-business-rules/index.html)
+* **Supabase ID:** `d5b98557-84e1-42b2-8b7c-81de64fafa18`
+* **Key Topics:** Legally permissible personal to business vehicle self-rentals, IRS Self-Rental Trap under IRC Section 469 and Treasury Regulation § 1.469-2(f)(6) non-passive income recharacterization, 1099-MISC Box 1 rent reporting requirements, commercial auto insurance policy voidance risks on personal contracts, and smarter alternatives via Accountable Plan IRS mileage reimbursement and direct corporate EIN leases with Capital Motor Cars.
+* **Pricing Policy Compliance:** Zero specific dollar pricing quoted. Highlights deal structures, tax write-offs, and directs readers to schedule a call or request consultation with Capital Motor Cars fleet specialists.
+
+---
+
+## Editorial Policy Update (November 2026)
+* **Zero Dollar Pricing Policy:** Per editorial direction, November blogs strictly avoid quoting specific dollar monthly payments ($/mo). Instead, articles highlight vehicle features, available factory bonus cash, zero down incentives, and guide readers to schedule a call or request a custom quote to ask about live terms.
+
+---
+
 ## Upcoming Queue (Next 5 Days)
-* **Nov 18 - Article 5:** `can-you-lease-personal-car-to-your-business-rules` (*Can You Lease Your Personal Car to Your Business? [IRS Self-Rental Rules]*)
 * **Nov 19 - Article 6:** `how-to-assume-a-car-lease-guide` (*Assuming a Car Lease: Transfer Fees, Timelines & Rules [Complete Guide]*)
 * **Nov 20 - Article 7:** `swapalease-vs-leasetrader-vs-broker-comparison` (*Swapalease vs LeaseTrader vs Auto Broker [Which Is Best in 2026?]*)
 * **Nov 21 - Article 8:** `car-lease-insurance-requirements-nj-ny` (*Car Lease Insurance Requirements in NJ & NY [100/300/50 Coverage Limits]*)
-* **Nov 22 - Article 9:** `cheapest-luxury-cars-to-lease-under-600` (*Cheapest Luxury Cars to Lease Under $600/Month [2026 Edition]*)
+* **Nov 22 - Article 9:** `cheapest-luxury-cars-to-lease-guide` (*Best Luxury Cars to Lease: Entry Luxury Specials & Deals [2026 Guide]*)
+* **Nov 23 - Article 10:** `what-is-a-good-car-lease-money-factor-2026` (*What Is a Good Car Lease Money Factor in 2026? [Interest Rate Conversion]*):
