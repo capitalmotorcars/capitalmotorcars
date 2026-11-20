@@ -64,14 +64,32 @@ This log tracks the daily publication of the 60 conquest articles from [CAPITAL_
 
 ---
 
+### Article 6 (Published: Nov 19, 2026)
+* **Title:** Assuming a Car Lease: Transfer Fees, Timelines & Rules [Complete Guide]
+* **Slug:** `how-to-assume-a-car-lease-guide`
+* **Live URL:** [https://www.capitalmotorcars.com/how-to-assume-a-car-lease-guide](file:///Users/suresh/bricks/capitalmotorcars/dist/how-to-assume-a-car-lease-guide/index.html)
+* **Supabase ID:** `d18ade80-c525-4d65-bf3b-1c09cedf3a00`
+* **Key Topics:** Step-by-step lease takeover process, captive lender transfer policies across BMW, Mercedes, Toyota, Audi, and Ford, transfer fee breakdown ($100 to $650), critical complete liability release vs contingent liability traps, and broker trade-in alternatives.
+* **Pricing Policy Compliance:** Zero specific dollar monthly pricing quoted. Focuses on transfer fees, lease terms, and concierge trade buyouts.
+
+---
+
+### Article 7 (Published: Nov 20, 2026)
+* **Title:** Swapalease vs LeaseTrader vs Auto Broker [Which Is Best in 2026?]
+* **Slug:** `swapalease-vs-leasetrader-vs-broker-comparison`
+* **Live URL:** [https://www.capitalmotorcars.com/swapalease-vs-leasetrader-vs-broker-comparison](file:///Users/suresh/bricks/capitalmotorcars/dist/swapalease-vs-leasetrader-vs-broker-comparison/index.html)
+* **Supabase ID:** `bde5d294-9f3f-40b7-bdaa-02187f984d5d`
+* **Key Topics:** Comprehensive comparison of peer-to-peer lease swap boards vs licensed auto broker concierge, upfront non-refundable listing fees ($99 to $299 on P2P vs $0 broker fee), 45 to 90 day transfer delays vs 48 to 72 hour broker trade payouts, and full contract release.
+* **Pricing Policy Compliance:** Zero specific dollar monthly pricing quoted. Directs readers to request equity appraisals or schedule a consultation.
+
+---
+
 ## Editorial Policy Update (November 2026)
 * **Zero Dollar Pricing Policy:** Per editorial direction, November blogs strictly avoid quoting specific dollar monthly payments ($/mo). Instead, articles highlight vehicle features, available factory bonus cash, zero down incentives, and guide readers to schedule a call or request a custom quote to ask about live terms.
 
 ---
 
 ## Upcoming Queue (Next 5 Days)
-* **Nov 19 - Article 6:** `how-to-assume-a-car-lease-guide` (*Assuming a Car Lease: Transfer Fees, Timelines & Rules [Complete Guide]*)
-* **Nov 20 - Article 7:** `swapalease-vs-leasetrader-vs-broker-comparison` (*Swapalease vs LeaseTrader vs Auto Broker [Which Is Best in 2026?]*)
 * **Nov 21 - Article 8:** `car-lease-insurance-requirements-nj-ny` (*Car Lease Insurance Requirements in NJ & NY [100/300/50 Coverage Limits]*)
 * **Nov 22 - Article 9:** `cheapest-luxury-cars-to-lease-guide` (*Best Luxury Cars to Lease: Entry Luxury Specials & Deals [2026 Guide]*)
 * **Nov 23 - Article 10:** `what-is-a-good-car-lease-money-factor-2026` (*What Is a Good Car Lease Money Factor in 2026? [Interest Rate Conversion]*):
