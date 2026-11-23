@@ -84,12 +84,54 @@ This log tracks the daily publication of the 60 conquest articles from [CAPITAL_
 
 ---
 
+### Article 8 (Published: Nov 21, 2026)
+* **Title:** Car Lease Insurance Requirements in NJ & NY [100/300/50 Coverage Limits]
+* **Slug:** `car-lease-insurance-requirements-nj-ny`
+* **Live URL:** [https://www.capitalmotorcars.com/car-lease-insurance-requirements-nj-ny](file:///Users/suresh/bricks/capitalmotorcars/dist/car-lease-insurance-requirements-nj-ny/index.html)
+* **Supabase ID:** `363a499c-9916-4e8a-9f0e-fc7b1e423b56`
+* **Key Topics:** Captive lender 100/300/50 liability mandates, maximum $1,000 comprehensive and collision deductibles, loss payee designations, built-in captive GAP waiver coverage, and insurance binder prep checklist.
+* **Pricing Policy Compliance:** Zero specific dollar monthly lease pricing quoted. Directs readers to schedule a call for custom lease quotes.
+
+---
+
+### Article 9 (Published: Nov 22, 2026)
+* **Title:** Can You Lease a Used Car? [CPO vs New Lease Cost Comparison]
+* **Slug:** `used-car-cpo-leasing-vs-new-car-math`
+* **Live URL:** [https://www.capitalmotorcars.com/used-car-cpo-leasing-vs-new-car-math](file:///Users/suresh/bricks/capitalmotorcars/dist/used-car-cpo-leasing-vs-new-car-math/index.html)
+* **Supabase ID:** `85a7f876-29df-4b57-8b2b-8366e951f116`
+* **Key Topics:** Certified Pre-Owned (CPO) leasing programs vs brand-new subvented leases, unsubvented used money factor interest penalties, secondary depreciation curve math, and full bumper-to-bumper warranty protection.
+* **Pricing Policy Compliance:** Zero specific dollar monthly lease pricing quoted. Directs readers to schedule a call to compare new vs executive pre-owned specials.
+
+---
+
+### Article 10 (Published: Nov 23, 2026)
+* **Title:** How Much Does It Cost to Lease a Car in 2026? [True Outlay & NJ Tax Math]
+* **Slug:** `true-cost-of-leasing-a-car-breakdown-2026`
+* **Live URL:** [https://www.capitalmotorcars.com/true-cost-of-leasing-a-car-breakdown-2026](file:///Users/suresh/bricks/capitalmotorcars/dist/true-cost-of-leasing-a-car-breakdown-2026/index.html)
+* **Supabase ID:** `122dbdc3-4667-4aa4-b71e-01ff8b65b48f`
+* **Key Topics:** True all-in cost of leasing, teaser dealer ad traps, New Jersey 6.625% upfront sales tax formula on total lease payments, four mandatory inception fees (acquisition fee, DMV registration, doc fee, first month), and true $0 down sign-and-drive structures.
+* **Pricing Policy Compliance:** Zero specific dollar monthly lease pricing quoted. Focuses on fee structures, tax math, and scheduling a call for itemized proposals.
+
+---
+
+### Article 11 (Published: Nov 24, 2026 - Today)
+* **Title:** Expat Car Leasing in NJ & NY [Lease Without US Credit or SSN]
+* **Slug:** `expat-car-leasing-without-us-credit-nj-ny`
+* **Live URL:** [https://www.capitalmotorcars.com/expat-car-leasing-without-us-credit-nj-ny](file:///Users/suresh/bricks/capitalmotorcars/dist/expat-car-leasing-without-us-credit-nj-ny/index.html)
+* **Supabase ID:** `0471bf3a-5887-4de2-bee3-c16cd4438527`
+* **Key Topics:** International Expatriate Executive Programs with major luxury captive lenders, leasing on L-1, H-1B, E-2, O-1, and TN visas without US credit scores or SSN, required documentation checklist, and doorstep delivery to corporate housing.
+* **Pricing Policy Compliance:** Zero specific dollar monthly lease pricing quoted. Directs international executives to schedule a consultation with the executive corporate desk.
+
+---
+
 ## Editorial Policy Update (November 2026)
 * **Zero Dollar Pricing Policy:** Per editorial direction, November blogs strictly avoid quoting specific dollar monthly payments ($/mo). Instead, articles highlight vehicle features, available factory bonus cash, zero down incentives, and guide readers to schedule a call or request a custom quote to ask about live terms.
 
 ---
 
 ## Upcoming Queue (Next 5 Days)
-* **Nov 21 - Article 8:** `car-lease-insurance-requirements-nj-ny` (*Car Lease Insurance Requirements in NJ & NY [100/300/50 Coverage Limits]*)
-* **Nov 22 - Article 9:** `cheapest-luxury-cars-to-lease-guide` (*Best Luxury Cars to Lease: Entry Luxury Specials & Deals [2026 Guide]*)
-* **Nov 23 - Article 10:** `what-is-a-good-car-lease-money-factor-2026` (*What Is a Good Car Lease Money Factor in 2026? [Interest Rate Conversion]*):
+* **Nov 25 - Article 12:** `car-rental-vs-lease-vs-subscription-comparison` (*Car Rental vs Lease vs Car Subscription [Cost Math Compared]*)
+* **Nov 26 - Article 13:** `multiple-security-deposits-msds-car-lease-savings` (*Multiple Security Deposits (MSDs) Explained [How to Cut Money Factors]*)
+* **Nov 27 - Article 14:** `high-mileage-car-leasing-guide-nj` (*High Mileage Car Leasing in NJ: 15k, 20k, 25k Mile Lease Economics*)
+* **Nov 28 - Article 15:** `how-long-does-it-take-to-lease-a-car-timeline` (*How Long Does It Take to Lease a Car? [Showroom Delays vs 24-Hr Delivery]*)
+* **Nov 29 - Article 16:** `what-is-a-good-car-lease-money-factor-2026` (*What Is a Good Car Lease Money Factor in 2026? [Interest Rate Conversion]*):
