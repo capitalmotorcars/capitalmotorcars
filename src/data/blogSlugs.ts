@@ -352,5 +352,17 @@ export const blogSlugs: string[] = [
   "honda-passport-lease-deals-and-reliability-review",
   "bmw-i4-gran-coupe-lease-deals-and-review",
   "audi-q3-lease-deals-and-reliability-review",
-  "volvo-xc60-lease-deals-and-reliability-review"
+  "volvo-xc60-lease-deals-and-reliability-review",
+  "money-factor-car-lease-explained",
+  "lease-vs-buy-new-jersey-2026",
+  "best-hybrid-suv-lease-deals-nj-2026",
+  "car-lease-end-guide-new-jersey",
+  "luxury-suv-lease-under-700-month-nj-2026",
+  "best-time-to-lease-car-new-jersey-calendar",
+  "best-3-row-family-suv-lease-nj-2026",
+  "nj-sales-tax-car-lease-guide-2026",
+  "car-lease-transfer-nj-2026",
+  "phev-car-lease-deals-guide-2026-2027",
+  "can-you-lease-car-out-of-state-nj-ny",
+  "how-interest-rate-cuts-affect-car-lease-payments"
 ];

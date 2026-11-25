@@ -14,6 +14,21 @@ import { RepairToLeaseCta } from '@/components/blog/RepairToLeaseCta';
 const BLOG_REFRESH_DATE = new Date('2026-04-01T00:00:00Z');
 const BLOG_REFRESH_LABEL = 'Last Updated: April 2026';
 
+const LOW_INTENT_NOINDEX_SLUGS = new Set([
+  'wheel-squeaks-when-driving',
+  'car-key-not-working-in-ignition',
+  'car-skidding-in-winter',
+  'bent-rim-repair-cost',
+  'honda-crv-maintenance-costs',
+  'bmw-3-series-maintenance-costs',
+  'chevy-tahoe-maintenance-costs',
+  'porsche-macan-maintenance-costs',
+  'volvo-s60-reliability',
+  'lexus-rx350-reliability-guide',
+  'hyundai-sonata-reliability',
+  'audi-a4-reliability-long-term-performance-and-durability',
+]);
+
 function formatDate(value?: string | null) {
   if (!value) return '';
   const date = new Date(value);
@@ -567,6 +582,7 @@ export default function BlogPostPage() {
         ogDescription={post.seo_description || post.excerpt || post.title}
         ogImage={fullImageUrl}
         ogType="article"
+        noindex={LOW_INTENT_NOINDEX_SLUGS.has(post.slug)}
       />
       <JsonLd
         data={[

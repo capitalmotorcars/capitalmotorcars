@@ -178,8 +178,8 @@ function getRelatedBlogs(currentSlug, currentCategory) {
 // Curated overrides for standard static pages
 const curatedMeta = {
   "": {
-    title: "New York & New Jersey's Trusted Auto Broker | Capital Motor Cars",
-    description: "Experience stress-free car leasing and auto leasing with Capital Motor Cars. We negotiate the best car lease deals, SUV lease deals, and luxury car leasing in NJ & NY.",
+    title: "Car Leasing & Auto Broker NJ | Capital Motor Cars | $0 Down Deals",
+    description: "Top-rated New Jersey auto broker and car leasing concierge. 5.0 stars across 780+ verified Google reviews. Wholesale lease deals, $0 down options, and doorstep delivery across NJ & NY.",
   },
   "about": {
     title: "About Us | Capital Motor Cars | Our Story & Leadership",
@@ -262,14 +262,29 @@ if (fs.existsSync(sitemapPath)) {
   sitemapUrls = locMatches.map(m => m[1].replace(/^\/|\/$/g, "")).filter(Boolean);
 }
 
-const allRoutes = new Set([...Object.keys(curatedMeta).filter(Boolean), ...sitemapUrls]);
+const LOW_INTENT_NOINDEX_SLUGS = new Set([
+  "wheel-squeaks-when-driving",
+  "car-key-not-working-in-ignition",
+  "car-skidding-in-winter",
+  "bent-rim-repair-cost",
+  "honda-crv-maintenance-costs",
+  "bmw-3-series-maintenance-costs",
+  "chevy-tahoe-maintenance-costs",
+  "porsche-macan-maintenance-costs",
+  "volvo-s60-reliability",
+  "lexus-rx350-reliability-guide",
+  "hyundai-sonata-reliability",
+  "audi-a4-reliability-long-term-performance-and-durability"
+]);
+
+const allRoutes = new Set(["", ...Object.keys(curatedMeta).filter(Boolean), ...sitemapUrls]);
 let generatedCount = 0;
 
 for (const routePath of allRoutes) {
-  const targetDir = path.join(distDir, routePath);
+  const targetDir = routePath ? path.join(distDir, routePath) : distDir;
   fs.mkdirSync(targetDir, { recursive: true });
 
-  const canonicalUrl = `https://www.capitalmotorcars.com/${routePath}`;
+  const canonicalUrl = routePath ? `https://www.capitalmotorcars.com/${routePath}` : "https://www.capitalmotorcars.com/";
   let title = buildSeoTitle(formatSlugToTitle(routePath));
   let description = `Explore the best lease deals, zero-markup pricing, and free doorstep delivery on ${formatSlugToTitle(routePath)} with Capital Motor Cars.`;
   let isBlog = false;
@@ -712,6 +727,56 @@ for (const routePath of allRoutes) {
         }
       ]
     };
+  } else {
+    const pageHeading = routePath === ""
+      ? "New Jersey & New York Car Leasing Concierge"
+      : (curatedMeta[routePath]?.title || formatSlugToTitle(routePath));
+    semanticBody = `
+<div id="root">
+  <main class="min-h-screen bg-background text-foreground">
+    <section class="max-w-4xl mx-auto px-4 py-12">
+      ${routePath ? `<nav aria-label="Breadcrumb" class="text-sm text-muted-foreground mb-4">
+        <a href="/" class="hover:underline">Home</a> &gt; <span>${escapeHtml(formatSlugToTitle(routePath))}</span>
+      </nav>` : ""}
+      <h1 class="text-3xl md:text-5xl font-black text-foreground tracking-tight mb-4">${escapeHtml(pageHeading)}</h1>
+      <p class="text-lg text-muted-foreground leading-relaxed mb-8">${escapeHtml(description)}</p>
+      <div class="p-6 rounded-2xl border border-accent/20 bg-card mb-8">
+        <h2 class="text-xl font-bold mb-3">Why Lease with Capital Motor Cars</h2>
+        <ul class="list-disc pl-6 space-y-2 text-muted-foreground">
+          <li>Pre-negotiated wholesale fleet pricing across NJ, NY, and PA</li>
+          <li>Direct captive bank buy-rates with zero dealer markups</li>
+          <li>True $0 down payment options and free doorstep delivery</li>
+          <li>5.0-star rating across 780+ verified Google reviews</li>
+        </ul>
+      </div>
+      <div class="flex flex-wrap gap-4">
+        <a href="/car-lease-deals-new-jersey" class="inline-block px-6 py-3 rounded-xl bg-primary text-primary-foreground font-bold">Explore NJ Lease Deals</a>
+        <a href="/contact" class="inline-block px-6 py-3 rounded-xl border border-border text-foreground font-bold">Schedule a Call</a>
+        <a href="tel:+12015095555" class="inline-block px-6 py-3 font-bold text-accent">(201) 509-5555</a>
+      </div>
+    </section>
+  </main>
+</div>`;
+
+    if (routePath) {
+      routeSchemaJson = {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.capitalmotorcars.com/" },
+              { "@type": "ListItem", "position": 2, "name": formatSlugToTitle(routePath), "item": canonicalUrl }
+            ]
+          }
+        ]
+      };
+    }
+  }
+
+  // Inject robots noindex for low-intent repair/maintenance bloat
+  if (LOW_INTENT_NOINDEX_SLUGS.has(routePath)) {
+    pageHtml = pageHtml.replace(/<\/head>/i, `  <meta name="robots" content="noindex, follow">\n</head>`);
   }
 
   // Inject semantic body into <div id="root">
