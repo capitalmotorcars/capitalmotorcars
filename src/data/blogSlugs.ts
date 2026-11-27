@@ -364,5 +364,6 @@ export const blogSlugs: string[] = [
   "car-lease-transfer-nj-2026",
   "phev-car-lease-deals-guide-2026-2027",
   "can-you-lease-car-out-of-state-nj-ny",
-  "how-interest-rate-cuts-affect-car-lease-payments"
+  "how-interest-rate-cuts-affect-car-lease-payments",
+  "car-rental-vs-lease-vs-subscription-comparison"
 ];

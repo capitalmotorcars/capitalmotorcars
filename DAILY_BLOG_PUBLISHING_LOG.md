@@ -114,7 +114,7 @@ This log tracks the daily publication of the 60 conquest articles from [CAPITAL_
 
 ---
 
-### Article 11 (Published: Nov 24, 2026 - Today)
+### Article 11 (Published: Nov 24, 2026)
 * **Title:** Expat Car Leasing in NJ & NY [Lease Without US Credit or SSN]
 * **Slug:** `expat-car-leasing-without-us-credit-nj-ny`
 * **Live URL:** [https://www.capitalmotorcars.com/expat-car-leasing-without-us-credit-nj-ny](file:///Users/suresh/bricks/capitalmotorcars/dist/expat-car-leasing-without-us-credit-nj-ny/index.html)
@@ -124,13 +124,30 @@ This log tracks the daily publication of the 60 conquest articles from [CAPITAL_
 
 ---
 
+---
+
+### Article 12 (Published: Nov 25, 2026 - Today)
+* **Title:** Car Rental vs Lease vs Car Subscription [Cost Math Compared]
+* **Slug:** `car-rental-vs-lease-vs-subscription-comparison`
+* **Live URL:** [https://www.capitalmotorcars.com/car-rental-vs-lease-vs-subscription-comparison](file:///Users/suresh/bricks/capitalmotorcars/dist/car-rental-vs-lease-vs-subscription-comparison/index.html)
+* **Supabase ID:** `50b4f4de-6f8d-4c1d-a01a-1c9be4fc3b5e`
+* **Competitor Benchmark:** [https://www.eautolease.com/should-you-rent-or-lease-a-car/](https://www.eautolease.com/should-you-rent-or-lease-a-car/)
+* **Key Topics:** 3-way mobility comparison (rental vs vehicle subscription vs broker lease), commitment horizons, built-in rental surcharges, insurance bundle economics, Section 179 business write-offs, and trade-in equity realization.
+* **Pricing Policy Compliance:** Zero specific dollar monthly lease pricing quoted. Directs readers to explore current lease incentives or schedule a call with the leasing team.
+
+---
+
 ## Editorial Policy Update (November 2026)
 * **Zero Dollar Pricing Policy:** Per editorial direction, November blogs strictly avoid quoting specific dollar monthly payments ($/mo). Instead, articles highlight vehicle features, available factory bonus cash, zero down incentives, and guide readers to schedule a call or request a custom quote to ask about live terms.
 
 ---
 
 ## Upcoming Queue (Next 5 Days)
-* **Nov 25 - Article 12:** `car-rental-vs-lease-vs-subscription-comparison` (*Car Rental vs Lease vs Car Subscription [Cost Math Compared]*)
+* **Nov 26 - Article 13:** `multiple-security-deposits-msds-car-lease-savings` (*Multiple Security Deposits (MSDs) Explained [How to Cut Money Factors]*)
+* **Nov 27 - Article 14:** `high-mileage-car-leasing-guide-nj` (*High Mileage Car Leasing in NJ: 15k, 20k, 25k Mile Lease Economics*)
+* **Nov 28 - Article 15:** `how-long-does-it-take-to-lease-a-car-timeline` (*How Long Does It Take to Lease a Car? [Showroom Delays vs 24-Hr Delivery]*)
+* **Nov 29 - Article 16:** `what-is-a-good-car-lease-money-factor-2026` (*What Is a Good Car Lease Money Factor in 2026? [Interest Rate Conversion]*)
+* **Nov 30 - Article 17:** `is-leasing-a-tesla-worth-it-no-buyout-analysis` (*Is Leasing a Tesla Worth It in 2026? [The No-Buyout Trap & Rivals]*)
 * **Nov 26 - Article 13:** `multiple-security-deposits-msds-car-lease-savings` (*Multiple Security Deposits (MSDs) Explained [How to Cut Money Factors]*)
 * **Nov 27 - Article 14:** `high-mileage-car-leasing-guide-nj` (*High Mileage Car Leasing in NJ: 15k, 20k, 25k Mile Lease Economics*)
 * **Nov 28 - Article 15:** `how-long-does-it-take-to-lease-a-car-timeline` (*How Long Does It Take to Lease a Car? [Showroom Delays vs 24-Hr Delivery]*)
