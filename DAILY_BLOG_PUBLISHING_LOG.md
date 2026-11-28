@@ -124,8 +124,6 @@ This log tracks the daily publication of the 60 conquest articles from [CAPITAL_
 
 ---
 
----
-
 ### Article 12 (Published: Nov 25, 2026)
 * **Title:** Car Rental vs Lease vs Car Subscription [Cost Math Compared]
 * **Slug:** `car-rental-vs-lease-vs-subscription-comparison`
@@ -134,8 +132,6 @@ This log tracks the daily publication of the 60 conquest articles from [CAPITAL_
 * **Competitor Benchmark:** [https://www.eautolease.com/should-you-rent-or-lease-a-car/](https://www.eautolease.com/should-you-rent-or-lease-a-car/)
 * **Key Topics:** 3-way mobility comparison (rental vs vehicle subscription vs broker lease), commitment horizons, built-in rental surcharges, insurance bundle economics, Section 179 business write-offs, and trade-in equity realization.
 * **Pricing Policy Compliance:** Zero specific dollar monthly lease pricing quoted. Directs readers to explore current lease incentives or schedule a call with the leasing team.
-
----
 
 ---
 
@@ -150,8 +146,6 @@ This log tracks the daily publication of the 60 conquest articles from [CAPITAL_
 
 ---
 
----
-
 ### Article 14 (Published: Nov 27, 2026 - Today)
 * **Title:** Can You Lease a Car with Bitcoin & Crypto? [2026 Rules & Guide]
 * **Slug:** `leasing-a-car-with-cryptocurrency-bitcoin-guide`
@@ -163,13 +157,28 @@ This log tracks the daily publication of the 60 conquest articles from [CAPITAL_
 
 ---
 
+### Article 14 (Published: Nov 27, 2026 - Today)
+* **Title:** Can You Lease a Car with Bitcoin & Crypto? [2026 Rules & Guide]
+* **Slug:** `leasing-a-car-with-cryptocurrency-bitcoin-guide`
+* **Live URL:** [https://www.capitalmotorcars.com/leasing-a-car-with-cryptocurrency-bitcoin-guide](file:///Users/suresh/bricks/capitalmotorcars/dist/leasing-a-car-with-cryptocurrency-bitcoin-guide/index.html)
+* **Supabase ID:** `09b5e4d5-11aa-4a8f-bf4e-3984515fbed6`
+* **Competitor Benchmark:** [https://www.eautolease.com/using-cryptocurrency-to-lease-a-car/](https://www.eautolease.com/using-cryptocurrency-to-lease-a-car/)
+* **Key Topics:** Captive banking USD regulations, FDIC/FinCEN compliance, institutional OTC crypto-to-fiat liquidation at true spot rate, IRS capital gains tax planning, and One-Pay lease interest discounts.
+* **Pricing Policy Compliance:** Zero specific dollar monthly lease pricing quoted. Directs readers to explore current lease incentives or schedule a call with the concierge.
+
+---
+
 ## Editorial Policy Update (November 2026)
 * **Zero Dollar Pricing Policy:** Per editorial direction, November blogs strictly avoid quoting specific dollar monthly payments ($/mo). Instead, articles highlight vehicle features, available factory bonus cash, zero down incentives, and guide readers to schedule a call or request a custom quote to ask about live terms.
 
 ---
 
 ## Upcoming Queue (Next 5 Days)
-* **Nov 27 - Article 14:** `leasing-a-car-with-cryptocurrency-bitcoin-guide` (*Can You Lease a Car with Bitcoin & Crypto? [2026 Rules & Guide]*)
+* **Nov 28 - Article 15:** `lease-wear-and-tear-vs-excess-protection-packages` (*Excess Wear Protection vs Wheel & Tire Insurance [Is It Worth It?]*)
+* **Nov 29 - Article 16:** `what-is-a-good-car-lease-money-factor-2026` (*What Is a Good Car Lease Money Factor in 2026? [Interest Rate Conversion]*)
+* **Nov 30 - Article 17:** `multiple-security-deposits-msds-car-lease-savings` (*Multiple Security Deposits (MSDs) Explained [How to Cut Money Factors]*)
+* **Dec 01 - Article 18:** `high-mileage-car-leasing-guide-nj` (*High Mileage Car Leasing in NJ: 15k, 20k, 25k Mile Lease Economics*)
+* **Dec 02 - Article 19:** `how-long-does-it-take-to-lease-a-car-timeline` (*How Long Does It Take to Lease a Car? [Showroom Delays vs 24-Hr Delivery]*)
 * **Nov 28 - Article 15:** `how-long-does-it-take-to-lease-a-car-timeline` (*How Long Does It Take to Lease a Car? [Showroom Delays vs 24-Hr Delivery]*)
 * **Nov 29 - Article 16:** `what-is-a-good-car-lease-money-factor-2026` (*What Is a Good Car Lease Money Factor in 2026? [Interest Rate Conversion]*)
 * **Nov 30 - Article 17:** `multiple-security-deposits-msds-car-lease-savings` (*Multiple Security Deposits (MSDs) Explained [How to Cut Money Factors]*)
