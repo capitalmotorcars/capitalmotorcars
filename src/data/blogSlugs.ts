@@ -365,5 +365,6 @@ export const blogSlugs: string[] = [
   "phev-car-lease-deals-guide-2026-2027",
   "can-you-lease-car-out-of-state-nj-ny",
   "how-interest-rate-cuts-affect-car-lease-payments",
-  "car-rental-vs-lease-vs-subscription-comparison"
+  "car-rental-vs-lease-vs-subscription-comparison",
+  "is-leasing-a-tesla-worth-it-no-buyout-analysis"
 ];

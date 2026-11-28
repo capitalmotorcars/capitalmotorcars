@@ -126,7 +126,7 @@ This log tracks the daily publication of the 60 conquest articles from [CAPITAL_
 
 ---
 
-### Article 12 (Published: Nov 25, 2026 - Today)
+### Article 12 (Published: Nov 25, 2026)
 * **Title:** Car Rental vs Lease vs Car Subscription [Cost Math Compared]
 * **Slug:** `car-rental-vs-lease-vs-subscription-comparison`
 * **Live URL:** [https://www.capitalmotorcars.com/car-rental-vs-lease-vs-subscription-comparison](file:///Users/suresh/bricks/capitalmotorcars/dist/car-rental-vs-lease-vs-subscription-comparison/index.html)
@@ -137,17 +137,30 @@ This log tracks the daily publication of the 60 conquest articles from [CAPITAL_
 
 ---
 
+---
+
+### Article 13 (Published: Nov 26, 2026 - Today)
+* **Title:** Is Leasing a Tesla Worth It in 2026? [The No-Buyout Trap & Rivals]
+* **Slug:** `is-leasing-a-tesla-worth-it-no-buyout-analysis`
+* **Live URL:** [https://www.capitalmotorcars.com/is-leasing-a-tesla-worth-it-no-buyout-analysis](file:///Users/suresh/bricks/capitalmotorcars/dist/is-leasing-a-tesla-worth-it-no-buyout-analysis/index.html)
+* **Supabase ID:** `3a7fe6ce-4ea6-4f6d-b512-be6340f3cf92`
+* **Competitor Benchmark:** [https://www.eautolease.com/wannabe-car-owners-can-lease-a-tesla-but-is-it-worth-it/](https://www.eautolease.com/wannabe-car-owners-can-lease-a-tesla-but-is-it-worth-it/)
+* **Key Topics:** Tesla mandatory no-buyout restriction, forfeited positive market equity, price volatility impact on used values, commercial clean vehicle $7,500 pass-through credits, and top EV alternatives (Hyundai Ioniq 5, BMW i4, Kia EV9).
+* **Pricing Policy Compliance:** Zero specific dollar monthly lease pricing quoted. Focuses on contractual equity rights, EV incentives, and prompts to contact our concierge.
+
+---
+
 ## Editorial Policy Update (November 2026)
 * **Zero Dollar Pricing Policy:** Per editorial direction, November blogs strictly avoid quoting specific dollar monthly payments ($/mo). Instead, articles highlight vehicle features, available factory bonus cash, zero down incentives, and guide readers to schedule a call or request a custom quote to ask about live terms.
 
 ---
 
 ## Upcoming Queue (Next 5 Days)
-* **Nov 26 - Article 13:** `multiple-security-deposits-msds-car-lease-savings` (*Multiple Security Deposits (MSDs) Explained [How to Cut Money Factors]*)
-* **Nov 27 - Article 14:** `high-mileage-car-leasing-guide-nj` (*High Mileage Car Leasing in NJ: 15k, 20k, 25k Mile Lease Economics*)
+* **Nov 27 - Article 14:** `leasing-a-car-with-cryptocurrency-bitcoin-guide` (*Can You Lease a Car with Bitcoin & Crypto? [2026 Rules & Guide]*)
 * **Nov 28 - Article 15:** `how-long-does-it-take-to-lease-a-car-timeline` (*How Long Does It Take to Lease a Car? [Showroom Delays vs 24-Hr Delivery]*)
 * **Nov 29 - Article 16:** `what-is-a-good-car-lease-money-factor-2026` (*What Is a Good Car Lease Money Factor in 2026? [Interest Rate Conversion]*)
-* **Nov 30 - Article 17:** `is-leasing-a-tesla-worth-it-no-buyout-analysis` (*Is Leasing a Tesla Worth It in 2026? [The No-Buyout Trap & Rivals]*)
+* **Nov 30 - Article 17:** `multiple-security-deposits-msds-car-lease-savings` (*Multiple Security Deposits (MSDs) Explained [How to Cut Money Factors]*)
+* **Dec 01 - Article 18:** `high-mileage-car-leasing-guide-nj` (*High Mileage Car Leasing in NJ: 15k, 20k, 25k Mile Lease Economics*)
 * **Nov 26 - Article 13:** `multiple-security-deposits-msds-car-lease-savings` (*Multiple Security Deposits (MSDs) Explained [How to Cut Money Factors]*)
 * **Nov 27 - Article 14:** `high-mileage-car-leasing-guide-nj` (*High Mileage Car Leasing in NJ: 15k, 20k, 25k Mile Lease Economics*)
 * **Nov 28 - Article 15:** `how-long-does-it-take-to-lease-a-car-timeline` (*How Long Does It Take to Lease a Car? [Showroom Delays vs 24-Hr Delivery]*)
