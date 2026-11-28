@@ -366,5 +366,6 @@ export const blogSlugs: string[] = [
   "can-you-lease-car-out-of-state-nj-ny",
   "how-interest-rate-cuts-affect-car-lease-payments",
   "car-rental-vs-lease-vs-subscription-comparison",
-  "is-leasing-a-tesla-worth-it-no-buyout-analysis"
+  "is-leasing-a-tesla-worth-it-no-buyout-analysis",
+  "leasing-a-car-with-cryptocurrency-bitcoin-guide"
 ];

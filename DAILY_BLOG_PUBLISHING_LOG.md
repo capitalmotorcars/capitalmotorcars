@@ -139,7 +139,7 @@ This log tracks the daily publication of the 60 conquest articles from [CAPITAL_
 
 ---
 
-### Article 13 (Published: Nov 26, 2026 - Today)
+### Article 13 (Published: Nov 26, 2026)
 * **Title:** Is Leasing a Tesla Worth It in 2026? [The No-Buyout Trap & Rivals]
 * **Slug:** `is-leasing-a-tesla-worth-it-no-buyout-analysis`
 * **Live URL:** [https://www.capitalmotorcars.com/is-leasing-a-tesla-worth-it-no-buyout-analysis](file:///Users/suresh/bricks/capitalmotorcars/dist/is-leasing-a-tesla-worth-it-no-buyout-analysis/index.html)
@@ -147,6 +147,19 @@ This log tracks the daily publication of the 60 conquest articles from [CAPITAL_
 * **Competitor Benchmark:** [https://www.eautolease.com/wannabe-car-owners-can-lease-a-tesla-but-is-it-worth-it/](https://www.eautolease.com/wannabe-car-owners-can-lease-a-tesla-but-is-it-worth-it/)
 * **Key Topics:** Tesla mandatory no-buyout restriction, forfeited positive market equity, price volatility impact on used values, commercial clean vehicle $7,500 pass-through credits, and top EV alternatives (Hyundai Ioniq 5, BMW i4, Kia EV9).
 * **Pricing Policy Compliance:** Zero specific dollar monthly lease pricing quoted. Focuses on contractual equity rights, EV incentives, and prompts to contact our concierge.
+
+---
+
+---
+
+### Article 14 (Published: Nov 27, 2026 - Today)
+* **Title:** Can You Lease a Car with Bitcoin & Crypto? [2026 Rules & Guide]
+* **Slug:** `leasing-a-car-with-cryptocurrency-bitcoin-guide`
+* **Live URL:** [https://www.capitalmotorcars.com/leasing-a-car-with-cryptocurrency-bitcoin-guide](file:///Users/suresh/bricks/capitalmotorcars/dist/leasing-a-car-with-cryptocurrency-bitcoin-guide/index.html)
+* **Supabase ID:** `09b5e4d5-11aa-4a8f-bf4e-3984515fbed6`
+* **Competitor Benchmark:** [https://www.eautolease.com/using-cryptocurrency-to-lease-a-car/](https://www.eautolease.com/using-cryptocurrency-to-lease-a-car/)
+* **Key Topics:** Captive automotive lender USD mandates, institutional OTC crypto liquidation at market spot rates, one-pay lease savings for crypto holders, IRS capital gains tax rules, and doorstep luxury delivery.
+* **Pricing Policy Compliance:** Zero specific dollar monthly lease pricing quoted. Focuses on institutional fiat conversion pathways and prompts to contact our concierge.
 
 ---
 
